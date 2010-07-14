@@ -1,0 +1,260 @@
+/*
+ ProgrammingLanguage.java
+ Creation date : 19/06/2010
+ Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
+ 
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License 
+ or GNU Lesser General Public License as published by the
+ Free Software Foundation; either version 3 of the License,
+ or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received copies of the GNU General Public License
+ and GNU Lesser General Public License along with this program;
+ if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ http://www.fsf.org/licensing/licenses/gpl.html
+ http://www.gnu.org/licenses/lgpl.html
+ */
+
+package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument;
+
+import static java.util.Collections.unmodifiableMap;
+import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
+import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_NAME_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.UNKNOWN_PROGRAMMING_LANGUAGE_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.PROGRAMMING_LANGUAGE_FOUND_INFO;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.logging.Logger;
+
+import net.sourceforge.plantuml.dependency.AbstractDependency;
+
+/**
+ * This interface contains all supported meshes types and defines all supported operation on 3D
+ * meshes.
+ * 
+ * @author Benjamin Croizet (graffity2199@yahoo.fr)
+ * @since 1.0
+ * @version 1.0
+ */
+public abstract class ProgrammingLanguage implements Comparable < ProgrammingLanguage > {
+
+    /** The class logger. */
+    private static final transient Logger LOGGER = getLogger(ProgrammingLanguage.class.getName());
+
+    /** The java programming language. */
+    public static final ProgrammingLanguage JAVA = new JavaProgrammingLanguage("java");
+
+    /** The c++ programming language. */
+    public static final ProgrammingLanguage CPP = new CppProgrammingLanguage("cpp");
+
+    /** The number of millisecond in one second. */
+    private static final Map < String, ProgrammingLanguage > PROGRAMMING_LANGUAGE_MAP = createProgrammingLanguageMap();
+
+    /**
+     * Creates the static {@link Map} containing all {@link ProgrammingLanguage}.
+     * 
+     * @return the {@link Map} of all {@link ProgrammingLanguage} as values, with their associated
+     *         names as keys.
+     * @since 1.0
+     */
+    private static Map < String, ProgrammingLanguage > createProgrammingLanguageMap() {
+        final Map < String, ProgrammingLanguage > programmingLanguageMap = new TreeMap < String, ProgrammingLanguage >();
+
+        programmingLanguageMap.put(CPP.getName(), CPP);
+        programmingLanguageMap.put(JAVA.getName(), JAVA);
+
+        return unmodifiableMap(programmingLanguageMap);
+    }
+
+    /**
+     * Gets the {@link Collection} of all {@link ProgrammingLanguage}.
+     * 
+     * @return the {@link Collection} of all {@link ProgrammingLanguage} available.
+     * @since 1.0
+     */
+    public static Collection < ProgrammingLanguage > getProgrammingLanguageCollection() {
+        return PROGRAMMING_LANGUAGE_MAP.values();
+    }
+
+    /**
+     * Gets the {@link Set} of all programming languages names.
+     * 
+     * @return the {@link Set} of all programming languages names available.
+     * @since 1.0
+     */
+    public static Set < String > getProgrammingLanguageNamesSet() {
+        final Set < String > names = new TreeSet < String >();
+
+        for (final ProgrammingLanguage programmingLanguage : getProgrammingLanguageCollection()) {
+            names.add(programmingLanguage.getName());
+        }
+
+        return names;
+    }
+
+    /**
+     * Gets the {@link ProgrammingLanguage} instance associated to the passed name. Throw an
+     * {@link IllegalArgumentException} if the programming language name isn't recognized.
+     * 
+     * @param programmingLanguageName
+     *            the programming language name to get the instance from, mustn't be
+     *            <code>null</code> nor empty.
+     * @return the {@link ProgrammingLanguage} instance associated to the passed name if available.
+     * @since 1.0
+     */
+    public static ProgrammingLanguage valueOfIgnoringCase(final String programmingLanguageName) {
+        ProgrammingLanguage programmingLanguage = null;
+        if (isEmpty(programmingLanguageName)) {
+            throw new IllegalArgumentException(PROGRAMMING_LANGUAGE_NAME_NULL_ERROR);
+        } else {
+            programmingLanguage = PROGRAMMING_LANGUAGE_MAP.get(programmingLanguageName.toLowerCase());
+            if (programmingLanguage == null) {
+                throw new IllegalArgumentException(buildLogString(UNKNOWN_PROGRAMMING_LANGUAGE_ERROR,
+                        programmingLanguageName));
+            } else {
+                LOGGER.info(buildLogString(PROGRAMMING_LANGUAGE_FOUND_INFO, programmingLanguage));
+            }
+        }
+
+        return programmingLanguage;
+    }
+
+    /** The programming language name. */
+    private String name;
+
+    /**
+     * Default constructor.
+     * 
+     * @param programmingLanguageName
+     *            the programming language name to get the instance from, mustn't be
+     *            <code>null</code> nor empty.
+     * @since 1.0
+     */
+    protected ProgrammingLanguage(final String programmingLanguageName) {
+        setName(programmingLanguageName);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    public int compareTo(final ProgrammingLanguage o) {
+        if (this == o) {
+            return EQUAL.getResult();
+        } else {
+            return getName().compareTo(o.getName());
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProgrammingLanguage other = (ProgrammingLanguage) obj;
+        if (name == null) {
+            if (other.name != null) {
+                return false;
+            }
+        } else if (!name.equals(other.name)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Gets the value of <code>name</code>.
+     * 
+     * @return the value of <code>name</code>.
+     * @see #setName(String)
+     * @since 1.0
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
+    }
+
+    /**
+     * Reads the following source file content as a {@link String} to build the
+     * {@link AbstractDependency} instance. This method also modify the <code>dependenciesMap</code>
+     * parameter by adding read objects.
+     * 
+     * @param sourceFileContent
+     *            the source file content as a {@link String} to read, mustn't be <code>null</code>.
+     *            Should contain the expected programming language.
+     * @param dependenciesMap
+     *            the {@link Map} containing all dependencies which have already been seen in
+     *            previous treatment, it contains dependencies full names (package + name) as keys
+     *            and their associated {@link AbstractDependency} as values. This {@link Map} is
+     *            modified during the treatment, mustn't be <code>null</code>.
+     * @return the {@link AbstractDependency} instance if it has been found and correctly parsed,
+     *         <code>null</code> otherwise.
+     * @since 1.0
+     */
+    public abstract AbstractDependency readDependencyFromFile(String sourceFileContent,
+            Map < String, AbstractDependency > dependenciesMap);
+
+    /**
+     * Sets the value of <code>name</code>.
+     * 
+     * @param value
+     *            the <code>name</code> to set, can be <code>null</code>.
+     * @see #getName()
+     * @since 1.0
+     */
+    private void setName(final String value) {
+        if (isEmpty(value)) {
+            throw new IllegalArgumentException(PROGRAMMING_LANGUAGE_NAME_NULL_ERROR);
+        }
+
+        name = value;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " [name=" + name + "]";
+    }
+}
