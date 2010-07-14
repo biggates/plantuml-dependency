@@ -26,9 +26,9 @@ package net.sourceforge.plantuml.dependency.main.option.include;
 
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE1;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE11;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE13;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE14;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE17;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE9;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
@@ -38,7 +38,6 @@ import static net.sourceforge.plantuml.dependency.main.option.programminglanguag
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.AbstractOptionWithArgument;
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 
 import org.apache.tools.ant.types.FileSet;
@@ -57,22 +56,22 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
 
     /** Include option test 1 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < FileSet > INCLUDE_OPTION1 = new PlantUMLDependencyIncludeOption(
+    public static final PlantUMLDependencyIncludeOption INCLUDE_OPTION1 = new PlantUMLDependencyIncludeOption(
             PROGRAMMING_LANGUAGE_OPTION1);
 
     /** Include option test 2 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < FileSet > INCLUDE_OPTION2 = new PlantUMLDependencyIncludeOption(
+    public static final PlantUMLDependencyIncludeOption INCLUDE_OPTION2 = new PlantUMLDependencyIncludeOption(
             PROGRAMMING_LANGUAGE_OPTION2);
 
     /** Include option test 3 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < FileSet > INCLUDE_OPTION3 = new PlantUMLDependencyIncludeOption(
+    public static final PlantUMLDependencyIncludeOption INCLUDE_OPTION3 = new PlantUMLDependencyIncludeOption(
             PROGRAMMING_LANGUAGE_OPTION1);
 
     /** Include option test 4 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < FileSet > INCLUDE_OPTION4 = null;
+    public static final PlantUMLDependencyIncludeOption INCLUDE_OPTION4 = null;
 
     /**
      * Test method for
@@ -97,7 +96,7 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
     @Test(expected = CommandLineException.class)
     public void testFindAndParseArgumentOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
             throws CommandLineException {
-        INCLUDE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE11);
+        INCLUDE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE17);
     }
 
     /**

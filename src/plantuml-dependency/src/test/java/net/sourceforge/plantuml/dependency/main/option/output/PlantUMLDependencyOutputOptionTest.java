@@ -24,10 +24,31 @@
 
 package net.sourceforge.plantuml.dependency.main.option.output;
 
-import static org.junit.Assert.fail;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.mazix.components.constants.CommonFileConstants.TXT_EXTENSION;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE1;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE17;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE18;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE19;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.VERBOSE_OPTION1;
+import static net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOptionTest.BASE_DIRECTORY_OPTION1;
+import static net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOptionTest.DISPLAY_OPTION1;
+import static net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOptionTest.EXCLUDE_OPTION1;
+import static net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOptionTest.INCLUDE_OPTION1;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOptionTest.PROGRAMMING_LANGUAGE_OPTION1;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+
+import net.sourceforge.mazix.cli.exception.CommandLineException;
+import net.sourceforge.mazix.cli.option.execution.OptionExecution;
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 
 import org.junit.Test;
+import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link PlantUMLDependencyOutputOption}.
@@ -38,35 +59,123 @@ import org.junit.Test;
  * @version 1.0
  */
 public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyOutputOption > {
-    
+
+    /** Output option test 1 instance. */
+    @DataPoint
+    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION1 = new PlantUMLDependencyOutputOption(
+            VERBOSE_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_OPTION1,
+            BASE_DIRECTORY_OPTION1, 1);
+
+    /** Output option test 2 instance. */
+    @DataPoint
+    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION2 = new PlantUMLDependencyOutputOption(
+            VERBOSE_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_OPTION1,
+            BASE_DIRECTORY_OPTION1, 1);
+
+    /** Output option test 3 instance. */
+    @DataPoint
+    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION3 = new PlantUMLDependencyOutputOption(
+            VERBOSE_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_OPTION1,
+            BASE_DIRECTORY_OPTION1, 1);
+
+    /** Output option test 4 instance. */
+    @DataPoint
+    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION4 = new PlantUMLDependencyOutputOption(
+            VERBOSE_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_OPTION1,
+            BASE_DIRECTORY_OPTION1, 1);
+
+    /** Output option test 5 instance. */
+    @DataPoint
+    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION5 = new PlantUMLDependencyOutputOption(
+            VERBOSE_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_OPTION1,
+            BASE_DIRECTORY_OPTION1, 1);
+
+    /** Output option test 6 instance. */
+    @DataPoint
+    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION6 = new PlantUMLDependencyOutputOption(
+            VERBOSE_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_OPTION1,
+            BASE_DIRECTORY_OPTION1, 1);
+
+    /** Output option test 7 instance. */
+    @DataPoint
+    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION7 = null;
+
     /**
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
+     * 
+     * @throws CommandLineException
      */
     @Test
-    public void testFindAndParseArgumentOrGetDefaultArgument() {
-        fail("Not yet implemented");
+    public void testFindAndParseArgumentOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
+        final File argument = OUTPUT_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE1);
+        assertEquals("plantuml.txt", argument.getName());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * .
+     * 
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
+            throws CommandLineException {
+        OUTPUT_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE17);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * .
+     * 
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
+            throws CommandLineException {
+        final File argument = OUTPUT_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE18);
+        assertTrue(argument.getName().contains(TXT_EXTENSION));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * .
+     * 
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentOrGetDefaultArgumentWithTwoExistingOption() throws CommandLineException {
+        OUTPUT_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE19);
     }
 
     /**
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
+     * 
+     * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgument() {
-        fail("Not yet implemented");
+    public void testGetDefaultArgument() throws CommandLineException {
+        final File defaultArgument = OUTPUT_OPTION1.getDefaultArgument(COMMAND_LINE1);
+        assertTrue(defaultArgument.getName().contains(TXT_EXTENSION));
     }
 
     /**
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.impl.output.OutputOption#getDefaultArgumentAsString(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
+     * 
+     * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgumentAsString() {
-        fail("Not yet implemented");
+    public void testGetDefaultArgumentAsString() throws CommandLineException {
+        final String defaultArgument = OUTPUT_OPTION1.getDefaultArgumentAsString(COMMAND_LINE1);
+        assertTrue(defaultArgument.contains(TXT_EXTENSION));
     }
 
     /**
@@ -74,7 +183,9 @@ public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest 
      */
     @Test
     public void testGetFullUsage() {
-        fail("Not yet implemented");
+        assertEquals(
+                "-o, --output FILE\n\t\tTo output file path where to generate the PlantUML description.\n\t\tFILE specifies a valid file path, where the file doesn't already exist and is not a directory. It can be absolute or relative.",
+                OUTPUT_OPTION1.getFullUsage().toString());
     }
 
     /**
@@ -82,7 +193,7 @@ public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest 
      */
     @Test
     public void testGetMainUsage() {
-        fail("Not yet implemented");
+        assertEquals("-o FILE", OUTPUT_OPTION1.getMainUsage().toString());
     }
 
     /**
@@ -91,17 +202,56 @@ public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest 
      */
     @Test
     public void testGetValueSeparator() {
-        fail("Not yet implemented");
+        assertEquals(SPACE_CHAR, OUTPUT_OPTION1.getValueSeparator());
     }
 
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption#parseCommandLine(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
+     * 
+     * @throws CommandLineException
      */
-    @Test
-    public void testParseCommandLine() {
-        fail("Not yet implemented");
+    @Test(expected = NullPointerException.class)
+    public void testParseCommandLineNull() throws CommandLineException {
+        OUTPUT_OPTION1.parseCommandLine(null);
     }
 
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption#parseCommandLine(net.sourceforge.mazix.cli.command.CommandLine)}
+     * .
+     * 
+     * @throws CommandLineException
+     */
+    @Test
+    public void testParseCommandLineWithExistingOption() throws CommandLineException {
+        final OptionExecution optionExecution = OUTPUT_OPTION1.parseCommandLine(COMMAND_LINE1);
+        assertNotNull(optionExecution);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption#parseCommandLine(net.sourceforge.mazix.cli.command.CommandLine)}
+     * .
+     * 
+     * @throws CommandLineException
+     */
+    @Test
+    public void testParseCommandLineWithNotExistingNotMandatoryOption() throws CommandLineException {
+        final OptionExecution optionExecution = OUTPUT_OPTION1.parseCommandLine(COMMAND_LINE18);
+        assertNull(optionExecution);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption#parseCommandLine(net.sourceforge.mazix.cli.command.CommandLine)}
+     * .
+     * 
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testParseCommandLineWithTwoExistingOption() throws CommandLineException {
+        OUTPUT_OPTION1.parseCommandLine(COMMAND_LINE19);
+    }
 }

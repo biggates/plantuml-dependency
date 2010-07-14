@@ -33,7 +33,6 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.AbstractOptionWithArgument;
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption;
 
@@ -53,15 +52,15 @@ public class PlantUMLDependencyExcludeOptionTest extends DeepCloneableObjectTest
 
     /** Exclude option test 1 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < FileSet > EXCLUDE_OPTION1 = new PlantUMLDependencyExcludeOption();
+    public static final PlantUMLDependencyExcludeOption EXCLUDE_OPTION1 = new PlantUMLDependencyExcludeOption();
 
     /** Exclude option test 2 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < FileSet > EXCLUDE_OPTION2 = new PlantUMLDependencyExcludeOption();
+    public static final PlantUMLDependencyExcludeOption EXCLUDE_OPTION2 = new PlantUMLDependencyExcludeOption();
 
     /** Exclude option test 3 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < FileSet > EXCLUDE_OPTION3 = null;
+    public static final PlantUMLDependencyExcludeOption EXCLUDE_OPTION3 = null;
 
     /**
      * Test method for

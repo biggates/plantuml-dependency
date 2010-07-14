@@ -35,7 +35,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.File;
 
 import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.AbstractOptionWithArgument;
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 
 import org.junit.Test;
@@ -49,19 +48,20 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0
  * @version 1.0
  */
-public class PlantUMLDependencyBaseDirectoryOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyBaseDirectoryOption > {
+public class PlantUMLDependencyBaseDirectoryOptionTest extends
+        DeepCloneableObjectTest < PlantUMLDependencyBaseDirectoryOption > {
 
     /** Base directory option test 1 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < File > BASE_DIRECTORY_OPTION1 = new PlantUMLDependencyBaseDirectoryOption();
+    public static final PlantUMLDependencyBaseDirectoryOption BASE_DIRECTORY_OPTION1 = new PlantUMLDependencyBaseDirectoryOption();
 
     /** Base directory option test 2 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < File > BASE_DIRECTORY_OPTION2 = new PlantUMLDependencyBaseDirectoryOption();
+    public static final PlantUMLDependencyBaseDirectoryOption BASE_DIRECTORY_OPTION2 = new PlantUMLDependencyBaseDirectoryOption();
 
     /** Base directory option test 3 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < File > BASE_DIRECTORY_OPTION3 = null;
+    public static final PlantUMLDependencyBaseDirectoryOption BASE_DIRECTORY_OPTION3 = null;
 
     /**
      * Test method for

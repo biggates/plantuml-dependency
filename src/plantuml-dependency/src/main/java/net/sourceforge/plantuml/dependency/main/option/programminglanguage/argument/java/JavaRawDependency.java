@@ -24,41 +24,171 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java;
 
+import static java.util.logging.Level.SEVERE;
+import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
+import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 
+import java.io.Serializable;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.logging.Logger;
 
+import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType;
 
 /**
+ * The Java raw dependency, extracted from a Java source file, without any business control nor
+ * checking.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.0
  * @version 1.0
  */
-public class JavaRawDependency {
+public class JavaRawDependency implements Comparable < JavaRawDependency >, Serializable,
+        DeepCloneable < JavaRawDependency > {
 
+    /** Serial version UID. */
+    private static final long serialVersionUID = -8047630217535429852L;
+
+    /** The class logger. */
+    private static final transient Logger LOGGER = getLogger(JavaRawDependency.class.getName());
+
+    /** The boolean telling if the java dependency is abstract or not. */
     private boolean isAbstract;
 
+    /** The dependency package name, such as "java.lang". */
     private String packageName;
 
+    /** The dependency java type, such as "class" or "interface". */
     private JavaType type;
 
+    /** The dependency name, such as "String". */
     private String name;
 
+    /**
+     * The {@link Set} of all dependency extensions full names (package + class), i.e. classes or
+     * interfaces the dependency "extends".
+     */
     private Set < String > parentExtentions;
 
+    /**
+     * The {@link Set} dependency implementations full names (package + class), i.e. interfaces the
+     * dependency "implements".
+     */
     private Set < String > parentImplementations;
 
     /**
-     * Gets the value of <code>name</code>.
+     * Empty constructor.
      * 
-     * @return the value of <code>name</code>.
-     * @see #setName(String)
      * @since 1.0
      */
-    public String getName() {
-        return name;
+    public JavaRawDependency() {
+        super();
+    }
+
+    /**
+     * Default constructor.
+     * 
+     * @param isAbs
+     *            the boolean telling if the java dependency is abstract or not.
+     * @param dependencyPackageName
+     *            the dependency package name, such as "java.lang".
+     * @param javaType
+     *            the dependency java type, such as "class" or "interface".
+     * @param dependencyName
+     *            the dependency name, such as "String".
+     * @param extentions
+     *            the {@link Set} of all dependency extensions full names (package + class), i.e.
+     *            classes or interfaces the dependency "extends".
+     * @param implementations
+     *            the {@link Set} dependency implementations full names (package + class), i.e.
+     *            interfaces the dependency "implements".
+     * @since 1.0
+     */
+    public JavaRawDependency(final boolean isAbs, final String dependencyPackageName, final JavaType javaType,
+            final String dependencyName, final Set < String > extentions, final Set < String > implementations) {
+        setAbstract(isAbs);
+        setPackageName(dependencyPackageName);
+        setType(javaType);
+        setName(dependencyName);
+        setParentExtentions(extentions);
+        setParentImplementations(implementations);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public int compareTo(final JavaRawDependency j) {
+        if (this == j) {
+            return EQUAL.getResult();
+        } else {
+            final int comparison = packageName.compareTo(j.packageName);
+            if (comparison == EQUAL.getResult()) {
+                return name.compareTo(j.name);
+            } else {
+                return comparison;
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public JavaRawDependency deepClone() {
+        JavaRawDependency j = null;
+
+        try {
+            j = (JavaRawDependency) super.clone();
+            j.parentExtentions = new TreeSet < String >(getParentExtentions());
+            j.parentImplementations = new TreeSet < String >(getParentImplementations());
+        } catch (final CloneNotSupportedException cnse) {
+            LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
+        }
+
+        return j;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final JavaRawDependency other = (JavaRawDependency) obj;
+        if (name == null) {
+            if (other.name != null) {
+                return false;
+            }
+        } else if (!name.equals(other.name)) {
+            return false;
+        }
+        if (packageName == null) {
+            if (other.packageName != null) {
+                return false;
+            }
+        } else if (!packageName.equals(other.packageName)) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -69,6 +199,17 @@ public class JavaRawDependency {
      */
     public String getFullName() {
         return getPackageName() + DOT_CHAR + getName();
+    }
+
+    /**
+     * Gets the value of <code>name</code>.
+     * 
+     * @return the value of <code>name</code>.
+     * @see #setName(String)
+     * @since 1.0
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -113,6 +254,20 @@ public class JavaRawDependency {
      */
     public JavaType getType() {
         return type;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((packageName == null) ? 0 : packageName.hashCode());
+        return result;
     }
 
     /**
@@ -196,5 +351,17 @@ public class JavaRawDependency {
      */
     public void setType(final JavaType value) {
         type = value;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " [isAbstract=" + isAbstract + ", name=" + name + ", packageName="
+                + packageName + ", parentExtentions=" + parentExtentions + ", parentImplementations="
+                + parentImplementations + ", type=" + type + "]";
     }
 }

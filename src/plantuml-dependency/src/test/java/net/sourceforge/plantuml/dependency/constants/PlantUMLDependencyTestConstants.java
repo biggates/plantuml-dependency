@@ -43,6 +43,7 @@ import java.util.TreeSet;
 
 import net.sourceforge.mazix.cli.command.CommandLine;
 import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
+import net.sourceforge.mazix.cli.option.impl.verbose.VerboseOption;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 import org.apache.tools.ant.types.FileSet;
@@ -114,32 +115,55 @@ public final class PlantUMLDependencyTestConstants {
     /** Command line test 16 instance. */
     public static final CommandLine COMMAND_LINE16 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-l",
             "cpp", "-l", "java"});
+    
+    /** Command line test 17 instance. */
+    public static final CommandLine COMMAND_LINE17 = new CommandLineImpl(new String[] {"-o"});
+    
+    /** Command line test 18 instance. */
+    public static final CommandLine COMMAND_LINE18 = new CommandLineImpl(new String[] {"-version"});
+    
+    /** Command line test 19 instance. */
+    public static final CommandLine COMMAND_LINE19 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-o", "log.txt",});
 
     /** File set test 1 instance. */
-    public static FileSet FILE_SET1 = createFileSet(CURRENT_DIRECTORY, "**/*");
-    
+    public static final FileSet FILE_SET1 = createFileSet(CURRENT_DIRECTORY, "**/*");
+
     /** File set test 1 instance. */
-    public static FileSet FILE_SET2 = createFileSet(CURRENT_DIRECTORY, "**/*A*.java");
+    public static final FileSet FILE_SET2 = createFileSet(CURRENT_DIRECTORY, "**/*A*.java");
 
     /** Display set test 1 instance. */
-    public static Set < Display > DISPLAY_SET1 = new TreeSet < Display >();
+    public static final Set < Display > DISPLAY_SET1 = new TreeSet < Display >();
 
     /** Display set test 2 instance. */
-    public static Set < Display > DISPLAY_SET2 = new TreeSet < Display >(asList(new Display[] {CLASSES, ENUMS, IMPORTS,
-            INTERFACES, PACKAGES, STATIC_IMPORTS}));
+    public static final Set < Display > DISPLAY_SET2 = new TreeSet < Display >(asList(new Display[] {CLASSES, ENUMS,
+            IMPORTS, INTERFACES, PACKAGES, STATIC_IMPORTS}));
 
     /** Display set test 3 instance. */
-    public static Set < Display > DISPLAY_SET3 = new TreeSet < Display >(asList(values()));
+    public static final Set < Display > DISPLAY_SET3 = new TreeSet < Display >(asList(values()));
 
     /** Display set test 4 instance. */
-    public static Set < Display > DISPLAY_SET4 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
+    public static final Set < Display > DISPLAY_SET4 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
 
     /** Display set test 5 instance. */
-    public static Set < Display > DISPLAY_SET5 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
+    public static final Set < Display > DISPLAY_SET5 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
 
     /** Display set test 6 instance. */
-    public static Set < Display > DISPLAY_SET6 = new TreeSet < Display >(asList(new Display[] {ONLY_PARSED_OBJECTS,
-            METHODS, ATTRIBUTES}));
+    public static final Set < Display > DISPLAY_SET6 = new TreeSet < Display >(asList(new Display[] {
+            ONLY_PARSED_OBJECTS, METHODS, ATTRIBUTES}));
+
+    /** Verbose option test 1 instance. */
+    public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(false, new StringBuffer(
+            "To display log information."));
+
+    /** Verbose option test 2 instance. */
+    public static final VerboseOption VERBOSE_OPTION2 = new VerboseOption(true, new StringBuffer(
+            "To display log information."));
+    
+    /** Extensions set test 1 instance. */
+    public static final Set < String > EXTENSIONS_SET1 = new TreeSet < String >(asList(new String[] {"java.lang.Number"}));
+    
+    /** Implementations set test 1 instance. */
+    public static final Set < String > IMPLEMENTATIONS_SET1 = new TreeSet < String >(asList(new String[] {"java.lang.Comparable", "java.io.Serializable"}));
 
     /**
      * Private constructor to prevent from instantiation.

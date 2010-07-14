@@ -43,7 +43,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.Set;
 
 import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.AbstractOptionWithArgument;
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
@@ -62,15 +61,15 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /** Display directory option test 1 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < Set < Display > > DISPLAY_OPTION1 = new PlantUMLDependencyDisplayOption();
+    public static final PlantUMLDependencyDisplayOption DISPLAY_OPTION1 = new PlantUMLDependencyDisplayOption();
 
     /** Display directory option test 2 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < Set < Display > > DISPLAY_OPTION2 = new PlantUMLDependencyDisplayOption();
+    public static final PlantUMLDependencyDisplayOption DISPLAY_OPTION2 = new PlantUMLDependencyDisplayOption();
 
     /** Display directory option test 3 instance. */
     @DataPoint
-    public static final AbstractOptionWithArgument < Set < Display > > DISPLAY_OPTION3 = null;
+    public static final PlantUMLDependencyDisplayOption DISPLAY_OPTION3 = null;
 
     /**
      * Test method for
