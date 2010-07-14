@@ -78,7 +78,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      */
     private FileSet inputFileSet;
 
-    /** THe programming language to parse. */
+    /** The programming language to parse. */
     private ProgrammingLanguage programmingLanguage;
 
     /** The display option which have to appear in the plantUML description. */
@@ -88,10 +88,17 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * Default constructor.
      * 
      * @param file
+     *            the output file where to generate the plantUML description, mustn't be
+     *            <code>null</code>.
      * @param language
+     *            The programming language to parse, mustn't be <code>null</code>.
      * @param includeExcludeFiles
+     *            the {@link FileSet} describing all files to include or exclude and also the base
+     *            directory where to look for, mustn't be <code>null</code>.
      * @param verboseModeActive
+     *            the boolean telling if the verbose mode is active, to display log information.
      * @param displayOpt
+     *            the display option which have to appear in the plantUML description.
      * @param optionPriority
      *            the option priority as an integer. <i>Note : the priority must be unique amongst
      *            all options</i>.
@@ -208,7 +215,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *            the {@link FileSet} describing all files to include or exclude and also the base
      *            directory where to look for, mustn't be <code>null</code>.
      * @param verboseModeActive
-     *            the boolean telling if the verbose mode is active.
+     *            the boolean telling if the verbose mode is active, to display log information.
      * @param displayOpt
      *            the display option which have to appear in the plantUML description.
      * @return the {@link Map} of parsed dependencies, with their full name as keys and the
@@ -232,12 +239,22 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     }
 
     /**
+     * Creates a dependency following a single file in the passed programming language. Also updates
+     * the dependencies {@link Map} with other dependency seen in the source file.
+     * 
      * @param file
+     *            the source file to parse, mustn't be <code>null</code>.
      * @param dependenciesMap
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link AbstractDependency} instances as values.
      * @param language
+     *            the programming language of the source files to parse, mustn't be
+     *            <code>null</code>.
      * @param verboseModeActive
+     *            the boolean telling if the verbose mode is active, to display log information.
      * @param displayOpt
-     * @return
+     *            the display option which have to appear in the plantUML description.
+     * @return the {@link AbstractDependency} instance parsed in the source file.
      * @since 1.0
      */
     private AbstractDependency readDependencyFromFile(final File file,
@@ -308,8 +325,15 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     }
 
     /**
+     * Writes the PlantUML description output file following the {@link Map} of all dependencies
+     * parsed.
+     * 
      * @param dependenciesMap
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link AbstractDependency} instances as values.
      * @param outputFile
+     *            the output file where to generate the plantUML description, mustn't be
+     *            <code>null</code>.
      * @since 1.0
      */
     private void writePlantUMLFile(final Map < String, AbstractDependency > dependenciesMap, final File file) {

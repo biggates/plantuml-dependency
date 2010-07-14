@@ -27,6 +27,8 @@ package net.sourceforge.plantuml.dependency.main.option.include;
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR;
 
 import java.util.TreeSet;
 
@@ -39,8 +41,8 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.Plant
 import org.apache.tools.ant.types.FileSet;
 
 /**
-ox
-
+ * The include option, allowing to specify an include file pattern, like ANT. <i>Note : no option
+ * should have the same main or secondary names</i>.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
@@ -52,14 +54,18 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
     /** Serial version UID. */
     private static final long serialVersionUID = -7573306659605231967L;
 
+    /** The programming language option. */
     private PlantUMLDependencyProgrammingLanguageOption programmingLanguageOption;
 
     /**
-     * @param optionNames
-     * @param optionIsMandatory
+     * Default constructor.
+     * 
+     * @param programmingLanguageOpt
+     *            the {@link PlantUMLDependencyProgrammingLanguageOption} instance, to know what is
+     *            the programming language to parse, mustn't be <code>null</code>.
      * @since 1.0
      */
-    public PlantUMLDependencyIncludeOption(PlantUMLDependencyProgrammingLanguageOption programmingLanguageOpt) {
+    public PlantUMLDependencyIncludeOption(final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOpt) {
         super(
                 "-i",
                 unmodifiableSet(new TreeSet < String >(asList(new String[] {"--include"}))),
@@ -71,21 +77,38 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
         setProgrammingLanguageOption(programmingLanguageOpt);
     }
 
-    private void setProgrammingLanguageOption(final PlantUMLDependencyProgrammingLanguageOption value) {
-        programmingLanguageOption = value;
-    }
-
-    private PlantUMLDependencyProgrammingLanguageOption getProgrammingLanguageOption() {
-        return programmingLanguageOption;
-    }
-
     /**
      * {@inheritDoc}
      * 
      * @since 1.0
      */
     @Override
-    public String getDefaultArgumentAsString(CommandLine commandLine) throws CommandLineException {
+    public String getDefaultArgumentAsString(final CommandLine commandLine) throws CommandLineException {
         return "**/*." + getProgrammingLanguageOption().findAndParseArgumentOrGetDefaultArgument(commandLine).getName();
+    }
+
+    /**
+     * Gets the value of <code>programmingLanguageOption</code>.
+     * 
+     * @return the value of <code>programmingLanguageOption</code>.
+     * @see #setProgrammingLanguageOption(PlantUMLDependencyProgrammingLanguageOption)
+     * @since 1.0
+     */
+    private PlantUMLDependencyProgrammingLanguageOption getProgrammingLanguageOption() {
+        return programmingLanguageOption;
+    }
+
+    /**
+     * Sets the value of <code>programmingLanguageOption</code>.
+     * 
+     * @param value
+     *            the <code>programmingLanguageOption</code> to set, can be <code>null</code>.
+     * @see #getProgrammingLanguageOption()
+     * @since 1.0
+     */
+    private void setProgrammingLanguageOption(final PlantUMLDependencyProgrammingLanguageOption value) {
+        checkNull(value, PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR);
+
+        programmingLanguageOption = value;
     }
 }
