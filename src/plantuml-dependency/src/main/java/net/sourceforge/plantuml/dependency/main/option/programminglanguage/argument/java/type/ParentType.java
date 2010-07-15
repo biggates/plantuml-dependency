@@ -25,8 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
 /**
- * This enumeration type lists comparable results, i.e. results which are returned by the
- * {@link java.lang.Comparable#compareTo} method.
+ * This enumeration type lists java parent types, which can be an extension or an implementation.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
@@ -34,9 +33,9 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
  * @version 1.0
  */
 public enum ParentType implements Cloneable {
-    /** The "before" comparable result. */
+    /** The "extension" java parent type. */
     EXTENTION,
-    /** The "after" comparable result. */
+    /** The "implementation" java parent type. */
     IMPLEMENTATION;
 
     /**

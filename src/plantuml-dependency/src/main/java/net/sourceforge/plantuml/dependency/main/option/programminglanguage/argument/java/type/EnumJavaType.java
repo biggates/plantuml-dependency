@@ -24,9 +24,9 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
+import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ParentType.EXTENTION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ParentType.IMPLEMENTATION;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -37,12 +37,14 @@ import net.sourceforge.plantuml.dependency.EnumDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.InterfaceDependencyTypeImpl;
 
 /**
+ * The enum {@link JavaType} implementation.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.0
  * @version 1.0
  */
-public class EnumJavaType extends JavaType {
+class EnumJavaType extends JavaType {
 
     /**
      * @param programmingLanguageName
@@ -58,8 +60,8 @@ public class EnumJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public Set < String > extractParentExtentions(String group) {
-        if (isNotEmpty(group)) {
+    public Set < String > extractParentExtentions(String extendsString) {
+        if (isNotEmpty(extendsString)) {
             // TODO throw exception, shouldn't happen
         } else {
 
@@ -73,8 +75,8 @@ public class EnumJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public Set < String > extractParentImplementations(String group) {
-        return extractParents(group);
+    public Set < String > extractParentImplementations(String implementsString) {
+        return extractParents(implementsString);
     }
 
     /**

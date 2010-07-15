@@ -43,8 +43,8 @@ import java.util.logging.Logger;
 import net.sourceforge.plantuml.dependency.AbstractDependency;
 
 /**
- * This interface contains all supported meshes types and defines all supported operation on 3D
- * meshes.
+ * The abstract class which describes all supported programming language which can be reverse
+ * engineered.
  * 
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
@@ -118,6 +118,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      */
     public static ProgrammingLanguage valueOfIgnoringCase(final String programmingLanguageName) {
         ProgrammingLanguage programmingLanguage = null;
+
         if (isEmpty(programmingLanguageName)) {
             throw new IllegalArgumentException(PROGRAMMING_LANGUAGE_NAME_NULL_ERROR);
         } else {

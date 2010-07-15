@@ -33,6 +33,10 @@ import net.sourceforge.mazix.cli.exception.CommandLineException;
 import net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument;
 
 /**
+ * The programming language implementation of the
+ * {@link net.sourceforge.mazix.cli.option.argument.OptionArgument} interface, specifying a
+ * {@link ProgrammingLanguage} argument.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.0

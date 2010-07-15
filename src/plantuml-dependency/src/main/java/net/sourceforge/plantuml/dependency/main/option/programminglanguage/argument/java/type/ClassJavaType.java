@@ -36,12 +36,14 @@ import net.sourceforge.plantuml.dependency.DependencyType;
 import net.sourceforge.plantuml.dependency.InterfaceDependencyTypeImpl;
 
 /**
+ * The class {@link JavaType} implementation.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.0
  * @version 1.0
  */
-public class ClassJavaType extends JavaType {
+class ClassJavaType extends JavaType {
 
     /**
      * @param programmingLanguageName
@@ -57,8 +59,8 @@ public class ClassJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public Set < String > extractParentExtentions(String group) {
-        return extractParents(group);
+    public Set < String > extractParentExtentions(String extendsString) {
+        return extractParents(extendsString);
     }
 
     /**
@@ -67,8 +69,8 @@ public class ClassJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public Set < String > extractParentImplementations(String group) {
-        return extractParents(group);
+    public Set < String > extractParentImplementations(String implementsString) {
+        return extractParents(implementsString);
     }
 
     /**

@@ -125,6 +125,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      */
     @Override
     public int compareTo(final JavaRawDependency j) {
+        // TODO test if the attributes are null
         if (this == j) {
             return EQUAL.getResult();
         } else {
