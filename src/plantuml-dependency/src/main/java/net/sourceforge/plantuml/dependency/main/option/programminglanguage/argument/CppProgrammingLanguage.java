@@ -28,7 +28,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.C
 
 import java.util.Map;
 
-import net.sourceforge.plantuml.dependency.AbstractDependency;
+import net.sourceforge.plantuml.dependency.GenericDependency;
 
 /**
  * The C++ {@link ProgrammingLanguage} implementation.
@@ -58,8 +58,8 @@ class CppProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0
      */
     @Override
-    public AbstractDependency readDependencyFromFile(final String sourceFileContent,
-            final Map < String, AbstractDependency > dependenciesMap) {
+    public GenericDependency readDependencyFromFile(final String sourceFileContent,
+            final Map < String, GenericDependency > dependenciesMap) {
         throw new UnsupportedOperationException(CPP_NOT_IMPLEMENTED_YET_ERROR);
     }
 }

@@ -39,7 +39,7 @@ import java.util.TreeSet;
  */
 public class ClassDependencyTypeImpl extends DependencyTypeImpl implements ClassDependencyType {
 
-    private final Set < AbstractDependency > parentClasses;
+    private final Set < GenericDependency > parentClasses;
 
     /**
      * @param dependencyName
@@ -47,8 +47,8 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      * @since 1.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        this(dependencyName, dependencyPackageName, new TreeSet < AbstractDependency >(),
-                new TreeSet < AbstractDependency >(), new TreeSet < AbstractDependency >());
+        this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
     }
 
     /**
@@ -60,8 +60,8 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      * @since 1.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < AbstractDependency > importDependenciesSet,
-            final Set < AbstractDependency > parentInterfacesSet, final Set < AbstractDependency > parentClassesSet) {
+            final Set < GenericDependency > importDependenciesSet,
+            final Set < GenericDependency > parentInterfacesSet, final Set < GenericDependency > parentClassesSet) {
         super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet);
         // TODO optimization
         parentClasses = parentClassesSet;
@@ -86,7 +86,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
     protected StringBuffer generatePlantUMLDescriptionFooter() {
         final StringBuffer buffer = new StringBuffer();
 
-        for (final AbstractDependency classDependency : getParentClasses()) {
+        for (final GenericDependency classDependency : getParentClasses()) {
             buffer.append(LINE_SEPARATOR);
             buffer.append(classDependency.getFullName());
             buffer.append(IMPLEMENTS_LEFT_PLANTUML);
@@ -101,7 +101,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      * @since 1.0
      */
     @Override
-    public Set < AbstractDependency > getParentClasses() {
+    public Set < GenericDependency > getParentClasses() {
         return parentClasses;
     }
 }

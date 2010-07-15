@@ -45,8 +45,8 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 
-import net.sourceforge.plantuml.dependency.AbstractDependency;
-import net.sourceforge.plantuml.dependency.AbstractDependencyImpl;
+import net.sourceforge.plantuml.dependency.GenericDependency;
+import net.sourceforge.plantuml.dependency.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.DependencyType;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType;
@@ -97,8 +97,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return
      * @since 1.0
      */
-    private AbstractDependency readDependencyFromPreparedFile(String sourceFileContent,
-            Map < String, AbstractDependency > dependenciesMap) {
+    private GenericDependency readDependencyFromPreparedFile(String sourceFileContent,
+            Map < String, GenericDependency > dependenciesMap) {
         JavaRawDependency javaRawDependency = readJavaRawDependencyFromPreparedFile(sourceFileContent);
         return createDependencyFromRaw(javaRawDependency, sourceFileContent, dependenciesMap);
     }
@@ -110,15 +110,15 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return
      * @since 1.0
      */
-    private AbstractDependency createDependencyFromRaw(JavaRawDependency javaRawDependency, String sourceFileContent,
-            Map < String, AbstractDependency > dependenciesMap) {
+    private GenericDependency createDependencyFromRaw(JavaRawDependency javaRawDependency, String sourceFileContent,
+            Map < String, GenericDependency > dependenciesMap) {
 
-        final Set < AbstractDependency > importDependencies = extractImportDependencies(sourceFileContent,
+        final Set < GenericDependency > importDependencies = extractImportDependencies(sourceFileContent,
                 dependenciesMap);
-        final Set < AbstractDependency > parentImplementationsDependencies = extractParentDependencies(
+        final Set < GenericDependency > parentImplementationsDependencies = extractParentDependencies(
                 javaRawDependency.getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(),
                 importDependencies, dependenciesMap, javaRawDependency.getPackageName());
-        final Set < AbstractDependency > parentExtentionsDependencies = extractParentDependencies(javaRawDependency
+        final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(javaRawDependency
                 .getType(), EXTENTION, javaRawDependency.getParentExtentions(), importDependencies, dependenciesMap,
                 javaRawDependency.getPackageName());
 
@@ -135,11 +135,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return
      * @since 1.0
      */
-    private AbstractDependency createOrUpdateAbstractDependency(JavaRawDependency javaRawDependency,
-            DependencyType dependencyType, Map < String, AbstractDependency > dependenciesMap) {
-        AbstractDependency dependency = dependenciesMap.get(javaRawDependency.getFullName());
+    private GenericDependency createOrUpdateAbstractDependency(JavaRawDependency javaRawDependency,
+            DependencyType dependencyType, Map < String, GenericDependency > dependenciesMap) {
+        GenericDependency dependency = dependenciesMap.get(javaRawDependency.getFullName());
         if (dependency == null) {
-            dependency = new AbstractDependencyImpl(javaRawDependency.getName(), javaRawDependency.getPackageName());
+            dependency = new GenericDependencyImpl(javaRawDependency.getName(), javaRawDependency.getPackageName());
         } else {
             // TODO log that the dependency has already been seen
         }
@@ -147,13 +147,13 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         return dependency;
     }
 
-    private Set < AbstractDependency > extractParentDependencies(JavaType type, JavaParentType parentType,
-            Set < String > parents, Set < AbstractDependency > importDependencies,
-            Map < String, AbstractDependency > dependenciesMap, String packageName) {
+    private Set < GenericDependency > extractParentDependencies(JavaType type, JavaParentType parentType,
+            Set < String > parents, Set < GenericDependency > importDependencies,
+            Map < String, GenericDependency > dependenciesMap, String packageName) {
 
-        final Set < AbstractDependency > parentsSet = new TreeSet < AbstractDependency >();
+        final Set < GenericDependency > parentsSet = new TreeSet < GenericDependency >();
         for (String parentName : parents) {
-            AbstractDependency dependency = getOrCreateParentDependency(type, parentType, parentName, packageName,
+            GenericDependency dependency = getOrCreateParentDependency(type, parentType, parentName, packageName,
                     importDependencies, dependenciesMap);
             parentsSet.add(dependency);
         }
@@ -169,10 +169,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return
      * @since 1.0
      */
-    private AbstractDependency getOrCreateParentDependency(JavaType type, JavaParentType parentType, String parentName,
-            String packageName, Set < AbstractDependency > importDependencies,
-            Map < String, AbstractDependency > dependenciesMap) {
-        AbstractDependency dependency = findDependencyInImport(parentName, importDependencies);
+    private GenericDependency getOrCreateParentDependency(JavaType type, JavaParentType parentType, String parentName,
+            String packageName, Set < GenericDependency > importDependencies,
+            Map < String, GenericDependency > dependenciesMap) {
+        GenericDependency dependency = findDependencyInImport(parentName, importDependencies);
 
         if (dependency == null) {
             // TODO log that the class isn't in the imports : means that it
@@ -201,9 +201,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return
      * @since 1.0
      */
-    private AbstractDependency findOrCreateDependencyInTreatedOrJavaLangObject(JavaType type, JavaParentType parentType,
-            String parentName, String packageName, Map < String, AbstractDependency > dependenciesMap) {
-        AbstractDependency dependency = null;
+    private GenericDependency findOrCreateDependencyInTreatedOrJavaLangObject(JavaType type, JavaParentType parentType,
+            String parentName, String packageName, Map < String, GenericDependency > dependenciesMap) {
+        GenericDependency dependency = null;
 
         final String fullName = packageName + DOT_CHAR + parentName;
         dependency = dependenciesMap.get(fullName);
@@ -211,7 +211,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             // TODO log that the object has never been treated : has to create it following the
             // parent type
             DependencyType dependencyType = type.createParentDependencyType(parentType, parentName, packageName);
-            dependency = new AbstractDependencyImpl(dependencyType);
+            dependency = new GenericDependencyImpl(dependencyType);
             dependenciesMap.put(fullName, dependency);
         } else {
             // TODO log
@@ -226,11 +226,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return
      * @since 1.0
      */
-    private AbstractDependency findDependencyInImport(String parentName, Set < AbstractDependency > importDependencies) {
-        AbstractDependency dependency = null;
-        final Iterator < AbstractDependency > iter = importDependencies.iterator();
+    private GenericDependency findDependencyInImport(String parentName, Set < GenericDependency > importDependencies) {
+        GenericDependency dependency = null;
+        final Iterator < GenericDependency > iter = importDependencies.iterator();
         while (dependency == null && iter.hasNext()) {
-            final AbstractDependency abstractImportDependency = iter.next();
+            final GenericDependency abstractImportDependency = iter.next();
             if (abstractImportDependency.getName().equals(parentName)) {
                 dependency = abstractImportDependency;
             }
@@ -292,28 +292,28 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         return isEmpty(group) ? false : true;
     }
 
-    private Set < AbstractDependency > extractImportDependencies(final String javaSourceFileContent,
-            final Map < String, AbstractDependency > javaObjectMap) {
-        final Set < AbstractDependency > importDependenciesSet = extractNormalImportDependenciesSet(
+    private Set < GenericDependency > extractImportDependencies(final String javaSourceFileContent,
+            final Map < String, GenericDependency > javaObjectMap) {
+        final Set < GenericDependency > importDependenciesSet = extractNormalImportDependenciesSet(
                 javaSourceFileContent, javaObjectMap);
-        final Set < AbstractDependency > staticImportDependenciesSet = extractStaticImportDependenciesSet(
+        final Set < GenericDependency > staticImportDependenciesSet = extractStaticImportDependenciesSet(
                 javaSourceFileContent, javaObjectMap);
         importDependenciesSet.addAll(staticImportDependenciesSet);
         return importDependenciesSet;
     }
 
-    private Set < AbstractDependency > extractNormalImportDependenciesSet(final String javaSourceFileContent,
-            final Map < String, AbstractDependency > javaObjectMap) {
-        final Set < AbstractDependency > importDependenciesSet = new TreeSet < AbstractDependency >();
+    private Set < GenericDependency > extractNormalImportDependenciesSet(final String javaSourceFileContent,
+            final Map < String, GenericDependency > javaObjectMap) {
+        final Set < GenericDependency > importDependenciesSet = new TreeSet < GenericDependency >();
         final Matcher matcher = NORMAL_IMPORT_REGEXP.matcher(javaSourceFileContent);
 
         while (matcher.find()) {
             final String packageName = matcher.group(1);
             final String name = matcher.group(2);
             final String fullName = packageName + DOT_CHAR + name;
-            AbstractDependency dependency = javaObjectMap.get(fullName);
+            GenericDependency dependency = javaObjectMap.get(fullName);
             if (dependency == null) {
-                dependency = new AbstractDependencyImpl(name, packageName);
+                dependency = new GenericDependencyImpl(name, packageName);
                 javaObjectMap.put(fullName, dependency);
             } else {
                 // TODO log
@@ -335,9 +335,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         return packageName;
     }
 
-    private Set < AbstractDependency > extractStaticImportDependenciesSet(final String javaSourceFileContent,
-            final Map < String, AbstractDependency > javaObjectMap) {
-        final Set < AbstractDependency > importDependenciesSet = new TreeSet < AbstractDependency >();
+    private Set < GenericDependency > extractStaticImportDependenciesSet(final String javaSourceFileContent,
+            final Map < String, GenericDependency > javaObjectMap) {
+        final Set < GenericDependency > importDependenciesSet = new TreeSet < GenericDependency >();
         final Matcher matcher = STATIC_IMPORT_REGEXP.matcher(javaSourceFileContent);
 
         while (matcher.find()) {
@@ -345,9 +345,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String name = matcher.group(2);
             // String constant = matcher.group(3);
             final String fullName = packageName + DOT_CHAR + name;
-            AbstractDependency dependency = javaObjectMap.get(fullName);
+            GenericDependency dependency = javaObjectMap.get(fullName);
             if (dependency == null) {
-                dependency = new AbstractDependencyImpl(name, packageName);
+                dependency = new GenericDependencyImpl(name, packageName);
                 javaObjectMap.put(fullName, dependency);
             } else {
                 // TODO log
@@ -364,8 +364,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0
      */
     @Override
-    public AbstractDependency readDependencyFromFile(String sourceFileContent,
-            Map < String, AbstractDependency > dependenciesMap) {
+    public GenericDependency readDependencyFromFile(String sourceFileContent,
+            Map < String, GenericDependency > dependenciesMap) {
         String preparedSourceFileContent = prepareSourceFileContent(sourceFileContent);
         return readDependencyFromPreparedFile(preparedSourceFileContent, dependenciesMap);
     }

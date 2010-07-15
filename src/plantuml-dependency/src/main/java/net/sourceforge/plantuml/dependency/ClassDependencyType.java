@@ -38,5 +38,5 @@ public interface ClassDependencyType extends DependencyType {
      * @return
      * @since 1.0
      */
-    Set < AbstractDependency > getParentClasses();
+    Set < GenericDependency > getParentClasses();
 }

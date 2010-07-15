@@ -48,8 +48,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
     private final String name;
     private final String packageName;
     private final String fullName;
-    private final Set < AbstractDependency > importDependencies;
-    private final Set < AbstractDependency > parentInterfaces;
+    private final Set < GenericDependency > importDependencies;
+    private final Set < GenericDependency > parentInterfaces;
     private StringBuffer plantUMLDeclaration;
     private StringBuffer plantUMLLinksDescription;
 
@@ -60,7 +60,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         this(dependencyName, dependencyPackageName, dependencyPackageName + DOT_CHAR + dependencyName,
-                new TreeSet < AbstractDependency >(), new TreeSet < AbstractDependency >());
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
     }
 
     /**
@@ -71,7 +71,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < AbstractDependency > importDependenciesSet, final Set < AbstractDependency > parentInterfacesSet) {
+            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet) {
         this(dependencyName, dependencyPackageName, dependencyPackageName + DOT_CHAR + dependencyName,
                 importDependenciesSet, parentInterfacesSet);
     }
@@ -85,8 +85,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final String fullDependencyName, final Set < AbstractDependency > importDependenciesSet,
-            final Set < AbstractDependency > parentInterfacesSet) {
+            final String fullDependencyName, final Set < GenericDependency > importDependenciesSet,
+            final Set < GenericDependency > parentInterfacesSet) {
         name = dependencyName;
         packageName = dependencyPackageName;
         fullName = fullDependencyName;
@@ -170,14 +170,14 @@ public abstract class DependencyTypeImpl implements DependencyType {
         final StringBuffer buffer = new StringBuffer();
         buffer.append(generatePlantUMLDescriptionHeader());
         
-        for (final AbstractDependency abstractImportDependency : getImportDependencies()) {
+        for (final GenericDependency abstractImportDependency : getImportDependencies()) {
             buffer.append(LINE_SEPARATOR);
             buffer.append(getFullName());
             buffer.append(USES_RIGHT_PLANTUML);
             buffer.append(abstractImportDependency.getFullName());
         }
 
-        for (final AbstractDependency interfaceDependency : getParentInterfaces()) {
+        for (final GenericDependency interfaceDependency : getParentInterfaces()) {
             buffer.append(LINE_SEPARATOR);
             buffer.append(interfaceDependency.getFullName());
             buffer.append(IMPLEMENTS_LEFT_PLANTUML);
@@ -202,7 +202,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     @Override
-    public Set < AbstractDependency > getImportDependencies() {
+    public Set < GenericDependency > getImportDependencies() {
         return importDependencies;
     }
 
@@ -229,7 +229,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     @Override
-    public Set < AbstractDependency > getParentInterfaces() {
+    public Set < GenericDependency > getParentInterfaces() {
         return parentInterfaces;
     }
 

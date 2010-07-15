@@ -40,7 +40,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 
-import net.sourceforge.plantuml.dependency.AbstractDependency;
+import net.sourceforge.plantuml.dependency.GenericDependency;
 
 /**
  * The abstract class which describes all supported programming language which can be reverse
@@ -215,7 +215,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Reads the following source file content as a {@link String} to build the
-     * {@link AbstractDependency} instance. This method also modify the <code>dependenciesMap</code>
+     * {@link GenericDependency} instance. This method also modify the <code>dependenciesMap</code>
      * parameter by adding read objects.
      * 
      * @param sourceFileContent
@@ -224,14 +224,14 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      * @param dependenciesMap
      *            the {@link Map} containing all dependencies which have already been seen in
      *            previous treatment, it contains dependencies full names (package + name) as keys
-     *            and their associated {@link AbstractDependency} as values. This {@link Map} is
+     *            and their associated {@link GenericDependency} as values. This {@link Map} is
      *            modified during the treatment, mustn't be <code>null</code>.
-     * @return the {@link AbstractDependency} instance if it has been found and correctly parsed,
+     * @return the {@link GenericDependency} instance if it has been found and correctly parsed,
      *         <code>null</code> otherwise.
      * @since 1.0
      */
-    public abstract AbstractDependency readDependencyFromFile(String sourceFileContent,
-            Map < String, AbstractDependency > dependenciesMap);
+    public abstract GenericDependency readDependencyFromFile(String sourceFileContent,
+            Map < String, GenericDependency > dependenciesMap);
 
     /**
      * Sets the value of <code>name</code>.

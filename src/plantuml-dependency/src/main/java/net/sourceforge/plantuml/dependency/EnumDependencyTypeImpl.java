@@ -45,8 +45,8 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.0
      */
     public EnumDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        super(dependencyName, dependencyPackageName, new TreeSet < AbstractDependency >(),
-                new TreeSet < AbstractDependency >());
+        super(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
+                new TreeSet < GenericDependency >());
     }
 
     /**
@@ -57,7 +57,7 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.0
      */
     public EnumDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < AbstractDependency > importDependenciesSet, final Set < AbstractDependency > parentInterfacesSet) {
+            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet) {
         super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet);
     }
 

@@ -42,7 +42,7 @@ import java.util.logging.Logger;
 import net.sourceforge.mazix.cli.exception.CommandLineException;
 import net.sourceforge.mazix.cli.option.execution.AbstractOptionExecution;
 import net.sourceforge.mazix.cli.option.execution.OptionExecution;
-import net.sourceforge.plantuml.dependency.AbstractDependency;
+import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;
 
@@ -139,7 +139,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
         // TODO see if the verbose mode can activate the logging
         final long start = currentTimeMillis();
 
-        final Map < String, AbstractDependency > dependenciesMap = readDependenciesMapFromFiles(
+        final Map < String, GenericDependency > dependenciesMap = readDependenciesMapFromFiles(
                 getProgrammingLanguage(), getInputFileSet(), isVerboseMode(), getDisplayOptions());
         writePlantUMLFile(dependenciesMap, getOutputFile());
 
@@ -219,18 +219,18 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param displayOpt
      *            the display option which have to appear in the plantUML description.
      * @return the {@link Map} of parsed dependencies, with their full name as keys and the
-     *         associated {@link AbstractDependency} instances as values.
+     *         associated {@link GenericDependency} instances as values.
      * @since 1.0
      */
     @SuppressWarnings("unchecked")
-    private Map < String, AbstractDependency > readDependenciesMapFromFiles(final ProgrammingLanguage language,
+    private Map < String, GenericDependency > readDependenciesMapFromFiles(final ProgrammingLanguage language,
             final FileSet includeExcludeFiles, final boolean verboseModeActive, final Set < Display > displayOpt) {
-        final Map < String, AbstractDependency > dependenciesMap = new TreeMap < String, AbstractDependency >();
+        final Map < String, GenericDependency > dependenciesMap = new TreeMap < String, GenericDependency >();
 
         final Iterator < FileResource > iter = includeExcludeFiles.iterator();
         while (iter.hasNext()) {
             final FileResource fileResource = iter.next();
-            final AbstractDependency dependency = readDependencyFromFile(fileResource.getFile(), dependenciesMap,
+            final GenericDependency dependency = readDependencyFromFile(fileResource.getFile(), dependenciesMap,
                     language, verboseModeActive, displayOpt);
             dependenciesMap.put(dependency.getFullName(), dependency);
         }
@@ -246,7 +246,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *            the source file to parse, mustn't be <code>null</code>.
      * @param dependenciesMap
      *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link AbstractDependency} instances as values.
+     *            keys and the associated {@link GenericDependency} instances as values.
      * @param language
      *            the programming language of the source files to parse, mustn't be
      *            <code>null</code>.
@@ -254,11 +254,11 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *            the boolean telling if the verbose mode is active, to display log information.
      * @param displayOpt
      *            the display option which have to appear in the plantUML description.
-     * @return the {@link AbstractDependency} instance parsed in the source file.
+     * @return the {@link GenericDependency} instance parsed in the source file.
      * @since 1.0
      */
-    private AbstractDependency readDependencyFromFile(final File file,
-            final Map < String, AbstractDependency > dependenciesMap, final ProgrammingLanguage language,
+    private GenericDependency readDependencyFromFile(final File file,
+            final Map < String, GenericDependency > dependenciesMap, final ProgrammingLanguage language,
             final boolean verboseModeActive, final Set < Display > displayOpt) {
         final String sourceFileContent = readFileIntoString(file);
         return language.readDependencyFromFile(sourceFileContent, dependenciesMap);
@@ -330,21 +330,21 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * 
      * @param dependenciesMap
      *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link AbstractDependency} instances as values.
+     *            keys and the associated {@link GenericDependency} instances as values.
      * @param outputFile
      *            the output file where to generate the plantUML description, mustn't be
      *            <code>null</code>.
      * @since 1.0
      */
-    private void writePlantUMLFile(final Map < String, AbstractDependency > dependenciesMap, final File file) {
+    private void writePlantUMLFile(final Map < String, GenericDependency > dependenciesMap, final File file) {
         final StringBuffer buffer = new StringBuffer(START_PLANTUML);
 
         // TODO 1 boucle avec 2 string buffer que l'on concatene
-        for (final AbstractDependency abstractDependency : dependenciesMap.values()) {
+        for (final GenericDependency abstractDependency : dependenciesMap.values()) {
             buffer.append(abstractDependency.getDependencyType().getPlantUMLDeclaration());
         }
 
-        for (final AbstractDependency abstractImportDependency : dependenciesMap.values()) {
+        for (final GenericDependency abstractImportDependency : dependenciesMap.values()) {
             buffer.append(abstractImportDependency.getDependencyType().getPlantUMLLinksDescription());
         }
 

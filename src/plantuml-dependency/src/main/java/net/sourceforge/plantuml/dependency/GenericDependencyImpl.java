@@ -1,5 +1,5 @@
 /*
- AbstractDependencyImpl.java
+ GenericDependencyImpl.java
  Creation date : 20/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
  
@@ -30,7 +30,7 @@ import static net.sourceforge.mazix.components.utils.comparable.ComparableResult
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_TYPE_NULL_ERROR;
 
 /**
- * The default implementation of the {@link net.sourceforge.plantuml.dependency.AbstractDependency}
+ * The default implementation of the {@link net.sourceforge.plantuml.dependency.GenericDependency}
  * interface.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
@@ -38,7 +38,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.D
  * @since 1.0
  * @version 1.0
  */
-public class AbstractDependencyImpl implements AbstractDependency {
+public class GenericDependencyImpl implements GenericDependency {
 
     /** The underlying dependency type, which determines the real nature of the dependency. */
     private DependencyType dependencyType;
@@ -52,7 +52,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
      *            dependency, mustn't be <code>null</code>.
      * @since 1.0
      */
-    public AbstractDependencyImpl(final DependencyType type) {
+    public GenericDependencyImpl(final DependencyType type) {
         checkNull(type, DEPENDENCY_TYPE_NULL_ERROR);
 
         dependencyType = type;
@@ -70,7 +70,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
      *            the dependency package name, mustn't be <code>null</code> nor empty.
      * @since 1.0
      */
-    public AbstractDependencyImpl(final String dependencyName, final String dependencyPackageName) {
+    public GenericDependencyImpl(final String dependencyName, final String dependencyPackageName) {
         this(new StubDependencyTypeImpl(dependencyName, dependencyPackageName));
     }
 
@@ -80,7 +80,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
      * @since 1.0
      */
     @Override
-    public int compareTo(final AbstractDependency a) {
+    public int compareTo(final GenericDependency a) {
         int comparison = AFTER.getResult();
 
         if (this == a) {
@@ -108,7 +108,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final AbstractDependencyImpl other = (AbstractDependencyImpl) obj;
+        final GenericDependencyImpl other = (GenericDependencyImpl) obj;
         if (dependencyType == null) {
             if (other.dependencyType != null) {
                 return false;

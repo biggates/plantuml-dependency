@@ -31,7 +31,7 @@ import static net.sourceforge.plantuml.dependency.main.option.programminglanguag
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.plantuml.dependency.AbstractDependency;
+import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.DependencyType;
 import net.sourceforge.plantuml.dependency.InterfaceDependencyTypeImpl;
 
@@ -85,9 +85,9 @@ class InterfaceJavaType extends JavaType {
      */
     @Override
     public DependencyType createDependencyType(String dependencyName, String dependencyPackageName, boolean isAbstract,
-            Set < AbstractDependency > importDependencies,
-            Set < AbstractDependency > parentImplementationsDependencies,
-            Set < AbstractDependency > parentExtentionsDependencies) {
+            Set < GenericDependency > importDependencies,
+            Set < GenericDependency > parentImplementationsDependencies,
+            Set < GenericDependency > parentExtentionsDependencies) {
         return new InterfaceDependencyTypeImpl(dependencyName, dependencyPackageName, importDependencies,
                 parentExtentionsDependencies);
     }

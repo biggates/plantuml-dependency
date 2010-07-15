@@ -1,5 +1,5 @@
 /*
- AbstractDependency.java
+ GenericDependency.java
  Creation date : 20/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
  
@@ -28,7 +28,7 @@ package net.sourceforge.plantuml.dependency;
  * The interface which describes a generic abstract dependency, no matter the programming language.
  * A dependency might be a class, an interface or an enumeration but it might not be determined when
  * the abstract dependency is created. It is the underlying {@link DependencyType} which concretely
- * determines its real type, such as class, enum or interface. An {@link AbstractDependency} just
+ * determines its real type, such as class, enum or interface. An {@link GenericDependency} just
  * mean that an object exists, but it only contains the minimum information we can have on this
  * object at the beginning. All details are described by the underlying {@link DependencyType} when
  * it is a concrete instance.
@@ -38,7 +38,7 @@ package net.sourceforge.plantuml.dependency;
  * @since 1.0
  * @version 1.0
  */
-public interface AbstractDependency extends Comparable < AbstractDependency > {
+public interface GenericDependency extends Comparable < GenericDependency > {
 
     /**
      * Gets the underlying dependency type, which determines the real nature of the dependency.

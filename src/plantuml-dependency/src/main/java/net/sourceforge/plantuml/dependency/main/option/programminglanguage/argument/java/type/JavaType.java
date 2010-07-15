@@ -44,7 +44,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 
-import net.sourceforge.plantuml.dependency.AbstractDependency;
+import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.DependencyType;
 
 /**
@@ -171,9 +171,9 @@ public abstract class JavaType implements Comparable < JavaType > {
      * @since 1.0
      */
     public abstract DependencyType createDependencyType(String dependencyName, String dependencyPackageName,
-            boolean isAbstract, Set < AbstractDependency > importDependencies,
-            Set < AbstractDependency > parentImplementationsDependencies,
-            Set < AbstractDependency > parentExtentionsDependencies);
+            boolean isAbstract, Set < GenericDependency > importDependencies,
+            Set < GenericDependency > parentImplementationsDependencies,
+            Set < GenericDependency > parentExtentionsDependencies);
 
     /**
      * @param parentType

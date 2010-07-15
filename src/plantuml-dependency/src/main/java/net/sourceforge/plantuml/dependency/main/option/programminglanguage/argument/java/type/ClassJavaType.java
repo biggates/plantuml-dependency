@@ -29,7 +29,7 @@ import static net.sourceforge.plantuml.dependency.main.option.programminglanguag
 
 import java.util.Set;
 
-import net.sourceforge.plantuml.dependency.AbstractDependency;
+import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.ClassAbstractDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.ClassDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.DependencyType;
@@ -80,9 +80,9 @@ class ClassJavaType extends JavaType {
      */
     @Override
     public DependencyType createDependencyType(String dependencyName, String dependencyPackageName, boolean isAbstract,
-            Set < AbstractDependency > importDependencies,
-            Set < AbstractDependency > parentImplementationsDependencies,
-            Set < AbstractDependency > parentExtentionsDependencies) {
+            Set < GenericDependency > importDependencies,
+            Set < GenericDependency > parentImplementationsDependencies,
+            Set < GenericDependency > parentExtentionsDependencies) {
         DependencyType dependencyType = null;
         if (isAbstract) {
             dependencyType = new ClassAbstractDependencyTypeImpl(dependencyName, dependencyPackageName,

@@ -52,17 +52,17 @@ public interface DependencyType extends Comparable < DependencyType > {
     String getFullName();
 
     /**
-     * Gets the {@link Set} of all {@link AbstractDependency} which are needed by the current
+     * Gets the {@link Set} of all {@link GenericDependency} which are needed by the current
      * dependency type to work. It no dependencies are needed, it returns an empty {@link Set}.
      * <p>
      * For instance, in java it is represented by the <i>import</i> keyword.
      * </p>
      * 
-     * @return the the {@link Set} of all {@link AbstractDependency} which are needed by the current
+     * @return the the {@link Set} of all {@link GenericDependency} which are needed by the current
      *         dependency type to work.
      * @since 1.0
      */
-    Set < AbstractDependency > getImportDependencies();
+    Set < GenericDependency > getImportDependencies();
 
     /**
      * Gets the dependency name, usually the class name.
@@ -93,18 +93,18 @@ public interface DependencyType extends Comparable < DependencyType > {
     String getPackageName();
 
     /**
-     * Gets the {@link Set} of all {@link AbstractDependency} which are implemented by the current
+     * Gets the {@link Set} of all {@link GenericDependency} which are implemented by the current
      * dependency type. It no dependencies interfaces are implemented, it returns an empty
      * {@link Set}.
      * <p>
      * For instance, in java it is represented by the <i>implements</i> keyword.
      * </p>
      * 
-     * @return the {@link Set} of all {@link AbstractDependency} which are implemented by the
+     * @return the {@link Set} of all {@link GenericDependency} which are implemented by the
      *         current dependency type.
      * @since 1.0
      */
-    Set < AbstractDependency > getParentInterfaces();
+    Set < GenericDependency > getParentInterfaces();
 
     /**
      * Gets the PlantUML declaration describing the current dependency type. See the <a href="http://sourceforge.net/projects/plantuml/files/PlantUML%20Language%20Reference%20Guide.pdf/download"

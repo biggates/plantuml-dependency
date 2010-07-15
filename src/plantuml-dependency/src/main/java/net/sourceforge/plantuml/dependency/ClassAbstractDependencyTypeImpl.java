@@ -43,8 +43,8 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @since 1.0
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        this(dependencyName, dependencyPackageName, new TreeSet < AbstractDependency >(),
-                new TreeSet < AbstractDependency >(), new TreeSet < AbstractDependency >());
+        this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
     }
 
     /**
@@ -56,8 +56,8 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @since 1.0
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < AbstractDependency > importDependenciesSet,
-            final Set < AbstractDependency > parentInterfacesSet, final Set < AbstractDependency > parentClassesSet) {
+            final Set < GenericDependency > importDependenciesSet,
+            final Set < GenericDependency > parentInterfacesSet, final Set < GenericDependency > parentClassesSet) {
         super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, parentClassesSet);
     }
 
