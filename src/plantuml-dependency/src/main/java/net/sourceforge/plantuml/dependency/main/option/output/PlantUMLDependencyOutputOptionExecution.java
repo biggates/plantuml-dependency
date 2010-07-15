@@ -341,11 +341,11 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
         // TODO 1 boucle avec 2 string buffer que l'on concatene
         for (final AbstractDependency abstractDependency : dependenciesMap.values()) {
-            buffer.append(abstractDependency.getPlantUMLDeclaration());
+            buffer.append(abstractDependency.getDependencyType().getPlantUMLDeclaration());
         }
 
         for (final AbstractDependency abstractImportDependency : dependenciesMap.values()) {
-            buffer.append(abstractImportDependency.getPlantUMLLinksDescription());
+            buffer.append(abstractImportDependency.getDependencyType().getPlantUMLLinksDescription());
         }
 
         buffer.append(END_PLANTUML);

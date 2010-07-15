@@ -35,6 +35,9 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
+ * The default implementation of the {@link net.sourceforge.plantuml.dependency.DependencyType}
+ * interface.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0

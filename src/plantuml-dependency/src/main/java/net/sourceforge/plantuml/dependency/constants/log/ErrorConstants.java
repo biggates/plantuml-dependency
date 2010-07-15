@@ -66,6 +66,9 @@ public final class ErrorConstants {
     
     /** The unknown programming language error message. */
     public static final String UNKNOWN_JAVA_TYPE_ERROR = "[error-plantuml-dependency-011] : The java type language keyword \"{0}\" is unknown";
+    
+    /** The dependency type null error message. */
+    public static final String DEPENDENCY_TYPE_NULL_ERROR = "[error-plantuml-dependency-012] : The dependency type is null";
 
     /**
      * Private constructor to prevent from instantiation.

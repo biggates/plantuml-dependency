@@ -24,30 +24,50 @@
 
 package net.sourceforge.plantuml.dependency;
 
+import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_TYPE_NULL_ERROR;
 
 /**
+ * The default implementation of the {@link net.sourceforge.plantuml.dependency.AbstractDependency}
+ * interface.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
 public class AbstractDependencyImpl implements AbstractDependency {
 
+    /** The underlying dependency type, which determines the real nature of the dependency. */
     private DependencyType dependencyType;
 
     /**
+     * Default constructor, with a dependency type. This constructor is usually used when the
+     * concrete dependency type (class, interface etc..) is already known.
+     * 
      * @param type
+     *            the underlying dependency type, which determines the real nature of the
+     *            dependency, mustn't be <code>null</code>.
      * @since 1.0
      */
     public AbstractDependencyImpl(final DependencyType type) {
+        checkNull(type, DEPENDENCY_TYPE_NULL_ERROR);
+
         dependencyType = type;
     }
 
     /**
+     * Stub constructor. This constructor is usually used when the concrete dependency type (class,
+     * interface etc..) is not known when created the dependency. In this case, the
+     * {@link StubDependencyTypeImpl} is used instead.
+     * 
      * @param dependencyName
+     *            the dependency name, usually the class name, mustn't be <code>null</code> nor
+     *            empty.
      * @param dependencyPackageName
+     *            the dependency package name, mustn't be <code>null</code> nor empty.
      * @since 1.0
      */
     public AbstractDependencyImpl(final String dependencyName, final String dependencyPackageName) {
@@ -56,6 +76,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -73,6 +94,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -99,6 +121,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -108,6 +131,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -117,6 +141,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -126,6 +151,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -139,25 +165,6 @@ public class AbstractDependencyImpl implements AbstractDependency {
      * @since 1.0
      */
     @Override
-    public StringBuffer getPlantUMLDeclaration() {
-        return getDependencyType().getPlantUMLDeclaration();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 1.0
-     */
-    @Override
-    public StringBuffer getPlantUMLLinksDescription() {
-        return getDependencyType().getPlantUMLLinksDescription();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.0
-     */
-    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -167,6 +174,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -176,6 +184,7 @@ public class AbstractDependencyImpl implements AbstractDependency {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override

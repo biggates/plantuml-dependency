@@ -27,51 +27,102 @@ package net.sourceforge.plantuml.dependency;
 import java.util.Set;
 
 /**
+ * The interface which describes a generic dependency type, no matter the programming language. A
+ * dependency type might be a class, an interface or an enumeration.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
 public interface DependencyType extends Comparable < DependencyType > {
 
     /**
-     * @return
+     * Gets the dependency full name, usually the package and the dependency name.
+     * <p>
+     * For instance, in java it can be :<br>
+     * <i>java.lang.String</i><br>
+     * <i>java.io.Serializable</i><br>
+     * <i>sun.font.Decoration</i>
+     * </p>
+     * 
+     * @return the dependency full name.
      * @since 1.0
      */
     String getFullName();
 
     /**
-     * @return
+     * Gets the {@link Set} of all {@link AbstractDependency} which are needed by the current
+     * dependency type to work. It no dependencies are needed, it returns an empty {@link Set}.
+     * <p>
+     * For instance, in java it is represented by the <i>import</i> keyword.
+     * </p>
+     * 
+     * @return the the {@link Set} of all {@link AbstractDependency} which are needed by the current
+     *         dependency type to work.
      * @since 1.0
      */
     Set < AbstractDependency > getImportDependencies();
 
     /**
-     * @return
+     * Gets the dependency name, usually the class name.
+     * <p>
+     * For instance, in java it can be :<br>
+     * <i>String</i><br>
+     * <i>Serializable</i><br>
+     * <i>Decoration</i>
+     * </p>
+     * 
+     * @return the dependency name.
      * @since 1.0
      */
     String getName();
 
     /**
-     * @return
+     * Gets the dependency package name.
+     * <p>
+     * For instance, in java it can be :<br>
+     * <i>java.lang</i><br>
+     * <i>java.io</i><br>
+     * <i>sun.font</i>
+     * </p>
+     * 
+     * @return the dependency package name.
      * @since 1.0
      */
     String getPackageName();
 
     /**
-     * @return
+     * Gets the {@link Set} of all {@link AbstractDependency} which are implemented by the current
+     * dependency type. It no dependencies interfaces are implemented, it returns an empty
+     * {@link Set}.
+     * <p>
+     * For instance, in java it is represented by the <i>implements</i> keyword.
+     * </p>
+     * 
+     * @return the {@link Set} of all {@link AbstractDependency} which are implemented by the
+     *         current dependency type.
      * @since 1.0
      */
     Set < AbstractDependency > getParentInterfaces();
 
     /**
-     * @return
+     * Gets the PlantUML declaration describing the current dependency type. See the <a href="http://sourceforge.net/projects/plantuml/files/PlantUML%20Language%20Reference%20Guide.pdf/download"
+     * >PlantUML Language Reference Guide.pdf</a> or <a
+     * href="http://plantuml.sourceforge.net/classes.html"
+     * >http://plantuml.sourceforge.net/classes.html</a> page.
+     * 
+     * @return the plantUML declaration as a {@link StringBuffer} describing the current dependency
+     *         type.
      * @since 1.0
      */
     StringBuffer getPlantUMLDeclaration();
 
     /**
-     * @return
+     * Gets the PlantUML links description, following the imports and the dependency type parents.
+     * 
+     * @return the plantUML description as a {@link StringBuffer} describing links to imports and
+     *         the dependency type parents.
      * @since 1.0
      */
     StringBuffer getPlantUMLLinksDescription();

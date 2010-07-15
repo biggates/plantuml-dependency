@@ -159,6 +159,8 @@ public abstract class JavaType implements Comparable < JavaType > {
     }
 
     /**
+     * Creates the {@link DependencyType} instance.
+     * 
      * @param dependencyName
      * @param dependencyPackageName
      * @param isAbstract
