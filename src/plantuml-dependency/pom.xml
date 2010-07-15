@@ -13,6 +13,9 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<name>plantuml-dependency</name>
+	<description>PlantUml Dependency allows to parse / reverse engineering
+		source files (Java and soon C++) to generate a PlantUml description,
+		allowing to draw the UML class diagram associated to the source code</description>
 	<url>http://plantuml-depend.sourceforge.net/</url>
 	<dependencies>
 		<!-- Junit used for unit tests -->
@@ -134,30 +137,23 @@
 				<version>2.5</version>
 			</plugin>
 			<!-- API Javadoc generation -->
-			<!-- >plugin>
-				<groupId>org.apache.maven.plugins</groupId>
+			<!--
+				>plugin> <groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.6.1</version>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-					<minmemory>128m</minmemory>
-					<maxmemory>512m</maxmemory>
-				</configuration>
-			</plugin-->
+				<version>2.6.1</version> <configuration>
+				<encoding>${project.build.sourceEncoding}</encoding>
+				<minmemory>128m</minmemory> <maxmemory>512m</maxmemory>
+				</configuration> </plugin
+			-->
 			<!-- SCM changelog generation -->
-			<!-->plugin>
-				<groupId>org.apache.maven.plugins</groupId>
+			<!--
+				>plugin> <groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-changelog-plugin</artifactId>
-				<version>2.1</version>
-				<configuration>
-					<type>date</type>
-					<dates>
-						<date implementation="java.lang.String">2008-09-01</date>
-						<date implementation="java.lang.String">2010-04-01</date>
-					</dates>
-					<dateFormat>yyyy-MM-dd</dateFormat>
-				</configuration>
-			</plugin-->
+				<version>2.1</version> <configuration> <type>date</type> <dates>
+				<date implementation="java.lang.String">2008-09-01</date> <date
+				implementation="java.lang.String">2010-04-01</date> </dates>
+				<dateFormat>yyyy-MM-dd</dateFormat> </configuration> </plugin
+			-->
 			<!-- Sources navigation generation -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -293,10 +289,10 @@
 		</developer>
 	</developers>
 	<!-- Information about issue management -->
-	<!-->issueManagement>
+	<issueManagement>
 		<system>Issue-Tracker</system>
-		<url>https://sourceforge.net/tracker/?group_id=239493&amp;atid=1110134</url>
-	</issueManagement-->
+		<url>https://sourceforge.net/tracker/?group_id=334674&amp;atid=1402785</url>
+	</issueManagement>
 	<!-- Information about mailing lists -->
 	<!-->mailingLists>
 		<mailingList>
@@ -308,11 +304,11 @@
 		</mailingList>
 	</mailingLists-->
 	<!-- Information about source control management -->
-	<!-->scm>
-		<connection>scm:svn:http://mazix.svn.sourceforge.net/svnroot/mazix/trunk</connection>
-		<developerConnection>scm:svn:https://mazix.svn.sourceforge.net/svnroot/mazix/trunk</developerConnection>
-		<url>http://mazix.svn.sourceforge.net/viewvc/mazix/trunk/</url>
-	</scm-->
+	<scm>
+		<connection>scm:svn:http://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk</connection>
+		<developerConnection>scm:svn:https://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk/trunk</developerConnection>
+		<url>http://plantuml-depend.svn.sourceforge.net/viewvc/plantuml-depend/trunk/</url>
+	</scm>
 	<!-- Information about project licenses -->
 	<licenses>
 		<license>
@@ -322,7 +318,8 @@
 			<comments></comments>
 		</license>
 		<license>
-			<name>GNU Lesser General Public License Version 3 (LGPL), 29 June 2007</name>
+			<name>GNU Lesser General Public License Version 3 (LGPL), 29 June
+				2007</name>
 			<url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
 			<distribution>repo</distribution>
 			<comments></comments>
