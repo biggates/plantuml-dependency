@@ -36,8 +36,8 @@ import static net.sourceforge.plantuml.dependency.constants.RegularExpressionCon
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.STATIC_IMPORT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.TAB_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.TEMPLATE_REGEXP;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ParentType.EXTENTION;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ParentType.IMPLEMENTATION;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -50,7 +50,7 @@ import net.sourceforge.plantuml.dependency.AbstractDependencyImpl;
 import net.sourceforge.plantuml.dependency.DependencyType;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType;
-import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ParentType;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType;
 
 /**
  * The Java {@link ProgrammingLanguage} implementation.
@@ -147,7 +147,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         return dependency;
     }
 
-    private Set < AbstractDependency > extractParentDependencies(JavaType type, ParentType parentType,
+    private Set < AbstractDependency > extractParentDependencies(JavaType type, JavaParentType parentType,
             Set < String > parents, Set < AbstractDependency > importDependencies,
             Map < String, AbstractDependency > dependenciesMap, String packageName) {
 
@@ -169,7 +169,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return
      * @since 1.0
      */
-    private AbstractDependency getOrCreateParentDependency(JavaType type, ParentType parentType, String parentName,
+    private AbstractDependency getOrCreateParentDependency(JavaType type, JavaParentType parentType, String parentName,
             String packageName, Set < AbstractDependency > importDependencies,
             Map < String, AbstractDependency > dependenciesMap) {
         AbstractDependency dependency = findDependencyInImport(parentName, importDependencies);
@@ -201,7 +201,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return
      * @since 1.0
      */
-    private AbstractDependency findOrCreateDependencyInTreatedOrJavaLangObject(JavaType type, ParentType parentType,
+    private AbstractDependency findOrCreateDependencyInTreatedOrJavaLangObject(JavaType type, JavaParentType parentType,
             String parentName, String packageName, Map < String, AbstractDependency > dependenciesMap) {
         AbstractDependency dependency = null;
 

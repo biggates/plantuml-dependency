@@ -180,7 +180,7 @@ public abstract class JavaType implements Comparable < JavaType > {
      * @return
      * @since 1.0
      */
-    public abstract DependencyType createParentDependencyType(ParentType parentType, String parentName,
+    public abstract DependencyType createParentDependencyType(JavaParentType parentType, String parentName,
             String packageName);
 
     /**

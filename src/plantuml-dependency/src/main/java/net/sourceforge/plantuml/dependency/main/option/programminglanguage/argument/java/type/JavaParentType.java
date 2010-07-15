@@ -32,7 +32,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
  * @since 1.0
  * @version 1.0
  */
-public enum ParentType implements Cloneable {
+public enum JavaParentType implements Cloneable {
     /** The "extension" java parent type. */
     EXTENTION,
     /** The "implementation" java parent type. */

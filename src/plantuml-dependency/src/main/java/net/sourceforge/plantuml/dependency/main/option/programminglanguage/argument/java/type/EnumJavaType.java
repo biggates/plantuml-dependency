@@ -25,8 +25,8 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ParentType.EXTENTION;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ParentType.IMPLEMENTATION;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -99,7 +99,7 @@ class EnumJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public DependencyType createParentDependencyType(ParentType parentType, String parentName, String packageName) {
+    public DependencyType createParentDependencyType(JavaParentType parentType, String parentName, String packageName) {
         DependencyType dependencyType = null;
         if (EXTENTION == parentType) {
             // TODO [graffity] throw logicexception
