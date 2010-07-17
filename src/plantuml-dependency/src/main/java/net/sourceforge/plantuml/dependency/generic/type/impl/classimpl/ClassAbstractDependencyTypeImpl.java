@@ -32,12 +32,18 @@ import java.util.TreeSet;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 /**
+ * The class abstract implementation of the
+ * {@link net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType} interface.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
 public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
+
+    /** Serial version UID. */
+    private static final long serialVersionUID = -8097477597427695042L;
 
     /**
      * @param dependencyName
@@ -58,13 +64,14 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @since 1.0
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < GenericDependency > importDependenciesSet,
-            final Set < GenericDependency > parentInterfacesSet, final Set < GenericDependency > parentClassesSet) {
+            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
+            final Set < GenericDependency > parentClassesSet) {
         super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, parentClassesSet);
     }
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override

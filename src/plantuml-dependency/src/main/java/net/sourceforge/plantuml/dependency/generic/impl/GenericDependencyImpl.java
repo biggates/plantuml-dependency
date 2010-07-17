@@ -43,6 +43,9 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDepend
  */
 public class GenericDependencyImpl implements GenericDependency {
 
+    /** Serial version UID. */
+    private static final long serialVersionUID = 4512036274880797908L;
+    
     /** The underlying dependency type, which determines the real nature of the dependency. */
     private DependencyType dependencyType;
 
@@ -193,5 +196,15 @@ public class GenericDependencyImpl implements GenericDependency {
     @Override
     public String toString() {
         return getClass().getSimpleName() + " [dependencyType=" + dependencyType + "]";
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.0
+     */
+    @Override
+    public GenericDependency deepClone() {
+        // TODO [graffity] Auto-generated method stub
+        return null;
     }
 }

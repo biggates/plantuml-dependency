@@ -33,6 +33,9 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 
 /**
+ * The enum implementation of the
+ * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.0
@@ -41,6 +44,9 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 public class EnumDependencyTypeImpl extends DependencyTypeImpl {
 
     // TODO enum fields in the plantuml description
+
+    /** Serial version UID. */
+    private static final long serialVersionUID = 4101721547615760115L;
 
     /**
      * @param dependencyName
@@ -66,6 +72,7 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override

@@ -33,12 +33,18 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 
 /**
+ * The interface implementation of the
+ * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
 public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
+
+    /** Serial version UID. */
+    private static final long serialVersionUID = 5962361438336541275L;
 
     /**
      * @param dependencyName
@@ -64,6 +70,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override

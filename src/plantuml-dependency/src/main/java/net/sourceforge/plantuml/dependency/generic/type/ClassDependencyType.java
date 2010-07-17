@@ -29,15 +29,25 @@ import java.util.Set;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 /**
+ * The interface which describes a class dependency type, no matter the programming language.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
 public interface ClassDependencyType extends DependencyType {
 
     /**
-     * @return
+     * Gets the {@link Set} of all classes as {@link GenericDependency} which used by the current
+     * dependency type, i.e. extended. It no dependencies classes are extended, it returns an empty
+     * {@link Set}.
+     * <p>
+     * For instance, in java it is represented by the <i>implements</i> keyword.
+     * </p>
+     * 
+     * @return the {@link Set} of all classes as {@link GenericDependency} which used by the current
+     *         dependency type.
      * @since 1.0
      */
     Set < GenericDependency > getParentClasses();

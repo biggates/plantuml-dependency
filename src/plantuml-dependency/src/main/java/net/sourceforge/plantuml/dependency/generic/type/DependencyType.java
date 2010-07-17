@@ -24,8 +24,10 @@
 
 package net.sourceforge.plantuml.dependency.generic.type;
 
+import java.io.Serializable;
 import java.util.Set;
 
+import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 /**
@@ -37,7 +39,7 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
  * @since 1.0
  * @version 1.0
  */
-public interface DependencyType extends Comparable < DependencyType > {
+public interface DependencyType extends Comparable < DependencyType >, Serializable, DeepCloneable < DependencyType > {
 
     /**
      * Gets the dependency full name, usually the package and the dependency name.
@@ -95,14 +97,14 @@ public interface DependencyType extends Comparable < DependencyType > {
     String getPackageName();
 
     /**
-     * Gets the {@link Set} of all {@link GenericDependency} which are implemented by the current
-     * dependency type. It no dependencies interfaces are implemented, it returns an empty
-     * {@link Set}.
+     * Gets the {@link Set} of all interface as {@link GenericDependency} which used by the current
+     * dependency type, i.e. extended or implemented. It no dependencies interfaces are implemented
+     * nor extended, it returns an empty {@link Set}.
      * <p>
      * For instance, in java it is represented by the <i>implements</i> keyword.
      * </p>
      * 
-     * @return the {@link Set} of all {@link GenericDependency} which are implemented by the
+     * @return the {@link Set} of all interfaces as {@link GenericDependency} which used by the
      *         current dependency type.
      * @since 1.0
      */

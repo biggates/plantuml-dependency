@@ -28,23 +28,18 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CL
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 
 /**
+ * The stub implementation of the
+ * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
 public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
-    /**
-     * {@inheritDoc}
-     * @since 1.0
-     */
-    @Override
-    protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = new StringBuffer(CLASS_PLANTUML);
-        buffer.append(getFullName());
-        return buffer;
-    }
+    /** Serial version UID. */
+    private static final long serialVersionUID = 9006430972122342589L;
 
     /**
      * @param dependencyName
@@ -53,5 +48,17 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
      */
     public StubDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         super(dependencyName, dependencyPackageName);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    protected StringBuffer generatePlantUMLDeclaration() {
+        final StringBuffer buffer = new StringBuffer(CLASS_PLANTUML);
+        buffer.append(getFullName());
+        return buffer;
     }
 }

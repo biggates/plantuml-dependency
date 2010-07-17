@@ -33,15 +33,22 @@ import java.util.TreeSet;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 
 /**
+ * The class implementation of the
+ * {@link net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType} interface.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
 public class ClassDependencyTypeImpl extends DependencyTypeImpl implements ClassDependencyType {
+
+    /** Serial version UID. */
+    private static final long serialVersionUID = -8464283913821256094L;
 
     private final Set < GenericDependency > parentClasses;
 
@@ -64,8 +71,8 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      * @since 1.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < GenericDependency > importDependenciesSet,
-            final Set < GenericDependency > parentInterfacesSet, final Set < GenericDependency > parentClassesSet) {
+            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
+            final Set < GenericDependency > parentClassesSet) {
         super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet);
         // TODO optimization
         parentClasses = parentClassesSet;
@@ -73,6 +80,18 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public DependencyType deepClone() {
+        // TODO [graffity] Auto-generated method stub
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -84,6 +103,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -102,6 +122,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override

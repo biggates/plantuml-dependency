@@ -24,6 +24,9 @@
 
 package net.sourceforge.plantuml.dependency.generic;
 
+import java.io.Serializable;
+
+import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 
 /**
@@ -40,7 +43,8 @@ import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
  * @since 1.0
  * @version 1.0
  */
-public interface GenericDependency extends Comparable < GenericDependency > {
+public interface GenericDependency extends Comparable < GenericDependency >, Serializable,
+        DeepCloneable < GenericDependency > {
 
     /**
      * Gets the underlying dependency type, which determines the real nature of the dependency.

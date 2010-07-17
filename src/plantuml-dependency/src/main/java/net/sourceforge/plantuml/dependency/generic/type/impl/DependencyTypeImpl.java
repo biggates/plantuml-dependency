@@ -26,10 +26,10 @@ package net.sourceforge.plantuml.dependency.generic.type.impl;
 
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.USES_RIGHT_PLANTUML;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.USES_RIGHT_PLANTUML;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -38,15 +38,18 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 
 /**
- * The default implementation of the {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType}
- * interface.
+ * The default implementation of the
+ * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
 public abstract class DependencyTypeImpl implements DependencyType {
+
+    /** Serial version UID. */
+    private static final long serialVersionUID = -233142953615737115L;
 
     private final String name;
     private final String packageName;
@@ -100,6 +103,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -117,6 +121,18 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public DependencyType deepClone() {
+        // TODO [graffity] Auto-generated method stub
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -172,7 +188,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     private StringBuffer generatePlantUMLLinksDescription() {
         final StringBuffer buffer = new StringBuffer();
         buffer.append(generatePlantUMLDescriptionHeader());
-        
+
         for (final GenericDependency abstractImportDependency : getImportDependencies()) {
             buffer.append(LINE_SEPARATOR);
             buffer.append(getFullName());
@@ -193,6 +209,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -202,6 +219,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -211,6 +229,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -220,6 +239,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -229,6 +249,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -238,6 +259,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -250,6 +272,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -262,6 +285,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
@@ -274,6 +298,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
+     * 
      * @since 1.0
      */
     @Override
