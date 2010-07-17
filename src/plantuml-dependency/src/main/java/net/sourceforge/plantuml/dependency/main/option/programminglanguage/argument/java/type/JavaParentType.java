@@ -1,5 +1,5 @@
 /*
- ParentType.java
+ JavaParentType.java
  Creation date : 20/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 

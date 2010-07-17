@@ -28,7 +28,7 @@ import static net.sourceforge.mazix.components.constants.CharacterConstants.SPAC
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE13;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE14;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE17;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE20;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE9;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
@@ -96,7 +96,7 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
     @Test(expected = CommandLineException.class)
     public void testFindAndParseArgumentOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
             throws CommandLineException {
-        INCLUDE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE17);
+        INCLUDE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE20);
     }
 
     /**

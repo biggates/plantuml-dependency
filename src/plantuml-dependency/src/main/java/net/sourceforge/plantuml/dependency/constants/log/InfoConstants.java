@@ -36,9 +36,12 @@ public final class InfoConstants {
 
     /** The programming language found info message. */
     public static final String PROGRAMMING_LANGUAGE_FOUND_INFO = "[info-plantuml-dependency-001] : Programming language \"{0}\" has been found";
-    
+
     /** The java type found info message. */
     public static final String JAVA_TYPE_FOUND_INFO = "[info-plantuml-dependency-002] : Java type \"{0}\" has been found";
+
+    /** The parent type string empty info message. */
+    public static final String JAVA_PARENT_TYPE_STRING_EMPTY_INFO = "[info-plantuml-dependency-003] : The java parent type string to parse is empty, no parent to extract";
 
     /**
      * Private constructor to prevent from instantiation.

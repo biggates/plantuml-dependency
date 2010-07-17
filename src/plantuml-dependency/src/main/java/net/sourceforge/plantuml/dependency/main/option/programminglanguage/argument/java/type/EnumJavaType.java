@@ -24,17 +24,26 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
+import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
+import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NAME_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.DependencyType;
 import net.sourceforge.plantuml.dependency.EnumDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.InterfaceDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 
 /**
  * The enum {@link JavaType} implementation.
@@ -47,11 +56,14 @@ import net.sourceforge.plantuml.dependency.InterfaceDependencyTypeImpl;
 class EnumJavaType extends JavaType {
 
     /**
-     * @param programmingLanguageName
+     * Default constructor.
+     * 
+     * @param programmingLanguageKeyword
+     *            The java type language keyword, mustn't be <code>null</code>.
      * @since 1.0
      */
-    protected EnumJavaType(String programmingLanguageName) {
-        super(programmingLanguageName);
+    protected EnumJavaType(final String programmingLanguageKeyword) {
+        super(programmingLanguageKeyword);
     }
 
     /**
@@ -60,35 +72,10 @@ class EnumJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public Set < String > extractParentExtentions(String extendsString) {
-        if (isNotEmpty(extendsString)) {
-            // TODO throw exception, shouldn't happen
-        } else {
-
-        }
-        return new TreeSet < String >();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 1.0
-     */
-    @Override
-    public Set < String > extractParentImplementations(String implementsString) {
-        return extractParents(implementsString);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 1.0
-     */
-    @Override
-    public DependencyType createDependencyType(String dependencyName, String dependencyPackageName, boolean isAbstract,
-            Set < GenericDependency > importDependencies,
-            Set < GenericDependency > parentImplementationsDependencies,
-            Set < GenericDependency > parentExtentionsDependencies) {
+    public DependencyType createDependencyType(final String dependencyName, final String dependencyPackageName,
+            final boolean isAbstract, final Set < GenericDependency > importDependencies,
+            final Set < GenericDependency > parentImplementationsDependencies,
+            final Set < GenericDependency > parentExtentionsDependencies) {
         return new EnumDependencyTypeImpl(dependencyName, dependencyPackageName, importDependencies,
                 parentImplementationsDependencies);
     }
@@ -99,15 +86,50 @@ class EnumJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public DependencyType createParentDependencyType(JavaParentType parentType, String parentName, String packageName) {
+    public DependencyType createParentDependencyType(final JavaParentType parentType, final String parentName,
+            final String parentPackageName) throws PlantUMLDependencyException {
+        checkNull(parentType, JAVA_PARENT_TYPE_NULL_ERROR);
+        checkNull(parentName, JAVA_PARENT_TYPE_NAME_NULL_ERROR);
+        checkNull(parentPackageName, JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR);
+
         DependencyType dependencyType = null;
+
         if (EXTENTION == parentType) {
-            // TODO [graffity] throw logicexception
+            throw new PlantUMLDependencyException(buildLogString(IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR, new Object[] {
+                    parentType, getLanguageKeyword()}));
         } else if (IMPLEMENTATION == parentType) {
-            dependencyType = new InterfaceDependencyTypeImpl(parentName, packageName);
+            dependencyType = new InterfaceDependencyTypeImpl(parentName, parentPackageName);
         } else {
-            // TODO [graffity] throw logicexception
+            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_NULL_ERROR, parentType));
         }
+
         return dependencyType;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public Set < String > extractParentExtentions(final String extendsString) throws PlantUMLDependencyException {
+        if (isNotEmpty(extendsString)) {
+            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR, new Object[] {
+                    extendsString, getLanguageKeyword()}));
+        } else {
+            return new TreeSet < String >();
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public Set < String > extractParentImplementations(final String implementsString) {
+        checkNull(implementsString, JAVA_PARENT_TYPE_STRING_NULL_ERROR);
+
+        return extractParents(implementsString);
     }
 }

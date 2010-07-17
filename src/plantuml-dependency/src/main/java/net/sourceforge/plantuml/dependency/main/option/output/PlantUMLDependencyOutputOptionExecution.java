@@ -25,11 +25,14 @@
 package net.sourceforge.plantuml.dependency.main.option.output;
 
 import static java.lang.System.currentTimeMillis;
+import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.READING_SOURCE_FILE_ERROR;
 
 import java.io.File;
 import java.util.Iterator;
@@ -43,6 +46,7 @@ import net.sourceforge.mazix.cli.exception.CommandLineException;
 import net.sourceforge.mazix.cli.option.execution.AbstractOptionExecution;
 import net.sourceforge.mazix.cli.option.execution.OptionExecution;
 import net.sourceforge.plantuml.dependency.GenericDependency;
+import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;
 
@@ -230,9 +234,14 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
         final Iterator < FileResource > iter = includeExcludeFiles.iterator();
         while (iter.hasNext()) {
             final FileResource fileResource = iter.next();
-            final GenericDependency dependency = readDependencyFromFile(fileResource.getFile(), dependenciesMap,
-                    language, verboseModeActive, displayOpt);
-            dependenciesMap.put(dependency.getFullName(), dependency);
+
+            try {
+                final GenericDependency dependency = readDependencyFromFile(fileResource.getFile(), dependenciesMap,
+                        language, verboseModeActive, displayOpt);
+                dependenciesMap.put(dependency.getFullName(), dependency);
+            } catch (final PlantUMLDependencyException e) {
+                LOGGER.log(SEVERE, buildLogString(READING_SOURCE_FILE_ERROR, fileResource.getFile()), e);
+            }
         }
 
         return dependenciesMap;
@@ -255,11 +264,13 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param displayOpt
      *            the display option which have to appear in the plantUML description.
      * @return the {@link GenericDependency} instance parsed in the source file.
+     * @throws PlantUMLDependencyException
+     *             if any parsing exception occurs while reading the source file.
      * @since 1.0
      */
     private GenericDependency readDependencyFromFile(final File file,
             final Map < String, GenericDependency > dependenciesMap, final ProgrammingLanguage language,
-            final boolean verboseModeActive, final Set < Display > displayOpt) {
+            final boolean verboseModeActive, final Set < Display > displayOpt) throws PlantUMLDependencyException {
         final String sourceFileContent = readFileIntoString(file);
         return language.readDependencyFromFile(sourceFileContent, dependenciesMap);
     }

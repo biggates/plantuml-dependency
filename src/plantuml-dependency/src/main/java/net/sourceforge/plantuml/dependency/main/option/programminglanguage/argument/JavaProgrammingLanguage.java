@@ -48,6 +48,7 @@ import java.util.regex.Matcher;
 import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.DependencyType;
+import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType;
@@ -95,10 +96,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param sourceFileContent
      * @param dependenciesMap
      * @return
+     * @throws PlantUMLDependencyException 
      * @since 1.0
      */
     private GenericDependency readDependencyFromPreparedFile(String sourceFileContent,
-            Map < String, GenericDependency > dependenciesMap) {
+            Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
         JavaRawDependency javaRawDependency = readJavaRawDependencyFromPreparedFile(sourceFileContent);
         return createDependencyFromRaw(javaRawDependency, sourceFileContent, dependenciesMap);
     }
@@ -108,10 +110,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param sourceFileContent
      * @param dependenciesMap
      * @return
+     * @throws PlantUMLDependencyException 
      * @since 1.0
      */
     private GenericDependency createDependencyFromRaw(JavaRawDependency javaRawDependency, String sourceFileContent,
-            Map < String, GenericDependency > dependenciesMap) {
+            Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
 
         final Set < GenericDependency > importDependencies = extractImportDependencies(sourceFileContent,
                 dependenciesMap);
@@ -149,7 +152,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     private Set < GenericDependency > extractParentDependencies(JavaType type, JavaParentType parentType,
             Set < String > parents, Set < GenericDependency > importDependencies,
-            Map < String, GenericDependency > dependenciesMap, String packageName) {
+            Map < String, GenericDependency > dependenciesMap, String packageName) throws PlantUMLDependencyException {
 
         final Set < GenericDependency > parentsSet = new TreeSet < GenericDependency >();
         for (String parentName : parents) {
@@ -167,11 +170,12 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param importDependencies
      * @param dependenciesMap
      * @return
+     * @throws PlantUMLDependencyException 
      * @since 1.0
      */
     private GenericDependency getOrCreateParentDependency(JavaType type, JavaParentType parentType, String parentName,
             String packageName, Set < GenericDependency > importDependencies,
-            Map < String, GenericDependency > dependenciesMap) {
+            Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
         GenericDependency dependency = findDependencyInImport(parentName, importDependencies);
 
         if (dependency == null) {
@@ -199,10 +203,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param packageName
      * @param dependenciesMap
      * @return
+     * @throws PlantUMLDependencyException 
      * @since 1.0
      */
     private GenericDependency findOrCreateDependencyInTreatedOrJavaLangObject(JavaType type, JavaParentType parentType,
-            String parentName, String packageName, Map < String, GenericDependency > dependenciesMap) {
+            String parentName, String packageName, Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
         GenericDependency dependency = null;
 
         final String fullName = packageName + DOT_CHAR + parentName;
@@ -241,9 +246,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * @param sourceFileContent
      * @return
+     * @throws PlantUMLDependencyException 
      * @since 1.0
      */
-    private JavaRawDependency readJavaRawDependencyFromPreparedFile(String sourceFileContent) {
+    private JavaRawDependency readJavaRawDependencyFromPreparedFile(String sourceFileContent) throws PlantUMLDependencyException {
         JavaRawDependency javaRawDependency = new JavaRawDependency();
 
         final Matcher matcher = JAVA_TYPE_REGEXP.matcher(sourceFileContent);
@@ -360,12 +366,13 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * {@inheritDoc}
+     * @throws PlantUMLDependencyException 
      * 
      * @since 1.0
      */
     @Override
     public GenericDependency readDependencyFromFile(String sourceFileContent,
-            Map < String, GenericDependency > dependenciesMap) {
+            Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
         String preparedSourceFileContent = prepareSourceFileContent(sourceFileContent);
         return readDependencyFromPreparedFile(preparedSourceFileContent, dependenciesMap);
     }

@@ -35,7 +35,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.Collection;
 import java.util.Set;
 
+import net.sourceforge.mazix.components.ObjectTest;
+
 import org.junit.Test;
+import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link ProgrammingLanguage}.
@@ -45,7 +48,23 @@ import org.junit.Test;
  * @since 1.0
  * @version 1.0
  */
-public class ProgrammingLanguageTest {
+public class ProgrammingLanguageTest extends ObjectTest < ProgrammingLanguage > {
+
+    /** Programming language test 1 instance. */
+    @DataPoint
+    public static final ProgrammingLanguage PROGRAMMING_LANGUAGE1 = JAVA;
+
+    /** Programming language test 2 instance. */
+    @DataPoint
+    public static final ProgrammingLanguage PROGRAMMING_LANGUAGE2 = CPP;
+
+    /** Programming language test 3 instance. */
+    @DataPoint
+    public static final ProgrammingLanguage PROGRAMMING_LANGUAGE3 = JAVA;
+
+    /** Programming language test 4 instance. */
+    @DataPoint
+    public static final ProgrammingLanguage PROGRAMMING_LANGUAGE4 = null;
 
     /**
      * Test method for

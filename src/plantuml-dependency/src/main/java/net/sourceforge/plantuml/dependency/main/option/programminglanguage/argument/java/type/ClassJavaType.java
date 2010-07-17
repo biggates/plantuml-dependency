@@ -24,16 +24,23 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
+import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
+import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NAME_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
 import java.util.Set;
 
-import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.ClassAbstractDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.ClassDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.DependencyType;
+import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.InterfaceDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 
 /**
  * The class {@link JavaType} implementation.
@@ -46,11 +53,14 @@ import net.sourceforge.plantuml.dependency.InterfaceDependencyTypeImpl;
 class ClassJavaType extends JavaType {
 
     /**
-     * @param programmingLanguageName
+     * Default constructor.
+     * 
+     * @param programmingLanguageKeyword
+     *            The java type language keyword, mustn't be <code>null</code>.
      * @since 1.0
      */
-    protected ClassJavaType(String programmingLanguageName) {
-        super(programmingLanguageName);
+    protected ClassJavaType(final String programmingLanguageKeyword) {
+        super(programmingLanguageKeyword);
     }
 
     /**
@@ -59,31 +69,12 @@ class ClassJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public Set < String > extractParentExtentions(String extendsString) {
-        return extractParents(extendsString);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 1.0
-     */
-    @Override
-    public Set < String > extractParentImplementations(String implementsString) {
-        return extractParents(implementsString);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 1.0
-     */
-    @Override
-    public DependencyType createDependencyType(String dependencyName, String dependencyPackageName, boolean isAbstract,
-            Set < GenericDependency > importDependencies,
-            Set < GenericDependency > parentImplementationsDependencies,
-            Set < GenericDependency > parentExtentionsDependencies) {
+    public DependencyType createDependencyType(final String dependencyName, final String dependencyPackageName,
+            final boolean isAbstract, final Set < GenericDependency > importDependencies,
+            final Set < GenericDependency > parentImplementationsDependencies,
+            final Set < GenericDependency > parentExtentionsDependencies) {
         DependencyType dependencyType = null;
+
         if (isAbstract) {
             dependencyType = new ClassAbstractDependencyTypeImpl(dependencyName, dependencyPackageName,
                     importDependencies, parentImplementationsDependencies, parentExtentionsDependencies);
@@ -101,15 +92,46 @@ class ClassJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public DependencyType createParentDependencyType(JavaParentType parentType, String parentName, String packageName) {
+    public DependencyType createParentDependencyType(final JavaParentType parentType, final String parentName,
+            final String parentPackageName) throws PlantUMLDependencyException {
+        checkNull(parentType, JAVA_PARENT_TYPE_NULL_ERROR);
+        checkNull(parentName, JAVA_PARENT_TYPE_NAME_NULL_ERROR);
+        checkNull(parentPackageName, JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR);
+
         DependencyType dependencyType = null;
+
         if (EXTENTION == parentType) {
-            dependencyType = new ClassDependencyTypeImpl(parentName, packageName);
+            dependencyType = new ClassDependencyTypeImpl(parentName, parentPackageName);
         } else if (IMPLEMENTATION == parentType) {
-            dependencyType = new InterfaceDependencyTypeImpl(parentName, packageName);
+            dependencyType = new InterfaceDependencyTypeImpl(parentName, parentPackageName);
         } else {
-            // TODO [graffity] throw logicexception
+            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_NULL_ERROR, parentType));
         }
+
         return dependencyType;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public Set < String > extractParentExtentions(final String extendsString) {
+        checkNull(extendsString, JAVA_PARENT_TYPE_STRING_NULL_ERROR);
+
+        return extractParents(extendsString);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public Set < String > extractParentImplementations(final String implementsString) {
+        checkNull(implementsString, JAVA_PARENT_TYPE_STRING_NULL_ERROR);
+
+        return extractParents(implementsString);
     }
 }

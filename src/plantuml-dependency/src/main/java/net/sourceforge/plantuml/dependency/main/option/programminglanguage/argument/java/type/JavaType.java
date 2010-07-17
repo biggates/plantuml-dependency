@@ -34,6 +34,7 @@ import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.TEMPLATE_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.UNKNOWN_JAVA_TYPE_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.JAVA_PARENT_TYPE_STRING_EMPTY_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.JAVA_TYPE_FOUND_INFO;
 
 import java.util.Collection;
@@ -44,8 +45,9 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 
-import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.DependencyType;
+import net.sourceforge.plantuml.dependency.GenericDependency;
+import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 
 /**
  * The abstract class which describes all existing java types such as classes, interfaces and
@@ -98,7 +100,7 @@ public abstract class JavaType implements Comparable < JavaType > {
      * @return the {@link Collection} of all {@link JavaType} available.
      * @since 1.0
      */
-    public static Collection < JavaType > getProgrammingLanguageCollection() {
+    public static Collection < JavaType > getJavaTypeCollection() {
         return JAVA_TYPE_MAP.values();
     }
 
@@ -159,15 +161,26 @@ public abstract class JavaType implements Comparable < JavaType > {
     }
 
     /**
-     * Creates the {@link DependencyType} instance.
+     * Creates the {@link DependencyType} instance associated to the current java type following
+     * passed parameters.
      * 
      * @param dependencyName
+     *            the dependency name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
+     *            the dependency package name, such as "java.lang", mustn't be <code>null</code>.
      * @param isAbstract
+     *            the boolean telling if the java dependency is abstract or not.
      * @param importDependencies
+     *            the {@link Set} of all {@link GenericDependency} which are imported, mustn't be
+     *            <code>null</code>.
      * @param parentImplementationsDependencies
+     *            the {@link Set} of all {@link GenericDependency} which are implemented, mustn't be
+     *            <code>null</code>.
      * @param parentExtentionsDependencies
-     * @return
+     *            the {@link Set} of all {@link GenericDependency} which are extended, mustn't be
+     *            <code>null</code>.
+     * @return the {@link DependencyType} instance, following the current java type and the passed
+     *         parameters.
      * @since 1.0
      */
     public abstract DependencyType createDependencyType(String dependencyName, String dependencyPackageName,
@@ -176,14 +189,24 @@ public abstract class JavaType implements Comparable < JavaType > {
             Set < GenericDependency > parentExtentionsDependencies);
 
     /**
+     * Creates the parent {@link DependencyType} instance associated to the current java type
+     * following the {@link JavaParentType} and passed parameters.
+     * 
      * @param parentType
+     *            the {@link JavaParentType} instance, mustn't be <code>null</code>.
      * @param parentName
-     * @param packageName
-     * @return
+     *            the dependency parent name, such as "String", mustn't be <code>null</code>.
+     * @param parentPackageName
+     *            the dependency parent package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
+     * @return the {@link DependencyType} instance which is the parent of the current java type,
+     *         following the java java type and the passed parameters.
+     * @throws PlantUMLDependencyException
+     *             if the requested java parent type is incompatible with the current java type.
      * @since 1.0
      */
     public abstract DependencyType createParentDependencyType(JavaParentType parentType, String parentName,
-            String packageName);
+            String parentPackageName) throws PlantUMLDependencyException;
 
     /**
      * {@inheritDoc}
@@ -213,29 +236,66 @@ public abstract class JavaType implements Comparable < JavaType > {
     }
 
     /**
+     * Parses and extracts the {@link Set} of parent dependency names of type
+     * {@link JavaParentType#EXTENTION} from the passed {@link String}.
+     * 
      * @param extendsString
-     * @return
+     *            the {@link String} which describes the dependencies which are extended by the
+     *            current java type.
+     *            <p>
+     *            For instance it can be :<br>
+     *            <i>Comparable, Cloneable</i><br>
+     *            <i>Number</i><br>
+     *            </p>
+     * @return the {@link Set} of parent dependency names parsed from the {@link String}.
+     * @throws PlantUMLDependencyException
+     *             if the requested parent dependency names are incompatible with the current java
+     *             type.
      * @since 1.0
      */
-    public abstract Set < String > extractParentExtentions(String extendsString);
+    public abstract Set < String > extractParentExtentions(String extendsString) throws PlantUMLDependencyException;
 
     /**
+     * Parses and extracts the {@link Set} of parent dependency names of type
+     * {@link JavaParentType#IMPLEMENTATION} from the passed {@link String}.
+     * 
      * @param implementsString
-     * @return
+     *            the {@link String} which describes the dependencies which are implemented by the
+     *            current java type.
+     *            <p>
+     *            For instance it can be :<br>
+     *            <i>Serializable, Cloneable</i><br>
+     *            <i>Number</i><br>
+     *            </p>
+     * @return the {@link Set} of parent dependency names parsed from the {@link String}.
+     * @throws PlantUMLDependencyException
+     *             if the requested parent dependency names are incompatible with the current java
+     *             type.
      * @since 1.0
      */
-    public abstract Set < String > extractParentImplementations(String implementsString);
+    public abstract Set < String > extractParentImplementations(String implementsString)
+            throws PlantUMLDependencyException;
 
     /**
+     * Generic method to parse and extract the {@link Set} of parent dependency names of any type
+     * from the passed {@link String}.
+     * 
      * @param parentsString
-     * @return
+     *            the {@link String} which describes the parents dependencies of the current java
+     *            type.
+     *            <p>
+     *            For instance it can be :<br>
+     *            <i>Serializable, Cloneable</i><br>
+     *            <i>Number</i><br>
+     *            </p>
+     * @return the {@link Set} of parent dependency names parsed from the {@link String}.
      * @since 1.0
      */
     protected Set < String > extractParents(final String parentsString) {
         final Set < String > parents = new TreeSet < String >();
 
         if (isEmpty(parentsString)) {
-            // TODO log no parent interface
+            LOGGER.info(JAVA_PARENT_TYPE_STRING_EMPTY_INFO);
         } else {
             final String removeTemplateStr = TEMPLATE_REGEXP.matcher(parentsString).replaceAll(BLANK_STRING);
             final StringTokenizer tokenizer = new StringTokenizer(removeTemplateStr, COMMA_CHAR);
@@ -252,10 +312,9 @@ public abstract class JavaType implements Comparable < JavaType > {
      * Gets the value of <code>languageKeyword</code>.
      * 
      * @return the value of <code>languageKeyword</code>.
-     * @see #setLanguageKeyword(String)
      * @since 1.0
      */
-    private String getLanguageKeyword() {
+    public String getLanguageKeyword() {
         return languageKeyword;
     }
 

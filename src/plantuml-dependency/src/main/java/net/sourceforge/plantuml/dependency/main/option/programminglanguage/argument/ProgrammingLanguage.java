@@ -41,6 +41,7 @@ import java.util.TreeSet;
 import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.GenericDependency;
+import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 
 /**
  * The abstract class which describes all supported programming language which can be reverse
@@ -228,10 +229,12 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      *            modified during the treatment, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance if it has been found and correctly parsed,
      *         <code>null</code> otherwise.
+     * @throws PlantUMLDependencyException
+     *             if any parsing exception occurs while reading the source file.
      * @since 1.0
      */
     public abstract GenericDependency readDependencyFromFile(String sourceFileContent,
-            Map < String, GenericDependency > dependenciesMap);
+            Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException;
 
     /**
      * Sets the value of <code>name</code>.

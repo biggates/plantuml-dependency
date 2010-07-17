@@ -124,6 +124,9 @@ public final class PlantUMLDependencyTestConstants {
     
     /** Command line test 19 instance. */
     public static final CommandLine COMMAND_LINE19 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-o", "log.txt",});
+    
+    /** Command line test 20 instance. */
+    public static final CommandLine COMMAND_LINE20 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-i"});
 
     /** File set test 1 instance. */
     public static final FileSet FILE_SET1 = createFileSet(CURRENT_DIRECTORY, "**/*");
