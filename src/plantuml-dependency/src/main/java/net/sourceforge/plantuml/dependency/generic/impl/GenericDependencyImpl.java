@@ -22,15 +22,18 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency;
+package net.sourceforge.plantuml.dependency.generic.impl;
 
 import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_TYPE_NULL_ERROR;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl;
 
 /**
- * The default implementation of the {@link net.sourceforge.plantuml.dependency.GenericDependency}
+ * The default implementation of the {@link net.sourceforge.plantuml.dependency.generic.GenericDependency}
  * interface.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)

@@ -45,10 +45,10 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 
-import net.sourceforge.plantuml.dependency.GenericDependency;
-import net.sourceforge.plantuml.dependency.GenericDependencyImpl;
-import net.sourceforge.plantuml.dependency.DependencyType;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
+import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType;

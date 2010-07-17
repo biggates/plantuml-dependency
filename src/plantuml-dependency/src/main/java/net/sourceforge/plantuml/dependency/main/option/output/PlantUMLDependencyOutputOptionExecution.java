@@ -45,8 +45,8 @@ import java.util.logging.Logger;
 import net.sourceforge.mazix.cli.exception.CommandLineException;
 import net.sourceforge.mazix.cli.option.execution.AbstractOptionExecution;
 import net.sourceforge.mazix.cli.option.execution.OptionExecution;
-import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;
 

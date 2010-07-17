@@ -22,7 +22,7 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency;
+package net.sourceforge.plantuml.dependency.generic.type.impl;
 
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
@@ -34,8 +34,11 @@ import static net.sourceforge.mazix.components.utils.comparable.ComparableResult
 import java.util.Set;
 import java.util.TreeSet;
 
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+
 /**
- * The default implementation of the {@link net.sourceforge.plantuml.dependency.DependencyType}
+ * The default implementation of the {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType}
  * interface.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)

@@ -22,9 +22,11 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency;
+package net.sourceforge.plantuml.dependency.generic.type;
 
 import java.util.Set;
+
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 /**
  * The interface which describes a generic dependency type, no matter the programming language. A

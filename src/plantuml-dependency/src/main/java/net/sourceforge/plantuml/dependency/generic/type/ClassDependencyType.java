@@ -1,5 +1,5 @@
 /*
- StubDependencyTypeImpl.java
+ ClassDependencyType.java
  Creation date : 20/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
  
@@ -22,9 +22,11 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency;
+package net.sourceforge.plantuml.dependency.generic.type;
 
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
+import java.util.Set;
+
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
@@ -32,25 +34,11 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CL
  * @since 1.0
  * @version 1.0
  */
-public class StubDependencyTypeImpl extends DependencyTypeImpl {
+public interface ClassDependencyType extends DependencyType {
 
     /**
-     * {@inheritDoc}
+     * @return
      * @since 1.0
      */
-    @Override
-    protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = new StringBuffer(CLASS_PLANTUML);
-        buffer.append(getFullName());
-        return buffer;
-    }
-
-    /**
-     * @param dependencyName
-     * @param dependencyPackageName
-     * @since 1.0
-     */
-    public StubDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        super(dependencyName, dependencyPackageName);
-    }
+    Set < GenericDependency > getParentClasses();
 }

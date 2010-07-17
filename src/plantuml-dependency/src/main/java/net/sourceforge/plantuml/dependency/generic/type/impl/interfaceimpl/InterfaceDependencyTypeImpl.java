@@ -22,12 +22,15 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency;
+package net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl;
 
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.INTERFACE_PLANTUML;
 
 import java.util.Set;
 import java.util.TreeSet;
+
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)

@@ -28,7 +28,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.C
 
 import java.util.Map;
 
-import net.sourceforge.plantuml.dependency.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 /**
  * The C++ {@link ProgrammingLanguage} implementation.

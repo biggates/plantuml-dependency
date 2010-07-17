@@ -45,9 +45,9 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 
-import net.sourceforge.plantuml.dependency.DependencyType;
-import net.sourceforge.plantuml.dependency.GenericDependency;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 
 /**
  * The abstract class which describes all existing java types such as classes, interfaces and

@@ -1,5 +1,5 @@
 /*
- ClassAbstractDependencyTypeImpl.java
+ ClassDependencyTypeImpl.java
  Creation date : 20/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
  
@@ -22,12 +22,18 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency;
+package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.ABSTRACT_PLANTUML;
+import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
 
 import java.util.Set;
 import java.util.TreeSet;
+
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
@@ -35,14 +41,16 @@ import java.util.TreeSet;
  * @since 1.0
  * @version 1.0
  */
-public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
+public class ClassDependencyTypeImpl extends DependencyTypeImpl implements ClassDependencyType {
+
+    private final Set < GenericDependency > parentClasses;
 
     /**
      * @param dependencyName
      * @param dependencyPackageName
      * @since 1.0
      */
-    public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
+    public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
                 new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
     }
@@ -55,10 +63,12 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @param parentClassesSet
      * @since 1.0
      */
-    public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
+    public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final Set < GenericDependency > importDependenciesSet,
             final Set < GenericDependency > parentInterfacesSet, final Set < GenericDependency > parentClassesSet) {
-        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, parentClassesSet);
+        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet);
+        // TODO optimization
+        parentClasses = parentClassesSet;
     }
 
     /**
@@ -67,8 +77,35 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      */
     @Override
     protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = new StringBuffer(ABSTRACT_PLANTUML);
+        final StringBuffer buffer = new StringBuffer(CLASS_PLANTUML);
         buffer.append(getFullName());
         return buffer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.0
+     */
+    @Override
+    protected StringBuffer generatePlantUMLDescriptionFooter() {
+        final StringBuffer buffer = new StringBuffer();
+
+        for (final GenericDependency classDependency : getParentClasses()) {
+            buffer.append(LINE_SEPARATOR);
+            buffer.append(classDependency.getFullName());
+            buffer.append(IMPLEMENTS_LEFT_PLANTUML);
+            buffer.append(getFullName());
+        }
+
+        return buffer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.0
+     */
+    @Override
+    public Set < GenericDependency > getParentClasses() {
+        return parentClasses;
     }
 }

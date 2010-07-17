@@ -39,11 +39,11 @@ import static net.sourceforge.plantuml.dependency.main.option.programminglanguag
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.plantuml.dependency.DependencyType;
-import net.sourceforge.plantuml.dependency.EnumDependencyTypeImpl;
-import net.sourceforge.plantuml.dependency.GenericDependency;
-import net.sourceforge.plantuml.dependency.InterfaceDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
 
 /**
  * The enum {@link JavaType} implementation.

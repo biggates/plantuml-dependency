@@ -35,12 +35,12 @@ import static net.sourceforge.plantuml.dependency.main.option.programminglanguag
 
 import java.util.Set;
 
-import net.sourceforge.plantuml.dependency.ClassAbstractDependencyTypeImpl;
-import net.sourceforge.plantuml.dependency.ClassDependencyTypeImpl;
-import net.sourceforge.plantuml.dependency.DependencyType;
-import net.sourceforge.plantuml.dependency.GenericDependency;
-import net.sourceforge.plantuml.dependency.InterfaceDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
 
 /**
  * The class {@link JavaType} implementation.

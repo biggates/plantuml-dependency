@@ -22,7 +22,9 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency;
+package net.sourceforge.plantuml.dependency.generic;
+
+import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 
 /**
  * The interface which describes a generic abstract dependency, no matter the programming language.
