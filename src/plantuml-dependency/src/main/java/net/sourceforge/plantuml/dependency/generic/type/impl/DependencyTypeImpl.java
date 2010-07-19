@@ -224,7 +224,10 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
-     * @return
+     * Generates the plantUML declaration.
+     * 
+     * @return the {@link StringBuffer} containing the plantUML declaration of the current
+     *         dependency type.
      * @since 1.0
      */
     protected StringBuffer generatePlantUMLDeclaration() {
@@ -232,7 +235,10 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
-     * @return
+     * Generates the plantUML description footer.
+     * 
+     * @return the {@link StringBuffer} containing the plantUML description footer of the current
+     *         dependency type.
      * @since 1.0
      */
     protected StringBuffer generatePlantUMLDescriptionFooter() {
@@ -240,7 +246,10 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
-     * @return
+     * Generates the plantUML description header.
+     * 
+     * @return the {@link StringBuffer} containing the plantUML description header of the current
+     *         dependency type.
      * @since 1.0
      */
     protected StringBuffer generatePlantUMLDescriptionHeader() {
@@ -248,7 +257,10 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
-     * @return
+     * Generates the plantUML links description.
+     * 
+     * @return the {@link StringBuffer} containing the plantUML links description of the current
+     *         dependency type.
      * @since 1.0
      */
     private StringBuffer generatePlantUMLLinksDescription() {

@@ -102,5 +102,4 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
     public void testGetPlantUMLLinksDescription() {
         fail("Not yet implemented");
     }
-
 }

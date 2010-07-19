@@ -94,5 +94,4 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLLinksDescription() {
         fail("Not yet implemented");
     }
-
 }

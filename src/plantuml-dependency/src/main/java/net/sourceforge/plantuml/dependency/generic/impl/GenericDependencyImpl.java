@@ -24,17 +24,23 @@
 
 package net.sourceforge.plantuml.dependency.generic.impl;
 
+import static java.util.logging.Level.SEVERE;
+import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_TYPE_NULL_ERROR;
+
+import java.util.logging.Logger;
+
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 import net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl;
 
 /**
- * The default implementation of the {@link net.sourceforge.plantuml.dependency.generic.GenericDependency}
- * interface.
+ * The default implementation of the
+ * {@link net.sourceforge.plantuml.dependency.generic.GenericDependency} interface.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
@@ -45,7 +51,10 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /** Serial version UID. */
     private static final long serialVersionUID = 4512036274880797908L;
-    
+
+    /** The class logger. */
+    private static final transient Logger LOGGER = getLogger(GenericDependencyImpl.class.getName());
+
     /** The underlying dependency type, which determines the real nature of the dependency. */
     private DependencyType dependencyType;
 
@@ -96,6 +105,25 @@ public class GenericDependencyImpl implements GenericDependency {
         }
 
         return comparison;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public GenericDependency deepClone() {
+        GenericDependencyImpl g = null;
+
+        try {
+            g = (GenericDependencyImpl) super.clone();
+            g.dependencyType = getDependencyType().deepClone();
+        } catch (final CloneNotSupportedException cnse) {
+            LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
+        }
+
+        return g;
     }
 
     /**
@@ -196,15 +224,5 @@ public class GenericDependencyImpl implements GenericDependency {
     @Override
     public String toString() {
         return getClass().getSimpleName() + " [dependencyType=" + dependencyType + "]";
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.0
-     */
-    @Override
-    public GenericDependency deepClone() {
-        // TODO [graffity] Auto-generated method stub
-        return null;
     }
 }

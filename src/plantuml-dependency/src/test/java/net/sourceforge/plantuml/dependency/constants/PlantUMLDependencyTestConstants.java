@@ -27,6 +27,7 @@ package net.sourceforge.plantuml.dependency.constants;
 import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.cli.utils.fileset.FileSetUtils.createFileSet;
 import static net.sourceforge.mazix.components.constants.CommonConstants.CURRENT_DIRECTORY;
+import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ATTRIBUTES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
@@ -44,6 +45,8 @@ import java.util.TreeSet;
 import net.sourceforge.mazix.cli.command.CommandLine;
 import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
 import net.sourceforge.mazix.cli.option.impl.verbose.VerboseOption;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 import org.apache.tools.ant.types.FileSet;
@@ -115,16 +118,17 @@ public final class PlantUMLDependencyTestConstants {
     /** Command line test 16 instance. */
     public static final CommandLine COMMAND_LINE16 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-l",
             "cpp", "-l", "java"});
-    
+
     /** Command line test 17 instance. */
     public static final CommandLine COMMAND_LINE17 = new CommandLineImpl(new String[] {"-o"});
-    
+
     /** Command line test 18 instance. */
     public static final CommandLine COMMAND_LINE18 = new CommandLineImpl(new String[] {"-version"});
-    
+
     /** Command line test 19 instance. */
-    public static final CommandLine COMMAND_LINE19 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-o", "log.txt",});
-    
+    public static final CommandLine COMMAND_LINE19 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-o",
+            "log.txt",});
+
     /** Command line test 20 instance. */
     public static final CommandLine COMMAND_LINE20 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-i"});
 
@@ -154,6 +158,21 @@ public final class PlantUMLDependencyTestConstants {
     public static final Set < Display > DISPLAY_SET6 = new TreeSet < Display >(asList(new Display[] {
             ONLY_PARSED_OBJECTS, METHODS, ATTRIBUTES}));
 
+    /** Generic dependency set test 1 instance. */
+    public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET1 = new TreeSet < GenericDependency >(
+            asList(new GenericDependency[] {GENERIC_DEPENDENCY1,
+                    new GenericDependencyImpl("Serializable", "java.io"),
+                    new GenericDependencyImpl("Comparable", "java.lang")}));
+
+    /** Generic dependency set test 2 instance. */
+    public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET2 = new TreeSet < GenericDependency >(
+            asList(new GenericDependency[] {GENERIC_DEPENDENCY1}));
+
+    /** Generic dependency set test 4 instance. */
+    public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET3 = new TreeSet < GenericDependency >(
+            asList(new GenericDependency[] {new GenericDependencyImpl("Serializable", "java.io"),
+                    new GenericDependencyImpl("Comparable", "java.lang")}));
+
     /** Verbose option test 1 instance. */
     public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(false, new StringBuffer(
             "To display log information."));
@@ -161,12 +180,14 @@ public final class PlantUMLDependencyTestConstants {
     /** Verbose option test 2 instance. */
     public static final VerboseOption VERBOSE_OPTION2 = new VerboseOption(true, new StringBuffer(
             "To display log information."));
-    
+
     /** Extensions set test 1 instance. */
-    public static final Set < String > EXTENSIONS_SET1 = new TreeSet < String >(asList(new String[] {"java.lang.Number"}));
-    
+    public static final Set < String > EXTENSIONS_SET1 = new TreeSet < String >(
+            asList(new String[] {"java.lang.Number"}));
+
     /** Implementations set test 1 instance. */
-    public static final Set < String > IMPLEMENTATIONS_SET1 = new TreeSet < String >(asList(new String[] {"java.lang.Comparable", "java.io.Serializable"}));
+    public static final Set < String > IMPLEMENTATIONS_SET1 = new TreeSet < String >(asList(new String[] {
+            "java.lang.Comparable", "java.io.Serializable"}));
 
     /**
      * Private constructor to prevent from instantiation.

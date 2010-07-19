@@ -28,19 +28,26 @@ import static org.junit.Assert.fail;
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 
 import org.junit.Test;
+import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link GenericDependencyImpl}.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
 public class GenericDependencyImplTest extends DeepCloneableObjectTest < GenericDependencyImpl > {
 
+    /** Generic dependency test 1 instance. */
+    @DataPoint
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY1 = new GenericDependencyImpl("Number", "java.lang");
+
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl#getDependencyType()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl#getDependencyType()}
+     * .
      */
     @Test
     public void testGetDependencyType() {
@@ -48,7 +55,8 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl#getFullName()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl#getFullName()}.
      */
     @Test
     public void testGetFullName() {
@@ -56,7 +64,8 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl#getName()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl#getName()}.
      */
     @Test
     public void testGetName() {
@@ -64,7 +73,9 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl#getPackageName()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl#getPackageName()}
+     * .
      */
     @Test
     public void testGetPackageName() {
@@ -72,11 +83,12 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl#setDependencyType(net.sourceforge.plantuml.dependency.generic.type.DependencyType)}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl#setDependencyType(net.sourceforge.plantuml.dependency.generic.type.DependencyType)}
+     * .
      */
     @Test
     public void testSetDependencyType() {
         fail("Not yet implemented");
     }
-
 }

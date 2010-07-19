@@ -50,7 +50,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
     /** Serial version UID. */
     private static final long serialVersionUID = -8464283913821256094L;
 
-    private final Set < GenericDependency > parentClasses;
+    private Set < GenericDependency > parentClasses;
 
     /**
      * @param dependencyName
@@ -75,6 +75,8 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
             final Set < GenericDependency > parentClassesSet) {
         super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet);
         // TODO optimization
+        // TODO check that the dependencies are not duplicated in the parentInterface and
+        // parentClasses sets
         parentClasses = parentClassesSet;
     }
 
@@ -85,8 +87,10 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      */
     @Override
     public DependencyType deepClone() {
-        // TODO [graffity] Auto-generated method stub
-        return null;
+        ClassDependencyTypeImpl c = (ClassDependencyTypeImpl) super.deepClone();
+        // TODO deepClone don't manage cycles
+        c.parentClasses = new TreeSet < GenericDependency >(getParentClasses());
+        return c;
     }
 
     /**

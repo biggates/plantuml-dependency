@@ -107,5 +107,4 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
     public void testGetPlantUMLLinksDescription() {
         fail("Not yet implemented");
     }
-
 }
