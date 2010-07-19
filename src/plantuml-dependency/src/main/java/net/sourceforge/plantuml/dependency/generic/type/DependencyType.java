@@ -62,7 +62,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * For instance, in java it is represented by the <i>import</i> keyword.
      * </p>
      * 
-     * @return the the {@link Set} of all {@link GenericDependency} which are needed by the current
+     * @return the {@link Set} of all {@link GenericDependency} which are needed by the current
      *         dependency type to work.
      * @since 1.0
      */
@@ -104,7 +104,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * For instance, in java it is represented by the <i>implements</i> keyword.
      * </p>
      * 
-     * @return the {@link Set} of all interfaces as {@link GenericDependency} which used by the
+     * @return the {@link Set} of all interfaces as {@link GenericDependency} which are used by the
      *         current dependency type.
      * @since 1.0
      */

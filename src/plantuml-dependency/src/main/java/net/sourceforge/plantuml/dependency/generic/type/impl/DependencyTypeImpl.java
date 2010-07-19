@@ -24,8 +24,11 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl;
 
+import static java.util.logging.Level.SEVERE;
+import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
+import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
@@ -33,6 +36,7 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.US
 
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
@@ -51,17 +55,47 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /** Serial version UID. */
     private static final long serialVersionUID = -233142953615737115L;
 
+    /** The class logger. */
+    private static final transient Logger LOGGER = getLogger(DependencyTypeImpl.class.getName());
+
+    /** The dependency type name, such as "String". */
     private final String name;
+
+    /** The dependency type package name, such as "java.lang". */
     private final String packageName;
+
+    /** The dependency type full name, such as "java.lang.String". */
     private final String fullName;
-    private final Set < GenericDependency > importDependencies;
-    private final Set < GenericDependency > parentInterfaces;
+
+    /**
+     * The {@link Set} of all {@link GenericDependency} which are needed by the current dependency
+     * type to work.
+     */
+    private Set < GenericDependency > importDependencies;
+
+    /**
+     * The {@link Set} of all interfaces as {@link GenericDependency} which are used by the current
+     * dependency type.
+     */
+    private Set < GenericDependency > parentInterfaces;
+
+    /** The plantUML declaration as a {@link StringBuffer} describing the current dependency type. */
     private StringBuffer plantUMLDeclaration;
+
+    /**
+     * The plantUML description as a {@link StringBuffer} describing links to imports and the
+     * dependency type parents.
+     */
     private StringBuffer plantUMLLinksDescription;
 
     /**
+     * Default constructor.
+     * 
      * @param dependencyName
+     *            the dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
+     *            the dependency type package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
@@ -70,10 +104,19 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
+     * Medium constructor.
+     * 
      * @param dependencyName
+     *            the dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
+     *            the dependency type package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
      * @param importDependenciesSet
+     *            the {@link Set} of all {@link GenericDependency} which are needed by the current
+     *            dependency type to work, mustn't be <code>null</code>.
      * @param parentInterfacesSet
+     *            the {@link Set} of all interfaces as {@link GenericDependency} which are used by
+     *            the current dependency type, mustn't be <code>null</code>.
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
@@ -83,11 +126,22 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
+     * Full constructor.
+     * 
      * @param dependencyName
+     *            the dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
+     *            the dependency type package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
      * @param fullDependencyName
+     *            the full dependency name, such as "java..lang.String", mustn't be
+     *            <code>null</code>.
      * @param importDependenciesSet
+     *            the {@link Set} of all {@link GenericDependency} which are needed by the current
+     *            dependency type to work, mustn't be <code>null</code>.
      * @param parentInterfacesSet
+     *            the {@link Set} of all interfaces as {@link GenericDependency} which are used by
+     *            the current dependency type, mustn't be <code>null</code>.
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
@@ -126,8 +180,20 @@ public abstract class DependencyTypeImpl implements DependencyType {
      */
     @Override
     public DependencyType deepClone() {
-        // TODO [graffity] Auto-generated method stub
-        return null;
+        DependencyTypeImpl d = null;
+
+        try {
+            d = (DependencyTypeImpl) super.clone();
+            // TODO deepClone don't manage cycles
+            d.importDependencies = new TreeSet < GenericDependency >(getImportDependencies());
+            d.parentInterfaces = new TreeSet < GenericDependency >(getParentInterfaces());
+            d.plantUMLDeclaration = new StringBuffer(getPlantUMLDeclaration());
+            d.plantUMLLinksDescription = new StringBuffer(getPlantUMLLinksDescription());
+        } catch (final CloneNotSupportedException cnse) {
+            LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
+        }
+
+        return d;
     }
 
     /**
