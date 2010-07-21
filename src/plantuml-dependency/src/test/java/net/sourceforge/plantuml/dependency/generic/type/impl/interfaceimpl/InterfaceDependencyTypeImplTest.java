@@ -24,23 +24,72 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl;
 
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET1;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET3;
 import static org.junit.Assert.fail;
+
+import java.util.TreeSet;
+
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 import org.junit.Test;
+import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link InterfaceDependencyTypeImpl}.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
 public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < InterfaceDependencyTypeImpl > {
 
+    /** Interface dependency type test 1 instance. */
+    @DataPoint
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
+            "Integer", "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3);
+
+    /** Interface dependency type test 2 instance. */
+    @DataPoint
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE2 = new InterfaceDependencyTypeImpl(
+            "FileOutputStream", "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3);
+
+    /** Interface dependency type test 3 instance. */
+    @DataPoint
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE3 = new InterfaceDependencyTypeImpl(
+            "Integer", "java.io", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3);
+
+    /** Interface dependency type test 4 instance. */
+    @DataPoint
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE4 = new InterfaceDependencyTypeImpl(
+            "Integer", "java.lang", new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET3);
+
+    /** Interface dependency type test 5 instance. */
+    @DataPoint
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE5 = new InterfaceDependencyTypeImpl(
+            "Integer", "java.lang", GENERIC_DEPENDENCY_SET1, new TreeSet < GenericDependency >());
+
+    /** Interface dependency type test 6 instance. */
+    @DataPoint
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE6 = new InterfaceDependencyTypeImpl(
+            "Integer", "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3);
+
+    /** Interface dependency type test 7 instance. */
+    @DataPoint
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE7 = new InterfaceDependencyTypeImpl(
+            "Integer", "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET2);
+
+    /** Interface dependency type test 8 instance. */
+    @DataPoint
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE8 = null;
+
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getFullName()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getFullName()}
+     * .
      */
     @Test
     public void testGetFullName() {
@@ -48,7 +97,9 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getImportDependencies()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getImportDependencies()}
+     * .
      */
     @Test
     public void testGetImportDependencies() {
@@ -56,7 +107,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getName()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getName()}.
      */
     @Test
     public void testGetName() {
@@ -64,7 +116,9 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPackageName()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPackageName()}
+     * .
      */
     @Test
     public void testGetPackageName() {
@@ -72,7 +126,9 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentInterfaces()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentInterfaces()}
+     * .
      */
     @Test
     public void testGetParentInterfaces() {
@@ -80,7 +136,9 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration()}
+     * .
      */
     @Test
     public void testGetPlantUMLDeclaration() {
@@ -88,7 +146,9 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription()}
+     * .
      */
     @Test
     public void testGetPlantUMLLinksDescription() {

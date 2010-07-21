@@ -188,6 +188,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             // TODO log that dependencies has been found in the import : not the same package,
             // we have to remove it from the import list to avoid duplication between imports
             // and extended classes
+            // FIXME to remove !!
             importDependencies.remove(dependency);
             // TODO we also have to change the dependency from stub to interface
             DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),

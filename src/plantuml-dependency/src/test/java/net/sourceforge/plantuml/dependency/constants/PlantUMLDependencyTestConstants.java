@@ -170,8 +170,12 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Generic dependency set test 4 instance. */
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET3 = new TreeSet < GenericDependency >(
-            asList(new GenericDependency[] {new GenericDependencyImpl("Serializable", "java.io"),
-                    new GenericDependencyImpl("Comparable", "java.lang")}));
+            asList(new GenericDependency[] {new GenericDependencyImpl("Cloneable", "javax.lang"),
+                    new GenericDependencyImpl("Set", "java.lang")}));
+    
+    /** Generic dependency set test 5 instance. */
+    public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET5 = new TreeSet < GenericDependency >(
+            asList(new GenericDependency[] {new GenericDependencyImpl("Object", "java.lang")}));
 
     /** Verbose option test 1 instance. */
     public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(false, new StringBuffer(

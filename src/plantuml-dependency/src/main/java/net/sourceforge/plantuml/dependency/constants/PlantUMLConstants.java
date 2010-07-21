@@ -45,7 +45,7 @@ public final class PlantUMLConstants {
     public static final String CLASS_PLANTUML = LINE_SEPARATOR + "class ";
     
     /** The string representing the plantUML "abstract" tag. */
-    public static final String ABSTRACT_PLANTUML = LINE_SEPARATOR + "abstract ";
+    public static final String ABSTRACT_CLASS_PLANTUML = LINE_SEPARATOR + "abstract class ";
 
     /** The string representing the plantUML "enum" tag. */
     public static final String ENUM_PLANTUML = LINE_SEPARATOR + "enum ";

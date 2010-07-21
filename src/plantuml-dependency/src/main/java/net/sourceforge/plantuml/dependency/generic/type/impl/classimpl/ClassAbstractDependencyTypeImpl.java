@@ -24,7 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.ABSTRACT_PLANTUML;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.ABSTRACT_CLASS_PLANTUML;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -78,7 +78,7 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      */
     @Override
     protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = new StringBuffer(ABSTRACT_PLANTUML);
+        final StringBuffer buffer = new StringBuffer(ABSTRACT_CLASS_PLANTUML);
         buffer.append(getFullName());
         return buffer;
     }
