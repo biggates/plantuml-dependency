@@ -165,8 +165,8 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
     public void testGetParentInterfaces() {
         final Set < GenericDependency > parentInterfaces = CLASS_DEPENDENCY_TYPE1.getParentInterfaces();
         assertEquals(2, parentInterfaces.size());
-        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Serializable", "java.io")));
-        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Comparable", "java.lang")));
+        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Cloneable", "javax.lang")));
+        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Set", "java.lang")));
     }
 
     /**
@@ -187,7 +187,7 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
     @Test
     public void testGetPlantUMLLinksDescriptionWithInterfaceAndImportDependencies() {
         assertEquals(
-                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.io.Serializable <|-- java.lang.Integer\njava.lang.Comparable <|-- java.lang.Integer\njava.lang.Number <|-- java.lang.Integer",
+                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Number <|-- java.lang.Integer",
                 CLASS_DEPENDENCY_TYPE9.getPlantUMLLinksDescription().toString());
     }
 
@@ -211,7 +211,7 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
     @Test
     public void testGetPlantUMLLinksDescriptionWithParentAndImportDependencies() {
         assertEquals(
-                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.io.Serializable <|-- java.lang.Integer\njava.lang.Comparable <|-- java.lang.Integer\njava.lang.Number <|-- java.lang.Integer",
+                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Set <|-- java.lang.Integer\njavax.lang.Cloneable <|-- java.lang.Integer\njava.lang.Number <|-- java.lang.Integer",
                 CLASS_DEPENDENCY_TYPE7.getPlantUMLLinksDescription().toString());
     }
 }

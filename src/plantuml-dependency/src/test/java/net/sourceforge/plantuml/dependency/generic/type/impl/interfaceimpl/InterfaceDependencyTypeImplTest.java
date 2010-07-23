@@ -27,12 +27,16 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET3;
-import static org.junit.Assert.fail;
+import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -93,7 +97,7 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetFullName() {
-        fail("Not yet implemented");
+        assertEquals("java.lang.Integer", INTERFACE_DEPENDENCY_TYPE1.getFullName());
     }
 
     /**
@@ -103,7 +107,11 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetImportDependencies() {
-        fail("Not yet implemented");
+        final Set < GenericDependency > importDependencies = INTERFACE_DEPENDENCY_TYPE1.getImportDependencies();
+        assertEquals(3, importDependencies.size());
+        assertTrue(importDependencies.contains(GENERIC_DEPENDENCY1));
+        assertTrue(importDependencies.contains(new GenericDependencyImpl("Serializable", "java.io")));
+        assertTrue(importDependencies.contains(new GenericDependencyImpl("Comparable", "java.lang")));
     }
 
     /**
@@ -112,7 +120,7 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetName() {
-        fail("Not yet implemented");
+        assertEquals("Integer", INTERFACE_DEPENDENCY_TYPE1.getName());
     }
 
     /**
@@ -122,7 +130,7 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetPackageName() {
-        fail("Not yet implemented");
+        assertEquals("java.lang", INTERFACE_DEPENDENCY_TYPE1.getPackageName());
     }
 
     /**
@@ -132,7 +140,10 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetParentInterfaces() {
-        fail("Not yet implemented");
+        final Set < GenericDependency > parentInterfaces = INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces();
+        assertEquals(2, parentInterfaces.size());
+        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Cloneable", "javax.lang")));
+        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Set", "java.lang")));
     }
 
     /**
@@ -142,7 +153,7 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetPlantUMLDeclaration() {
-        fail("Not yet implemented");
+        assertEquals("\ninterface java.lang.Integer", INTERFACE_DEPENDENCY_TYPE1.getPlantUMLDeclaration().toString());
     }
 
     /**
@@ -151,7 +162,21 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      * .
      */
     @Test
-    public void testGetPlantUMLLinksDescription() {
-        fail("Not yet implemented");
+    public void testGetPlantUMLLinksDescriptionWithInterfaceAndImportDependencies() {
+        assertEquals(
+                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Number <|-- java.lang.Integer",
+                INTERFACE_DEPENDENCY_TYPE7.getPlantUMLLinksDescription().toString());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription()}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLLinksDescriptionWithoutInterfaceAndImportDependencies() {
+        assertEquals(
+                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Integer ..> java.lang.Number\njava.lang.Set <|-- java.lang.Integer\njavax.lang.Cloneable <|-- java.lang.Integer",
+                INTERFACE_DEPENDENCY_TYPE1.getPlantUMLLinksDescription().toString());
     }
 }

@@ -29,10 +29,12 @@ import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
+import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.USES_RIGHT_PLANTUML;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.IMPORT_IS_AN_INTERFACE_INFO;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -267,7 +269,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
         final StringBuffer buffer = new StringBuffer();
         buffer.append(generatePlantUMLDescriptionHeader());
 
-        for (final GenericDependency abstractImportDependency : getImportDependencies()) {
+        for (final GenericDependency abstractImportDependency : getImportDependenciesToGeneratePlantUML()) {
             buffer.append(LINE_SEPARATOR);
             buffer.append(getFullName());
             buffer.append(USES_RIGHT_PLANTUML);
@@ -303,6 +305,29 @@ public abstract class DependencyTypeImpl implements DependencyType {
     @Override
     public Set < GenericDependency > getImportDependencies() {
         return importDependencies;
+    }
+
+    /**
+     * Gets the {@link Set} of all import as {@link GenericDependency} which are used by the current
+     * dependency type and have to be generated in the PlantUML description. If no dependencies
+     * interfaces are implemented nor extended, it returns an empty {@link Set}.
+     * 
+     * @return the {@link Set} of all import as {@link GenericDependency} which are used by the
+     *         current dependency type but which are not directly implemented by this one.
+     * @since 1.0
+     */
+    private Set < GenericDependency > getImportDependenciesToGeneratePlantUML() {
+        final Set < GenericDependency > importDependenciesNotImplemented = new TreeSet < GenericDependency >();
+
+        for (final GenericDependency genericDependency : getImportDependencies()) {
+            if (hasImportNotToBeGenerated(genericDependency)) {
+                LOGGER.info(buildLogString(IMPORT_IS_AN_INTERFACE_INFO, genericDependency));
+            } else {
+                importDependenciesNotImplemented.add(genericDependency);
+            }
+        }
+
+        return importDependenciesNotImplemented;
     }
 
     /**
@@ -373,6 +398,19 @@ public abstract class DependencyTypeImpl implements DependencyType {
         result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
         return result;
     }
+
+    /**
+     * This method tells if the current import has to be generated in the PlantUML description or
+     * not.
+     * 
+     * @param genericDependency
+     *            the import to test if it has to be generated or not, shouldn't be
+     *            <code>null</code>.
+     * @return <code>true</code> if the PlantUML description of the current import has to be
+     *         generated, <code>false</code> otherwise.
+     * @since 1.0
+     */
+    protected abstract boolean hasImportNotToBeGenerated(GenericDependency genericDependency);
 
     /**
      * {@inheritDoc}

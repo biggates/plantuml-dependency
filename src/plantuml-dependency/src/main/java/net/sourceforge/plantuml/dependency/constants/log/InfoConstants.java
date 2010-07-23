@@ -42,6 +42,9 @@ public final class InfoConstants {
 
     /** The parent type string empty info message. */
     public static final String JAVA_PARENT_TYPE_STRING_EMPTY_INFO = "[info-plantuml-dependency-003] : The java parent type string to parse is empty, no parent to extract";
+    
+    /** The import is an interface info message. */
+    public static final String IMPORT_IS_AN_INTERFACE_INFO = "[info-plantuml-004] : Import \"{0}\" is an interface, UML link don't have to be generated";
 
     /**
      * Private constructor to prevent from instantiation.

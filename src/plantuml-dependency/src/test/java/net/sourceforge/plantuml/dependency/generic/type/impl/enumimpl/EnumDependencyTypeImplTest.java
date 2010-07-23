@@ -142,8 +142,8 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetParentInterfaces() {
         final Set < GenericDependency > parentInterfaces = ENUM_DEPENDENCY_TYPE1.getParentInterfaces();
         assertEquals(2, parentInterfaces.size());
-        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Serializable", "java.io")));
-        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Comparable", "java.lang")));
+        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Cloneable", "javax.lang")));
+        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Set", "java.lang")));
     }
 
     /**
@@ -164,7 +164,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLLinksDescriptionWithInterfaceAndImportDependencies() {
         assertEquals(
-                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.io.Serializable <|-- java.lang.Integer\njava.lang.Comparable <|-- java.lang.Integer\njava.lang.Number <|-- java.lang.Integer",
+                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Number <|-- java.lang.Integer",
                 ENUM_DEPENDENCY_TYPE7.getPlantUMLLinksDescription().toString());
     }
 
@@ -176,7 +176,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLLinksDescriptionWithoutInterfaceAndImportDependencies() {
         assertEquals(
-                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Integer ..> java.lang.Number\njava.io.Serializable <|-- java.lang.Integer\njava.lang.Comparable <|-- java.lang.Integer\njava.lang.Number <|-- java.lang.Integer",
+                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Integer ..> java.lang.Number\njava.lang.Set <|-- java.lang.Integer\njavax.lang.Cloneable <|-- java.lang.Integer",
                 ENUM_DEPENDENCY_TYPE1.getPlantUMLLinksDescription().toString());
     }
 }

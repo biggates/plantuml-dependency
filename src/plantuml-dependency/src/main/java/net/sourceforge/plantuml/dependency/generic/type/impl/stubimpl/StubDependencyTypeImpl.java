@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl;
 
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 
 /**
@@ -60,5 +61,15 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
         final StringBuffer buffer = new StringBuffer(CLASS_PLANTUML);
         buffer.append(getFullName());
         return buffer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
+        return getParentInterfaces().contains(genericDependency);
     }
 }

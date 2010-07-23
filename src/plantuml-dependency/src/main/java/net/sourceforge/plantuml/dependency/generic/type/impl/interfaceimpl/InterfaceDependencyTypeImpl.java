@@ -79,4 +79,14 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
         buffer.append(getFullName());
         return buffer;
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
+        return getParentInterfaces().contains(genericDependency);
+    }
 }

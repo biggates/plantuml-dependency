@@ -57,7 +57,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
 
     /**
      * Gets the {@link Set} of all {@link GenericDependency} which are needed by the current
-     * dependency type to work. It no dependencies are needed, it returns an empty {@link Set}.
+     * dependency type to work. If no dependencies are needed, it returns an empty {@link Set}.
      * <p>
      * For instance, in java it is represented by the <i>import</i> keyword.
      * </p>
@@ -97,8 +97,8 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
     String getPackageName();
 
     /**
-     * Gets the {@link Set} of all interface as {@link GenericDependency} which used by the current
-     * dependency type, i.e. extended or implemented. It no dependencies interfaces are implemented
+     * Gets the {@link Set} of all interface as {@link GenericDependency} which are used by the current
+     * dependency type, i.e. extended or implemented. If no dependencies interfaces are implemented
      * nor extended, it returns an empty {@link Set}.
      * <p>
      * For instance, in java it is represented by the <i>implements</i> keyword.

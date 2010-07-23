@@ -87,7 +87,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      */
     @Override
     public DependencyType deepClone() {
-        ClassDependencyTypeImpl c = (ClassDependencyTypeImpl) super.deepClone();
+        final ClassDependencyTypeImpl c = (ClassDependencyTypeImpl) super.deepClone();
         // TODO deepClone don't manage cycles
         c.parentClasses = new TreeSet < GenericDependency >(getParentClasses());
         return c;
@@ -132,5 +132,15 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
     @Override
     public Set < GenericDependency > getParentClasses() {
         return parentClasses;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
+        return getParentInterfaces().contains(genericDependency) || getParentClasses().contains(genericDependency);
     }
 }

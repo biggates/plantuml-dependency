@@ -24,10 +24,16 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl;
 
-import static org.junit.Assert.fail;
+import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
+import static org.junit.Assert.assertEquals;
+
+import java.util.Set;
+
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 import org.junit.Test;
+import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link StubDependencyTypeImpl}.
@@ -39,6 +45,29 @@ import org.junit.Test;
  */
 public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDependencyTypeImpl > {
 
+    /** Stub dependency type test 1 instance. */
+    @DataPoint
+    public static final StubDependencyTypeImpl STUB_DEPENDENCY_TYPE1 = new StubDependencyTypeImpl("Integer",
+            "java.lang");
+
+    /** Stub dependency type test 2 instance. */
+    @DataPoint
+    public static final StubDependencyTypeImpl STUB_DEPENDENCY_TYPE2 = new StubDependencyTypeImpl("FileOutputStream",
+            "java.lang");
+
+    /** Stub dependency type test 3 instance. */
+    @DataPoint
+    public static final StubDependencyTypeImpl STUB_DEPENDENCY_TYPE3 = new StubDependencyTypeImpl("Integer", "java.io");
+
+    /** Stub dependency type test 4 instance. */
+    @DataPoint
+    public static final StubDependencyTypeImpl STUB_DEPENDENCY_TYPE4 = new StubDependencyTypeImpl("Integer",
+            "java.lang");
+
+    /** Stub dependency type test 5 instance. */
+    @DataPoint
+    public static final StubDependencyTypeImpl STUB_DEPENDENCY_TYPE5 = null;
+
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getFullName()}
@@ -46,7 +75,7 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetFullName() {
-        fail("Not yet implemented");
+        assertEquals("java.lang.Integer", STUB_DEPENDENCY_TYPE1.getFullName());
     }
 
     /**
@@ -56,7 +85,8 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetImportDependencies() {
-        fail("Not yet implemented");
+        final Set < GenericDependency > importDependencies = STUB_DEPENDENCY_TYPE1.getImportDependencies();
+        assertEquals(0, importDependencies.size());
     }
 
     /**
@@ -65,7 +95,7 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetName() {
-        fail("Not yet implemented");
+        assertEquals("Integer", STUB_DEPENDENCY_TYPE1.getName());
     }
 
     /**
@@ -75,7 +105,7 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetPackageName() {
-        fail("Not yet implemented");
+        assertEquals("java.lang", STUB_DEPENDENCY_TYPE1.getPackageName());
     }
 
     /**
@@ -85,7 +115,8 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetParentInterfaces() {
-        fail("Not yet implemented");
+        final Set < GenericDependency > parentInterfaces = STUB_DEPENDENCY_TYPE1.getParentInterfaces();
+        assertEquals(0, parentInterfaces.size());
     }
 
     /**
@@ -95,7 +126,7 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetPlantUMLDeclaration() {
-        fail("Not yet implemented");
+        assertEquals("\nclass java.lang.Integer", STUB_DEPENDENCY_TYPE1.getPlantUMLDeclaration().toString());
     }
 
     /**
@@ -105,6 +136,6 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetPlantUMLLinksDescription() {
-        fail("Not yet implemented");
+        assertEquals(BLANK_STRING, STUB_DEPENDENCY_TYPE1.getPlantUMLLinksDescription().toString());
     }
 }
