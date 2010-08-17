@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl;
 
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Set;
@@ -126,7 +127,8 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetPlantUMLDeclaration() {
-        assertEquals("\nclass java.lang.Integer", STUB_DEPENDENCY_TYPE1.getPlantUMLDeclaration().toString());
+        assertEquals(LINE_SEPARATOR + "class java.lang.Integer", STUB_DEPENDENCY_TYPE1.getPlantUMLDeclaration()
+                .toString());
     }
 
     /**

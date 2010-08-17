@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
+import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET3;
@@ -180,8 +181,8 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
      */
     @Test
     public void testGetPlantUMLDeclaration() {
-        assertEquals("\nabstract class java.lang.Integer", CLASS_ABSTRACT_DEPENDENCY_TYPE1.getPlantUMLDeclaration()
-                .toString());
+        assertEquals(LINE_SEPARATOR + "abstract class java.lang.Integer", CLASS_ABSTRACT_DEPENDENCY_TYPE1
+                .getPlantUMLDeclaration().toString());
     }
 
     /**
@@ -191,9 +192,10 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
      */
     @Test
     public void testGetPlantUMLLinksDescriptionWithInterfaceAndImportDependencies() {
-        assertEquals(
-                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Number <|-- java.lang.Integer",
-                CLASS_ABSTRACT_DEPENDENCY_TYPE9.getPlantUMLLinksDescription().toString());
+        assertEquals(LINE_SEPARATOR + "java.lang.Integer ..> java.io.Serializable" + LINE_SEPARATOR
+                + "java.lang.Integer ..> java.lang.Comparable" + LINE_SEPARATOR
+                + "java.lang.Number <|-- java.lang.Integer", CLASS_ABSTRACT_DEPENDENCY_TYPE9
+                .getPlantUMLLinksDescription().toString());
     }
 
     /**
@@ -203,9 +205,12 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
      */
     @Test
     public void testGetPlantUMLLinksDescriptionWithoutParentNorInterfaceAndImportDependencies() {
-        assertEquals(
-                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Integer ..> java.lang.Number\njava.lang.Object <|-- java.lang.Integer\njava.lang.Set <|-- java.lang.Integer\njavax.lang.Cloneable <|-- java.lang.Integer",
-                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getPlantUMLLinksDescription().toString());
+        assertEquals(LINE_SEPARATOR + "java.lang.Integer ..> java.io.Serializable" + LINE_SEPARATOR
+                + "java.lang.Integer ..> java.lang.Comparable" + LINE_SEPARATOR
+                + "java.lang.Integer ..> java.lang.Number" + LINE_SEPARATOR + "java.lang.Object <|-- java.lang.Integer"
+                + LINE_SEPARATOR + "java.lang.Set <|-- java.lang.Integer" + LINE_SEPARATOR
+                + "javax.lang.Cloneable <|-- java.lang.Integer", CLASS_ABSTRACT_DEPENDENCY_TYPE8
+                .getPlantUMLLinksDescription().toString());
     }
 
     /**
@@ -215,8 +220,11 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
      */
     @Test
     public void testGetPlantUMLLinksDescriptionWithParentAndImportDependencies() {
-        assertEquals(
-                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Set <|-- java.lang.Integer\njavax.lang.Cloneable <|-- java.lang.Integer\njava.lang.Number <|-- java.lang.Integer",
-                CLASS_ABSTRACT_DEPENDENCY_TYPE7.getPlantUMLLinksDescription().toString());
+        assertEquals(LINE_SEPARATOR + "java.lang.Integer ..> java.io.Serializable" + LINE_SEPARATOR
+                + "java.lang.Integer ..> java.lang.Comparable" + LINE_SEPARATOR
+                + "java.lang.Set <|-- java.lang.Integer" + LINE_SEPARATOR
+                + "javax.lang.Cloneable <|-- java.lang.Integer" + LINE_SEPARATOR
+                + "java.lang.Number <|-- java.lang.Integer", CLASS_ABSTRACT_DEPENDENCY_TYPE7
+                .getPlantUMLLinksDescription().toString());
     }
 }

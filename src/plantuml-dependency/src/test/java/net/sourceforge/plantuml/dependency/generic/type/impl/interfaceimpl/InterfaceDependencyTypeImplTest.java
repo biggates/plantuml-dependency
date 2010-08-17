@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl;
 
+import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET3;
@@ -153,7 +154,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetPlantUMLDeclaration() {
-        assertEquals("\ninterface java.lang.Integer", INTERFACE_DEPENDENCY_TYPE1.getPlantUMLDeclaration().toString());
+        assertEquals(LINE_SEPARATOR + "interface java.lang.Integer", INTERFACE_DEPENDENCY_TYPE1
+                .getPlantUMLDeclaration().toString());
     }
 
     /**
@@ -163,9 +165,10 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetPlantUMLLinksDescriptionWithInterfaceAndImportDependencies() {
-        assertEquals(
-                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Number <|-- java.lang.Integer",
-                INTERFACE_DEPENDENCY_TYPE7.getPlantUMLLinksDescription().toString());
+        assertEquals(LINE_SEPARATOR + "java.lang.Integer ..> java.io.Serializable" + LINE_SEPARATOR
+                + "java.lang.Integer ..> java.lang.Comparable" + LINE_SEPARATOR
+                + "java.lang.Number <|-- java.lang.Integer", INTERFACE_DEPENDENCY_TYPE7.getPlantUMLLinksDescription()
+                .toString());
     }
 
     /**
@@ -175,8 +178,10 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetPlantUMLLinksDescriptionWithoutInterfaceAndImportDependencies() {
-        assertEquals(
-                "\njava.lang.Integer ..> java.io.Serializable\njava.lang.Integer ..> java.lang.Comparable\njava.lang.Integer ..> java.lang.Number\njava.lang.Set <|-- java.lang.Integer\njavax.lang.Cloneable <|-- java.lang.Integer",
-                INTERFACE_DEPENDENCY_TYPE1.getPlantUMLLinksDescription().toString());
+        assertEquals(LINE_SEPARATOR + "java.lang.Integer ..> java.io.Serializable" + LINE_SEPARATOR
+                + "java.lang.Integer ..> java.lang.Comparable" + LINE_SEPARATOR
+                + "java.lang.Integer ..> java.lang.Number" + LINE_SEPARATOR + "java.lang.Set <|-- java.lang.Integer"
+                + LINE_SEPARATOR + "javax.lang.Cloneable <|-- java.lang.Integer", INTERFACE_DEPENDENCY_TYPE1
+                .getPlantUMLLinksDescription().toString());
     }
 }
