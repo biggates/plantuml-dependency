@@ -53,8 +53,13 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
     private Set < GenericDependency > parentClasses;
 
     /**
+     * Default constructor.
+     * 
      * @param dependencyName
+     *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
+     *            The dependency type package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
      * @since 1.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {

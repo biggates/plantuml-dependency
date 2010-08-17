@@ -49,8 +49,13 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
     private static final long serialVersionUID = 4101721547615760115L;
 
     /**
+     * Default constructor.
+     * 
      * @param dependencyName
+     *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
+     *            The dependency type package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
      * @since 1.0
      */
     public EnumDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {

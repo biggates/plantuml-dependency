@@ -149,6 +149,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final String fullDependencyName, final Set < GenericDependency > importDependenciesSet,
             final Set < GenericDependency > parentInterfacesSet) {
+        // TODO tests null
         name = dependencyName;
         packageName = dependencyPackageName;
         fullName = fullDependencyName;

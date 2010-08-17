@@ -47,8 +47,13 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
     private static final long serialVersionUID = 5962361438336541275L;
 
     /**
+     * Default constructor.
+     * 
      * @param dependencyName
+     *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
+     *            The dependency type package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
      * @since 1.0
      */
     public InterfaceDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {

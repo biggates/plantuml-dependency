@@ -67,7 +67,11 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
 
     /** Stub dependency type test 5 instance. */
     @DataPoint
-    public static final StubDependencyTypeImpl STUB_DEPENDENCY_TYPE5 = null;
+    public static final StubDependencyTypeImpl STUB_DEPENDENCY_TYPE5 = new StubDependencyTypeImpl("Number", "java.lang");
+
+    /** Stub dependency type test 6 instance. */
+    @DataPoint
+    public static final StubDependencyTypeImpl STUB_DEPENDENCY_TYPE6 = null;
 
     /**
      * Test method for

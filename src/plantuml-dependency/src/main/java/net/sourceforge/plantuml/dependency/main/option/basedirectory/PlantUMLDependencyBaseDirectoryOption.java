@@ -30,7 +30,6 @@ import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 
 import java.io.File;
-import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.mazix.cli.command.CommandLine;
@@ -58,8 +57,9 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
      * @param optionName
      *            the option main name (for instance "-v" or "-o"), mustn't be <code>null</code>.
      * @param optionSecondaryNames
-     *            the {@link Set} containing all option secondary names, mustn't be
-     *            <code>null</code> but may be empty. <i>Note : a new {@link Set} is created.</i>
+     *            the {@link java.util.Set} containing all option secondary names, mustn't be
+     *            <code>null</code> but may be empty. <i>Note : a new {@link java.util.Set} is
+     *            created.</i>
      * @param optionIsMandatory
      *            <code>true</code> if the option is mandatory, <code>false</code> otherwise.
      * @param argument

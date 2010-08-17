@@ -145,4 +145,13 @@ public class PlantUMLDependencyProgram {
                 .parseCommandLine(new CommandLineImpl(args));
         plantumlDependencyProgramExecution.execute();
     }
+
+    /**
+     * Private constructor to prevent from instantiation.
+     * 
+     * @since 1.0
+     */
+    private PlantUMLDependencyProgram() {
+        super();
+    }
 }

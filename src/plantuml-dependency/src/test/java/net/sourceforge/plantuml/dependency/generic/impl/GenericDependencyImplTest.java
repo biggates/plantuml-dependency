@@ -24,7 +24,10 @@
 
 package net.sourceforge.plantuml.dependency.generic.impl;
 
-import static org.junit.Assert.fail;
+import static net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImplTest.STUB_DEPENDENCY_TYPE4;
+import static net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImplTest.STUB_DEPENDENCY_TYPE5;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 
 import org.junit.Test;
@@ -51,7 +54,7 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
      */
     @Test
     public void testGetDependencyType() {
-        fail("Not yet implemented");
+        assertEquals(STUB_DEPENDENCY_TYPE5, GENERIC_DEPENDENCY1.getDependencyType());
     }
 
     /**
@@ -60,7 +63,7 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
      */
     @Test
     public void testGetFullName() {
-        fail("Not yet implemented");
+        assertEquals(STUB_DEPENDENCY_TYPE5.getFullName(), GENERIC_DEPENDENCY1.getFullName());
     }
 
     /**
@@ -69,7 +72,7 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
      */
     @Test
     public void testGetName() {
-        fail("Not yet implemented");
+        assertEquals(STUB_DEPENDENCY_TYPE5.getName(), GENERIC_DEPENDENCY1.getName());
     }
 
     /**
@@ -79,7 +82,7 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
      */
     @Test
     public void testGetPackageName() {
-        fail("Not yet implemented");
+        assertEquals(STUB_DEPENDENCY_TYPE5.getPackageName(), GENERIC_DEPENDENCY1.getPackageName());
     }
 
     /**
@@ -89,6 +92,7 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
      */
     @Test
     public void testSetDependencyType() {
-        fail("Not yet implemented");
+        GENERIC_DEPENDENCY1.setDependencyType(STUB_DEPENDENCY_TYPE4);
+        assertTrue(STUB_DEPENDENCY_TYPE4 == GENERIC_DEPENDENCY1.getDependencyType());
     }
 }

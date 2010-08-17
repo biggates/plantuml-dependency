@@ -43,8 +43,13 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
     private static final long serialVersionUID = 9006430972122342589L;
 
     /**
+     * Default constructor.
+     * 
      * @param dependencyName
+     *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
+     *            The dependency type package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
      * @since 1.0
      */
     public StubDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
