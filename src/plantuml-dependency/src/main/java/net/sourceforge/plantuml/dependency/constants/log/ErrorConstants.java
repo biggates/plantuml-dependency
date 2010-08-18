@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.constants.log;
 
+
 /**
  * The class which defines all error messages constants which are written in the log file. The
  * messages also contains the error code.
@@ -84,12 +85,27 @@ public final class ErrorConstants {
 
     /** The parent type string null error message. */
     public static final String JAVA_PARENT_TYPE_STRING_NULL_ERROR = "[error-plantuml-dependency-017] : The java parent type string to parse is null";
-    
+
     /** The parent type string not empty error message. */
     public static final String JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR = "[error-plantuml-dependency-018] : The java parent type string \"{0}\" should be null for this java type \"{1}\"";
 
     /** The reading source file error message. */
     public static final String READING_SOURCE_FILE_ERROR = "[error-plantuml-dependency-019] : Severe parsing errors have occurred while reading the source file \"{0}\", the file will be ignored";
+
+    /** The java type name null error message. */
+    public static final String JAVA_TYPE_NAME_NULL_ERROR = "[error-plantuml-dependency-020] : The java type name is null";
+
+    /** The java type package name null error message. */
+    public static final String JAVA_TYPE_PACKAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-021] : The java type package name is null";
+
+    /** The java type import dependencies null error message. */
+    public static final String JAVA_TYPE_IMPORTS_NULL_ERROR = "[error-plantuml-dependency-022] : The java type import dependencies is null";
+
+    /** The java type implementations dependencies null error message. */
+    public static final String JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR = "[error-plantuml-dependency-023] : The java type implementations dependencies is null";
+
+    /** The java type extensions dependencies null error message. */
+    public static final String JAVA_TYPE_EXTENTIONS_NULL_ERROR = "[error-plantuml-dependency-024] : The java type extensions dependencies is null";
 
     /**
      * Private constructor to prevent from instantiation.

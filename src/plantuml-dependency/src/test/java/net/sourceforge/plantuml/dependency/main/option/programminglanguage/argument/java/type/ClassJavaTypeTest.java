@@ -24,8 +24,11 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
+import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImplTest.CLASS_ABSTRACT_DEPENDENCY_TYPE1;
+import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImplTest.CLASS_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.CLASS;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 import net.sourceforge.mazix.components.ObjectTest;
 
 import org.junit.Test;
@@ -59,8 +62,24 @@ public class ClassJavaTypeTest extends ObjectTest < ClassJavaType > {
      * .
      */
     @Test
-    public void testCreateDependencyType() {
-        fail("Not yet implemented");
+    public void testCreateDependencyTypeNotAbstract() {
+        assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_DEPENDENCY_TYPE1
+                .getName(), CLASS_DEPENDENCY_TYPE1.getPackageName(), false, CLASS_DEPENDENCY_TYPE1
+                .getImportDependencies(), CLASS_DEPENDENCY_TYPE1.getParentInterfaces(),
+                CLASS_DEPENDENCY_TYPE1.getParentClasses()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#createDependencyType(java.lang.String, java.lang.String, boolean, java.util.Set, java.util.Set, java.util.Set)}
+     * .
+     */
+    @Test
+    public void testCreateDependencyTypeAbstract() {
+        assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_ABSTRACT_DEPENDENCY_TYPE1
+                .getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getPackageName(), true, CLASS_ABSTRACT_DEPENDENCY_TYPE1
+                .getImportDependencies(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentInterfaces(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentClasses()));
     }
 
     /**

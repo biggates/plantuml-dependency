@@ -33,6 +33,11 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.J
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_EXTENTIONS_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPORTS_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_NAME_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_PACKAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
@@ -78,6 +83,12 @@ class InterfaceJavaType extends JavaType {
             final boolean isAbstract, final Set < GenericDependency > importDependencies,
             final Set < GenericDependency > parentImplementationsDependencies,
             final Set < GenericDependency > parentExtentionsDependencies) {
+        checkNull(dependencyName, JAVA_TYPE_NAME_NULL_ERROR);
+        checkNull(dependencyPackageName, JAVA_TYPE_PACKAGE_NAME_NULL_ERROR);
+        checkNull(importDependencies, JAVA_TYPE_IMPORTS_NULL_ERROR);
+        checkNull(parentImplementationsDependencies, JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR);
+        checkNull(parentExtentionsDependencies, JAVA_TYPE_EXTENTIONS_NULL_ERROR);
+
         return new InterfaceDependencyTypeImpl(dependencyName, dependencyPackageName, importDependencies,
                 parentExtentionsDependencies);
     }
@@ -126,10 +137,11 @@ class InterfaceJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public Set < String > extractParentImplementations(final String implementsString) throws PlantUMLDependencyException {
+    public Set < String > extractParentImplementations(final String implementsString)
+            throws PlantUMLDependencyException {
         if (isNotEmpty(implementsString)) {
-            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR, new Object[] {
-                    implementsString, getLanguageKeyword()}));
+            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR,
+                    new Object[] {implementsString, getLanguageKeyword()}));
         } else {
             return new TreeSet < String >();
         }
