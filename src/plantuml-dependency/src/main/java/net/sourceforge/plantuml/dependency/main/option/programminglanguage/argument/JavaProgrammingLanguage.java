@@ -63,6 +63,9 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argum
  */
 class JavaProgrammingLanguage extends ProgrammingLanguage {
 
+    /** Serial version UID. */
+    private static final long serialVersionUID = 62105384573195242L;
+
     /**
      * Default constructor.
      * 
@@ -331,6 +334,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         return importDependenciesSet;
     }
 
+    /**
+     * @param javaSourceFileContent
+     * @return
+     */
     private String extractPackageName(final String javaSourceFileContent) {
         String packageName = BLANK_STRING;
         final Matcher matcher = PACKAGE_REGEXP.matcher(javaSourceFileContent);
@@ -342,6 +349,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         return packageName;
     }
 
+    /**
+     * @param javaSourceFileContent
+     * @param javaObjectMap
+     * @return
+     */
     private Set < GenericDependency > extractStaticImportDependenciesSet(final String javaSourceFileContent,
             final Map < String, GenericDependency > javaObjectMap) {
         final Set < GenericDependency > importDependenciesSet = new TreeSet < GenericDependency >();
@@ -367,7 +379,6 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * {@inheritDoc}
-     * @throws PlantUMLDependencyException 
      * 
      * @since 1.0
      */

@@ -37,6 +37,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.U
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.JAVA_PARENT_TYPE_STRING_EMPTY_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.JAVA_TYPE_FOUND_INFO;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -57,7 +58,10 @@ import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
  * @since 1.0
  * @version 1.0
  */
-public abstract class JavaType implements Comparable < JavaType > {
+public abstract class JavaType implements Comparable < JavaType >, Serializable {
+
+    /** Serial version UID. */
+    private static final long serialVersionUID = 13586383951181146L;
 
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(JavaType.class.getName());

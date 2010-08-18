@@ -29,6 +29,7 @@ import static net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.Stu
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -92,7 +93,8 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
      */
     @Test
     public void testSetDependencyType() {
-        GENERIC_DEPENDENCY1.setDependencyType(STUB_DEPENDENCY_TYPE4);
-        assertTrue(STUB_DEPENDENCY_TYPE4 == GENERIC_DEPENDENCY1.getDependencyType());
+        final GenericDependency dependencyClone = GENERIC_DEPENDENCY1.deepClone();
+        dependencyClone.setDependencyType(STUB_DEPENDENCY_TYPE4);
+        assertTrue(STUB_DEPENDENCY_TYPE4 == dependencyClone.getDependencyType());
     }
 }

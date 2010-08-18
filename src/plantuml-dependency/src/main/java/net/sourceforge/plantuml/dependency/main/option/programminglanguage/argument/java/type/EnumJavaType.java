@@ -55,6 +55,9 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.Inter
  */
 class EnumJavaType extends JavaType {
 
+    /** Serial version UID. */
+    private static final long serialVersionUID = -6738500847524699455L;
+
     /**
      * Default constructor.
      * 

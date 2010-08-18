@@ -54,6 +54,9 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.Inter
  */
 class InterfaceJavaType extends JavaType {
 
+    /** Serial version UID. */
+    private static final long serialVersionUID = -5405937103390368720L;
+
     /**
      * Default constructor.
      * 

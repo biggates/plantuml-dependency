@@ -117,8 +117,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
      *            the {@link Set} of all {@link GenericDependency} which are needed by the current
      *            dependency type to work, mustn't be <code>null</code>.
      * @param parentInterfacesSet
-     *            the {@link Set} of all interfaces as {@link GenericDependency} which are used by
-     *            the current dependency type, mustn't be <code>null</code>.
+     *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
+     *            used by the current dependency type, mustn't be <code>null</code>.
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,

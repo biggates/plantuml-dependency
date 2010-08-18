@@ -80,7 +80,8 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * The {@link FileSet} describing all files to include or exclude and also the base directory
      * where to look for.
      */
-    private FileSet inputFileSet;
+    // FIXME should have a serializable input file set
+    private transient FileSet inputFileSet;
 
     /** The programming language to parse. */
     private ProgrammingLanguage programmingLanguage;
@@ -342,7 +343,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param dependenciesMap
      *            the {@link Map} of dependencies already seen or treated, with their full name as
      *            keys and the associated {@link GenericDependency} instances as values.
-     * @param outputFile
+     * @param file
      *            the output file where to generate the plantUML description, mustn't be
      *            <code>null</code>.
      * @since 1.0

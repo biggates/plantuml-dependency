@@ -33,6 +33,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.P
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.UNKNOWN_PROGRAMMING_LANGUAGE_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.PROGRAMMING_LANGUAGE_FOUND_INFO;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -51,7 +52,10 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
  * @since 1.0
  * @version 1.0
  */
-public abstract class ProgrammingLanguage implements Comparable < ProgrammingLanguage > {
+public abstract class ProgrammingLanguage implements Comparable < ProgrammingLanguage >, Serializable {
+
+    /** Serial version UID. */
+    private static final long serialVersionUID = -4593346488847506817L;
 
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(ProgrammingLanguage.class.getName());

@@ -40,6 +40,9 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
  */
 class CppProgrammingLanguage extends ProgrammingLanguage {
 
+    /** Serial version UID. */
+    private static final long serialVersionUID = 5226406064459624517L;
+
     /**
      * Default constructor.
      * 

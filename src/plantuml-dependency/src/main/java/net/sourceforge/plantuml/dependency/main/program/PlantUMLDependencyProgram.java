@@ -58,14 +58,18 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.Plant
  * @since 1.0
  * @version 1.0
  */
-public class PlantUMLDependencyProgram {
+public final class PlantUMLDependencyProgram {
 
     /** Serial version UID. */
     private static final long serialVersionUID = 8055066636525797910L;
 
     /**
-     * @return
+     * Initializes and creates the {@link JavaProgram} instance which contain all program
+     * information.
+     * 
+     * @return the {@link JavaProgram} instance.
      * @throws MalformedURLException
+     *             if the program URL doesn't have a good format.
      * @since 1.0
      */
     private static JavaProgram createProgramInformation() throws MalformedURLException {
@@ -89,7 +93,9 @@ public class PlantUMLDependencyProgram {
      * @param args
      *            command line arguments.
      * @throws MalformedURLException
+     *             if the program URL doesn't have a good format.
      * @throws CommandLineException
+     *             if any command line exception occurs.
      * @since 1.0
      */
     public static void main(final String[] args) throws MalformedURLException, CommandLineException {

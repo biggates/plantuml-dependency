@@ -50,6 +50,10 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
     /** Serial version UID. */
     private static final long serialVersionUID = -8464283913821256094L;
 
+    /**
+     * The {@link Set} of all parent classes as {@link GenericDependency} which are used by the
+     * current dependency type.
+     */
     private Set < GenericDependency > parentClasses;
 
     /**
@@ -68,11 +72,22 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
     }
 
     /**
+     * Full constructor.
+     * 
      * @param dependencyName
+     *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
+     *            The dependency type package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
      * @param importDependenciesSet
+     *            the {@link Set} of all {@link GenericDependency} which are needed by the current
+     *            dependency type to work, mustn't be <code>null</code>.
      * @param parentInterfacesSet
+     *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
+     *            used by the current dependency type, mustn't be <code>null</code>.
      * @param parentClassesSet
+     *            the {@link Set} of all parent classes as {@link GenericDependency} which are used
+     *            by the current dependency type, mustn't be <code>null</code>.
      * @since 1.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,

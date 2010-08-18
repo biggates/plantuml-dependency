@@ -192,6 +192,11 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
      */
     @Test
     public void testGetPlantUMLLinksDescriptionWithInterfaceAndImportDependencies() {
+        System.out.println("-----------TOTO-----------");
+        System.out.println("Def: " + CLASS_ABSTRACT_DEPENDENCY_TYPE9.getPlantUMLLinksDescription().toString());
+        System.out.println("import: " + CLASS_ABSTRACT_DEPENDENCY_TYPE9.getImportDependencies());
+        System.out.println("Classes: " + CLASS_ABSTRACT_DEPENDENCY_TYPE9.getParentClasses());
+        System.out.println("Interface: " + CLASS_ABSTRACT_DEPENDENCY_TYPE9.getParentInterfaces());
         assertEquals(LINE_SEPARATOR + "java.lang.Integer ..> java.io.Serializable" + LINE_SEPARATOR
                 + "java.lang.Integer ..> java.lang.Comparable" + LINE_SEPARATOR
                 + "java.lang.Number <|-- java.lang.Integer", CLASS_ABSTRACT_DEPENDENCY_TYPE9

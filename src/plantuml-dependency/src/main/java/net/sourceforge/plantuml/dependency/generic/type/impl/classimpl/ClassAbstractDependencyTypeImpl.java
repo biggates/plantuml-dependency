@@ -63,10 +63,19 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
     }
 
     /**
+     * Full constructor.
+     * 
      * @param dependencyName
+     *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
+     *            The dependency type package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
      * @param importDependenciesSet
+     *            the {@link Set} of all {@link GenericDependency} which are needed by the current
+     *            dependency type to work, mustn't be <code>null</code>.
      * @param parentInterfacesSet
+     *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
+     *            used by the current dependency type, mustn't be <code>null</code>.
      * @param parentClassesSet
      * @since 1.0
      */
