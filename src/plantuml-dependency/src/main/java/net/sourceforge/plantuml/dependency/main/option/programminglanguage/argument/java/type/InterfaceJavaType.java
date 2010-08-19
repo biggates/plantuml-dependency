@@ -32,7 +32,6 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.J
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR;
-import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_UNKNOWN_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_EXTENTIONS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR;
@@ -127,8 +126,6 @@ class InterfaceJavaType extends JavaType {
      */
     @Override
     public Set < String > extractParentExtentions(final String extendsString) throws PlantUMLDependencyException {
-        checkNull(extendsString, JAVA_PARENT_TYPE_STRING_NULL_ERROR);
-
         return extractParents(extendsString);
     }
 

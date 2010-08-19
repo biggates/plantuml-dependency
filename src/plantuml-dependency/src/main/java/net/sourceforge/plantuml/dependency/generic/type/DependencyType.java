@@ -31,7 +31,7 @@ import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 /**
- * The interface which describes a generic dependency type, no matter the programming language. A
+ * The interface which describes a generic dependency type, no matter the programming language is. A
  * dependency type might be a class, an interface or an enumeration.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
@@ -97,9 +97,9 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
     String getPackageName();
 
     /**
-     * Gets the {@link Set} of all interface as {@link GenericDependency} which are used by the current
-     * dependency type, i.e. extended or implemented. If no dependencies interfaces are implemented
-     * nor extended, it returns an empty {@link Set}.
+     * Gets the {@link Set} of all interface as {@link GenericDependency} which are used by the
+     * current dependency type, i.e. extended or implemented. If no dependencies interfaces are
+     * implemented nor extended, it returns an empty {@link Set}.
      * <p>
      * For instance, in java it is represented by the <i>implements</i> keyword.
      * </p>

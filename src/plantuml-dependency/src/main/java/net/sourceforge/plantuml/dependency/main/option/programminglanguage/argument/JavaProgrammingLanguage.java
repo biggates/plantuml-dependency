@@ -24,11 +24,13 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument;
 
+import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.INFERIOR_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SUPERIOR_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.removeAllSubtringsBetweenCharacters;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.COMMENT_REGEXP;
@@ -38,6 +40,10 @@ import static net.sourceforge.plantuml.dependency.constants.RegularExpressionCon
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.PACKAGE_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.STATIC_IMPORT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.TAB_REGEXP;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.CREATING_DEPENDENCY_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_ALREADY_SEEN_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.UPDATING_DEPENDENCY_INFO;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
@@ -45,7 +51,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
@@ -68,6 +76,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /** Serial version UID. */
     private static final long serialVersionUID = 62105384573195242L;
 
+    /** The class logger. */
+    private static final transient Logger LOGGER = getLogger(JavaProgrammingLanguage.class.getName());
+
     /**
      * Default constructor.
      * 
@@ -81,11 +92,22 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
+     * Creates the {@link GenericDependency} instance from the raw dependency and the java source
+     * file content.
+     * 
      * @param javaRawDependency
+     *            the {@link JavaRawDependency} containing raw data of the dependency contained in
+     *            the source file, mustn't be <code>null</code>.
      * @param sourceFileContent
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
      * @param dependenciesMap
-     * @return
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
+     * @return the {@link GenericDependency} instance read from the source file and from the raw
+     *         dependency.
      * @throws PlantUMLDependencyException
+     *             if any exception occurs while reading or parsing the source file content.
      * @since 1.0
      */
     private GenericDependency createDependencyFromRaw(final JavaRawDependency javaRawDependency,
@@ -108,73 +130,129 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
+     * Creates or updates the dependency type or the passed raw dependency. If the dependency has
+     * already been seen (i.e. it appears in the <code>dependenciesMap</code>) it just updates its
+     * {@link DependencyType}, otherwise it creates the dependency.
+     * 
      * @param javaRawDependency
+     *            the {@link JavaRawDependency} containing raw data of the dependency contained in
+     *            the source file, mustn't be <code>null</code>.
      * @param dependencyType
+     *            the {@link DependencyType} instance to set to the dependency, mustn't be
+     *            <code>null</code>.
      * @param dependenciesMap
-     * @return
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
+     * @return the {@link GenericDependency} created or updated.
      * @since 1.0
      */
     private GenericDependency createOrUpdateAbstractDependency(final JavaRawDependency javaRawDependency,
             final DependencyType dependencyType, final Map < String, GenericDependency > dependenciesMap) {
         GenericDependency dependency = dependenciesMap.get(javaRawDependency.getFullName());
+
         if (dependency == null) {
-            dependency = new GenericDependencyImpl(javaRawDependency.getName(), javaRawDependency.getPackageName());
+            LOGGER.info(buildLogString(CREATING_DEPENDENCY_INFO, new Object[] {javaRawDependency.getPackageName(),
+                    dependencyType}));
+            dependency = new GenericDependencyImpl(dependencyType);
         } else {
-            // TODO log that the dependency has already been seen
+            LOGGER.info(buildLogString(UPDATING_DEPENDENCY_INFO, new Object[] {javaRawDependency.getPackageName(),
+                    dependencyType}));
+            dependency.setDependencyType(dependencyType);
         }
-        dependency.setDependencyType(dependencyType);
+
         return dependency;
     }
 
     /**
+     * Following the group found (i.e. the string defining an abstract class), tells if it is an
+     * abstract class or not. Basically, the string is either "abstract" or "".
+     * 
      * @param group
-     * @return
+     *            the string defining an abstract class, can be <code>null</code>.
+     * @return <code>true</code> if the {@link String} defines and abstract class,
+     *         <code>false</code> otherwise.
      * @since 1.0
      */
     private boolean extractAbstract(final String group) {
         return isEmpty(group) ? false : true;
     }
 
+    /**
+     * Following a java source file content, reads, parses and extracts all import dependencies
+     * (static and normal imports). This method also adds the import dependencies in the
+     * dependencies {@link Map} if they have not been already seen.
+     * 
+     * @param javaSourceFileContent
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
+     * @param dependenciesMap
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
+     * @return the {@link Set} of all import dependencies found in the java source file content.
+     *         Returns an empty {@link Set} if no import has been found.
+     */
     private Set < GenericDependency > extractImportDependencies(final String javaSourceFileContent,
-            final Map < String, GenericDependency > javaObjectMap) {
-        final Set < GenericDependency > importDependenciesSet = extractNormalImportDependenciesSet(
-                javaSourceFileContent, javaObjectMap);
-        final Set < GenericDependency > staticImportDependenciesSet = extractStaticImportDependenciesSet(
-                javaSourceFileContent, javaObjectMap);
+            final Map < String, GenericDependency > dependenciesMap) {
+        final Set < GenericDependency > importDependenciesSet = extractImportDependenciesSet(javaSourceFileContent,
+                NORMAL_IMPORT_REGEXP, dependenciesMap);
+        final Set < GenericDependency > staticImportDependenciesSet = extractImportDependenciesSet(
+                javaSourceFileContent, STATIC_IMPORT_REGEXP, dependenciesMap);
         importDependenciesSet.addAll(staticImportDependenciesSet);
         return importDependenciesSet;
     }
 
     /**
-     * @param group
-     * @return
-     * @since 1.0
+     * Following a java source file content and the import regular expression, reads, parses and
+     * extracts all import dependencies. This method also adds the import dependencies in the
+     * dependencies {@link Map} if they have not been already seen.
+     * 
+     * @param javaSourceFileContent
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
+     * @param dependenciesMap
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
+     * @return the {@link Set} of all import dependencies found in the java source file content.
+     *         Returns an empty {@link Set} if no import has been found.
      */
-    private String extractName(final String group) {
-        // TODO throw LogicException if group is null
-        return removeAllSubtringsBetweenCharacters(group, INFERIOR_CHAR.charAt(0), SUPERIOR_CHAR.charAt(0)).trim();
-    }
-
-    private Set < GenericDependency > extractNormalImportDependenciesSet(final String javaSourceFileContent,
-            final Map < String, GenericDependency > javaObjectMap) {
+    private Set < GenericDependency > extractImportDependenciesSet(final String javaSourceFileContent,
+            final Pattern importRegExp, final Map < String, GenericDependency > dependenciesMap) {
         final Set < GenericDependency > importDependenciesSet = new TreeSet < GenericDependency >();
-        final Matcher matcher = NORMAL_IMPORT_REGEXP.matcher(javaSourceFileContent);
+        final Matcher matcher = importRegExp.matcher(javaSourceFileContent);
 
         while (matcher.find()) {
             final String packageName = matcher.group(1);
             final String name = matcher.group(2);
             final String fullName = packageName + DOT_CHAR + name;
-            GenericDependency dependency = javaObjectMap.get(fullName);
+            GenericDependency dependency = dependenciesMap.get(fullName);
             if (dependency == null) {
                 dependency = new GenericDependencyImpl(name, packageName);
-                javaObjectMap.put(fullName, dependency);
+                dependenciesMap.put(fullName, dependency);
             } else {
-                // TODO log
+                LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, fullName));
             }
             importDependenciesSet.add(dependency);
         }
 
         return importDependenciesSet;
+    }
+
+    /**
+     * Following the group found (i.e. the string defining the dependency name), extract the
+     * interesting name of the dependency (i.e. without generic definition if any). Basically, the
+     * string can be "String", "Serializable" or "Rectangle &#139; Square &#155;".
+     * 
+     * @param group
+     *            the string defining the dependency name, mustn't be <code>null</code>.
+     * @return the dependency raw name, without any generic definition.
+     * @since 1.0
+     */
+    private String extractName(final String group) throws PlantUMLDependencyException {
+        if (isEmpty(group)) {
+            throw new PlantUMLDependencyException(DEPENDENCY_NAME_ERROR);
+        } else {
+            return removeAllSubtringsBetweenCharacters(group, INFERIOR_CHAR.charAt(0), SUPERIOR_CHAR.charAt(0)).trim();
+        }
     }
 
     /**
@@ -192,6 +270,16 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         return packageName;
     }
 
+    /**
+     * @param type
+     * @param parentType
+     * @param parents
+     * @param importDependencies
+     * @param dependenciesMap
+     * @param packageName
+     * @return
+     * @throws PlantUMLDependencyException
+     */
     private Set < GenericDependency > extractParentDependencies(final JavaType type, final JavaParentType parentType,
             final Set < String > parents, final Set < GenericDependency > importDependencies,
             final Map < String, GenericDependency > dependenciesMap, final String packageName)
@@ -205,34 +293,6 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         }
 
         return parentsSet;
-    }
-
-    /**
-     * @param javaSourceFileContent
-     * @param javaObjectMap
-     * @return
-     */
-    private Set < GenericDependency > extractStaticImportDependenciesSet(final String javaSourceFileContent,
-            final Map < String, GenericDependency > javaObjectMap) {
-        final Set < GenericDependency > importDependenciesSet = new TreeSet < GenericDependency >();
-        final Matcher matcher = STATIC_IMPORT_REGEXP.matcher(javaSourceFileContent);
-
-        while (matcher.find()) {
-            final String packageName = matcher.group(1);
-            final String name = matcher.group(2);
-            // String constant = matcher.group(3);
-            final String fullName = packageName + DOT_CHAR + name;
-            GenericDependency dependency = javaObjectMap.get(fullName);
-            if (dependency == null) {
-                dependency = new GenericDependencyImpl(name, packageName);
-                javaObjectMap.put(fullName, dependency);
-            } else {
-                // TODO log
-            }
-            importDependenciesSet.add(dependency);
-        }
-
-        return importDependenciesSet;
     }
 
     /**

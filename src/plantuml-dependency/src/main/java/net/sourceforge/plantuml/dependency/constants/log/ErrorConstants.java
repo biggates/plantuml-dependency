@@ -82,10 +82,7 @@ public final class ErrorConstants {
 
     /** The impossible java parent type null error message. */
     public static final String IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR = "[error-plantuml-dependency-016] : The java parent type \"{0}\" is not available for this java type \"{1}\"";
-
-    /** The parent type string null error message. */
-    public static final String JAVA_PARENT_TYPE_STRING_NULL_ERROR = "[error-plantuml-dependency-017] : The java parent type string to parse is null";
-
+    
     /** The parent type string not empty error message. */
     public static final String JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR = "[error-plantuml-dependency-018] : The java parent type string \"{0}\" should be null for this java type \"{1}\"";
 
@@ -109,6 +106,9 @@ public final class ErrorConstants {
     
     /** The unknown java parent type error message. */
     public static final String JAVA_PARENT_TYPE_UNKNOWN_ERROR = "[error-plantuml-dependency-015] : The java parent type \"{0}\" is unknown";
+    
+    /** The dependency name error message. */
+    public static final String DEPENDENCY_NAME_ERROR = "[error-plantuml-dependency-016] : The dependency name is null";
 
     /**
      * Private constructor to prevent from instantiation.
