@@ -24,9 +24,20 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
+import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImplTest.INTERFACE_DEPENDENCY_TYPE1;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.INTERFACE;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Set;
+import java.util.TreeSet;
+
 import net.sourceforge.mazix.components.ObjectTest;
+import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -59,37 +70,193 @@ public class InterfaceJavaTypeTest extends ObjectTest < InterfaceJavaType > {
      * .
      */
     @Test
-    public void testCreateDependencyType() {
-        fail("Not yet implemented");
+    public void testCreateDependencyTypeAbstract() {
+        assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true, INTERFACE_DEPENDENCY_TYPE1.getImportDependencies(),
+                INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#createDependencyType(java.lang.String, java.lang.String, boolean, java.util.Set, java.util.Set, java.util.Set)}
+     * .
+     */
+    @Test
+    public void testCreateDependencyTypeNotAbstract() {
+        assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), false, INTERFACE_DEPENDENCY_TYPE1.getImportDependencies(),
+                INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >()));
     }
 
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#createParentDependencyType(net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType, java.lang.String, java.lang.String)}
      * .
+     * 
+     * @throws PlantUMLDependencyException
      */
     @Test
-    public void testCreateParentDependencyType() {
-        fail("Not yet implemented");
+    public void testCreateParentDependencyTypeExtention() throws PlantUMLDependencyException {
+        assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createParentDependencyType(EXTENTION,
+                INTERFACE_DEPENDENCY_TYPE1.getName(), INTERFACE_DEPENDENCY_TYPE1.getPackageName()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#createParentDependencyType(net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType, java.lang.String, java.lang.String)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testCreateParentDependencyTypeImplementation() throws PlantUMLDependencyException {
+        JAVA_TYPE1.createParentDependencyType(IMPLEMENTATION, INTERFACE_DEPENDENCY_TYPE1.getName(),
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName());
     }
 
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentExtentions(java.lang.String)}
      * .
+     * 
+     * @throws PlantUMLDependencyException
      */
     @Test
-    public void testExtractParentExtentions() {
-        fail("Not yet implemented");
+    public void testExtractParentExtentionsWithEmptyString() throws PlantUMLDependencyException {
+        final Set < String > parents = JAVA_TYPE1.extractParentExtentions(BLANK_STRING);
+        assertEquals(0, parents.size());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentExtentions(java.lang.String)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testExtractParentExtentionsWithSingleParentWithImbricatedGenerics() throws PlantUMLDependencyException {
+        final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle < Toto < Test > >");
+        assertEquals(1, parents.size());
+        assertTrue(parents.contains("Rectangle"));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentExtentions(java.lang.String)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testExtractParentExtentionsWithSingleParentWithNotImbricatedGenerics()
+            throws PlantUMLDependencyException {
+        final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle < Toto >");
+        assertEquals(1, parents.size());
+        assertTrue(parents.contains("Rectangle"));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentExtentions(java.lang.String)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testExtractParentExtentionsWithSingleParentWithoutGenerics() throws PlantUMLDependencyException {
+        final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle");
+        assertEquals(1, parents.size());
+        assertTrue(parents.contains("Rectangle"));
     }
 
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentImplementations(java.lang.String)}
      * .
+     * 
+     * @throws PlantUMLDependencyException
      */
     @Test
-    public void testExtractParentImplementations() {
-        fail("Not yet implemented");
+    public void testExtractParentImplementationsWithEmptyString() throws PlantUMLDependencyException {
+        final Set < String > parents = JAVA_TYPE1.extractParentImplementations(BLANK_STRING);
+        assertEquals(0, parents.size());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentImplementations(java.lang.String)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testExtractParentImplementationsWithMultipleParentsWithImbricatedGenerics()
+            throws PlantUMLDependencyException {
+        JAVA_TYPE1
+                .extractParentImplementations("Cloneable < Toto, Titi < Test > > , Serializable < Integer > , DeepCloneable");
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentImplementations(java.lang.String)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testExtractParentImplementationsWithMultipleParentsWithNotImbricatedGenerics()
+            throws PlantUMLDependencyException {
+        JAVA_TYPE1.extractParentImplementations("Cloneable < Toto, Titi > , Serializable < Integer > , DeepCloneable");
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentImplementations(java.lang.String)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testExtractParentImplementationsWithMultipleParentsWithoutGenerics() throws PlantUMLDependencyException {
+        JAVA_TYPE1.extractParentImplementations("Cloneable , Serializable");
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentImplementations(java.lang.String)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testExtractParentImplementationsWithSingleParentWithImbricatedGenerics()
+            throws PlantUMLDependencyException {
+        JAVA_TYPE1.extractParentImplementations("Cloneable < Toto < Test > >");
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentImplementations(java.lang.String)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testExtractParentImplementationsWithSingleParentWithNotImbricatedGenerics()
+            throws PlantUMLDependencyException {
+        JAVA_TYPE1.extractParentImplementations("Cloneable < Toto >");
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentImplementations(java.lang.String)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testExtractParentImplementationsWithSingleParentWithoutGenerics() throws PlantUMLDependencyException {
+        JAVA_TYPE1.extractParentImplementations("Cloneable");
     }
 }

@@ -106,6 +106,9 @@ public final class ErrorConstants {
 
     /** The java type extensions dependencies null error message. */
     public static final String JAVA_TYPE_EXTENTIONS_NULL_ERROR = "[error-plantuml-dependency-024] : The java type extensions dependencies is null";
+    
+    /** The unknown java parent type error message. */
+    public static final String JAVA_PARENT_TYPE_UNKNOWN_ERROR = "[error-plantuml-dependency-015] : The java parent type \"{0}\" is unknown";
 
     /**
      * Private constructor to prevent from instantiation.

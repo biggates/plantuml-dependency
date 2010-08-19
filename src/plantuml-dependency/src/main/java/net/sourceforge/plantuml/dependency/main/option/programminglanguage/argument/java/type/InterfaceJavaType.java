@@ -33,6 +33,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.J
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_UNKNOWN_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_EXTENTIONS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPORTS_NULL_ERROR;
@@ -113,7 +114,7 @@ class InterfaceJavaType extends JavaType {
             throw new PlantUMLDependencyException(buildLogString(IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR, new Object[] {
                     parentType, getLanguageKeyword()}));
         } else {
-            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_NULL_ERROR, parentType));
+            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_UNKNOWN_ERROR, parentType));
         }
 
         return dependencyType;
@@ -125,7 +126,7 @@ class InterfaceJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public Set < String > extractParentExtentions(final String extendsString) {
+    public Set < String > extractParentExtentions(final String extendsString) throws PlantUMLDependencyException {
         checkNull(extendsString, JAVA_PARENT_TYPE_STRING_NULL_ERROR);
 
         return extractParents(extendsString);

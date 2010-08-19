@@ -33,6 +33,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.J
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_UNKNOWN_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_EXTENTIONS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPORTS_NULL_ERROR;
@@ -114,7 +115,7 @@ class EnumJavaType extends JavaType {
         } else if (IMPLEMENTATION == parentType) {
             dependencyType = new InterfaceDependencyTypeImpl(parentName, parentPackageName);
         } else {
-            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_NULL_ERROR, parentType));
+            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_UNKNOWN_ERROR, parentType));
         }
 
         return dependencyType;
@@ -141,7 +142,8 @@ class EnumJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public Set < String > extractParentImplementations(final String implementsString) {
+    public Set < String > extractParentImplementations(final String implementsString)
+            throws PlantUMLDependencyException {
         checkNull(implementsString, JAVA_PARENT_TYPE_STRING_NULL_ERROR);
 
         return extractParents(implementsString);
