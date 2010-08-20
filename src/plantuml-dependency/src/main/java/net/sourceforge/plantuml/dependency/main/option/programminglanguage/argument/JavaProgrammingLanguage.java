@@ -40,9 +40,13 @@ import static net.sourceforge.plantuml.dependency.constants.RegularExpressionCon
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.PACKAGE_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.STATIC_IMPORT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.TAB_REGEXP;
-import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_CANT_BE_EXTRACTED_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.CREATING_DEPENDENCY_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_ALREADY_SEEN_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_NOT_SEEN_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.NO_PACKAGE_FOUND_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.UPDATING_DEPENDENCY_INFO;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
@@ -226,6 +230,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String fullName = packageName + DOT_CHAR + name;
             GenericDependency dependency = dependenciesMap.get(fullName);
             if (dependency == null) {
+                LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_INFO, fullName));
                 dependency = new GenericDependencyImpl(name, packageName);
                 dependenciesMap.put(fullName, dependency);
             } else {
@@ -249,36 +254,55 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private String extractName(final String group) throws PlantUMLDependencyException {
         if (isEmpty(group)) {
-            throw new PlantUMLDependencyException(DEPENDENCY_NAME_ERROR);
+            throw new PlantUMLDependencyException(DEPENDENCY_NAME_NULL_ERROR);
         } else {
             return removeAllSubtringsBetweenCharacters(group, INFERIOR_CHAR.charAt(0), SUPERIOR_CHAR.charAt(0)).trim();
         }
     }
 
     /**
+     * Reads, parses and extracts the package name in the passed java source file content.
+     * 
      * @param javaSourceFileContent
-     * @return
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
+     * @return the java package name if found, otherwise it returns a blank string.
      */
     private String extractPackageName(final String javaSourceFileContent) {
         String packageName = BLANK_STRING;
         final Matcher matcher = PACKAGE_REGEXP.matcher(javaSourceFileContent);
+
         if (matcher.find()) {
             packageName = matcher.group(1);
         } else {
-            // TODO no package name found
+            LOGGER.info(NO_PACKAGE_FOUND_INFO);
         }
+
         return packageName;
     }
 
     /**
+     * Creates parent dependencies instances.
+     * 
      * @param type
+     *            the parent {@link JavaType}, mustn't be <code>null</code>.
      * @param parentType
+     *            the parent {@link JavaParentType}, mustn't be <code>null</code>.
      * @param parents
+     *            the {@link Set} of all parents' names previously found, mustn't be
+     *            <code>null</code>.
      * @param importDependencies
+     *            the {@link Set} of all {@link GenericDependency} containing imports, mustn't be
+     *            <code>null</code>.
      * @param dependenciesMap
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
      * @param packageName
-     * @return
+     *            the current dependency package name, mustn't be <code>null</code>.
+     * @return the {@link Set} containing all parents' as {@link GenericDependency} instances.
      * @throws PlantUMLDependencyException
+     *             if any exception occurs while creating parent {@link GenericDependency}
+     *             instances.
      */
     private Set < GenericDependency > extractParentDependencies(final JavaType type, final JavaParentType parentType,
             final Set < String > parents, final Set < GenericDependency > importDependencies,
@@ -296,18 +320,25 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
-     * @param parentName
+     * Finds the dependency following its name in the import dependencies {@link Set}. be careful,
+     * this method doesn't take care of the package name.
+     * 
+     * @param dependencyName
+     *            the dependency name to look for, mustn't be <code>null</code>.
      * @param importDependencies
-     * @return
+     *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
+     *            mustn't be <code>null</code>.
+     * @return the {@link GenericDependency} instance associated to the passed name if found in the
+     *         import {@link Set}, <code>null</code> otherwise.
      * @since 1.0
      */
-    private GenericDependency findDependencyInImport(final String parentName,
+    private GenericDependency findDependencyInImport(final String dependencyName,
             final Set < GenericDependency > importDependencies) {
         GenericDependency dependency = null;
         final Iterator < GenericDependency > iter = importDependencies.iterator();
         while (dependency == null && iter.hasNext()) {
             final GenericDependency abstractImportDependency = iter.next();
-            if (abstractImportDependency.getName().equals(parentName)) {
+            if (abstractImportDependency.getName().equals(dependencyName)) {
                 dependency = abstractImportDependency;
             }
         }
@@ -315,14 +346,22 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
+     * Finds or creates the parent dependency.
+     * 
      * @param parentName
+     *            the parent dependency name, mustn't be <code>null</code>.
      * @param packageName
+     *            the current dependency package name, mustn't be <code>null</code>.
      * @param dependenciesMap
-     * @return
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
+     * @return the parent {@link GenericDependency} instance.
      * @throws PlantUMLDependencyException
+     *             if any exception occurs while finding or creating the parent
+     *             {@link GenericDependency} instance.
      * @since 1.0
      */
-    private GenericDependency findOrCreateDependencyInTreatedOrJavaLangObject(final JavaType type,
+    private GenericDependency findOrCreateParentDependencyInTreatedOrJavaLangObject(final JavaType type,
             final JavaParentType parentType, final String parentName, final String packageName,
             final Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
         GenericDependency dependency = null;
@@ -330,25 +369,36 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final String fullName = packageName + DOT_CHAR + parentName;
         dependency = dependenciesMap.get(fullName);
         if (dependency == null) {
-            // TODO log that the object has never been treated : has to create it following the
-            // parent type
+            // TODO the package name is either right or false : we don't know because the dependency
+            // could have not been treated before this one
             final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName, packageName);
+            LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {fullName, dependencyType}));
             dependency = new GenericDependencyImpl(dependencyType);
             dependenciesMap.put(fullName, dependency);
         } else {
-            // TODO log
+            LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, fullName));
         }
 
         return dependency;
     }
 
     /**
+     * Gets or creates the parent dependency.
+     * 
      * @param parentName
+     *            the parent dependency name, mustn't be <code>null</code>.
      * @param packageName
+     *            the current dependency package name, mustn't be <code>null</code>.
      * @param importDependencies
+     *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
+     *            mustn't be <code>null</code>.
      * @param dependenciesMap
-     * @return
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
+     * @return the parent {@link GenericDependency} instance.
      * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the parent
+     *             {@link GenericDependency} instance.
      * @since 1.0
      */
     private GenericDependency getOrCreateParentDependency(final JavaType type, final JavaParentType parentType,
@@ -360,8 +410,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             // TODO log that the class isn't in the imports : means that it
             // is in the same
             // package or that it is a java.lang object
-            dependency = findOrCreateDependencyInTreatedOrJavaLangObject(type, parentType, parentName, packageName,
-                    dependenciesMap);
+            dependency = findOrCreateParentDependencyInTreatedOrJavaLangObject(type, parentType, parentName,
+                    packageName, dependenciesMap);
         } else {
             // TODO log that dependencies has been found in the import : not the same package,
             // we have to remove it from the import list to avoid duplication between imports
@@ -378,14 +428,20 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
-     * @param sourceFileContent
-     * @return
+     * Prepares the java source file content to remove all unnecessary strings which are not used in
+     * the analysis.
+     * 
+     * @param javaSourceFileContent
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
+     * @return the new java source file content without all unnecessary strings which are not used
+     *         in the analysis.
      * @since 1.0
      */
-    private String prepareSourceFileContent(final String sourceFileContent) {
+    private String prepareSourceFileContent(final String javaSourceFileContent) {
         // TODO removing double slash comments
         // removing special characters
-        String content = LINE_OR_CARRIAGE_RETURN_REGEXP.matcher(sourceFileContent).replaceAll(BLANK_STRING);
+        String content = LINE_OR_CARRIAGE_RETURN_REGEXP.matcher(javaSourceFileContent).replaceAll(BLANK_STRING);
         content = TAB_REGEXP.matcher(content).replaceAll(SPACE_CHAR);
 
         // removing commentsregexp
@@ -407,31 +463,47 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
-     * @param sourceFileContent
+     * Reads, parses and extracts the {@link GenericDependency} instance from the passed java source
+     * file content.
+     * 
+     * @param javaSourceFileContent
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
      * @param dependenciesMap
-     * @return
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
+     * @return the {@link GenericDependency} instance extracted from the java source file content.
      * @throws PlantUMLDependencyException
+     *             if any exception occurs while reading or creating the {@link GenericDependency}
+     *             instance.
      * @since 1.0
      */
-    private GenericDependency readDependencyFromPreparedFile(final String sourceFileContent,
+    private GenericDependency readDependencyFromPreparedFile(final String javaSourceFileContent,
             final Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
-        final JavaRawDependency javaRawDependency = readJavaRawDependencyFromPreparedFile(sourceFileContent);
-        return createDependencyFromRaw(javaRawDependency, sourceFileContent, dependenciesMap);
+        final JavaRawDependency javaRawDependency = readJavaRawDependencyFromPreparedFile(javaSourceFileContent);
+        return createDependencyFromRaw(javaRawDependency, javaSourceFileContent, dependenciesMap);
     }
 
     /**
-     * @param sourceFileContent
-     * @return
+     * Reads, parses and extracts the {@link JavaRawDependency} instance from the passed java source
+     * file content.
+     * 
+     * @param javaSourceFileContent
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
+     * @return the {@link JavaRawDependency} instance extracted from the java source file content.
      * @throws PlantUMLDependencyException
+     *             if any exception occurs while reading or creating the {@link JavaRawDependency}
+     *             instance.
      * @since 1.0
      */
-    private JavaRawDependency readJavaRawDependencyFromPreparedFile(final String sourceFileContent)
+    private JavaRawDependency readJavaRawDependencyFromPreparedFile(final String javaSourceFileContent)
             throws PlantUMLDependencyException {
         final JavaRawDependency javaRawDependency = new JavaRawDependency();
 
-        final Matcher matcher = JAVA_TYPE_REGEXP.matcher(sourceFileContent);
+        final Matcher matcher = JAVA_TYPE_REGEXP.matcher(javaSourceFileContent);
         if (matcher.find()) {
-            final String packageName = extractPackageName(sourceFileContent);
+            final String packageName = extractPackageName(javaSourceFileContent);
             javaRawDependency.setPackageName(packageName);
 
             final boolean isAbstract = extractAbstract(matcher.group(1));
@@ -448,9 +520,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
             final Set < String > parentExtentions = type.extractParentExtentions(matcher.group(5));
             javaRawDependency.setParentExtentions(parentExtentions);
-
         } else {
-            // TODO throw exception
+            throw new PlantUMLDependencyException(buildLogString(JAVA_TYPE_CANT_BE_EXTRACTED_ERROR, javaSourceFileContent));
         }
 
         return javaRawDependency;

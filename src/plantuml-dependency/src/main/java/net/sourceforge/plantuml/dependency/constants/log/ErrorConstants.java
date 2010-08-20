@@ -24,7 +24,6 @@
 
 package net.sourceforge.plantuml.dependency.constants.log;
 
-
 /**
  * The class which defines all error messages constants which are written in the log file. The
  * messages also contains the error code.
@@ -82,7 +81,7 @@ public final class ErrorConstants {
 
     /** The impossible java parent type null error message. */
     public static final String IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR = "[error-plantuml-dependency-016] : The java parent type \"{0}\" is not available for this java type \"{1}\"";
-    
+
     /** The parent type string not empty error message. */
     public static final String JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR = "[error-plantuml-dependency-018] : The java parent type string \"{0}\" should be null for this java type \"{1}\"";
 
@@ -103,12 +102,15 @@ public final class ErrorConstants {
 
     /** The java type extensions dependencies null error message. */
     public static final String JAVA_TYPE_EXTENTIONS_NULL_ERROR = "[error-plantuml-dependency-024] : The java type extensions dependencies is null";
-    
+
     /** The unknown java parent type error message. */
     public static final String JAVA_PARENT_TYPE_UNKNOWN_ERROR = "[error-plantuml-dependency-015] : The java parent type \"{0}\" is unknown";
-    
+
     /** The dependency name error message. */
-    public static final String DEPENDENCY_NAME_ERROR = "[error-plantuml-dependency-016] : The dependency name is null";
+    public static final String DEPENDENCY_NAME_NULL_ERROR = "[error-plantuml-dependency-016] : The dependency name is null";
+
+    /** The java type can't be extracted error message. */
+    public static final String JAVA_TYPE_CANT_BE_EXTRACTED_ERROR = "[error-plantuml-dependency-017] : The java type can't be extracted from the content \"{0}\"";
 
     /**
      * Private constructor to prevent from instantiation.

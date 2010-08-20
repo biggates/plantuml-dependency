@@ -25,7 +25,6 @@
 package net.sourceforge.plantuml.dependency.main.option.output;
 
 import static java.lang.System.currentTimeMillis;
-import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
@@ -33,6 +32,7 @@ import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFil
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.READING_SOURCE_FILE_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.EXECUTION_TIME_INFO;
 
 import java.io.File;
 import java.util.Iterator;
@@ -144,12 +144,16 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
         // TODO see if the verbose mode can activate the logging
         final long start = currentTimeMillis();
 
-        final Map < String, GenericDependency > dependenciesMap = readDependenciesMapFromFiles(
-                getProgrammingLanguage(), getInputFileSet(), isVerboseMode(), getDisplayOptions());
-        writePlantUMLFile(dependenciesMap, getOutputFile());
+        try {
+            final Map < String, GenericDependency > dependenciesMap = readDependenciesMapFromFiles(
+                    getProgrammingLanguage(), getInputFileSet(), isVerboseMode(), getDisplayOptions());
+            writePlantUMLFile(dependenciesMap, getOutputFile());
+        } catch (final PlantUMLDependencyException e) {
+            LOGGER.severe(e.getMessage());
+        }
 
         if (isVerboseMode()) {
-            LOGGER.info("Executed in " + (currentTimeMillis() - start) + " ms");
+            LOGGER.info(buildLogString(EXECUTION_TIME_INFO, (currentTimeMillis() - start)));
         }
     }
 
@@ -225,11 +229,14 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *            the display option which have to appear in the plantUML description.
      * @return the {@link Map} of parsed dependencies, with their full name as keys and the
      *         associated {@link GenericDependency} instances as values.
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while reading and parsing the source files.
      * @since 1.0
      */
     @SuppressWarnings("unchecked")
     private Map < String, GenericDependency > readDependenciesMapFromFiles(final ProgrammingLanguage language,
-            final FileSet includeExcludeFiles, final boolean verboseModeActive, final Set < Display > displayOpt) {
+            final FileSet includeExcludeFiles, final boolean verboseModeActive, final Set < Display > displayOpt)
+            throws PlantUMLDependencyException {
         final Map < String, GenericDependency > dependenciesMap = new TreeMap < String, GenericDependency >();
 
         final Iterator < FileResource > iter = includeExcludeFiles.iterator();
@@ -241,7 +248,8 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
                         language, verboseModeActive, displayOpt);
                 dependenciesMap.put(dependency.getFullName(), dependency);
             } catch (final PlantUMLDependencyException e) {
-                LOGGER.log(SEVERE, buildLogString(READING_SOURCE_FILE_ERROR, fileResource.getFile()), e);
+                throw new PlantUMLDependencyException(
+                        buildLogString(READING_SOURCE_FILE_ERROR, fileResource.getFile()), e);
             }
         }
 

@@ -24,10 +24,15 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument;
 
+import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+
+import java.util.HashMap;
 
 import net.sourceforge.mazix.components.ObjectTest;
+import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -36,7 +41,7 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link JavaProgrammingLanguage}.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -53,12 +58,28 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
     /** Java programming language test 3 instance. */
     @DataPoint
     public static final ProgrammingLanguage JAVA_PROGRAMMING_LANGUAGE3 = null;
-    
+
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFile() {
+    public void testReadDependencyFromFile() throws PlantUMLDependencyException {
         fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testReadDependencyFromFileWithBlankContent() throws PlantUMLDependencyException {
+        JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(BLANK_STRING, new HashMap < String, GenericDependency >());
     }
 }
