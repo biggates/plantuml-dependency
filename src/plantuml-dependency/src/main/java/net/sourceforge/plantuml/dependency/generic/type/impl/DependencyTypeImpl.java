@@ -420,6 +420,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      */
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [fullName=" + fullName + "]";
+        return getClass().getSimpleName() + " [fullName=" + fullName + ", importDependencies=" + importDependencies
+                + ", parentInterfaces=" + parentInterfaces + "]";
     }
 }

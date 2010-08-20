@@ -163,4 +163,12 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
     protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
         return getParentInterfaces().contains(genericDependency) || getParentClasses().contains(genericDependency);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " [" + super.toString() + ", parentClasses=" + parentClasses + "]";
+    }
 }

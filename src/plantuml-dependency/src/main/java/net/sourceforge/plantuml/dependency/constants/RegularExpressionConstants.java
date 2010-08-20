@@ -51,7 +51,7 @@ public final class RegularExpressionConstants {
     public static final Pattern COMMENT_REGEXP = compile("/\\*\\**.*?\\*/");
 
     /** The pattern representing the ampersand character. */
-    public static final Pattern JAVA_TYPE_REGEXP = compile(".*?(abstract|) *(class|interface|enum) +(.*?)( +extends +(.*?)|)( +implements +(.*?)|) *\\{");
+    public static final Pattern JAVA_TYPE_REGEXP = compile(" *(public|final|) *(abstract|) *(public|final|) *(class|interface|enum) +(.*?)( +extends +(.*?)|)( +implements +(.*?)|) *\\{");
 
     /** The pattern representing the ampersand character. */
     public static final Pattern PACKAGE_REGEXP = compile("package +(.*?) *;");

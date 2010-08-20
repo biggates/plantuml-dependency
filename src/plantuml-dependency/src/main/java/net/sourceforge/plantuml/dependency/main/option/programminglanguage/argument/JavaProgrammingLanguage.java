@@ -273,7 +273,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final Matcher matcher = PACKAGE_REGEXP.matcher(javaSourceFileContent);
 
         if (matcher.find()) {
-            packageName = matcher.group(1);
+            packageName = matcher.group(1).replace(SPACE_CHAR, BLANK_STRING);
         } else {
             LOGGER.info(NO_PACKAGE_FOUND_INFO);
         }
@@ -417,7 +417,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             // we have to remove it from the import list to avoid duplication between imports
             // and extended classes
             // FIXME to remove !!
-            importDependencies.remove(dependency);
+            //importDependencies.remove(dependency);
             // TODO we also have to change the dependency from stub to interface
             final DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),
                     dependency.getPackageName());
@@ -506,22 +506,23 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String packageName = extractPackageName(javaSourceFileContent);
             javaRawDependency.setPackageName(packageName);
 
-            final boolean isAbstract = extractAbstract(matcher.group(1));
+            final boolean isAbstract = extractAbstract(matcher.group(2));
             javaRawDependency.setAbstract(isAbstract);
 
-            final JavaType type = JavaType.valueOfIgnoringCase(matcher.group(2));
+            final JavaType type = JavaType.valueOfIgnoringCase(matcher.group(4));
             javaRawDependency.setType(type);
 
-            final String name = extractName(matcher.group(3));
+            final String name = extractName(matcher.group(5));
             javaRawDependency.setName(name);
 
-            final Set < String > parentImplementations = type.extractParentImplementations(matcher.group(7));
+            final Set < String > parentImplementations = type.extractParentImplementations(matcher.group(9));
             javaRawDependency.setParentImplementations(parentImplementations);
 
-            final Set < String > parentExtentions = type.extractParentExtentions(matcher.group(5));
+            final Set < String > parentExtentions = type.extractParentExtentions(matcher.group(7));
             javaRawDependency.setParentExtentions(parentExtentions);
         } else {
-            throw new PlantUMLDependencyException(buildLogString(JAVA_TYPE_CANT_BE_EXTRACTED_ERROR, javaSourceFileContent));
+            throw new PlantUMLDependencyException(buildLogString(JAVA_TYPE_CANT_BE_EXTRACTED_ERROR,
+                    javaSourceFileContent));
         }
 
         return javaRawDependency;
