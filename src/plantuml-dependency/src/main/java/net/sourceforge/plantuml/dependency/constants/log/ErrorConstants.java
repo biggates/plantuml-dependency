@@ -106,11 +106,14 @@ public final class ErrorConstants {
     /** The unknown java parent type error message. */
     public static final String JAVA_PARENT_TYPE_UNKNOWN_ERROR = "[error-plantuml-dependency-015] : The java parent type \"{0}\" is unknown";
 
-    /** The dependency name error message. */
+    /** The dependency name null error message. */
     public static final String DEPENDENCY_NAME_NULL_ERROR = "[error-plantuml-dependency-016] : The dependency name is null";
 
     /** The java type can't be extracted error message. */
     public static final String JAVA_TYPE_CANT_BE_EXTRACTED_ERROR = "[error-plantuml-dependency-017] : The java type can't be extracted from the content \"{0}\"";
+    
+    /** The dependency null error message. */
+    public static final String DEPENDENCY_NULL_ERROR = "[error-plantuml-dependency-018] : The dependency is null";
 
     /**
      * Private constructor to prevent from instantiation.

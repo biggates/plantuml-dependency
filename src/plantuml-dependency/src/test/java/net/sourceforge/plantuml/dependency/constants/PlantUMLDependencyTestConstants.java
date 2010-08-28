@@ -291,6 +291,30 @@ public final class PlantUMLDependencyTestConstants {
                     asList(new GenericDependency[] {new GenericDependencyImpl("AnotherInterfaceTest",
                             "com.plantuml.train.test")})), new TreeSet < GenericDependency >());
 
+    /** Class dependency type test 15 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE15 = new ClassDependencyTypeImpl("OutputStream",
+            "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "ClassNotFoundException", "java.lang")})));
+
+    /** Class dependency type test 16 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE16 = new ClassDependencyTypeImpl("TestImplements",
+            "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("Appendable", "java.lang")})),
+            new TreeSet < GenericDependency >());
+
+    /** Class dependency type test 17 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE17 = new ClassDependencyTypeImpl("OutputStream",
+            "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgramImpl",
+                    "net.sourceforge.mazix.cli.program.impl")})));
+
+    /** Class dependency type test 18 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE18 = new ClassDependencyTypeImpl("TestImplements",
+            "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
+                            "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >());
+
     /** Generic dependency test 2 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY2 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE2);
 
@@ -329,6 +353,18 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Generic dependency test 14 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY14 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE14);
+
+    /** Generic dependency test 15 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY15 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE15);
+
+    /** Generic dependency test 16 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY16 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE16);
+
+    /** Generic dependency test 17 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY17 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE17);
+
+    /** Generic dependency test 18 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY18 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE18);
 
     /**
      * Private constructor to prevent from instantiation.

@@ -30,6 +30,10 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY12;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY13;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY14;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY15;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY16;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY17;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY18;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY4;
@@ -194,7 +198,50 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithExtendsNotInImport() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithExtendsInImportFullPackageName() throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.impl.JavaProgramImpl;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends net.sourceforge.mazix.cli.program.impl.JavaProgramImpl {\r\n\r\n}\r\n";
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY17, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, new HashMap < String, GenericDependency >()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithExtendsNotInImportFullPackageName()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends net.sourceforge.mazix.cli.program.impl.JavaProgramImpl {\r\n\r\n}\r\n";
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY17, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, new HashMap < String, GenericDependency >()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithExtendsNotInImportJavaLang() throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends ClassNotFoundException {\r\n\r\n}\r\n";
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY15, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, new HashMap < String, GenericDependency >()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithExtendsNotInImportNotJavaLang() throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends TestExtends {\r\n\r\n}\r\n";
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY5, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
@@ -223,7 +270,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      */
     @Test
     public void testReadDependencyFromFileClassWithImplementsInImport() throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherInterfaceTest;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements AnotherInterfaceTest {\r\n\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.JavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.mazix.cli.program.JavaProgram {\r\n\r\n}\r\n";
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY14, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
     }
@@ -236,7 +283,52 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithImplementsNotInImport() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithImplementsInImportFullPackageName()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherInterfaceTest;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements AnotherInterfaceTest {\r\n\r\n}\r\n";
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY18, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, new HashMap < String, GenericDependency >()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithImplementsNotInImportFullPackageName()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.mazix.cli.program.JavaProgram {\r\n\r\n}\r\n";
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY18, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, new HashMap < String, GenericDependency >()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithImplementsNotInImportJavaLang() throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements Appendable {\r\n\r\n}\r\n";
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY16, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, new HashMap < String, GenericDependency >()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithImplementsNotInImportNotJavaLang()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements InterfaceTest {\r\n\r\n}\r\n";
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY9, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
@@ -357,11 +449,6 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
     }
 
-    // TODO test that the dependency type inside the GenericDependencies have the right type
-    // (Interface, Class, Stub etc...)
-    // TODO test the java.lang and the same package when not in import
-    // TODO test the package name such as "class CharacterConstants extends com.toto.Comparable"
-
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
@@ -371,7 +458,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      */
     @Test
     public void testReadDependencyFromFileTest() throws PlantUMLDependencyException {
-        final String test = readFileIntoString("D:\\test.txt");
+        final String test = readFileIntoString("/mnt/home/test.txt");
         fail("Not yet implemented");
     }
 
