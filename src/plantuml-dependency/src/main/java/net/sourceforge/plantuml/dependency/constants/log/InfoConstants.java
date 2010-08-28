@@ -53,7 +53,7 @@ public final class InfoConstants {
     public static final String UPDATING_DEPENDENCY_INFO = "[info-plantuml-006] : Updating the dependency \"{0}\" with the type \"{1}\"";
 
     /** The dependency already seen info message. */
-    public static final String DEPENDENCY_ALREADY_SEEN_INFO = "[info-plantuml-007] : The dependency \"{0}\" has already been seen, don't jave to add it to the seen object Map";
+    public static final String DEPENDENCY_ALREADY_SEEN_INFO = "[info-plantuml-007] : The dependency \"{0}\" has already been seen, don't have to add it to the seen object Map";
 
     /** The no package found info message. */
     public static final String NO_PACKAGE_FOUND_INFO = "[info-plantuml-008] : No package name has been found";

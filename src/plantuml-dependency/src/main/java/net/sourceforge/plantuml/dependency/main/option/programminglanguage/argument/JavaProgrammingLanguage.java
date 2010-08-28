@@ -24,12 +24,14 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument;
 
+import static java.lang.Class.forName;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.INFERIOR_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SUPERIOR_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.mazix.components.constants.CommonConstants.MINUS_ONE_RETURN_CODE;
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.removeAllSubtringsBetweenCharacters;
@@ -120,12 +122,12 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         final Set < GenericDependency > importDependencies = extractImportDependencies(sourceFileContent,
                 dependenciesMap);
-        final Set < GenericDependency > parentImplementationsDependencies = extractParentDependencies(javaRawDependency
-                .getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(), importDependencies,
+        final Set < GenericDependency > parentImplementationsDependencies = extractParentDependencies(
+                javaRawDependency.getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(),
+                importDependencies, dependenciesMap, javaRawDependency.getPackageName());
+        final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(
+                javaRawDependency.getType(), EXTENTION, javaRawDependency.getParentExtentions(), importDependencies,
                 dependenciesMap, javaRawDependency.getPackageName());
-        final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(javaRawDependency
-                .getType(), EXTENTION, javaRawDependency.getParentExtentions(), importDependencies, dependenciesMap,
-                javaRawDependency.getPackageName());
 
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
@@ -285,11 +287,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * Creates parent dependencies instances.
      * 
      * @param type
-     *            the parent {@link JavaType}, mustn't be <code>null</code>.
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
      * @param parentType
      *            the parent {@link JavaParentType}, mustn't be <code>null</code>.
      * @param parents
-     *            the {@link Set} of all parents' names previously found, mustn't be
+     *            the {@link Set} of all parents' names or full names previously found, mustn't be
      *            <code>null</code>.
      * @param importDependencies
      *            the {@link Set} of all {@link GenericDependency} containing imports, mustn't be
@@ -297,7 +299,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param dependenciesMap
      *            the {@link Map} of dependencies already seen or treated, with their full name as
      *            keys and the associated {@link GenericDependency} instances as values.
-     * @param packageName
+     * @param currentPackageName
      *            the current dependency package name, mustn't be <code>null</code>.
      * @return the {@link Set} containing all parents' as {@link GenericDependency} instances.
      * @throws PlantUMLDependencyException
@@ -306,13 +308,13 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private Set < GenericDependency > extractParentDependencies(final JavaType type, final JavaParentType parentType,
             final Set < String > parents, final Set < GenericDependency > importDependencies,
-            final Map < String, GenericDependency > dependenciesMap, final String packageName)
+            final Map < String, GenericDependency > dependenciesMap, final String currentPackageName)
             throws PlantUMLDependencyException {
 
         final Set < GenericDependency > parentsSet = new TreeSet < GenericDependency >();
         for (final String parentName : parents) {
-            final GenericDependency dependency = getOrCreateParentDependency(type, parentType, parentName, packageName,
-                    importDependencies, dependenciesMap);
+            final GenericDependency dependency = getOrCreateParentDependency(type, parentType, parentName,
+                    currentPackageName, importDependencies, dependenciesMap);
             parentsSet.add(dependency);
         }
 
@@ -346,48 +348,44 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
-     * Finds or creates the parent dependency.
+     * Finds the dependency following its name and its package name in the import dependencies
+     * {@link Set}.
      * 
-     * @param parentName
-     *            the parent dependency name, mustn't be <code>null</code>.
-     * @param packageName
-     *            the current dependency package name, mustn't be <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
-     * @return the parent {@link GenericDependency} instance.
-     * @throws PlantUMLDependencyException
-     *             if any exception occurs while finding or creating the parent
-     *             {@link GenericDependency} instance.
+     * @param dependencyName
+     *            the dependency name to look for, mustn't be <code>null</code>.
+     * @param dependencyName
+     *            the dependency package name to look for, mustn't be <code>null</code>.
+     * @param importDependencies
+     *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
+     *            mustn't be <code>null</code>.
+     * @return the {@link GenericDependency} instance associated to the passed name and package name
+     *         if found in the import {@link Set}, <code>null</code> otherwise.
      * @since 1.0
      */
-    private GenericDependency findOrCreateParentDependencyInTreatedOrJavaLangObject(final JavaType type,
-            final JavaParentType parentType, final String parentName, final String packageName,
-            final Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
+    private GenericDependency findDependencyInImport(final String dependencyName, final String dependencyPackageName,
+            final Set < GenericDependency > importDependencies) {
         GenericDependency dependency = null;
-
-        final String fullName = packageName + DOT_CHAR + parentName;
-        dependency = dependenciesMap.get(fullName);
-        if (dependency == null) {
-            // TODO the package name is either right or false : we don't know because the dependency
-            // could have not been treated before this one
-            final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName, packageName);
-            LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {fullName, dependencyType}));
-            dependency = new GenericDependencyImpl(dependencyType);
-            dependenciesMap.put(fullName, dependency);
-        } else {
-            LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, fullName));
+        final Iterator < GenericDependency > iter = importDependencies.iterator();
+        while (dependency == null && iter.hasNext()) {
+            final GenericDependency abstractImportDependency = iter.next();
+            if (abstractImportDependency.getName().equals(dependencyName)
+                    && abstractImportDependency.getPackageName().equals(dependencyPackageName)) {
+                dependency = abstractImportDependency;
+            }
         }
-
         return dependency;
     }
 
     /**
      * Gets or creates the parent dependency.
      * 
-     * @param parentName
-     *            the parent dependency name, mustn't be <code>null</code>.
-     * @param packageName
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param parentType
+     *            the parent {@link JavaParentType}, mustn't be <code>null</code>.
+     * @param parentNameOrFullName
+     *            the parent dependency name or full name, mustn't be <code>null</code>.
+     * @param currentPackageName
      *            the current dependency package name, mustn't be <code>null</code>.
      * @param importDependencies
      *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
@@ -402,28 +400,162 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0
      */
     private GenericDependency getOrCreateParentDependency(final JavaType type, final JavaParentType parentType,
-            final String parentName, final String packageName, final Set < GenericDependency > importDependencies,
-            final Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
-        GenericDependency dependency = findDependencyInImport(parentName, importDependencies);
+            final String parentNameOrFullName, final String currentPackageName,
+            final Set < GenericDependency > importDependencies, final Map < String, GenericDependency > dependenciesMap)
+            throws PlantUMLDependencyException {
 
-        if (dependency == null) {
-            // TODO log that the class isn't in the imports : means that it
-            // is in the same
-            // package or that it is a java.lang object
-            dependency = findOrCreateParentDependencyInTreatedOrJavaLangObject(type, parentType, parentName,
-                    packageName, dependenciesMap);
+        GenericDependency dependency = null;
+        final int packageSeparatorIndex = parentNameOrFullName.lastIndexOf(DOT_CHAR);
+        if (packageSeparatorIndex == MINUS_ONE_RETURN_CODE) {
+            dependency = getOrCreateParentDependencyWithName(type, parentType, currentPackageName, importDependencies,
+                    dependenciesMap, parentNameOrFullName);
         } else {
-            // TODO log that dependencies has been found in the import : not the same package,
-            // we have to remove it from the import list to avoid duplication between imports
-            // and extended classes
-            // FIXME to remove !!
-            //importDependencies.remove(dependency);
-            // TODO we also have to change the dependency from stub to interface
+            dependency = getOrCreateParentDependencyWithFullName(type, parentType, parentNameOrFullName,
+                    importDependencies, dependenciesMap, packageSeparatorIndex);
+        }
+
+        return dependency;
+    }
+
+    /**
+     * Gets or creates the parent dependency if it is not described with its full name, i.e. if it
+     * is in the import, or in the same package or in the "java.lang" package.
+     * 
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param parentType
+     *            the parent {@link JavaParentType}, mustn't be <code>null</code>.
+     * @param parentFullName
+     *            the parent dependency full name, mustn't be <code>null</code>.
+     * @param importDependencies
+     *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
+     *            mustn't be <code>null</code>.
+     * @param dependenciesMap
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param packageSeparatorIndex
+     *            the character separator index in the <code>parentFullName</code> string which
+     *            separates the package from the dependency name, must be >= 0 and inferior to
+     *            <code>parentFullName.length()</code>.
+     * @return the parent {@link GenericDependency} instance.
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the parent
+     *             {@link GenericDependency} instance.
+     * @since 1.0
+     */
+    private GenericDependency getOrCreateParentDependencyWithFullName(final JavaType type,
+            final JavaParentType parentType, final String parentFullName,
+            final Set < GenericDependency > importDependencies,
+            final Map < String, GenericDependency > dependenciesMap, final int packageSeparatorIndex)
+            throws PlantUMLDependencyException {
+        final String parentName = parentFullName.substring(packageSeparatorIndex + 1);
+        final String parentPackageName = parentFullName.substring(0, packageSeparatorIndex);
+        GenericDependency dependency = findDependencyInImport(parentName, parentPackageName, importDependencies);
+        if (dependency == null) {
+            final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
+                    parentPackageName);
+            LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
+            dependency = new GenericDependencyImpl(dependencyType);
+            dependenciesMap.put(parentFullName, dependency);
+        } else {
+            LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, parentFullName));
             final DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
         }
+        return dependency;
+    }
 
+    /**
+     * Gets or creates the parent dependency if it is described with its simple name.
+     * 
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param parentType
+     *            the parent {@link JavaParentType}, mustn't be <code>null</code>.
+     * @param currentPackageName
+     *            the current dependency package name, mustn't be <code>null</code>.
+     * @param importDependencies
+     *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
+     *            mustn't be <code>null</code>.
+     * @param dependenciesMap
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param parentName
+     *            the parent dependency name, mustn't be <code>null</code>.
+     * @return the parent {@link GenericDependency} instance.
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the parent
+     *             {@link GenericDependency} instance.
+     * @since 1.0
+     */
+    private GenericDependency getOrCreateParentDependencyWithName(final JavaType type, final JavaParentType parentType,
+            final String currentPackageName, final Set < GenericDependency > importDependencies,
+            final Map < String, GenericDependency > dependenciesMap, final String parentName)
+            throws PlantUMLDependencyException {
+        GenericDependency dependency = null;
+        dependency = findDependencyInImport(parentName, importDependencies);
+        if (dependency == null) {
+            final String parentFullNameWithSamePackage = currentPackageName + DOT_CHAR + parentName;
+            dependency = dependenciesMap.get(parentFullNameWithSamePackage);
+            if (dependency == null) {
+                dependency = getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(type, parentType,
+                        currentPackageName, dependenciesMap, parentName, parentFullNameWithSamePackage);
+            } else {
+                LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, parentFullNameWithSamePackage));
+            }
+        } else {
+            LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, dependency.getFullName()));
+            final DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),
+                    dependency.getPackageName());
+            dependency.setDependencyType(dependencyType);
+        }
+        return dependency;
+    }
+
+    /**
+     * Gets or creates the parent dependency if it is not described with its full name, i.e. if it
+     * is in the same package or in the "java.lang" package.
+     * 
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param parentType
+     *            the parent {@link JavaParentType}, mustn't be <code>null</code>.
+     * @param currentPackageName
+     *            the current dependency package name, mustn't be <code>null</code>.
+     * @param dependenciesMap
+     *            the {@link Map} of dependencies already seen or treated, with their full name as
+     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param parentName
+     *            the parent dependency name, mustn't be <code>null</code>.
+     * @param parentFullNameWithSamePackage
+     *            the parent dependency full name with the same package as the current dependency,
+     *            mustn't be <code>null</code>.
+     * @return the parent {@link GenericDependency} instance.
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the parent
+     *             {@link GenericDependency} instance.
+     * @since 1.0
+     */
+    private GenericDependency getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(final JavaType type,
+            final JavaParentType parentType, final String currentPackageName,
+            final Map < String, GenericDependency > dependenciesMap, final String parentName,
+            final String parentFullNameWithSamePackage) throws PlantUMLDependencyException {
+        GenericDependency dependency = null;
+        String parentPackageName = "java.lang";
+        String parentFullName = parentPackageName + DOT_CHAR + parentName;
+        try {
+            forName(parentFullName);
+        } catch (final ClassNotFoundException e) {
+            parentFullName = parentFullNameWithSamePackage;
+            parentPackageName = currentPackageName;
+        }
+
+        final DependencyType dependencyType = type
+                .createParentDependencyType(parentType, parentName, parentPackageName);
+        LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
+        dependency = new GenericDependencyImpl(dependencyType);
+        dependenciesMap.put(parentFullName, dependency);
         return dependency;
     }
 

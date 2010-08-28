@@ -34,7 +34,9 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY16;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY17;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY18;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY19;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY2;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY20;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY4;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY5;
@@ -200,9 +202,12 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
     @Test
     public void testReadDependencyFromFileClassWithExtendsInImportFullPackageName() throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.impl.JavaProgramImpl;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends net.sourceforge.mazix.cli.program.impl.JavaProgramImpl {\r\n\r\n}\r\n";
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY17, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY19, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
     }
+
+    // TODO test several class name with the same name but not with the same package (one in
+    // java.lang and one in the current same package)
 
     /**
      * Test method for
@@ -271,7 +276,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
     @Test
     public void testReadDependencyFromFileClassWithImplementsInImport() throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.JavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.mazix.cli.program.JavaProgram {\r\n\r\n}\r\n";
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY14, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY20, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
     }
 
@@ -286,7 +291,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
     public void testReadDependencyFromFileClassWithImplementsInImportFullPackageName()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherInterfaceTest;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements AnotherInterfaceTest {\r\n\r\n}\r\n";
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY18, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY14, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
     }
 
