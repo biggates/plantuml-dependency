@@ -50,6 +50,7 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 import org.apache.tools.ant.types.FileSet;
@@ -348,6 +349,97 @@ public final class PlantUMLDependencyTestConstants {
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "InterfaceGenericsTest", "com.plantuml.train.test")})), new TreeSet < GenericDependency >());
 
+    /** Interface dependency type test 1 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFileClassWithMultipleExtendsGenerics",
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {
+                            new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
+                            new GenericDependencyImpl("CppProgrammingLanguageTest",
+                                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                            new GenericDependencyImpl("ProgrammingLanguageTest",
+                                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                            new GenericDependencyImpl("Map", "java.util")})), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {
+                            new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
+                            new GenericDependencyImpl("Comparable", "java.lang"),
+                            new GenericDependencyImpl("Map", "java.util"),
+                            new GenericDependencyImpl("Appendable", "java.lang")})));
+
+    /** Interface dependency type test 2 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE2 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFileInterface",
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >());
+
+    /** Interface dependency type test 2 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE3 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFileInterfaceGenericNotInImport",
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >());
+
+    /** Interface dependency type test 4 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE4 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport",
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {
+                            new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
+                            new GenericDependencyImpl("CppProgrammingLanguageTest",
+                                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument")})),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "DeepCloneable", "net.sourceforge.mazix.components.clone")})));
+
+    /** Interface dependency type test 5 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE5 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFileInterfaceWithExtendsGenericsNotInImport",
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("DeepCloneable",
+                            "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("DeepCloneable",
+                            "net.sourceforge.mazix.components.clone")})));
+
+    /** Interface dependency type test 6 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE6 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFileInterfaceWithExtendsInImport",
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("GenericDependency",
+                            "net.sourceforge.plantuml.dependency.generic")})), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("GenericDependency",
+                            "net.sourceforge.plantuml.dependency.generic")})));
+
+    /** Interface dependency type test 7 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE7 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFileInterfaceWithExtendsNotInImportFullPackageName",
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "GenericDependency", "net.sourceforge.plantuml.dependency.generic")})));
+
+    /** Interface dependency type test 8 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE8 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFileInterfaceWithExtendsNotInImportJavaLang",
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl("Comparable",
+                    "java.lang")})));
+
+    /** Interface dependency type test 9 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE9 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLang",
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "TestReadDependencyFromFileInterfaceWithoutPackage",
+                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage")})));
+
+    /** Interface dependency type test 10 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE10 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFileInterfaceWithoutPackage", BLANK_STRING, new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >());
+
+    /** Interface dependency type test 10 instance. */
+    public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE11 = new InterfaceDependencyTypeImpl(
+            "TestReadDependencyFromFilePublicInterface",
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >());
+
     /** Generic dependency test 2 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY2 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE2);
 
@@ -410,6 +502,50 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Generic dependency test 22 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY22 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE22);
+
+    /** Generic dependency test 23 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY23 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE1);
+
+    /** Generic dependency test 24 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY24 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE2);
+
+    /** Generic dependency test 25 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY25 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE3);
+
+    /** Generic dependency test 26 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY26 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE4);
+
+    /** Generic dependency test 27 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY27 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE5);
+
+    /** Generic dependency test 28 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY28 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE6);
+
+    /** Generic dependency test 29 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY29 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE7);
+
+    /** Generic dependency test 30 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY30 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE8);
+
+    /** Generic dependency test 31 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY31 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE9);
+
+    /** Generic dependency test 32 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY32 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE10);
+
+    /** Generic dependency test 33 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY33 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE11);
 
     /**
      * Private constructor to prevent from instantiation.
