@@ -35,6 +35,7 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.MINUS_O
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.removeAllSubtringsBetweenCharacters;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.JAVA_LANG_PACKAGE;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.COMMENT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.JAVA_TYPE_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.LINE_OR_CARRIAGE_RETURN_REGEXP;
@@ -406,6 +407,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         GenericDependency dependency = null;
         final int packageSeparatorIndex = parentNameOrFullName.lastIndexOf(DOT_CHAR);
+
         if (packageSeparatorIndex == MINUS_ONE_RETURN_CODE) {
             dependency = getOrCreateParentDependencyWithName(type, parentType, currentPackageName, importDependencies,
                     dependenciesMap, parentNameOrFullName);
@@ -451,18 +453,25 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final String parentName = parentFullName.substring(packageSeparatorIndex + 1);
         final String parentPackageName = parentFullName.substring(0, packageSeparatorIndex);
         GenericDependency dependency = findDependencyInImport(parentName, parentPackageName, importDependencies);
+
         if (dependency == null) {
-            final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
-                    parentPackageName);
-            LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
-            dependency = new GenericDependencyImpl(dependencyType);
-            dependenciesMap.put(parentFullName, dependency);
+            dependency = dependenciesMap.get(parentFullName);
+            if (dependency == null) {
+                final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
+                        parentPackageName);
+                LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
+                dependency = new GenericDependencyImpl(dependencyType);
+                dependenciesMap.put(parentFullName, dependency);
+            } else {
+                LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, parentFullName));
+            }
         } else {
             LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, parentFullName));
             final DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
         }
+
         return dependency;
     }
 
@@ -495,6 +504,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             throws PlantUMLDependencyException {
         GenericDependency dependency = null;
         dependency = findDependencyInImport(parentName, importDependencies);
+
         if (dependency == null) {
             final String parentFullNameWithSamePackage = currentPackageName + DOT_CHAR + parentName;
             dependency = dependenciesMap.get(parentFullNameWithSamePackage);
@@ -510,6 +520,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
         }
+
         return dependency;
     }
 
@@ -542,8 +553,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final Map < String, GenericDependency > dependenciesMap, final String parentName,
             final String parentFullNameWithSamePackage) throws PlantUMLDependencyException {
         GenericDependency dependency = null;
-        String parentPackageName = "java.lang";
+        String parentPackageName = JAVA_LANG_PACKAGE;
         String parentFullName = parentPackageName + DOT_CHAR + parentName;
+
         try {
             forName(parentFullName);
         } catch (final ClassNotFoundException e) {
@@ -556,6 +568,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
         dependency = new GenericDependencyImpl(dependencyType);
         dependenciesMap.put(parentFullName, dependency);
+
         return dependency;
     }
 

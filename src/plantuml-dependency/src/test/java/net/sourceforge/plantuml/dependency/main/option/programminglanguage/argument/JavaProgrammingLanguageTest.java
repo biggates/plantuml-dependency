@@ -37,6 +37,8 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY19;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY20;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY21;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY22;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY4;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY5;
@@ -177,6 +179,20 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY8, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
     }
+    
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithExtendsGenericsNotInImport() throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n TestExtendsGeneric.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.TestExtendsGeneric;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestExtendsWithGeneric extends TestExtendsGeneric < AnotherTestExtends > {\r\n\r\n}\r\n";
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY21, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, new HashMap < String, GenericDependency >()));
+    }
 
     /**
      * Test method for
@@ -251,6 +267,20 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY5, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
     }
+    
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithImplementsGenericsInImport() throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n TestImplementsGenerics.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.InterfaceGenericsTest;\r\nimport com.plantuml.train.test.Integer;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplementsGenerics implements InterfaceGenericsTest < Integer > {\r\n\r\n}\r\n";
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY22, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, new HashMap < String, GenericDependency >()));
+    }
 
     /**
      * Test method for
@@ -290,7 +320,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
     @Test
     public void testReadDependencyFromFileClassWithImplementsInImportFullPackageName()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherInterfaceTest;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements AnotherInterfaceTest {\r\n\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherInterfaceTest;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements com.plantuml.train.test.AnotherInterfaceTest {\r\n\r\n}\r\n";
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY14, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
     }
@@ -349,7 +379,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
     @Test
     public void testReadDependencyFromFileClassWithMultipleImplementsAndExtendsGenerics()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n TestMultipleImplementsGeneric.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherInterfaceTest;\r\nimport com.plantuml.train.test.AnotherTestExtends;\r\nimport com.plantuml.train.test.TestExtendsGeneric;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nclass TestMultipleImplementsAndExtendsGeneric extends TestExtendsGeneric < AnotherTestExtends > implements Cloneable, InterfaceGenericsTest < Integer >, InterfaceTest, AnotherInterfaceTest {\r\n\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n TestMultipleImplementsGeneric.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherInterfaceTest;\r\nimport com.plantuml.train.test.AnotherTestExtends;\r\nimport com.plantuml.train.test.TestExtendsGeneric;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nclass TestMultipleImplementsAndExtendsGeneric extends TestExtendsGeneric < AnotherTestExtends > implements Cloneable, InterfaceGenericsTest < Integer >, InterfaceTest, AnotherInterfaceTest < CharacterConstants, java.test.Test > {\r\n\r\n}\r\n";
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY13, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
     }
@@ -453,6 +483,8 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, new HashMap < String, GenericDependency >()));
     }
+    
+    // TODO create all test with "public interface"
 
     /**
      * Test method for

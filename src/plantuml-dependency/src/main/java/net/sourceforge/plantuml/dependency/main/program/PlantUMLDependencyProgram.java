@@ -144,6 +144,8 @@ public final class PlantUMLDependencyProgram {
         plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example2));
         plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example3));
         plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example4));
+        
+        plantumlDependencyProgram.addKnownBugOrLimitation("Be careful, in order to correctly parse source files, they must compile without any errors");
 
         // TODO option not recognized : error
 

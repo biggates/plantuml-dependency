@@ -331,6 +331,23 @@ public final class PlantUMLDependencyTestConstants {
                     asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
                             "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >());
 
+    /** Class dependency type test 21 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE21 = new ClassDependencyTypeImpl(
+            "TestExtendsWithGeneric", "com.plantuml.test", new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("TestExtendsGeneric",
+                            "com.plantuml.train.test")})), new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "TestExtendsGeneric", "com.plantuml.train.test")})));
+
+    /** Class dependency type test 22 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE22 = new ClassDependencyTypeImpl(
+            "TestImplementsGenerics", "com.plantuml.test", new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {
+                            new GenericDependencyImpl("InterfaceGenericsTest", "com.plantuml.train.test"),
+                            new GenericDependencyImpl("Integer", "com.plantuml.train.test")})),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "InterfaceGenericsTest", "com.plantuml.train.test")})), new TreeSet < GenericDependency >());
+
     /** Generic dependency test 2 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY2 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE2);
 
@@ -387,6 +404,12 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Generic dependency test 20 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY20 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE20);
+
+    /** Generic dependency test 21 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY21 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE21);
+
+    /** Generic dependency test 22 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY22 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE22);
 
     /**
      * Private constructor to prevent from instantiation.
