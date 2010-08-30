@@ -77,6 +77,8 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
      *            used by the current dependency type, mustn't be <code>null</code>.
      * @param parentClassesSet
+     *            the {@link Set} of all parent classes as {@link GenericDependency} which are used
+     *            by the current dependency type, mustn't be <code>null</code>.
      * @since 1.0
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,

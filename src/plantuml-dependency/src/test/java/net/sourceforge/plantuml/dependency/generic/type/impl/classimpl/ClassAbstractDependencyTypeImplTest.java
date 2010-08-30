@@ -104,7 +104,12 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
 
     /** Class abstract dependency type test 10 instance. */
     @DataPoint
-    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE10 = null;
+    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE10 = new ClassAbstractDependencyTypeImpl(
+            "Integer", "java.lang");
+
+    /** Class abstract dependency type test 11 instance. */
+    @DataPoint
+    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE11 = null;
 
     /**
      * Test method for

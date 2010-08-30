@@ -198,8 +198,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Class dependency type test 2 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE2 = new ClassDependencyTypeImpl("Test",
-            "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
-            new TreeSet < GenericDependency >());
+            "com.plantuml.test");
 
     /** Class dependency type test 3 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE3 = new ClassDependencyTypeImpl("Test",

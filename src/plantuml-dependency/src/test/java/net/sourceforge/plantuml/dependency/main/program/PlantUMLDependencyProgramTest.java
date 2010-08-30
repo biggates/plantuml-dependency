@@ -24,7 +24,12 @@
 
 package net.sourceforge.plantuml.dependency.main.program;
 
-import static org.junit.Assert.fail;
+import static net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram.main;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
+
+import java.net.MalformedURLException;
+
+import net.sourceforge.mazix.cli.exception.CommandLineException;
 
 import org.junit.Test;
 
@@ -42,10 +47,53 @@ public class PlantUMLDependencyProgramTest {
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
      * .
+     * 
+     * @throws CommandLineException
+     * @throws MalformedURLException
      */
     @Test
-    public void testMain() {
-        fail("Not yet implemented");
+    public void testMainWithPrimaryHelpOption() throws MalformedURLException, CommandLineException {
+        main(new String[] {"-h"});
     }
 
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     * 
+     * @throws CommandLineException
+     * @throws MalformedURLException
+     */
+    @Test
+    public void testMainWithSecondaryOption() throws MalformedURLException, CommandLineException {
+        main(new String[] {"-h"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     * 
+     * @throws CommandLineException
+     * @throws MalformedURLException
+     */
+    @Test
+    public void testMainWithPrimaryVersionOption() throws MalformedURLException, CommandLineException {
+        main(new String[] {"-version"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     * 
+     * @throws CommandLineException
+     * @throws MalformedURLException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testMainWithoutExecutionOption() throws MalformedURLException, CommandLineException {
+        main(new String[] {"-l", DEFAULT_PROGRAMMING_LANGUAGE.getName(), "-i", "**/*.java"});
+    }
+    
+    // TODO finish with all options and compare generated files
 }

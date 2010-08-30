@@ -89,7 +89,12 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
 
     /** Enum dependency type test 8 instance. */
     @DataPoint
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE8 = null;
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE8 = new EnumDependencyTypeImpl("Integer",
+            "java.lang");
+
+    /** Enum dependency type test 9 instance. */
+    @DataPoint
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE9 = null;
 
     /**
      * Test method for

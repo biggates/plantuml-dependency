@@ -233,6 +233,8 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
 
     // TODO test several class name with the same name but not with the same package (one in
     // java.lang and one in the current same package)
+    // TODO test with the context
+    // TODO test method and attributes
 
     /**
      * Test method for

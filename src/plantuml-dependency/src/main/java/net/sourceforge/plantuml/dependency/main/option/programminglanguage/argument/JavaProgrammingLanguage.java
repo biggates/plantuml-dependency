@@ -216,6 +216,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
+     * @param importRegExp
+     *            the import regular expression to analyze, mustn't be <code>null</code>.
      * @param dependenciesMap
      *            the {@link Map} of dependencies already seen or treated, with their full name as
      *            keys and the associated {@link GenericDependency} instances as values.
@@ -253,6 +255,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param group
      *            the string defining the dependency name, mustn't be <code>null</code>.
      * @return the dependency raw name, without any generic definition.
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while extracting name.
      * @since 1.0
      */
     private String extractName(final String group) throws PlantUMLDependencyException {
@@ -354,7 +358,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * 
      * @param dependencyName
      *            the dependency name to look for, mustn't be <code>null</code>.
-     * @param dependencyName
+     * @param dependencyPackageName
      *            the dependency package name to look for, mustn't be <code>null</code>.
      * @param importDependencies
      *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
