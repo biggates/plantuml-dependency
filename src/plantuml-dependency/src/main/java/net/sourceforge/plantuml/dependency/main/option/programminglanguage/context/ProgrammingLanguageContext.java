@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
@@ -49,6 +50,15 @@ public interface ProgrammingLanguageContext extends Serializable {
      * @since 1.0
      */
     void addOrReplaceDependencies(GenericDependency dependency);
+
+    /**
+     * Gets all dependencies within the context.
+     * 
+     * @return the {@link Collection} of all {@link GenericDependency} which have been associated
+     *         with this context.
+     * @since 1.0
+     */
+    Collection < GenericDependency > getAllDependencies();
 
     /**
      * Gets the dependency in the context following its name.

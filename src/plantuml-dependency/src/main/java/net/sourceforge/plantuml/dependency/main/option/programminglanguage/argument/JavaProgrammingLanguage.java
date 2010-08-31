@@ -69,6 +69,8 @@ import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.JavaProgrammingLanguageContext;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
 
 /**
  * The Java {@link ProgrammingLanguage} implementation.
@@ -108,9 +110,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param sourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance read from the source file and from the raw
      *         dependency.
      * @throws PlantUMLDependencyException
@@ -118,22 +121,32 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0
      */
     private GenericDependency createDependencyFromRaw(final JavaRawDependency javaRawDependency,
-            final String sourceFileContent, final Map < String, GenericDependency > dependenciesMap)
+            final String sourceFileContent, final ProgrammingLanguageContext programmingLanguageContext)
             throws PlantUMLDependencyException {
 
         final Set < GenericDependency > importDependencies = extractImportDependencies(sourceFileContent,
-                dependenciesMap);
+                programmingLanguageContext);
         final Set < GenericDependency > parentImplementationsDependencies = extractParentDependencies(
                 javaRawDependency.getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(),
-                importDependencies, dependenciesMap, javaRawDependency.getPackageName());
+                importDependencies, programmingLanguageContext, javaRawDependency.getPackageName());
         final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(
                 javaRawDependency.getType(), EXTENTION, javaRawDependency.getParentExtentions(), importDependencies,
-                dependenciesMap, javaRawDependency.getPackageName());
+                programmingLanguageContext, javaRawDependency.getPackageName());
 
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
                 importDependencies, parentImplementationsDependencies, parentExtentionsDependencies);
-        return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, dependenciesMap);
+        return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public ProgrammingLanguageContext createNewContext() {
+        return new JavaProgrammingLanguageContext();
     }
 
     /**
@@ -147,15 +160,16 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param dependencyType
      *            the {@link DependencyType} instance to set to the dependency, mustn't be
      *            <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} created or updated.
      * @since 1.0
      */
     private GenericDependency createOrUpdateAbstractDependency(final JavaRawDependency javaRawDependency,
-            final DependencyType dependencyType, final Map < String, GenericDependency > dependenciesMap) {
-        GenericDependency dependency = dependenciesMap.get(javaRawDependency.getFullName());
+            final DependencyType dependencyType, final ProgrammingLanguageContext programmingLanguageContext) {
+        GenericDependency dependency = programmingLanguageContext.getDependencies(javaRawDependency.getFullName());
 
         if (dependency == null) {
             LOGGER.info(buildLogString(CREATING_DEPENDENCY_INFO, new Object[] {javaRawDependency.getPackageName(),
@@ -192,18 +206,19 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @return the {@link Set} of all import dependencies found in the java source file content.
      *         Returns an empty {@link Set} if no import has been found.
      */
     private Set < GenericDependency > extractImportDependencies(final String javaSourceFileContent,
-            final Map < String, GenericDependency > dependenciesMap) {
+            final ProgrammingLanguageContext programmingLanguageContext) {
         final Set < GenericDependency > importDependenciesSet = extractImportDependenciesSet(javaSourceFileContent,
-                NORMAL_IMPORT_REGEXP, dependenciesMap);
+                NORMAL_IMPORT_REGEXP, programmingLanguageContext);
         final Set < GenericDependency > staticImportDependenciesSet = extractImportDependenciesSet(
-                javaSourceFileContent, STATIC_IMPORT_REGEXP, dependenciesMap);
+                javaSourceFileContent, STATIC_IMPORT_REGEXP, programmingLanguageContext);
         importDependenciesSet.addAll(staticImportDependenciesSet);
         return importDependenciesSet;
     }
@@ -218,14 +233,15 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            <code>null</code>.
      * @param importRegExp
      *            the import regular expression to analyze, mustn't be <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @return the {@link Set} of all import dependencies found in the java source file content.
      *         Returns an empty {@link Set} if no import has been found.
      */
     private Set < GenericDependency > extractImportDependenciesSet(final String javaSourceFileContent,
-            final Pattern importRegExp, final Map < String, GenericDependency > dependenciesMap) {
+            final Pattern importRegExp, final ProgrammingLanguageContext programmingLanguageContext) {
         final Set < GenericDependency > importDependenciesSet = new TreeSet < GenericDependency >();
         final Matcher matcher = importRegExp.matcher(javaSourceFileContent);
 
@@ -233,11 +249,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String packageName = matcher.group(1);
             final String name = matcher.group(2);
             final String fullName = packageName + DOT_CHAR + name;
-            GenericDependency dependency = dependenciesMap.get(fullName);
+            GenericDependency dependency = programmingLanguageContext.getDependencies(fullName);
             if (dependency == null) {
                 LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_INFO, fullName));
                 dependency = new GenericDependencyImpl(name, packageName);
-                dependenciesMap.put(fullName, dependency);
+                programmingLanguageContext.addOrReplaceDependencies(dependency);
             } else {
                 LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, fullName));
             }
@@ -301,9 +317,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param importDependencies
      *            the {@link Set} of all {@link GenericDependency} containing imports, mustn't be
      *            <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @param currentPackageName
      *            the current dependency package name, mustn't be <code>null</code>.
      * @return the {@link Set} containing all parents' as {@link GenericDependency} instances.
@@ -313,13 +330,13 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private Set < GenericDependency > extractParentDependencies(final JavaType type, final JavaParentType parentType,
             final Set < String > parents, final Set < GenericDependency > importDependencies,
-            final Map < String, GenericDependency > dependenciesMap, final String currentPackageName)
+            final ProgrammingLanguageContext programmingLanguageContext, final String currentPackageName)
             throws PlantUMLDependencyException {
 
         final Set < GenericDependency > parentsSet = new TreeSet < GenericDependency >();
         for (final String parentName : parents) {
             final GenericDependency dependency = getOrCreateParentDependency(type, parentType, parentName,
-                    currentPackageName, importDependencies, dependenciesMap);
+                    currentPackageName, importDependencies, programmingLanguageContext);
             parentsSet.add(dependency);
         }
 
@@ -395,9 +412,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param importDependencies
      *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
      *            mustn't be <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @return the parent {@link GenericDependency} instance.
      * @throws PlantUMLDependencyException
      *             if any exception occurs while getting or creating the parent
@@ -406,18 +424,18 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private GenericDependency getOrCreateParentDependency(final JavaType type, final JavaParentType parentType,
             final String parentNameOrFullName, final String currentPackageName,
-            final Set < GenericDependency > importDependencies, final Map < String, GenericDependency > dependenciesMap)
-            throws PlantUMLDependencyException {
+            final Set < GenericDependency > importDependencies,
+            final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
 
         GenericDependency dependency = null;
         final int packageSeparatorIndex = parentNameOrFullName.lastIndexOf(DOT_CHAR);
 
         if (packageSeparatorIndex == MINUS_ONE_RETURN_CODE) {
             dependency = getOrCreateParentDependencyWithName(type, parentType, currentPackageName, importDependencies,
-                    dependenciesMap, parentNameOrFullName);
+                    programmingLanguageContext, parentNameOrFullName);
         } else {
             dependency = getOrCreateParentDependencyWithFullName(type, parentType, parentNameOrFullName,
-                    importDependencies, dependenciesMap, packageSeparatorIndex);
+                    importDependencies, programmingLanguageContext, packageSeparatorIndex);
         }
 
         return dependency;
@@ -436,9 +454,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param importDependencies
      *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
      *            mustn't be <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @param packageSeparatorIndex
      *            the character separator index in the <code>parentFullName</code> string which
      *            separates the package from the dependency name, must be >= 0 and inferior to
@@ -452,20 +471,20 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     private GenericDependency getOrCreateParentDependencyWithFullName(final JavaType type,
             final JavaParentType parentType, final String parentFullName,
             final Set < GenericDependency > importDependencies,
-            final Map < String, GenericDependency > dependenciesMap, final int packageSeparatorIndex)
+            final ProgrammingLanguageContext programmingLanguageContext, final int packageSeparatorIndex)
             throws PlantUMLDependencyException {
         final String parentName = parentFullName.substring(packageSeparatorIndex + 1);
         final String parentPackageName = parentFullName.substring(0, packageSeparatorIndex);
         GenericDependency dependency = findDependencyInImport(parentName, parentPackageName, importDependencies);
 
         if (dependency == null) {
-            dependency = dependenciesMap.get(parentFullName);
+            dependency = programmingLanguageContext.getDependencies(parentFullName);
             if (dependency == null) {
                 final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
                         parentPackageName);
                 LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
                 dependency = new GenericDependencyImpl(dependencyType);
-                dependenciesMap.put(parentFullName, dependency);
+                programmingLanguageContext.addOrReplaceDependencies(dependency);
             } else {
                 LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, parentFullName));
             }
@@ -491,9 +510,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param importDependencies
      *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
      *            mustn't be <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @param parentName
      *            the parent dependency name, mustn't be <code>null</code>.
      * @return the parent {@link GenericDependency} instance.
@@ -504,17 +524,17 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private GenericDependency getOrCreateParentDependencyWithName(final JavaType type, final JavaParentType parentType,
             final String currentPackageName, final Set < GenericDependency > importDependencies,
-            final Map < String, GenericDependency > dependenciesMap, final String parentName)
+            final ProgrammingLanguageContext programmingLanguageContext, final String parentName)
             throws PlantUMLDependencyException {
         GenericDependency dependency = null;
         dependency = findDependencyInImport(parentName, importDependencies);
 
         if (dependency == null) {
             final String parentFullNameWithSamePackage = currentPackageName + DOT_CHAR + parentName;
-            dependency = dependenciesMap.get(parentFullNameWithSamePackage);
+            dependency = programmingLanguageContext.getDependencies(parentFullNameWithSamePackage);
             if (dependency == null) {
                 dependency = getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(type, parentType,
-                        currentPackageName, dependenciesMap, parentName, parentFullNameWithSamePackage);
+                        currentPackageName, programmingLanguageContext, parentName, parentFullNameWithSamePackage);
             } else {
                 LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, parentFullNameWithSamePackage));
             }
@@ -538,9 +558,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the parent {@link JavaParentType}, mustn't be <code>null</code>.
      * @param currentPackageName
      *            the current dependency package name, mustn't be <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @param parentName
      *            the parent dependency name, mustn't be <code>null</code>.
      * @param parentFullNameWithSamePackage
@@ -554,7 +575,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private GenericDependency getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(final JavaType type,
             final JavaParentType parentType, final String currentPackageName,
-            final Map < String, GenericDependency > dependenciesMap, final String parentName,
+            final ProgrammingLanguageContext programmingLanguageContext, final String parentName,
             final String parentFullNameWithSamePackage) throws PlantUMLDependencyException {
         GenericDependency dependency = null;
         String parentPackageName = JAVA_LANG_PACKAGE;
@@ -571,7 +592,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 .createParentDependencyType(parentType, parentName, parentPackageName);
         LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
         dependency = new GenericDependencyImpl(dependencyType);
-        dependenciesMap.put(parentFullName, dependency);
+        programmingLanguageContext.addOrReplaceDependencies(dependency);
 
         return dependency;
     }
@@ -606,9 +627,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     @Override
     public GenericDependency readDependencyFromFile(final String sourceFileContent,
-            final Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
+            final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
         final String preparedSourceFileContent = prepareSourceFileContent(sourceFileContent);
-        return readDependencyFromPreparedFile(preparedSourceFileContent, dependenciesMap);
+        return readDependencyFromPreparedFile(preparedSourceFileContent, programmingLanguageContext);
     }
 
     /**
@@ -618,9 +639,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance extracted from the java source file content.
      * @throws PlantUMLDependencyException
      *             if any exception occurs while reading or creating the {@link GenericDependency}
@@ -628,9 +650,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0
      */
     private GenericDependency readDependencyFromPreparedFile(final String javaSourceFileContent,
-            final Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException {
+            final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
         final JavaRawDependency javaRawDependency = readJavaRawDependencyFromPreparedFile(javaSourceFileContent);
-        return createDependencyFromRaw(javaRawDependency, javaSourceFileContent, dependenciesMap);
+        return createDependencyFromRaw(javaRawDependency, javaSourceFileContent, programmingLanguageContext);
     }
 
     /**

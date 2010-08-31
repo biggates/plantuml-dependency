@@ -43,6 +43,7 @@ import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
 
 /**
  * The abstract class which describes all supported programming language which can be reverse
@@ -159,6 +160,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      * 
      * @since 1.0
      */
+    @Override
     public int compareTo(final ProgrammingLanguage o) {
         if (this == o) {
             return EQUAL.getResult();
@@ -166,6 +168,14 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
             return getName().compareTo(o.getName());
         }
     }
+
+    /**
+     * Create a new {@link ProgrammingLanguageContext} following the language.
+     * 
+     * @return a new empty {@link ProgrammingLanguageContext} instance.
+     * @since 1.0
+     */
+    public abstract ProgrammingLanguageContext createNewContext();
 
     /**
      * {@inheritDoc}
@@ -226,11 +236,10 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      * @param sourceFileContent
      *            the source file content as a {@link String} to read, mustn't be <code>null</code>.
      *            Should contain the expected programming language.
-     * @param dependenciesMap
-     *            the {@link Map} containing all dependencies which have already been seen in
-     *            previous treatment, it contains dependencies full names (package + name) as keys
-     *            and their associated {@link GenericDependency} as values. This {@link Map} is
-     *            modified during the treatment, mustn't be <code>null</code>.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance if it has been found and correctly parsed,
      *         <code>null</code> otherwise.
      * @throws PlantUMLDependencyException
@@ -238,7 +247,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      * @since 1.0
      */
     public abstract GenericDependency readDependencyFromFile(String sourceFileContent,
-            Map < String, GenericDependency > dependenciesMap) throws PlantUMLDependencyException;
+            ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException;
 
     /**
      * Sets the value of <code>name</code>.

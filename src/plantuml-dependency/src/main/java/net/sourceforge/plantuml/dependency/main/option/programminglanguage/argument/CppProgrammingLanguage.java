@@ -25,10 +25,9 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument;
 
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.CPP_NOT_IMPLEMENTED_YET_ERROR;
-
-import java.util.Map;
-
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.CppProgrammingLanguageContext;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
 
 /**
  * The C++ {@link ProgrammingLanguage} implementation.
@@ -61,8 +60,18 @@ class CppProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0
      */
     @Override
+    public ProgrammingLanguageContext createNewContext() {
+        return new CppProgrammingLanguageContext();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
     public GenericDependency readDependencyFromFile(final String sourceFileContent,
-            final Map < String, GenericDependency > dependenciesMap) {
+            final ProgrammingLanguageContext programmingLanguageContext) {
         throw new UnsupportedOperationException(CPP_NOT_IMPLEMENTED_YET_ERROR);
     }
 }

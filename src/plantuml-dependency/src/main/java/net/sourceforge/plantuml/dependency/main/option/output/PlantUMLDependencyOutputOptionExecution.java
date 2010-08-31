@@ -35,10 +35,10 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.R
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.EXECUTION_TIME_INFO;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 
@@ -49,6 +49,7 @@ import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
 
 import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.ant.types.resources.FileResource;
@@ -145,9 +146,9 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
         final long start = currentTimeMillis();
 
         try {
-            final Map < String, GenericDependency > dependenciesMap = readDependenciesMapFromFiles(
+            final Collection < GenericDependency > dependencies = readDependenciesMapFromFiles(
                     getProgrammingLanguage(), getInputFileSet(), isVerboseMode(), getDisplayOptions());
-            writePlantUMLFile(dependenciesMap, getOutputFile());
+            writePlantUMLFile(dependencies, getOutputFile());
         } catch (final PlantUMLDependencyException e) {
             LOGGER.severe(e.getMessage());
         }
@@ -227,33 +228,32 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *            the boolean telling if the verbose mode is active, to display log information.
      * @param displayOpt
      *            the display option which have to appear in the plantUML description.
-     * @return the {@link Map} of parsed dependencies, with their full name as keys and the
-     *         associated {@link GenericDependency} instances as values.
+     * @return the {@link Collection} of all parsed {@link GenericDependency}.
      * @throws PlantUMLDependencyException
      *             if any exception occurs while reading and parsing the source files.
      * @since 1.0
      */
     @SuppressWarnings("unchecked")
-    private Map < String, GenericDependency > readDependenciesMapFromFiles(final ProgrammingLanguage language,
+    private Collection < GenericDependency > readDependenciesMapFromFiles(final ProgrammingLanguage language,
             final FileSet includeExcludeFiles, final boolean verboseModeActive, final Set < Display > displayOpt)
             throws PlantUMLDependencyException {
-        final Map < String, GenericDependency > dependenciesMap = new TreeMap < String, GenericDependency >();
+        final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext();
 
         final Iterator < FileResource > iter = includeExcludeFiles.iterator();
         while (iter.hasNext()) {
             final FileResource fileResource = iter.next();
 
             try {
-                final GenericDependency dependency = readDependencyFromFile(fileResource.getFile(), dependenciesMap,
-                        language, verboseModeActive, displayOpt);
-                dependenciesMap.put(dependency.getFullName(), dependency);
+                final GenericDependency dependency = readDependencyFromFile(fileResource.getFile(),
+                        programmingLanguageContext, language, verboseModeActive, displayOpt);
+                programmingLanguageContext.addOrReplaceDependencies(dependency);
             } catch (final PlantUMLDependencyException e) {
                 throw new PlantUMLDependencyException(
                         buildLogString(READING_SOURCE_FILE_ERROR, fileResource.getFile()), e);
             }
         }
 
-        return dependenciesMap;
+        return programmingLanguageContext.getAllDependencies();
     }
 
     /**
@@ -262,9 +262,10 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * 
      * @param file
      *            the source file to parse, mustn't be <code>null</code>.
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
      * @param language
      *            the programming language of the source files to parse, mustn't be
      *            <code>null</code>.
@@ -278,10 +279,10 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @since 1.0
      */
     private GenericDependency readDependencyFromFile(final File file,
-            final Map < String, GenericDependency > dependenciesMap, final ProgrammingLanguage language,
+            final ProgrammingLanguageContext programmingLanguageContext, final ProgrammingLanguage language,
             final boolean verboseModeActive, final Set < Display > displayOpt) throws PlantUMLDependencyException {
         final String sourceFileContent = readFileIntoString(file);
-        return language.readDependencyFromFile(sourceFileContent, dependenciesMap);
+        return language.readDependencyFromFile(sourceFileContent, programmingLanguageContext);
     }
 
     /**
@@ -348,23 +349,22 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * Writes the PlantUML description output file following the {@link Map} of all dependencies
      * parsed.
      * 
-     * @param dependenciesMap
-     *            the {@link Map} of dependencies already seen or treated, with their full name as
-     *            keys and the associated {@link GenericDependency} instances as values.
+     * @param dependencies
+     *            the {@link Collection} of {@link GenericDependency} already seen or treated.
      * @param file
      *            the output file where to generate the plantUML description, mustn't be
      *            <code>null</code>.
      * @since 1.0
      */
-    private void writePlantUMLFile(final Map < String, GenericDependency > dependenciesMap, final File file) {
+    private void writePlantUMLFile(final Collection < GenericDependency > dependencies, final File file) {
         final StringBuffer buffer = new StringBuffer(START_PLANTUML);
 
         // TODO 1 boucle avec 2 string buffer que l'on concatene
-        for (final GenericDependency abstractDependency : dependenciesMap.values()) {
+        for (final GenericDependency abstractDependency : dependencies) {
             buffer.append(abstractDependency.getDependencyType().getPlantUMLDeclaration());
         }
 
-        for (final GenericDependency abstractImportDependency : dependenciesMap.values()) {
+        for (final GenericDependency abstractImportDependency : dependencies) {
             buffer.append(abstractImportDependency.getDependencyType().getPlantUMLLinksDescription());
         }
 
