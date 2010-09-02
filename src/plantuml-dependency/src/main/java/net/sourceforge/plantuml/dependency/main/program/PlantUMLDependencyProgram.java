@@ -139,7 +139,7 @@ public final class PlantUMLDependencyProgram {
                 "**/*Test.java"};
         final String[] example4 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
                 includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
-                displayOption.getName(), "packages,interfaces", verboseOption.getName()};
+                displayOption.getName(), "only_packages,interfaces", verboseOption.getName()};
         plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example1));
         plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example2));
         plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example3));

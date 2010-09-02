@@ -32,7 +32,7 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.PACKAGES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_LINKS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 
 import java.util.Set;
@@ -60,7 +60,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
 
     /** The default option if not specified. */
     private static final String DEFAULT_OPTION = CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS + COMMA_CHAR
-            + INTERFACES + COMMA_CHAR + PACKAGES + COMMA_CHAR + STATIC_IMPORTS;
+            + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_LINKS;
 
     /**
      * Default constructor.

@@ -24,6 +24,9 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context;
 
+import static java.util.logging.Level.SEVERE;
+import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NULL_ERROR;
@@ -31,6 +34,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.D
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
@@ -46,6 +50,9 @@ public class CppProgrammingLanguageContext implements ProgrammingLanguageContext
 
     /** Serial version UID. */
     private static final long serialVersionUID = -58802276954407988L;
+
+    /** The class logger. */
+    private static final transient Logger LOGGER = getLogger(CppProgrammingLanguageContext.class.getName());
 
     /**
      * The {@link Map} containing all dependencies which have already been treated, it contains
@@ -72,6 +79,28 @@ public class CppProgrammingLanguageContext implements ProgrammingLanguageContext
     public void addOrReplaceDependencies(final GenericDependency dependency) {
         checkNull(dependency, DEPENDENCY_NULL_ERROR);
         getDependenciesMap().put(dependency.getFullName(), dependency);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public ProgrammingLanguageContext deepClone() {
+        CppProgrammingLanguageContext c = null;
+
+        try {
+            c = (CppProgrammingLanguageContext) super.clone();
+            c.dependenciesMap = new HashMap < String, GenericDependency >();
+            for (final GenericDependency genericDependency : getAllDependencies()) {
+                dependenciesMap.put(genericDependency.getFullName(), genericDependency.deepClone());
+            }
+        } catch (final CloneNotSupportedException cnse) {
+            LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
+        }
+
+        return c;
     }
 
     /**

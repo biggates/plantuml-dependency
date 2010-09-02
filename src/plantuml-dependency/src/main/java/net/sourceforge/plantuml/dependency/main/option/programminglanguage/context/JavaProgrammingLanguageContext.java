@@ -24,13 +24,19 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context;
 
+import static java.util.logging.Level.SEVERE;
+import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NULL_ERROR;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
@@ -47,6 +53,9 @@ public class JavaProgrammingLanguageContext implements ProgrammingLanguageContex
     /** Serial version UID. */
     private static final long serialVersionUID = -2181655116426569842L;
 
+    /** The class logger. */
+    private static final transient Logger LOGGER = getLogger(JavaProgrammingLanguageContext.class.getName());
+
     /**
      * The {@link Map} containing all dependencies which have already been treated, it contains
      * dependencies full names (package + name) as keys and their associated
@@ -60,7 +69,24 @@ public class JavaProgrammingLanguageContext implements ProgrammingLanguageContex
      * @since 1.0
      */
     public JavaProgrammingLanguageContext() {
-        setDependenciesMap(new HashMap < String, GenericDependency >());
+        this(new HashSet < GenericDependency >());
+    }
+
+    /**
+     * Full constructor.
+     * 
+     * @param dependencies
+     *            the original {@link Set} of {@link GenericDependency} to put in the context,
+     *            mustn't be <code>null</code>.
+     * @since 1.0
+     */
+    public JavaProgrammingLanguageContext(final Set < GenericDependency > dependencies) {
+        // TODO test null
+        final Map < String, GenericDependency > dependenciesMap = new HashMap < String, GenericDependency >();
+        for (final GenericDependency genericDependency : dependencies) {
+            dependenciesMap.put(genericDependency.getFullName(), genericDependency);
+        }
+        setDependenciesMap(dependenciesMap);
     }
 
     /**
@@ -72,6 +98,28 @@ public class JavaProgrammingLanguageContext implements ProgrammingLanguageContex
     public void addOrReplaceDependencies(final GenericDependency dependency) {
         checkNull(dependency, DEPENDENCY_NULL_ERROR);
         getDependenciesMap().put(dependency.getFullName(), dependency);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public ProgrammingLanguageContext deepClone() {
+        JavaProgrammingLanguageContext j = null;
+
+        try {
+            j = (JavaProgrammingLanguageContext) super.clone();
+            j.dependenciesMap = new HashMap < String, GenericDependency >();
+            for (final GenericDependency genericDependency : getAllDependencies()) {
+                j.dependenciesMap.put(genericDependency.getFullName(), genericDependency.deepClone());
+            }
+        } catch (final CloneNotSupportedException cnse) {
+            LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
+        }
+
+        return j;
     }
 
     /**

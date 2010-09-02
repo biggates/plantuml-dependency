@@ -27,6 +27,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.cont
 import java.io.Serializable;
 import java.util.Collection;
 
+import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 /**
@@ -38,7 +39,7 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
  * @since 1.0
  * @version 1.0
  */
-public interface ProgrammingLanguageContext extends Serializable {
+public interface ProgrammingLanguageContext extends Serializable, DeepCloneable < ProgrammingLanguageContext > {
 
     /**
      * Adds or replaces a dependencies in the context. The dependency is replaced following its full

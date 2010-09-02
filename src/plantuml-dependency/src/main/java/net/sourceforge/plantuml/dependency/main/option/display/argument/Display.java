@@ -33,8 +33,8 @@ package net.sourceforge.plantuml.dependency.main.option.display.argument;
  * @version 1.0
  */
 public enum Display {
-    /** The display packages argument. */
-    PACKAGES,
+    /** The display only packages argument. */
+    ONLY_PACKAGES,
     /** The display classes argument. */
     CLASSES,
     /** The display interfaces argument. */
@@ -52,7 +52,9 @@ public enum Display {
     /** The display attributes argument. */
     ATTRIBUTES,
     /** The display parsed objects argument. */
-    ONLY_PARSED_OBJECTS;
+    ONLY_PARSED_OBJECTS,
+    /** The display native links argument. */
+    NATIVE_LINKS;
 
     /**
      * {@inheritDoc}

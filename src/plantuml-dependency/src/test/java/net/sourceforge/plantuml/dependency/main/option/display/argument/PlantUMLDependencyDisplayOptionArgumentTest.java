@@ -25,7 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.display.argument;
 
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.PACKAGES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PACKAGES;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -75,7 +75,7 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends DeepCloneableOb
     @Test
     public void testGetFullUsageDescription() {
         assertEquals(
-                "DISPLAY_OPTIONS specifies the objects to be treated, it is a separated comma list with these possible values : [packages, classes, interfaces, abstract_classes, static_imports, imports, enums, methods, attributes, only_parsed_objects]. These arguments implementations may differ following the PROGRAMMING_LANGUAGE chosen.",
+                "DISPLAY_OPTIONS specifies the objects to be treated, it is a separated comma list with these possible values : [only_packages, classes, interfaces, abstract_classes, static_imports, imports, enums, methods, attributes, only_parsed_objects, native_links]. These arguments implementations may differ following the chosen PROGRAMMING_LANGUAGE.",
                 DISPLAY_OPTION_ARGUMENT1.getFullUsageDescription().toString());
     }
 
@@ -106,9 +106,9 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends DeepCloneableOb
      */
     @Test
     public void testParseArgumentLowerCase() throws CommandLineException {
-        final Set < Display > argument = DISPLAY_OPTION_ARGUMENT1.parseArgument("packages");
+        final Set < Display > argument = DISPLAY_OPTION_ARGUMENT1.parseArgument("only_packages");
         assertEquals(1, argument.size());
-        assertTrue(argument.contains(PACKAGES));
+        assertTrue(argument.contains(ONLY_PACKAGES));
     }
 
     /**
@@ -132,9 +132,9 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends DeepCloneableOb
      */
     @Test
     public void testParseArgumentUpperCase() throws CommandLineException {
-        final Set < Display > argument = DISPLAY_OPTION_ARGUMENT1.parseArgument("PACKaGES");
+        final Set < Display > argument = DISPLAY_OPTION_ARGUMENT1.parseArgument("onLY_PACKaGES");
         assertEquals(1, argument.size());
-        assertTrue(argument.contains(PACKAGES));
+        assertTrue(argument.contains(ONLY_PACKAGES));
     }
 
     /**

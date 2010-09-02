@@ -35,8 +35,9 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.PACKAGES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PACKAGES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_LINKS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -83,7 +84,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
         final Set < Display > argument = DISPLAY_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE7);
         assertEquals(3, argument.size());
         assertTrue(argument.contains(ENUMS));
-        assertTrue(argument.contains(PACKAGES));
+        assertTrue(argument.contains(ONLY_PACKAGES));
         assertTrue(argument.contains(STATIC_IMPORTS));
     }
 
@@ -116,7 +117,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
         assertTrue(argument.contains(ENUMS));
         assertTrue(argument.contains(IMPORTS));
         assertTrue(argument.contains(INTERFACES));
-        assertTrue(argument.contains(PACKAGES));
+        assertTrue(argument.contains(NATIVE_LINKS));
         assertTrue(argument.contains(STATIC_IMPORTS));
     }
 
@@ -147,7 +148,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
         assertTrue(defaultArgument.contains(ENUMS));
         assertTrue(defaultArgument.contains(IMPORTS));
         assertTrue(defaultArgument.contains(INTERFACES));
-        assertTrue(defaultArgument.contains(PACKAGES));
+        assertTrue(defaultArgument.contains(NATIVE_LINKS));
         assertTrue(defaultArgument.contains(STATIC_IMPORTS));
     }
 
@@ -161,8 +162,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetDefaultArgumentAsString() throws CommandLineException {
         final String defaultArgument = DISPLAY_OPTION1.getDefaultArgumentAsString(COMMAND_LINE1);
-        assertEquals(CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS + COMMA_CHAR + INTERFACES + COMMA_CHAR
-                + PACKAGES + COMMA_CHAR + STATIC_IMPORTS, defaultArgument);
+        assertEquals(CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_LINKS, defaultArgument);
     }
 
     /**
@@ -171,7 +171,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-d, --display DISPLAY_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is classes,enums,imports,interfaces,packages,static_imports\n\t\tDISPLAY_OPTIONS specifies the objects to be treated, it is a separated comma list with these possible values : [packages, classes, interfaces, abstract_classes, static_imports, imports, enums, methods, attributes, only_parsed_objects]. These arguments implementations may differ following the PROGRAMMING_LANGUAGE chosen.",
+                "-d, --display DISPLAY_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is classes,enums,imports,interfaces,static_imports,native_links\n\t\tDISPLAY_OPTIONS specifies the objects to be treated, it is a separated comma list with these possible values : [only_packages, classes, interfaces, abstract_classes, static_imports, imports, enums, methods, attributes, only_parsed_objects, native_links]. These arguments implementations may differ following the chosen PROGRAMMING_LANGUAGE.",
                 DISPLAY_OPTION1.getFullUsage().toString());
     }
 

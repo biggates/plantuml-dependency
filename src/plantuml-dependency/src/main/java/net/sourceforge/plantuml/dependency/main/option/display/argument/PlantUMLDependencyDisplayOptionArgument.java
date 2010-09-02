@@ -61,7 +61,7 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
     private static final String USAGE_DESCRIPTION = MAIN_USAGE
             + " specifies the objects to be treated, it is a separated comma list with these possible values : "
             + asList(values())
-            + ". These arguments implementations may differ following the PROGRAMMING_LANGUAGE chosen.";
+            + ". These arguments implementations may differ following the chosen PROGRAMMING_LANGUAGE.";
 
     /**
      * Default constructor.
