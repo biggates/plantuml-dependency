@@ -70,8 +70,8 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType;
-import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.JavaProgrammingLanguageContext;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext;
 
 /**
  * The Java {@link ProgrammingLanguage} implementation.

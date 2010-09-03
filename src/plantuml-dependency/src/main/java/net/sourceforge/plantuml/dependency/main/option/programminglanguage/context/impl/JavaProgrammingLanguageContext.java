@@ -22,7 +22,7 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context;
+package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl;
 
 import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
@@ -33,6 +33,8 @@ import java.util.Set;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
 
 /**
  * The java {@link ProgrammingLanguageContext} implementation.

@@ -30,8 +30,8 @@ import java.util.Set;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
-import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.CppProgrammingLanguageContext;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.CppProgrammingLanguageContext;
 
 /**
  * The C++ {@link ProgrammingLanguage} implementation.

@@ -22,7 +22,7 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context;
+package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.DISPLAY_SET2;
@@ -34,6 +34,7 @@ import java.util.TreeSet;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -80,7 +81,7 @@ public class JavaProgrammingLanguageContextTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.JavaProgrammingLanguageContext#addOrReplaceDependencies(net.sourceforge.plantuml.dependency.generic.GenericDependency)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addOrReplaceDependencies(net.sourceforge.plantuml.dependency.generic.GenericDependency)}
      * .
      */
     @Test
@@ -95,7 +96,7 @@ public class JavaProgrammingLanguageContextTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.JavaProgrammingLanguageContext#addOrReplaceDependencies(net.sourceforge.plantuml.dependency.generic.GenericDependency)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addOrReplaceDependencies(net.sourceforge.plantuml.dependency.generic.GenericDependency)}
      * .
      */
     @Test
@@ -109,7 +110,7 @@ public class JavaProgrammingLanguageContextTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.JavaProgrammingLanguageContext#getAllDependencies()}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getAllDependencies()}
      * .
      */
     @Test
@@ -119,7 +120,7 @@ public class JavaProgrammingLanguageContextTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.JavaProgrammingLanguageContext#getDependencies(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getDependencies(java.lang.String)}
      * .
      */
     @Test
@@ -133,7 +134,7 @@ public class JavaProgrammingLanguageContextTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.JavaProgrammingLanguageContext#getDependencies(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getDependencies(java.lang.String)}
      * .
      */
     @Test

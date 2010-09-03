@@ -53,8 +53,8 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbst
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
-import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.JavaProgrammingLanguageContext;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
+import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext;
 
 import org.apache.tools.ant.types.FileSet;
 
