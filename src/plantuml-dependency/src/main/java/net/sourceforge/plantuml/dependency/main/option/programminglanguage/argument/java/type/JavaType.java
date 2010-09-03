@@ -242,7 +242,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /**
      * Parses and extracts the {@link Set} of parent dependency names of type
-     * {@link JavaParentType#EXTENTION} from the passed {@link String}.
+     * {@link JavaParentType#EXTENSION} from the passed {@link String}.
      * 
      * @param extendsString
      *            the {@link String} which describes the dependencies which are extended by the

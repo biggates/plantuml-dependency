@@ -28,7 +28,7 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_S
 import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImplTest.CLASS_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImplTest.ENUM_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImplTest.INTERFACE_DEPENDENCY_TYPE1;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.ENUM;
 import static org.junit.Assert.assertEquals;
@@ -99,7 +99,7 @@ public class EnumJavaTypeTest extends ObjectTest < EnumJavaType > {
      */
     @Test(expected = PlantUMLDependencyException.class)
     public void testCreateParentDependencyTypeExtention() throws PlantUMLDependencyException {
-        JAVA_TYPE1.createParentDependencyType(EXTENTION, CLASS_DEPENDENCY_TYPE1.getName(), CLASS_DEPENDENCY_TYPE1
+        JAVA_TYPE1.createParentDependencyType(EXTENSION, CLASS_DEPENDENCY_TYPE1.getName(), CLASS_DEPENDENCY_TYPE1
                 .getPackageName());
     }
 

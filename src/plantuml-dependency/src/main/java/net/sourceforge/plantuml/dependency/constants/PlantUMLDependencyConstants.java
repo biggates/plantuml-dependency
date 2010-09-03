@@ -27,6 +27,8 @@ package net.sourceforge.plantuml.dependency.constants;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_LINKS;
@@ -46,7 +48,8 @@ public final class PlantUMLDependencyConstants {
 
     /** The default display options to apply if not specified. */
     public static final String DEFAULT_DISPLAY_OPTIONS = CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS
-            + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_LINKS;
+            + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_LINKS + COMMA_CHAR
+            + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS;
 
     /**
      * Private constructor to prevent from instantiation.

@@ -34,7 +34,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
  */
 public enum JavaParentType {
     /** The "extension" java parent type. */
-    EXTENTION,
+    EXTENSION,
     /** The "implementation" java parent type. */
     IMPLEMENTATION;
 

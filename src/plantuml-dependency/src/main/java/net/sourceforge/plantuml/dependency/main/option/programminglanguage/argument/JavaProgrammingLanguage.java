@@ -51,7 +51,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DE
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_NOT_SEEN_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.NO_PACKAGE_FOUND_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.UPDATING_DEPENDENCY_INFO;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
 import java.util.Iterator;
@@ -131,7 +131,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 javaRawDependency.getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(),
                 importDependencies, programmingLanguageContext, javaRawDependency.getPackageName());
         final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(
-                javaRawDependency.getType(), EXTENTION, javaRawDependency.getParentExtentions(), importDependencies,
+                javaRawDependency.getType(), EXTENSION, javaRawDependency.getParentExtentions(), importDependencies,
                 programmingLanguageContext, javaRawDependency.getPackageName());
 
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(

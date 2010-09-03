@@ -54,7 +54,11 @@ public enum Display {
     /** The display parsed objects argument. */
     ONLY_PARSED_OBJECTS,
     /** The display native links argument. */
-    NATIVE_LINKS;
+    NATIVE_LINKS,
+    /** The display implementations argument. */
+    IMPLEMENTATIONS,
+    /** The display extensions argument. */
+    EXTENSIONS;
 
     /**
      * {@inheritDoc}

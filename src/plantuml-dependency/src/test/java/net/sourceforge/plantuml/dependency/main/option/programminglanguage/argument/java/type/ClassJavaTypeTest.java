@@ -28,7 +28,7 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_S
 import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImplTest.CLASS_ABSTRACT_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImplTest.CLASS_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImplTest.INTERFACE_DEPENDENCY_TYPE1;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.CLASS;
 import static org.junit.Assert.assertEquals;
@@ -98,7 +98,7 @@ public class ClassJavaTypeTest extends ObjectTest < ClassJavaType > {
      */
     @Test
     public void testCreateParentDependencyTypeExtention() throws PlantUMLDependencyException {
-        assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createParentDependencyType(EXTENTION, CLASS_DEPENDENCY_TYPE1
+        assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createParentDependencyType(EXTENSION, CLASS_DEPENDENCY_TYPE1
                 .getName(), CLASS_DEPENDENCY_TYPE1.getPackageName()));
     }
 

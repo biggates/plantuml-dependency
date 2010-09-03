@@ -38,7 +38,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.J
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPORTS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_PACKAGE_NAME_NULL_ERROR;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENTION;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
 import java.util.Set;
@@ -108,7 +108,7 @@ class EnumJavaType extends JavaType {
 
         DependencyType dependencyType = null;
 
-        if (EXTENTION == parentType) {
+        if (EXTENSION == parentType) {
             throw new PlantUMLDependencyException(buildLogString(IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR, new Object[] {
                     parentType, getLanguageKeyword()}));
         } else if (IMPLEMENTATION == parentType) {
