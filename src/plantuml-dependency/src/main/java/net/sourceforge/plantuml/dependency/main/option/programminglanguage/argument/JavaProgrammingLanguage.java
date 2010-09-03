@@ -66,6 +66,7 @@ import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType;
@@ -137,16 +138,6 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
                 importDependencies, parentImplementationsDependencies, parentExtentionsDependencies);
         return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 1.0
-     */
-    @Override
-    public ProgrammingLanguageContext createNewContext() {
-        return new JavaProgrammingLanguageContext();
     }
 
     /**
@@ -697,5 +688,14 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         }
 
         return javaRawDependency;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.0
+     */
+    @Override
+    public ProgrammingLanguageContext createNewContext(Set < Display > displayOpt) {
+        return new JavaProgrammingLanguageContext(displayOpt);
     }
 }

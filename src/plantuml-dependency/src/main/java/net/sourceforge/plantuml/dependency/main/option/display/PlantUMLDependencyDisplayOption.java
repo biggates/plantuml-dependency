@@ -26,14 +26,8 @@ package net.sourceforge.plantuml.dependency.main.option.display;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_LINKS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -58,10 +52,6 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
     /** Serial version UID. */
     private static final long serialVersionUID = -3061227816589361105L;
 
-    /** The default option if not specified. */
-    private static final String DEFAULT_OPTION = CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS + COMMA_CHAR
-            + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_LINKS;
-
     /**
      * Default constructor.
      * 
@@ -71,7 +61,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
         super("-d", unmodifiableSet(new TreeSet < String >(asList(new String[] {"--display"}))), false,
                 new PlantUMLDependencyDisplayOptionArgument(true), new StringBuffer(
                         "To specify class diagram objects to display. If not specified, the default is "
-                                + DEFAULT_OPTION), SPACE_CHAR);
+                                + DEFAULT_DISPLAY_OPTIONS), SPACE_CHAR);
     }
 
     /**
@@ -81,6 +71,6 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
      */
     @Override
     public String getDefaultArgumentAsString(final CommandLine commandLine) throws CommandLineException {
-        return DEFAULT_OPTION;
+        return DEFAULT_DISPLAY_OPTIONS;
     }
 }

@@ -28,9 +28,6 @@ import static java.lang.System.currentTimeMillis;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
-import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.READING_SOURCE_FILE_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.EXECUTION_TIME_INFO;
 
@@ -146,9 +143,9 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
         final long start = currentTimeMillis();
 
         try {
-            final Collection < GenericDependency > dependencies = readDependenciesMapFromFiles(
+            final ProgrammingLanguageContext programmingLanguageContext = readDependenciesMapFromFiles(
                     getProgrammingLanguage(), getInputFileSet(), isVerboseMode(), getDisplayOptions());
-            writePlantUMLFile(dependencies, getOutputFile());
+            programmingLanguageContext.writePlantUMLFile(getOutputFile());
         } catch (final PlantUMLDependencyException e) {
             LOGGER.severe(e.getMessage());
         }
@@ -227,17 +224,18 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param verboseModeActive
      *            the boolean telling if the verbose mode is active, to display log information.
      * @param displayOpt
-     *            the display option which have to appear in the plantUML description.
+     *            the display option which have to appear in the plantUML description, mustn't be
+     *            <code>null</code>.
      * @return the {@link Collection} of all parsed {@link GenericDependency}.
      * @throws PlantUMLDependencyException
      *             if any exception occurs while reading and parsing the source files.
      * @since 1.0
      */
     @SuppressWarnings("unchecked")
-    private Collection < GenericDependency > readDependenciesMapFromFiles(final ProgrammingLanguage language,
+    private ProgrammingLanguageContext readDependenciesMapFromFiles(final ProgrammingLanguage language,
             final FileSet includeExcludeFiles, final boolean verboseModeActive, final Set < Display > displayOpt)
             throws PlantUMLDependencyException {
-        final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext();
+        final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext(displayOpt);
 
         final Iterator < FileResource > iter = includeExcludeFiles.iterator();
         while (iter.hasNext()) {
@@ -253,7 +251,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
             }
         }
 
-        return programmingLanguageContext.getAllDependencies();
+        return programmingLanguageContext;
     }
 
     /**
@@ -343,32 +341,5 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      */
     private void setVerboseMode(final boolean value) {
         verboseMode = value;
-    }
-
-    /**
-     * Writes the PlantUML description output file following the {@link Map} of all dependencies
-     * parsed.
-     * 
-     * @param dependencies
-     *            the {@link Collection} of {@link GenericDependency} already seen or treated.
-     * @param file
-     *            the output file where to generate the plantUML description, mustn't be
-     *            <code>null</code>.
-     * @since 1.0
-     */
-    private void writePlantUMLFile(final Collection < GenericDependency > dependencies, final File file) {
-        final StringBuffer buffer = new StringBuffer(START_PLANTUML);
-
-        // TODO 1 boucle avec 2 string buffer que l'on concatene
-        for (final GenericDependency abstractDependency : dependencies) {
-            buffer.append(abstractDependency.getDependencyType().getPlantUMLDeclaration());
-        }
-
-        for (final GenericDependency abstractImportDependency : dependencies) {
-            buffer.append(abstractImportDependency.getDependencyType().getPlantUMLLinksDescription());
-        }
-
-        buffer.append(END_PLANTUML);
-        writeIntoFile(buffer.toString(), file);
     }
 }

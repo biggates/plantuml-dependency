@@ -35,8 +35,9 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.METHODS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PARSED_OBJECTS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_LINKS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PACKAGES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PARSED_OBJECTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.values;
 
@@ -81,7 +82,8 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Command line test 5 instance. */
     public static final CommandLine COMMAND_LINE5 = new CommandLineImpl(new String[] {"-o", "./log.txt", "-d",
-            "classes,enums,imports,interfaces,only_packages,static_imports,native_links", "-v", "-version", "-d", "classes"});
+            "classes,enums,imports,interfaces,only_packages,static_imports,native_links", "-v", "-version", "-d",
+            "classes"});
 
     /** Command line test 6 instance. */
     public static final CommandLine COMMAND_LINE6 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-d", "-v",
@@ -149,7 +151,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Display set test 2 instance. */
     public static final Set < Display > DISPLAY_SET2 = new TreeSet < Display >(asList(new Display[] {CLASSES, ENUMS,
-            IMPORTS, INTERFACES, ONLY_PACKAGES, STATIC_IMPORTS}));
+            IMPORTS, INTERFACES, ONLY_PACKAGES, STATIC_IMPORTS, NATIVE_LINKS}));
 
     /** Display set test 3 instance. */
     public static final Set < Display > DISPLAY_SET3 = new TreeSet < Display >(asList(values()));
@@ -440,9 +442,9 @@ public final class PlantUMLDependencyTestConstants {
             "TestReadDependencyFromFilePublicInterface",
             "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >());
-    
+
     /** Java programming language test 10 instance. */
-    public static final ProgrammingLanguageContext JAVA_PROGRAMMING_LANGUAGE_CONTEXT1 = new JavaProgrammingLanguageContext();
+    public static final ProgrammingLanguageContext JAVA_PROGRAMMING_LANGUAGE_CONTEXT1 = new JavaProgrammingLanguageContext(DISPLAY_SET2);
 
     /** Generic dependency test 2 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY2 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE2);

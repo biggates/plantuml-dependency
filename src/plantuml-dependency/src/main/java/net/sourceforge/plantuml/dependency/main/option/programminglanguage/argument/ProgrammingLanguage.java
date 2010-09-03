@@ -43,6 +43,7 @@ import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
 
 /**
@@ -172,10 +173,13 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
     /**
      * Create a new {@link ProgrammingLanguageContext} following the language.
      * 
+     * @param displayOpt
+     *            the display option which have to appear in the plantUML description, mustn't be
+     *            <code>null</code>.
      * @return a new empty {@link ProgrammingLanguageContext} instance.
      * @since 1.0
      */
-    public abstract ProgrammingLanguageContext createNewContext();
+    public abstract ProgrammingLanguageContext createNewContext(final Set < Display > displayOpt);
 
     /**
      * {@inheritDoc}

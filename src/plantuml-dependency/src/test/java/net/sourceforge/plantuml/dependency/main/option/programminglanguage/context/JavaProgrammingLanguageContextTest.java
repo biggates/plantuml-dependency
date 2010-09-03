@@ -25,6 +25,8 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context;
 
 import static java.util.Arrays.asList;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.DISPLAY_SET2;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.DISPLAY_SET3;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -56,15 +58,25 @@ public class JavaProgrammingLanguageContextTest {
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {
                     new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                             "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
-                    new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})));
+                    new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
+            DISPLAY_SET2);
 
     /** Java programming language test 3 instance. */
     @DataPoint
-    public static final JavaProgrammingLanguageContext PROGRAMMING_LANGUAGE_OPTION3 = new JavaProgrammingLanguageContext();
+    public static final JavaProgrammingLanguageContext PROGRAMMING_LANGUAGE_OPTION3 = new JavaProgrammingLanguageContext(
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {
+                    new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
+                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
+                    new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
+            DISPLAY_SET3);
 
     /** Java programming language test 4 instance. */
     @DataPoint
-    public static final JavaProgrammingLanguageContext PROGRAMMING_LANGUAGE_OPTION4 = null;
+    public static final JavaProgrammingLanguageContext PROGRAMMING_LANGUAGE_OPTION4 = new JavaProgrammingLanguageContext();
+
+    /** Java programming language test 5 instance. */
+    @DataPoint
+    public static final JavaProgrammingLanguageContext PROGRAMMING_LANGUAGE_OPTION5 = null;
 
     /**
      * Test method for

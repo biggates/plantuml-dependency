@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -71,4 +72,15 @@ public interface ProgrammingLanguageContext extends Serializable, DeepCloneable 
      * @since 1.0
      */
     GenericDependency getDependencies(String fullName);
+
+    /**
+     * Writes the PlantUML description output file following all {@link Dependencies} and the
+     * display option of the context.
+     * 
+     * @param file
+     *            the output file where to generate the plantUML description, mustn't be
+     *            <code>null</code>.
+     * @since 1.0
+     */
+    void writePlantUMLFile(final File file);
 }
