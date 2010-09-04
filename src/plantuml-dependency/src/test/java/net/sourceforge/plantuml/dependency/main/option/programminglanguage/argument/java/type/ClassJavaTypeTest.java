@@ -27,6 +27,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImplTest.CLASS_ABSTRACT_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImplTest.CLASS_DEPENDENCY_TYPE1;
+import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImplTest.CLASS_ABSTRACT_DEPENDENCY_TYPE11;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImplTest.INTERFACE_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
@@ -71,10 +72,26 @@ public class ClassJavaTypeTest extends ObjectTest < ClassJavaType > {
      */
     @Test
     public void testCreateDependencyTypeAbstract() {
-        assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_ABSTRACT_DEPENDENCY_TYPE1
-                .getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getPackageName(), true, CLASS_ABSTRACT_DEPENDENCY_TYPE1
-                .getImportDependencies(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentInterfaces(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentClasses()));
+        assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getPackageName(), true,
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getImportDependencies(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentInterfaces(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.hasNativeMethods()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#createDependencyType(java.lang.String, java.lang.String, boolean, java.util.Set, java.util.Set, java.util.Set)}
+     * .
+     */
+    @Test
+    public void testCreateDependencyTypeAbstractWithNativeMethods() {
+        assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE11, JAVA_TYPE1.createDependencyType(
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE11.getPackageName(), true,
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getImportDependencies(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentInterfaces(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentClasses(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.hasNativeMethods()));
     }
 
     /**
@@ -86,7 +103,8 @@ public class ClassJavaTypeTest extends ObjectTest < ClassJavaType > {
     public void testCreateDependencyTypeNotAbstract() {
         assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_DEPENDENCY_TYPE1.getName(),
                 CLASS_DEPENDENCY_TYPE1.getPackageName(), false, CLASS_DEPENDENCY_TYPE1.getImportDependencies(),
-                CLASS_DEPENDENCY_TYPE1.getParentInterfaces(), CLASS_DEPENDENCY_TYPE1.getParentClasses()));
+                CLASS_DEPENDENCY_TYPE1.getParentInterfaces(), CLASS_DEPENDENCY_TYPE1.getParentClasses(),
+                CLASS_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
     /**
@@ -98,8 +116,8 @@ public class ClassJavaTypeTest extends ObjectTest < ClassJavaType > {
      */
     @Test
     public void testCreateParentDependencyTypeExtention() throws PlantUMLDependencyException {
-        assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createParentDependencyType(EXTENSION, CLASS_DEPENDENCY_TYPE1
-                .getName(), CLASS_DEPENDENCY_TYPE1.getPackageName()));
+        assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createParentDependencyType(EXTENSION,
+                CLASS_DEPENDENCY_TYPE1.getName(), CLASS_DEPENDENCY_TYPE1.getPackageName()));
     }
 
     /**

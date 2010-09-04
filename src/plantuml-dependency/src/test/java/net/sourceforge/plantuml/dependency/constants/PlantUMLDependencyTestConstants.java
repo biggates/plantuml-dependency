@@ -209,18 +209,18 @@ public final class PlantUMLDependencyTestConstants {
     /** Class dependency type test 3 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE3 = new ClassDependencyTypeImpl("Test",
             BLANK_STRING, new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
-            new TreeSet < GenericDependency >());
+            new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 4 instance. */
     public static final ClassAbstractDependencyTypeImpl CLASS_DEPENDENCY_TYPE4 = new ClassAbstractDependencyTypeImpl(
             "Test", "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
-            new TreeSet < GenericDependency >());
+            new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 5 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE5 = new ClassDependencyTypeImpl("Test",
             "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl("TestExtends",
-                    "com.plantuml.test")})));
+                    "com.plantuml.test")})), false);
 
     /** Class dependency type test 6 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE6 = new ClassDependencyTypeImpl("Test",
@@ -228,12 +228,12 @@ public final class PlantUMLDependencyTestConstants {
                     asList(new GenericDependency[] {new GenericDependencyImpl("AnotherTestExtends",
                             "com.plantuml.train.test")})), new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "AnotherTestExtends", "com.plantuml.train.test")})));
+                    "AnotherTestExtends", "com.plantuml.train.test")})), false);
 
     /** Class dependency type test 7 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE7 = new ClassDependencyTypeImpl("TestGeneric",
             "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
-            new TreeSet < GenericDependency >());
+            new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 8 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE8 = new ClassDependencyTypeImpl(
@@ -243,25 +243,25 @@ public final class PlantUMLDependencyTestConstants {
                             new GenericDependencyImpl("TestExtendsGeneric", "com.plantuml.train.test")})),
             new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("TestExtendsGeneric",
-                            "com.plantuml.train.test")})));
+                            "com.plantuml.train.test")})), false);
 
     /** Class dependency type test 9 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE9 = new ClassDependencyTypeImpl("TestImplements",
             "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("InterfaceTest", "com.plantuml.test")})),
-            new TreeSet < GenericDependency >());
+            new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 10 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE10 = new ClassDependencyTypeImpl(
             "TestImplementsGenerics", "com.plantuml.test", new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "InterfaceGenericsTest", "com.plantuml.test")})), new TreeSet < GenericDependency >());
+                    "InterfaceGenericsTest", "com.plantuml.test")})), new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 11 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE11 = new ClassDependencyTypeImpl(
             "TestImplementsGenerics", "com.plantuml.test", new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "InterfaceGenericsTest", "com.plantuml.test")})), new TreeSet < GenericDependency >());
+                    "InterfaceGenericsTest", "com.plantuml.test")})), new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 12 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE12 = new ClassDependencyTypeImpl(
@@ -272,7 +272,7 @@ public final class PlantUMLDependencyTestConstants {
                             new GenericDependencyImpl("InterfaceGenericsTest", "com.plantuml.test"),
                             new GenericDependencyImpl("InterfaceTest", "com.plantuml.test"),
                             new GenericDependencyImpl("AnotherInterfaceTest", "com.plantuml.train.test")})),
-            new TreeSet < GenericDependency >());
+            new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 13 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE13 = new ClassDependencyTypeImpl(
@@ -287,7 +287,7 @@ public final class PlantUMLDependencyTestConstants {
                     new GenericDependencyImpl("InterfaceTest", "com.plantuml.test"),
                     new GenericDependencyImpl("AnotherInterfaceTest", "com.plantuml.train.test")})),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "TestExtendsGeneric", "com.plantuml.train.test")})));
+                    "TestExtendsGeneric", "com.plantuml.train.test")})), false);
 
     /** Class dependency type test 14 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE14 = new ClassDependencyTypeImpl("TestImplements",
@@ -295,31 +295,31 @@ public final class PlantUMLDependencyTestConstants {
                     asList(new GenericDependency[] {new GenericDependencyImpl("AnotherInterfaceTest",
                             "com.plantuml.train.test")})), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("AnotherInterfaceTest",
-                            "com.plantuml.train.test")})), new TreeSet < GenericDependency >());
+                            "com.plantuml.train.test")})), new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 15 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE15 = new ClassDependencyTypeImpl("Test",
             "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "ClassNotFoundException", "java.lang")})));
+                    "ClassNotFoundException", "java.lang")})), false);
 
     /** Class dependency type test 16 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE16 = new ClassDependencyTypeImpl("TestImplements",
             "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("Appendable", "java.lang")})),
-            new TreeSet < GenericDependency >());
+            new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 17 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE17 = new ClassDependencyTypeImpl("Test",
             "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "JavaProgramImpl", "net.sourceforge.mazix.cli.program.impl")})));
+                    "JavaProgramImpl", "net.sourceforge.mazix.cli.program.impl")})), false);
 
     /** Class dependency type test 18 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE18 = new ClassDependencyTypeImpl("TestImplements",
             "com.plantuml.test", new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
-                            "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >());
+                            "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 19 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE19 = new ClassDependencyTypeImpl("Test",
@@ -327,7 +327,7 @@ public final class PlantUMLDependencyTestConstants {
                     asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgramImpl",
                             "net.sourceforge.mazix.cli.program.impl")})), new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "JavaProgramImpl", "net.sourceforge.mazix.cli.program.impl")})));
+                    "JavaProgramImpl", "net.sourceforge.mazix.cli.program.impl")})), false);
 
     /** Class dependency type test 20 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE20 = new ClassDependencyTypeImpl("TestImplements",
@@ -335,7 +335,7 @@ public final class PlantUMLDependencyTestConstants {
                     asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
                             "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
-                            "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >());
+                            "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 21 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE21 = new ClassDependencyTypeImpl(
@@ -343,7 +343,7 @@ public final class PlantUMLDependencyTestConstants {
                     asList(new GenericDependency[] {new GenericDependencyImpl("TestExtendsGeneric",
                             "com.plantuml.train.test")})), new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "TestExtendsGeneric", "com.plantuml.train.test")})));
+                    "TestExtendsGeneric", "com.plantuml.train.test")})), false);
 
     /** Class dependency type test 22 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE22 = new ClassDependencyTypeImpl(
@@ -352,7 +352,7 @@ public final class PlantUMLDependencyTestConstants {
                             new GenericDependencyImpl("InterfaceGenericsTest", "com.plantuml.train.test"),
                             new GenericDependencyImpl("Integer", "com.plantuml.train.test")})),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "InterfaceGenericsTest", "com.plantuml.train.test")})), new TreeSet < GenericDependency >());
+                    "InterfaceGenericsTest", "com.plantuml.train.test")})), new TreeSet < GenericDependency >(), false);
 
     /** Interface dependency type test 1 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(

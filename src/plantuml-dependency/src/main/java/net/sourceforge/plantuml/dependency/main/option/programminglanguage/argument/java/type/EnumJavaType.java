@@ -84,7 +84,7 @@ class EnumJavaType extends JavaType {
     public DependencyType createDependencyType(final String dependencyName, final String dependencyPackageName,
             final boolean isAbstract, final Set < GenericDependency > importDependencies,
             final Set < GenericDependency > parentImplementationsDependencies,
-            final Set < GenericDependency > parentExtentionsDependencies) {
+            final Set < GenericDependency > parentExtentionsDependencies, final boolean hasNativeMethods) {
         checkNull(dependencyName, JAVA_TYPE_NAME_NULL_ERROR);
         checkNull(dependencyPackageName, JAVA_TYPE_PACKAGE_NAME_NULL_ERROR);
         checkNull(importDependencies, JAVA_TYPE_IMPORTS_NULL_ERROR);
@@ -92,7 +92,7 @@ class EnumJavaType extends JavaType {
         checkNull(parentExtentionsDependencies, JAVA_TYPE_EXTENTIONS_NULL_ERROR);
 
         return new EnumDependencyTypeImpl(dependencyName, dependencyPackageName, importDependencies,
-                parentImplementationsDependencies);
+                parentImplementationsDependencies, hasNativeMethods);
     }
 
     /**
@@ -127,6 +127,16 @@ class EnumJavaType extends JavaType {
      * @since 1.0
      */
     @Override
+    public boolean extractNativeMethods(final String javaSourceFileContent) {
+        return NATIVE_METHODS_REGEXP.matcher(javaSourceFileContent).find();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
     public Set < String > extractParentExtentions(final String extendsString) throws PlantUMLDependencyException {
         if (isNotEmpty(extendsString)) {
             throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR,
@@ -145,14 +155,5 @@ class EnumJavaType extends JavaType {
     public Set < String > extractParentImplementations(final String implementsString)
             throws PlantUMLDependencyException {
         return extractParents(implementsString);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.0
-     */
-    @Override
-    public boolean extractNativeMethods(String javaSourceFileContent) {
-        return NATIVE_METHODS_REGEXP.matcher(javaSourceFileContent).find();
     }
 }

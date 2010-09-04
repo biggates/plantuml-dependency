@@ -81,6 +81,9 @@ public abstract class DependencyTypeImpl implements DependencyType {
      */
     private Set < GenericDependency > parentInterfaces;
 
+    /** The boolean indicating if the dependency has native methods inside. */
+    private final boolean nativeMethods;
+
     /** The plantUML declaration as a {@link StringBuffer} describing the current dependency type. */
     private StringBuffer plantUMLDeclaration;
 
@@ -102,7 +105,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         this(dependencyName, dependencyPackageName, dependencyPackageName + DOT_CHAR + dependencyName,
-                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
     }
 
     /**
@@ -122,9 +125,10 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet) {
+            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
+            final boolean nativeMth) {
         this(dependencyName, dependencyPackageName, dependencyPackageName + DOT_CHAR + dependencyName,
-                importDependenciesSet, parentInterfacesSet);
+                importDependenciesSet, parentInterfacesSet, nativeMth);
     }
 
     /**
@@ -148,7 +152,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final String fullDependencyName, final Set < GenericDependency > importDependenciesSet,
-            final Set < GenericDependency > parentInterfacesSet) {
+            final Set < GenericDependency > parentInterfacesSet, final boolean nativeMth) {
         // TODO tests null
         name = dependencyName;
         packageName = dependencyPackageName;
@@ -156,6 +160,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
         // TODO optimization
         importDependencies = importDependenciesSet;
         parentInterfaces = parentInterfacesSet;
+        nativeMethods = nativeMth;
     }
 
     /**
@@ -419,8 +424,20 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     @Override
+    public boolean hasNativeMethods() {
+        return nativeMethods;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
     public String toString() {
-        return getClass().getSimpleName() + " [fullName=" + fullName + ", importDependencies=" + importDependencies
-                + ", parentInterfaces=" + parentInterfaces + "]";
+        return getClass().getSimpleName() + " [name=" + name + ", packageName=" + packageName + ", fullName="
+                + fullName + ", importDependencies=" + importDependencies + ", parentInterfaces=" + parentInterfaces
+                + ", nativeMethods=" + nativeMethods + ", plantUMLDeclaration=" + plantUMLDeclaration
+                + ", plantUMLLinksDescription=" + plantUMLLinksDescription + "]";
     }
 }

@@ -156,7 +156,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
-                importDependencies, parentImplementationsDependencies, parentExtentionsDependencies);
+                importDependencies, parentImplementationsDependencies, parentExtentionsDependencies, javaRawDependency.hasNativeMethods());
         return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
     }
 

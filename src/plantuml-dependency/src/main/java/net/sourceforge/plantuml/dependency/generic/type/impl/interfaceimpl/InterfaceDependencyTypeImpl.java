@@ -57,7 +57,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.0
      */
     public InterfaceDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        super(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
+        this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
                 new TreeSet < GenericDependency >());
     }
 
@@ -79,7 +79,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
      */
     public InterfaceDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet) {
-        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet);
+        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, false);
     }
 
     /**

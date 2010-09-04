@@ -82,7 +82,7 @@ class InterfaceJavaType extends JavaType {
     public DependencyType createDependencyType(final String dependencyName, final String dependencyPackageName,
             final boolean isAbstract, final Set < GenericDependency > importDependencies,
             final Set < GenericDependency > parentImplementationsDependencies,
-            final Set < GenericDependency > parentExtentionsDependencies) {
+            final Set < GenericDependency > parentExtentionsDependencies, final boolean hasNativeMethods) {
         checkNull(dependencyName, JAVA_TYPE_NAME_NULL_ERROR);
         checkNull(dependencyPackageName, JAVA_TYPE_PACKAGE_NAME_NULL_ERROR);
         checkNull(importDependencies, JAVA_TYPE_IMPORTS_NULL_ERROR);

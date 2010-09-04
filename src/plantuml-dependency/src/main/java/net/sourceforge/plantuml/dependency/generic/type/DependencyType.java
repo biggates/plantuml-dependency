@@ -111,7 +111,8 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
     Set < GenericDependency > getParentInterfaces();
 
     /**
-     * Gets the PlantUML declaration describing the current dependency type. See the <a href="http://sourceforge.net/projects/plantuml/files/PlantUML%20Language%20Reference%20Guide.pdf/download"
+     * Gets the PlantUML declaration describing the current dependency type. See the <a href=
+     * "http://sourceforge.net/projects/plantuml/files/PlantUML%20Language%20Reference%20Guide.pdf/download"
      * >PlantUML Language Reference Guide.pdf</a> or <a
      * href="http://plantuml.sourceforge.net/classes.html"
      * >http://plantuml.sourceforge.net/classes.html</a> page.
@@ -130,4 +131,14 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * @since 1.0
      */
     StringBuffer getPlantUMLLinksDescription();
+
+    /**
+     * Tells if the dependency contains native methods or not.
+     * 
+     * @return <code>true</code> if the dependency has native methods inside, <code>false</code>
+     *         otherwise. Be careful, this property is <code>false</code> by default, i.e. as long
+     *         as the dependency hasn't been parsed yet.
+     * @since 1.0
+     */
+    public boolean hasNativeMethods();
 }

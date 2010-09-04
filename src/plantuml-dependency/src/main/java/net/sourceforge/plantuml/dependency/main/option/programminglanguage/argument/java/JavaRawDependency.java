@@ -296,7 +296,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @see #setNativeMethods(boolean)
      * @since 1.0
      */
-    public boolean isNativeMethods() {
+    public boolean hasNativeMethods() {
         return nativeMethods;
     }
 
@@ -329,7 +329,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * 
      * @param value
      *            the <code>nativeMethods</code> to set, can be <code>null</code>.
-     * @see #isNativeMethods()
+     * @see #hasNativeMethods()
      * @since 1.0
      */
     public void setNativeMethods(final boolean value) {

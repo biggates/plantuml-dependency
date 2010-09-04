@@ -55,37 +55,37 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     /** Enum dependency type test 1 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE1 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3);
+            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3, false);
 
     /** Enum dependency type test 2 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE2 = new EnumDependencyTypeImpl("FileOutputStream",
-            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3);
+            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3, false);
 
     /** Enum dependency type test 3 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE3 = new EnumDependencyTypeImpl("Integer", "java.io",
-            GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3);
+            GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3, false);
 
     /** Enum dependency type test 4 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE4 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET3);
+            "java.lang", new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET3, false);
 
     /** Enum dependency type test 5 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE5 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", GENERIC_DEPENDENCY_SET1, new TreeSet < GenericDependency >());
+            "java.lang", GENERIC_DEPENDENCY_SET1, new TreeSet < GenericDependency >(), false);
 
     /** Enum dependency type test 6 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE6 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3);
+            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3, false);
 
     /** Enum dependency type test 7 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE7 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET2);
+            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET2, false);
 
     /** Enum dependency type test 8 instance. */
     @DataPoint
@@ -94,7 +94,12 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
 
     /** Enum dependency type test 9 instance. */
     @DataPoint
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE9 = null;
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE9 = new EnumDependencyTypeImpl("Integer",
+            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3, true);
+
+    /** Enum dependency type test 10 instance. */
+    @DataPoint
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE10 = null;
 
     /**
      * Test method for

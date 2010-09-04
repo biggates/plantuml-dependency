@@ -59,7 +59,7 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
         // TODO check that the dependencies are not duplicated in the parentInterface and
         // parentClasses sets
         this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
-                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
     }
 
     /**
@@ -79,14 +79,17 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @param parentClassesSet
      *            the {@link Set} of all parent classes as {@link GenericDependency} which are used
      *            by the current dependency type, mustn't be <code>null</code>.
+     * @param hasNativeMethods
+     *            the boolean indicating if the dependency has native methods inside.
      * @since 1.0
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
-            final Set < GenericDependency > parentClassesSet) {
+            final Set < GenericDependency > parentClassesSet, final boolean hasNativeMethods) {
         // TODO check that the dependencies are not duplicated in the parentInterface and
         // parentClasses sets
-        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, parentClassesSet);
+        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, parentClassesSet,
+                hasNativeMethods);
     }
 
     /**

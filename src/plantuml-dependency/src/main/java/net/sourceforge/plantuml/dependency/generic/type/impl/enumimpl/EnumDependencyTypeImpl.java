@@ -60,7 +60,7 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      */
     public EnumDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         super(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
-                new TreeSet < GenericDependency >());
+                new TreeSet < GenericDependency >(), false);
     }
 
     /**
@@ -77,11 +77,14 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      * @param parentInterfacesSet
      *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
      *            used by the current dependency type, mustn't be <code>null</code>.
+     * @param hasNativeMethods
+     *            the boolean indicating if the dependency has native methods inside.
      * @since 1.0
      */
     public EnumDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet) {
-        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet);
+            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
+            final boolean hasNativeMethods) {
+        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, hasNativeMethods);
     }
 
     /**

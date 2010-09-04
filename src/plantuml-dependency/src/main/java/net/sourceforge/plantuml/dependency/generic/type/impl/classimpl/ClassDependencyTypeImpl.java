@@ -68,7 +68,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
-                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
     }
 
     /**
@@ -88,12 +88,14 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      * @param parentClassesSet
      *            the {@link Set} of all parent classes as {@link GenericDependency} which are used
      *            by the current dependency type, mustn't be <code>null</code>.
+     * @param hasNativeMethods
+     *            the boolean indicating if the dependency has native methods inside.
      * @since 1.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
-            final Set < GenericDependency > parentClassesSet) {
-        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet);
+            final Set < GenericDependency > parentClassesSet, final boolean hasNativeMethods) {
+        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, hasNativeMethods);
         // TODO optimization
         // TODO check that the dependencies are not duplicated in the parentInterface and
         // parentClasses sets
