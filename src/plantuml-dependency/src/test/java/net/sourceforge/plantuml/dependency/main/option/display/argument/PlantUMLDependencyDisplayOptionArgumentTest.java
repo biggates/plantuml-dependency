@@ -76,7 +76,7 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
     @Test
     public void testGetFullUsageDescription() {
         assertEquals(
-                "DISPLAY_OPTIONS specifies the objects to be treated, it is a separated comma list with these possible values : [only_packages, classes, interfaces, abstract_classes, static_imports, imports, enums, methods, attributes, only_parsed_objects, native_links, implementations, extensions]. These arguments implementations may differ following the chosen PROGRAMMING_LANGUAGE.",
+                "DISPLAY_OPTIONS specifies the objects to be treated, it is a separated comma list with these possible values : [only_packages, classes, interfaces, abstract_classes, static_imports, imports, enums, methods, attributes, only_parsed_objects, native_methods, implementations, extensions]. These arguments implementations may differ following the chosen PROGRAMMING_LANGUAGE.",
                 DISPLAY_OPTION_ARGUMENT1.getFullUsageDescription().toString());
     }
 

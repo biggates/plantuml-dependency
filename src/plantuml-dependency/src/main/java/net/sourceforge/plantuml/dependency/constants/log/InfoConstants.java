@@ -66,6 +66,9 @@ public final class InfoConstants {
 
     /** The execution time info message. */
     public static final String EXECUTION_TIME_INFO = "[info-plantuml-011] : Executed in \"{0}\" ms";
+    
+    /** The display mode isn't managed info message. */
+    public static final String DISPLAY_MODE_ISNT_MANAGED_INFO = "[info-plantuml-012] : Display mode \"{0}\" doesn't have to be managed";
 
     /**
      * Private constructor to prevent from instantiation.

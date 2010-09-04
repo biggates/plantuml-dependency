@@ -68,6 +68,9 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     /** The dependency name, such as "String". */
     private String name;
 
+    /** The boolean indicating if the dependency has native methods inside. */
+    private boolean nativeMethods;
+
     /**
      * The {@link Set} of all dependency extensions full names (package + class), i.e. classes or
      * interfaces the dependency "extends".
@@ -106,16 +109,20 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @param implementations
      *            the {@link Set} dependency implementations full names (package + class), i.e.
      *            interfaces the dependency "implements".
+     * @param nativeMth
+     *            the boolean indicating if the dependency has native methods inside.
      * @since 1.0
      */
     public JavaRawDependency(final boolean isAbs, final String dependencyPackageName, final JavaType javaType,
-            final String dependencyName, final Set < String > extentions, final Set < String > implementations) {
+            final String dependencyName, final Set < String > extentions, final Set < String > implementations,
+            final boolean nativeMth) {
         setAbstract(isAbs);
         setPackageName(dependencyPackageName);
         setType(javaType);
         setName(dependencyName);
         setParentExtentions(extentions);
         setParentImplementations(implementations);
+        setNativeMethods(nativeMth);
     }
 
     /**
@@ -283,6 +290,17 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     }
 
     /**
+     * Gets the value of <code>nativeMethods</code>.
+     * 
+     * @return the value of <code>nativeMethods</code>.
+     * @see #setNativeMethods(boolean)
+     * @since 1.0
+     */
+    public boolean isNativeMethods() {
+        return nativeMethods;
+    }
+
+    /**
      * Sets the value of <code>isAbstract</code>.
      * 
      * @param value
@@ -304,6 +322,18 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      */
     public void setName(final String value) {
         name = value;
+    }
+
+    /**
+     * Sets the value of <code>nativeMethods</code>.
+     * 
+     * @param value
+     *            the <code>nativeMethods</code> to set, can be <code>null</code>.
+     * @see #isNativeMethods()
+     * @since 1.0
+     */
+    public void setNativeMethods(final boolean value) {
+        nativeMethods = value;
     }
 
     /**
@@ -361,8 +391,8 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      */
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [isAbstract=" + isAbstract + ", name=" + name + ", packageName="
-                + packageName + ", parentExtentions=" + parentExtentions + ", parentImplementations="
-                + parentImplementations + ", type=" + type + "]";
+        return getClass().getSimpleName() + " [isAbstract=" + isAbstract + ", packageName=" + packageName + ", type="
+                + type + ", name=" + name + ", nativeMethods=" + nativeMethods + ", parentExtentions="
+                + parentExtentions + ", parentImplementations=" + parentImplementations + "]";
     }
 }

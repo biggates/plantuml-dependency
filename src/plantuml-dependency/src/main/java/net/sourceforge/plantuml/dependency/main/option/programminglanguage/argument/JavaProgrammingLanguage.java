@@ -49,11 +49,17 @@ import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.CR
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_ALREADY_SEEN_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_NOT_SEEN_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DISPLAY_MODE_ISNT_MANAGED_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.NO_PACKAGE_FOUND_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.UPDATING_DEPENDENCY_INFO;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -127,17 +133,41 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         final Set < GenericDependency > importDependencies = extractImportDependencies(sourceFileContent,
                 programmingLanguageContext);
-        final Set < GenericDependency > parentImplementationsDependencies = extractParentDependencies(
-                javaRawDependency.getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(),
-                importDependencies, programmingLanguageContext, javaRawDependency.getPackageName());
-        final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(
-                javaRawDependency.getType(), EXTENSION, javaRawDependency.getParentExtentions(), importDependencies,
-                programmingLanguageContext, javaRawDependency.getPackageName());
+
+        Set < GenericDependency > parentImplementationsDependencies = null;
+        if (programmingLanguageContext.hasToDisplay(IMPLEMENTATIONS)) {
+            parentImplementationsDependencies = extractParentDependencies(javaRawDependency.getType(), IMPLEMENTATION,
+                    javaRawDependency.getParentImplementations(), importDependencies, programmingLanguageContext,
+                    javaRawDependency.getPackageName());
+        } else {
+            parentImplementationsDependencies = new HashSet < GenericDependency >();
+            LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, IMPLEMENTATIONS));
+        }
+
+        Set < GenericDependency > parentExtentionsDependencies = null;
+        if (programmingLanguageContext.hasToDisplay(EXTENSIONS)) {
+            parentExtentionsDependencies = extractParentDependencies(javaRawDependency.getType(), EXTENSION,
+                    javaRawDependency.getParentExtentions(), importDependencies, programmingLanguageContext,
+                    javaRawDependency.getPackageName());
+        } else {
+            parentExtentionsDependencies = new HashSet < GenericDependency >();
+            LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, EXTENSIONS));
+        }
 
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
                 importDependencies, parentImplementationsDependencies, parentExtentionsDependencies);
         return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public ProgrammingLanguageContext createNewContext(final Set < Display > displayOpt) {
+        return new JavaProgrammingLanguageContext(displayOpt);
     }
 
     /**
@@ -206,11 +236,25 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private Set < GenericDependency > extractImportDependencies(final String javaSourceFileContent,
             final ProgrammingLanguageContext programmingLanguageContext) {
-        final Set < GenericDependency > importDependenciesSet = extractImportDependenciesSet(javaSourceFileContent,
-                NORMAL_IMPORT_REGEXP, programmingLanguageContext);
-        final Set < GenericDependency > staticImportDependenciesSet = extractImportDependenciesSet(
-                javaSourceFileContent, STATIC_IMPORT_REGEXP, programmingLanguageContext);
-        importDependenciesSet.addAll(staticImportDependenciesSet);
+
+        final Set < GenericDependency > importDependenciesSet = new HashSet < GenericDependency >();
+
+        if (programmingLanguageContext.hasToDisplay(IMPORTS)) {
+            final Set < GenericDependency > normalImportDependenciesSet = extractImportDependenciesSet(
+                    javaSourceFileContent, NORMAL_IMPORT_REGEXP, programmingLanguageContext);
+            importDependenciesSet.addAll(normalImportDependenciesSet);
+        } else {
+            LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, IMPORTS));
+        }
+
+        if (programmingLanguageContext.hasToDisplay(STATIC_IMPORTS)) {
+            final Set < GenericDependency > staticImportDependenciesSet = extractImportDependenciesSet(
+                    javaSourceFileContent, STATIC_IMPORT_REGEXP, programmingLanguageContext);
+            importDependenciesSet.addAll(staticImportDependenciesSet);
+        } else {
+            LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, STATIC_IMPORTS));
+        }
+
         return importDependenciesSet;
     }
 
@@ -244,7 +288,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             if (dependency == null) {
                 LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_INFO, fullName));
                 dependency = new GenericDependencyImpl(name, packageName);
-                programmingLanguageContext.addOrReplaceDependencies(dependency);
+                programmingLanguageContext.addSeenDependencies(dependency);
             } else {
                 LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, fullName));
             }
@@ -475,7 +519,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                         parentPackageName);
                 LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
                 dependency = new GenericDependencyImpl(dependencyType);
-                programmingLanguageContext.addOrReplaceDependencies(dependency);
+                programmingLanguageContext.addSeenDependencies(dependency);
             } else {
                 LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, parentFullName));
             }
@@ -583,7 +627,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 .createParentDependencyType(parentType, parentName, parentPackageName);
         LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
         dependency = new GenericDependencyImpl(dependencyType);
-        programmingLanguageContext.addOrReplaceDependencies(dependency);
+        programmingLanguageContext.addSeenDependencies(dependency);
 
         return dependency;
     }
@@ -682,20 +726,14 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
             final Set < String > parentExtentions = type.extractParentExtentions(matcher.group(7));
             javaRawDependency.setParentExtentions(parentExtentions);
+
+            final boolean nativeMethods = type.extractNativeMethods(javaSourceFileContent);
+            javaRawDependency.setNativeMethods(nativeMethods);
         } else {
             throw new PlantUMLDependencyException(buildLogString(JAVA_TYPE_CANT_BE_EXTRACTED_ERROR,
                     javaSourceFileContent));
         }
 
         return javaRawDependency;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.0
-     */
-    @Override
-    public ProgrammingLanguageContext createNewContext(Set < Display > displayOpt) {
-        return new JavaProgrammingLanguageContext(displayOpt);
     }
 }

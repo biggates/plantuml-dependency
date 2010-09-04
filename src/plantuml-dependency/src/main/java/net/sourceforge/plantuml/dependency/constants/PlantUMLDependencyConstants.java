@@ -31,7 +31,7 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_LINKS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 
 /**
@@ -48,7 +48,7 @@ public final class PlantUMLDependencyConstants {
 
     /** The default display options to apply if not specified. */
     public static final String DEFAULT_DISPLAY_OPTIONS = CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS
-            + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_LINKS + COMMA_CHAR
+            + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR
             + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS;
 
     /**

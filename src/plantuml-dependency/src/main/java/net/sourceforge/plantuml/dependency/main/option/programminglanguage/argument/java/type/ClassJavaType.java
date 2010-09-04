@@ -26,6 +26,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
+import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.NATIVE_METHODS_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR;
@@ -123,6 +124,16 @@ class ClassJavaType extends JavaType {
         }
 
         return dependencyType;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public boolean extractNativeMethods(final String javaSourceFileContent) {
+        return NATIVE_METHODS_REGEXP.matcher(javaSourceFileContent).find();
     }
 
     /**

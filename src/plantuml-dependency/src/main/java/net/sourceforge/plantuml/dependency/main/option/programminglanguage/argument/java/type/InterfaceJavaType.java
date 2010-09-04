@@ -125,6 +125,16 @@ class InterfaceJavaType extends JavaType {
      * @since 1.0
      */
     @Override
+    public boolean extractNativeMethods(final String javaSourceFileContent) {
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
     public Set < String > extractParentExtentions(final String extendsString) throws PlantUMLDependencyException {
         return extractParents(extendsString);
     }

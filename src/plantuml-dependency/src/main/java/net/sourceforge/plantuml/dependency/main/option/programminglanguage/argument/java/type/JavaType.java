@@ -241,6 +241,19 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     }
 
     /**
+     * Parses and extracts the java source file content to know if it contains links to native code
+     * through native methods.
+     * 
+     * @param javaSourceFileContent
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
+     * @return <code>true</code> if the dependency contains native methods, <code>false</code>
+     *         otherwise.
+     * @since 1.0
+     */
+    public abstract boolean extractNativeMethods(String javaSourceFileContent);
+
+    /**
      * Parses and extracts the {@link Set} of parent dependency names of type
      * {@link JavaParentType#EXTENSION} from the passed {@link String}.
      * 

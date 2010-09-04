@@ -30,6 +30,7 @@ import java.util.Collection;
 
 import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The interface which describes a context shared by all dependencies which are parsed. It is mainly
@@ -43,15 +44,23 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 public interface ProgrammingLanguageContext extends Serializable, DeepCloneable < ProgrammingLanguageContext > {
 
     /**
-     * Adds or replaces a dependencies in the context. The dependency is replaced following its full
-     * name.
+     * Adds in the parsed and seen dependencies in the context. If the dependency is already in the
+     * context, it is replaced.
      * 
      * @param dependency
-     *            the {@link GenericDependency} instance to add or replace, mustn't be
-     *            <code>null</code>.
+     *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
      * @since 1.0
      */
-    void addOrReplaceDependencies(GenericDependency dependency);
+    void addParsedAndSeenDependencies(GenericDependency dependency);
+
+    /**
+     * Adds in the seen dependencies in the context.
+     * 
+     * @param dependency
+     *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
+     * @since 1.0
+     */
+    void addSeenDependencies(GenericDependency dependency);
 
     /**
      * Gets all dependencies within the context.
@@ -60,7 +69,7 @@ public interface ProgrammingLanguageContext extends Serializable, DeepCloneable 
      *         with this context.
      * @since 1.0
      */
-    Collection < GenericDependency > getAllDependencies();
+    Collection < GenericDependency > getAllParsedAndSeenDependencies();
 
     /**
      * Gets the dependency in the context following its name.
@@ -72,6 +81,26 @@ public interface ProgrammingLanguageContext extends Serializable, DeepCloneable 
      * @since 1.0
      */
     GenericDependency getDependencies(String fullName);
+
+    /**
+     * Gets all dependencies within the context.
+     * 
+     * @return the {@link Collection} of all {@link GenericDependency} which have been associated
+     *         with this context.
+     * @since 1.0
+     */
+    Collection < GenericDependency > getParsedDependencies();
+
+    /**
+     * Tells if the following {@link Display} is managed or not by this context.
+     * 
+     * @param display
+     *            the {@link Display}, mustn't be <code>null</code>.
+     * @return <code>true</code> if the {@link Display} is managed by the context,
+     *         <code>false</code> otherwise.
+     * @since 1.0
+     */
+    boolean hasToDisplay(Display display);
 
     /**
      * Writes the PlantUML description output file following all {@link Dependencies} and the

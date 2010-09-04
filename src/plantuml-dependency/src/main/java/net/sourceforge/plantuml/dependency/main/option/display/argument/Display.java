@@ -53,8 +53,8 @@ public enum Display {
     ATTRIBUTES,
     /** The display parsed objects argument. */
     ONLY_PARSED_OBJECTS,
-    /** The display native links argument. */
-    NATIVE_LINKS,
+    /** The display native methods argument. */
+    NATIVE_METHODS,
     /** The display implementations argument. */
     IMPLEMENTATIONS,
     /** The display extensions argument. */

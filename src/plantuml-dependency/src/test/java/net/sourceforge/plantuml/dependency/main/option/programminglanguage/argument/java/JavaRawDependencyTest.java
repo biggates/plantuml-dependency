@@ -52,51 +52,56 @@ public class JavaRawDependencyTest extends DeepCloneableObjectTest < JavaRawDepe
     /** Java raw dependency test 1 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY1 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1);
+            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 2 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY2 = new JavaRawDependency(false, "java.lang", CLASS,
-            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1);
+            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 3 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY3 = new JavaRawDependency(true, "java.io", CLASS, "Byte",
-            EXTENSIONS_SET1, IMPLEMENTATIONS_SET1);
+            EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 4 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY4 = new JavaRawDependency(true, "java.lang", INTERFACE,
-            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1);
+            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 5 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY5 = new JavaRawDependency(true, "java.lang", CLASS,
-            "String", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1);
+            "String", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 6 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY6 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", new TreeSet < String >(), IMPLEMENTATIONS_SET1);
+            "Byte", new TreeSet < String >(), IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 7 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY7 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", EXTENSIONS_SET1, new TreeSet < String >());
+            "Byte", EXTENSIONS_SET1, new TreeSet < String >(), false);
 
     /** Java raw dependency test 8 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY8 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1);
+            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 9 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY9 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", new TreeSet < String >(), new TreeSet < String >());
+            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, true);
 
     /** Java raw dependency test 10 instance. */
     @DataPoint
-    public static final JavaRawDependency JAVA_RAW_DEPENDENCY10 = null;
+    public static final JavaRawDependency JAVA_RAW_DEPENDENCY10 = new JavaRawDependency(true, "java.lang", CLASS,
+            "Byte", new TreeSet < String >(), new TreeSet < String >(), false);
+
+    /** Java raw dependency test 11 instance. */
+    @DataPoint
+    public static final JavaRawDependency JAVA_RAW_DEPENDENCY11 = null;
 
     /**
      * Test method for

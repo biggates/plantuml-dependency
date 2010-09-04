@@ -34,7 +34,6 @@ import java.util.TreeSet;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
-import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -85,13 +84,14 @@ public class JavaProgrammingLanguageContextTest {
      * .
      */
     @Test
-    public void testAddOrReplaceDependenciesWithExistingDependency() {
+    public void testAddParsedAndSeenDependenciesWithExistingDependency() {
         final JavaProgrammingLanguageContext javaProgrammingLanguageContext = (JavaProgrammingLanguageContext) PROGRAMMING_LANGUAGE_OPTION2
                 .deepClone();
-        javaProgrammingLanguageContext.addOrReplaceDependencies(new GenericDependencyImpl(
+        javaProgrammingLanguageContext.addParsedAndSeenDependencies(new GenericDependencyImpl(
                 "TestReadDependencyFromFileInterfaceWithoutPackage",
                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage"));
-        assertEquals(2, javaProgrammingLanguageContext.getAllDependencies().size());
+        assertEquals(2, javaProgrammingLanguageContext.getAllParsedAndSeenDependencies().size());
+        assertEquals(2, javaProgrammingLanguageContext.getParsedDependencies().size());
     }
 
     /**
@@ -100,12 +100,44 @@ public class JavaProgrammingLanguageContextTest {
      * .
      */
     @Test
-    public void testAddOrReplaceDependenciesWithNotExistingDependency() {
+    public void testAddParsedAndSeenDependenciesWithNotExistingDependency() {
         final JavaProgrammingLanguageContext javaProgrammingLanguageContext = (JavaProgrammingLanguageContext) PROGRAMMING_LANGUAGE_OPTION2
                 .deepClone();
-        javaProgrammingLanguageContext.addOrReplaceDependencies(new GenericDependencyImpl("DeepCloneable",
+        javaProgrammingLanguageContext.addParsedAndSeenDependencies(new GenericDependencyImpl("DeepCloneable",
                 "net.sourceforge.mazix.components.clone"));
-        assertEquals(3, javaProgrammingLanguageContext.getAllDependencies().size());
+        assertEquals(3, javaProgrammingLanguageContext.getAllParsedAndSeenDependencies().size());
+        assertEquals(3, javaProgrammingLanguageContext.getParsedDependencies().size());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addOrReplaceDependencies(net.sourceforge.plantuml.dependency.generic.GenericDependency)}
+     * .
+     */
+    @Test
+    public void testAddSeenDependenciesWithExistingDependency() {
+        final JavaProgrammingLanguageContext javaProgrammingLanguageContext = (JavaProgrammingLanguageContext) PROGRAMMING_LANGUAGE_OPTION2
+                .deepClone();
+        javaProgrammingLanguageContext.addSeenDependencies(new GenericDependencyImpl(
+                "TestReadDependencyFromFileInterfaceWithoutPackage",
+                "net.sourceforge.plantuml.dependency.main.option.programminglanguage"));
+        assertEquals(2, javaProgrammingLanguageContext.getAllParsedAndSeenDependencies().size());
+        assertEquals(2, javaProgrammingLanguageContext.getParsedDependencies().size());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addOrReplaceDependencies(net.sourceforge.plantuml.dependency.generic.GenericDependency)}
+     * .
+     */
+    @Test
+    public void testAddSeenDependenciesWithNotExistingDependency() {
+        final JavaProgrammingLanguageContext javaProgrammingLanguageContext = (JavaProgrammingLanguageContext) PROGRAMMING_LANGUAGE_OPTION2
+                .deepClone();
+        javaProgrammingLanguageContext.addSeenDependencies(new GenericDependencyImpl("DeepCloneable",
+                "net.sourceforge.mazix.components.clone"));
+        assertEquals(3, javaProgrammingLanguageContext.getAllParsedAndSeenDependencies().size());
+        assertEquals(2, javaProgrammingLanguageContext.getParsedDependencies().size());
     }
 
     /**
@@ -115,7 +147,7 @@ public class JavaProgrammingLanguageContextTest {
      */
     @Test
     public void testGetAllDependencies() {
-        assertEquals(2, PROGRAMMING_LANGUAGE_OPTION2.getAllDependencies().size());
+        assertEquals(2, PROGRAMMING_LANGUAGE_OPTION2.getAllParsedAndSeenDependencies().size());
     }
 
     /**

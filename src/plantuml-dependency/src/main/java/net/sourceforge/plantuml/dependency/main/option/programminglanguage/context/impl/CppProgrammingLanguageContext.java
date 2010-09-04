@@ -95,11 +95,11 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
         final StringBuffer buffer = new StringBuffer(START_PLANTUML);
 
         // TODO 1 boucle avec 2 string buffer que l'on concatene
-        for (final GenericDependency abstractDependency : getAllDependencies()) {
+        for (final GenericDependency abstractDependency : getAllParsedAndSeenDependencies()) {
             buffer.append(abstractDependency.getDependencyType().getPlantUMLDeclaration());
         }
 
-        for (final GenericDependency abstractImportDependency : getAllDependencies()) {
+        for (final GenericDependency abstractImportDependency : getAllParsedAndSeenDependencies()) {
             buffer.append(abstractImportDependency.getDependencyType().getPlantUMLLinksDescription());
         }
 

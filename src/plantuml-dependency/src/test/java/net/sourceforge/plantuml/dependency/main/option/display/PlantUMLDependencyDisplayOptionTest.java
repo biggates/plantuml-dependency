@@ -37,7 +37,7 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_LINKS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PACKAGES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 import static org.junit.Assert.assertEquals;
@@ -119,7 +119,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
         assertTrue(argument.contains(ENUMS));
         assertTrue(argument.contains(IMPORTS));
         assertTrue(argument.contains(INTERFACES));
-        assertTrue(argument.contains(NATIVE_LINKS));
+        assertTrue(argument.contains(NATIVE_METHODS));
         assertTrue(argument.contains(STATIC_IMPORTS));
         assertTrue(argument.contains(IMPLEMENTATIONS));
         assertTrue(argument.contains(EXTENSIONS));
@@ -152,7 +152,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
         assertTrue(defaultArgument.contains(ENUMS));
         assertTrue(defaultArgument.contains(IMPORTS));
         assertTrue(defaultArgument.contains(INTERFACES));
-        assertTrue(defaultArgument.contains(NATIVE_LINKS));
+        assertTrue(defaultArgument.contains(NATIVE_METHODS));
         assertTrue(defaultArgument.contains(STATIC_IMPORTS));
         assertTrue(defaultArgument.contains(IMPLEMENTATIONS));
         assertTrue(defaultArgument.contains(EXTENSIONS));
@@ -169,7 +169,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     public void testGetDefaultArgumentAsString() throws CommandLineException {
         final String defaultArgument = DISPLAY_OPTION1.getDefaultArgumentAsString(COMMAND_LINE1);
         assertEquals(CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS + COMMA_CHAR + INTERFACES + COMMA_CHAR
-                + STATIC_IMPORTS + COMMA_CHAR + NATIVE_LINKS + COMMA_CHAR + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS,
+                + STATIC_IMPORTS + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS,
                 defaultArgument);
     }
 
@@ -179,7 +179,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-d, --display DISPLAY_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is classes,enums,imports,interfaces,static_imports,native_links,implementations,extensions\n\t\tDISPLAY_OPTIONS specifies the objects to be treated, it is a separated comma list with these possible values : [only_packages, classes, interfaces, abstract_classes, static_imports, imports, enums, methods, attributes, only_parsed_objects, native_links, implementations, extensions]. These arguments implementations may differ following the chosen PROGRAMMING_LANGUAGE.",
+                "-d, --display DISPLAY_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is classes,enums,imports,interfaces,static_imports,native_methods,implementations,extensions\n\t\tDISPLAY_OPTIONS specifies the objects to be treated, it is a separated comma list with these possible values : [only_packages, classes, interfaces, abstract_classes, static_imports, imports, enums, methods, attributes, only_parsed_objects, native_methods, implementations, extensions]. These arguments implementations may differ following the chosen PROGRAMMING_LANGUAGE.",
                 DISPLAY_OPTION1.getFullUsage().toString());
     }
 

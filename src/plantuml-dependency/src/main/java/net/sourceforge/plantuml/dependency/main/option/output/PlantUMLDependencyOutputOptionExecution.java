@@ -244,7 +244,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
             try {
                 final GenericDependency dependency = readDependencyFromFile(fileResource.getFile(),
                         programmingLanguageContext, language, verboseModeActive, displayOpt);
-                programmingLanguageContext.addOrReplaceDependencies(dependency);
+                programmingLanguageContext.addParsedAndSeenDependencies(dependency);
             } catch (final PlantUMLDependencyException e) {
                 throw new PlantUMLDependencyException(
                         buildLogString(READING_SOURCE_FILE_ERROR, fileResource.getFile()), e);

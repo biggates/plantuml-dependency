@@ -27,6 +27,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
+import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.NATIVE_METHODS_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NULL_ERROR;
@@ -144,5 +145,14 @@ class EnumJavaType extends JavaType {
     public Set < String > extractParentImplementations(final String implementsString)
             throws PlantUMLDependencyException {
         return extractParents(implementsString);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.0
+     */
+    @Override
+    public boolean extractNativeMethods(String javaSourceFileContent) {
+        return NATIVE_METHODS_REGEXP.matcher(javaSourceFileContent).find();
     }
 }
