@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.constants;
 
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
+import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
@@ -33,6 +34,9 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
+import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl;
 
 /**
  * The class which stores all necessary plantUML dependency constants as Strings.
@@ -50,6 +54,10 @@ public final class PlantUMLDependencyConstants {
     public static final String DEFAULT_DISPLAY_OPTIONS = CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS
             + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR
             + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS;
+
+    /** The custom dependency which is used to link with native code. */
+    public static final GenericDependency NATIVE_DEPENDENCY = new GenericDependencyImpl(new NativeDependencyTypeImpl(
+            "Native Code", BLANK_STRING));
 
     /**
      * Private constructor to prevent from instantiation.

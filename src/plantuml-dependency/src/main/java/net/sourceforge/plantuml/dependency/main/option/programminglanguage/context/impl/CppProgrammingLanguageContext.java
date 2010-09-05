@@ -106,4 +106,6 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
         buffer.append(END_PLANTUML);
         writeIntoFile(buffer.toString(), file);
     }
+    
+    public native void test();
 }

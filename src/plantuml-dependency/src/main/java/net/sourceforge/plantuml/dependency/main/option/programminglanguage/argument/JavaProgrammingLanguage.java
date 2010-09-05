@@ -36,6 +36,7 @@ import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.removeAllSubtringsBetweenCharacters;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.JAVA_LANG_PACKAGE;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.COMMENT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.JAVA_TYPE_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.LINE_OR_CARRIAGE_RETURN_REGEXP;
@@ -55,6 +56,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.UP
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
@@ -134,6 +136,12 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final Set < GenericDependency > importDependencies = extractImportDependencies(sourceFileContent,
                 programmingLanguageContext);
 
+        if (programmingLanguageContext.hasToDisplay(NATIVE_METHODS) && javaRawDependency.hasNativeMethods()) {
+            importDependencies.add(NATIVE_DEPENDENCY);
+        } else {
+            LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, NATIVE_DEPENDENCY));
+        }
+
         Set < GenericDependency > parentImplementationsDependencies = null;
         if (programmingLanguageContext.hasToDisplay(IMPLEMENTATIONS)) {
             parentImplementationsDependencies = extractParentDependencies(javaRawDependency.getType(), IMPLEMENTATION,
@@ -156,7 +164,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
-                importDependencies, parentImplementationsDependencies, parentExtentionsDependencies, javaRawDependency.hasNativeMethods());
+                importDependencies, parentImplementationsDependencies, parentExtentionsDependencies,
+                javaRawDependency.hasNativeMethods());
         return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
     }
 

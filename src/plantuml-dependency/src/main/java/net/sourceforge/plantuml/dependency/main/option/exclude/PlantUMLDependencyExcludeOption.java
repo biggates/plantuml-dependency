@@ -72,4 +72,6 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
     public String getDefaultArgumentAsString(final CommandLine commandLine) throws CommandLineException {
         return "**/*~";
     }
+    
+    native String nativeMethods();
 }
