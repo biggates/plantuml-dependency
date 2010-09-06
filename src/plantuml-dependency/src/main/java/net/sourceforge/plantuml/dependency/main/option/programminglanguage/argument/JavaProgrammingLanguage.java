@@ -138,6 +138,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         if (programmingLanguageContext.hasToDisplay(NATIVE_METHODS) && javaRawDependency.hasNativeMethods()) {
             importDependencies.add(NATIVE_DEPENDENCY);
+            programmingLanguageContext.addSeenDependencies(NATIVE_DEPENDENCY);
         } else {
             LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, NATIVE_DEPENDENCY));
         }

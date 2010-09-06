@@ -32,6 +32,7 @@ import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEX
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.USES_RIGHT_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.IMPORT_IS_AN_INTERFACE_INFO;
@@ -59,6 +60,29 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(DependencyTypeImpl.class.getName());
+
+    /**
+     * Generates the full dependency name following its package and its simple name
+     * 
+     * @param dependencyPackageName
+     *            the dependency type package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
+     * @param dependencyName
+     *            the dependency type name, such as "String", mustn't be <code>null</code>.
+     * @return
+     * @since 1.0
+     */
+    private static String generateFullName(final String dependencyPackageName, final String dependencyName) {
+        String fullName = null;
+
+        if (isNotEmpty(dependencyPackageName)) {
+            fullName = dependencyPackageName + DOT_CHAR + dependencyName;
+        } else {
+            fullName = dependencyName;
+        }
+
+        return fullName;
+    }
 
     /** The dependency type name, such as "String". */
     private final String name;
@@ -104,31 +128,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        this(dependencyName, dependencyPackageName, dependencyPackageName + DOT_CHAR + dependencyName,
-                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
-    }
-
-    /**
-     * Medium constructor.
-     * 
-     * @param dependencyName
-     *            the dependency type name, such as "String", mustn't be <code>null</code>.
-     * @param dependencyPackageName
-     *            the dependency type package name, such as "java.lang", mustn't be
-     *            <code>null</code>.
-     * @param importDependenciesSet
-     *            the {@link Set} of all {@link GenericDependency} which are needed by the current
-     *            dependency type to work, mustn't be <code>null</code>.
-     * @param parentInterfacesSet
-     *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
-     *            used by the current dependency type, mustn't be <code>null</code>.
-     * @since 1.0
-     */
-    protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
-            final boolean nativeMth) {
-        this(dependencyName, dependencyPackageName, dependencyPackageName + DOT_CHAR + dependencyName,
-                importDependenciesSet, parentInterfacesSet, nativeMth);
+        this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
+                new TreeSet < GenericDependency >(), false);
     }
 
     /**
@@ -139,9 +140,6 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @param dependencyPackageName
      *            the dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
-     * @param fullDependencyName
-     *            the full dependency name, such as "java..lang.String", mustn't be
-     *            <code>null</code>.
      * @param importDependenciesSet
      *            the {@link Set} of all {@link GenericDependency} which are needed by the current
      *            dependency type to work, mustn't be <code>null</code>.
@@ -151,12 +149,13 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final String fullDependencyName, final Set < GenericDependency > importDependenciesSet,
-            final Set < GenericDependency > parentInterfacesSet, final boolean nativeMth) {
+            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
+            final boolean nativeMth) {
         // TODO tests null
+        // TODO tests that no space are present in the name
         name = dependencyName;
         packageName = dependencyPackageName;
-        fullName = fullDependencyName;
+        fullName = generateFullName(dependencyPackageName, dependencyName);
         // TODO optimization
         importDependencies = importDependenciesSet;
         parentInterfaces = parentInterfacesSet;

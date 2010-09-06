@@ -57,7 +57,7 @@ public final class PlantUMLDependencyConstants {
 
     /** The custom dependency which is used to link with native code. */
     public static final GenericDependency NATIVE_DEPENDENCY = new GenericDependencyImpl(new NativeDependencyTypeImpl(
-            "Native Code", BLANK_STRING));
+            "Native_Code", BLANK_STRING));
 
     /**
      * Private constructor to prevent from instantiation.

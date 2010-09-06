@@ -24,9 +24,6 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl;
 
-import static net.sourceforge.mazix.components.constants.CharacterConstants.INFERIOR_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SUPERIOR_CHAR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
@@ -68,13 +65,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
     protected StringBuffer generatePlantUMLDeclaration() {
         final StringBuffer buffer = new StringBuffer(CLASS_PLANTUML);
         buffer.append(getFullName());
-        buffer.append(SPACE_CHAR);
-        buffer.append(INFERIOR_CHAR);
-        buffer.append(INFERIOR_CHAR);
-        buffer.append("N,yellow");
-        buffer.append(SPACE_CHAR);
-        buffer.append(SUPERIOR_CHAR);
-        buffer.append(SUPERIOR_CHAR);
+        buffer.append(" << (N,yellow) >>");
         return buffer;
     }
 
