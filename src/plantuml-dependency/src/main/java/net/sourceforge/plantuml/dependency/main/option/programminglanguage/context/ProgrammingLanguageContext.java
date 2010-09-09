@@ -41,7 +41,8 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
  * @since 1.0
  * @version 1.0
  */
-public interface ProgrammingLanguageContext extends Serializable, DeepCloneable < ProgrammingLanguageContext > {
+public interface ProgrammingLanguageContext extends Comparable < ProgrammingLanguageContext >, Serializable,
+        DeepCloneable < ProgrammingLanguageContext > {
 
     /**
      * Adds in the parsed and seen dependencies in the context. If the dependency is already in the

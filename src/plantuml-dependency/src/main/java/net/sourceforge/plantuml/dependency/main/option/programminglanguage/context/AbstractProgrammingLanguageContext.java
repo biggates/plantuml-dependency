@@ -28,6 +28,9 @@ import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
+import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
+import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.BEFORE;
+import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NULL_ERROR;
 
@@ -151,6 +154,19 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @since 1.0
      */
     @Override
+    public int compareTo(final ProgrammingLanguageContext o) {
+        final int thisSize = getParsedDependencies().size();
+        final int anotherSize = o.getParsedDependencies().size();
+        return (thisSize < anotherSize ? BEFORE.getResult() : (thisSize == anotherSize ? EQUAL.getResult() : AFTER
+                .getResult()));
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
     public ProgrammingLanguageContext deepClone() {
         AbstractProgrammingLanguageContext a = null;
 
@@ -160,7 +176,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
             for (final GenericDependency genericDependency : getAllParsedAndSeenDependencies()) {
                 a.parsedAndSeenDependenciesMap.put(genericDependency.getFullName(), genericDependency.deepClone());
             }
-            a.parsedDependenciesMap = new HashMap < String, GenericDependency >(a.parsedAndSeenDependenciesMap);
+            a.parsedDependenciesMap = new HashMap < String, GenericDependency >(a.parsedDependenciesMap);
             a.displayOptions = new HashSet < Display >(getDisplayOptions());
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);

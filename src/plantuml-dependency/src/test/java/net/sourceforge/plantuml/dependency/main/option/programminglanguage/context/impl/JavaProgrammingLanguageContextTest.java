@@ -32,6 +32,7 @@ import static org.junit.Assert.assertNull;
 
 import java.util.TreeSet;
 
+import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 
@@ -46,7 +47,7 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0
  * @version 1.0
  */
-public class JavaProgrammingLanguageContextTest {
+public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest < JavaProgrammingLanguageContextTest > {
 
     /** Java programming language test 1 instance. */
     @DataPoint
