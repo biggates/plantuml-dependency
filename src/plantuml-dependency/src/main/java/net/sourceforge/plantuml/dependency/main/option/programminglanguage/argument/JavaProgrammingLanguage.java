@@ -674,7 +674,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     public GenericDependency readDependencyFromFile(final String sourceFileContent,
             final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
         final String preparedSourceFileContent = prepareSourceFileContent(sourceFileContent);
-        return readDependencyFromPreparedFile(preparedSourceFileContent, programmingLanguageContext);
+        final GenericDependency genericDependency = readDependencyFromPreparedFile(preparedSourceFileContent,
+                programmingLanguageContext);
+        programmingLanguageContext.addParsedAndSeenDependencies(genericDependency);
+        return genericDependency;
     }
 
     /**

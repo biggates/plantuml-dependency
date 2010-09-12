@@ -103,9 +103,9 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     }
 
     /**
-     * Full constructor.
+     * Medium constructor.
      * 
-     * @param dependencies
+     * @param parsedAndSeenDependencies
      *            the original {@link Set} of {@link GenericDependency} to put in the context,
      *            mustn't be <code>null</code>.
      * @param displayOpt
@@ -115,13 +115,36 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      */
     protected AbstractProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < Display > displayOpt) {
+        this(parsedAndSeenDependencies, parsedAndSeenDependencies, displayOpt);
+    }
+
+    /**
+     * Full constructor.
+     * 
+     * @param parsedAndSeenDependencies
+     *            the original {@link Set} of {@link GenericDependency} to put in the context,
+     *            mustn't be <code>null</code>.
+     * @param parsedDependencies
+     *            the original {@link Set} of {@link GenericDependency} to put in the context,
+     *            mustn't be <code>null</code>.
+     * @param displayOpt
+     *            the display options which have to appear in the plantUML description, mustn't be
+     *            <code>null</code>.
+     * @since 1.0
+     */
+    protected AbstractProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
+            final Set < GenericDependency > parsedDependencies, final Set < Display > displayOpt) {
         // TODO test null
-        final Map < String, GenericDependency > dependenciesMap = new HashMap < String, GenericDependency >();
+        final Map < String, GenericDependency > firstDependenciesMap = new HashMap < String, GenericDependency >();
         for (final GenericDependency genericDependency : parsedAndSeenDependencies) {
-            dependenciesMap.put(genericDependency.getFullName(), genericDependency);
+            firstDependenciesMap.put(genericDependency.getFullName(), genericDependency);
         }
-        setParsedAndSeenDependenciesMap(dependenciesMap);
-        setSeenDependenciesMap(new HashMap < String, GenericDependency >(dependenciesMap));
+        setParsedAndSeenDependenciesMap(firstDependenciesMap);
+        final Map < String, GenericDependency > secondDependenciesMap = new HashMap < String, GenericDependency >();
+        for (final GenericDependency genericDependency : parsedDependencies) {
+            secondDependenciesMap.put(genericDependency.getFullName(), genericDependency);
+        }
+        setSeenDependenciesMap(new HashMap < String, GenericDependency >(secondDependenciesMap));
         setDisplayOptions(new HashSet < Display >(displayOpt));
     }
 
@@ -173,7 +196,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         try {
             a = (AbstractProgrammingLanguageContext) super.clone();
             a.parsedAndSeenDependenciesMap = new HashMap < String, GenericDependency >();
-            for (final GenericDependency genericDependency : getAllParsedAndSeenDependencies()) {
+            for (final GenericDependency genericDependency : getParsedAndSeenDependencies()) {
                 a.parsedAndSeenDependenciesMap.put(genericDependency.getFullName(), genericDependency.deepClone());
             }
             a.parsedDependenciesMap = new HashMap < String, GenericDependency >(a.parsedDependenciesMap);
@@ -232,7 +255,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @since 1.0
      */
     @Override
-    public Collection < GenericDependency > getAllParsedAndSeenDependencies() {
+    public Collection < GenericDependency > getParsedAndSeenDependencies() {
         return getParsedAndSeenDependenciesMap().values();
     }
 
@@ -360,6 +383,6 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     @Override
     public String toString() {
         return getClass().getSimpleName() + " [parsedAndSeenDependenciesMap=" + parsedAndSeenDependenciesMap
-                + ", seenDependenciesMap=" + parsedDependenciesMap + ", displayOptions=" + displayOptions + "]";
+                + ", parsedDependenciesMap=" + parsedDependenciesMap + ", displayOptions=" + displayOptions + "]";
     }
 }

@@ -57,13 +57,16 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY7;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY8;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY9;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.JAVA_PROGRAMMING_LANGUAGE_CONTEXT1;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import net.sourceforge.mazix.components.ObjectTest;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
 
 import org.junit.Test;
@@ -123,13 +126,15 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileAbstractClass() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileAbstractClassWithStandardEmptyContext() throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nabstract class Test {\r\n\r\n}";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY4,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
-        assertEquals(JAVA_PROGRAMMING_LANGUAGE_CONTEXT1, programmingLanguageContext);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY4, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY4.getFullName()));
     }
 
     /**
@@ -140,12 +145,16 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileAbstractPublicClass() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileAbstractPublicClassWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nabstract public class Test {\r\n\r\n}";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY4,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY4, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY4.getFullName()));
     }
 
     /**
@@ -156,28 +165,16 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClass() throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nclass Test {\r\n\r\n}";
-        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
-                .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testReadDependencyFromFileClassGenericNotInImport() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassGenericNotInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestGeneric.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestGeneric < AnotherTestExtends > {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY7,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY7, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY7.getFullName()));
     }
 
     /**
@@ -188,12 +185,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithExtendsGenericsInImport() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithExtendsGenericsInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestExtendsGeneric.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherTestExtends;\r\nimport com.plantuml.train.test.TestExtendsGeneric;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestExtendsWithGeneric extends TestExtendsGeneric < AnotherTestExtends > {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY8,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY8, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY8.getFullName()));
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -204,12 +211,19 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithExtendsGenericsNotInImport() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithExtendsGenericsNotInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestExtendsGeneric.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.TestExtendsGeneric;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestExtendsWithGeneric extends TestExtendsGeneric < AnotherTestExtends > {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY21,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY21, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY8.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -220,28 +234,65 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithExtendsInImport() throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherTestExtends;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends AnotherTestExtends {\r\n\r\n}\r\n";
-        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
-                .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY6,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testReadDependencyFromFileClassWithExtendsInImportFullPackageName() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithExtendsInImportFullPackageNameWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.impl.JavaProgramImpl;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends net.sourceforge.mazix.cli.program.impl.JavaProgramImpl {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY19,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY19, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY19.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "net.sourceforge.mazix.cli.program.impl.JavaProgramImpl").getDependencyType().getClass());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithExtendsInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherTestExtends;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends AnotherTestExtends {\r\n\r\n}\r\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DISPLAY_SET2);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY6, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY6.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithExtendsNotInImportFullPackageNameWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends net.sourceforge.mazix.cli.program.impl.JavaProgramImpl {\r\n\r\n}\r\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DISPLAY_SET2);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY17, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY17.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "net.sourceforge.mazix.cli.program.impl.JavaProgramImpl").getDependencyType().getClass());
     }
 
     // TODO test several class name with the same name but not with the same package (one in
@@ -257,29 +308,19 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithExtendsNotInImportFullPackageName()
+    public void testReadDependencyFromFileClassWithExtendsNotInImportJavaLangWithStandardEmptyContext()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends net.sourceforge.mazix.cli.program.impl.JavaProgramImpl {\r\n\r\n}\r\n";
-        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
-                .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY17,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testReadDependencyFromFileClassWithExtendsNotInImportJavaLang() throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends ClassNotFoundException {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY15,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY15, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("java.lang.ClassNotFoundException"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY15.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "java.lang.ClassNotFoundException").getDependencyType().getClass());
     }
 
     /**
@@ -290,12 +331,19 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithExtendsNotInImportNotJavaLang() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithExtendsNotInImportNotJavaLangWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends TestExtends {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY5,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY5, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.test.TestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY5.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.test.TestExtends").getDependencyType().getClass());
     }
 
     /**
@@ -306,12 +354,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithImplementsGenericsInImport() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithImplementsGenericsInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestImplementsGenerics.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.InterfaceGenericsTest;\r\nimport com.plantuml.train.test.Integer;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplementsGenerics implements InterfaceGenericsTest < Integer > {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY22,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY22, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.InterfaceGenericsTest"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.Integer"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY22.getFullName()));
+        assertEquals(InterfaceDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.InterfaceGenericsTest").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.Integer").getDependencyType().getClass());
     }
 
     /**
@@ -322,12 +380,19 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithImplementsGenericsNotInImport() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithImplementsGenericsNotInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestImplementsGenerics.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplementsGenerics implements InterfaceGenericsTest < Integer > {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY10,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY10, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.test.InterfaceGenericsTest"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY10.getFullName()));
+        assertEquals(InterfaceDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.test.InterfaceGenericsTest").getDependencyType().getClass());
     }
 
     /**
@@ -338,29 +403,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithImplementsInImport() throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.JavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.mazix.cli.program.JavaProgram {\r\n\r\n}\r\n";
-        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
-                .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY20,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testReadDependencyFromFileClassWithImplementsInImportFullPackageName()
+    public void testReadDependencyFromFileClassWithImplementsInImportFullPackageNameWithStandardEmptyContext()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherInterfaceTest;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements com.plantuml.train.test.AnotherInterfaceTest {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY14,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY14, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY14.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -371,13 +429,48 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithImplementsNotInImportFullPackageName()
+    public void testReadDependencyFromFileClassWithImplementsInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.JavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.mazix.cli.program.JavaProgram {\r\n\r\n}\r\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DISPLAY_SET2);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY20, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY20.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithImplementsNotInImportFullPackageNameWithStandardEmptyContext()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.mazix.cli.program.JavaProgram {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY18,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY18, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY18.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -388,12 +481,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithImplementsNotInImportJavaLang() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithImplementsNotInImportJavaLangWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements Appendable {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY16,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY16, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY16.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -404,13 +507,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithImplementsNotInImportNotJavaLang()
+    public void testReadDependencyFromFileClassWithImplementsNotInImportNotJavaLangWithStandardEmptyContext()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements InterfaceTest {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY9,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY9, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY9.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -421,13 +533,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithMultipleImplementsAndExtendsGenerics()
+    public void testReadDependencyFromFileClassWithMultipleImplementsAndExtendsGenericsWithStandardEmptyContext()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestMultipleImplementsGeneric.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherInterfaceTest;\r\nimport com.plantuml.train.test.AnotherTestExtends;\r\nimport com.plantuml.train.test.TestExtendsGeneric;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nclass TestMultipleImplementsAndExtendsGeneric extends TestExtendsGeneric < AnotherTestExtends > implements Cloneable, InterfaceGenericsTest < Integer >, InterfaceTest, AnotherInterfaceTest < CharacterConstants, java.test.Test > {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY13,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY13, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY13.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -438,12 +559,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithMultipleImplementsGenerics() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithMultipleImplementsGenericsWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n TestMultipleImplementsGeneric.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherInterfaceTest;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestMultipleImplementsGeneric implements Cloneable, InterfaceGenericsTest < Integer >, InterfaceTest, AnotherInterfaceTest {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY12,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY12, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY12.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -454,12 +585,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithoutPackage() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithoutPackageWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY3,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY3, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY3.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -470,12 +611,46 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileFinalClass() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileClassWithStandardEmptyContext() throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nclass Test {\r\n\r\n}";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DISPLAY_SET2);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY2.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileFinalClassWithStandardEmptyContext() throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nfinal class Test {\r\n\r\n}";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY2.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -486,12 +661,21 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileFinalPublicClass() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileFinalPublicClassWithStandardEmptyContext() throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nfinal public class Test {\r\n\r\n}";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY2.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -502,28 +686,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileInterface() throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\ninterface TestReadDependencyFromFileInterface {\n\n}\n";
-        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
-                .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY24,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testReadDependencyFromFileInterfaceGenericNotInImport() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileInterfaceGenericNotInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceGenericNotInImport < PlantUMLDependencyBaseDirectoryOptionTest > {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY25,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY25, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY25.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -534,12 +712,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileInterfaceWithExtendsGenericsInImport() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileInterfaceWithExtendsGenericsInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport extends DeepCloneable < CppProgrammingLanguageTest > {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY26,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY26, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY26.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -550,12 +738,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileInterfaceWithExtendsGenericsNotInImport() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileInterfaceWithExtendsGenericsNotInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsNotInImport extends DeepCloneable < Integer > {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY27,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY27, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY27.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -566,29 +764,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileInterfaceWithExtendsInImport() throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.plantuml.dependency.generic.GenericDependency;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsInImport extends GenericDependency {\n\n}\n";
-        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
-                .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY28,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testReadDependencyFromFileInterfaceWithExtendsInImportFullPackageName()
+    public void testReadDependencyFromFileInterfaceWithExtendsInImportFullPackageNameWithStandardEmptyContext()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.plantuml.dependency.generic.GenericDependency;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsInImport extends net.sourceforge.plantuml.dependency.generic.GenericDependency {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY28,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY28, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY28.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -599,13 +790,48 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileInterfaceWithExtendsNotInImportFullPackageName()
+    public void testReadDependencyFromFileInterfaceWithExtendsInImportWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.plantuml.dependency.generic.GenericDependency;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsInImport extends GenericDependency {\n\n}\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DISPLAY_SET2);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY28, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY28.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileInterfaceWithExtendsNotInImportFullPackageNameWithStandardEmptyContext()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportFullPackageName extends net.sourceforge.plantuml.dependency.generic.GenericDependency {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY29,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY29, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY29.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -616,12 +842,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileInterfaceWithExtendsNotInImportJavaLang() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileInterfaceWithExtendsNotInImportJavaLangWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportJavaLang extends Comparable {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY30,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY30, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY30.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -632,13 +868,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLang()
+    public void testReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLangWithStandardEmptyContext()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLang extends TestReadDependencyFromFileInterfaceWithoutPackage {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY31,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY31, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY31.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -649,12 +894,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileInterfaceWithMultipleExtendsGenerics() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileInterfaceWithMultipleExtendsGenericsWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport java.util.Map;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguageTest;\n\npublic interface TestReadDependencyFromFileClassWithMultipleExtendsGenerics extends DeepCloneable < CppProgrammingLanguageTest >, Comparable < Integer>, Map < java.io.Serializable, ProgrammingLanguageTest >, Appendable {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY23,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY23, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY23.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -665,12 +920,22 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileInterfaceWithoutPackage() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileInterfaceWithoutPackageWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "public interface TestReadDependencyFromFileInterfaceWithoutPackage {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY32,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY32, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY32.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -681,12 +946,47 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFilePublicAbstractClass() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileInterfaceWithStandardEmptyContext() throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\ninterface TestReadDependencyFromFileInterface {\n\n}\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DISPLAY_SET2);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY24, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY24.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * .
+     * 
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFilePublicAbstractClassWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic abstract class Test {\r\n\r\n}";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY4,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY4, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY4.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -697,12 +997,21 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFilePublicClass() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFilePublicClassWithStandardEmptyContext() throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class Test {\r\n\r\n}";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY2.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -713,12 +1022,21 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFilePublicFinalClass() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFilePublicFinalClassWithStandardEmptyContext() throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic final class Test {\r\n\r\n}";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY2.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -729,12 +1047,21 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFilePublicInterface() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFilePublicInterfaceWithStandardEmptyContext() throws PlantUMLDependencyException {
         final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFilePublicInterface {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY33,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY33, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY33.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 
     /**
@@ -745,9 +1072,9 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
-    public void testReadDependencyFromFileWithBlankContent() throws PlantUMLDependencyException {
-        JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(BLANK_STRING,
-                JAVA_PROGRAMMING_LANGUAGE1.createNewContext(DISPLAY_SET2));
+    public void testReadDependencyFromFileWithBlankContentWithStandardEmptyContext() throws PlantUMLDependencyException {
+        JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(BLANK_STRING, JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DISPLAY_SET2));
     }
 
     /**
@@ -758,11 +1085,21 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileWithSpacesAndLineSeparator() throws PlantUMLDependencyException {
+    public void testReadDependencyFromFileWithSpacesAndLineSeparatorWithStandardEmptyContext()
+            throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\n      package      com.    plantuml.     \r\ntest;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\n       public     class      \r\nTest        {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY2, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
+                javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY2.getFullName()));
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.AnotherTestExtends").getDependencyType().getClass());
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependencies(
+                "com.plantuml.train.test.TestExtendsGeneric").getDependencyType().getClass());
     }
 }

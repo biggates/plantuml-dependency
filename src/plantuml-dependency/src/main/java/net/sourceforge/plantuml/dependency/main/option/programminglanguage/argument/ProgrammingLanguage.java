@@ -234,8 +234,9 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Reads the following source file content as a {@link String} to build the
-     * {@link GenericDependency} instance. This method also modify the <code>dependenciesMap</code>
-     * parameter by adding read objects.
+     * {@link GenericDependency} instance. This method also modify the
+     * <code>programmingLanguageContext</code> parameter by adding read objects and the parsed
+     * dependencies.
      * 
      * @param sourceFileContent
      *            the source file content as a {@link String} to read, mustn't be <code>null</code>.

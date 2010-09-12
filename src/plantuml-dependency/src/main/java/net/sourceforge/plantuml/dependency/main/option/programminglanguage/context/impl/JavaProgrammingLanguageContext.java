@@ -71,9 +71,9 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
     }
 
     /**
-     * Full constructor.
+     * Medium constructor.
      * 
-     * @param dependencies
+     * @param parsedAndSeenDependencies
      *            the original {@link Set} of {@link GenericDependency} to put in the context,
      *            mustn't be <code>null</code>.
      * @param displayOpt
@@ -81,8 +81,28 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
      *            <code>null</code>.
      * @since 1.0
      */
-    public JavaProgrammingLanguageContext(final Set < GenericDependency > dependencies, final Set < Display > displayOpt) {
-        super(dependencies, displayOpt);
+    public JavaProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
+            final Set < Display > displayOpt) {
+        super(parsedAndSeenDependencies, displayOpt);
+    }
+    
+    /**
+     * Full constructor.
+     * 
+     * @param parsedAndSeenDependencies
+     *            the original {@link Set} of {@link GenericDependency} to put in the context,
+     *            mustn't be <code>null</code>.
+     * @param parsedDependencies
+     *            the original {@link Set} of {@link GenericDependency} to put in the context,
+     *            mustn't be <code>null</code>.
+     * @param displayOpt
+     *            the display options which have to appear in the plantUML description, mustn't be
+     *            <code>null</code>.
+     * @since 1.0
+     */
+    public JavaProgrammingLanguageContext(Set < GenericDependency > parsedAndSeenDependencies,
+            Set < GenericDependency > parsedDependencies, Set < Display > displayOpt) {
+        super(parsedAndSeenDependencies, parsedDependencies, displayOpt);
     }
 
     /**
@@ -95,11 +115,11 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
         final StringBuffer buffer = new StringBuffer(START_PLANTUML);
 
         // TODO 1 boucle avec 2 string buffer que l'on concatene
-        for (final GenericDependency abstractDependency : getAllParsedAndSeenDependencies()) {
+        for (final GenericDependency abstractDependency : getParsedAndSeenDependencies()) {
             buffer.append(abstractDependency.getDependencyType().getPlantUMLDeclaration());
         }
 
-        for (final GenericDependency abstractImportDependency : getAllParsedAndSeenDependencies()) {
+        for (final GenericDependency abstractImportDependency : getParsedAndSeenDependencies()) {
             buffer.append(abstractImportDependency.getDependencyType().getPlantUMLLinksDescription());
         }
 

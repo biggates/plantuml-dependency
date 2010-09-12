@@ -91,7 +91,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
         javaProgrammingLanguageContext.addParsedAndSeenDependencies(new GenericDependencyImpl(
                 "TestReadDependencyFromFileInterfaceWithoutPackage",
                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage"));
-        assertEquals(2, javaProgrammingLanguageContext.getAllParsedAndSeenDependencies().size());
+        assertEquals(2, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
         assertEquals(2, javaProgrammingLanguageContext.getParsedDependencies().size());
     }
 
@@ -106,7 +106,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
                 .deepClone();
         javaProgrammingLanguageContext.addParsedAndSeenDependencies(new GenericDependencyImpl("DeepCloneable",
                 "net.sourceforge.mazix.components.clone"));
-        assertEquals(3, javaProgrammingLanguageContext.getAllParsedAndSeenDependencies().size());
+        assertEquals(3, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
         assertEquals(3, javaProgrammingLanguageContext.getParsedDependencies().size());
     }
 
@@ -122,7 +122,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
         javaProgrammingLanguageContext.addSeenDependencies(new GenericDependencyImpl(
                 "TestReadDependencyFromFileInterfaceWithoutPackage",
                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage"));
-        assertEquals(2, javaProgrammingLanguageContext.getAllParsedAndSeenDependencies().size());
+        assertEquals(2, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
         assertEquals(2, javaProgrammingLanguageContext.getParsedDependencies().size());
     }
 
@@ -137,7 +137,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
                 .deepClone();
         javaProgrammingLanguageContext.addSeenDependencies(new GenericDependencyImpl("DeepCloneable",
                 "net.sourceforge.mazix.components.clone"));
-        assertEquals(3, javaProgrammingLanguageContext.getAllParsedAndSeenDependencies().size());
+        assertEquals(3, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
         assertEquals(2, javaProgrammingLanguageContext.getParsedDependencies().size());
     }
 
@@ -148,7 +148,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
      */
     @Test
     public void testGetAllDependencies() {
-        assertEquals(2, PROGRAMMING_LANGUAGE_OPTION2.getAllParsedAndSeenDependencies().size());
+        assertEquals(2, PROGRAMMING_LANGUAGE_OPTION2.getParsedAndSeenDependencies().size());
     }
 
     /**

@@ -55,8 +55,6 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbst
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
-import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
-import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext;
 
 import org.apache.tools.ant.types.FileSet;
 
@@ -444,10 +442,6 @@ public final class PlantUMLDependencyTestConstants {
             "TestReadDependencyFromFilePublicInterface",
             "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >());
-
-    /** Java programming language test 10 instance. */
-    public static final ProgrammingLanguageContext JAVA_PROGRAMMING_LANGUAGE_CONTEXT1 = new JavaProgrammingLanguageContext(
-            DISPLAY_SET2);
 
     /** Generic dependency test 2 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY2 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE2);

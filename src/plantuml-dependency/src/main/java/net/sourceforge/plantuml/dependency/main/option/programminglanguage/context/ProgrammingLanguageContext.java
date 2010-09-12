@@ -70,7 +70,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *         with this context.
      * @since 1.0
      */
-    Collection < GenericDependency > getAllParsedAndSeenDependencies();
+    Collection < GenericDependency > getParsedAndSeenDependencies();
 
     /**
      * Gets the dependency in the context following its name.
