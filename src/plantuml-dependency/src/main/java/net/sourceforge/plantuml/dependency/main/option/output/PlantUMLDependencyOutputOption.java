@@ -27,6 +27,7 @@ package net.sourceforge.plantuml.dependency.main.option.output;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.VERBOSE_OPTION_NULL_ERROR;
 import static net.sourceforge.mazix.cli.constants.log.InfoConstants.OPTION_NOT_SPECIFIED_INFO;
+import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
@@ -128,7 +129,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
             final PlantUMLDependencyDisplayOption displayOpt, final PlantUMLDependencyBaseDirectoryOption baseDirOpt,
             final int optionPriority) {
         super(false, new NotExistingFileOptionArgumentImpl(true), new StringBuffer(
-                "To output file path where to generate the PlantUML description."), SPACE_CHAR);
+                "To output file path where to generate the PlantUML description."), SPACE_CHAR, ACTIVE_OPTION_STATUS);
         setVerboseOption(verboseOpt);
         setProgrammingLanguageOption(programmingLanguageOpt);
         setIncludeOption(includeOpt);

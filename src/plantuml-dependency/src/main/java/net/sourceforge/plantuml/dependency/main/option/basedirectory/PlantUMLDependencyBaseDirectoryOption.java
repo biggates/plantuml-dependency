@@ -26,6 +26,7 @@ package net.sourceforge.plantuml.dependency.main.option.basedirectory;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
+import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 
@@ -80,7 +81,7 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
                 new ExistingDirectoryOptionArgumentImpl(true),
                 new StringBuffer(
                         "The base directory where to look for source files. If not specified, the default pattern is \".\" i.e. the directory where the program is launched from."),
-                SPACE_CHAR);
+                SPACE_CHAR, ACTIVE_OPTION_STATUS);
     }
 
     /**

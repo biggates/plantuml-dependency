@@ -360,6 +360,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
         final String javaSourceFileContent = "/*\r\n TestExtendsGeneric.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherTestExtends;\r\nimport com.plantuml.train.test.TestExtendsGeneric;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestExtendsWithGeneric < A extends AnotherTestExtends > extends TestExtendsGeneric < AnotherTestExtends > {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
+        // TODO fullName=com.plantuml.test.TestExtendsWithGeneric < A
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY8, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
@@ -895,6 +896,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
         final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport < A extends CppProgrammingLanguageTest > extends DeepCloneable < CppProgrammingLanguageTest > {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
+        // TODO fullName=com.plantuml.test.TestExtendsWithGeneric < A
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY26, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());

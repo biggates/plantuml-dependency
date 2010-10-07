@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage;
 
 import static java.util.Collections.unmodifiableSet;
+import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
 
@@ -62,7 +63,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
         super("-l", unmodifiableSet(new TreeSet < String >()), false,
                 new PlantUMLDependencyProgrammingLanguageOptionArgument(true), new StringBuffer(
                         "To choose the programming language to reverse engineering. If not specified, the default programming language is \""
-                                + DEFAULT_PROGRAMMING_LANGUAGE.getName() + "\"."), SPACE_CHAR);
+                                + DEFAULT_PROGRAMMING_LANGUAGE.getName() + "\"."), SPACE_CHAR, ACTIVE_OPTION_STATUS);
     }
 
     /**

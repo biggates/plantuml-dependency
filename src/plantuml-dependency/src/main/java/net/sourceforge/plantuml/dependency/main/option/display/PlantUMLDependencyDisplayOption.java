@@ -26,6 +26,7 @@ package net.sourceforge.plantuml.dependency.main.option.display;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
+import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 
@@ -61,7 +62,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
         super("-d", unmodifiableSet(new TreeSet < String >(asList(new String[] {"--display"}))), false,
                 new PlantUMLDependencyDisplayOptionArgument(true), new StringBuffer(
                         "To specify class diagram objects to display. If not specified, the default is "
-                                + DEFAULT_DISPLAY_OPTIONS), SPACE_CHAR);
+                                + DEFAULT_DISPLAY_OPTIONS), SPACE_CHAR, ACTIVE_OPTION_STATUS);
     }
 
     /**
