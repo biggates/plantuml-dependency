@@ -47,17 +47,20 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDe
  */
 public final class PlantUMLDependencyConstants {
 
-    /** The string representing the "java.lang" package. */
-    public static final String JAVA_LANG_PACKAGE = "java.lang";
-
     /** The default display options to apply if not specified. */
     public static final String DEFAULT_DISPLAY_OPTIONS = CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS
             + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR
             + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS;
 
+    /** The string representing the "java.lang" package. */
+    public static final String JAVA_LANG_PACKAGE = "java.lang";
+
     /** The custom dependency which is used to link with native code. */
     public static final GenericDependency NATIVE_DEPENDENCY = new GenericDependencyImpl(new NativeDependencyTypeImpl(
             "Native_Code", BLANK_STRING));
+
+    /** The PlantUML description which is used to graphically identify the native dependency. */
+    public static final String NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION = " << (N,yellow) >>";
 
     /**
      * Private constructor to prevent from instantiation.

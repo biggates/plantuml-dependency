@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl;
 
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 
@@ -65,7 +66,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
     protected StringBuffer generatePlantUMLDeclaration() {
         final StringBuffer buffer = new StringBuffer(CLASS_PLANTUML);
         buffer.append(getFullName());
-        buffer.append(" << (N,yellow) >>");
+        buffer.append(NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION);
         return buffer;
     }
 
