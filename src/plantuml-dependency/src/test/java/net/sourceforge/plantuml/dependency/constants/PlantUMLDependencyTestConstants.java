@@ -25,7 +25,8 @@
 package net.sourceforge.plantuml.dependency.constants;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION_STATUS;
+import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_MANDATORY_OPTION_STATUS;
+import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.cli.utils.fileset.FileSetUtils.createFileSet;
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.mazix.components.constants.CommonConstants.CURRENT_DIRECTORY;
@@ -186,12 +187,12 @@ public final class PlantUMLDependencyTestConstants {
             asList(new GenericDependency[] {new GenericDependencyImpl("Object", "java.lang")}));
 
     /** Verbose option test 1 instance. */
-    public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(false, new StringBuffer(
-            "To display log information."), ACTIVE_OPTION_STATUS);
+    public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(new StringBuffer(
+            "To display log information."), ACTIVE_OPTIONAL_OPTION_STATUS);
 
     /** Verbose option test 2 instance. */
-    public static final VerboseOption VERBOSE_OPTION2 = new VerboseOption(true, new StringBuffer(
-            "To display log information."), ACTIVE_OPTION_STATUS);
+    public static final VerboseOption VERBOSE_OPTION2 = new VerboseOption(new StringBuffer(
+            "To display log information."), ACTIVE_MANDATORY_OPTION_STATUS);
 
     /** Extensions set test 1 instance. */
     public static final Set < String > EXTENSIONS_SET1 = new TreeSet < String >(

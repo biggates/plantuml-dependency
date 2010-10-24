@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.main.option.exclude;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION_STATUS;
+import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 
 import java.util.TreeSet;
@@ -58,10 +58,10 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
      * @since 1.0
      */
     public PlantUMLDependencyExcludeOption() {
-        super("-e", unmodifiableSet(new TreeSet < String >(asList(new String[] {"--exclude"}))), false,
+        super("-e", unmodifiableSet(new TreeSet < String >(asList(new String[] {"--exclude"}))),
                 new ExcludeFilePatternOptionArgumentImpl(true), new StringBuffer(
                         "To exclude files that match the provided pattern. If not specified, no file is excluded."),
-                SPACE_CHAR, ACTIVE_OPTION_STATUS);
+                SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
     }
 
     /**

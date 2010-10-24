@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.main.option.basedirectory;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION_STATUS;
+import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 
@@ -55,33 +55,16 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
     /**
      * Default constructor.
      * 
-     * @param optionName
-     *            the option main name (for instance "-v" or "-o"), mustn't be <code>null</code>.
-     * @param optionSecondaryNames
-     *            the {@link java.util.Set} containing all option secondary names, mustn't be
-     *            <code>null</code> but may be empty. <i>Note : a new {@link java.util.Set} is
-     *            created.</i>
-     * @param optionIsMandatory
-     *            <code>true</code> if the option is mandatory, <code>false</code> otherwise.
-     * @param argument
-     *            the option argument, mustn't be <code>null</code>.
-     * @param fullOptionDescription
-     *            the full option usage description, explaining what the option does (used for
-     *            helping message). <i>Note : a new {@link StringBuffer} is created.</i>
-     * @param valSepararator
-     *            the option - argument separator. Most of the time, it is a single space " " but it
-     *            may be "=" or "-", mustn't be <code>null</code>.
      * @since 1.0
      */
     public PlantUMLDependencyBaseDirectoryOption() {
         super(
                 "-b",
                 unmodifiableSet(new TreeSet < String >(asList(new String[] {"--basedir"}))),
-                false,
                 new ExistingDirectoryOptionArgumentImpl(true),
                 new StringBuffer(
                         "The base directory where to look for source files. If not specified, the default pattern is \".\" i.e. the directory where the program is launched from."),
-                SPACE_CHAR, ACTIVE_OPTION_STATUS);
+                SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
     }
 
     /**

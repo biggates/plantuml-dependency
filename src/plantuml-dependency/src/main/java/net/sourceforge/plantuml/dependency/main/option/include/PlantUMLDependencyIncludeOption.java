@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.main.option.include;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION_STATUS;
+import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR;
@@ -70,11 +70,10 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
         super(
                 "-i",
                 unmodifiableSet(new TreeSet < String >(asList(new String[] {"--include"}))),
-                false,
                 new IncludeFilePatternOptionArgumentImpl(true),
                 new StringBuffer(
                         "To include files that match the provided pattern. If not specified, the default pattern is \"**/*.PROGRAMMING_LANGUAGE_FILE_EXTENSION\" depending on the programming language chosen."),
-                SPACE_CHAR, ACTIVE_OPTION_STATUS);
+                SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
         setProgrammingLanguageOption(programmingLanguageOpt);
     }
 
