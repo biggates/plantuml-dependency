@@ -231,6 +231,25 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
+     * Extracts full names of the given dependency {@link Set}.
+     * 
+     * @param genericDependencySet
+     *            the {@link Set} containing {@link GenericDependency} instance where to extract
+     *            full names, mustn't be <code>null</code>.
+     * @return the {@link Set} of dependencies full names as {@link String}.
+     * @since 1.0
+     */
+    protected Set < String > extractFullNames(final Set < GenericDependency > genericDependencySet) {
+        final Set < String > fullNamesSet = new TreeSet < String >();
+
+        for (final GenericDependency genericDependency : genericDependencySet) {
+            fullNamesSet.add(genericDependency.getFullName());
+        }
+
+        return fullNamesSet;
+    }
+
+    /**
      * Generates the plantUML declaration.
      * 
      * @return the {@link StringBuffer} containing the plantUML declaration of the current
@@ -435,8 +454,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
     @Override
     public String toString() {
         return getClass().getSimpleName() + " [name=" + name + ", packageName=" + packageName + ", fullName="
-                + fullName + ", importDependencies=" + importDependencies + ", parentInterfaces=" + parentInterfaces
-                + ", nativeMethods=" + nativeMethods + ", plantUMLDeclaration=" + plantUMLDeclaration
-                + ", plantUMLLinksDescription=" + plantUMLLinksDescription + "]";
+                + fullName + ", importDependencies=" + extractFullNames(importDependencies) + ", parentInterfaces="
+                + extractFullNames(parentInterfaces) + ", nativeMethods=" + nativeMethods + ", plantUMLDeclaration="
+                + plantUMLDeclaration + ", plantUMLLinksDescription=" + plantUMLLinksDescription + "]";
     }
 }

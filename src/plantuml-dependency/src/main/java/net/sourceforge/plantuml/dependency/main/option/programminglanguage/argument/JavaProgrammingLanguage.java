@@ -203,11 +203,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         GenericDependency dependency = programmingLanguageContext.getDependencies(javaRawDependency.getFullName());
 
         if (dependency == null) {
-            LOGGER.info(buildLogString(CREATING_DEPENDENCY_INFO, new Object[] {javaRawDependency.getPackageName(),
+            LOGGER.info(buildLogString(CREATING_DEPENDENCY_INFO, new Object[] {javaRawDependency.getFullName(),
                     dependencyType}));
             dependency = new GenericDependencyImpl(dependencyType);
         } else {
-            LOGGER.info(buildLogString(UPDATING_DEPENDENCY_INFO, new Object[] {javaRawDependency.getPackageName(),
+            LOGGER.info(buildLogString(UPDATING_DEPENDENCY_INFO, new Object[] {javaRawDependency.getFullName(),
                     dependencyType}));
             dependency.setDependencyType(dependencyType);
         }
