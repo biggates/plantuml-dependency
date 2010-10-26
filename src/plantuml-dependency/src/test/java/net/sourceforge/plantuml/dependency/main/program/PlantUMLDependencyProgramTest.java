@@ -24,10 +24,10 @@
 
 package net.sourceforge.plantuml.dependency.main.program;
 
-import static net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram.main;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
+import static net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram.main;
 
-import java.net.MalformedURLException;
+import java.io.IOException;
 
 import net.sourceforge.mazix.cli.exception.CommandLineException;
 
@@ -49,10 +49,25 @@ public class PlantUMLDependencyProgramTest {
      * .
      * 
      * @throws CommandLineException
-     * @throws MalformedURLException
+     * @throws IOException
+     * @throws SecurityException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testMainWithoutExecutionOption() throws CommandLineException, SecurityException, IOException {
+        main(new String[] {"-l", DEFAULT_PROGRAMMING_LANGUAGE.getName(), "-i", "**/*.java"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     * 
+     * @throws CommandLineException
+     * @throws IOException
+     * @throws SecurityException
      */
     @Test
-    public void testMainWithPrimaryHelpOption() throws MalformedURLException, CommandLineException {
+    public void testMainWithPrimaryHelpOption() throws CommandLineException, SecurityException, IOException {
         main(new String[] {"-h"});
     }
 
@@ -62,23 +77,11 @@ public class PlantUMLDependencyProgramTest {
      * .
      * 
      * @throws CommandLineException
-     * @throws MalformedURLException
+     * @throws IOException
+     * @throws SecurityException
      */
     @Test
-    public void testMainWithSecondaryOption() throws MalformedURLException, CommandLineException {
-        main(new String[] {"-h"});
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
-     * .
-     * 
-     * @throws CommandLineException
-     * @throws MalformedURLException
-     */
-    @Test
-    public void testMainWithPrimaryVersionOption() throws MalformedURLException, CommandLineException {
+    public void testMainWithPrimaryVersionOption() throws CommandLineException, SecurityException, IOException {
         main(new String[] {"-version"});
     }
 
@@ -88,12 +91,13 @@ public class PlantUMLDependencyProgramTest {
      * .
      * 
      * @throws CommandLineException
-     * @throws MalformedURLException
+     * @throws IOException
+     * @throws SecurityException
      */
-    @Test(expected = CommandLineException.class)
-    public void testMainWithoutExecutionOption() throws MalformedURLException, CommandLineException {
-        main(new String[] {"-l", DEFAULT_PROGRAMMING_LANGUAGE.getName(), "-i", "**/*.java"});
+    @Test
+    public void testMainWithSecondaryOption() throws CommandLineException, SecurityException, IOException {
+        main(new String[] {"-h"});
     }
-    
+
     // TODO finish with all options and compare generated files
 }

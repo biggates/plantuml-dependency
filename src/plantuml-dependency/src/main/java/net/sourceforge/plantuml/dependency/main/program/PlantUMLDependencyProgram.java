@@ -24,13 +24,19 @@
 
 package net.sourceforge.plantuml.dependency.main.program;
 
+import static java.util.logging.Level.SEVERE;
+import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.mazix.components.log.LogUtils.readLoggerConfigurationFromResource;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
 import net.sourceforge.mazix.cli.exception.CommandLineException;
@@ -63,6 +69,9 @@ public final class PlantUMLDependencyProgram {
     /** Serial version UID. */
     private static final long serialVersionUID = 8055066636525797910L;
 
+    /** The class logger. */
+    private static final transient Logger LOGGER = getLogger(PlantUMLDependencyProgram.class.getName());
+
     /**
      * Initializes and creates the {@link JavaProgram} instance which contain all program
      * information.
@@ -92,64 +101,71 @@ public final class PlantUMLDependencyProgram {
      * 
      * @param args
      *            command line arguments.
-     * @throws MalformedURLException
-     *             if the program URL doesn't have a good format.
-     * @throws CommandLineException
-     *             if any command line exception occurs.
+     * @throws IOException
+     *             if any exception occurs while reading the logging properties file.
+     * @throws SecurityException
+     *             if any exception occurs while reading the logging properties file.
      * @since 1.0
      */
-    public static void main(final String[] args) throws MalformedURLException, CommandLineException {
+    public static void main(final String[] args) throws SecurityException, IOException {
+        readLoggerConfigurationFromResource(LOGGING_PROPERTIES_PATH);
+
         final JavaProgram plantumlDependencyProgram = createProgramInformation();
 
-        final VerboseOption verboseOption = new VerboseOption();
-        plantumlDependencyProgram.addOption(verboseOption);
+        try {
+            final VerboseOption verboseOption = new VerboseOption();
+            plantumlDependencyProgram.addOption(verboseOption);
 
-        final AboutOption aboutOption = new AboutOption(plantumlDependencyProgram, 2);
-        plantumlDependencyProgram.addOption(aboutOption);
+            final AboutOption aboutOption = new AboutOption(plantumlDependencyProgram, 2);
+            plantumlDependencyProgram.addOption(aboutOption);
 
-        final HelpOption helpOption = new HelpOption(plantumlDependencyProgram, 1);
-        plantumlDependencyProgram.addOption(helpOption);
+            final HelpOption helpOption = new HelpOption(plantumlDependencyProgram, 1);
+            plantumlDependencyProgram.addOption(helpOption);
 
-        final VersionOption versionOption = new VersionOption(plantumlDependencyProgram, verboseOption, 3);
-        plantumlDependencyProgram.addOption(versionOption);
+            final VersionOption versionOption = new VersionOption(plantumlDependencyProgram, verboseOption, 3);
+            plantumlDependencyProgram.addOption(versionOption);
 
-        final PlantUMLDependencyDisplayOption displayOption = new PlantUMLDependencyDisplayOption();
-        plantumlDependencyProgram.addOption(displayOption);
+            final PlantUMLDependencyDisplayOption displayOption = new PlantUMLDependencyDisplayOption();
+            plantumlDependencyProgram.addOption(displayOption);
 
-        final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOption = new PlantUMLDependencyProgrammingLanguageOption();
-        plantumlDependencyProgram.addOption(programmingLanguageOption);
+            final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOption = new PlantUMLDependencyProgrammingLanguageOption();
+            plantumlDependencyProgram.addOption(programmingLanguageOption);
 
-        final PlantUMLDependencyIncludeOption includeOption = new PlantUMLDependencyIncludeOption(
-                programmingLanguageOption);
-        plantumlDependencyProgram.addOption(includeOption);
+            final PlantUMLDependencyIncludeOption includeOption = new PlantUMLDependencyIncludeOption(
+                    programmingLanguageOption);
+            plantumlDependencyProgram.addOption(includeOption);
 
-        final PlantUMLDependencyExcludeOption excludeOption = new PlantUMLDependencyExcludeOption();
-        plantumlDependencyProgram.addOption(excludeOption);
+            final PlantUMLDependencyExcludeOption excludeOption = new PlantUMLDependencyExcludeOption();
+            plantumlDependencyProgram.addOption(excludeOption);
 
-        final PlantUMLDependencyBaseDirectoryOption baseDirectoryOption = new PlantUMLDependencyBaseDirectoryOption();
-        plantumlDependencyProgram.addOption(baseDirectoryOption);
+            final PlantUMLDependencyBaseDirectoryOption baseDirectoryOption = new PlantUMLDependencyBaseDirectoryOption();
+            plantumlDependencyProgram.addOption(baseDirectoryOption);
 
-        final PlantUMLDependencyOutputOption outputOption = new PlantUMLDependencyOutputOption(verboseOption,
-                programmingLanguageOption, includeOption, excludeOption, displayOption, baseDirectoryOption, 4);
-        plantumlDependencyProgram.addOption(outputOption);
+            final PlantUMLDependencyOutputOption outputOption = new PlantUMLDependencyOutputOption(verboseOption,
+                    programmingLanguageOption, includeOption, excludeOption, displayOption, baseDirectoryOption, 4);
+            plantumlDependencyProgram.addOption(outputOption);
 
-        final String[] example2 = new String[] {helpOption.getName()};
-        final String[] example1 = new String[] {versionOption.getName(), verboseOption.getName()};
-        final String[] example3 = new String[] {outputOption.getName(), "plantuml.txt", includeOption.getName(),
-                "**/*Test.java"};
-        final String[] example4 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
-                includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
-                displayOption.getName(), "only_packages,interfaces", verboseOption.getName()};
-        plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example1));
-        plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example2));
-        plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example3));
-        plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example4));
-        
-        plantumlDependencyProgram.addKnownBugOrLimitation("Be careful, in order to correctly parse source files, they must compile without any errors");
+            final String[] example2 = new String[] {helpOption.getName()};
+            final String[] example1 = new String[] {versionOption.getName(), verboseOption.getName()};
+            final String[] example3 = new String[] {outputOption.getName(), "plantuml.txt", includeOption.getName(),
+                    "**/*Test.java"};
+            final String[] example4 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
+                    includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
+                    displayOption.getName(), "only_packages,interfaces", verboseOption.getName()};
+            plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example1));
+            plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example2));
+            plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example3));
+            plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example4));
 
-        final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
-                .parseCommandLine(new CommandLineImpl(args));
-        plantumlDependencyProgramExecution.execute();
+            plantumlDependencyProgram
+                    .addKnownBugOrLimitation("Be careful, in order to correctly parse source files, they must compile without any errors");
+
+            final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
+                    .parseCommandLine(new CommandLineImpl(args));
+            plantumlDependencyProgramExecution.execute();
+        } catch (final CommandLineException e) {
+            LOGGER.log(SEVERE, e.getMessage(), e);
+        }
     }
 
     /**

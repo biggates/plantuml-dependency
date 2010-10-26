@@ -55,6 +55,9 @@ public final class PlantUMLDependencyConstants {
     /** The string representing the "java.lang" package. */
     public static final String JAVA_LANG_PACKAGE = "java.lang";
 
+    /** Logging properties path. */
+    public static final String LOGGING_PROPERTIES_PATH = "net/sourceforge/plantuml/dependency/log/logging.properties";
+
     /** The custom dependency which is used to link with native code. */
     public static final GenericDependency NATIVE_DEPENDENCY = new GenericDependencyImpl(new NativeDependencyTypeImpl(
             "Native_Code", BLANK_STRING));
