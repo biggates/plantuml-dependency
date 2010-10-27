@@ -24,9 +24,9 @@
 
 package net.sourceforge.plantuml.dependency.main.program;
 
+import static java.lang.System.getProperty;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.log.LogUtils.readLoggerConfigurationFromResource;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
 
@@ -145,17 +145,19 @@ public final class PlantUMLDependencyProgram {
                     programmingLanguageOption, includeOption, excludeOption, displayOption, baseDirectoryOption, 4);
             plantumlDependencyProgram.addOption(outputOption);
 
-            final String[] example2 = new String[] {helpOption.getName()};
-            final String[] example1 = new String[] {versionOption.getName(), verboseOption.getName()};
-            final String[] example3 = new String[] {outputOption.getName(), "plantuml.txt", includeOption.getName(),
-                    "**/*Test.java"};
-            final String[] example4 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
-                    includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
-                    displayOption.getName(), "only_packages,interfaces", verboseOption.getName()};
+            final String[] example1 = new String[] {helpOption.getName()};
+            final String[] example2 = new String[] {versionOption.getName(), verboseOption.getName()};
+            final String[] example3 = new String[] {outputOption.getName(), "plantuml.txt",
+                    baseDirectoryOption.getName(), getProperty("user.dir"), includeOption.getName(), "**/*Test.java"};
+            // final String[] example4 = new String[] {outputOption.getName(),
+            // "/home/test/plantuml.txt", "-b", DOT_CHAR,
+            // includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
+            // displayOption.getName(), "only_packages,interfaces", verboseOption.getName()};
             plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example1));
             plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example2));
             plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example3));
-            plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example4));
+            // FIXME to add when the display option will be ready
+            // plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example4));
 
             plantumlDependencyProgram
                     .addKnownBugOrLimitation("Be careful, in order to correctly parse source files, they must compile without any errors");
