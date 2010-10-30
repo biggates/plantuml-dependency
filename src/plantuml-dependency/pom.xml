@@ -35,13 +35,13 @@
 		<dependency>
 			<groupId>net.sourceforge.mazix.components</groupId>
 			<artifactId>mazix-components</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<!-- Mazix common tests components -->
 		<dependency>
 			<groupId>net.sourceforge.mazix.components</groupId>
 			<artifactId>mazix-components</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<scope>test</scope>
 			<classifier>tests</classifier>
 		</dependency>
