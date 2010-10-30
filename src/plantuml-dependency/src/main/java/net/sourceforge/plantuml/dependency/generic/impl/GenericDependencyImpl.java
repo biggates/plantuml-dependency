@@ -27,7 +27,7 @@ package net.sourceforge.plantuml.dependency.generic.impl;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
-import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
+import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_TYPE_NULL_ERROR;

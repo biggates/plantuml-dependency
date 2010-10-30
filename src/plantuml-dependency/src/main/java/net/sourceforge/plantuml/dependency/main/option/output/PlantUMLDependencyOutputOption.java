@@ -30,7 +30,7 @@ import static net.sourceforge.mazix.cli.constants.log.InfoConstants.OPTION_NOT_S
 import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.check.ParameterChecker.checkNull;
+import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.BASE_DIRECTORY_OPTION_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DISPLAY_OPTION_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.EXCLUDE_OPTION_NULL_ERROR;
