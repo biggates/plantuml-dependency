@@ -160,7 +160,9 @@ public final class PlantUMLDependencyProgram {
             // plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example4));
 
             plantumlDependencyProgram
-                    .addKnownBugOrLimitation("Be careful, in order to correctly parse source files, they must compile without any errors");
+                    .addKnownBugOrLimitation("- Be careful, in order to correctly parse source files, they must compile without any errors");
+            plantumlDependencyProgram
+                    .addKnownBugOrLimitation("- Problem generation with inner classes because they are not managed by plantUML, problem logged at http://sourceforge.net/tracker/?func=detail&aid=3098362&group_id=259736&atid=1185926");
 
             final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
                     .parseCommandLine(new CommandLineImpl(args));
