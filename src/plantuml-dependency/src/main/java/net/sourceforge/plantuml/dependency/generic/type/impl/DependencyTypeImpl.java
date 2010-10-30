@@ -35,7 +35,7 @@ import static net.sourceforge.mazix.components.utils.comparable.ComparableResult
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.USES_RIGHT_PLANTUML;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.IMPORT_IS_AN_INTERFACE_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.IMPORT_IS_AN_INTERFACE_FINE;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -345,7 +345,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
         for (final GenericDependency genericDependency : getImportDependencies()) {
             if (hasImportNotToBeGenerated(genericDependency)) {
-                LOGGER.info(buildLogString(IMPORT_IS_AN_INTERFACE_INFO, genericDependency));
+                LOGGER.fine(buildLogString(IMPORT_IS_AN_INTERFACE_FINE, genericDependency));
             } else {
                 importDependenciesNotImplemented.add(genericDependency);
             }

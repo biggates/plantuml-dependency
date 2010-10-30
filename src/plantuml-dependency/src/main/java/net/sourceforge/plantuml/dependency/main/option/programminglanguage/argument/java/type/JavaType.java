@@ -35,8 +35,8 @@ import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.removeAllSubtringsBetweenCharacters;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.UNKNOWN_JAVA_TYPE_ERROR;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.JAVA_PARENT_TYPE_STRING_EMPTY_INFO;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.JAVA_TYPE_FOUND_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.JAVA_PARENT_TYPE_STRING_EMPTY_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.JAVA_TYPE_FOUND_FINE;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -130,7 +130,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
             if (javaType == null) {
                 throw new IllegalArgumentException(buildLogString(UNKNOWN_JAVA_TYPE_ERROR, javaTypeKeyword));
             } else {
-                LOGGER.info(buildLogString(JAVA_TYPE_FOUND_INFO, javaTypeKeyword));
+                LOGGER.fine(buildLogString(JAVA_TYPE_FOUND_FINE, javaTypeKeyword));
             }
         }
 
@@ -315,7 +315,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
         final Set < String > parents = new TreeSet < String >();
 
         if (isEmpty(parentsString)) {
-            LOGGER.info(JAVA_PARENT_TYPE_STRING_EMPTY_INFO);
+            LOGGER.fine(JAVA_PARENT_TYPE_STRING_EMPTY_FINE);
         } else {
             final String removeTemplateStr = removeAllSubtringsBetweenCharacters(parentsString,
                     INFERIOR_CHAR.charAt(0), SUPERIOR_CHAR.charAt(0));

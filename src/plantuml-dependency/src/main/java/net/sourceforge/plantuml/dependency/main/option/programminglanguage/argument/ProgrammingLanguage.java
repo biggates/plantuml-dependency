@@ -31,7 +31,7 @@ import static net.sourceforge.mazix.components.utils.comparable.ComparableResult
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.UNKNOWN_PROGRAMMING_LANGUAGE_ERROR;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.PROGRAMMING_LANGUAGE_FOUND_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.PROGRAMMING_LANGUAGE_FOUND_FINE;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -134,7 +134,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
                 throw new IllegalArgumentException(buildLogString(UNKNOWN_PROGRAMMING_LANGUAGE_ERROR,
                         programmingLanguageName));
             } else {
-                LOGGER.info(buildLogString(PROGRAMMING_LANGUAGE_FOUND_INFO, programmingLanguage));
+                LOGGER.fine(buildLogString(PROGRAMMING_LANGUAGE_FOUND_FINE, programmingLanguage));
             }
         }
 

@@ -46,13 +46,13 @@ import static net.sourceforge.plantuml.dependency.constants.RegularExpressionCon
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.TAB_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_CANT_BE_EXTRACTED_ERROR;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.CREATING_DEPENDENCY_INFO;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_ALREADY_SEEN_INFO;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_INFO;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DEPENDENCY_NOT_SEEN_INFO;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.DISPLAY_MODE_ISNT_MANAGED_INFO;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.NO_PACKAGE_FOUND_INFO;
-import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.UPDATING_DEPENDENCY_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.CREATING_DEPENDENCY_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_ALREADY_SEEN_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_SEEN_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_ISNT_MANAGED_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.NO_PACKAGE_FOUND_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.UPDATING_DEPENDENCY_FINE;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
@@ -140,7 +140,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             importDependencies.add(NATIVE_DEPENDENCY);
             programmingLanguageContext.addSeenDependencies(NATIVE_DEPENDENCY);
         } else {
-            LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, NATIVE_DEPENDENCY));
+            LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, NATIVE_DEPENDENCY));
         }
 
         Set < GenericDependency > parentImplementationsDependencies = null;
@@ -150,7 +150,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                     javaRawDependency.getPackageName());
         } else {
             parentImplementationsDependencies = new HashSet < GenericDependency >();
-            LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, IMPLEMENTATIONS));
+            LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, IMPLEMENTATIONS));
         }
 
         Set < GenericDependency > parentExtentionsDependencies = null;
@@ -160,7 +160,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                     javaRawDependency.getPackageName());
         } else {
             parentExtentionsDependencies = new HashSet < GenericDependency >();
-            LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, EXTENSIONS));
+            LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, EXTENSIONS));
         }
 
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
@@ -203,11 +203,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         GenericDependency dependency = programmingLanguageContext.getDependencies(javaRawDependency.getFullName());
 
         if (dependency == null) {
-            LOGGER.info(buildLogString(CREATING_DEPENDENCY_INFO, new Object[] {javaRawDependency.getFullName(),
+            LOGGER.fine(buildLogString(CREATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
                     dependencyType}));
             dependency = new GenericDependencyImpl(dependencyType);
         } else {
-            LOGGER.info(buildLogString(UPDATING_DEPENDENCY_INFO, new Object[] {javaRawDependency.getFullName(),
+            LOGGER.fine(buildLogString(UPDATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
                     dependencyType}));
             dependency.setDependencyType(dependencyType);
         }
@@ -254,7 +254,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                     javaSourceFileContent, NORMAL_IMPORT_REGEXP, programmingLanguageContext);
             importDependenciesSet.addAll(normalImportDependenciesSet);
         } else {
-            LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, IMPORTS));
+            LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, IMPORTS));
         }
 
         if (programmingLanguageContext.hasToDisplay(STATIC_IMPORTS)) {
@@ -262,7 +262,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                     javaSourceFileContent, STATIC_IMPORT_REGEXP, programmingLanguageContext);
             importDependenciesSet.addAll(staticImportDependenciesSet);
         } else {
-            LOGGER.info(buildLogString(DISPLAY_MODE_ISNT_MANAGED_INFO, STATIC_IMPORTS));
+            LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, STATIC_IMPORTS));
         }
 
         return importDependenciesSet;
@@ -296,11 +296,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String fullName = packageName + DOT_CHAR + name;
             GenericDependency dependency = programmingLanguageContext.getDependencies(fullName);
             if (dependency == null) {
-                LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_INFO, fullName));
+                LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE, fullName));
                 dependency = new GenericDependencyImpl(name, packageName);
                 programmingLanguageContext.addSeenDependencies(dependency);
             } else {
-                LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, fullName));
+                LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, fullName));
             }
             importDependenciesSet.add(dependency);
         }
@@ -343,7 +343,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         if (matcher.find()) {
             packageName = matcher.group(1).replace(SPACE_CHAR, BLANK_STRING);
         } else {
-            LOGGER.info(NO_PACKAGE_FOUND_INFO);
+            LOGGER.info(NO_PACKAGE_FOUND_FINE);
         }
 
         return packageName;
@@ -527,14 +527,14 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             if (dependency == null) {
                 final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
                         parentPackageName);
-                LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
+                LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullName, dependencyType}));
                 dependency = new GenericDependencyImpl(dependencyType);
                 programmingLanguageContext.addSeenDependencies(dependency);
             } else {
-                LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, parentFullName));
+                LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullName));
             }
         } else {
-            LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, parentFullName));
+            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullName));
             final DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
@@ -581,10 +581,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 dependency = getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(type, parentType,
                         currentPackageName, programmingLanguageContext, parentName, parentFullNameWithSamePackage);
             } else {
-                LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, parentFullNameWithSamePackage));
+                LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullNameWithSamePackage));
             }
         } else {
-            LOGGER.info(buildLogString(DEPENDENCY_ALREADY_SEEN_INFO, dependency.getFullName()));
+            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
             final DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
@@ -635,7 +635,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         final DependencyType dependencyType = type
                 .createParentDependencyType(parentType, parentName, parentPackageName);
-        LOGGER.info(buildLogString(DEPENDENCY_NOT_SEEN_INFO, new Object[] {parentFullName, dependencyType}));
+        LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullName, dependencyType}));
         dependency = new GenericDependencyImpl(dependencyType);
         programmingLanguageContext.addSeenDependencies(dependency);
 
