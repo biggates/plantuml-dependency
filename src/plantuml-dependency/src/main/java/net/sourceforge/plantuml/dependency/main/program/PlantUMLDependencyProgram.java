@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.program;
 
 import static java.lang.System.getProperty;
+import static java.util.Arrays.asList;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.log.LogUtils.readLoggerConfigurationFromResource;
@@ -33,9 +34,7 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyCo
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
@@ -47,7 +46,6 @@ import net.sourceforge.mazix.cli.option.impl.version.VersionOption;
 import net.sourceforge.mazix.cli.program.JavaProgram;
 import net.sourceforge.mazix.cli.program.execution.JavaProgramExecution;
 import net.sourceforge.mazix.cli.program.impl.JavaProgramImpl;
-import net.sourceforge.mazix.cli.program.version.ProgramVersion;
 import net.sourceforge.mazix.cli.program.version.impl.ProgramVersionImpl;
 import net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
 import net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption;
@@ -64,37 +62,13 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.Plant
  * @since 1.0
  * @version 1.0
  */
-public final class PlantUMLDependencyProgram {
+public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
     /** Serial version UID. */
     private static final long serialVersionUID = 8055066636525797910L;
 
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(PlantUMLDependencyProgram.class.getName());
-
-    /**
-     * Initializes and creates the {@link JavaProgram} instance which contain all program
-     * information.
-     * 
-     * @return the {@link JavaProgram} instance.
-     * @throws MalformedURLException
-     *             if the program URL doesn't have a good format.
-     * @since 1.0
-     */
-    private static JavaProgram createProgramInformation() throws MalformedURLException {
-        final String programName = "PlantUML Dependency";
-        final String programJarName = "plantuml-dependency.jar";
-        final URL programURL = new URL("http://plantuml-depend.sourceforge.net");
-        final String programDescription = "reverse engineering java source files to generate PlantUML description";
-        final List < String > programLicenses = new ArrayList < String >();
-        programLicenses.add("GPL v3");
-        programLicenses.add("LGPL v3");
-        final List < String > programAuthors = new ArrayList < String >();
-        programAuthors.add("Benjamin Croizet (graffity2199@yahoo.fr)");
-        final ProgramVersion programVersion = new ProgramVersionImpl(1, 0, 0, new Date());
-        return new JavaProgramImpl(programName, programURL, programJarName, programLicenses, programAuthors,
-                programVersion, new StringBuffer(programDescription));
-    }
 
     /**
      * The PlantUML dependency program entry point.
@@ -110,60 +84,8 @@ public final class PlantUMLDependencyProgram {
     public static void main(final String[] args) throws SecurityException, IOException {
         readLoggerConfigurationFromResource(LOGGING_PROPERTIES_PATH);
 
-        final JavaProgram plantumlDependencyProgram = createProgramInformation();
-
         try {
-            final VerboseLevelOption verboseLevelOption = new VerboseLevelOption();
-            plantumlDependencyProgram.addOption(verboseLevelOption);
-
-            final AboutOption aboutOption = new AboutOption(plantumlDependencyProgram, 2);
-            plantumlDependencyProgram.addOption(aboutOption);
-
-            final HelpOption helpOption = new HelpOption(plantumlDependencyProgram, 1);
-            plantumlDependencyProgram.addOption(helpOption);
-
-            final VersionOption versionOption = new VersionOption(plantumlDependencyProgram, 3);
-            plantumlDependencyProgram.addOption(versionOption);
-
-            final PlantUMLDependencyDisplayOption displayOption = new PlantUMLDependencyDisplayOption();
-            plantumlDependencyProgram.addOption(displayOption);
-
-            final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOption = new PlantUMLDependencyProgrammingLanguageOption();
-            plantumlDependencyProgram.addOption(programmingLanguageOption);
-
-            final PlantUMLDependencyIncludeOption includeOption = new PlantUMLDependencyIncludeOption(
-                    programmingLanguageOption);
-            plantumlDependencyProgram.addOption(includeOption);
-
-            final PlantUMLDependencyExcludeOption excludeOption = new PlantUMLDependencyExcludeOption();
-            plantumlDependencyProgram.addOption(excludeOption);
-
-            final PlantUMLDependencyBaseDirectoryOption baseDirectoryOption = new PlantUMLDependencyBaseDirectoryOption();
-            plantumlDependencyProgram.addOption(baseDirectoryOption);
-
-            final PlantUMLDependencyOutputOption outputOption = new PlantUMLDependencyOutputOption(verboseLevelOption,
-                    programmingLanguageOption, includeOption, excludeOption, displayOption, baseDirectoryOption, 4);
-            plantumlDependencyProgram.addOption(outputOption);
-
-            final String[] example1 = new String[] {helpOption.getName()};
-            final String[] example2 = new String[] {versionOption.getName(), verboseLevelOption.getName()};
-            final String[] example3 = new String[] {outputOption.getName(), "plantuml.txt",
-                    baseDirectoryOption.getName(), getProperty("user.dir"), includeOption.getName(), "**/*Test.java"};
-            // final String[] example4 = new String[] {outputOption.getName(),
-            // "/home/test/plantuml.txt", "-b", DOT_CHAR,
-            // includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
-            // displayOption.getName(), "only_packages,interfaces", verboseOption.getName()};
-            plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example1));
-            plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example2));
-            plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example3));
-            // FIXME to add when the display option will be ready
-            // plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example4));
-
-            plantumlDependencyProgram
-                    .addKnownBugOrLimitation("- Be careful, in order to correctly parse source files, they must compile without any errors");
-            plantumlDependencyProgram
-                    .addKnownBugOrLimitation("- Problem generation with inner classes because they are not managed by plantUML, problem logged at http://sourceforge.net/tracker/?func=detail&aid=3098362&group_id=259736&atid=1185926");
-
+            final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram();
             final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
                     .parseCommandLine(new CommandLineImpl(args));
             plantumlDependencyProgramExecution.execute();
@@ -173,11 +95,69 @@ public final class PlantUMLDependencyProgram {
     }
 
     /**
-     * Private constructor to prevent from instantiation.
+     * Default constructor.
+     * 
+     * @throws MalformedURLException
+     *             if the program URL doesn't have a good format.
+     * @throws CommandLineException
+     *             if any exception occurs while creating the program.
      * 
      * @since 1.0
      */
-    private PlantUMLDependencyProgram() {
-        super();
+    public PlantUMLDependencyProgram() throws MalformedURLException, CommandLineException {
+        super("PlantUML Dependency", new URL("http://plantuml-depend.sourceforge.net"), "plantuml-dependency.jar",
+                asList(new String[] {"GPL v3", "LGPL v3"}),
+                asList(new String[] {"Benjamin Croizet (graffity2199@yahoo.fr)"}), new ProgramVersionImpl(1, 0, 0,
+                        new Date()), new StringBuffer(
+                        "reverse engineering java source files to generate PlantUML description"));
+
+        final VerboseLevelOption verboseLevelOption = new VerboseLevelOption();
+        addOption(verboseLevelOption);
+
+        final AboutOption aboutOption = new AboutOption(this, 2);
+        addOption(aboutOption);
+
+        final HelpOption helpOption = new HelpOption(this, 1);
+        addOption(helpOption);
+
+        final VersionOption versionOption = new VersionOption(this, 3);
+        addOption(versionOption);
+
+        final PlantUMLDependencyDisplayOption displayOption = new PlantUMLDependencyDisplayOption();
+        addOption(displayOption);
+
+        final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOption = new PlantUMLDependencyProgrammingLanguageOption();
+        addOption(programmingLanguageOption);
+
+        final PlantUMLDependencyIncludeOption includeOption = new PlantUMLDependencyIncludeOption(
+                programmingLanguageOption);
+        addOption(includeOption);
+
+        final PlantUMLDependencyExcludeOption excludeOption = new PlantUMLDependencyExcludeOption();
+        addOption(excludeOption);
+
+        final PlantUMLDependencyBaseDirectoryOption baseDirectoryOption = new PlantUMLDependencyBaseDirectoryOption();
+        addOption(baseDirectoryOption);
+
+        final PlantUMLDependencyOutputOption outputOption = new PlantUMLDependencyOutputOption(verboseLevelOption,
+                programmingLanguageOption, includeOption, excludeOption, displayOption, baseDirectoryOption, 4);
+        addOption(outputOption);
+
+        final String[] example1 = new String[] {helpOption.getName()};
+        final String[] example2 = new String[] {versionOption.getName(), verboseLevelOption.getName()};
+        final String[] example3 = new String[] {outputOption.getName(), "plantuml.txt", baseDirectoryOption.getName(),
+                getProperty("user.dir"), includeOption.getName(), "**/*Test.java"};
+        // final String[] example4 = new String[] {outputOption.getName(),
+        // "/home/test/plantuml.txt", "-b", DOT_CHAR,
+        // includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
+        // displayOption.getName(), "only_packages,interfaces", verboseOption.getName()};
+        addExampleCommandLine(new CommandLineImpl(example1));
+        addExampleCommandLine(new CommandLineImpl(example2));
+        addExampleCommandLine(new CommandLineImpl(example3));
+        // FIXME to add when the display option will be ready
+        // plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example4));
+
+        addKnownBugOrLimitation("- Be careful, in order to correctly parse source files, they must compile without any errors");
+        addKnownBugOrLimitation("- Problem generation with inner classes because they are not managed by plantUML, problem logged at http://sourceforge.net/tracker/?func=detail&aid=3098362&group_id=259736&atid=1185926");
     }
 }
