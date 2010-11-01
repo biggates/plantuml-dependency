@@ -117,27 +117,27 @@ public class PlantUMLDependencyBaseDirectoryOptionTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      * 
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgument() throws CommandLineException {
-        final File defaultArgument = BASE_DIRECTORY_OPTION1.getDefaultArgument(COMMAND_LINE1);
+    public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
+        final File defaultArgument = BASE_DIRECTORY_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
         assertEquals(DOT_CHAR, defaultArgument.getName());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption#getDefaultArgumentAsString(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      * 
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgumentAsString() throws CommandLineException {
-        final String defaultArgument = BASE_DIRECTORY_OPTION1.getDefaultArgumentAsString(COMMAND_LINE1);
+    public void testGetDefaultArgumentAsStringIfOptionSpecified() throws CommandLineException {
+        final String defaultArgument = BASE_DIRECTORY_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
         assertEquals(DOT_CHAR, defaultArgument);
     }
 

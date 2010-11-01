@@ -127,40 +127,40 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      * 
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgument() throws CommandLineException {
-        final FileSet defaultArgument = INCLUDE_OPTION1.getDefaultArgument(COMMAND_LINE1);
+    public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
+        final FileSet defaultArgument = INCLUDE_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
         assertNotNull(defaultArgument);
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption#getDefaultArgumentAsString(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      * 
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgumentAsStringWithNotProgrammingLanguageOption() throws CommandLineException {
-        final String defaultArgument = INCLUDE_OPTION1.getDefaultArgumentAsString(COMMAND_LINE1);
+    public void testGetDefaultArgumentAsStringIfOptionSpecifiedWithNotProgrammingLanguageOption() throws CommandLineException {
+        final String defaultArgument = INCLUDE_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
         assertEquals("**/*." + DEFAULT_PROGRAMMING_LANGUAGE.getName(), defaultArgument);
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption#getDefaultArgumentAsString(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      * 
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgumentAsStringWithProgrammingLanguageOption() throws CommandLineException {
-        final String defaultArgument = INCLUDE_OPTION1.getDefaultArgumentAsString(COMMAND_LINE14);
+    public void testGetDefaultArgumentAsStringIfOptionSpecifiedWithProgrammingLanguageOption() throws CommandLineException {
+        final String defaultArgument = INCLUDE_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE14);
         assertEquals("**/*." + CPP.getName(), defaultArgument);
     }
 

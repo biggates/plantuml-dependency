@@ -119,27 +119,27 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      * 
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgument() throws CommandLineException {
-        final ProgrammingLanguage defaultArgument = PROGRAMMING_LANGUAGE_OPTION1.getDefaultArgument(COMMAND_LINE1);
+    public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
+        final ProgrammingLanguage defaultArgument = PROGRAMMING_LANGUAGE_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
         assertEquals(DEFAULT_PROGRAMMING_LANGUAGE, defaultArgument);
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption#getDefaultArgumentAsString(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      * 
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgumentAsString() throws CommandLineException {
-        final String defaultArgument = PROGRAMMING_LANGUAGE_OPTION1.getDefaultArgumentAsString(COMMAND_LINE1);
+    public void testGetDefaultArgumentAsStringIfOptionSpecified() throws CommandLineException {
+        final String defaultArgument = PROGRAMMING_LANGUAGE_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
         assertEquals(DEFAULT_PROGRAMMING_LANGUAGE.getName(), defaultArgument);
     }
 

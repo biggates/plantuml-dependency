@@ -72,7 +72,19 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
      * @since 1.0
      */
     @Override
-    public String getDefaultArgumentAsString(final CommandLine commandLine) throws CommandLineException {
+    public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
+            throws CommandLineException {
+        return DEFAULT_PROGRAMMING_LANGUAGE.getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)
+            throws CommandLineException {
         return DEFAULT_PROGRAMMING_LANGUAGE.getName();
     }
 }

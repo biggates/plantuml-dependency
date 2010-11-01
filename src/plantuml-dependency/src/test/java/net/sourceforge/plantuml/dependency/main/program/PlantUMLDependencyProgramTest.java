@@ -52,7 +52,7 @@ public class PlantUMLDependencyProgramTest {
      * @throws IOException
      * @throws SecurityException
      */
-    @Test(expected = CommandLineException.class)
+    @Test
     public void testMainWithoutExecutionOption() throws CommandLineException, SecurityException, IOException {
         main(new String[] {"-l", DEFAULT_PROGRAMMING_LANGUAGE.getName(), "-i", "**/*.java"});
     }

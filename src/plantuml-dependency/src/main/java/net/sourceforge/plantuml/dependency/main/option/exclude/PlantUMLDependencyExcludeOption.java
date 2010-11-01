@@ -70,7 +70,19 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
      * @since 1.0
      */
     @Override
-    public String getDefaultArgumentAsString(final CommandLine commandLine) throws CommandLineException {
+    public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
+            throws CommandLineException {
+        return "**/*~";
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)
+            throws CommandLineException {
         return "**/*~";
     }
 }

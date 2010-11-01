@@ -139,14 +139,14 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      * 
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgument() throws CommandLineException {
-        final Set < Display > defaultArgument = DISPLAY_OPTION1.getDefaultArgument(COMMAND_LINE1);
+    public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
+        final Set < Display > defaultArgument = DISPLAY_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
         assertEquals(8, defaultArgument.size());
         assertTrue(defaultArgument.contains(CLASSES));
         assertTrue(defaultArgument.contains(ENUMS));
@@ -160,14 +160,14 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption#getDefaultArgumentAsString(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      * 
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgumentAsString() throws CommandLineException {
-        final String defaultArgument = DISPLAY_OPTION1.getDefaultArgumentAsString(COMMAND_LINE1);
+    public void testGetDefaultArgumentAsStringIfOptionSpecified() throws CommandLineException {
+        final String defaultArgument = DISPLAY_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
         assertEquals(CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS + COMMA_CHAR + INTERFACES + COMMA_CHAR
                 + STATIC_IMPORTS + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS,
                 defaultArgument);

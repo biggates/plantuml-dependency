@@ -227,9 +227,8 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     public OptionExecution parseCommandLine(final CommandLine commandLine) throws CommandLineException {
         OptionExecution optionExecution = null;
         
-        // TODO
-        //final Level verboseLevel = getVerboseLevelOption().findAndParseArgumentOrGetDefaultArgument(commandLine);
-        //final LogManager rootLogManager = LogManager.getLogManager();
+        final Level verboseLevel = getVerboseLevelOption().findAndParseArgumentOrGetDefaultArgument(commandLine);
+        final LogManager rootLogManager = LogManager.getLogManager();
 
         if (commandLine.isOptionSpecified(this)) {
             final File outputFile = findAndParseArgumentOrGetDefaultArgument(commandLine);
