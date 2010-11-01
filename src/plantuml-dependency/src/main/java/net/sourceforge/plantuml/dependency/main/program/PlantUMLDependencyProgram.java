@@ -77,11 +77,9 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      *            command line arguments.
      * @throws IOException
      *             if any exception occurs while reading the logging properties file.
-     * @throws SecurityException
-     *             if any exception occurs while reading the logging properties file.
      * @since 1.0
      */
-    public static void main(final String[] args) throws SecurityException, IOException {
+    public static void main(final String[] args) throws IOException {
         readLoggerConfigurationFromResource(LOGGING_PROPERTIES_PATH);
 
         try {

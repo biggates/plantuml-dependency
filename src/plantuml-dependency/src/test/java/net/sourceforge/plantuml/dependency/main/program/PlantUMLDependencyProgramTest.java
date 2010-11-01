@@ -50,10 +50,9 @@ public class PlantUMLDependencyProgramTest {
      * 
      * @throws CommandLineException
      * @throws IOException
-     * @throws SecurityException
      */
     @Test
-    public void testMainWithoutExecutionOption() throws CommandLineException, SecurityException, IOException {
+    public void testMainWithoutExecutionOption() throws CommandLineException, IOException {
         main(new String[] {"-l", DEFAULT_PROGRAMMING_LANGUAGE.getName(), "-i", "**/*.java"});
     }
 
@@ -64,10 +63,9 @@ public class PlantUMLDependencyProgramTest {
      * 
      * @throws CommandLineException
      * @throws IOException
-     * @throws SecurityException
      */
     @Test
-    public void testMainWithPrimaryHelpOption() throws CommandLineException, SecurityException, IOException {
+    public void testMainWithPrimaryHelpOption() throws CommandLineException, IOException {
         main(new String[] {"-h"});
     }
 
@@ -78,10 +76,9 @@ public class PlantUMLDependencyProgramTest {
      * 
      * @throws CommandLineException
      * @throws IOException
-     * @throws SecurityException
      */
     @Test
-    public void testMainWithPrimaryVersionOption() throws CommandLineException, SecurityException, IOException {
+    public void testMainWithPrimaryVersionOption() throws CommandLineException, IOException {
         main(new String[] {"-version"});
     }
 
@@ -92,10 +89,9 @@ public class PlantUMLDependencyProgramTest {
      * 
      * @throws CommandLineException
      * @throws IOException
-     * @throws SecurityException
      */
     @Test
-    public void testMainWithSecondaryOption() throws CommandLineException, SecurityException, IOException {
+    public void testMainWithSecondaryOption() throws CommandLineException, IOException {
         main(new String[] {"-h"});
     }
 
