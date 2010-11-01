@@ -39,6 +39,8 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.P
 
 import java.io.File;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.command.CommandLine;
@@ -47,7 +49,7 @@ import net.sourceforge.mazix.cli.option.argument.impl.file.NotExistingFileOption
 import net.sourceforge.mazix.cli.option.execution.ExecutableOption;
 import net.sourceforge.mazix.cli.option.execution.OptionExecution;
 import net.sourceforge.mazix.cli.option.impl.output.OutputOption;
-import net.sourceforge.mazix.cli.option.impl.verbose.VerboseOption;
+import net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption;
 import net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
 import net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
@@ -77,7 +79,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     private static final transient Logger LOGGER = getLogger(PlantUMLDependencyOutputOption.class.getName());
 
     /** The verbose option. */
-    private VerboseOption verboseOption;
+    private VerboseLevelOption verboseLevelOption;
 
     /** The programming language option. */
     private PlantUMLDependencyProgrammingLanguageOption programmingLanguageOption;
@@ -100,8 +102,8 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     /**
      * Default constructor.
      * 
-     * @param verboseOpt
-     *            the {@link VerboseOption} instance, to display log information, mustn't be
+     * @param verboseLvlOpt
+     *            the {@link VerboseLevelOption} instance, to display log information, mustn't be
      *            <code>null</code>.
      * @param programmingLanguageOpt
      *            the {@link PlantUMLDependencyProgrammingLanguageOption} instance, to know what is
@@ -123,7 +125,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      *            all options</i>.
      * @since 1.0
      */
-    public PlantUMLDependencyOutputOption(final VerboseOption verboseOpt,
+    public PlantUMLDependencyOutputOption(final VerboseLevelOption verboseLvlOpt,
             final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOpt,
             final PlantUMLDependencyIncludeOption includeOpt, final PlantUMLDependencyExcludeOption excludeOpt,
             final PlantUMLDependencyDisplayOption displayOpt, final PlantUMLDependencyBaseDirectoryOption baseDirOpt,
@@ -131,7 +133,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
         super(new NotExistingFileOptionArgumentImpl(true), new StringBuffer(
                 "To output file path where to generate the PlantUML description."), SPACE_CHAR,
                 ACTIVE_OPTIONAL_OPTION_STATUS);
-        setVerboseOption(verboseOpt);
+        setVerboseLevelOption(verboseLvlOpt);
         setProgrammingLanguageOption(programmingLanguageOpt);
         setIncludeOption(includeOpt);
         setExcludeOption(excludeOpt);
@@ -206,14 +208,14 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     }
 
     /**
-     * Gets the value of <code>verboseOption</code>.
+     * Gets the value of <code>verboseLevelOption</code>.
      * 
-     * @return the value of <code>verboseOption</code>.
-     * @see #setVerboseOption(VerboseOption)
+     * @return the value of <code>verboseLevelOption</code>.
+     * @see #setVerboseLevelOption(VerboseLevelOption)
      * @since 1.0
      */
-    private VerboseOption getVerboseOption() {
-        return verboseOption;
+    private VerboseLevelOption getVerboseLevelOption() {
+        return verboseLevelOption;
     }
 
     /**
@@ -224,6 +226,10 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     @Override
     public OptionExecution parseCommandLine(final CommandLine commandLine) throws CommandLineException {
         OptionExecution optionExecution = null;
+        
+        // TODO
+        //final Level verboseLevel = getVerboseLevelOption().findAndParseArgumentOrGetDefaultArgument(commandLine);
+        //final LogManager rootLogManager = LogManager.getLogManager();
 
         if (commandLine.isOptionSpecified(this)) {
             final File outputFile = findAndParseArgumentOrGetDefaultArgument(commandLine);
@@ -232,13 +238,12 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
             includesExcludes.setExcludes(excludes);
             final File baseDirectory = getBaseDirOption().findAndParseArgumentOrGetDefaultArgument(commandLine);
             includesExcludes.setDir(baseDirectory);
-            final boolean verboseMode = getVerboseOption().isVerboseModeActive(commandLine);
             final Set < Display > displayOptions = getDisplayOption().findAndParseArgumentOrGetDefaultArgument(
                     commandLine);
             final ProgrammingLanguage programmingLanguage = getProgrammingLanguageOption()
                     .findAndParseArgumentOrGetDefaultArgument(commandLine);
             optionExecution = new PlantUMLDependencyOutputOptionExecution(outputFile, programmingLanguage,
-                    includesExcludes, verboseMode, displayOptions, getPriority());
+                    includesExcludes, displayOptions, getPriority());
         } else {
             LOGGER.fine(buildLogString(OPTION_NOT_SPECIFIED_FINE, getAllNames()));
         }
@@ -329,16 +334,16 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     }
 
     /**
-     * Sets the value of <code>verboseOption</code>.
+     * Sets the value of <code>verboseLevelOption</code>.
      * 
      * @param value
-     *            the <code>verboseOption</code> to set, can be <code>null</code>.
-     * @see #getVerboseOption()
+     *            the <code>verboseLevelOption</code> to set, can be <code>null</code>.
+     * @see #getVerboseLevelOption()
      * @since 1.0
      */
-    private void setVerboseOption(final VerboseOption value) {
+    private void setVerboseLevelOption(final VerboseLevelOption value) {
         checkNull(value, VERBOSE_OPTION_NULL_ERROR);
 
-        verboseOption = value;
+        verboseLevelOption = value;
     }
 }

@@ -68,9 +68,6 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(PlantUMLDependencyOutputOptionExecution.class.getName());
 
-    /** The verbose mode which can affect the log information to display, if necessary. */
-    private boolean verboseMode;
-
     /** The output file where to generate the plantUML description. */
     private File outputFile;
 
@@ -98,8 +95,6 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param includeExcludeFiles
      *            the {@link FileSet} describing all files to include or exclude and also the base
      *            directory where to look for, mustn't be <code>null</code>.
-     * @param verboseModeActive
-     *            the boolean telling if the verbose mode is active, to display log information.
      * @param displayOpt
      *            the display option which have to appear in the plantUML description.
      * @param optionPriority
@@ -108,10 +103,8 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @since 1.0
      */
     public PlantUMLDependencyOutputOptionExecution(final File file, final ProgrammingLanguage language,
-            final FileSet includeExcludeFiles, final boolean verboseModeActive, final Set < Display > displayOpt,
-            final int optionPriority) {
+            final FileSet includeExcludeFiles, final Set < Display > displayOpt, final int optionPriority) {
         super(optionPriority);
-        setVerboseMode(verboseModeActive);
         setOutputFile(file);
         setInputFileSet(includeExcludeFiles);
         setProgrammingLanguage(language);
@@ -144,15 +137,13 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
         try {
             final ProgrammingLanguageContext programmingLanguageContext = readDependenciesMapFromFiles(
-                    getProgrammingLanguage(), getInputFileSet(), isVerboseMode(), getDisplayOptions());
+                    getProgrammingLanguage(), getInputFileSet(), getDisplayOptions());
             programmingLanguageContext.writePlantUMLFile(getOutputFile());
         } catch (final PlantUMLDependencyException e) {
             LOGGER.severe(e.getMessage());
         }
 
-        if (isVerboseMode()) {
-            LOGGER.info(buildLogString(EXECUTION_TIME_INFO, (currentTimeMillis() - start)));
-        }
+        LOGGER.info(buildLogString(EXECUTION_TIME_INFO, (currentTimeMillis() - start)));
     }
 
     /**
@@ -200,17 +191,6 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     }
 
     /**
-     * Gets the value of <code>verboseMode</code>.
-     * 
-     * @return the value of <code>verboseMode</code>.
-     * @see #setVerboseMode(boolean)
-     * @since 1.0
-     */
-    private boolean isVerboseMode() {
-        return verboseMode;
-    }
-
-    /**
      * Creates a dependencies {@link Map} following a set of files in the passed programming
      * language. This methods parses each source files of the set in order to create the {@link Map}
      * .
@@ -221,8 +201,6 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param includeExcludeFiles
      *            the {@link FileSet} describing all files to include or exclude and also the base
      *            directory where to look for, mustn't be <code>null</code>.
-     * @param verboseModeActive
-     *            the boolean telling if the verbose mode is active, to display log information.
      * @param displayOpt
      *            the display option which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
@@ -233,8 +211,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      */
     @SuppressWarnings("unchecked")
     private ProgrammingLanguageContext readDependenciesMapFromFiles(final ProgrammingLanguage language,
-            final FileSet includeExcludeFiles, final boolean verboseModeActive, final Set < Display > displayOpt)
-            throws PlantUMLDependencyException {
+            final FileSet includeExcludeFiles, final Set < Display > displayOpt) throws PlantUMLDependencyException {
         final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext(displayOpt);
 
         final Iterator < FileResource > iter = includeExcludeFiles.iterator();
@@ -242,8 +219,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
             final FileResource fileResource = iter.next();
 
             try {
-                readDependencyFromFile(fileResource.getFile(), programmingLanguageContext, language, verboseModeActive,
-                        displayOpt);
+                readDependencyFromFile(fileResource.getFile(), programmingLanguageContext, language, displayOpt);
             } catch (final PlantUMLDependencyException e) {
                 throw new PlantUMLDependencyException(
                         buildLogString(READING_SOURCE_FILE_ERROR, fileResource.getFile()), e);
@@ -266,8 +242,6 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param language
      *            the programming language of the source files to parse, mustn't be
      *            <code>null</code>.
-     * @param verboseModeActive
-     *            the boolean telling if the verbose mode is active, to display log information.
      * @param displayOpt
      *            the display option which have to appear in the plantUML description.
      * @return the {@link GenericDependency} instance parsed in the source file.
@@ -277,7 +251,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      */
     private GenericDependency readDependencyFromFile(final File file,
             final ProgrammingLanguageContext programmingLanguageContext, final ProgrammingLanguage language,
-            final boolean verboseModeActive, final Set < Display > displayOpt) throws PlantUMLDependencyException {
+            final Set < Display > displayOpt) throws PlantUMLDependencyException {
         final String sourceFileContent = readFileIntoString(file);
         return language.readDependencyFromFile(sourceFileContent, programmingLanguageContext);
     }
@@ -328,17 +302,5 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      */
     private void setProgrammingLanguage(final ProgrammingLanguage value) {
         programmingLanguage = value;
-    }
-
-    /**
-     * Sets the value of <code>verboseMode</code>.
-     * 
-     * @param value
-     *            the <code>verboseMode</code> to set, can be <code>null</code>.
-     * @see #isVerboseMode()
-     * @since 1.0
-     */
-    private void setVerboseMode(final boolean value) {
-        verboseMode = value;
     }
 }

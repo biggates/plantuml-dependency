@@ -42,7 +42,7 @@ import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
 import net.sourceforge.mazix.cli.exception.CommandLineException;
 import net.sourceforge.mazix.cli.option.impl.about.AboutOption;
 import net.sourceforge.mazix.cli.option.impl.help.HelpOption;
-import net.sourceforge.mazix.cli.option.impl.verbose.VerboseOption;
+import net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption;
 import net.sourceforge.mazix.cli.option.impl.version.VersionOption;
 import net.sourceforge.mazix.cli.program.JavaProgram;
 import net.sourceforge.mazix.cli.program.execution.JavaProgramExecution;
@@ -113,8 +113,8 @@ public final class PlantUMLDependencyProgram {
         final JavaProgram plantumlDependencyProgram = createProgramInformation();
 
         try {
-            final VerboseOption verboseOption = new VerboseOption();
-            plantumlDependencyProgram.addOption(verboseOption);
+            final VerboseLevelOption verboseLevelOption = new VerboseLevelOption();
+            plantumlDependencyProgram.addOption(verboseLevelOption);
 
             final AboutOption aboutOption = new AboutOption(plantumlDependencyProgram, 2);
             plantumlDependencyProgram.addOption(aboutOption);
@@ -122,7 +122,7 @@ public final class PlantUMLDependencyProgram {
             final HelpOption helpOption = new HelpOption(plantumlDependencyProgram, 1);
             plantumlDependencyProgram.addOption(helpOption);
 
-            final VersionOption versionOption = new VersionOption(plantumlDependencyProgram, verboseOption, 3);
+            final VersionOption versionOption = new VersionOption(plantumlDependencyProgram, 3);
             plantumlDependencyProgram.addOption(versionOption);
 
             final PlantUMLDependencyDisplayOption displayOption = new PlantUMLDependencyDisplayOption();
@@ -141,12 +141,12 @@ public final class PlantUMLDependencyProgram {
             final PlantUMLDependencyBaseDirectoryOption baseDirectoryOption = new PlantUMLDependencyBaseDirectoryOption();
             plantumlDependencyProgram.addOption(baseDirectoryOption);
 
-            final PlantUMLDependencyOutputOption outputOption = new PlantUMLDependencyOutputOption(verboseOption,
+            final PlantUMLDependencyOutputOption outputOption = new PlantUMLDependencyOutputOption(verboseLevelOption,
                     programmingLanguageOption, includeOption, excludeOption, displayOption, baseDirectoryOption, 4);
             plantumlDependencyProgram.addOption(outputOption);
 
             final String[] example1 = new String[] {helpOption.getName()};
-            final String[] example2 = new String[] {versionOption.getName(), verboseOption.getName()};
+            final String[] example2 = new String[] {versionOption.getName(), verboseLevelOption.getName()};
             final String[] example3 = new String[] {outputOption.getName(), "plantuml.txt",
                     baseDirectoryOption.getName(), getProperty("user.dir"), includeOption.getName(), "**/*Test.java"};
             // final String[] example4 = new String[] {outputOption.getName(),

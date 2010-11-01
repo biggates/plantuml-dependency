@@ -50,6 +50,7 @@ import java.util.TreeSet;
 
 import net.sourceforge.mazix.cli.command.CommandLine;
 import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
+import net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption;
 import net.sourceforge.mazix.cli.option.impl.verbose.VerboseOption;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
@@ -193,6 +194,9 @@ public final class PlantUMLDependencyTestConstants {
     /** Verbose option test 2 instance. */
     public static final VerboseOption VERBOSE_OPTION2 = new VerboseOption(new StringBuffer(
             "To display log information."), ACTIVE_MANDATORY_OPTION_STATUS);
+    
+    /** Verbose level option test 1 instance. */
+    public static final VerboseLevelOption VERBOSE_LEVEL_OPTION1 = new VerboseLevelOption();
 
     /** Extensions set test 1 instance. */
     public static final Set < String > EXTENSIONS_SET1 = new TreeSet < String >(
