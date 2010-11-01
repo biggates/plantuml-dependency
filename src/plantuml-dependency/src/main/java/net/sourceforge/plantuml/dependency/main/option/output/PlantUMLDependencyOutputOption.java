@@ -30,7 +30,9 @@ import static net.sourceforge.mazix.cli.constants.log.FineConstants.OPTION_NOT_S
 import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
+import static net.sourceforge.mazix.components.log.LogUtils.tryToReadLoggerConfigurationFromResourceAndSetLevel;
 import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.BASE_DIRECTORY_OPTION_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DISPLAY_OPTION_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.EXCLUDE_OPTION_NULL_ERROR;
@@ -40,7 +42,6 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.P
 import java.io.File;
 import java.util.Set;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.command.CommandLine;
@@ -217,7 +218,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     private VerboseLevelOption getVerboseLevelOption() {
         return verboseLevelOption;
     }
-
+    
     /**
      * {@inheritDoc}
      * 
@@ -228,7 +229,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
         OptionExecution optionExecution = null;
         
         final Level verboseLevel = getVerboseLevelOption().findAndParseArgumentOrGetDefaultArgument(commandLine);
-        final LogManager rootLogManager = LogManager.getLogManager();
+        tryToReadLoggerConfigurationFromResourceAndSetLevel(LOGGING_PROPERTIES_PATH, verboseLevel);
 
         if (commandLine.isOptionSpecified(this)) {
             final File outputFile = findAndParseArgumentOrGetDefaultArgument(commandLine);
