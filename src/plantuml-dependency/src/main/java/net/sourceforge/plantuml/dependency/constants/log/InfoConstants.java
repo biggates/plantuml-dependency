@@ -37,6 +37,9 @@ public final class InfoConstants {
     /** The execution time info message. */
     public static final String EXECUTION_TIME_INFO = "[info-plantuml-dependency-000] : Executed in \"{0}\" ms";
 
+    /** The treated dependencies info message. */
+    public static final String TREATED_DEPENDENCY_INFO = "[info-plantuml-dependency-001] : Number of processed dependencies : \"{0}\"";
+
     /**
      * Private constructor to prevent from instantiation.
      * 

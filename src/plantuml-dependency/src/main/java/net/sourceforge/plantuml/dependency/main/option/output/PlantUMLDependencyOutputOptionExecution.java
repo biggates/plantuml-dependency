@@ -30,6 +30,7 @@ import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.READING_SOURCE_FILE_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.EXECUTION_TIME_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.TREATED_DEPENDENCY_INFO;
 
 import java.io.File;
 import java.util.Collection;
@@ -139,6 +140,8 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
             final ProgrammingLanguageContext programmingLanguageContext = readDependenciesMapFromFiles(
                     getProgrammingLanguage(), getInputFileSet(), getDisplayOptions());
             programmingLanguageContext.writePlantUMLFile(getOutputFile());
+            LOGGER.info(buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies()
+                    .size()));
         } catch (final PlantUMLDependencyException e) {
             LOGGER.severe(e.getMessage());
         }
