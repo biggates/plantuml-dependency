@@ -30,6 +30,7 @@ import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
 
 import java.util.TreeSet;
 
@@ -72,8 +73,9 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
                 unmodifiableSet(new TreeSet < String >(asList(new String[] {"--include"}))),
                 new IncludeFilePatternOptionArgumentImpl(true),
                 new StringBuffer(
-                        "To include files that match the provided pattern. If not specified, the default pattern is \"**/*.PROGRAMMING_LANGUAGE_FILE_EXTENSION\" depending on the programming language chosen."),
-                SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
+                        "To include files that match the provided pattern. If not specified, the default pattern is \"**/*.PROGRAMMING_LANGUAGE_FILE_EXTENSION\" depending on the programming language chosen (default is \""
+                                + DEFAULT_PROGRAMMING_LANGUAGE.getName() + "\")."), SPACE_CHAR,
+                ACTIVE_OPTIONAL_OPTION_STATUS);
         setProgrammingLanguageOption(programmingLanguageOpt);
     }
 
