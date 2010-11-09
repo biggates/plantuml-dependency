@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.output;
 
 import static java.lang.System.currentTimeMillis;
+import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
@@ -143,7 +144,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
             LOGGER.info(buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies()
                     .size()));
         } catch (final PlantUMLDependencyException e) {
-            LOGGER.severe(e.getMessage());
+            LOGGER.log(SEVERE, e.getMessage(), e);
         }
 
         LOGGER.info(buildLogString(EXECUTION_TIME_INFO, (currentTimeMillis() - start)));

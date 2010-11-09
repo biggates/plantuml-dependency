@@ -127,26 +127,14 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
-     * .
-     * 
-     * @throws CommandLineException
-     */
-    @Test
-    public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
-        final FileSet defaultArgument = INCLUDE_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
-        assertNotNull(defaultArgument);
-    }
-
-    /**
-     * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      * 
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgumentAsStringIfOptionSpecifiedWithNotProgrammingLanguageOption() throws CommandLineException {
+    public void testGetDefaultArgumentAsStringIfOptionSpecifiedWithNotProgrammingLanguageOption()
+            throws CommandLineException {
         final String defaultArgument = INCLUDE_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
         assertEquals("**/*." + DEFAULT_PROGRAMMING_LANGUAGE.getName(), defaultArgument);
     }
@@ -159,9 +147,23 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
      * @throws CommandLineException
      */
     @Test
-    public void testGetDefaultArgumentAsStringIfOptionSpecifiedWithProgrammingLanguageOption() throws CommandLineException {
+    public void testGetDefaultArgumentAsStringIfOptionSpecifiedWithProgrammingLanguageOption()
+            throws CommandLineException {
         final String defaultArgument = INCLUDE_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE14);
         assertEquals("**/*." + CPP.getName(), defaultArgument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
+     * .
+     * 
+     * @throws CommandLineException
+     */
+    @Test
+    public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
+        final FileSet defaultArgument = INCLUDE_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
+        assertNotNull(defaultArgument);
     }
 
     /**
@@ -170,7 +172,9 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-i, --include FILE_PATTERN\n\t\tTo include files that match the provided pattern. If not specified, the default pattern is \"**/*.PROGRAMMING_LANGUAGE_FILE_EXTENSION\" depending on the programming language chosen.\n\t\tFILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that \"**\", \"*\" or \"?\" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.",
+                "-i, --include FILE_PATTERN\n\t\tTo include files that match the provided pattern. If not specified, the default pattern is \"**/*.PROGRAMMING_LANGUAGE_FILE_EXTENSION\" depending on the programming language chosen (default is \""
+                        + DEFAULT_PROGRAMMING_LANGUAGE.getName()
+                        + "\").\n\t\tFILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that \"**\", \"*\" or \"?\" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.",
                 INCLUDE_OPTION1.getFullUsage().toString());
     }
 

@@ -39,11 +39,10 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyCo
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.COMMENT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.JAVA_TYPE_REGEXP;
-import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.LINE_OR_CARRIAGE_RETURN_REGEXP;
+import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.LINE_OR_CARRIAGE_RETURN_OR_TAB_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.NORMAL_IMPORT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.PACKAGE_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.STATIC_IMPORT_REGEXP;
-import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.TAB_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_CANT_BE_EXTRACTED_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.CREATING_DEPENDENCY_FINE;
@@ -656,9 +655,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     private String prepareSourceFileContent(final String javaSourceFileContent) {
         // TODO removing double slash comments
         // removing special characters
-        String content = LINE_OR_CARRIAGE_RETURN_REGEXP.matcher(javaSourceFileContent).replaceAll(BLANK_STRING);
-        content = TAB_REGEXP.matcher(content).replaceAll(SPACE_CHAR);
-
+        String content = LINE_OR_CARRIAGE_RETURN_OR_TAB_REGEXP.matcher(javaSourceFileContent).replaceAll(BLANK_STRING);
         // removing commentsregexp
         content = COMMENT_REGEXP.matcher(content).replaceAll(BLANK_STRING);
 

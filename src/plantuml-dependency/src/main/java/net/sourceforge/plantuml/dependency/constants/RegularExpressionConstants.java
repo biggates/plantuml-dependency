@@ -41,11 +41,9 @@ import java.util.regex.Pattern;
  */
 public final class RegularExpressionConstants {
 
-    /** The pattern representing the line or carriage return characters. */
-    public static final Pattern LINE_OR_CARRIAGE_RETURN_REGEXP = compile(LINE_CHAR + PIPE_CHAR + CARRIAGE_RETURN_CHAR);
-
-    /** The pattern representing the tab character. */
-    public static final Pattern TAB_REGEXP = compile(TAB_CHAR);
+    /** The pattern representing the line or carriage or tab return characters. */
+    public static final Pattern LINE_OR_CARRIAGE_RETURN_OR_TAB_REGEXP = compile(LINE_CHAR + PIPE_CHAR
+            + CARRIAGE_RETURN_CHAR + PIPE_CHAR + TAB_CHAR);
 
     /** The pattern representing the comments (single line or multiple line). */
     public static final Pattern COMMENT_REGEXP = compile("/\\*\\**.*?\\*/");
@@ -61,7 +59,7 @@ public final class RegularExpressionConstants {
 
     /** The pattern representing the static import. */
     public static final Pattern STATIC_IMPORT_REGEXP = compile(".*?import +static +([A-Za-z0-9.]+)\\.([A-Za-z0-9.]+?)\\.(.*?) *;");
-    
+
     /** The pattern representing the native methods. */
     public static final Pattern NATIVE_METHODS_REGEXP = compile("native .*\\(\\)?");
 
