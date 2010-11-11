@@ -26,10 +26,15 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 
 import static java.lang.Class.forName;
 import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.CARRIAGE_RETURN_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.INFERIOR_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.LINE_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.SLASH_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.STAR_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SUPERIOR_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.TAB_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.mazix.components.constants.CommonConstants.MINUS_ONE_RETURN_CODE;
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
@@ -37,9 +42,7 @@ import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.removeAllSubtringsBetweenCharacters;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.JAVA_LANG_PACKAGE;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
-import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.COMMENT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.JAVA_TYPE_REGEXP;
-import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.LINE_OR_CARRIAGE_RETURN_OR_TAB_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.NORMAL_IMPORT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.PACKAGE_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.STATIC_IMPORT_REGEXP;
@@ -95,6 +98,105 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(JavaProgrammingLanguage.class.getName());
+
+    /**
+     * @param cursor
+     * @param javaSourceFileContent
+     * @return
+     * @since 1.0
+     */
+    private static int getNextEndOfMultiLineCommentIndex(final int cursor, final String javaSourceFileContent) {
+        int index = cursor;
+        boolean found = false;
+
+        while (index < javaSourceFileContent.length() && !found) {
+            final char currentCharacter = javaSourceFileContent.charAt(index);
+            if (currentCharacter == STAR_CHAR.charAt(0)) {
+                if (index + 1 < javaSourceFileContent.length()) {
+                    final char nextCharacter = javaSourceFileContent.charAt(index + 1);
+                    if (nextCharacter == SLASH_CHAR.charAt(0)) {
+                        index += 2;
+                        found = true;
+                    } else {
+                        index += 2;
+                    }
+                } else {
+                    index++;
+                }
+            } else {
+                index++;
+            }
+        }
+
+        return index;
+    }
+
+    /**
+     * @param cursor
+     * @param javaSourceFileContent
+     * @return
+     * @since 1.0
+     */
+    private static int getNextEndOfSimpleLineCommentIndex(final int cursor, final String javaSourceFileContent) {
+        int index = cursor;
+        boolean found = false;
+
+        while (index < javaSourceFileContent.length() && !found) {
+            final char currentCharacter = javaSourceFileContent.charAt(index);
+            if (currentCharacter == LINE_CHAR.charAt(0) || currentCharacter == CARRIAGE_RETURN_CHAR.charAt(0)) {
+                index++;
+                found = true;
+            } else {
+                index++;
+            }
+        }
+
+        return index;
+    }
+
+    /**
+     * Prepares the java source file content to remove all unnecessary strings which are not used in
+     * the analysis.
+     * 
+     * @param javaSourceFileContent
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
+     * @return the new java source file content without all unnecessary strings which are not used
+     *         in the analysis.
+     * @since 1.0
+     */
+    private static String prepareSourceFileContent(final String javaSourceFileContent) {
+        final StringBuffer buffer = new StringBuffer();
+
+        int cursor = 0;
+        while (cursor < javaSourceFileContent.length()) {
+            final char currentCharacter = javaSourceFileContent.charAt(cursor);
+            if (currentCharacter == LINE_CHAR.charAt(0) || currentCharacter == CARRIAGE_RETURN_CHAR.charAt(0)
+                    || currentCharacter == TAB_CHAR.charAt(0)) {
+                cursor++;
+            } else if (currentCharacter == SLASH_CHAR.charAt(0)) {
+                if (cursor + 1 < javaSourceFileContent.length()) {
+                    final char nextCharacter = javaSourceFileContent.charAt(cursor + 1);
+                    if (nextCharacter == SLASH_CHAR.charAt(0)) {
+                        cursor = getNextEndOfSimpleLineCommentIndex(cursor + 2, javaSourceFileContent);
+                    } else if (nextCharacter == STAR_CHAR.charAt(0)) {
+                        cursor = getNextEndOfMultiLineCommentIndex(cursor + 2, javaSourceFileContent);
+                    } else {
+                        buffer.append(currentCharacter);
+                        cursor++;
+                    }
+                } else {
+                    buffer.append(currentCharacter);
+                    cursor++;
+                }
+            } else {
+                buffer.append(currentCharacter);
+                cursor++;
+            }
+        }
+
+        return buffer.toString();
+    }
 
     /**
      * Default constructor.
@@ -639,27 +741,6 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         programmingLanguageContext.addSeenDependencies(dependency);
 
         return dependency;
-    }
-
-    /**
-     * Prepares the java source file content to remove all unnecessary strings which are not used in
-     * the analysis.
-     * 
-     * @param javaSourceFileContent
-     *            the java source file content to analyze as a {@link String}, mustn't be
-     *            <code>null</code>.
-     * @return the new java source file content without all unnecessary strings which are not used
-     *         in the analysis.
-     * @since 1.0
-     */
-    private String prepareSourceFileContent(final String javaSourceFileContent) {
-        // TODO removing double slash comments
-        // removing special characters
-        String content = LINE_OR_CARRIAGE_RETURN_OR_TAB_REGEXP.matcher(javaSourceFileContent).replaceAll(BLANK_STRING);
-        // removing commentsregexp
-        content = COMMENT_REGEXP.matcher(content).replaceAll(BLANK_STRING);
-
-        return content;
     }
 
     /**

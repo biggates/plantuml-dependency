@@ -25,10 +25,6 @@
 package net.sourceforge.plantuml.dependency.constants;
 
 import static java.util.regex.Pattern.compile;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.CARRIAGE_RETURN_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.LINE_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.PIPE_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.TAB_CHAR;
 
 import java.util.regex.Pattern;
 
@@ -40,13 +36,6 @@ import java.util.regex.Pattern;
  * @version 1.0
  */
 public final class RegularExpressionConstants {
-
-    /** The pattern representing the line or carriage or tab return characters. */
-    public static final Pattern LINE_OR_CARRIAGE_RETURN_OR_TAB_REGEXP = compile(LINE_CHAR + PIPE_CHAR
-            + CARRIAGE_RETURN_CHAR + PIPE_CHAR + TAB_CHAR);
-
-    /** The pattern representing the comments (single line or multiple line). */
-    public static final Pattern COMMENT_REGEXP = compile("/\\*\\**.*?\\*/");
 
     /** The pattern representing the java type. */
     public static final Pattern JAVA_TYPE_REGEXP = compile(" *(public|final|) *(abstract|) *(public|final|) *(class|interface|enum) +(.*?)( +extends +(.*?)|)( +implements +(.*?)|) *\\{");
