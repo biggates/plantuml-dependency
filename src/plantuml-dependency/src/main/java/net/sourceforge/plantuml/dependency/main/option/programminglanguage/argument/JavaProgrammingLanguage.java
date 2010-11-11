@@ -100,20 +100,27 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     private static final transient Logger LOGGER = getLogger(JavaProgrammingLanguage.class.getName());
 
     /**
-     * @param cursor
-     * @param javaSourceFileContent
-     * @return
+     * Get the index of the character representing the end of a multi line java comment (i.e. star +
+     * slash) in the passed string, starting from the passed index.
+     * 
+     * @param beginningIndex
+     *            the index where to start to look for the end comment character, must be between 0
+     *            and <code>str.length()</code>.
+     * @param str
+     *            the string where to look for the end comment character.
+     * @return the index of the character representing the end of a multi line java comment. If not
+     *         found, <code>str.length() - 1</code> is returned.
      * @since 1.0
      */
-    private static int getNextEndOfMultiLineCommentIndex(final int cursor, final String javaSourceFileContent) {
-        int index = cursor;
+    private static int getNextEndOfMultiLineCommentIndex(final int beginningIndex, final String str) {
+        int index = beginningIndex;
         boolean found = false;
 
-        while (index < javaSourceFileContent.length() && !found) {
-            final char currentCharacter = javaSourceFileContent.charAt(index);
+        while (index < str.length() && !found) {
+            final char currentCharacter = str.charAt(index);
             if (currentCharacter == STAR_CHAR.charAt(0)) {
-                if (index + 1 < javaSourceFileContent.length()) {
-                    final char nextCharacter = javaSourceFileContent.charAt(index + 1);
+                if (index + 1 < str.length()) {
+                    final char nextCharacter = str.charAt(index + 1);
                     if (nextCharacter == SLASH_CHAR.charAt(0)) {
                         index += 2;
                         found = true;
@@ -132,17 +139,24 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
-     * @param cursor
-     * @param javaSourceFileContent
-     * @return
+     * Get the index of the character representing the end of a single line java comment (i.e. line
+     * separator) in the passed string, starting from the passed index.
+     * 
+     * @param beginningIndex
+     *            the index where to start to look for the end comment character, must be between 0
+     *            and <code>str.length()</code>.
+     * @param str
+     *            the string where to look for the end comment character.
+     * @return the index of the character representing the end of a single line java comment. If not
+     *         found, <code>str.length() - 1</code> is returned.
      * @since 1.0
      */
-    private static int getNextEndOfSimpleLineCommentIndex(final int cursor, final String javaSourceFileContent) {
-        int index = cursor;
+    private static int getNextEndOfSimpleLineCommentIndex(final int beginningIndex, final String str) {
+        int index = beginningIndex;
         boolean found = false;
 
-        while (index < javaSourceFileContent.length() && !found) {
-            final char currentCharacter = javaSourceFileContent.charAt(index);
+        while (index < str.length() && !found) {
+            final char currentCharacter = str.charAt(index);
             if (currentCharacter == LINE_CHAR.charAt(0) || currentCharacter == CARRIAGE_RETURN_CHAR.charAt(0)) {
                 index++;
                 found = true;
