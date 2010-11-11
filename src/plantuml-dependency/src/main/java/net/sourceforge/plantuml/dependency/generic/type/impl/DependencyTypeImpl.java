@@ -62,14 +62,14 @@ public abstract class DependencyTypeImpl implements DependencyType {
     private static final transient Logger LOGGER = getLogger(DependencyTypeImpl.class.getName());
 
     /**
-     * Generates the full dependency name following its package and its simple name
+     * Generates the full dependency name following its package and its simple name.
      * 
      * @param dependencyPackageName
      *            the dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
      * @param dependencyName
      *            the dependency type name, such as "String", mustn't be <code>null</code>.
-     * @return
+     * @return the full dependency name.
      * @since 1.0
      */
     private static String generateFullName(final String dependencyPackageName, final String dependencyName) {
@@ -146,6 +146,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @param parentInterfacesSet
      *            the {@link Set} of all interfaces as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
+     * @param nativeMth
+     *            the boolean indicating if the dependency has native methods inside.
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,

@@ -34,9 +34,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.EX
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.TREATED_DEPENDENCY_INFO;
 
 import java.io.File;
-import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
@@ -195,9 +193,9 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     }
 
     /**
-     * Creates a dependencies {@link Map} following a set of files in the passed programming
-     * language. This methods parses each source files of the set in order to create the {@link Map}
-     * .
+     * Creates a dependencies {@link java.util.Map} following a set of files in the passed
+     * programming language. This methods parses each source files of the set in order to create the
+     * {@link java.util.Map} .
      * 
      * @param language
      *            the programming language of the source files to parse, mustn't be
@@ -208,7 +206,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param displayOpt
      *            the display option which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
-     * @return the {@link Collection} of all parsed {@link GenericDependency}.
+     * @return the {@link java.util.Collection} of all parsed {@link GenericDependency}.
      * @throws PlantUMLDependencyException
      *             if any exception occurs while reading and parsing the source files.
      * @since 1.0
@@ -235,7 +233,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Creates a dependency following a single file in the passed programming language. Also updates
-     * the dependencies {@link Map} with other dependency seen in the source file.
+     * the dependencies {@link java.util.Map} with other dependency seen in the source file.
      * 
      * @param file
      *            the source file to parse, mustn't be <code>null</code>.

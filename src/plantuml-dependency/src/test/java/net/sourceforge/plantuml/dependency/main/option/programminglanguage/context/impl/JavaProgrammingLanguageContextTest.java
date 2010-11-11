@@ -81,7 +81,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addOrReplaceDependencies(net.sourceforge.plantuml.dependency.generic.GenericDependency)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addParsedAndSeenDependencies(GenericDependency)}
      * .
      */
     @Test
@@ -97,7 +97,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addOrReplaceDependencies(net.sourceforge.plantuml.dependency.generic.GenericDependency)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addParsedAndSeenDependencies(GenericDependency)}
      * .
      */
     @Test
@@ -112,7 +112,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addOrReplaceDependencies(net.sourceforge.plantuml.dependency.generic.GenericDependency)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addParsedAndSeenDependencies(GenericDependency)}
      * .
      */
     @Test
@@ -128,7 +128,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addOrReplaceDependencies(net.sourceforge.plantuml.dependency.generic.GenericDependency)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addParsedAndSeenDependencies(GenericDependency)}
      * .
      */
     @Test
@@ -143,7 +143,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getAllDependencies()}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getParsedAndSeenDependencies()}
      * .
      */
     @Test

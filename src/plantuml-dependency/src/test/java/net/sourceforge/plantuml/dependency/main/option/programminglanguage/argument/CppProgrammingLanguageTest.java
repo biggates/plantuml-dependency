@@ -55,7 +55,7 @@ public class CppProgrammingLanguageTest extends ObjectTest < CppProgrammingLangu
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage#readDependencyFromFile(java.lang.String, java.util.Map)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage#readDependencyFromFile(String, net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext)}
      * .
      */
     @Test

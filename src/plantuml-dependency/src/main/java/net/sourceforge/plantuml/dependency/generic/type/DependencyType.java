@@ -140,5 +140,5 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      *         as the dependency hasn't been parsed yet.
      * @since 1.0
      */
-    public boolean hasNativeMethods();
+    boolean hasNativeMethods();
 }

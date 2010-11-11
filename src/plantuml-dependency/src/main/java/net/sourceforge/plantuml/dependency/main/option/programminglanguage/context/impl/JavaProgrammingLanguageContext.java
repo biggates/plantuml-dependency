@@ -24,20 +24,16 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl;
 
-import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
-
-import java.io.File;
 import java.util.Set;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext;
-import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
 
 /**
- * The java {@link ProgrammingLanguageContext} implementation.
+ * The java
+ * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext}
+ * implementation.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
@@ -85,7 +81,7 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
             final Set < Display > displayOpt) {
         super(parsedAndSeenDependencies, displayOpt);
     }
-    
+
     /**
      * Full constructor.
      * 
@@ -100,30 +96,8 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
      *            <code>null</code>.
      * @since 1.0
      */
-    public JavaProgrammingLanguageContext(Set < GenericDependency > parsedAndSeenDependencies,
-            Set < GenericDependency > parsedDependencies, Set < Display > displayOpt) {
+    public JavaProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
+            final Set < GenericDependency > parsedDependencies, final Set < Display > displayOpt) {
         super(parsedAndSeenDependencies, parsedDependencies, displayOpt);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 1.0
-     */
-    @Override
-    public void writePlantUMLFile(final File file) {
-        final StringBuffer buffer = new StringBuffer(START_PLANTUML);
-
-        // TODO 1 boucle avec 2 string buffer que l'on concatene
-        for (final GenericDependency abstractDependency : getParsedAndSeenDependencies()) {
-            buffer.append(abstractDependency.getDependencyType().getPlantUMLDeclaration());
-        }
-
-        for (final GenericDependency abstractImportDependency : getParsedAndSeenDependencies()) {
-            buffer.append(abstractImportDependency.getDependencyType().getPlantUMLLinksDescription());
-        }
-
-        buffer.append(END_PLANTUML);
-        writeIntoFile(buffer.toString(), file);
     }
 }

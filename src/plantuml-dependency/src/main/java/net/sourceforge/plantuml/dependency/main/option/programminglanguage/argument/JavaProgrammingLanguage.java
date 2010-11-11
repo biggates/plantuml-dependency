@@ -65,7 +65,6 @@ import static net.sourceforge.plantuml.dependency.main.option.programminglanguag
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
@@ -347,7 +346,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Following a java source file content, reads, parses and extracts all import dependencies
      * (static and normal imports). This method also adds the import dependencies in the
-     * dependencies {@link Map} if they have not been already seen.
+     * dependencies {@link java.util.Map} if they have not been already seen.
      * 
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
@@ -386,7 +385,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Following a java source file content and the import regular expression, reads, parses and
      * extracts all import dependencies. This method also adds the import dependencies in the
-     * dependencies {@link Map} if they have not been already seen.
+     * dependencies {@link java.util.Map} if they have not been already seen.
      * 
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be

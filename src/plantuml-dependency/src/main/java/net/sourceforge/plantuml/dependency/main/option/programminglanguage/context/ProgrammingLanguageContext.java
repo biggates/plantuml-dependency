@@ -64,15 +64,6 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     void addSeenDependencies(GenericDependency dependency);
 
     /**
-     * Gets all dependencies within the context.
-     * 
-     * @return the {@link Collection} of all {@link GenericDependency} which have been associated
-     *         with this context.
-     * @since 1.0
-     */
-    Collection < GenericDependency > getParsedAndSeenDependencies();
-
-    /**
      * Gets the dependency in the context following its name.
      * 
      * @param fullName
@@ -82,6 +73,15 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      * @since 1.0
      */
     GenericDependency getDependencies(String fullName);
+
+    /**
+     * Gets all dependencies within the context.
+     * 
+     * @return the {@link Collection} of all {@link GenericDependency} which have been associated
+     *         with this context.
+     * @since 1.0
+     */
+    Collection < GenericDependency > getParsedAndSeenDependencies();
 
     /**
      * Gets all dependencies within the context.
@@ -104,13 +104,13 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     boolean hasToDisplay(Display display);
 
     /**
-     * Writes the PlantUML description output file following all {@link Dependencies} and the
-     * display option of the context.
+     * Writes the PlantUML description output file following all dependencies and the display option
+     * of the context.
      * 
      * @param file
      *            the output file where to generate the plantUML description, mustn't be
      *            <code>null</code>.
      * @since 1.0
      */
-    void writePlantUMLFile(final File file);
+    void writePlantUMLFile(File file);
 }

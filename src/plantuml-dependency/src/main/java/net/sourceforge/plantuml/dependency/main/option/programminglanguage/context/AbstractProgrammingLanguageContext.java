@@ -31,9 +31,13 @@ import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.BEFORE;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NULL_ERROR;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -177,6 +181,17 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @since 1.0
      */
     @Override
+    protected Object clone() throws CloneNotSupportedException {
+        // TODO [graffity] Auto-generated method stub
+        return super.clone();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
     public int compareTo(final ProgrammingLanguageContext o) {
         final int thisSize = getParsedDependencies().size();
         final int anotherSize = o.getParsedDependencies().size();
@@ -255,16 +270,6 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @since 1.0
      */
     @Override
-    public Collection < GenericDependency > getParsedAndSeenDependencies() {
-        return getParsedAndSeenDependenciesMap().values();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 1.0
-     */
-    @Override
     public GenericDependency getDependencies(final String fullName) {
         checkNull(fullName, DEPENDENCY_NAME_NULL_ERROR);
         return getParsedAndSeenDependenciesMap().get(fullName);
@@ -279,6 +284,16 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      */
     private Set < Display > getDisplayOptions() {
         return displayOptions;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public Collection < GenericDependency > getParsedAndSeenDependencies() {
+        return getParsedAndSeenDependenciesMap().values();
     }
 
     /**
@@ -385,4 +400,27 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         return getClass().getSimpleName() + " [parsedAndSeenDependenciesMap=" + parsedAndSeenDependenciesMap
                 + ", parsedDependenciesMap=" + parsedDependenciesMap + ", displayOptions=" + displayOptions + "]";
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public void writePlantUMLFile(final File file) {
+        final StringBuffer buffer = new StringBuffer(START_PLANTUML);
+
+        // TODO 1 boucle avec 2 string buffer que l'on concatene
+        for (final GenericDependency abstractDependency : getParsedAndSeenDependencies()) {
+            buffer.append(abstractDependency.getDependencyType().getPlantUMLDeclaration());
+        }
+
+        for (final GenericDependency abstractImportDependency : getParsedAndSeenDependencies()) {
+            buffer.append(abstractImportDependency.getDependencyType().getPlantUMLLinksDescription());
+        }
+
+        buffer.append(END_PLANTUML);
+        writeIntoFile(buffer.toString(), file);
+    }
+
 }
