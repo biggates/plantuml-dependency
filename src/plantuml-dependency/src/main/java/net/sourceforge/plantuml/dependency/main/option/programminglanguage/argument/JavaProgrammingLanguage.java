@@ -39,7 +39,6 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_S
 import static net.sourceforge.mazix.components.constants.CommonConstants.MINUS_ONE_RETURN_CODE;
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.removeAllSubtringsBetweenCharacters;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.JAVA_LANG_PACKAGE;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.JAVA_TYPE_REGEXP;
@@ -108,7 +107,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param str
      *            the string where to look for the end comment character.
      * @return the index of the character representing the end of a multi line java comment. If not
-     *         found, <code>str.length() - 1</code> is returned.
+     *         found, <code>beginningIndex</code> is returned.
      * @since 1.0
      */
     private static int getNextEndOfMultiLineCommentIndex(final int beginningIndex, final String str) {
@@ -134,81 +133,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             }
         }
 
-        return index;
-    }
-
-    /**
-     * Get the index of the character representing the end of a single line java comment (i.e. line
-     * separator) in the passed string, starting from the passed index.
-     * 
-     * @param beginningIndex
-     *            the index where to start to look for the end comment character, must be between 0
-     *            and <code>str.length()</code>.
-     * @param str
-     *            the string where to look for the end comment character.
-     * @return the index of the character representing the end of a single line java comment. If not
-     *         found, <code>str.length() - 1</code> is returned.
-     * @since 1.0
-     */
-    private static int getNextEndOfSimpleLineCommentIndex(final int beginningIndex, final String str) {
-        int index = beginningIndex;
-        boolean found = false;
-
-        while (index < str.length() && !found) {
-            final char currentCharacter = str.charAt(index);
-            if (currentCharacter == LINE_CHAR.charAt(0) || currentCharacter == CARRIAGE_RETURN_CHAR.charAt(0)) {
-                index++;
-                found = true;
-            } else {
-                index++;
-            }
+        if (!found) {
+            index = beginningIndex;
         }
 
         return index;
-    }
-
-    /**
-     * Prepares the java source file content to remove all unnecessary strings which are not used in
-     * the analysis.
-     * 
-     * @param javaSourceFileContent
-     *            the java source file content to analyze as a {@link String}, mustn't be
-     *            <code>null</code>.
-     * @return the new java source file content without all unnecessary strings which are not used
-     *         in the analysis.
-     * @since 1.0
-     */
-    private static String prepareSourceFileContent(final String javaSourceFileContent) {
-        final StringBuffer buffer = new StringBuffer();
-
-        int cursor = 0;
-        while (cursor < javaSourceFileContent.length()) {
-            final char currentCharacter = javaSourceFileContent.charAt(cursor);
-            if (currentCharacter == LINE_CHAR.charAt(0) || currentCharacter == CARRIAGE_RETURN_CHAR.charAt(0)
-                    || currentCharacter == TAB_CHAR.charAt(0)) {
-                cursor++;
-            } else if (currentCharacter == SLASH_CHAR.charAt(0)) {
-                if (cursor + 1 < javaSourceFileContent.length()) {
-                    final char nextCharacter = javaSourceFileContent.charAt(cursor + 1);
-                    if (nextCharacter == SLASH_CHAR.charAt(0)) {
-                        cursor = getNextEndOfSimpleLineCommentIndex(cursor + 2, javaSourceFileContent);
-                    } else if (nextCharacter == STAR_CHAR.charAt(0)) {
-                        cursor = getNextEndOfMultiLineCommentIndex(cursor + 2, javaSourceFileContent);
-                    } else {
-                        buffer.append(currentCharacter);
-                        cursor++;
-                    }
-                } else {
-                    buffer.append(currentCharacter);
-                    cursor++;
-                }
-            } else {
-                buffer.append(currentCharacter);
-                cursor++;
-            }
-        }
-
-        return buffer.toString();
     }
 
     /**
@@ -357,6 +286,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            source files, mustn't be <code>null</code>.
      * @return the {@link Set} of all import dependencies found in the java source file content.
      *         Returns an empty {@link Set} if no import has been found.
+     * @since 1.0
      */
     private Set < GenericDependency > extractImportDependencies(final String javaSourceFileContent,
             final ProgrammingLanguageContext programmingLanguageContext) {
@@ -398,6 +328,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            source files, mustn't be <code>null</code>.
      * @return the {@link Set} of all import dependencies found in the java source file content.
      *         Returns an empty {@link Set} if no import has been found.
+     * @since 1.0
      */
     private Set < GenericDependency > extractImportDependenciesSet(final String javaSourceFileContent,
             final Pattern importRegExp, final ProgrammingLanguageContext programmingLanguageContext) {
@@ -438,7 +369,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         if (isEmpty(group)) {
             throw new PlantUMLDependencyException(DEPENDENCY_NAME_NULL_ERROR);
         } else {
-            return removeAllSubtringsBetweenCharacters(group, INFERIOR_CHAR.charAt(0), SUPERIOR_CHAR.charAt(0)).trim();
+            return group;
         }
     }
 
@@ -449,6 +380,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
      * @return the java package name if found, otherwise it returns a blank string.
+     * @since 1.0
      */
     private String extractPackageName(final String javaSourceFileContent) {
         String packageName = BLANK_STRING;
@@ -486,6 +418,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @throws PlantUMLDependencyException
      *             if any exception occurs while creating parent {@link GenericDependency}
      *             instances.
+     * @since 1.0
      */
     private Set < GenericDependency > extractParentDependencies(final JavaType type, final JavaParentType parentType,
             final Set < String > parents, final Set < GenericDependency > importDependencies,
@@ -555,6 +488,72 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             }
         }
         return dependency;
+    }
+
+    /**
+     * Get the index of the character representing the end of a generic definition (i.e. the last
+     * superior character) in the passed string, starting from the passed index.
+     * 
+     * @param beginningIndex
+     *            the index where to start to look for the end of a generic definition, must be
+     *            between 0 and <code>str.length()</code>.
+     * @param str
+     *            the string where to look for the end comment character.
+     * @return the index of the character representing the end of a generic definition. If not
+     *         found, <code>beginningIndex</code> is returned.
+     */
+    private int getNextEndOfGenericIndex(final int beginningIndex, final String str) {
+        int index = beginningIndex;
+        int numberOfGenerics = 1;
+
+        while (index < str.length() && numberOfGenerics != 0) {
+            final char currentCharacter = str.charAt(index);
+            if (currentCharacter == INFERIOR_CHAR.charAt(0)) {
+                numberOfGenerics++;
+                index++;
+            } else if (currentCharacter == SUPERIOR_CHAR.charAt(0)) {
+                numberOfGenerics--;
+                index++;
+            } else {
+                index++;
+            }
+        }
+
+        if (numberOfGenerics != 0) {
+            index = beginningIndex;
+        }
+
+        return index;
+    }
+
+    /**
+     * Get the index of the character representing the end of a single line java comment (i.e. line
+     * separator) in the passed string, starting from the passed index.
+     * 
+     * @param beginningIndex
+     *            the index where to start to look for the end comment character, must be between 0
+     *            and <code>str.length()</code>.
+     * @param str
+     *            the string where to look for the end comment character.
+     * @return the index of the character representing the end of a single line java comment. If not
+     *         found (i.e. end of file) , <code>str.length() - 1</code> is returned.
+     * @since 1.0
+     */
+    private int getNextEndOfSimpleLineCommentIndex(final int beginningIndex, final String str) {
+        int index = beginningIndex;
+        boolean found = false;
+
+        while (index < str.length() && !found) {
+            final char currentCharacter = str.charAt(index);
+            if (currentCharacter == LINE_CHAR.charAt(0) || currentCharacter == CARRIAGE_RETURN_CHAR.charAt(0)) {
+                index++;
+                found = true;
+            } else {
+                index++;
+            }
+        }
+
+        return index;
     }
 
     /**
@@ -764,7 +763,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     @Override
     public GenericDependency readDependencyFromFile(final String sourceFileContent,
             final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
-        final String preparedSourceFileContent = prepareSourceFileContent(sourceFileContent);
+        final String preparedSourceFileContent = removeSourceFileCommentsAndGenerics(sourceFileContent);
         final GenericDependency genericDependency = readDependencyFromPreparedFile(preparedSourceFileContent,
                 programmingLanguageContext);
         programmingLanguageContext.addParsedAndSeenDependencies(genericDependency);
@@ -839,5 +838,56 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         }
 
         return javaRawDependency;
+    }
+
+    /**
+     * Prepares the java source file content to remove all unnecessary strings which are not used in
+     * the analysis, i.e. comments and generic.
+     * 
+     * @param javaSourceFileContent
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
+     * @return the new java source file content without all unnecessary strings which are not used
+     *         in the analysis.
+     * @since 1.0
+     */
+    private String removeSourceFileCommentsAndGenerics(final String javaSourceFileContent) {
+        final StringBuffer buffer = new StringBuffer();
+
+        int cursor = 0;
+        while (cursor < javaSourceFileContent.length()) {
+            final char currentCharacter = javaSourceFileContent.charAt(cursor);
+            if (currentCharacter == LINE_CHAR.charAt(0) || currentCharacter == CARRIAGE_RETURN_CHAR.charAt(0)
+                    || currentCharacter == TAB_CHAR.charAt(0)) {
+                cursor++;
+            } else if (currentCharacter == SLASH_CHAR.charAt(0)) {
+                if (cursor + 1 < javaSourceFileContent.length()) {
+                    final char nextCharacter = javaSourceFileContent.charAt(cursor + 1);
+                    if (nextCharacter == SLASH_CHAR.charAt(0)) {
+                        cursor = getNextEndOfSimpleLineCommentIndex(cursor + 2, javaSourceFileContent);
+                    } else if (nextCharacter == STAR_CHAR.charAt(0)) {
+                        cursor = getNextEndOfMultiLineCommentIndex(cursor + 2, javaSourceFileContent);
+                    } else {
+                        buffer.append(currentCharacter);
+                        cursor++;
+                    }
+                } else {
+                    buffer.append(currentCharacter);
+                    cursor++;
+                }
+            } else if (currentCharacter == INFERIOR_CHAR.charAt(0)) {
+                if (cursor + 1 < javaSourceFileContent.length()) {
+                    cursor = getNextEndOfGenericIndex(cursor + 1, javaSourceFileContent);
+                } else {
+                    buffer.append(currentCharacter);
+                    cursor++;
+                }
+            } else {
+                buffer.append(currentCharacter);
+                cursor++;
+            }
+        }
+
+        return buffer.toString();
     }
 }

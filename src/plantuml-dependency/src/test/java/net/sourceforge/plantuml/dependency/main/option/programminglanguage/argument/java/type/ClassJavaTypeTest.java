@@ -152,35 +152,6 @@ public class ClassJavaTypeTest extends ObjectTest < ClassJavaType > {
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testExtractParentExtentionsWithSingleParentWithImbricatedGenerics() throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle < Toto < Test > >");
-        assertEquals(1, parents.size());
-        assertTrue(parents.contains("Rectangle"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#extractParentExtentions(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testExtractParentExtentionsWithSingleParentWithNotImbricatedGenerics()
-            throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle < Toto >");
-        assertEquals(1, parents.size());
-        assertTrue(parents.contains("Rectangle"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#extractParentExtentions(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
     public void testExtractParentExtentionsWithSingleParentWithoutGenerics() throws PlantUMLDependencyException {
         final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle");
         assertEquals(1, parents.size());
@@ -208,77 +179,11 @@ public class ClassJavaTypeTest extends ObjectTest < ClassJavaType > {
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testExtractParentImplementationsWithMultipleParentsWithImbricatedGenerics()
-            throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1
-                .extractParentImplementations("Cloneable < Toto, Titi < Test > > , Serializable < Integer > , DeepCloneable");
-        assertEquals(3, parents.size());
-        assertTrue(parents.contains("Cloneable"));
-        assertTrue(parents.contains("Serializable"));
-        assertTrue(parents.contains("DeepCloneable"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#extractParentImplementations(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testExtractParentImplementationsWithMultipleParentsWithNotImbricatedGenerics()
-            throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1
-                .extractParentImplementations("Cloneable < Toto, Titi > , Serializable < Integer > , DeepCloneable");
-        assertEquals(3, parents.size());
-        assertTrue(parents.contains("Cloneable"));
-        assertTrue(parents.contains("Serializable"));
-        assertTrue(parents.contains("DeepCloneable"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#extractParentImplementations(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
     public void testExtractParentImplementationsWithMultipleParentsWithoutGenerics() throws PlantUMLDependencyException {
         final Set < String > parents = JAVA_TYPE1.extractParentImplementations("Cloneable , Serializable");
         assertEquals(2, parents.size());
         assertTrue(parents.contains("Cloneable"));
         assertTrue(parents.contains("Serializable"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#extractParentImplementations(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testExtractParentImplementationsWithSingleParentWithImbricatedGenerics()
-            throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentImplementations("Cloneable < Toto < Test > >");
-        assertEquals(1, parents.size());
-        assertTrue(parents.contains("Cloneable"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#extractParentImplementations(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testExtractParentImplementationsWithSingleParentWithNotImbricatedGenerics()
-            throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentImplementations("Cloneable < Toto >");
-        assertEquals(1, parents.size());
-        assertTrue(parents.contains("Cloneable"));
     }
 
     /**

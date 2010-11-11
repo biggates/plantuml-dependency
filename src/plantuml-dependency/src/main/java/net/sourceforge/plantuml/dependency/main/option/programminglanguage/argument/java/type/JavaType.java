@@ -27,12 +27,9 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 import static java.util.Collections.unmodifiableMap;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.INFERIOR_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SUPERIOR_CHAR;
 import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.removeAllSubtringsBetweenCharacters;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.UNKNOWN_JAVA_TYPE_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.JAVA_PARENT_TYPE_STRING_EMPTY_FINE;
@@ -317,9 +314,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
         if (isEmpty(parentsString)) {
             LOGGER.fine(JAVA_PARENT_TYPE_STRING_EMPTY_FINE);
         } else {
-            final String removeTemplateStr = removeAllSubtringsBetweenCharacters(parentsString,
-                    INFERIOR_CHAR.charAt(0), SUPERIOR_CHAR.charAt(0));
-            final StringTokenizer tokenizer = new StringTokenizer(removeTemplateStr, COMMA_CHAR);
+            final StringTokenizer tokenizer = new StringTokenizer(parentsString, COMMA_CHAR);
             while (tokenizer.hasMoreTokens()) {
                 final String interfaceName = tokenizer.nextToken().trim();
                 parents.add(interfaceName);

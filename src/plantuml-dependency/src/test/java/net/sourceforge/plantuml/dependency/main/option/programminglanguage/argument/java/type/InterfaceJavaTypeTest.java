@@ -147,35 +147,6 @@ public class InterfaceJavaTypeTest extends ObjectTest < InterfaceJavaType > {
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testExtractParentExtentionsWithSingleParentWithImbricatedGenerics() throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle < Toto < Test > >");
-        assertEquals(1, parents.size());
-        assertTrue(parents.contains("Rectangle"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentExtentions(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testExtractParentExtentionsWithSingleParentWithNotImbricatedGenerics()
-            throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle < Toto >");
-        assertEquals(1, parents.size());
-        assertTrue(parents.contains("Rectangle"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentExtentions(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
     public void testExtractParentExtentionsWithSingleParentWithoutGenerics() throws PlantUMLDependencyException {
         final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle");
         assertEquals(1, parents.size());

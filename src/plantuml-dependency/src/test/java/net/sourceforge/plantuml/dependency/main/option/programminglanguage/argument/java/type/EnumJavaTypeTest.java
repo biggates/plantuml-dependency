@@ -203,77 +203,11 @@ public class EnumJavaTypeTest extends ObjectTest < EnumJavaType > {
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testExtractParentImplementationsWithMultipleParentsWithImbricatedGenerics()
-            throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1
-                .extractParentImplementations("Cloneable < Toto, Titi < Test > > , Serializable < Integer > , DeepCloneable");
-        assertEquals(3, parents.size());
-        assertTrue(parents.contains("Cloneable"));
-        assertTrue(parents.contains("Serializable"));
-        assertTrue(parents.contains("DeepCloneable"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentImplementations(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testExtractParentImplementationsWithMultipleParentsWithNotImbricatedGenerics()
-            throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1
-                .extractParentImplementations("Cloneable < Toto, Titi > , Serializable < Integer > , DeepCloneable");
-        assertEquals(3, parents.size());
-        assertTrue(parents.contains("Cloneable"));
-        assertTrue(parents.contains("Serializable"));
-        assertTrue(parents.contains("DeepCloneable"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentImplementations(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
     public void testExtractParentImplementationsWithMultipleParentsWithoutGenerics() throws PlantUMLDependencyException {
         final Set < String > parents = JAVA_TYPE1.extractParentImplementations("Cloneable , Serializable");
         assertEquals(2, parents.size());
         assertTrue(parents.contains("Cloneable"));
         assertTrue(parents.contains("Serializable"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentImplementations(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testExtractParentImplementationsWithSingleParentWithImbricatedGenerics()
-            throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentImplementations("Cloneable < Toto < Test > >");
-        assertEquals(1, parents.size());
-        assertTrue(parents.contains("Cloneable"));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentImplementations(java.lang.String)}
-     * .
-     * 
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testExtractParentImplementationsWithSingleParentWithNotImbricatedGenerics()
-            throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentImplementations("Cloneable < Toto >");
-        assertEquals(1, parents.size());
-        assertTrue(parents.contains("Cloneable"));
     }
 
     /**
