@@ -866,6 +866,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                     if (nextCharacter == SLASH_CHAR.charAt(0)) {
                         cursor = getNextEndOfSimpleLineCommentIndex(cursor + 2, javaSourceFileContent);
                     } else if (nextCharacter == STAR_CHAR.charAt(0)) {
+                        buffer.append(SPACE_CHAR);
                         cursor = getNextEndOfMultiLineCommentIndex(cursor + 2, javaSourceFileContent);
                     } else {
                         buffer.append(currentCharacter);

@@ -209,7 +209,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      */
     @Test
     public void testReadDependencyFromFileClassWithCommentsAsSeparator() throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\n//Hello class ! my name is brian\r\npublic/*@bgen(jjtree)*/class Test/*@bgen(jjtree)*/extends/**@bgen(jjtree)**/TestExtends {\r\n\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\n//Hello class ! my name is brian\r\npublic/*@bgen(jjtree)*/class/*@bgen(jjtree)*/Test/*@bgen(jjtree)*/extends/**@bgen(jjtree)**/TestExtends {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET2);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY5, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
