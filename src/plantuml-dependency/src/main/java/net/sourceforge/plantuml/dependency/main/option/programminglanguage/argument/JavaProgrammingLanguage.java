@@ -123,7 +123,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                         index += 2;
                         found = true;
                     } else {
-                        index += 2;
+                        index++;
                     }
                 } else {
                     index++;
