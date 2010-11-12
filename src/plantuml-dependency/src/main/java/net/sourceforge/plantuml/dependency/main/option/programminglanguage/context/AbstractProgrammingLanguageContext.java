@@ -39,10 +39,10 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.D
 
 import java.io.File;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
@@ -139,16 +139,16 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     protected AbstractProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < GenericDependency > parsedDependencies, final Set < Display > displayOpt) {
         // TODO test null
-        final Map < String, GenericDependency > firstDependenciesMap = new HashMap < String, GenericDependency >();
+        final Map < String, GenericDependency > firstDependenciesMap = new TreeMap < String, GenericDependency >();
         for (final GenericDependency genericDependency : parsedAndSeenDependencies) {
             firstDependenciesMap.put(genericDependency.getFullName(), genericDependency);
         }
         setParsedAndSeenDependenciesMap(firstDependenciesMap);
-        final Map < String, GenericDependency > secondDependenciesMap = new HashMap < String, GenericDependency >();
+        final Map < String, GenericDependency > secondDependenciesMap = new TreeMap < String, GenericDependency >();
         for (final GenericDependency genericDependency : parsedDependencies) {
             secondDependenciesMap.put(genericDependency.getFullName(), genericDependency);
         }
-        setSeenDependenciesMap(new HashMap < String, GenericDependency >(secondDependenciesMap));
+        setSeenDependenciesMap(new TreeMap < String, GenericDependency >(secondDependenciesMap));
         setDisplayOptions(new HashSet < Display >(displayOpt));
     }
 
@@ -210,11 +210,11 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
         try {
             a = (AbstractProgrammingLanguageContext) super.clone();
-            a.parsedAndSeenDependenciesMap = new HashMap < String, GenericDependency >();
+            a.parsedAndSeenDependenciesMap = new TreeMap < String, GenericDependency >();
             for (final GenericDependency genericDependency : getParsedAndSeenDependencies()) {
                 a.parsedAndSeenDependenciesMap.put(genericDependency.getFullName(), genericDependency.deepClone());
             }
-            a.parsedDependenciesMap = new HashMap < String, GenericDependency >(a.parsedDependenciesMap);
+            a.parsedDependenciesMap = new TreeMap < String, GenericDependency >(a.parsedDependenciesMap);
             a.displayOptions = new HashSet < Display >(getDisplayOptions());
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
