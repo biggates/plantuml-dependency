@@ -27,8 +27,8 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 import static java.util.Collections.unmodifiableMap;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.UNKNOWN_JAVA_TYPE_ERROR;

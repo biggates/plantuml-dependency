@@ -27,7 +27,7 @@ package net.sourceforge.plantuml.dependency.main.option.display.argument;
 import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.EMPTY_ARGUMENT_ERROR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
+import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.NOT_DISPLAY_ARGUMENT_ERROR;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.valueOf;

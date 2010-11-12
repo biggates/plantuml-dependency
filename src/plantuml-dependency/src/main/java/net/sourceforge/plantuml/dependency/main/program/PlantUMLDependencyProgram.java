@@ -28,7 +28,7 @@ import static java.lang.System.getProperty;
 import static java.util.Arrays.asList;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.log.LogUtils.readLoggerConfigurationFromResource;
+import static net.sourceforge.mazix.components.utils.log.LogUtils.readLoggerConfigurationFromResource;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
 
 import java.io.IOException;

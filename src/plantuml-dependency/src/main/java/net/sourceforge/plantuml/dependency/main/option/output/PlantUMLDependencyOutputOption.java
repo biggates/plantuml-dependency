@@ -29,9 +29,9 @@ import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.VERBOSE_OPT
 import static net.sourceforge.mazix.cli.constants.log.FineConstants.OPTION_NOT_SPECIFIED_FINE;
 import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
-import static net.sourceforge.mazix.components.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.log.LogUtils.tryToReadLoggerConfigurationFromResourceAndSetLevel;
 import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
+import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
+import static net.sourceforge.mazix.components.utils.log.LogUtils.tryToReadLoggerConfigurationFromResourceAndSetLevel;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.BASE_DIRECTORY_OPTION_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DISPLAY_OPTION_NULL_ERROR;
