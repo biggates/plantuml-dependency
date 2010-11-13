@@ -181,17 +181,6 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @since 1.0
      */
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        // TODO [graffity] Auto-generated method stub
-        return super.clone();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 1.0
-     */
-    @Override
     public int compareTo(final ProgrammingLanguageContext o) {
         final int thisSize = getParsedDependencies().size();
         final int anotherSize = o.getParsedDependencies().size();
