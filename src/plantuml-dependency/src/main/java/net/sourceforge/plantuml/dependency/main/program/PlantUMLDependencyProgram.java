@@ -156,6 +156,6 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         // plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example4));
 
         addKnownBugOrLimitation("- Be careful, in order to correctly parse source files, they must compile without any errors");
-        addKnownBugOrLimitation("- Problem generation with inner classes because they are not managed by plantUML, problem logged at http://sourceforge.net/tracker/?func=detail&aid=3098362&group_id=259736&atid=1185926");
+        addKnownBugOrLimitation("- Links between dependencies are found out by parsing \"import\" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code");
     }
 }
