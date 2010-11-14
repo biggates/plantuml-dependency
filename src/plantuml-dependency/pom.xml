@@ -75,10 +75,19 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.3</version>
+				<version>2.3.1</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
+							<goal>jar</goal>
 							<goal>test-jar</goal>
 						</goals>
 					</execution>
@@ -92,14 +101,12 @@
 				<executions>
 					<execution>
 						<id>attach-sources</id>
-						<phase>verify</phase>
 						<goals>
 							<goal>jar-no-fork</goal>
 						</goals>
 					</execution>
 					<execution>
 						<id>attach-sources-test</id>
-						<phase>verify</phase>
 						<goals>
 							<goal>test-jar-no-fork</goal>
 						</goals>
@@ -126,6 +133,104 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Site jar generation -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>2.1.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Assembly generation -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<id>jar-with-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							<archive>
+								<manifest>
+									<mainClass>net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram</mainClass>
+								</manifest>
+							</archive>
+						</configuration>
+					</execution>
+					<execution>
+						<id>archive-with-bundled-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/assembly/archive-with-bundled-dependencies.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>archive-with-external-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/assembly/archive-with-external-dependencies.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/assembly/sources.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>sources-as-jars</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/assembly/sources-as-jars.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>documentations-as-jars</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/assembly/documentations-as-jars.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<reporting>
@@ -137,16 +242,13 @@
 				<version>2.6</version>
 			</plugin>
 			<!-- API Javadoc generation -->
-			<!-- >plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.7</version>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-					<minmemory>128m</minmemory>
-					<maxmemory>512m</maxmemory>
-				</configuration>
-			</plugin-->
+			<!--
+				>plugin> <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId> <version>2.7</version>
+				<configuration> <encoding>${project.build.sourceEncoding}</encoding>
+				<minmemory>128m</minmemory> <maxmemory>512m</maxmemory>
+				</configuration> </plugin
+			-->
 			<!-- SCM changelog generation -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -298,23 +400,26 @@
 	<!-- Information about issue management -->
 	<issueManagement>
 		<system>Issue-Tracker</system>
-		<url>https://sourceforge.net/tracker/?group_id=334674&amp;atid=1402785</url>
+		<url>https://sourceforge.net/tracker/?group_id=334674&amp;atid=1402785
+		</url>
 	</issueManagement>
 	<!-- Information about mailing lists -->
-	<!-->mailingLists>
-		<mailingList>
-			<name>mazix-devel List</name>
-			<subscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</subscribe>
-			<unsubscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</unsubscribe>
-			<post>mazix-devel@lists.sourceforge.net</post>
-			<archive>http://sourceforge.net/mailarchive/forum.php?forum_name=mazix-devel</archive>
-		</mailingList>
-	</mailingLists-->
+	<!--
+		>mailingLists> <mailingList> <name>mazix-devel List</name>
+		<subscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</subscribe>
+		<unsubscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</unsubscribe>
+		<post>mazix-devel@lists.sourceforge.net</post>
+		<archive>http://sourceforge.net/mailarchive/forum.php?forum_name=mazix-devel</archive>
+		</mailingList> </mailingLists
+	-->
 	<!-- Information about source control management -->
 	<scm>
-		<connection>scm:svn:http://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk</connection>
-		<developerConnection>scm:svn:https://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk/trunk</developerConnection>
-		<url>http://plantuml-depend.svn.sourceforge.net/viewvc/plantuml-depend/trunk/</url>
+		<connection>scm:svn:http://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk
+		</connection>
+		<developerConnection>scm:svn:https://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk/trunk
+		</developerConnection>
+		<url>http://plantuml-depend.svn.sourceforge.net/viewvc/plantuml-depend/trunk/
+		</url>
 	</scm>
 	<!-- Information about project licenses -->
 	<licenses>
