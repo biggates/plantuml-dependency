@@ -815,19 +815,19 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String packageName = extractPackageName(javaSourceFileContent);
             javaRawDependency.setPackageName(packageName);
 
-            final boolean isAbstract = extractAbstract(matcher.group(2));
+            final boolean isAbstract = extractAbstract(matcher.group(1));
             javaRawDependency.setAbstract(isAbstract);
 
-            final JavaType type = JavaType.valueOfIgnoringCase(matcher.group(4));
+            final JavaType type = JavaType.valueOfIgnoringCase(matcher.group(2));
             javaRawDependency.setType(type);
 
-            final String name = extractName(matcher.group(5));
+            final String name = extractName(matcher.group(3));
             javaRawDependency.setName(name);
 
-            final Set < String > parentImplementations = type.extractParentImplementations(matcher.group(9));
+            final Set < String > parentImplementations = type.extractParentImplementations(matcher.group(5));
             javaRawDependency.setParentImplementations(parentImplementations);
 
-            final Set < String > parentExtentions = type.extractParentExtentions(matcher.group(7));
+            final Set < String > parentExtentions = type.extractParentExtentions(matcher.group(4));
             javaRawDependency.setParentExtentions(parentExtentions);
 
             final boolean nativeMethods = type.extractNativeMethods(javaSourceFileContent);

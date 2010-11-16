@@ -30,6 +30,7 @@ import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION
 import static net.sourceforge.mazix.cli.utils.fileset.FileSetUtils.createFileSet;
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.mazix.components.constants.CommonConstants.CURRENT_DIRECTORY;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ATTRIBUTES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
@@ -194,7 +195,7 @@ public final class PlantUMLDependencyTestConstants {
     /** Verbose option test 2 instance. */
     public static final VerboseOption VERBOSE_OPTION2 = new VerboseOption(new StringBuffer(
             "To display log information."), ACTIVE_MANDATORY_OPTION_STATUS);
-    
+
     /** Verbose level option test 1 instance. */
     public static final VerboseLevelOption VERBOSE_LEVEL_OPTION1 = new VerboseLevelOption();
 
@@ -357,7 +358,7 @@ public final class PlantUMLDependencyTestConstants {
                             new GenericDependencyImpl("Integer", "com.plantuml.train.test")})),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "InterfaceGenericsTest", "com.plantuml.train.test")})), new TreeSet < GenericDependency >(), false);
-    
+
     /** Class dependency type test 23 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE23 = new ClassDependencyTypeImpl(
             "TestExtendsWithGeneric", "com.plantuml.test", new TreeSet < GenericDependency >(
@@ -368,6 +369,15 @@ public final class PlantUMLDependencyTestConstants {
             new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("TestExtendsGeneric",
                             "com.plantuml.train.test")})), false);
+
+    /** Class dependency type test 24 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE24 = new ClassDependencyTypeImpl(
+            "TestImplements",
+            "com.plantuml.test",
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {
+                    new GenericDependencyImpl("JavaProgram", "net.sourceforge.mazix.cli.program"), NATIVE_DEPENDENCY})),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
+                    "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >(), false);
 
     /** Interface dependency type test 1 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
@@ -385,7 +395,7 @@ public final class PlantUMLDependencyTestConstants {
                             new GenericDependencyImpl("Comparable", "java.lang"),
                             new GenericDependencyImpl("Map", "java.util"),
                             new GenericDependencyImpl("Appendable", "java.lang")})));
-    
+
     /** Interface dependency type test 2 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE2 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterface",
@@ -459,16 +469,17 @@ public final class PlantUMLDependencyTestConstants {
             "TestReadDependencyFromFilePublicInterface",
             "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >());
-    
+
     /** Interface dependency type test 12 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE12 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", new TreeSet < GenericDependency >(
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage",
+            new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {
                             new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
                             new GenericDependencyImpl("CppProgrammingLanguageTest",
                                     "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
-                                    new GenericDependencyImpl("InnerTest",
+                            new GenericDependencyImpl("InnerTest",
                                     "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")})),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "DeepCloneable", "net.sourceforge.mazix.components.clone")})));
@@ -579,13 +590,16 @@ public final class PlantUMLDependencyTestConstants {
     /** Generic dependency test 33 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY33 = new GenericDependencyImpl(
             INTERFACE_DEPENDENCY_TYPE11);
-    
+
     /** Generic dependency test 34 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY34 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE23);
-    
+
     /** Generic dependency test 35 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY35 = new GenericDependencyImpl(
             INTERFACE_DEPENDENCY_TYPE12);
+
+    /** Generic dependency test 20 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY36 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE24);
 
     /**
      * Private constructor to prevent from instantiation.
