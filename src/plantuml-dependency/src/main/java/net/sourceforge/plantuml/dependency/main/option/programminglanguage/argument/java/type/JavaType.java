@@ -27,6 +27,8 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 import static java.util.Collections.unmodifiableMap;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
@@ -316,7 +318,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
         } else {
             final StringTokenizer tokenizer = new StringTokenizer(parentsString, COMMA_CHAR);
             while (tokenizer.hasMoreTokens()) {
-                final String interfaceName = tokenizer.nextToken().trim();
+                final String interfaceName = tokenizer.nextToken().replace(SPACE_CHAR, BLANK_STRING);
                 parents.add(interfaceName);
             }
         }

@@ -336,8 +336,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final Matcher matcher = importRegExp.matcher(javaSourceFileContent);
 
         while (matcher.find()) {
-            final String packageName = matcher.group(1);
-            final String name = matcher.group(2);
+            final String packageName = matcher.group(1).replace(SPACE_CHAR, BLANK_STRING);
+            final String name = matcher.group(2).trim();
             final String fullName = packageName + DOT_CHAR + name;
             GenericDependency dependency = programmingLanguageContext.getDependencies(fullName);
             if (dependency == null) {
@@ -859,6 +859,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final char currentCharacter = javaSourceFileContent.charAt(cursor);
             if (currentCharacter == LINE_CHAR.charAt(0) || currentCharacter == CARRIAGE_RETURN_CHAR.charAt(0)
                     || currentCharacter == TAB_CHAR.charAt(0)) {
+                buffer.append(SPACE_CHAR);
                 cursor++;
             } else if (currentCharacter == SLASH_CHAR.charAt(0)) {
                 if (cursor + 1 < javaSourceFileContent.length()) {
