@@ -1,7 +1,7 @@
 PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net}
 =====================================================================================================================================
 
-14, Nov 2010 - 1.0.0
+1, Dec 2010 - 1.0.0
 ====================
 - First public release
 - Fixed and issue when generating description with class which has a comment on the same line as the class declaration
@@ -11,7 +11,7 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 
 Command line Usage
 ====================
-	java -jar plantuml-dependency.jar [OPTIONS]
+	java -jar plantuml-dependency-1.0.0.jar [OPTIONS]
 
 
 where optional options are:
@@ -35,7 +35,7 @@ where optional options are:
 		FILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that "**", "*" or "?" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.
 
 	-o, --output FILE
-		To output file path where to generate the PlantUML description.
+		To specify the output file path where to generate the PlantUML description.
 		FILE specifies a valid file path, where the file doesn't already exist and is not a directory. It can be absolute or relative.
 
 	-v, --verbose [VERBOSE_LEVEL]
@@ -47,9 +47,9 @@ where optional options are:
 
 Examples:
 
-	java -jar plantuml-dependency.jar -h
-	java -jar plantuml-dependency.jar -o plantuml.txt -b /home/graffity/workspace/plantuml-dependency -i **/*Test.java
-	java -jar plantuml-dependency.jar -version -v
+	java -jar plantuml-dependency-1.0.0.jar -h
+	java -jar plantuml-dependency-1.0.0.jar -o plantuml.txt -b /home/graffity/workspace/plantuml-dependency -i **/*Test.java
+	java -jar plantuml-dependency-1.0.0.jar -version -v
 
 Known bugs or program limitations:
 
