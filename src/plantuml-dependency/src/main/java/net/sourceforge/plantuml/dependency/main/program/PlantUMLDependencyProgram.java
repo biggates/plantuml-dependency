@@ -35,6 +35,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
@@ -46,6 +47,7 @@ import net.sourceforge.mazix.cli.option.impl.version.VersionOption;
 import net.sourceforge.mazix.cli.program.JavaProgram;
 import net.sourceforge.mazix.cli.program.execution.JavaProgramExecution;
 import net.sourceforge.mazix.cli.program.impl.JavaProgramImpl;
+import net.sourceforge.mazix.cli.program.version.ProgramVersion;
 import net.sourceforge.mazix.cli.program.version.impl.ProgramVersionImpl;
 import net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
 import net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption;
@@ -83,7 +85,8 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         readLoggerConfigurationFromResource(LOGGING_PROPERTIES_PATH);
 
         try {
-            final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram();
+            final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram(new ProgramVersionImpl(1, 0, 0,
+                    new Date(new GregorianCalendar(2010, 10, 19, 22, 16, 32).getTimeInMillis())));
             final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
                     .parseCommandLine(new CommandLineImpl(args));
             plantumlDependencyProgramExecution.execute();
@@ -102,11 +105,11 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      * 
      * @since 1.0
      */
-    public PlantUMLDependencyProgram() throws MalformedURLException, CommandLineException {
-        super("PlantUML Dependency", new URL("http://plantuml-depend.sourceforge.net"), "plantuml-dependency.jar",
-                asList(new String[] {"GPL v3", "LGPL v3"}),
-                asList(new String[] {"Benjamin Croizet (graffity2199@yahoo.fr)"}), new ProgramVersionImpl(1, 0, 0,
-                        new Date()), new StringBuffer(
+    public PlantUMLDependencyProgram(final ProgramVersion programVersion) throws MalformedURLException,
+            CommandLineException {
+        super("PlantUML Dependency", new URL("http://plantuml-depend.sourceforge.net"), "plantuml-dependency-"
+                + programVersion.getFullVersionNumber() + ".jar", asList(new String[] {"GPL v3", "LGPL v3"}),
+                asList(new String[] {"Benjamin Croizet (graffity2199@yahoo.fr)"}), programVersion, new StringBuffer(
                         "reverse engineering java source files to generate PlantUML description"));
 
         final VerboseLevelOption verboseLevelOption = new VerboseLevelOption();

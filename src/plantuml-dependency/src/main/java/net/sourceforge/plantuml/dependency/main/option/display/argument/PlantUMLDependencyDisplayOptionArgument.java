@@ -25,7 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.display.argument;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.EMPTY_ARGUMENT_ERROR;
+import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.EMPTY_OPTION_ARGUMENT_ERROR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
@@ -93,7 +93,7 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
     public Set < Display > parseArgument(final String argument) throws CommandLineException {
         Set < Display > displayArguments = null;
         if (isEmpty(argument)) {
-            throw new CommandLineException(EMPTY_ARGUMENT_ERROR);
+            throw new CommandLineException(EMPTY_OPTION_ARGUMENT_ERROR);
         } else {
             displayArguments = new TreeSet < Display >();
             final StringTokenizer tokenizer = new StringTokenizer(argument, COMMA_CHAR);
