@@ -184,7 +184,7 @@ public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest 
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-o, --output FILE\n\t\tTo output file path where to generate the PlantUML description.\n\t\tFILE specifies a valid file path, where the file doesn't already exist and is not a directory. It can be absolute or relative.",
+                "-o, --output FILE\n\t\tTo specify the output file path where to generate the PlantUML description.\n\t\tFILE specifies a valid file path, where the file can exist or not and is not a directory. It can be absolute or relative. If the file already exists, it overrides it.",
                 OUTPUT_OPTION1.getFullUsage().toString());
     }
 

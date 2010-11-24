@@ -46,7 +46,7 @@ import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.command.CommandLine;
 import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.argument.impl.file.NotExistingFileOptionArgumentImpl;
+import net.sourceforge.mazix.cli.option.argument.impl.file.ExistingOrNotFileOptionArgumentImpl;
 import net.sourceforge.mazix.cli.option.execution.ExecutableOption;
 import net.sourceforge.mazix.cli.option.execution.OptionExecution;
 import net.sourceforge.mazix.cli.option.impl.output.OutputOption;
@@ -131,7 +131,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
             final PlantUMLDependencyIncludeOption includeOpt, final PlantUMLDependencyExcludeOption excludeOpt,
             final PlantUMLDependencyDisplayOption displayOpt, final PlantUMLDependencyBaseDirectoryOption baseDirOpt,
             final int optionPriority) {
-        super(new NotExistingFileOptionArgumentImpl(true), new StringBuffer(
+        super(new ExistingOrNotFileOptionArgumentImpl(true), new StringBuffer(
                 "To specify the output file path where to generate the PlantUML description."), SPACE_CHAR,
                 ACTIVE_OPTIONAL_OPTION_STATUS);
         setVerboseLevelOption(verboseLvlOpt);
@@ -218,7 +218,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     private VerboseLevelOption getVerboseLevelOption() {
         return verboseLevelOption;
     }
-    
+
     /**
      * {@inheritDoc}
      * 
@@ -227,7 +227,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     @Override
     public OptionExecution parseCommandLine(final CommandLine commandLine) throws CommandLineException {
         OptionExecution optionExecution = null;
-        
+
         final Level verboseLevel = getVerboseLevelOption().findAndParseArgumentOrGetDefaultArgument(commandLine);
         tryToReadLoggerConfigurationFromResourceAndSetLevel(LOGGING_PROPERTIES_PATH, verboseLevel);
 
