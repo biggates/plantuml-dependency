@@ -1,7 +1,7 @@
 PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net}
 =====================================================================================================================================
 
-1, Dec 2010 - 1.0.0
+2, Dec 2010 - 1.0.0
 ====================
 - First public release
 - Fixed and issue when generating description with class which has a comment on the same line as the class declaration
