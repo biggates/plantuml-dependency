@@ -86,7 +86,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
         try {
             final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram(new ProgramVersionImpl(1, 0, 0,
-                    new Date(new GregorianCalendar(2010, 10, 19, 22, 16, 32).getTimeInMillis())));
+                    new Date(new GregorianCalendar(2010, 11, 2, 22, 16, 32).getTimeInMillis())));
             final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
                     .parseCommandLine(new CommandLineImpl(args));
             plantumlDependencyProgramExecution.execute();
