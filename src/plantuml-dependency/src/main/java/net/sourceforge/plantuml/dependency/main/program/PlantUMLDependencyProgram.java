@@ -98,6 +98,9 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
     /**
      * Default constructor.
      * 
+     * @param programVersion
+     *            the current {@link ProgramVersion}, mustn't be <code>null</code>.
+     * 
      * @throws MalformedURLException
      *             if the program URL doesn't have a good format.
      * @throws CommandLineException
