@@ -97,8 +97,6 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
             final Set < GenericDependency > parentClassesSet, final boolean hasNativeMethods) {
         super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, hasNativeMethods);
         // TODO optimization
-        // TODO check that the dependencies are not duplicated in the parentInterface and
-        // parentClasses sets
         parentClasses = parentClassesSet;
     }
 
@@ -122,7 +120,8 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      */
     @Override
     protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = new StringBuffer(CLASS_PLANTUML);
+        final StringBuffer buffer = super.generatePlantUMLDeclaration();
+        buffer.append(CLASS_PLANTUML);
         buffer.append(getFullName());
         return buffer;
     }

@@ -63,7 +63,8 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
      */
     @Override
     protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = new StringBuffer(CLASS_PLANTUML);
+        final StringBuffer buffer = super.generatePlantUMLDeclaration();
+        buffer.append(CLASS_PLANTUML);
         buffer.append(getFullName());
         return buffer;
     }

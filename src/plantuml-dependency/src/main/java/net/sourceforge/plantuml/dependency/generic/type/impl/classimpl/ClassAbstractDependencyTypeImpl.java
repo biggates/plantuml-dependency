@@ -56,8 +56,6 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @since 1.0
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        // TODO check that the dependencies are not duplicated in the parentInterface and
-        // parentClasses sets
         this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
                 new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
     }
@@ -86,8 +84,6 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
             final Set < GenericDependency > parentClassesSet, final boolean hasNativeMethods) {
-        // TODO check that the dependencies are not duplicated in the parentInterface and
-        // parentClasses sets
         super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, parentClassesSet,
                 hasNativeMethods);
     }

@@ -89,7 +89,8 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
      */
     @Override
     protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = new StringBuffer(INTERFACE_PLANTUML);
+        final StringBuffer buffer = super.generatePlantUMLDeclaration();
+        buffer.append(INTERFACE_PLANTUML);
         buffer.append(getFullName());
         return buffer;
     }

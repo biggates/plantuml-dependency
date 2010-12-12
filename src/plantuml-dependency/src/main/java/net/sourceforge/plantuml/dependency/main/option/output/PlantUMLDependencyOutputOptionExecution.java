@@ -132,7 +132,6 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      */
     @Override
     public void execute() throws CommandLineException {
-        // TODO see if the verbose mode can activate the logging
         final long start = currentTimeMillis();
 
         try {

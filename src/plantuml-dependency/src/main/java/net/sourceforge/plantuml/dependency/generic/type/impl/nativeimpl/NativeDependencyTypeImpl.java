@@ -64,7 +64,8 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
      */
     @Override
     protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = new StringBuffer(CLASS_PLANTUML);
+        final StringBuffer buffer = super.generatePlantUMLDeclaration();
+        buffer.append(CLASS_PLANTUML);
         buffer.append(getFullName());
         buffer.append(NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION);
         return buffer;
