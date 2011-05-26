@@ -38,19 +38,19 @@ import java.util.regex.Pattern;
 public final class RegularExpressionConstants {
 
     /** The pattern representing the java type. */
-    public static final Pattern JAVA_TYPE_REGEXP = compile("(?:public|final|) *(abstract|) *(?:public|final|) *(class|interface|enum) +([A-Za-z0-9. <>,_]*?)(?: +extends +([A-Za-z0-9. <>,_]*?)|)(?: +implements +([A-Za-z0-9. <>,_]*?)|) *\\{");
+    public static final Pattern JAVA_TYPE_REGEXP = compile("(?:public|final|) *(abstract|) *(?:public|final|) *(class|interface|enum) +([\\w. <>,]*?)(?: +extends +([\\w. <>,]*?)|)(?: +implements +([\\w. <>,]*?)|) *\\{");
 
     /** The pattern representing the java package. */
-    public static final Pattern PACKAGE_REGEXP = compile("package +([A-Za-z0-9. _]*?) *;");
+    public static final Pattern PACKAGE_REGEXP = compile("package +([\\w. ]*?) *;");
 
     /** The pattern representing the normal import. */
     public static final Pattern NORMAL_IMPORT_REGEXP = compile("import +(?:((?:\\w* *\\. *)*\\w*) *\\. *)*(\\w*) *;");
 
     /** The pattern representing the static import. */
-    public static final Pattern STATIC_IMPORT_REGEXP = compile("import +static +([A-Za-z0-9. _]+)\\.([A-Za-z0-9._]+?)\\.(.*?) *;");
+    public static final Pattern STATIC_IMPORT_REGEXP = compile("import +static +([\\w. ]+)\\.([\\w.]+?)\\.(?:.*?) *;");
 
     /** The pattern representing the native methods. */
-    public static final Pattern NATIVE_METHODS_REGEXP = compile("native +void +[A-Za-z0-9_]* *\\( *\\)? *;");
+    public static final Pattern NATIVE_METHODS_REGEXP = compile("native +void +[\\w]* *\\( *\\)? *;");
 
     /**
      * Private constructor to prevent from instantiation.

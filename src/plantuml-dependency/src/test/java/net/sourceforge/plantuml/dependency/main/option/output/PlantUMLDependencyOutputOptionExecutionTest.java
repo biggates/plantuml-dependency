@@ -131,7 +131,7 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     @Test
     public void testExecuteDifferentInputFiles() throws CommandLineException {
         OUTPUT_OPTION_EXECUTION1.execute();
-        // TODO test the plantuml file and remove it
+        // TODO test the plantuml file
         assertTrue(true);
     }
 
@@ -145,7 +145,7 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     @Test
     public void testExecuteJavaInputFiles() throws CommandLineException {
         OUTPUT_OPTION_EXECUTION1.execute();
-        // TODO test the plantuml file and remove it
+        // TODO test the plantuml file
         assertTrue(true);
     }
 
@@ -171,7 +171,7 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     @Test
     public void testExecuteWithInputFilesWithExclusion() throws CommandLineException {
         OUTPUT_OPTION_EXECUTION1.execute();
-        // TODO test the plantuml file and remove it
+        // TODO test the plantuml file
         assertTrue(true);
     }
 
@@ -185,7 +185,7 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     @Test
     public void testExecuteWithNoInputFiles() throws CommandLineException {
         OUTPUT_OPTION_EXECUTION1.execute();
-        // TODO test the plantuml file and remove it
+        // TODO test the plantuml file
         assertTrue(true);
     }
 }

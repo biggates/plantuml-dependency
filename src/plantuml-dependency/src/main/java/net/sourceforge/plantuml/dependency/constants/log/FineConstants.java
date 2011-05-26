@@ -56,16 +56,16 @@ public final class FineConstants {
     public static final String UPDATING_DEPENDENCY_FINE = "[fine-plantuml-dependency-005] : Updating the dependency \"{0}\" with the type \"{1}\"";
     
     /** The dependency already seen info message. */
-    public static final String DEPENDENCY_ALREADY_SEEN_FINE = "[fine-plantuml-dependency-001] : The dependency \"{0}\" has already been seen, don't have to add it to the seen object Map";
+    public static final String DEPENDENCY_ALREADY_SEEN_FINE = "[fine-plantuml-dependency-006] : The dependency \"{0}\" has already been seen, don't have to add it to the seen object Map";
 
     /** The dependency not seen with default type info message. */
-    public static final String DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE = "[fine-plantuml-dependency-002] : The dependency \"{0}\" has not been seen yet, creating it with default type";
+    public static final String DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE = "[fine-plantuml-dependency-007] : The dependency \"{0}\" has not been seen yet, creating it with default type";
 
     /** The dependency not seen info message. */
-    public static final String DEPENDENCY_NOT_SEEN_FINE = "[fine-plantuml-dependency-003] : The dependency \"{0}\" has not been seen yet, creating it with type \"{1}\"";
+    public static final String DEPENDENCY_NOT_SEEN_FINE = "[fine-plantuml-dependency-008] : The dependency \"{0}\" has not been seen yet, creating it with type \"{1}\"";
     
     /** The no package found fine message. */
-    public static final String NO_PACKAGE_FOUND_FINE = "[fine-plantuml-dependency-006] : No package name has been found";
+    public static final String NO_PACKAGE_FOUND_FINE = "[fine-plantuml-dependency-009] : No package name has been found";
     
     /**
      * Private constructor to prevent from instantiation.
