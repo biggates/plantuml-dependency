@@ -44,7 +44,7 @@ public final class RegularExpressionConstants {
     public static final Pattern PACKAGE_REGEXP = compile("package +([A-Za-z0-9. _]*?) *;");
 
     /** The pattern representing the normal import. */
-    public static final Pattern NORMAL_IMPORT_REGEXP = compile("import +([A-Za-z0-9. _]+)\\.([^\\*]*?) *;");
+    public static final Pattern NORMAL_IMPORT_REGEXP = compile("import +(?:((?:\\w* *\\. *)*\\w*) *\\. *)*(\\w*) *;");
 
     /** The pattern representing the static import. */
     public static final Pattern STATIC_IMPORT_REGEXP = compile("import +static +([A-Za-z0-9. _]+)\\.([A-Za-z0-9._]+?)\\.(.*?) *;");
