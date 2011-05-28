@@ -85,8 +85,8 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         readLoggerConfigurationFromResource(LOGGING_PROPERTIES_PATH);
 
         try {
-            final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram(new ProgramVersionImpl(1, 0, 0,
-                    new Date(new GregorianCalendar(2010, 11, 2, 22, 16, 32).getTimeInMillis())));
+            final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram(new ProgramVersionImpl(1, 0, 1,
+                    new Date(new GregorianCalendar(2011, 5, 27, 10, 35, 43).getTimeInMillis())));
             final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
                     .parseCommandLine(new CommandLineImpl(args));
             plantumlDependencyProgramExecution.execute();

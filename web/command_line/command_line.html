@@ -37,7 +37,7 @@
 	<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
 	<li><a href="../external_links/external_links.html">External Links</a></li>
 </ul>
-<font size="1">Last update : 2 Dec, 2010</font>
+<font size="1">Last update : 28 May, 2010</font>
 </div>
 <!-- Debut de la div du Sous_Menu -->
 <div></div>
@@ -50,7 +50,7 @@ You can run <b>PlantUML Dependency</b> using the following simplest command :
 
 <div class="scriptplantu">
 <dir>
-	java -jar plantuml-dependency-1.0.0.jar -o plantuml.txt
+	java -jar plantuml-dependency-1.0.1.jar -o plantuml.txt
 </dir>
 </div>
 <p>This will look for all <code>java source files</code> into the current directory recursively, creating a <i>plantuml.txt</i> file describing the <b>PlantUML</b> class diagram description.
@@ -59,7 +59,7 @@ You can run <b>PlantUML Dependency</b> using the following simplest command :
 
 <div class="scriptplantu">
 <dir>
-	java -jar plantuml-dependency-1.0.0.jar -b "c:/directory1"
+	java -jar plantuml-dependency-1.0.1.jar -b "c:/directory1"
 </dir>
 </div>
 
@@ -67,7 +67,7 @@ You can run <b>PlantUML Dependency</b> using the following simplest command :
 
 <div class="scriptplantu">
 <dir>
-	java -jar plantuml-dependency-1.0.0.jar -i **/*Test*.java -e **/*Generated*.java
+	java -jar plantuml-dependency-1.0.1.jar -i **/*Test*.java -e **/*Generated*.java
 </dir>
 </div>
 
@@ -75,7 +75,7 @@ You can run <b>PlantUML Dependency</b> using the following simplest command :
 
 <div class="scriptplantu">
 <dir>
-	java -jar plantuml-dependency-1.0.0.jar -o "c:/directory1/test-plantuml.txt"
+	java -jar plantuml-dependency-1.0.1.jar -o "c:/directory1/test-plantuml.txt"
 </dir>
 </div>
 
@@ -83,7 +83,7 @@ You can run <b>PlantUML Dependency</b> using the following simplest command :
 <p>You can have an help message by launching :
 <div class="scriptplantu">
 <dir>
-	java -jar plantuml-dependency-1.0.0.jar --help
+	java -jar plantuml-dependency-1.0.1.jar --help
 </dir>
 </div>
 
@@ -92,7 +92,7 @@ This will output:
 PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net}
 
 Usage:
-	java -jar plantuml-dependency-1.0.0.jar [OPTIONS]
+	java -jar plantuml-dependency-1.0.1.jar [OPTIONS]
 
 
 where optional options are:
@@ -128,9 +128,9 @@ where optional options are:
 
 Examples:
 
-	java -jar plantuml-dependency-1.0.0.jar -h
-	java -jar plantuml-dependency-1.0.0.jar -o plantuml.txt -b /home/graffity/workspace/plantuml-dependency -i **/*Test.java
-	java -jar plantuml-dependency-1.0.0.jar -version -v
+	java -jar plantuml-dependency-1.0.1.jar -h
+	java -jar plantuml-dependency-1.0.1.jar -o plantuml.txt -b /home/graffity/workspace/plantuml-dependency -i **/*Test.java
+	java -jar plantuml-dependency-1.0.1.jar -version -v
 
 Known bugs or program limitations:
 

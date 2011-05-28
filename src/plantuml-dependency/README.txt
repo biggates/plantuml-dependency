@@ -1,6 +1,10 @@
 PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net)
 =====================================================================================================================================
 
+28, May 2011 - 1.0.1
+====================
+- Fixed an error when generating description with classes which have static imports
+
 2, Dec 2010 - 1.0.0
 ====================
 - First public release
@@ -11,7 +15,7 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 
 Command line Usage
 ====================
-	java -jar plantuml-dependency-1.0.0.jar [OPTIONS]
+	java -jar plantuml-dependency-1.0.1.jar [OPTIONS]
 
 
 where optional options are:
@@ -47,9 +51,9 @@ where optional options are:
 
 Examples:
 
-	java -jar plantuml-dependency-1.0.0.jar -h
-	java -jar plantuml-dependency-1.0.0.jar -o plantuml.txt -b /home/graffity/workspace/plantuml-dependency -i **/*Test.java
-	java -jar plantuml-dependency-1.0.0.jar -version -v
+	java -jar plantuml-dependency-1.0.1.jar -h
+	java -jar plantuml-dependency-1.0.1.jar -o plantuml.txt -b /home/graffity/workspace/plantuml-dependency -i **/*Test.java
+	java -jar plantuml-dependency-1.0.1.jar -version -v
 
 Known bugs or program limitations:
 
