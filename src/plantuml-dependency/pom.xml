@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>net.sourceforge.mazix.cli</groupId>
 			<artifactId>mazix-cli</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 		<!-- Mazix common components -->
 		<dependency>
