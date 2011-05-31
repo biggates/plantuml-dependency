@@ -220,7 +220,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
             final FileResource fileResource = iter.next();
 
             try {
-                readDependencyFromFile(fileResource.getFile(), programmingLanguageContext, language, displayOpt);
+                readDependencyFromFile(fileResource.getFile(), programmingLanguageContext, language);
             } catch (final PlantUMLDependencyException e) {
                 throw new PlantUMLDependencyException(
                         buildLogString(READING_SOURCE_FILE_ERROR, fileResource.getFile()), e);
@@ -243,16 +243,13 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param language
      *            the programming language of the source files to parse, mustn't be
      *            <code>null</code>.
-     * @param displayOpt
-     *            the display option which have to appear in the plantUML description.
      * @return the {@link GenericDependency} instance parsed in the source file.
      * @throws PlantUMLDependencyException
      *             if any parsing exception occurs while reading the source file.
      * @since 1.0
      */
     private GenericDependency readDependencyFromFile(final File file,
-            final ProgrammingLanguageContext programmingLanguageContext, final ProgrammingLanguage language,
-            final Set < Display > displayOpt) throws PlantUMLDependencyException {
+            final ProgrammingLanguageContext programmingLanguageContext, final ProgrammingLanguage language) throws PlantUMLDependencyException {
         final String sourceFileContent = readFileIntoString(file);
         return language.readDependencyFromFile(sourceFileContent, programmingLanguageContext);
     }

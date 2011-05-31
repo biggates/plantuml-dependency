@@ -85,6 +85,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         readLoggerConfigurationFromResource(LOGGING_PROPERTIES_PATH);
 
         try {
+        	// TODO get the version from a property file which is filled by maven when compiled
             final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram(new ProgramVersionImpl(1, 0, 1,
                     new Date(new GregorianCalendar(2011, 5, 27, 10, 35, 43).getTimeInMillis())));
             final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
