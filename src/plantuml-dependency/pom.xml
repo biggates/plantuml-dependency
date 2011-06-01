@@ -8,7 +8,7 @@
 		<java.version>1.6</java.version>
 		<version>${project.version}</version>
 		<build.timestamp>${maven.build.timestamp}</build.timestamp>
-		<maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
+		<maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
 	</properties>
 	<!-- Project information -->
 	<groupId>net.sourceforge.plantuml.dependency</groupId>
