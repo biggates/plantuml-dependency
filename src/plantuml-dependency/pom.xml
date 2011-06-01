@@ -6,11 +6,14 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.6</java.version>
+		<version>${project.version}</version>
+		<build.timestamp>${maven.build.timestamp}</build.timestamp>
+		<maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
 	</properties>
 	<!-- Project information -->
 	<groupId>net.sourceforge.plantuml.dependency</groupId>
 	<artifactId>plantuml-dependency</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>plantuml-dependency</name>
 	<description>PlantUml Dependency allows to parse / reverse engineering
@@ -48,6 +51,23 @@
 	</dependencies>
 	<build>
 		<plugins>
+			<!-- Properties generation -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>write-project-properties</goal>
+						</goals>
+						<configuration>
+							<outputFile>src/main/resources/net/sourceforge/plantuml/dependency/version/version.properties</outputFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<!-- Cobertura generation -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -242,13 +262,10 @@
 				<version>2.7.1</version>
 			</plugin>
 			<!-- API Javadoc generation -->
-			<!--
-				>plugin> <groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId> <version>2.7</version>
-				<configuration> <encoding>${project.build.sourceEncoding}</encoding>
-				<minmemory>128m</minmemory> <maxmemory>512m</maxmemory>
-				</configuration> </plugin
-			-->
+			<!-- >plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
+				<version>2.7</version> <configuration> <encoding>${project.build.sourceEncoding}</encoding> 
+				<minmemory>128m</minmemory> <maxmemory>512m</maxmemory> </configuration> 
+				</plugin -->
 			<!-- SCM changelog generation -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -404,14 +421,10 @@
 		</url>
 	</issueManagement>
 	<!-- Information about mailing lists -->
-	<!--
-		>mailingLists> <mailingList> <name>mazix-devel List</name>
-		<subscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</subscribe>
-		<unsubscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</unsubscribe>
-		<post>mazix-devel@lists.sourceforge.net</post>
-		<archive>http://sourceforge.net/mailarchive/forum.php?forum_name=mazix-devel</archive>
-		</mailingList> </mailingLists
-	-->
+	<!-- >mailingLists> <mailingList> <name>mazix-devel List</name> <subscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</subscribe> 
+		<unsubscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</unsubscribe> 
+		<post>mazix-devel@lists.sourceforge.net</post> <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=mazix-devel</archive> 
+		</mailingList> </mailingLists -->
 	<!-- Information about source control management -->
 	<scm>
 		<connection>scm:svn:http://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk
