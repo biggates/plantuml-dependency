@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -83,9 +83,9 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.conte
 
 /**
  * The Java {@link ProgrammingLanguage} implementation.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -100,7 +100,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Get the index of the character representing the end of a multi line java comment (i.e. star +
      * slash) in the passed string, starting from the passed index.
-     * 
+     *
      * @param beginningIndex
      *            the index where to start to look for the end comment character, must be between 0
      *            and <code>str.length()</code>.
@@ -142,7 +142,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param programmingLanguageName
      *            the programming language name to get the instance from, mustn't be
      *            <code>null</code> nor empty.
@@ -155,7 +155,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Creates the {@link GenericDependency} instance from the raw dependency and the java source
      * file content.
-     * 
+     *
      * @param javaRawDependency
      *            the {@link JavaRawDependency} containing raw data of the dependency contained in
      *            the source file, mustn't be <code>null</code>.
@@ -215,7 +215,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -227,7 +227,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * Creates or updates the dependency type or the passed raw dependency. If the dependency has
      * already been seen (i.e. it appears in the <code>dependenciesMap</code>) it just updates its
      * {@link DependencyType}, otherwise it creates the dependency.
-     * 
+     *
      * @param javaRawDependency
      *            the {@link JavaRawDependency} containing raw data of the dependency contained in
      *            the source file, mustn't be <code>null</code>.
@@ -261,7 +261,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Following the group found (i.e. the string defining an abstract class), tells if it is an
      * abstract class or not. Basically, the string is either "abstract" or "".
-     * 
+     *
      * @param group
      *            the string defining an abstract class, can be <code>null</code>.
      * @return <code>true</code> if the {@link String} defines and abstract class,
@@ -276,7 +276,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * Following a java source file content, reads, parses and extracts all import dependencies
      * (static and normal imports). This method also adds the import dependencies in the
      * dependencies {@link java.util.Map} if they have not been already seen.
-     * 
+     *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
@@ -316,7 +316,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * Following a java source file content and the import regular expression, reads, parses and
      * extracts all import dependencies. This method also adds the import dependencies in the
      * dependencies {@link java.util.Map} if they have not been already seen.
-     * 
+     *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
@@ -357,7 +357,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * Following the group found (i.e. the string defining the dependency name), extract the
      * interesting name of the dependency (i.e. without generic definition if any). Basically, the
      * string can be "String", "Serializable" or "Rectangle &#139; Square &#155;".
-     * 
+     *
      * @param group
      *            the string defining the dependency name, mustn't be <code>null</code>.
      * @return the dependency raw name, without any generic definition.
@@ -375,7 +375,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * Reads, parses and extracts the package name in the passed java source file content.
-     * 
+     *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
@@ -397,7 +397,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * Creates parent dependencies instances.
-     * 
+     *
      * @param type
      *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
      * @param parentType
@@ -438,7 +438,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Finds the dependency following its name in the import dependencies {@link Set}. be careful,
      * this method doesn't take care of the package name.
-     * 
+     *
      * @param dependencyName
      *            the dependency name to look for, mustn't be <code>null</code>.
      * @param importDependencies
@@ -464,7 +464,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Finds the dependency following its name and its package name in the import dependencies
      * {@link Set}.
-     * 
+     *
      * @param dependencyName
      *            the dependency name to look for, mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -493,7 +493,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Get the index of the character representing the end of a generic definition (i.e. the last
      * superior character) in the passed string, starting from the passed index.
-     * 
+     *
      * @param beginningIndex
      *            the index where to start to look for the end of a generic definition, must be
      *            between 0 and <code>str.length()</code>.
@@ -529,7 +529,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Get the index of the character representing the end of a single line java comment (i.e. line
      * separator) in the passed string, starting from the passed index.
-     * 
+     *
      * @param beginningIndex
      *            the index where to start to look for the end comment character, must be between 0
      *            and <code>str.length()</code>.
@@ -558,7 +558,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * Gets or creates the parent dependency.
-     * 
+     *
      * @param type
      *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
      * @param parentType
@@ -602,7 +602,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Gets or creates the parent dependency if it is not described with its full name, i.e. if it
      * is in the import, or in the same package or in the "java.lang" package.
-     * 
+     *
      * @param type
      *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
      * @param parentType
@@ -658,7 +658,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * Gets or creates the parent dependency if it is described with its simple name.
-     * 
+     *
      * @param type
      *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
      * @param parentType
@@ -709,7 +709,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Gets or creates the parent dependency if it is not described with its full name, i.e. if it
      * is in the same package or in the "java.lang" package.
-     * 
+     *
      * @param type
      *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
      * @param parentType
@@ -757,7 +757,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -773,7 +773,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Reads, parses and extracts the {@link GenericDependency} instance from the passed java source
      * file content.
-     * 
+     *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
@@ -796,7 +796,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Reads, parses and extracts the {@link JavaRawDependency} instance from the passed java source
      * file content.
-     * 
+     *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
@@ -843,7 +843,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Prepares the java source file content to remove all unnecessary strings which are not used in
      * the analysis, i.e. comments and generic.
-     * 
+     *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.

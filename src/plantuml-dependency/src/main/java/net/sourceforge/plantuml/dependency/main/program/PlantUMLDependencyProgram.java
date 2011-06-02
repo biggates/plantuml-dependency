@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -28,14 +28,15 @@ import static java.lang.System.getProperty;
 import static java.util.Arrays.asList;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils.createProgramVersionFromPropertiesFileWithinClassloader;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.readLoggerConfigurationFromResource;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.VERSION_PROPERTIES_PATH;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.text.ParseException;
 import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
@@ -48,7 +49,6 @@ import net.sourceforge.mazix.cli.program.JavaProgram;
 import net.sourceforge.mazix.cli.program.execution.JavaProgramExecution;
 import net.sourceforge.mazix.cli.program.impl.JavaProgramImpl;
 import net.sourceforge.mazix.cli.program.version.ProgramVersion;
-import net.sourceforge.mazix.cli.program.version.impl.ProgramVersionImpl;
 import net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
 import net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption;
 import net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption;
@@ -58,9 +58,9 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.Plant
 
 /**
  * The PlantUML dependency {@link JavaProgram} implementation.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -74,20 +74,20 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
     /**
      * The PlantUML dependency program entry point.
-     * 
+     *
      * @param args
      *            command line arguments.
      * @throws IOException
-     *             if any exception occurs while reading the logging properties file.
+     *             if any exception occurs while reading the logging or the version properties file.
+     * @throws ParseException
      * @since 1.0
      */
-    public static void main(final String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException, ParseException {
         readLoggerConfigurationFromResource(LOGGING_PROPERTIES_PATH);
+        final ProgramVersion programVersion = createProgramVersionFromPropertiesFileWithinClassloader(VERSION_PROPERTIES_PATH);
 
         try {
-        	// TODO get the version from a property file which is filled by maven when compiled
-            final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram(new ProgramVersionImpl(1, 0, 1,
-                    new Date(new GregorianCalendar(2011, 5, 27, 10, 35, 43).getTimeInMillis())));
+            final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram(programVersion);
             final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
                     .parseCommandLine(new CommandLineImpl(args));
             plantumlDependencyProgramExecution.execute();
@@ -98,15 +98,15 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param programVersion
      *            the current {@link ProgramVersion}, mustn't be <code>null</code>.
-     * 
+     *
      * @throws MalformedURLException
      *             if the program URL doesn't have a good format.
      * @throws CommandLineException
      *             if any exception occurs while creating the program.
-     * 
+     *
      * @since 1.0
      */
     public PlantUMLDependencyProgram(final ProgramVersion programVersion) throws MalformedURLException,

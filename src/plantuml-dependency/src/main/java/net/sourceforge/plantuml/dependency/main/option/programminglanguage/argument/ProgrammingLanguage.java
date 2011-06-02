@@ -2,9 +2,9 @@
  ProgrammingLanguage.java
  Creation date : 19/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
- 
+
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -49,7 +49,7 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.conte
 /**
  * The abstract class which describes all supported programming language which can be reverse
  * engineered.
- * 
+ *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.0
@@ -73,7 +73,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Creates the static {@link Map} containing all {@link ProgrammingLanguage}.
-     * 
+     *
      * @return the {@link Map} of all {@link ProgrammingLanguage} as values, with their associated
      *         names as keys.
      * @since 1.0
@@ -89,7 +89,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Gets the {@link Collection} of all {@link ProgrammingLanguage}.
-     * 
+     *
      * @return the {@link Collection} of all {@link ProgrammingLanguage} available.
      * @since 1.0
      */
@@ -99,7 +99,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Gets the {@link Set} of all programming languages names.
-     * 
+     *
      * @return the {@link Set} of all programming languages names available.
      * @since 1.0
      */
@@ -116,7 +116,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
     /**
      * Gets the {@link ProgrammingLanguage} instance associated to the passed name. Throw an
      * {@link IllegalArgumentException} if the programming language name isn't recognized.
-     * 
+     *
      * @param programmingLanguageName
      *            the programming language name to get the instance from, mustn't be
      *            <code>null</code> nor empty.
@@ -146,7 +146,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Default constructor.
-     * 
+     *
      * @param programmingLanguageName
      *            the programming language name to get the instance from, mustn't be
      *            <code>null</code> nor empty.
@@ -158,7 +158,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -172,7 +172,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Create a new {@link ProgrammingLanguageContext} following the language.
-     * 
+     *
      * @param displayOpt
      *            the display option which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
@@ -183,7 +183,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -210,7 +210,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Gets the value of <code>name</code>.
-     * 
+     *
      * @return the value of <code>name</code>.
      * @see #setName(String)
      * @since 1.0
@@ -221,7 +221,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -237,7 +237,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      * {@link GenericDependency} instance. This method also modify the
      * <code>programmingLanguageContext</code> parameter by adding read objects and the parsed
      * dependencies.
-     * 
+     *
      * @param sourceFileContent
      *            the source file content as a {@link String} to read, mustn't be <code>null</code>.
      *            Should contain the expected programming language.
@@ -256,7 +256,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Sets the value of <code>name</code>.
-     * 
+     *
      * @param value
      *            the <code>name</code> to set, can be <code>null</code>.
      * @see #getName()
@@ -272,7 +272,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

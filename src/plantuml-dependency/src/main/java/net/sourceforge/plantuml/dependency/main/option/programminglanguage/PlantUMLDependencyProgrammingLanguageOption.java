@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -40,9 +40,9 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argum
 /**
  * The programming language option, allowing to specify the source file programming language to
  * analyze. <i>Note : no option should have the same main or secondary names</i>.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -56,7 +56,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
 
     /**
      * Default constructor.
-     * 
+     *
      * @since 1.0
      */
     public PlantUMLDependencyProgrammingLanguageOption() {
@@ -68,7 +68,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -79,7 +79,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

@@ -2,9 +2,9 @@
  PlantUMLDependencyTestConstants.java
  Creation date : 11/07/2007
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
- 
+
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -64,7 +64,7 @@ import org.apache.tools.ant.types.FileSet;
 
 /**
  * The class which stores all necessary plantUML dependency constants used for Junit tests.
- * 
+ *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.0
@@ -625,7 +625,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     * 
+     *
      * @since 1.0
      */
     private PlantUMLDependencyTestConstants() {

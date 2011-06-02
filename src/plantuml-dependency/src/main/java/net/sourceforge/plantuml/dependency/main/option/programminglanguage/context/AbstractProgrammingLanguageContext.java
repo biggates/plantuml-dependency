@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -51,9 +51,9 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 /**
  * An abstract implementation of the {@link ProgrammingLanguageContext} interface, providing common
  * behaviors.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -87,7 +87,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Default constructor.
-     * 
+     *
      * @since 1.0
      */
     protected AbstractProgrammingLanguageContext() {
@@ -96,7 +96,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Medium constructor.
-     * 
+     *
      * @param displayOpt
      *            the display options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
@@ -108,7 +108,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Medium constructor.
-     * 
+     *
      * @param parsedAndSeenDependencies
      *            the original {@link Set} of {@link GenericDependency} to put in the context,
      *            mustn't be <code>null</code>.
@@ -124,7 +124,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Full constructor.
-     * 
+     *
      * @param parsedAndSeenDependencies
      *            the original {@link Set} of {@link GenericDependency} to put in the context,
      *            mustn't be <code>null</code>.
@@ -154,7 +154,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -166,7 +166,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -177,7 +177,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -190,7 +190,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -214,7 +214,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -255,7 +255,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -266,7 +266,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Gets the value of <code>displayOptions</code>.
-     * 
+     *
      * @return the value of <code>displayOptions</code>.
      * @see #setDisplayOptions(Set)
      * @since 1.0
@@ -277,7 +277,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -287,7 +287,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Gets the value of <code>parsedAndSeenDependenciesMap</code>.
-     * 
+     *
      * @return the value of <code>parsedAndSeenDependenciesMap</code>.
      * @see #setParsedAndSeenDependenciesMap(Map)
      * @since 1.0
@@ -298,7 +298,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -308,7 +308,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Gets the value of <code>parsedDependenciesMap</code>.
-     * 
+     *
      * @return the value of <code>parsedDependenciesMap</code>.
      * @see #setParsedDependenciesMap(Map)
      * @since 1.0
@@ -319,7 +319,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -335,7 +335,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -345,7 +345,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Sets the value of <code>displayOptions</code>.
-     * 
+     *
      * @param value
      *            the <code>displayOptions</code> to set, can be <code>null</code>.
      * @see #getDisplayOptions()
@@ -357,7 +357,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Sets the value of <code>parsedAndSeenDependenciesMap</code>.
-     * 
+     *
      * @param value
      *            the <code>parsedAndSeenDependenciesMap</code> to set, can be <code>null</code>.
      * @see #getParsedAndSeenDependenciesMap()
@@ -369,7 +369,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Sets the value of <code>seenDependenciesMap</code>.
-     * 
+     *
      * @param value
      *            the <code>seenDependenciesMap</code> to set, can be <code>null</code>.
      * @see #getSeenDependenciesMap()
@@ -381,7 +381,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -392,7 +392,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

@@ -2,9 +2,9 @@
  GenericDependencyImpl.java
  Creation date : 20/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
- 
+
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -41,9 +41,9 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDepend
 /**
  * The default implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.GenericDependency} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -61,7 +61,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * Default constructor, with a dependency type. This constructor is usually used when the
      * concrete dependency type (class, interface etc..) is already known.
-     * 
+     *
      * @param type
      *            the underlying dependency type, which determines the real nature of the
      *            dependency, mustn't be <code>null</code>.
@@ -77,7 +77,7 @@ public class GenericDependencyImpl implements GenericDependency {
      * Stub constructor. This constructor is usually used when the concrete dependency type (class,
      * interface etc..) is not known when created the dependency. In this case, the
      * {@link StubDependencyTypeImpl} is used instead.
-     * 
+     *
      * @param dependencyName
      *            the dependency name, usually the class name, mustn't be <code>null</code> nor
      *            empty.
@@ -91,7 +91,7 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -109,7 +109,7 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -128,7 +128,7 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -155,7 +155,7 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -165,7 +165,7 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -175,7 +175,7 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -185,7 +185,7 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -195,7 +195,7 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -208,7 +208,7 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -218,7 +218,7 @@ public class GenericDependencyImpl implements GenericDependency {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

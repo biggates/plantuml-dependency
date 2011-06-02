@@ -2,9 +2,9 @@
  ErrorConstants.java
  Creation date : 2/07/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
- 
+
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -27,7 +27,7 @@ package net.sourceforge.plantuml.dependency.constants.log;
 /**
  * The class which defines all error messages constants which are written in the log file. The
  * messages also contains the error code.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0
  * @version 1.0
@@ -117,7 +117,7 @@ public final class ErrorConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     * 
+     *
      * @since 1.0
      */
     private ErrorConstants() {

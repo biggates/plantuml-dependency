@@ -2,9 +2,9 @@
  RegularExpressionConstants.java
  Creation date : 14/07/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
- 
+
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 
 /**
  * The class which stores all necessary regular expressions constants.
- * 
+ *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.0
@@ -54,7 +54,7 @@ public final class RegularExpressionConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     * 
+     *
      * @since 1.0
      */
     private RegularExpressionConstants() {

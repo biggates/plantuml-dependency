@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -28,6 +28,7 @@ import static net.sourceforge.plantuml.dependency.main.option.programminglanguag
 import static net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram.main;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import net.sourceforge.mazix.cli.exception.CommandLineException;
 
@@ -35,9 +36,9 @@ import org.junit.Test;
 
 /**
  * JUnit test classes for {@link PlantUMLDependencyProgram}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -47,12 +48,13 @@ public class PlantUMLDependencyProgramTest {
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
      * .
-     * 
+     *
      * @throws CommandLineException
      * @throws IOException
+     * @throws ParseException
      */
     @Test
-    public void testMainWithoutExecutionOption() throws CommandLineException, IOException {
+    public void testMainWithoutExecutionOption() throws CommandLineException, IOException, ParseException {
         main(new String[] {"-l", DEFAULT_PROGRAMMING_LANGUAGE.getName(), "-i", "**/*.java"});
     }
 
@@ -60,12 +62,13 @@ public class PlantUMLDependencyProgramTest {
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
      * .
-     * 
+     *
      * @throws CommandLineException
      * @throws IOException
+     * @throws ParseException
      */
     @Test
-    public void testMainWithPrimaryHelpOption() throws CommandLineException, IOException {
+    public void testMainWithPrimaryHelpOption() throws CommandLineException, IOException, ParseException {
         main(new String[] {"-h"});
     }
 
@@ -73,12 +76,13 @@ public class PlantUMLDependencyProgramTest {
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
      * .
-     * 
+     *
      * @throws CommandLineException
      * @throws IOException
+     * @throws ParseException
      */
     @Test
-    public void testMainWithPrimaryVersionOption() throws CommandLineException, IOException {
+    public void testMainWithPrimaryVersionOption() throws CommandLineException, IOException, ParseException {
         main(new String[] {"-version"});
     }
 
@@ -86,12 +90,13 @@ public class PlantUMLDependencyProgramTest {
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
      * .
-     * 
+     *
      * @throws CommandLineException
      * @throws IOException
+     * @throws ParseException
      */
     @Test
-    public void testMainWithSecondaryOption() throws CommandLineException, IOException {
+    public void testMainWithSecondaryOption() throws CommandLineException, IOException, ParseException {
         main(new String[] {"-h"});
     }
 

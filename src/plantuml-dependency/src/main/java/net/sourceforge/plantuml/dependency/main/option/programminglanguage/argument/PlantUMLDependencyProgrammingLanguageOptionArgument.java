@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -36,9 +36,9 @@ import net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument;
  * The programming language implementation of the
  * {@link net.sourceforge.mazix.cli.option.argument.OptionArgument} interface, specifying a
  * {@link ProgrammingLanguage} argument.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -57,7 +57,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgument extends Abstrac
 
     /**
      * Default constructor.
-     * 
+     *
      * @param optionArgumentIsMandatory
      *            <code>true</code> if the argument is mandatory, <code>false</code> otherwise.
      * @since 1.0
@@ -68,7 +68,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgument extends Abstrac
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -78,7 +78,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgument extends Abstrac
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

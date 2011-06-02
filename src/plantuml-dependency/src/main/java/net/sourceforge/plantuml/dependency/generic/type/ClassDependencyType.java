@@ -2,9 +2,9 @@
  ClassDependencyType.java
  Creation date : 20/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
- 
+
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -30,9 +30,9 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
 /**
  * The interface which describes a class dependency type, no matter the programming language.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -45,7 +45,7 @@ public interface ClassDependencyType extends DependencyType {
      * <p>
      * For instance, in java it is represented by the <i>implements</i> keyword.
      * </p>
-     * 
+     *
      * @return the {@link Set} of all classes as {@link GenericDependency} which used by the current
      *         dependency type.
      * @since 1.0

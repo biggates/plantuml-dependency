@@ -2,9 +2,9 @@
  DependencyType.java
  Creation date : 20/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
- 
+
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -33,9 +33,9 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 /**
  * The interface which describes a generic dependency type, no matter the programming language is. A
  * dependency type might be a class, an interface or an enumeration.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -49,7 +49,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * <i>java.io.Serializable</i><br>
      * <i>sun.font.Decoration</i>
      * </p>
-     * 
+     *
      * @return the dependency full name.
      * @since 1.0
      */
@@ -61,7 +61,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * <p>
      * For instance, in java it is represented by the <i>import</i> keyword.
      * </p>
-     * 
+     *
      * @return the {@link Set} of all {@link GenericDependency} which are needed by the current
      *         dependency type to work.
      * @since 1.0
@@ -76,7 +76,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * <i>Serializable</i><br>
      * <i>Decoration</i>
      * </p>
-     * 
+     *
      * @return the dependency name.
      * @since 1.0
      */
@@ -90,7 +90,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * <i>java.io</i><br>
      * <i>sun.font</i>
      * </p>
-     * 
+     *
      * @return the dependency package name.
      * @since 1.0
      */
@@ -103,7 +103,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * <p>
      * For instance, in java it is represented by the <i>implements</i> keyword.
      * </p>
-     * 
+     *
      * @return the {@link Set} of all interfaces as {@link GenericDependency} which are used by the
      *         current dependency type.
      * @since 1.0
@@ -116,7 +116,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * >PlantUML Language Reference Guide.pdf</a> or <a
      * href="http://plantuml.sourceforge.net/classes.html"
      * >http://plantuml.sourceforge.net/classes.html</a> page.
-     * 
+     *
      * @return the plantUML declaration as a {@link StringBuffer} describing the current dependency
      *         type.
      * @since 1.0
@@ -125,7 +125,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
 
     /**
      * Gets the PlantUML links description, following the imports and the dependency type parents.
-     * 
+     *
      * @return the plantUML description as a {@link StringBuffer} describing links to imports and
      *         the dependency type parents.
      * @since 1.0
@@ -134,7 +134,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
 
     /**
      * Tells if the dependency contains native methods or not.
-     * 
+     *
      * @return <code>true</code> if the dependency has native methods inside, <code>false</code>
      *         otherwise. Be careful, this property is <code>false</code> by default, i.e. as long
      *         as the dependency hasn't been parsed yet.

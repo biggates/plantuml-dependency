@@ -2,9 +2,9 @@
  PlantUMLDependencyConstants.java
  Creation date : 29/08/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
- 
+
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -40,7 +40,7 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDe
 
 /**
  * The class which stores all necessary plantUML dependency constants as Strings.
- * 
+ *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.0
@@ -58,6 +58,9 @@ public final class PlantUMLDependencyConstants {
     /** Logging properties path. */
     public static final String LOGGING_PROPERTIES_PATH = "net/sourceforge/plantuml/dependency/log/logging.properties";
 
+    /** Version properties path. */
+    public static final String VERSION_PROPERTIES_PATH = "net/sourceforge/plantuml/dependency/version/version.properties";
+
     /** The custom dependency which is used to link with native code. */
     public static final GenericDependency NATIVE_DEPENDENCY = new GenericDependencyImpl(new NativeDependencyTypeImpl(
             "Native_Code", BLANK_STRING));
@@ -67,7 +70,7 @@ public final class PlantUMLDependencyConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     * 
+     *
      * @since 1.0
      */
     private PlantUMLDependencyConstants() {

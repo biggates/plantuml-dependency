@@ -2,9 +2,9 @@
  DependencyTypeImpl.java
  Creation date : 20/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
- 
+
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -47,9 +47,9 @@ import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 /**
  * The default implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -63,7 +63,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Generates the full dependency name following its package and its simple name.
-     * 
+     *
      * @param dependencyPackageName
      *            the dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
@@ -119,7 +119,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param dependencyName
      *            the dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -134,7 +134,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Full constructor.
-     * 
+     *
      * @param dependencyName
      *            the dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -166,7 +166,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -184,7 +184,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -207,7 +207,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -234,7 +234,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Extracts full names of the given dependency {@link Set}.
-     * 
+     *
      * @param genericDependencySet
      *            the {@link Set} containing {@link GenericDependency} instance where to extract
      *            full names, mustn't be <code>null</code>.
@@ -253,7 +253,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Generates the plantUML declaration.
-     * 
+     *
      * @return the {@link StringBuffer} containing the plantUML declaration of the current
      *         dependency type.
      * @since 1.0
@@ -264,7 +264,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Generates the plantUML description footer.
-     * 
+     *
      * @return the {@link StringBuffer} containing the plantUML description footer of the current
      *         dependency type.
      * @since 1.0
@@ -275,7 +275,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Generates the plantUML description header.
-     * 
+     *
      * @return the {@link StringBuffer} containing the plantUML description header of the current
      *         dependency type.
      * @since 1.0
@@ -286,7 +286,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Generates the plantUML links description.
-     * 
+     *
      * @return the {@link StringBuffer} containing the plantUML links description of the current
      *         dependency type.
      * @since 1.0
@@ -315,7 +315,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -325,7 +325,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -337,7 +337,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * Gets the {@link Set} of all import as {@link GenericDependency} which are used by the current
      * dependency type and have to be generated in the PlantUML description. If no dependencies
      * interfaces are implemented nor extended, it returns an empty {@link Set}.
-     * 
+     *
      * @return the {@link Set} of all import as {@link GenericDependency} which are used by the
      *         current dependency type but which are not directly implemented by this one.
      * @since 1.0
@@ -358,7 +358,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -368,7 +368,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -378,7 +378,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -388,7 +388,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -401,7 +401,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -414,7 +414,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -428,7 +428,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * This method tells if the current import has to be generated in the PlantUML description or
      * not.
-     * 
+     *
      * @param genericDependency
      *            the import to test if it has to be generated or not, shouldn't be
      *            <code>null</code>.
@@ -440,7 +440,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -450,7 +450,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

@@ -2,9 +2,9 @@
  GenericDependency.java
  Creation date : 20/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
- 
+
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -37,9 +37,9 @@ import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
  * mean that an object exists, but it only contains the minimum information we can have on this
  * object at the beginning. All details are described by the underlying {@link DependencyType} when
  * it is a concrete instance.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -48,7 +48,7 @@ public interface GenericDependency extends Comparable < GenericDependency >, Ser
 
     /**
      * Gets the underlying dependency type, which determines the real nature of the dependency.
-     * 
+     *
      * @return the {@link DependencyType} instance of the current abstract dependency.
      * @since 1.0
      */
@@ -62,7 +62,7 @@ public interface GenericDependency extends Comparable < GenericDependency >, Ser
      * <i>java.io.Serializable</i><br>
      * <i>sun.font.Decoration</i>
      * </p>
-     * 
+     *
      * @return the dependency full name.
      * @since 1.0
      */
@@ -76,7 +76,7 @@ public interface GenericDependency extends Comparable < GenericDependency >, Ser
      * <i>Serializable</i><br>
      * <i>Decoration</i>
      * </p>
-     * 
+     *
      * @return the dependency name.
      * @since 1.0
      */
@@ -90,7 +90,7 @@ public interface GenericDependency extends Comparable < GenericDependency >, Ser
      * <i>java.io</i><br>
      * <i>sun.font</i>
      * </p>
-     * 
+     *
      * @return the dependency package name.
      * @since 1.0
      */
@@ -98,7 +98,7 @@ public interface GenericDependency extends Comparable < GenericDependency >, Ser
 
     /**
      * Sets the underlying dependency type, which determines the real nature of the dependency.
-     * 
+     *
      * @param value
      *            the {@link DependencyType} instance of the current abstract dependency, mustn't be
      *            <code>null</code>.

@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -35,9 +35,9 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 /**
  * The interface which describes a context shared by all dependencies which are parsed. It is mainly
  * used to save all treated dependencies but also global states.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -47,7 +47,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     /**
      * Adds in the parsed and seen dependencies in the context. If the dependency is already in the
      * context, it is replaced.
-     * 
+     *
      * @param dependency
      *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
      * @since 1.0
@@ -56,7 +56,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
 
     /**
      * Adds in the seen dependencies in the context.
-     * 
+     *
      * @param dependency
      *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
      * @since 1.0
@@ -65,7 +65,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
 
     /**
      * Gets the dependency in the context following its name.
-     * 
+     *
      * @param fullName
      *            the dependency full name to get, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance following its full name if found in the
@@ -76,7 +76,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
 
     /**
      * Gets all dependencies within the context.
-     * 
+     *
      * @return the {@link Collection} of all {@link GenericDependency} which have been associated
      *         with this context.
      * @since 1.0
@@ -85,7 +85,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
 
     /**
      * Gets all dependencies within the context.
-     * 
+     *
      * @return the {@link Collection} of all {@link GenericDependency} which have been associated
      *         with this context.
      * @since 1.0
@@ -94,7 +94,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
 
     /**
      * Tells if the following {@link Display} is managed or not by this context.
-     * 
+     *
      * @param display
      *            the {@link Display}, mustn't be <code>null</code>.
      * @return <code>true</code> if the {@link Display} is managed by the context,
@@ -106,7 +106,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     /**
      * Writes the PlantUML description output file following all dependencies and the display option
      * of the context.
-     * 
+     *
      * @param file
      *            the output file where to generate the plantUML description, mustn't be
      *            <code>null</code>.

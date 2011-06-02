@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -46,9 +46,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link PlantUMLDependencyIncludeOption}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -77,7 +77,7 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     * 
+     *
      * @throws CommandLineException
      */
     @Test
@@ -90,7 +90,7 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     * 
+     *
      * @throws CommandLineException
      */
     @Test(expected = CommandLineException.class)
@@ -103,7 +103,7 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     * 
+     *
      * @throws CommandLineException
      */
     @Test
@@ -117,7 +117,7 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     * 
+     *
      * @throws CommandLineException
      */
     @Test(expected = CommandLineException.class)
@@ -129,7 +129,7 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     * 
+     *
      * @throws CommandLineException
      */
     @Test
@@ -143,7 +143,7 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     * 
+     *
      * @throws CommandLineException
      */
     @Test
@@ -157,7 +157,7 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     * 
+     *
      * @throws CommandLineException
      */
     @Test

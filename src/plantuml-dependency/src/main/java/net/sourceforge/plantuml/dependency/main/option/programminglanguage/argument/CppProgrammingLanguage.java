@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -35,9 +35,9 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.conte
 
 /**
  * The C++ {@link ProgrammingLanguage} implementation.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -48,7 +48,7 @@ class CppProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param programmingLanguageName
      *            the programming language name to get the instance from, mustn't be
      *            <code>null</code> nor empty.
@@ -60,7 +60,7 @@ class CppProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -70,7 +70,7 @@ class CppProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

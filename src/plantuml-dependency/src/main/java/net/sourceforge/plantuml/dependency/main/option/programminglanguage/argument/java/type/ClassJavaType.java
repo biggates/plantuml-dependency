@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -50,9 +50,9 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.Inter
 
 /**
  * The class {@link JavaType} implementation.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -63,7 +63,7 @@ class ClassJavaType extends JavaType {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param programmingLanguageKeyword
      *            The java type language keyword, mustn't be <code>null</code>.
      * @since 1.0
@@ -74,7 +74,7 @@ class ClassJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -104,7 +104,7 @@ class ClassJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -129,7 +129,7 @@ class ClassJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -139,7 +139,7 @@ class ClassJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -149,7 +149,7 @@ class ClassJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
