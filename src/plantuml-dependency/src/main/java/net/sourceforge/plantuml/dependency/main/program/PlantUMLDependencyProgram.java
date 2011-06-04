@@ -41,6 +41,7 @@ import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
 import net.sourceforge.mazix.cli.exception.CommandLineException;
+import net.sourceforge.mazix.cli.exception.MissingPropertyException;
 import net.sourceforge.mazix.cli.option.impl.about.AboutOption;
 import net.sourceforge.mazix.cli.option.impl.help.HelpOption;
 import net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption;
@@ -62,7 +63,7 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.Plant
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
@@ -79,19 +80,22 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      *            command line arguments.
      * @throws IOException
      *             if any exception occurs while reading the logging or the version properties file.
-     * @throws ParseException
      * @since 1.0
      */
-    public static void main(final String[] args) throws IOException, ParseException {
+    public static void main(final String[] args) throws IOException {
         readLoggerConfigurationFromResource(LOGGING_PROPERTIES_PATH);
-        final ProgramVersion programVersion = createProgramVersionFromPropertiesFileWithinClassloader(VERSION_PROPERTIES_PATH);
 
         try {
+            final ProgramVersion programVersion = createProgramVersionFromPropertiesFileWithinClassloader(VERSION_PROPERTIES_PATH);
             final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram(programVersion);
             final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
                     .parseCommandLine(new CommandLineImpl(args));
             plantumlDependencyProgramExecution.execute();
         } catch (final CommandLineException e) {
+            LOGGER.log(SEVERE, e.getMessage(), e);
+        } catch (final ParseException e) {
+            LOGGER.log(SEVERE, e.getMessage(), e);
+        } catch (final MissingPropertyException e) {
             LOGGER.log(SEVERE, e.getMessage(), e);
         }
     }
