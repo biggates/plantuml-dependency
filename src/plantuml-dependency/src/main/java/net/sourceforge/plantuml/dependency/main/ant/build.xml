@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="OwnTaskExample" default="main" basedir=".">
+	<taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="C:\Documents and Settings\bcroizet\workspace\plantuml-dependency\target\classes;C:\Documents and Settings\bcroizet\workspace\mazix\src\mazix-components\target\classes" />
+
+	<target name="main">
+		<plantuml-dependency output="toto" verboseLevel="800" programmingLanguage="java" includes="**/*.java" excludes="**/*.java" display="classes" baseDir="c:" />
+	</target>
+</project>
