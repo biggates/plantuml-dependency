@@ -29,6 +29,7 @@ import static net.sourceforge.mazix.cli.option.status.OptionStatus.HIDDEN_OPTION
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
 
+import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.mazix.cli.command.CommandLine;
@@ -40,9 +41,9 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argum
 /**
  * The programming language option, allowing to specify the source file programming language to
  * analyze. <i>Note : no option should have the same main or secondary names</i>.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -51,24 +52,31 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
     /** Serial version UID. */
     private static final long serialVersionUID = 1482556561536453265L;
 
+    /** Option main synopsis. */
+    public static final String OPTION_MAIN_SYNOPSIS = "-l";
+
+    /** Option synopsis alias. */
+    public static final Set < String > OPTION_SYNOPSIS = unmodifiableSet(new TreeSet < String >());
+
     /** The default programming language when the option is not specified. */
     public static final ProgrammingLanguage DEFAULT_PROGRAMMING_LANGUAGE = JAVA;
 
     /**
      * Default constructor.
-     *
+     * 
      * @since 1.0
      */
     public PlantUMLDependencyProgrammingLanguageOption() {
-        super("-l", unmodifiableSet(new TreeSet < String >()), new PlantUMLDependencyProgrammingLanguageOptionArgument(
-                true), new StringBuffer(
-                "To choose the programming language to reverse engineering. If not specified, the default programming language is \""
-                        + DEFAULT_PROGRAMMING_LANGUAGE.getName() + "\"."), SPACE_CHAR, HIDDEN_OPTIONAL_OPTION_STATUS);
+        super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyProgrammingLanguageOptionArgument(true),
+                new StringBuffer(
+                        "To choose the programming language to reverse engineering. If not specified, the default programming language is \""
+                                + DEFAULT_PROGRAMMING_LANGUAGE.getName() + "\"."), SPACE_CHAR,
+                HIDDEN_OPTIONAL_OPTION_STATUS);
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -79,7 +87,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override

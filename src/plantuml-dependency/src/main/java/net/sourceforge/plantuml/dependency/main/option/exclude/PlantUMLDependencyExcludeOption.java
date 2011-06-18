@@ -29,6 +29,7 @@ import static java.util.Collections.unmodifiableSet;
 import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 
+import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.mazix.cli.command.CommandLine;
@@ -41,9 +42,9 @@ import org.apache.tools.ant.types.FileSet;
 /**
  * The exclude option, allowing to specify an exclude file pattern, like ANT. <i>Note : no option
  * should have the same main or secondary names</i>.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -52,21 +53,27 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
     /** Serial version UID. */
     private static final long serialVersionUID = -4187623575754105884L;
 
+    /** Option main synopsis. */
+    public static final String OPTION_MAIN_SYNOPSIS = "-e";
+
+    /** Option synopsis alias. */
+    public static final Set < String > OPTION_SYNOPSIS = unmodifiableSet(new TreeSet < String >(
+            asList(new String[] {"--exclude"})));
+
     /**
      * Default constructor.
-     *
+     * 
      * @since 1.0
      */
     public PlantUMLDependencyExcludeOption() {
-        super("-e", unmodifiableSet(new TreeSet < String >(asList(new String[] {"--exclude"}))),
-                new ExcludeFilePatternOptionArgumentImpl(true), new StringBuffer(
-                        "To exclude files that match the provided pattern. If not specified, no file is excluded."),
+        super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new ExcludeFilePatternOptionArgumentImpl(true), new StringBuffer(
+                "To exclude files that match the provided pattern. If not specified, no file is excluded."),
                 SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -77,7 +84,7 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override

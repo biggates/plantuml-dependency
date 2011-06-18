@@ -42,9 +42,9 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUML
 /**
  * The display option, telling the program what to display in the generated file. <i>Note : no
  * option should have the same main or secondary names</i>.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -53,21 +53,27 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
     /** Serial version UID. */
     private static final long serialVersionUID = -3061227816589361105L;
 
+    /** Option main synopsis. */
+    public static final String OPTION_MAIN_SYNOPSIS = "-d";
+
+    /** Option synopsis alias. */
+    public static final Set < String > OPTION_SYNOPSIS = unmodifiableSet(new TreeSet < String >(
+            asList(new String[] {"--display"})));
+
     /**
      * Default constructor.
-     *
+     * 
      * @since 1.0
      */
     public PlantUMLDependencyDisplayOption() {
-        super("-d", unmodifiableSet(new TreeSet < String >(asList(new String[] {"--display"}))),
-                new PlantUMLDependencyDisplayOptionArgument(true), new StringBuffer(
-                        "To specify class diagram objects to display. If not specified, the default is "
-                                + DEFAULT_DISPLAY_OPTIONS), SPACE_CHAR, HIDDEN_OPTIONAL_OPTION_STATUS);
+        super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayOptionArgument(true),
+                new StringBuffer("To specify class diagram objects to display. If not specified, the default is "
+                        + DEFAULT_DISPLAY_OPTIONS), SPACE_CHAR, HIDDEN_OPTIONAL_OPTION_STATUS);
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -78,7 +84,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override

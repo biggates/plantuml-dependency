@@ -31,6 +31,7 @@ import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 
 import java.io.File;
+import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.mazix.cli.command.CommandLine;
@@ -41,9 +42,9 @@ import net.sourceforge.mazix.cli.option.argument.impl.directory.ExistingDirector
 /**
  * The base directory option, telling the program where to look for source files. <i>Note : no
  * option should have the same main or secondary names</i>.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -52,15 +53,22 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
     /** Serial version UID. */
     private static final long serialVersionUID = 2742023948261611955L;
 
+    /** Option main synopsis. */
+    public static final String OPTION_MAIN_SYNOPSIS = "-b";
+
+    /** Option synopsis alias. */
+    public static final Set < String > OPTION_SYNOPSIS = unmodifiableSet(new TreeSet < String >(
+            asList(new String[] {"--basedir"})));
+
     /**
      * Default constructor.
-     *
+     * 
      * @since 1.0
      */
     public PlantUMLDependencyBaseDirectoryOption() {
         super(
-                "-b",
-                unmodifiableSet(new TreeSet < String >(asList(new String[] {"--basedir"}))),
+                OPTION_MAIN_SYNOPSIS,
+                OPTION_SYNOPSIS,
                 new ExistingDirectoryOptionArgumentImpl(true),
                 new StringBuffer(
                         "The base directory where to look for source files. If not specified, the default pattern is \".\" i.e. the directory where the program is launched from."),
@@ -69,7 +77,7 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -80,7 +88,7 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
