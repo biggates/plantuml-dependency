@@ -26,9 +26,9 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 
 import static java.util.Collections.unmodifiableMap;
 import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNullOrEmpty;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.UNKNOWN_PROGRAMMING_LANGUAGE_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.PROGRAMMING_LANGUAGE_FOUND_FINE;
@@ -49,7 +49,7 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.conte
 /**
  * The abstract class which describes all supported programming language which can be reverse
  * engineered.
- *
+ * 
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.0
@@ -73,7 +73,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Creates the static {@link Map} containing all {@link ProgrammingLanguage}.
-     *
+     * 
      * @return the {@link Map} of all {@link ProgrammingLanguage} as values, with their associated
      *         names as keys.
      * @since 1.0
@@ -89,7 +89,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Gets the {@link Collection} of all {@link ProgrammingLanguage}.
-     *
+     * 
      * @return the {@link Collection} of all {@link ProgrammingLanguage} available.
      * @since 1.0
      */
@@ -99,7 +99,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Gets the {@link Set} of all programming languages names.
-     *
+     * 
      * @return the {@link Set} of all programming languages names available.
      * @since 1.0
      */
@@ -116,7 +116,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
     /**
      * Gets the {@link ProgrammingLanguage} instance associated to the passed name. Throw an
      * {@link IllegalArgumentException} if the programming language name isn't recognized.
-     *
+     * 
      * @param programmingLanguageName
      *            the programming language name to get the instance from, mustn't be
      *            <code>null</code> nor empty.
@@ -124,18 +124,16 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      * @since 1.0
      */
     public static ProgrammingLanguage valueOfIgnoringCase(final String programmingLanguageName) {
+        checkNullOrEmpty(programmingLanguageName, PROGRAMMING_LANGUAGE_NAME_NULL_ERROR);
+
         ProgrammingLanguage programmingLanguage = null;
 
-        if (isEmpty(programmingLanguageName)) {
-            throw new IllegalArgumentException(PROGRAMMING_LANGUAGE_NAME_NULL_ERROR);
+        programmingLanguage = PROGRAMMING_LANGUAGE_MAP.get(programmingLanguageName.toLowerCase());
+        if (programmingLanguage == null) {
+            throw new IllegalArgumentException(buildLogString(UNKNOWN_PROGRAMMING_LANGUAGE_ERROR,
+                    programmingLanguageName));
         } else {
-            programmingLanguage = PROGRAMMING_LANGUAGE_MAP.get(programmingLanguageName.toLowerCase());
-            if (programmingLanguage == null) {
-                throw new IllegalArgumentException(buildLogString(UNKNOWN_PROGRAMMING_LANGUAGE_ERROR,
-                        programmingLanguageName));
-            } else {
-                LOGGER.fine(buildLogString(PROGRAMMING_LANGUAGE_FOUND_FINE, programmingLanguage));
-            }
+            LOGGER.fine(buildLogString(PROGRAMMING_LANGUAGE_FOUND_FINE, programmingLanguage));
         }
 
         return programmingLanguage;
@@ -146,7 +144,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Default constructor.
-     *
+     * 
      * @param programmingLanguageName
      *            the programming language name to get the instance from, mustn't be
      *            <code>null</code> nor empty.
@@ -158,7 +156,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -172,7 +170,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Create a new {@link ProgrammingLanguageContext} following the language.
-     *
+     * 
      * @param displayOpt
      *            the display option which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
@@ -183,7 +181,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -210,7 +208,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Gets the value of <code>name</code>.
-     *
+     * 
      * @return the value of <code>name</code>.
      * @see #setName(String)
      * @since 1.0
@@ -221,7 +219,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -237,7 +235,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      * {@link GenericDependency} instance. This method also modify the
      * <code>programmingLanguageContext</code> parameter by adding read objects and the parsed
      * dependencies.
-     *
+     * 
      * @param sourceFileContent
      *            the source file content as a {@link String} to read, mustn't be <code>null</code>.
      *            Should contain the expected programming language.
@@ -256,23 +254,21 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
     /**
      * Sets the value of <code>name</code>.
-     *
+     * 
      * @param value
      *            the <code>name</code> to set, can be <code>null</code>.
      * @see #getName()
      * @since 1.0
      */
     private void setName(final String value) {
-        if (isEmpty(value)) {
-            throw new IllegalArgumentException(PROGRAMMING_LANGUAGE_NAME_NULL_ERROR);
-        }
+        checkNullOrEmpty(value, PROGRAMMING_LANGUAGE_NAME_NULL_ERROR);
 
         name = value;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
