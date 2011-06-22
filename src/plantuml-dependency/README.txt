@@ -3,7 +3,9 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 
 ?, ? 2011 - 1.1.0
 ====================
-- Improving the way to get the program version, by using a properties file and managing to read a maven version pattern
+- New display option, available through the command line or the Ant task
+- Ant task available
+- Improving the way to get the program version, by using a properties file and managing to read a Maven version pattern
 
 28, May 2011 - 1.0.1
 ====================
