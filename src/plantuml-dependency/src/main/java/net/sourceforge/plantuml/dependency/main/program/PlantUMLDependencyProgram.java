@@ -29,7 +29,7 @@ import static java.util.Arrays.asList;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils.createProgramVersionFromPropertiesFileWithinClassloader;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.readLoggerConfigurationFromResource;
+import static net.sourceforge.mazix.components.utils.log.LogUtils.readLoggerConfigurationFromResourceFromClassClassLoader;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.VERSION_PROPERTIES_PATH;
 
@@ -83,7 +83,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      * @since 1.0
      */
     public static void main(final String[] args) throws IOException {
-        readLoggerConfigurationFromResource(LOGGING_PROPERTIES_PATH);
+        readLoggerConfigurationFromResourceFromClassClassLoader(LOGGING_PROPERTIES_PATH, PlantUMLDependencyProgram.class);
 
         try {
             final ProgramVersion programVersion = createProgramVersionFromPropertiesFileWithinClassloader(VERSION_PROPERTIES_PATH);

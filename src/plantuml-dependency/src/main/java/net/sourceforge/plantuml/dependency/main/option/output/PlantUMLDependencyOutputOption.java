@@ -31,7 +31,7 @@ import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTION
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.tryToReadLoggerConfigurationFromResourceAndSetLevel;
+import static net.sourceforge.mazix.components.utils.log.LogUtils.tryToReadLoggerConfigurationFromResourceAndSetLevelFromClassClassLoader;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.BASE_DIRECTORY_OPTION_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DISPLAY_OPTION_NULL_ERROR;
@@ -58,6 +58,7 @@ import net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependenc
 import net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;
+import net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram;
 
 import org.apache.tools.ant.types.FileSet;
 
@@ -229,7 +230,8 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
         OptionExecution optionExecution = null;
 
         final Level verboseLevel = getVerboseLevelOption().findAndParseArgumentOrGetDefaultArgument(commandLine);
-        tryToReadLoggerConfigurationFromResourceAndSetLevel(LOGGING_PROPERTIES_PATH, verboseLevel);
+        tryToReadLoggerConfigurationFromResourceAndSetLevelFromClassClassLoader(LOGGING_PROPERTIES_PATH, verboseLevel,
+                PlantUMLDependencyProgram.class);
 
         if (commandLine.isOptionSpecified(this)) {
             final File outputFile = findAndParseArgumentOrGetDefaultArgument(commandLine);
