@@ -129,7 +129,7 @@ public class ProgrammingLanguageTest extends ObjectTest < ProgrammingLanguage > 
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage#valueOfIgnoringCase(java.lang.String)}
      * .
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void testValueOfIgnoringCaseNull() {
         valueOfIgnoringCase(null);
     }
