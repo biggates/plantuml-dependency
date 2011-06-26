@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="OwnTaskExample" default="main" basedir=".">
-	<taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/classes;/home/graffity/workspace/mazix/src/mazix-components/target/classes;/home/graffity/workspace/mazix/src/mazix-cli/target/classes" />
+	<taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask">
+		<classpath>
+			<pathelement location="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-1.1.0-SNAPSHOT.jar" />
+			<pathelement location="/home/graffity/workspace/mazix/src/mazix-components/target/mazix-components-1.1.1-SNAPSHOT.jar" />
+			<pathelement location="/home/graffity/workspace/mazix/src/mazix-cli/target/mazix-cli-1.0.2-SNAPSHOT.jar" />
+		</classpath>
+	</taskdef>
 
 	<target name="main">
-		<plantuml-dependency output="/home/graffity/plantuml.txt" verboseLevel="800" programmingLanguage="java" includes="**/*.java" excludes="" display="" baseDir="/home/graffity/workspace/plantuml-dependency/src/main/java" />
+		<plantuml-dependency output="/home/graffity/plantuml.txt" verboseLevel="800" programmingLanguage="java" includes="**/*.java" excludes="**/PlantUMLDependencyProgram.java" display="" baseDir="/home/graffity/workspace/plantuml-dependency/src/main/java" />
 	</target>
 </project>
