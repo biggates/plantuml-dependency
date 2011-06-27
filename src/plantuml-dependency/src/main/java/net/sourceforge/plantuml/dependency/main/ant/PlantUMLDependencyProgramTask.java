@@ -118,6 +118,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
             final String[] args = createArgs(getArgsMap());
             log("Arguments : " + Arrays.toString(args));
+            // TODO main without logging
             main(args);
         } catch (final IOException e) {
             log(getStackTraceAsString(e));
