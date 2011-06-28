@@ -32,6 +32,7 @@ import static net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils.create
 import static net.sourceforge.mazix.components.utils.log.LogUtils.readLoggerConfigurationFromResourceFromClassClassLoader;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.VERSION_PROPERTIES_PATH;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PLANTUML_DEPENDENCY_ERROR;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -50,6 +51,7 @@ import net.sourceforge.mazix.cli.program.JavaProgram;
 import net.sourceforge.mazix.cli.program.execution.JavaProgramExecution;
 import net.sourceforge.mazix.cli.program.impl.JavaProgramImpl;
 import net.sourceforge.mazix.cli.program.version.ProgramVersion;
+import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
 import net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption;
 import net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption;
@@ -59,33 +61,55 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.Plant
 
 /**
  * The PlantUML dependency {@link JavaProgram} implementation.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.1.1
  */
 public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
-    /** Serial version UID. */
-    private static final long serialVersionUID = 8055066636525797910L;
-
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(PlantUMLDependencyProgram.class.getName());
 
+    /** Serial version UID. */
+    private static final long serialVersionUID = 8055066636525797910L;
+
     /**
-     * The PlantUML dependency program entry point.
-     *
+     * The PlantUML Dependency program entry point. Note that this method take an internal logging
+     * file and should be used only when the program is used as a stand alone application. If you
+     * call PlantUML Dependency from an other Java program, you should use the
+     * {@link #process(String[])} method.
+     * 
      * @param args
      *            command line arguments.
-     * @throws IOException
-     *             if any exception occurs while reading the logging or the version properties file.
+     * @throws PlantUMLDependencyException
+     *             if any error occurs when running PlantUML Dependency.
      * @since 1.0
      */
-    public static void main(final String[] args) throws IOException {
-        readLoggerConfigurationFromResourceFromClassClassLoader(LOGGING_PROPERTIES_PATH,
-                PlantUMLDependencyProgram.class);
+    public static void main(final String[] args) throws PlantUMLDependencyException {
+        try {
+            readLoggerConfigurationFromResourceFromClassClassLoader(LOGGING_PROPERTIES_PATH,
+                    PlantUMLDependencyProgram.class);
+            process(args);
+        } catch (final PlantUMLDependencyException e) {
+            LOGGER.log(SEVERE, e.getMessage());
+            throw e;
+        } catch (final IOException e) {
+            throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
+        }
+    }
 
+    /**
+     * The PlantUML Dependency program entry point.
+     * 
+     * @param args
+     *            command line arguments.
+     * @throws PlantUMLDependencyException
+     *             if any error occurs when running PlantUML Dependency.
+     * @since 1.1.1
+     */
+    public static void process(final String[] args) throws PlantUMLDependencyException {
         try {
             final ProgramVersion programVersion = createProgramVersionFromPropertiesFileWithinClassClassloader(
                     VERSION_PROPERTIES_PATH, PlantUMLDependencyProgram.class);
@@ -94,25 +118,27 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
                     .parseCommandLine(new CommandLineImpl(args));
             plantumlDependencyProgramExecution.execute();
         } catch (final CommandLineException e) {
-            LOGGER.log(SEVERE, e.getMessage(), e);
+            throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
         } catch (final ParseException e) {
-            LOGGER.log(SEVERE, e.getMessage(), e);
+            throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
         } catch (final MissingPropertyException e) {
-            LOGGER.log(SEVERE, e.getMessage(), e);
+            throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
+        } catch (final IOException e) {
+            throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
         }
     }
 
     /**
      * Default constructor.
-     *
+     * 
      * @param programVersion
      *            the current {@link ProgramVersion}, mustn't be <code>null</code>.
-     *
+     * 
      * @throws MalformedURLException
      *             if the program URL doesn't have a good format.
      * @throws CommandLineException
      *             if any exception occurs while creating the program.
-     *
+     * 
      * @since 1.0
      */
     public PlantUMLDependencyProgram(final ProgramVersion programVersion) throws MalformedURLException,

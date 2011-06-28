@@ -27,9 +27,8 @@ package net.sourceforge.plantuml.dependency.main.ant;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.utils.exception.ExceptionUtils.getStackTraceAsString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
-import static net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram.main;
+import static net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram.process;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -39,6 +38,7 @@ import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.option.impl.output.OutputOption;
 import net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption;
+import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
 import net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption;
 import net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption;
@@ -50,7 +50,7 @@ import org.apache.tools.ant.Task;
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.1.0
  * @version 1.1.0
  */
@@ -107,7 +107,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.0
      */
     @Override
@@ -118,9 +118,8 @@ public class PlantUMLDependencyProgramTask extends Task {
 
             final String[] args = createArgs(getArgsMap());
             log("Arguments : " + Arrays.toString(args));
-            // TODO main without logging
-            main(args);
-        } catch (final IOException e) {
+            process(args);
+        } catch (final PlantUMLDependencyException e) {
             log(getStackTraceAsString(e));
             throw new BuildException(e);
         }
@@ -128,7 +127,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Gets the value of <code>argsMap</code>.
-     *
+     * 
      * @return the value of <code>argsMap</code>.
      * @see #setArgsMap(Map)
      * @since 1.1.0
@@ -139,7 +138,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Gets the value of <code>baseDir</code>.
-     *
+     * 
      * @return the value of <code>baseDir</code>.
      * @see #setBaseDir(String)
      * @since 1.1.0
@@ -150,7 +149,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Gets the value of <code>display</code>.
-     *
+     * 
      * @return the value of <code>display</code>.
      * @see #setDisplay(String)
      * @since 1.1.0
@@ -161,7 +160,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Gets the value of <code>excludes</code>.
-     *
+     * 
      * @return the value of <code>excludes</code>.
      * @see #setExcludes(String)
      * @since 1.1.0
@@ -172,7 +171,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Gets the value of <code>includes</code>.
-     *
+     * 
      * @return the value of <code>includes</code>.
      * @see #setIncludes(String)
      * @since 1.1.0
@@ -183,7 +182,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Gets the value of <code>output</code>.
-     *
+     * 
      * @return the value of <code>output</code>.
      * @see #setOutput(String)
      * @since 1.1.0
@@ -194,7 +193,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Gets the value of <code>programmingLanguage</code>.
-     *
+     * 
      * @return the value of <code>programmingLanguage</code>.
      * @see #setProgrammingLanguage(String)
      * @since 1.1.0
@@ -205,7 +204,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Gets the value of <code>verboseLevel</code>.
-     *
+     * 
      * @return the value of <code>verboseLevel</code>.
      * @see #setVerboseLevel(String)
      * @since 1.1.0
@@ -234,7 +233,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Sets the value of <code>baseDir</code>.
-     *
+     * 
      * @param value
      *            the <code>baseDir</code> to set, can be <code>null</code>.
      * @see #getBaseDir()
@@ -246,7 +245,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Sets the value of <code>display</code>.
-     *
+     * 
      * @param value
      *            the <code>display</code> to set, can be <code>null</code>.
      * @see #getDisplay()
@@ -258,7 +257,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Sets the value of <code>excludes</code>.
-     *
+     * 
      * @param value
      *            the <code>excludes</code> to set, can be <code>null</code>.
      * @see #getExcludes()
@@ -270,7 +269,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Sets the value of <code>includes</code>.
-     *
+     * 
      * @param value
      *            the <code>includes</code> to set, can be <code>null</code>.
      * @see #getIncludes()
@@ -282,7 +281,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Sets the value of <code>output</code>.
-     *
+     * 
      * @param value
      *            the <code>output</code> to set, can be <code>null</code>.
      * @see #getOutput()
@@ -294,7 +293,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Sets the value of <code>programmingLanguage</code>.
-     *
+     * 
      * @param value
      *            the <code>programmingLanguage</code> to set, can be <code>null</code>.
      * @see #getProgrammingLanguage()
@@ -306,7 +305,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * Sets the value of <code>verboseLevel</code>.
-     *
+     * 
      * @param value
      *            the <code>verboseLevel</code> to set, can be <code>null</code>.
      * @see #getVerboseLevel()
@@ -318,7 +317,7 @@ public class PlantUMLDependencyProgramTask extends Task {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.0
      */
     @Override
