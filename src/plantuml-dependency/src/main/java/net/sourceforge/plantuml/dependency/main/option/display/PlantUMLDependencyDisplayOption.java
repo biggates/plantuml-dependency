@@ -42,9 +42,9 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUML
 /**
  * The display option, telling the program what to display in the generated file. <i>Note : no
  * option should have the same main or secondary names</i>.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -62,7 +62,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
 
     /**
      * Default constructor.
-     * 
+     *
      * @since 1.0
      */
     public PlantUMLDependencyDisplayOption() {
@@ -73,7 +73,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -84,7 +84,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

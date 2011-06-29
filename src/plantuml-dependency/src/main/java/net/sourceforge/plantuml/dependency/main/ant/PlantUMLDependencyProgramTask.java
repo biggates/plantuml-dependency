@@ -113,7 +113,7 @@ public class PlantUMLDependencyProgramTask extends Task {
      * @since 1.1.0
      */
     @Override
-    public void execute() throws BuildException {
+    public void execute() {
         try {
             final String[] args = createArgs(getArgsMap());
             process(args);

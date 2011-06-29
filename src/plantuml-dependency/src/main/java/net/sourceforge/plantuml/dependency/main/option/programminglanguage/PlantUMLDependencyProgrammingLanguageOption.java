@@ -41,9 +41,9 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argum
 /**
  * The programming language option, allowing to specify the source file programming language to
  * analyze. <i>Note : no option should have the same main or secondary names</i>.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -63,7 +63,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
 
     /**
      * Default constructor.
-     * 
+     *
      * @since 1.0
      */
     public PlantUMLDependencyProgrammingLanguageOption() {
@@ -76,7 +76,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -87,7 +87,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

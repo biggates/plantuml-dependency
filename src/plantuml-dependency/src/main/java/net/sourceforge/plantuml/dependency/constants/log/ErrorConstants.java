@@ -27,7 +27,7 @@ package net.sourceforge.plantuml.dependency.constants.log;
 /**
  * The class which defines all error messages constants which are written in the log file. The
  * messages also contains the error code.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0
  * @version 1.0
@@ -111,7 +111,7 @@ public final class ErrorConstants {
 
     /** The reading source file error message. */
     public static final String READING_SOURCE_FILE_ERROR = "[error-plantuml-dependency-025] : Severe parsing errors have occurred while reading the source file \"{0}\", the file will be ignored";
-    
+
     /** The unknown programming language error message. */
     public static final String UNKNOWN_JAVA_TYPE_ERROR = "[error-plantuml-dependency-026] : The java type \"{0}\" is unknown";
 
@@ -120,7 +120,7 @@ public final class ErrorConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     * 
+     *
      * @since 1.0
      */
     private ErrorConstants() {

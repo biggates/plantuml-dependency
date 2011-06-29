@@ -54,7 +54,7 @@ import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 /**
  * The abstract class which describes all existing java types such as classes, interfaces and
  * enumerations.
- * 
+ *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.0
@@ -84,7 +84,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /**
      * Creates the static {@link Map} containing all {@link JavaType}.
-     * 
+     *
      * @return the {@link Map} of all {@link JavaType} as values, with their associated language
      *         keyword as keys.
      * @since 1.0
@@ -101,7 +101,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /**
      * Gets the {@link Collection} of all {@link JavaType}.
-     * 
+     *
      * @return the {@link Collection} of all {@link JavaType} available.
      * @since 1.0
      */
@@ -112,7 +112,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * Gets the {@link JavaType} instance associated to the passed java type language keyword. Throw
      * an {@link IllegalArgumentException} if the java type name isn't recognized.
-     * 
+     *
      * @param javaTypeKeyword
      *            the java type language keyword to get the instance from, mustn't be
      *            <code>null</code> nor empty.
@@ -138,7 +138,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /**
      * Default constructor.
-     * 
+     *
      * @param programmingLanguageKeyword
      *            The java type language keyword, mustn't be <code>null</code>.
      * @since 1.0
@@ -149,7 +149,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -164,7 +164,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * Creates the {@link DependencyType} instance associated to the current java type following
      * passed parameters.
-     * 
+     *
      * @param dependencyName
      *            the dependency name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -194,7 +194,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * Creates the parent {@link DependencyType} instance associated to the current java type
      * following the {@link JavaParentType} and passed parameters.
-     * 
+     *
      * @param parentType
      *            the {@link JavaParentType} instance, mustn't be <code>null</code>.
      * @param parentName
@@ -213,7 +213,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -241,7 +241,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * Parses and extracts the java source file content to know if it contains links to native code
      * through native methods.
-     * 
+     *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
@@ -254,7 +254,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * Parses and extracts the {@link Set} of parent dependency names of type
      * {@link JavaParentType#EXTENSION} from the passed {@link String}.
-     * 
+     *
      * @param extendsString
      *            the {@link String} which describes the dependencies which are extended by the
      *            current java type.
@@ -274,7 +274,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * Parses and extracts the {@link Set} of parent dependency names of type
      * {@link JavaParentType#IMPLEMENTATION} from the passed {@link String}.
-     * 
+     *
      * @param implementsString
      *            the {@link String} which describes the dependencies which are implemented by the
      *            current java type.
@@ -295,7 +295,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * Generic method to parse and extract the {@link Set} of parent dependency names of any type
      * from the passed {@link String}.
-     * 
+     *
      * @param parentsString
      *            the {@link String} which describes the parents dependencies of the current java
      *            type.
@@ -325,7 +325,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /**
      * Gets the value of <code>languageKeyword</code>.
-     * 
+     *
      * @return the value of <code>languageKeyword</code>.
      * @since 1.0
      */
@@ -335,7 +335,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -348,7 +348,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /**
      * Sets the value of <code>languageKeyword</code>.
-     * 
+     *
      * @param value
      *            the <code>languageKeyword</code> to set, can be <code>null</code>.
      * @see #getLanguageKeyword()
@@ -362,7 +362,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

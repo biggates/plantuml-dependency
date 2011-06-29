@@ -27,7 +27,7 @@ package net.sourceforge.plantuml.dependency.constants.log;
 /**
  * The class which defines all fine messages constants which are only written in the log file. The
  * messages also contains the fine code.
- * 
+ *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.0
@@ -69,7 +69,7 @@ public final class FineConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     * 
+     *
      * @since 0.7
      */
     private FineConstants() {

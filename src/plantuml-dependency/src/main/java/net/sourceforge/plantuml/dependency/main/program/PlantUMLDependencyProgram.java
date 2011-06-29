@@ -67,9 +67,9 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.Plant
 
 /**
  * The PlantUML dependency {@link JavaProgram} implementation.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.0
  */
@@ -86,7 +86,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      * file and should be used only when the program is used as a stand alone application. If you
      * call PlantUML Dependency from an other Java program, you should use the
      * {@link #process(String[])} method.
-     * 
+     *
      * @param args
      *            command line arguments.
      * @throws PlantUMLDependencyException
@@ -108,7 +108,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
     /**
      * The PlantUML Dependency program entry point.
-     * 
+     *
      * @param args
      *            command line arguments.
      * @throws PlantUMLDependencyException
@@ -142,15 +142,15 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param programVersion
      *            the current {@link ProgramVersion}, mustn't be <code>null</code>.
-     * 
+     *
      * @throws MalformedURLException
      *             if the program URL doesn't have a good format.
      * @throws CommandLineException
      *             if any exception occurs while creating the program.
-     * 
+     *
      * @since 1.0
      */
     public PlantUMLDependencyProgram(final ProgramVersion programVersion) throws MalformedURLException,

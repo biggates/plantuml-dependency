@@ -42,9 +42,9 @@ import net.sourceforge.mazix.cli.option.argument.impl.directory.ExistingDirector
 /**
  * The base directory option, telling the program where to look for source files. <i>Note : no
  * option should have the same main or secondary names</i>.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -62,7 +62,7 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
 
     /**
      * Default constructor.
-     * 
+     *
      * @since 1.0
      */
     public PlantUMLDependencyBaseDirectoryOption() {
@@ -77,7 +77,7 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -88,7 +88,7 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

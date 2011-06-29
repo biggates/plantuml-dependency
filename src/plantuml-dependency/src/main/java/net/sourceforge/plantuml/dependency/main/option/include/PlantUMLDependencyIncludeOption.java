@@ -46,9 +46,9 @@ import org.apache.tools.ant.types.FileSet;
 /**
  * The include option, allowing to specify an include file pattern, like ANT. <i>Note : no option
  * should have the same main or secondary names</i>.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -69,7 +69,7 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
 
     /**
      * Default constructor.
-     * 
+     *
      * @param programmingLanguageOpt
      *            the {@link PlantUMLDependencyProgrammingLanguageOption} instance, to know what is
      *            the programming language to parse, mustn't be <code>null</code>.
@@ -89,7 +89,7 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -100,7 +100,7 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -111,7 +111,7 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
 
     /**
      * Gets the value of <code>programmingLanguageOption</code>.
-     * 
+     *
      * @return the value of <code>programmingLanguageOption</code>.
      * @see #setProgrammingLanguageOption(PlantUMLDependencyProgrammingLanguageOption)
      * @since 1.0
@@ -122,7 +122,7 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
 
     /**
      * Sets the value of <code>programmingLanguageOption</code>.
-     * 
+     *
      * @param value
      *            the <code>programmingLanguageOption</code> to set, can be <code>null</code>.
      * @see #getProgrammingLanguageOption()
