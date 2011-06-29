@@ -1,22 +1,22 @@
 /* ==============================================
    FEUILLE DE STYLES DES GABARITS HTML/CSS --- 04
-   © Elephorm & Alsacreations.com
+   ï¿½ Elephorm & Alsacreations.com
    Conditions d'utilisation:
    http://creativecommons.org/licenses/by/2.0/fr/
-   
-   Retravaillé par Raphaël Cotisson
+
+   Retravaillï¿½ par Raphaï¿½l Cotisson
    ============================================== */
 
 
 /* --- COULEURS --- */
 
 /* Note: vous pouvez modifier simplement l'aspect de ce gabarit en modifiant
-   uniquement les couleurs de fond (propriétés background) et les couleurs
-   du texte (propriété color).
+   uniquement les couleurs de fond (propriï¿½tï¿½s background) et les couleurs
+   du texte (propriï¿½tï¿½ color).
    Pour modifier la disposition des blocs, voir plus bas dans la feuille de
-   styles la partie «positionnement». */
+   styles la partie ï¿½positionnementï¿½. */
 
-/* Général */
+/* Gï¿½nï¿½ral */
 body {
 	color: #F0E39E;
 	background: #FFFFFF;
@@ -65,7 +65,7 @@ body {
 	padding: 15px 15px; /* Voir -> Note 1 ci-dessous */
 }
 
-/* En-tête */
+/* En-tï¿½te */
 #en_tete {
 	padding: 20px 0 60px 0;
 	background-image: url("images/chaine_puy_auvergne.png");
@@ -118,7 +118,7 @@ body {
 }
 
 
-/* Mention de paternité */
+/* Mention de paternitï¿½ */
 #pied_de_page {
 	margin-left: 20%;
 	color: #000000;
@@ -131,10 +131,8 @@ body {
 }
 
 .scriptplantu{
-	align: left;
 	font-family: "Courier New";
 	font-size: 12px;
-	
 }
 
 
@@ -145,29 +143,29 @@ body {
 
 /* --- NOTES ---
 
-1.	Ce gabarit utilise du padding sur l'élément BODY pour créer un retrait
-	esthétique tout autour du conteneur principal.
+1.	Ce gabarit utilise du padding sur l'ï¿½lï¿½ment BODY pour crï¿½er un retrait
+	esthï¿½tique tout autour du conteneur principal.
 	Rappel: "padding: 20px 50px;" se lit ainsi:
 	- padding-top et padding-bottom de 20px;
 	- padding-left et padding-right de 50px.
 
-2.	C'est la propriété "float" qui nous permet de placer deux blocs
-	côte-à-côte. Notez bien que l'élément flottant (ici, notre menu de
-	navigation) doit être placé en premier dans le code HTML. Il est
-	préférable de lui donner une largeur, ce que nous faisons ici avec un
+2.	C'est la propriï¿½tï¿½ "float" qui nous permet de placer deux blocs
+	cï¿½te-ï¿½-cï¿½te. Notez bien que l'ï¿½lï¿½ment flottant (ici, notre menu de
+	navigation) doit ï¿½tre placï¿½ en premier dans le code HTML. Il est
+	prï¿½fï¿½rable de lui donner une largeur, ce que nous faisons ici avec un
 	"width: 18%;".
 
-3.	Correction d'un bug d'Internet Explorer 6. Voir la dernière partie de
+3.	Correction d'un bug d'Internet Explorer 6. Voir la derniï¿½re partie de
 	http://blog.alsacreations.com/2006/10/20/294-impact-sur-le-rendu-de-la-
 	mise-en-forme-du-code-html
-	Dans l'idéal, on placera ce correctif dans une feuille séparée, appelée
+	Dans l'idï¿½al, on placera ce correctif dans une feuille sï¿½parï¿½e, appelï¿½e
 	via un commentaire conditionnel visant IE6.
 
-4.	Les éléments flottants ne repoussent pas les blocs, mais repoussent
+4.	Les ï¿½lï¿½ments flottants ne repoussent pas les blocs, mais repoussent
 	uniquement leur contenu. Pour que notre bloc de contenu principal forme
-	une colonne distincte du menu, on lui donne donc une marge à gauche de 20%.
+	une colonne distincte du menu, on lui donne donc une marge ï¿½ gauche de 20%.
 	Il existe une autre technique pour adapter la largeur d'un bloc aux
-	flottants qui le précèdent. On pourra lire l'article suivant:
+	flottants qui le prï¿½cï¿½dent. On pourra lire l'article suivant:
 		http://css.alsacreations.com/Faire-une-mise-en-page-sans-tableaux/
 		design-trois-colonnes-positionnement-flottant
 
