@@ -66,11 +66,11 @@ import org.apache.tools.ant.types.FileSet;
  * The output option, allowing to specify an output file, processing the input source files and
  * generating the plantUML description. <i>Note : no option should have the same main or secondary
  * names</i>.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
- * @version 1.0
+ * @version 1.1.0
  */
 public class PlantUMLDependencyOutputOption extends OutputOption implements ExecutableOption {
 
@@ -103,7 +103,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Default constructor.
-     *
+     * 
      * @param verboseLvlOpt
      *            the {@link VerboseLevelOption} instance, to display log information, mustn't be
      *            <code>null</code>.
@@ -146,7 +146,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Gets the value of <code>baseDirOption</code>.
-     *
+     * 
      * @return the value of <code>baseDirOption</code>.
      * @see #setBaseDirOption(PlantUMLDependencyBaseDirectoryOption)
      * @since 1.0
@@ -157,7 +157,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Gets the value of <code>displayOption</code>.
-     *
+     * 
      * @return the value of <code>displayOption</code>.
      * @see #setDisplayOption(PlantUMLDependencyDisplayOption)
      * @since 1.0
@@ -168,7 +168,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Gets the value of <code>excludeOption</code>.
-     *
+     * 
      * @return the value of <code>excludeOption</code>.
      * @see #setExcludeOption(PlantUMLDependencyExcludeOption)
      * @since 1.0
@@ -179,7 +179,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Gets the value of <code>includeOption</code>.
-     *
+     * 
      * @return the value of <code>includeOption</code>.
      * @see #setIncludeOption(PlantUMLDependencyIncludeOption)
      * @since 1.0
@@ -190,7 +190,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -200,7 +200,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Gets the value of <code>programmingLanguageOption</code>.
-     *
+     * 
      * @return the value of <code>programmingLanguageOption</code>.
      * @see #setProgrammingLanguageOption(PlantUMLDependencyProgrammingLanguageOption)
      * @since 1.0
@@ -211,7 +211,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Gets the value of <code>verboseLevelOption</code>.
-     *
+     * 
      * @return the value of <code>verboseLevelOption</code>.
      * @see #setVerboseLevelOption(VerboseLevelOption)
      * @since 1.0
@@ -222,7 +222,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -255,7 +255,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Sets the value of <code>baseDirOption</code>.
-     *
+     * 
      * @param value
      *            the <code>baseDirOption</code> to set, can be <code>null</code>.
      * @see #getBaseDirOption()
@@ -269,7 +269,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Sets the value of <code>displayOption</code>.
-     *
+     * 
      * @param value
      *            the <code>displayOption</code> to set, can be <code>null</code>.
      * @see #getDisplayOption()
@@ -283,7 +283,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Sets the value of <code>excludeOption</code>.
-     *
+     * 
      * @param value
      *            the <code>excludeOption</code> to set, can be <code>null</code>.
      * @see #getExcludeOption()
@@ -297,7 +297,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Sets the value of <code>includeOption</code>.
-     *
+     * 
      * @param value
      *            the <code>includeOption</code> to set, can be <code>null</code>.
      * @see #getIncludeOption()
@@ -311,7 +311,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Sets the value of <code>priority</code>.
-     *
+     * 
      * @param value
      *            the <code>priority</code> to set.
      * @see #getPriority()
@@ -323,7 +323,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Sets the value of <code>programmingLanguageOption</code>.
-     *
+     * 
      * @param value
      *            the <code>programmingLanguageOption</code> to set, can be <code>null</code>.
      * @see #getProgrammingLanguageOption()
@@ -337,7 +337,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
     /**
      * Sets the value of <code>verboseLevelOption</code>.
-     *
+     * 
      * @param value
      *            the <code>verboseLevelOption</code> to set, can be <code>null</code>.
      * @see #getVerboseLevelOption()

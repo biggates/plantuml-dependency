@@ -30,7 +30,6 @@ import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmp
 import static net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram.process;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,12 +111,8 @@ public class PlantUMLDependencyProgramTask extends Task {
      */
     @Override
     public void execute() throws BuildException {
-        super.execute();
-        log("Starting PlantUML Dependency");
         try {
-
             final String[] args = createArgs(getArgsMap());
-            log("Arguments : " + Arrays.toString(args));
             process(args);
         } catch (final PlantUMLDependencyException e) {
             log(getStackTraceAsString(e));

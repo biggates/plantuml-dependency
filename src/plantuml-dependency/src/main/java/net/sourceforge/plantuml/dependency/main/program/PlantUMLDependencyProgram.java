@@ -24,20 +24,26 @@
 
 package net.sourceforge.plantuml.dependency.main.program;
 
+import static java.lang.System.currentTimeMillis;
 import static java.lang.System.getProperty;
 import static java.util.Arrays.asList;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils.createProgramVersionFromPropertiesFileWithinClassClassloader;
+import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.readLoggerConfigurationFromResourceFromClassClassLoader;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.VERSION_PROPERTIES_PATH;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PLANTUML_DEPENDENCY_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.EXECUTION_TIME_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.PLANTUML_DEPENDENCY_ARGUMENTS_INFO;
+import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.STARTING_PLANTUML_DEPENDENCY_INFO;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
@@ -65,7 +71,7 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.Plant
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.0
- * @version 1.1.1
+ * @version 1.1.0
  */
 public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
@@ -110,6 +116,10 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      * @since 1.1.1
      */
     public static void process(final String[] args) throws PlantUMLDependencyException {
+        final long start = currentTimeMillis();
+        LOGGER.info(STARTING_PLANTUML_DEPENDENCY_INFO);
+        LOGGER.info(buildLogString(PLANTUML_DEPENDENCY_ARGUMENTS_INFO, Arrays.toString(args)));
+
         try {
             final ProgramVersion programVersion = createProgramVersionFromPropertiesFileWithinClassClassloader(
                     VERSION_PROPERTIES_PATH, PlantUMLDependencyProgram.class);
@@ -126,6 +136,8 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         } catch (final IOException e) {
             throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
         }
+
+        LOGGER.info(buildLogString(EXECUTION_TIME_INFO, (currentTimeMillis() - start)));
     }
 
     /**
