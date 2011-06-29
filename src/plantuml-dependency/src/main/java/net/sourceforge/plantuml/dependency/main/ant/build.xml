@@ -5,6 +5,6 @@
 
 	<!-- process "/home" directory to output "/home/plantuml.txt" file -->
 	<target name="main">
-		<plantuml-dependency output="/home/plantuml.txt" verboseLevel="800" includes="**/*.java" excludes="**/PlantUMLDependencyProgram.java" baseDir="/home" />
+		<plantuml-dependency output="/home/graffity/plantuml.txt" verboseLevel="800" includes="**/*.java" excludes="**/PlantUMLDependencyProgram.java" baseDir="/home/graffity/workspace/plantuml-dependency" />
 	</target>
 </project>
