@@ -3,8 +3,8 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 
 ?, ? 2011 - 1.1.0
 ====================
-- New display option, available through the command line or the Ant task
 - Ant task available
+- Correction a bug with the verbose level option, which was reloading the "logging.properties" file configuration
 - Improving the way to get the program version, by using a properties file and managing to read a Maven version pattern
 
 28, May 2011 - 1.0.1
@@ -50,7 +50,7 @@ where optional options are:
 
 	-v, --verbose [VERBOSE_LEVEL]
 		To display log information.
-		VERBOSE_LEVEL specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300. By default, if not set, the value "INFO":800 is taken.
+		VERBOSE_LEVEL specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300. By default, if the verbose option is specified but the level is not set, the value "INFO":800 is taken.
 
 	-version
 		To display versions information about PlantUML Dependency and Java.
