@@ -36,6 +36,7 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.EN
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.FILE_NULL_ERROR;
 
 import java.io.File;
 import java.util.Collection;
@@ -55,7 +56,7 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.0
  */
 public abstract class AbstractProgrammingLanguageContext implements ProgrammingLanguageContext {
 
@@ -397,9 +398,11 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      */
     @Override
     public void writePlantUMLFile(final File file) {
+        checkNull(file, FILE_NULL_ERROR);
+
         final StringBuffer buffer = new StringBuffer(START_PLANTUML);
 
-        // TODO 1 boucle avec 2 string buffer que l'on concatene
+        // TODO one "for" loop with 2 concatenated string buffer
         for (final GenericDependency abstractDependency : getParsedAndSeenDependencies()) {
             buffer.append(abstractDependency.getDependencyType().getPlantUMLDeclaration());
         }

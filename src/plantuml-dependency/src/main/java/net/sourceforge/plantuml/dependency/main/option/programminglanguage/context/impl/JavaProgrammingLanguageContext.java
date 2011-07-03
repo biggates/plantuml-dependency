@@ -38,7 +38,7 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.conte
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.0
  */
 public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageContext {
 
@@ -70,8 +70,9 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
      * Medium constructor.
      *
      * @param parsedAndSeenDependencies
-     *            the original {@link Set} of {@link GenericDependency} to put in the context,
-     *            mustn't be <code>null</code>.
+     *            the original {@link Set} of {@link GenericDependency} which have been seen (as
+     *            import for instance) and parsed to put in the context, mustn't be
+     *            <code>null</code>.
      * @param displayOpt
      *            the display options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
@@ -86,11 +87,12 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
      * Full constructor.
      *
      * @param parsedAndSeenDependencies
-     *            the original {@link Set} of {@link GenericDependency} to put in the context,
-     *            mustn't be <code>null</code>.
+     *            the original {@link Set} of {@link GenericDependency} which have been seen (as
+     *            import for instance) and parsed to put in the context, mustn't be
+     *            <code>null</code>.
      * @param parsedDependencies
-     *            the original {@link Set} of {@link GenericDependency} to put in the context,
-     *            mustn't be <code>null</code>.
+     *            the original {@link Set} of {@link GenericDependency} which have been parsed to
+     *            put in the context, mustn't be <code>null</code>.
      * @param displayOpt
      *            the display options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.

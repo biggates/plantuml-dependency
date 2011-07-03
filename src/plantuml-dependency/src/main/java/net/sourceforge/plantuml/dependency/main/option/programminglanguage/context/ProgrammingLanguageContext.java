@@ -39,7 +39,7 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.0
  */
 public interface ProgrammingLanguageContext extends Comparable < ProgrammingLanguageContext >, Serializable,
         DeepCloneable < ProgrammingLanguageContext > {
@@ -75,19 +75,20 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     GenericDependency getDependencies(String fullName);
 
     /**
-     * Gets all dependencies within the context.
+     * Gets all dependencies which have been seen (as import for instance) and parsed within the
+     * context.
      *
-     * @return the {@link Collection} of all {@link GenericDependency} which have been associated
-     *         with this context.
+     * @return the {@link Collection} of all {@link GenericDependency} which have been seen (as
+     *         import for instance) and parsed and associated with this context.
      * @since 1.0
      */
     Collection < GenericDependency > getParsedAndSeenDependencies();
 
     /**
-     * Gets all dependencies within the context.
+     * Gets all dependencies which have been parsed within the context.
      *
-     * @return the {@link Collection} of all {@link GenericDependency} which have been associated
-     *         with this context.
+     * @return the {@link Collection} of all {@link GenericDependency} which have been parsed and
+     *         associated with this context.
      * @since 1.0
      */
     Collection < GenericDependency > getParsedDependencies();
