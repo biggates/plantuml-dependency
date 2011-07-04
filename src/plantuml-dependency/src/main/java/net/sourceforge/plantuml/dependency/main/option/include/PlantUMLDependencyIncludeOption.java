@@ -29,6 +29,7 @@ import static java.util.Collections.unmodifiableSet;
 import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_INCLUDE_OPTIONS;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
 
@@ -95,7 +96,8 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
     @Override
     public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return "**/*." + getProgrammingLanguageOption().findAndParseArgumentOrGetDefaultArgument(commandLine).getName();
+        return DEFAULT_INCLUDE_OPTIONS
+                + getProgrammingLanguageOption().findAndParseArgumentOrGetDefaultArgument(commandLine).getName();
     }
 
     /**
@@ -106,7 +108,8 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
     @Override
     public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return "**/*." + getProgrammingLanguageOption().findAndParseArgumentOrGetDefaultArgument(commandLine).getName();
+        return DEFAULT_INCLUDE_OPTIONS
+                + getProgrammingLanguageOption().findAndParseArgumentOrGetDefaultArgument(commandLine).getName();
     }
 
     /**

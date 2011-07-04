@@ -62,27 +62,6 @@ public class PlantUMLDependencyProgramTask extends Task {
      */
     private final Map < String, String > argsMap = new HashMap < String, String >();
 
-    /** The base directory option. */
-    private String baseDir;
-
-    /** The display option. */
-    private String display;
-
-    /** The exclude option. */
-    private String excludes;
-
-    /** The include option. */
-    private String includes;
-
-    /** The output option. */
-    private String output;
-
-    /** The programming language option. */
-    private String programmingLanguage;
-
-    /** The verbose option. */
-    private String verboseLevel;
-
     /**
      * Creates the array of {@link String} arguments to call PlantUML Dependency.
      *
@@ -302,8 +281,8 @@ public class PlantUMLDependencyProgramTask extends Task {
      */
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [output=" + output + ", verboseLevel=" + verboseLevel
-                + ", programmingLanguage=" + programmingLanguage + ", includes=" + includes + ", excludes=" + excludes
-                + ", display=" + display + ", baseDir=" + baseDir + "]";
+        return getClass().getSimpleName() + " [output=" + getOutput() + ", verboseLevel=" + getVerboseLevel()
+                + ", programmingLanguage=" + getProgrammingLanguage() + ", includes=" + getIncludes() + ", excludes="
+                + getExcludes() + ", display=" + getDisplay() + ", baseDir=" + getBaseDir() + "]";
     }
 }

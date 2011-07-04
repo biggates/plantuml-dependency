@@ -43,7 +43,7 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDe
  *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
- * @version 1.0
+ * @version 1.1.0
  */
 public final class PlantUMLDependencyConstants {
 
@@ -51,6 +51,12 @@ public final class PlantUMLDependencyConstants {
     public static final String DEFAULT_DISPLAY_OPTIONS = CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS
             + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR
             + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS;
+
+    /** The default exclude options to apply if not specified. */
+    public static final String DEFAULT_EXCLUDE_OPTIONS = "**/*~";
+
+    /** The default include options to apply if not specified. */
+    public static final String DEFAULT_INCLUDE_OPTIONS = "**/*.";
 
     /** The string representing the "java.lang" package. */
     public static final String JAVA_LANG_PACKAGE = "java.lang";

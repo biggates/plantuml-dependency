@@ -24,11 +24,20 @@
 
 package net.sourceforge.plantuml.dependency.main.ant;
 
-import static org.junit.Assert.*;
+import static java.util.logging.Level.INFO;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.mazix.components.constants.CommonFileConstants.TXT_EXTENSION;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_EXCLUDE_OPTIONS;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_INCLUDE_OPTIONS;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 /**
+ * JUnit test classes for {@link PlantUMLDependencyProgramTask}.
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.1.0
@@ -36,131 +45,203 @@ import org.junit.Test;
  */
 public class PlantUMLDependencyProgramTaskTest {
 
+    /** PlantUML Dependency test 1 instance. */
+    public static final PlantUMLDependencyProgramTask PLANTUML_DEPENDENCY_TASK1 = new PlantUMLDependencyProgramTask();
+
+    /** PlantUML Dependency test 1 instance. */
+    public static final PlantUMLDependencyProgramTask PLANTUML_DEPENDENCY_TASK2 = createPlantUMLDependencyTask1();
+
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#execute()}.
+     * Creates a {@link PlantUMLDependencyProgramTask} test instance.
+     *
+     * @return a {@link PlantUMLDependencyProgramTask} test instance.
+     * @since 1.1.0
+     */
+    private static PlantUMLDependencyProgramTask createPlantUMLDependencyTask1() {
+        final PlantUMLDependencyProgramTask task = new PlantUMLDependencyProgramTask();
+        task.setBaseDir(DOT_CHAR);
+        task.setDisplay(DEFAULT_DISPLAY_OPTIONS);
+        task.setExcludes(DEFAULT_EXCLUDE_OPTIONS);
+        task.setIncludes(DEFAULT_INCLUDE_OPTIONS + DEFAULT_PROGRAMMING_LANGUAGE.getName());
+        task.setOutput("plantuml" + TXT_EXTENSION);
+        task.setProgrammingLanguage(DEFAULT_PROGRAMMING_LANGUAGE.getName());
+        task.setVerboseLevel(INFO.getName());
+        return task;
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#execute()}.
      */
     @Test
     public void testExecute() {
-        fail("Not yet implemented");
+        // TODO finish with all options and compare generated files such as the Program
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getBaseDir()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getBaseDir()}
+     * .
      */
     @Test
     public void testGetBaseDir() {
-        fail("Not yet implemented");
+        assertEquals(DOT_CHAR, PLANTUML_DEPENDENCY_TASK2.getBaseDir());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getDisplay()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getDisplay()}
+     * .
      */
     @Test
     public void testGetDisplay() {
-        fail("Not yet implemented");
+        assertEquals(DEFAULT_DISPLAY_OPTIONS, PLANTUML_DEPENDENCY_TASK2.getDisplay());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getExcludes()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getExcludes()}
+     * .
      */
     @Test
     public void testGetExcludes() {
-        fail("Not yet implemented");
+        assertEquals(DEFAULT_EXCLUDE_OPTIONS, PLANTUML_DEPENDENCY_TASK2.getExcludes());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getIncludes()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getIncludes()}
+     * .
      */
     @Test
     public void testGetIncludes() {
-        fail("Not yet implemented");
+        assertEquals(DEFAULT_INCLUDE_OPTIONS + DEFAULT_PROGRAMMING_LANGUAGE.getName(), PLANTUML_DEPENDENCY_TASK2
+                .getIncludes());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getOutput()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getOutput()}
+     * .
      */
     @Test
     public void testGetOutput() {
-        fail("Not yet implemented");
+        assertEquals("plantuml" + TXT_EXTENSION, PLANTUML_DEPENDENCY_TASK2.getOutput());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getProgrammingLanguage()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getProgrammingLanguage()}
+     * .
      */
     @Test
     public void testGetProgrammingLanguage() {
-        fail("Not yet implemented");
+        assertEquals(DEFAULT_PROGRAMMING_LANGUAGE.getName(), PLANTUML_DEPENDENCY_TASK2.getProgrammingLanguage());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getVerboseLevel()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#getVerboseLevel()}
+     * .
      */
     @Test
     public void testGetVerboseLevel() {
-        fail("Not yet implemented");
+        assertEquals(INFO.getName(), PLANTUML_DEPENDENCY_TASK2.getVerboseLevel());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setBaseDir(java.lang.String)}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setBaseDir(java.lang.String)}
+     * .
      */
     @Test
     public void testSetBaseDir() {
-        fail("Not yet implemented");
+        final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
+        testTask.setBaseDir(DOT_CHAR);
+        assertEquals(DOT_CHAR, testTask.getBaseDir());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setDisplay(java.lang.String)}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setDisplay(java.lang.String)}
+     * .
      */
     @Test
     public void testSetDisplay() {
-        fail("Not yet implemented");
+        final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
+        testTask.setDisplay(DEFAULT_DISPLAY_OPTIONS);
+        assertEquals(DEFAULT_DISPLAY_OPTIONS, testTask.getDisplay());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setExcludes(java.lang.String)}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setExcludes(java.lang.String)}
+     * .
      */
     @Test
     public void testSetExcludes() {
-        fail("Not yet implemented");
+        final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
+        testTask.setExcludes(DEFAULT_EXCLUDE_OPTIONS);
+        assertEquals(DEFAULT_EXCLUDE_OPTIONS, testTask.getExcludes());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setIncludes(java.lang.String)}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setIncludes(java.lang.String)}
+     * .
      */
     @Test
     public void testSetIncludes() {
-        fail("Not yet implemented");
+        final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
+        testTask.setIncludes(DEFAULT_INCLUDE_OPTIONS + DEFAULT_PROGRAMMING_LANGUAGE.getName());
+        assertEquals(DEFAULT_INCLUDE_OPTIONS + DEFAULT_PROGRAMMING_LANGUAGE.getName(), testTask.getIncludes());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setOutput(java.lang.String)}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setOutput(java.lang.String)}
+     * .
      */
     @Test
     public void testSetOutput() {
-        fail("Not yet implemented");
+        final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
+        testTask.setOutput("plantuml" + TXT_EXTENSION);
+        assertEquals("plantuml" + TXT_EXTENSION, testTask.getOutput());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setProgrammingLanguage(java.lang.String)}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setProgrammingLanguage(java.lang.String)}
+     * .
      */
     @Test
     public void testSetProgrammingLanguage() {
-        fail("Not yet implemented");
+        final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
+        testTask.setProgrammingLanguage(DEFAULT_PROGRAMMING_LANGUAGE.getName());
+        assertEquals(DEFAULT_PROGRAMMING_LANGUAGE.getName(), testTask.getProgrammingLanguage());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setVerboseLevel(java.lang.String)}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#setVerboseLevel(java.lang.String)}
+     * .
      */
     @Test
     public void testSetVerboseLevel() {
-        fail("Not yet implemented");
+        final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
+        testTask.setVerboseLevel(INFO.getName());
+        assertEquals(INFO.getName(), testTask.getVerboseLevel());
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#toString()}.
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask#toString()}
+     * .
      */
     @Test
     public void testToString() {
-        fail("Not yet implemented");
+        assertEquals(
+                "PlantUMLDependencyProgramTask [output=plantuml.txt, verboseLevel=INFO, programmingLanguage=java, includes=**/*.java, excludes=**/*~, display=classes,enums,imports,interfaces,static_imports,native_methods,implementations,extensions, baseDir=.]",
+                PLANTUML_DEPENDENCY_TASK2.toString());
     }
 }

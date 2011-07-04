@@ -28,6 +28,7 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
 import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_EXCLUDE_OPTIONS;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -46,7 +47,7 @@ import org.apache.tools.ant.types.FileSet;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.0
  */
 public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument < FileSet > {
 
@@ -79,7 +80,7 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
     @Override
     public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return "**/*~";
+        return DEFAULT_EXCLUDE_OPTIONS;
     }
 
     /**
@@ -90,6 +91,6 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
     @Override
     public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return "**/*~";
+        return DEFAULT_EXCLUDE_OPTIONS;
     }
 }
