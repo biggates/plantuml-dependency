@@ -4,7 +4,7 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 5, Jul 2011 - 1.1.0
 ====================
 - Ant task available
-- Correction a bug with the verbose level option, which was reloading the "logging.properties" file configuration
+- Fixed a bug with the verbose level option, which was reloading the "logging.properties" file configuration
 - Improving the way to get the program version, by using a properties file and managing to read a Maven version pattern
 
 28, May 2011 - 1.0.1
