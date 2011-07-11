@@ -39,9 +39,6 @@
 </ul>
 <font size="1">Last update : 5 Jul, 2011</font>
 </div>
-<!-- Debut de la div du Sous_Menu -->
-<div></div>
-<!-- Fin de la div du Sous_Menu --></div>
 <!-- fin de la div du Menu -->
 
 <div id="corps">
@@ -49,46 +46,47 @@
 You can run <b>PlantUML Dependency</b> using the following simplest command :
 
 <div class="scriptplantu">
-<dir>
-	java -jar plantuml-dependency-1.0.1.jar -o plantuml.txt
-</dir>
+<ul>
+	<li>java -jar plantuml-dependency-1.0.1.jar -o plantuml.txt</li>
+</ul>
 </div>
-<p>This will look for all <code>java source files</code> into the current directory recursively, creating a <i>plantuml.txt</i> file describing the <b>PlantUML</b> class diagram description.
+<p>This will look for all <code>java source files</code> into the current directory recursively, creating a <i>plantuml.txt</i> file describing the <b>PlantUML</b> class diagram description.</p>
 
 <p>For processing an other directory, you can use :</p>
 
 <div class="scriptplantu">
-<dir>
-	java -jar plantuml-dependency-1.0.1.jar -b "c:/directory1"
-</dir>
+<ul>
+	<li>java -jar plantuml-dependency-1.0.1.jar -b "c:/directory1"</li>
+</ul>
 </div>
 
 <p>To filter source files to parse, you can use <a href="http://ant.apache.org/manual/dirtasks.html">ANT patterns</a> to include or exclude files :</p>
 
 <div class="scriptplantu">
-<dir>
-	java -jar plantuml-dependency-1.0.1.jar -i **/*Test*.java -e **/*Generated*.java
-</dir>
+<ul>
+	<li>java -jar plantuml-dependency-1.0.1.jar -i **/*Test*.java -e **/*Generated*.java</li>
+</ul>
 </div>
 
 <p>To change the output file path, you can use :</p>
 
 <div class="scriptplantu">
-<dir>
-	java -jar plantuml-dependency-1.0.1.jar -o "c:/directory1/test-plantuml.txt"
-</dir>
+<ul>
+	<li>java -jar plantuml-dependency-1.0.1.jar -o "c:/directory1/test-plantuml.txt"</li>
+</ul>
 </div>
 
 <h3>Help</h3>
-<p>You can have an help message by launching :
+You can have an help message by launching :
 <div class="scriptplantu">
-<dir>
-	java -jar plantuml-dependency-1.0.1.jar --help
-</dir>
+<ul>
+	<li>java -jar plantuml-dependency-1.0.1.jar --help</li>
+</ul>
 </div>
 
 This will output:
-<div class="scriptplantu"><pre>
+<div class="scriptplantu">
+<pre>
 PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net}
 
 Usage:
@@ -141,13 +139,15 @@ Known bugs or program limitations:
 
 <!-- Debut de la div du pied de page -->
 <div id="pied_de_page">
-<table width=100% border=0>
-	<tr align=center>
-		<td width=13%><a href=#>Back to top</a></td>
-		<td width=13% title="Feedback appreciate"><a href=mailto:graffity2199@users.sourceforge.net><img border=0 src="mail.gif" /></a>&nbsp;<a href=mailto:graffity2199@users.sourceforge.net>Contact</a></td>
-		<td width=13%><a title="Your help is really appreciate" href="https://sourceforge.net/donate/index.php?group_id=334674"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /></a></td>
-		<td width=13%><a href="http://sourceforge.net/projects/plantuml-depend"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=259736&amp;type=10" width="80" height="15" alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
+<table width="100%" border="0">
+	<tr align="center">
+		<td width="13%"><a href="#">Back to top</a></td>
+		<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img border="0" src="mail.gif" alt="" /></a>&nbsp;<a href="mailto:graffity2199@users.sourceforge.net">Contact</a></td>
+		<td width="13%"><a title="Your help is really appreciate" href="https://sourceforge.net/donate/index.php?group_id=334674"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /></a></td>
+		<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=259736&amp;type=10" width="80" height="15" alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
 	</tr>
 </table>
 </div>
 <!-- Fin de la div du pied de page -->
+</body>
+</html>
