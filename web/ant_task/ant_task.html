@@ -1,130 +1,129 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-<head>
-<link rel="shortcut icon" href="../images/favicon.ico" />
-<meta name="verify-v1" content="2DjjlbOzO6kmuWSa0PHcysT1KR/zVGazrFgA4UX5UsE=" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta name="verify-v1" content="2DjjlbOzO6kmuWSa0PHcysT1KR/zVGazrFgA4UX5UsE=" />
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate" />
+		<meta name="description" content="PlantUml Dependency allows to parse Java source files to generate a PlantUML description, allowing to draw the UML class diagram associated to the source code. " />
+		<title>PlantUML Dependency</title>
+		<link rel="shortcut icon" href="../images/favicon.ico" />
+		<link rel="stylesheet" media="screen" type="text/css" title="Design" href="../design.css" />
+	</head>
 
-<title>PlantUML Dependency</title>
-<meta http-equiv="expires" content="0" />
-<meta http-equiv="pragma" content="no-cache" />
-<meta http-equiv="cache-control" content="no-cache, must-revalidate" />
-<meta name="description" content="PlantUml Dependency allows to parse Java source files to generate a PlantUML description, allowing to draw the UML class diagram associated to the source code. " />
-<link rel="stylesheet" media="screen" type="text/css" title="Design" href="../design.css" />
-</head>
+	<body>
+	<!-- Debut de la div de l'en_tete -->
+	<div id="en_tete">
+	<h1>PlantUML Dependency</h1>
+	<p>Open-Source tool in Java to parse source code to automatically draw UML class Diagram using PlantUML</p>
+	</div>
+	<!-- Fin de la div de l'en_tete -->
 
+	<!-- Debut de la div du Menu -->
+	<div id="menu">
+	<div align="center">
+	<h1><a href="../index.html">Home</a></h1>
+	</div>
+	<ul>
+		<li><a href="../screenshot/screenshot.html">Screenshots</a></li>
+		<li><a href="../download/download.html">Download</a></li>
+		<li><a href="../news/news.html">What's New ?</a></li>
+		<li><a href="../running/running.html">Running</a></li>
+		<li><a href="../maven-site/index.html">Maven site</a></li>
+		<li><a href="../faq/faq.html">F.A.Q.</a></li>
+		<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
+		<li><a href="../external_links/external_links.html">External Links</a></li>
+	</ul>
+	<font size="1">Last update : 5 Jul, 2011</font>
+	</div>
+	<!-- fin de la div du Menu -->
 
-<body>
-<!-- Debut de la div de l'en_tete -->
-<div id="en_tete">
-<h1>PlantUML Dependency</h1>
-<p>Open-Source tool in Java to parse source code to automatically draw UML class Diagram using PlantUML</p>
-</div>
-<!-- Fin de la div de l'en_tete -->
+	<div id="corps">
+	<h2>PlantUML Dependency <a href="http://ant.apache.org"><b>Ant</b></a> task</h2>
+	You can run <b>PlantUML Dependency</b> using the following simplest <a href="http://ant.apache.org"><b>Ant</b></a> example :
 
-<!-- Debut de la div du Menu -->
-<div id="menu">
-<div align="center">
-<h1><a href="../index.html">Home</a></h1>
-</div>
-<ul>
-	<li><a href="../screenshot/screenshot.html">Screenshots</a></li>
-	<li><a href="../download/download.html">Download</a></li>
-	<li><a href="../news/news.html">What's New ?</a></li>
-	<li><a href="../running/running.html">Running</a></li>
-	<li><a href="../maven-site/index.html">Maven site</a></li>
-	<li><a href="../faq/faq.html">F.A.Q.</a></li>
-	<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
-	<li><a href="../external_links/external_links.html">External Links</a></li>
-</ul>
-<font size="1">Last update : 5 Jul, 2011</font>
-</div>
-<!-- fin de la div du Menu -->
+	<div class="scriptplantu">
+	<pre>
+	&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
+		&lt;!-- task definition --&gt;
+		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-1.1.0-jar-with-dependencies.jar" /&gt;
 
-<div id="corps">
-<h2>PlantUML Dependency <a href="http://ant.apache.org"><b>Ant</b></a> task</h2>
-You can run <b>PlantUML Dependency</b> using the following simplest <a href="http://ant.apache.org"><b>Ant</b></a> example :
+		&lt;!-- process all java files within the current directory to output "/home/plantuml.txt" file --&gt;
+		&lt;target name="main"&gt;
+			&lt;plantuml-dependency output="/home/plantuml.txt" /&gt;
+		&lt;/target&gt;
+	&lt;/project&gt;
+	</pre>
+	</div>
+	This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> of the current directory and output a <b>plantuml.txt</b> text file.
 
-<div class="scriptplantu">
-<pre>
-&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
-	&lt;!-- task definition --&gt;
-	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-1.1.0-jar-with-dependencies.jar" /&gt;
+	<h3>Input Directory</h3>
+	You can also specify a input base directory to look for the <b>.java</b> files, using
+	<code>baseDir</code> tag.
+	<div class="scriptplantu">
+	<pre>
+	&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
+		&lt;!-- task definition --&gt;
+		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-1.1.0-jar-with-dependencies.jar" /&gt;
 
-	&lt;!-- process all java files within the current directory to output "/home/plantuml.txt" file --&gt;
-	&lt;target name="main"&gt;
-		&lt;plantuml-dependency output="/home/plantuml.txt" /&gt;
-	&lt;/target&gt;
-&lt;/project&gt;
-</pre>
-</div>
-This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> of the current directory and output a <b>plantuml.txt</b> text file.
+		&lt;!-- process "/home" directory to output "/home/plantuml.txt" file --&gt;
+		&lt;target name="main"&gt;
+			&lt;plantuml-dependency output="/home/plantuml.txt" baseDir="/home" /&gt;
+		&lt;/target&gt;
+	&lt;/project&gt;
+	</pre>
+	</div>
+	This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> of the <b>/home</b> directory and output a <b>plantuml.txt</b> text file.
 
-<h3>Input Directory</h3>
-You can also specify a input base directory to look for the <b>.java</b> files, using
-<code>baseDir</code> tag.
-<div class="scriptplantu">
-<pre>
-&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
-	&lt;!-- task definition --&gt;
-	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-1.1.0-jar-with-dependencies.jar" /&gt;
+	<h3>Includes and excludes files</h3>
+	You can also specify a set of files to include or exclude when browsing the input base directory, using
+	<code>includes</code> and <code>excludes</code> tags.
+	<div class="scriptplantu">
+	<pre>
+	&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
+		&lt;!-- task definition --&gt;
+		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-1.1.0-jar-with-dependencies.jar" /&gt;
 
-	&lt;!-- process "/home" directory to output "/home/plantuml.txt" file --&gt;
-	&lt;target name="main"&gt;
-		&lt;plantuml-dependency output="/home/plantuml.txt" baseDir="/home" /&gt;
-	&lt;/target&gt;
-&lt;/project&gt;
-</pre>
-</div>
-This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> of the <b>/home</b> directory and output a <b>plantuml.txt</b> text file.
+		&lt;!-- process "/home" to output "/home/plantuml.txt" file --&gt;
+		&lt;target name="main"&gt;
+			&lt;plantuml-dependency output="/home/plantuml.txt" includes="**/*Test*.java" excludes="**/PlantUMLDependencyProgram.java" baseDir="/home" /&gt;
+		&lt;/target&gt;
+	&lt;/project&gt;
+	</pre>
+	</div>
+	This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>*Test*.java</b> (except <b>PlantUMLDependencyProgram.java</b>) of the <b>/home</b> directory and output a <b>plantuml.txt</b> text file.
 
-<h3>Includes and excludes files</h3>
-You can also specify a set of files to include or exclude when browsing the input base directory, using
-<code>includes</code> and <code>excludes</code> tags.
-<div class="scriptplantu">
-<pre>
-&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
-	&lt;!-- task definition --&gt;
-	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-1.1.0-jar-with-dependencies.jar" /&gt;
+	<h3>Other parameters</h3>
 
-	&lt;!-- process "/home" to output "/home/plantuml.txt" file --&gt;
-	&lt;target name="main"&gt;
-		&lt;plantuml-dependency output="/home/plantuml.txt" includes="**/*Test*.java" excludes="**/PlantUMLDependencyProgram.java" baseDir="/home" /&gt;
-	&lt;/target&gt;
-&lt;/project&gt;
-</pre>
-</div>
-This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>*Test*.java</b> (except <b>PlantUMLDependencyProgram.java</b>) of the <b>/home</b> directory and output a <b>plantuml.txt</b> text file.
+	<table border="1" cellspacing="0" cellpadding="4">
+	<tr>
+	<td><b>Parameter</b></td>
+	<td><b>Default</b></td>
 
-<h3>Other parameters</h3>
-
-<table border="1" cellspacing="0" cellpadding="4">
-<tr>
-<td><b>Parameter</b></td>
-<td><b>Default</b></td>
-
-<td><b>Description</b></td>
-</tr>
-<tr>
-<td>verboseLevel</td>
-<td>800</td>
-<td>Specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300.</td>
-</tr>
-</table>
-<h5 style="color:red;">Note that options are just ignored if they have empty values. For instance, the verboseLevel option doesn't behave the same as the command line.</h5>
-</div>
-
-<!-- Debut de la div du pied de page -->
-<div id="pied_de_page">
-<table width="100%" border="0">
-	<tr align="center">
-		<td width="13%"><a href="#">Back to top</a></td>
-		<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img border="0" src="mail.gif" alt="" /></a>&nbsp;<a href="mailto:graffity2199@users.sourceforge.net">Contact</a></td>
-		<td width="13%"><a title="Your help is really appreciate" href="https://sourceforge.net/donate/index.php?group_id=334674"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /></a></td>
-		<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=259736&amp;type=10" width="80" height="15" alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
+	<td><b>Description</b></td>
 	</tr>
-</table>
-</div>
-<!-- Fin de la div du pied de page -->
-</body>
+	<tr>
+	<td>verboseLevel</td>
+	<td>800</td>
+	<td>Specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300.</td>
+	</tr>
+	</table>
+	<h5 style="color:red;">Note that options are just ignored if they have empty values. For instance, the verboseLevel option doesn't behave the same as the command line.</h5>
+	</div>
+
+	<!-- Debut de la div du pied de page -->
+	<div id="pied_de_page">
+	<table width="100%" border="0">
+		<tr align="center">
+			<td width="13%"><a href="#">Back to top</a></td>
+			<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img border="0" src="mail.gif" alt="" /></a>&nbsp;<a href="mailto:graffity2199@users.sourceforge.net">Contact</a></td>
+			<td width="13%"><a title="Your help is really appreciate" href="https://sourceforge.net/donate/index.php?group_id=334674"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /></a></td>
+			<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=259736&amp;type=10" width="80" height="15" alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
+		</tr>
+	</table>
+	</div>
+	<!-- Fin de la div du pied de page -->
+	</body>
 </html>

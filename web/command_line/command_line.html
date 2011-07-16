@@ -1,153 +1,152 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-<head>
-<link rel="shortcut icon" href="../images/favicon.ico" />
-<meta name="verify-v1" content="2DjjlbOzO6kmuWSa0PHcysT1KR/zVGazrFgA4UX5UsE=" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta name="verify-v1" content="2DjjlbOzO6kmuWSa0PHcysT1KR/zVGazrFgA4UX5UsE=" />
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate" />
+		<meta name="description" content="PlantUml Dependency allows to parse Java source files to generate a PlantUML description, allowing to draw the UML class diagram associated to the source code. " />
+		<title>PlantUML Dependency</title>
+		<link rel="shortcut icon" href="../images/favicon.ico" />
+		<link rel="stylesheet" media="screen" type="text/css" title="Design" href="../design.css" />
+	</head>
 
-<title>PlantUML Dependency</title>
-<meta http-equiv="expires" content="0" />
-<meta http-equiv="pragma" content="no-cache" />
-<meta http-equiv="cache-control" content="no-cache, must-revalidate" />
-<meta name="description" content="PlantUml Dependency allows to parse Java source files to generate a PlantUML description, allowing to draw the UML class diagram associated to the source code. " />
-<link rel="stylesheet" media="screen" type="text/css" title="Design" href="../design.css" />
-</head>
+	<body>
+	<!-- Debut de la div de l'en_tete -->
+	<div id="en_tete">
+	<h1>PlantUML Dependency</h1>
+	<p>Open-Source tool in Java to parse source code to automatically draw UML class Diagram using PlantUML</p>
+	</div>
+	<!-- Fin de la div de l'en_tete -->
+
+	<!-- Debut de la div du Menu -->
+	<div id="menu">
+	<div align="center">
+	<h1><a href="../index.html">Home</a></h1>
+	</div>
+	<ul>
+		<li><a href="../screenshot/screenshot.html">Screenshots</a></li>
+		<li><a href="../download/download.html">Download</a></li>
+		<li><a href="../news/news.html">What's New ?</a></li>
+		<li><a href="../running/running.html">Running</a></li>
+		<li><a href="../maven-site/index.html">Maven site</a></li>
+		<li><a href="../faq/faq.html">F.A.Q.</a></li>
+		<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
+		<li><a href="../external_links/external_links.html">External Links</a></li>
+	</ul>
+	<font size="1">Last update : 5 Jul, 2011</font>
+	</div>
+	<!-- fin de la div du Menu -->
+
+	<div id="corps">
+	<h2>Command line</h2>
+	You can run <b>PlantUML Dependency</b> using the following simplest command :
+
+	<div class="scriptplantu">
+	<ul>
+		<li>java -jar plantuml-dependency-1.0.1.jar -o plantuml.txt</li>
+	</ul>
+	</div>
+	<p>This will look for all <code>java source files</code> into the current directory recursively, creating a <i>plantuml.txt</i> file describing the <b>PlantUML</b> class diagram description.</p>
+
+	<p>For processing an other directory, you can use :</p>
+
+	<div class="scriptplantu">
+	<ul>
+		<li>java -jar plantuml-dependency-1.0.1.jar -b "c:/directory1"</li>
+	</ul>
+	</div>
+
+	<p>To filter source files to parse, you can use <a href="http://ant.apache.org/manual/dirtasks.html">ANT patterns</a> to include or exclude files :</p>
+
+	<div class="scriptplantu">
+	<ul>
+		<li>java -jar plantuml-dependency-1.0.1.jar -i **/*Test*.java -e **/*Generated*.java</li>
+	</ul>
+	</div>
+
+	<p>To change the output file path, you can use :</p>
+
+	<div class="scriptplantu">
+	<ul>
+		<li>java -jar plantuml-dependency-1.0.1.jar -o "c:/directory1/test-plantuml.txt"</li>
+	</ul>
+	</div>
+
+	<h3>Help</h3>
+	You can have an help message by launching :
+	<div class="scriptplantu">
+	<ul>
+		<li>java -jar plantuml-dependency-1.0.1.jar --help</li>
+	</ul>
+	</div>
+
+	This will output:
+	<div class="scriptplantu">
+	<pre>
+	PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net}
+
+	Usage:
+		java -jar plantuml-dependency-1.0.1.jar [OPTIONS]
 
 
-<body>
-<!-- Debut de la div de l'en_tete -->
-<div id="en_tete">
-<h1>PlantUML Dependency</h1>
-<p>Open-Source tool in Java to parse source code to automatically draw UML class Diagram using PlantUML</p>
-</div>
-<!-- Fin de la div de l'en_tete -->
+	where optional options are:
 
-<!-- Debut de la div du Menu -->
-<div id="menu">
-<div align="center">
-<h1><a href="../index.html">Home</a></h1>
-</div>
-<ul>
-	<li><a href="../screenshot/screenshot.html">Screenshots</a></li>
-	<li><a href="../download/download.html">Download</a></li>
-	<li><a href="../news/news.html">What's New ?</a></li>
-	<li><a href="../running/running.html">Running</a></li>
-	<li><a href="../maven-site/index.html">Maven site</a></li>
-	<li><a href="../faq/faq.html">F.A.Q.</a></li>
-	<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
-	<li><a href="../external_links/external_links.html">External Links</a></li>
-</ul>
-<font size="1">Last update : 5 Jul, 2011</font>
-</div>
-<!-- fin de la div du Menu -->
+		-about, --author, --authors
+			To display information about PlantUML Dependency and its authors.
 
-<div id="corps">
-<h2>Command line</h2>
-You can run <b>PlantUML Dependency</b> using the following simplest command :
+		-b, --basedir DIR
+			The base directory where to look for source files. If not specified, the default pattern is "." i.e. the directory where the program is launched from.
+			DIR specifies a valid and exsiting directory path, not a single file. It can be absolute or relative.
 
-<div class="scriptplantu">
-<ul>
-	<li>java -jar plantuml-dependency-1.0.1.jar -o plantuml.txt</li>
-</ul>
-</div>
-<p>This will look for all <code>java source files</code> into the current directory recursively, creating a <i>plantuml.txt</i> file describing the <b>PlantUML</b> class diagram description.</p>
+		-e, --exclude FILE_PATTERN
+			To exclude files that match the provided pattern. If not specified, no file is excluded.
+			FILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that "**", "*" or "?" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.
 
-<p>For processing an other directory, you can use :</p>
+		-h, --help, -?
+			To display this help message.
 
-<div class="scriptplantu">
-<ul>
-	<li>java -jar plantuml-dependency-1.0.1.jar -b "c:/directory1"</li>
-</ul>
-</div>
+		-i, --include FILE_PATTERN
+			To include files that match the provided pattern. If not specified, the default pattern is "**/*.PROGRAMMING_LANGUAGE_FILE_EXTENSION" depending on the programming language chosen (default is java).
+			FILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that "**", "*" or "?" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.
 
-<p>To filter source files to parse, you can use <a href="http://ant.apache.org/manual/dirtasks.html">ANT patterns</a> to include or exclude files :</p>
+		-o, --output FILE
+			To output file path where to generate the PlantUML description.
+			FILE specifies a valid file path, where the file can exist or not and is not a directory. It can be absolute or relative. If the file already exists, it overrides it.
 
-<div class="scriptplantu">
-<ul>
-	<li>java -jar plantuml-dependency-1.0.1.jar -i **/*Test*.java -e **/*Generated*.java</li>
-</ul>
-</div>
+		-v, --verbose [VERBOSE_LEVEL]
+			To display log information.
+			VERBOSE_LEVEL specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300. By default, if the verbose option is specified but the level is not set, the value "INFO":800 is taken.
 
-<p>To change the output file path, you can use :</p>
+		-version
+			To display versions information about PlantUML Dependency and Java.
 
-<div class="scriptplantu">
-<ul>
-	<li>java -jar plantuml-dependency-1.0.1.jar -o "c:/directory1/test-plantuml.txt"</li>
-</ul>
-</div>
+	Examples:
 
-<h3>Help</h3>
-You can have an help message by launching :
-<div class="scriptplantu">
-<ul>
-	<li>java -jar plantuml-dependency-1.0.1.jar --help</li>
-</ul>
-</div>
+		java -jar plantuml-dependency-1.0.1.jar -h
+		java -jar plantuml-dependency-1.0.1.jar -o plantuml.txt -b /home/graffity/workspace/plantuml-dependency -i **/*Test.java
+		java -jar plantuml-dependency-1.0.1.jar -version -v
 
-This will output:
-<div class="scriptplantu">
-<pre>
-PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net}
+	Known bugs or program limitations:
 
-Usage:
-	java -jar plantuml-dependency-1.0.1.jar [OPTIONS]
+		- Be careful, in order to correctly parse source files, they must compile without any errors
+		- Import instructions "import package_name.*" are ignored because the dependencies are not explicitly defined, use precise imports instead
+		- Links between dependencies are found out by parsing "import" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code</pre></div>
+	</div>
 
-
-where optional options are:
-
-	-about, --author, --authors
-		To display information about PlantUML Dependency and its authors.
-
-	-b, --basedir DIR
-		The base directory where to look for source files. If not specified, the default pattern is "." i.e. the directory where the program is launched from.
-		DIR specifies a valid and exsiting directory path, not a single file. It can be absolute or relative.
-
-	-e, --exclude FILE_PATTERN
-		To exclude files that match the provided pattern. If not specified, no file is excluded.
-		FILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that "**", "*" or "?" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.
-
-	-h, --help, -?
-		To display this help message.
-
-	-i, --include FILE_PATTERN
-		To include files that match the provided pattern. If not specified, the default pattern is "**/*.PROGRAMMING_LANGUAGE_FILE_EXTENSION" depending on the programming language chosen (default is java).
-		FILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that "**", "*" or "?" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.
-
-	-o, --output FILE
-		To output file path where to generate the PlantUML description.
-		FILE specifies a valid file path, where the file can exist or not and is not a directory. It can be absolute or relative. If the file already exists, it overrides it.
-
-	-v, --verbose [VERBOSE_LEVEL]
-		To display log information.
-		VERBOSE_LEVEL specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300. By default, if the verbose option is specified but the level is not set, the value "INFO":800 is taken.
-
-	-version
-		To display versions information about PlantUML Dependency and Java.
-
-Examples:
-
-	java -jar plantuml-dependency-1.0.1.jar -h
-	java -jar plantuml-dependency-1.0.1.jar -o plantuml.txt -b /home/graffity/workspace/plantuml-dependency -i **/*Test.java
-	java -jar plantuml-dependency-1.0.1.jar -version -v
-
-Known bugs or program limitations:
-
-	- Be careful, in order to correctly parse source files, they must compile without any errors
-	- Import instructions "import package_name.*" are ignored because the dependencies are not explicitly defined, use precise imports instead
-	- Links between dependencies are found out by parsing "import" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code</pre></div>
-</div>
-
-<!-- Debut de la div du pied de page -->
-<div id="pied_de_page">
-<table width="100%" border="0">
-	<tr align="center">
-		<td width="13%"><a href="#">Back to top</a></td>
-		<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img border="0" src="mail.gif" alt="" /></a>&nbsp;<a href="mailto:graffity2199@users.sourceforge.net">Contact</a></td>
-		<td width="13%"><a title="Your help is really appreciate" href="https://sourceforge.net/donate/index.php?group_id=334674"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /></a></td>
-		<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=259736&amp;type=10" width="80" height="15" alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
-	</tr>
-</table>
-</div>
-<!-- Fin de la div du pied de page -->
-</body>
+	<!-- Debut de la div du pied de page -->
+	<div id="pied_de_page">
+	<table width="100%" border="0">
+		<tr align="center">
+			<td width="13%"><a href="#">Back to top</a></td>
+			<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img border="0" src="mail.gif" alt="" /></a>&nbsp;<a href="mailto:graffity2199@users.sourceforge.net">Contact</a></td>
+			<td width="13%"><a title="Your help is really appreciate" href="https://sourceforge.net/donate/index.php?group_id=334674"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /></a></td>
+			<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=259736&amp;type=10" width="80" height="15" alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
+		</tr>
+	</table>
+	</div>
+	<!-- Fin de la div du pied de page -->
+	</body>
 </html>
