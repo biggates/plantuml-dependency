@@ -262,9 +262,9 @@
 				<version>2.7.1</version>
 			</plugin>
 			<!-- API Javadoc generation -->
-			<!-- >plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
-				<version>2.7</version> <configuration> <encoding>${project.build.sourceEncoding}</encoding> 
-				<minmemory>128m</minmemory> <maxmemory>512m</maxmemory> </configuration> 
+			<!-- >plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version> <configuration> <encoding>${project.build.sourceEncoding}</encoding>
+				<minmemory>128m</minmemory> <maxmemory>512m</maxmemory> </configuration>
 				</plugin -->
 			<!-- SCM changelog generation -->
 			<plugin>
@@ -421,9 +421,9 @@
 		</url>
 	</issueManagement>
 	<!-- Information about mailing lists -->
-	<!-- >mailingLists> <mailingList> <name>mazix-devel List</name> <subscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</subscribe> 
-		<unsubscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</unsubscribe> 
-		<post>mazix-devel@lists.sourceforge.net</post> <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=mazix-devel</archive> 
+	<!-- >mailingLists> <mailingList> <name>mazix-devel List</name> <subscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</subscribe>
+		<unsubscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</unsubscribe>
+		<post>mazix-devel@lists.sourceforge.net</post> <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=mazix-devel</archive>
 		</mailingList> </mailingLists -->
 	<!-- Information about source control management -->
 	<scm>

@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.main.option.output;
 
+import static java.util.logging.Level.INFO;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
@@ -56,7 +57,7 @@ import org.apache.tools.ant.types.resources.FileResource;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.0
+ * @version 1.1.1
  */
 public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecution {
 
@@ -130,15 +131,10 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      */
     @Override
     public void execute() throws CommandLineException {
-        try {
-            final ProgrammingLanguageContext programmingLanguageContext = readDependenciesMapFromFiles(
-                    getProgrammingLanguage(), getInputFileSet(), getDisplayOptions());
-            programmingLanguageContext.writePlantUMLFile(getOutputFile());
-            LOGGER.info(buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies()
-                    .size()));
-        } catch (final PlantUMLDependencyException e) {
-            LOGGER.log(SEVERE, e.getMessage(), e);
-        }
+        final ProgrammingLanguageContext programmingLanguageContext = readDependenciesMapFromFiles(
+                getProgrammingLanguage(), getInputFileSet(), getDisplayOptions());
+        programmingLanguageContext.writePlantUMLFile(getOutputFile());
+        LOGGER.info(buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies().size()));
     }
 
     /**
@@ -200,13 +196,11 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *            the display option which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
      * @return the {@link java.util.Collection} of all parsed {@link GenericDependency}.
-     * @throws PlantUMLDependencyException
-     *             if any exception occurs while reading and parsing the source files.
      * @since 1.0
      */
     @SuppressWarnings("unchecked")
     private ProgrammingLanguageContext readDependenciesMapFromFiles(final ProgrammingLanguage language,
-            final FileSet includeExcludeFiles, final Set < Display > displayOpt) throws PlantUMLDependencyException {
+            final FileSet includeExcludeFiles, final Set < Display > displayOpt) {
         final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext(displayOpt);
 
         final Iterator < FileResource > iter = includeExcludeFiles.iterator();
@@ -216,8 +210,8 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
             try {
                 readDependencyFromFile(fileResource.getFile(), programmingLanguageContext, language);
             } catch (final PlantUMLDependencyException e) {
-                throw new PlantUMLDependencyException(
-                        buildLogString(READING_SOURCE_FILE_ERROR, fileResource.getFile()), e);
+                LOGGER.log(SEVERE, buildLogString(READING_SOURCE_FILE_ERROR, fileResource.getFile()));
+                LOGGER.log(INFO, e.getMessage(), e);
             }
         }
 

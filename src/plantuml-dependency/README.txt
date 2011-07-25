@@ -1,6 +1,10 @@
 PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net)
 =====================================================================================================================================
 
+?, Aug 2011 - 1.1.1
+====================
+- Fixed a bug which causes the program to stop when a java source file couldn't be read (bug 3377023 : http://sourceforge.net/tracker/?func=detail&aid=3377023&group_id=334674&atid=1402785)
+
 5, Jul 2011 - 1.1.0
 ====================
 - Ant task available

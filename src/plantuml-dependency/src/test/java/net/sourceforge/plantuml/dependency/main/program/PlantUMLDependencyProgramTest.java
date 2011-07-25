@@ -32,9 +32,9 @@ import org.junit.Test;
 
 /**
  * JUnit test classes for {@link PlantUMLDependencyProgram}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.0
  */
@@ -44,7 +44,7 @@ public class PlantUMLDependencyProgramTest {
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
      * .
-     * 
+     *
      * @throws PlantUMLDependencyException
      */
     @Test(expected=PlantUMLDependencyException.class)
@@ -56,7 +56,7 @@ public class PlantUMLDependencyProgramTest {
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
      * .
-     * 
+     *
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -68,7 +68,7 @@ public class PlantUMLDependencyProgramTest {
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
      * .
-     * 
+     *
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -80,7 +80,7 @@ public class PlantUMLDependencyProgramTest {
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
      * .
-     * 
+     *
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -89,4 +89,5 @@ public class PlantUMLDependencyProgramTest {
     }
 
     // TODO finish with all options and compare generated files
+    // TODO test with several files and one is empty : shouldn't block the program
 }
