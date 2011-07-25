@@ -67,7 +67,7 @@ import org.apache.tools.ant.types.FileSet;
  *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public final class PlantUMLDependencyTestConstants {
 
@@ -145,7 +145,7 @@ public final class PlantUMLDependencyTestConstants {
     public static final CommandLine COMMAND_LINE20 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-i"});
 
     /** File set test 1 instance. */
-    public static final FileSet FILE_SET1 = createFileSet(CURRENT_DIRECTORY, "**/*");
+    public static final FileSet FILE_SET1 = createFileSet(CURRENT_DIRECTORY, "**/*.java");
 
     /** File set test 1 instance. */
     public static final FileSet FILE_SET2 = createFileSet(CURRENT_DIRECTORY, "**/*A*.java");

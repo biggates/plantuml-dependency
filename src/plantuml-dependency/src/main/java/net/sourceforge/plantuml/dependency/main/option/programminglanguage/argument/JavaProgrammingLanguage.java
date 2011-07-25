@@ -87,7 +87,7 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.conte
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 class JavaProgrammingLanguage extends ProgrammingLanguage {
 
@@ -890,6 +890,6 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             }
         }
 
-        return buffer.toString();
+        return buffer.toString().trim();
     }
 }
