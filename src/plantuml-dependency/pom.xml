@@ -32,19 +32,19 @@
 		<dependency>
 			<groupId>net.sourceforge.mazix.cli</groupId>
 			<artifactId>mazix-cli</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.3-SNAPSHOT</version>
 		</dependency>
 		<!-- Mazix common components -->
 		<dependency>
 			<groupId>net.sourceforge.mazix.components</groupId>
 			<artifactId>mazix-components</artifactId>
-			<version>1.1.1</version>
+			<version>1.1.2-SNAPSHOT</version>
 		</dependency>
 		<!-- Mazix common tests components -->
 		<dependency>
 			<groupId>net.sourceforge.mazix.components</groupId>
 			<artifactId>mazix-components</artifactId>
-			<version>1.1.1</version>
+			<version>1.1.2-SNAPSHOT</version>
 			<scope>test</scope>
 			<classifier>tests</classifier>
 		</dependency>
