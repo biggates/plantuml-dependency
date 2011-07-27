@@ -27,6 +27,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.cont
 import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SLASH_CHAR;
+import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.DISPLAY_SET2;
@@ -226,7 +227,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
         JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.writePlantUMLFile(TEST_FILE);
         final String plantumlContent1 = readFileIntoString(TEST_FILE);
         assertEquals(
-                "@startuml\nclass net.sourceforge.plantuml.dependency.generic.GenericDependency\nclass net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage\n@enduml",
+                "@startuml" + LINE_SEPARATOR + "class net.sourceforge.plantuml.dependency.generic.GenericDependency" + LINE_SEPARATOR + "class net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage" + LINE_SEPARATOR + "@enduml",
                 plantumlContent1);
     }
 
