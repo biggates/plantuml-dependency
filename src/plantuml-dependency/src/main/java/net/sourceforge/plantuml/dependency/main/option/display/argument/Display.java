@@ -24,45 +24,129 @@
 
 package net.sourceforge.plantuml.dependency.main.option.display.argument;
 
+import static net.sourceforge.mazix.components.constants.CharacterConstants.COLON_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.QUOTATION_CHAR;
+
 /**
  * The enumeration which specifies display options.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public enum Display {
-    /** The display only packages argument. */
-    ONLY_PACKAGES,
-    /** The display classes argument. */
-    CLASSES,
-    /** The display interfaces argument. */
-    INTERFACES,
     /** The display abstract classes argument. */
-    ABSTRACT_CLASSES,
-    /** The display static imports argument. */
-    STATIC_IMPORTS,
-    /** The display imports argument. */
-    IMPORTS,
-    /** The display enumerations argument. */
-    ENUMS,
-    /** The display methods argument. */
-    METHODS,
+    ABSTRACT_CLASSES("displays parsed source files which are abstract classes"),
     /** The display attributes argument. */
-    ATTRIBUTES,
-    /** The display parsed objects argument. */
-    ONLY_PARSED_OBJECTS,
-    /** The display native methods argument. */
-    NATIVE_METHODS,
-    /** The display implementations argument. */
-    IMPLEMENTATIONS,
+    ATTRIBUTES("displays parsed source files attributes"),
+    /** The display classes argument. */
+    CLASSES("displays parsed source files which are classes (not abstract)"),
+    /** The display enumerations argument. */
+    ENUMS("displays parsed source files which are enums"),
     /** The display extensions argument. */
-    EXTENSIONS;
+    EXTENSIONS("displays dependencies which are extended by parsed source files"),
+    /** The display implementations argument. */
+    IMPLEMENTATIONS("displays dependencies which are implemented by parsed source files"),
+    /** The display imports argument. */
+    IMPORTS("displays import (not static) of all parsed source files"),
+    /** The display interfaces argument. */
+    INTERFACES("displays parsed source files which are interfaces"),
+    /** The display methods argument. */
+    METHODS("displays parsed source files methods"),
+    /** The display native methods argument. */
+    NATIVE_METHODS("displays links to the native dependency"),
+    /** The display only packages argument. */
+    ONLY_PACKAGES("displays only packages of all parsed source files"),
+    /** The display static imports argument. */
+    STATIC_IMPORTS("displays static imports of all parsed source files");
+
+    /** The full usage descriptions for all display options constant. */
+    public static final String USAGE_DESCRIPTIONS = getFullUsageDescriptions();
+
+    /**
+     * Build the string which contains the usage descriptions of all displays options which are
+     * available.
+     * 
+     * @return the full usage description of all displays options which are available.
+     * @since 1.1.1
+     */
+    private static String getFullUsageDescriptions() {
+        final StringBuffer buffer = new StringBuffer();
+
+        for (int i = 0; i < values().length - 1; i++) {
+
+            final Display display = values()[i];
+            buffer.append(display.getFullUsageDescription());
+            buffer.append(COMMA_CHAR);
+            buffer.append(SPACE_CHAR);
+        }
+
+        final Display lastDisplay = values()[values().length - 1];
+        buffer.append(lastDisplay.getFullUsageDescription());
+
+        return buffer.toString();
+    }
+
+    /** The string containing the display usage description. */
+    private String usageDescription;
+
+    /**
+     * Default constructor.
+     * 
+     * @param usageDesc
+     *            the display usage description.
+     * @since 1.1.1
+     */
+    private Display(final String usageDesc) {
+        setUsageDescription(usageDesc);
+    }
+
+    /**
+     * Gets the string containing the full display usage description.
+     * 
+     * @return the full display usage description.
+     * @since 1.1.1
+     */
+    public String getFullUsageDescription() {
+        final StringBuffer buffer = new StringBuffer();
+        buffer.append(QUOTATION_CHAR);
+        buffer.append(toString());
+        buffer.append(QUOTATION_CHAR);
+        buffer.append(SPACE_CHAR);
+        buffer.append(COLON_CHAR);
+        buffer.append(SPACE_CHAR);
+        buffer.append(getUsageDescription());
+        return buffer.toString();
+    }
+
+    /**
+     * Gets the string containing the display usage description.
+     * 
+     * @return the display usage description.
+     * @since 1.1.1
+     */
+    public String getUsageDescription() {
+        return usageDescription;
+    }
+
+    /**
+     * Sets the value of usageDescription.
+     * 
+     * @param value
+     *            the usageDescription to set.
+     * @see #getUsageDescription()
+     * @since 1.1.1
+     */
+    private void setUsageDescription(final String value) {
+        usageDescription = value;
+    }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override

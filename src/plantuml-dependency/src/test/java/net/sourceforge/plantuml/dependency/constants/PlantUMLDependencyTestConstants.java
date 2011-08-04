@@ -33,6 +33,7 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.CURRENT
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ATTRIBUTES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
@@ -42,7 +43,6 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PACKAGES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PARSED_OBJECTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.values;
 
@@ -168,7 +168,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Display set test 6 instance. */
     public static final Set < Display > DISPLAY_SET6 = new TreeSet < Display >(asList(new Display[] {
-            ONLY_PARSED_OBJECTS, METHODS, ATTRIBUTES}));
+            ABSTRACT_CLASSES, METHODS, ATTRIBUTES}));
 
     /** Generic dependency set test 1 instance. */
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET1 = new TreeSet < GenericDependency >(

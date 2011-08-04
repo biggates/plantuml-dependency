@@ -26,6 +26,7 @@ package net.sourceforge.plantuml.dependency.constants;
 
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
@@ -40,7 +41,7 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDe
 
 /**
  * The class which stores all necessary plantUML dependency constants as Strings.
- *
+ * 
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.1.0
@@ -48,9 +49,9 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDe
 public final class PlantUMLDependencyConstants {
 
     /** The default display options to apply if not specified. */
-    public static final String DEFAULT_DISPLAY_OPTIONS = CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS
-            + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR
-            + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS;
+    public static final String DEFAULT_DISPLAY_OPTIONS = ABSTRACT_CLASSES + COMMA_CHAR + CLASSES + COMMA_CHAR + ENUMS
+            + COMMA_CHAR + IMPORTS + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR
+            + NATIVE_METHODS + COMMA_CHAR + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS;
 
     /** The default exclude options to apply if not specified. */
     public static final String DEFAULT_EXCLUDE_OPTIONS = "**/*~";
@@ -76,7 +77,7 @@ public final class PlantUMLDependencyConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     *
+     * 
      * @since 1.0
      */
     private PlantUMLDependencyConstants() {

@@ -30,6 +30,7 @@ import static net.sourceforge.mazix.components.constants.CharacterConstants.COMM
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.NOT_DISPLAY_ARGUMENT_ERROR;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.USAGE_DESCRIPTIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.valueOf;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.values;
 
@@ -47,7 +48,7 @@ import net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgument < Set < Display > > {
 
@@ -59,9 +60,9 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
 
     /** The argument main usage description constant. */
     private static final String USAGE_DESCRIPTION = MAIN_USAGE
-            + " specifies the objects to be treated, it is a separated comma list with these possible values : "
+            + " specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : "
             + asList(values())
-            + ". These arguments implementations may differ following the chosen PROGRAMMING_LANGUAGE.";
+            + ". " + USAGE_DESCRIPTIONS + ". Note : These arguments implementations may not be taken into account following the chosen PROGRAMMING_LANGUAGE.";
 
     /**
      * Default constructor.

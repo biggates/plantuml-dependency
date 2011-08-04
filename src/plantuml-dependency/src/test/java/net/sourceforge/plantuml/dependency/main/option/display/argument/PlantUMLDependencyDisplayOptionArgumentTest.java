@@ -40,9 +40,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link PlantUMLDependencyDisplayOptionArgument}.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -76,7 +76,7 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
     @Test
     public void testGetFullUsageDescription() {
         assertEquals(
-                "DISPLAY_OPTIONS specifies the objects to be treated, it is a separated comma list with these possible values : [only_packages, classes, interfaces, abstract_classes, static_imports, imports, enums, methods, attributes, only_parsed_objects, native_methods, implementations, extensions]. These arguments implementations may differ following the chosen PROGRAMMING_LANGUAGE.",
+                "DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, attributes, classes, enums, extensions, implementations, imports, interfaces, methods, native_methods, only_packages, static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes, \"attributes\" : displays parsed source files attributes, \"classes\" : displays parsed source files which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files, \"implementations\" : displays dependencies which are implemented by parsed source files, \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source files which are interfaces, \"methods\" : displays parsed source files methods, \"native_methods\" : displays links to the native dependency, \"only_packages\" : displays only packages of all parsed source files, \"static_imports\" : displays static imports of all parsed source files. Note : These arguments implementations may not be taken into account following the chosen PROGRAMMING_LANGUAGE.",
                 DISPLAY_OPTION_ARGUMENT1.getFullUsageDescription().toString());
     }
 
@@ -102,7 +102,7 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument#parseArgument(java.lang.String)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test
@@ -116,7 +116,7 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument#parseArgument(java.lang.String)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test(expected = CommandLineException.class)
@@ -128,7 +128,7 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument#parseArgument(java.lang.String)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test
@@ -142,7 +142,7 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument#parseArgument(java.lang.String)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test(expected = CommandLineException.class)
@@ -154,7 +154,7 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument#parseArgument(java.lang.String)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test(expected = CommandLineException.class)

@@ -37,9 +37,9 @@ import org.junit.Test;
 
 /**
  * JUnit test classes for {@link PlantUMLDependencyProgramTask}.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.1.0
  * @version 1.1.0
  */
@@ -53,7 +53,7 @@ public class PlantUMLDependencyProgramTaskTest {
 
     /**
      * Creates a {@link PlantUMLDependencyProgramTask} test instance.
-     *
+     * 
      * @return a {@link PlantUMLDependencyProgramTask} test instance.
      * @since 1.1.0
      */
@@ -115,8 +115,8 @@ public class PlantUMLDependencyProgramTaskTest {
      */
     @Test
     public void testGetIncludes() {
-        assertEquals(DEFAULT_INCLUDE_OPTIONS + DEFAULT_PROGRAMMING_LANGUAGE.getName(), PLANTUML_DEPENDENCY_TASK2
-                .getIncludes());
+        assertEquals(DEFAULT_INCLUDE_OPTIONS + DEFAULT_PROGRAMMING_LANGUAGE.getName(),
+                PLANTUML_DEPENDENCY_TASK2.getIncludes());
     }
 
     /**
@@ -241,7 +241,7 @@ public class PlantUMLDependencyProgramTaskTest {
     @Test
     public void testToString() {
         assertEquals(
-                "PlantUMLDependencyProgramTask [output=plantuml.txt, verboseLevel=INFO, programmingLanguage=java, includes=**/*.java, excludes=**/*~, display=classes,enums,imports,interfaces,static_imports,native_methods,implementations,extensions, baseDir=.]",
+                "PlantUMLDependencyProgramTask [output=plantuml.txt, verboseLevel=INFO, programmingLanguage=java, includes=**/*.java, excludes=**/*~, display=abstract_classes,classes,enums,imports,interfaces,static_imports,native_methods,implementations,extensions, baseDir=.]",
                 PLANTUML_DEPENDENCY_TASK2.toString());
     }
 }

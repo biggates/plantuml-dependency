@@ -31,6 +31,7 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE5;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE6;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.COMMAND_LINE7;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
@@ -54,9 +55,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link PlantUMLDependencyDisplayOption}.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -78,7 +79,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test
@@ -94,7 +95,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test(expected = CommandLineException.class)
@@ -107,14 +108,15 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test
     public void testFindAndParseArgumentOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
             throws CommandLineException {
         final Set < Display > argument = DISPLAY_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE3);
-        assertEquals(8, argument.size());
+        assertEquals(9, argument.size());
+        assertTrue(argument.contains(ABSTRACT_CLASSES));
         assertTrue(argument.contains(CLASSES));
         assertTrue(argument.contains(ENUMS));
         assertTrue(argument.contains(IMPORTS));
@@ -129,7 +131,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test(expected = CommandLineException.class)
@@ -141,13 +143,14 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test
     public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
         final Set < Display > defaultArgument = DISPLAY_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
-        assertEquals(8, defaultArgument.size());
+        assertEquals(9, defaultArgument.size());
+        assertTrue(defaultArgument.contains(ABSTRACT_CLASSES));
         assertTrue(defaultArgument.contains(CLASSES));
         assertTrue(defaultArgument.contains(ENUMS));
         assertTrue(defaultArgument.contains(IMPORTS));
@@ -162,15 +165,15 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test
     public void testGetDefaultArgumentAsStringIfOptionSpecified() throws CommandLineException {
         final String defaultArgument = DISPLAY_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
-        assertEquals(CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS + COMMA_CHAR + INTERFACES + COMMA_CHAR
-                + STATIC_IMPORTS + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS,
-                defaultArgument);
+        assertEquals(ABSTRACT_CLASSES + COMMA_CHAR + CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS + COMMA_CHAR
+                + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR + IMPLEMENTATIONS
+                + COMMA_CHAR + EXTENSIONS, defaultArgument);
     }
 
     /**
@@ -179,7 +182,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-d, --display DISPLAY_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is classes,enums,imports,interfaces,static_imports,native_methods,implementations,extensions\n\t\tDISPLAY_OPTIONS specifies the objects to be treated, it is a separated comma list with these possible values : [only_packages, classes, interfaces, abstract_classes, static_imports, imports, enums, methods, attributes, only_parsed_objects, native_methods, implementations, extensions]. These arguments implementations may differ following the chosen PROGRAMMING_LANGUAGE.",
+                "-d, --display DISPLAY_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is \"abstract_classes,classes,enums,imports,interfaces,static_imports,native_methods,implementations,extensions\"\n\t\tDISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, attributes, classes, enums, extensions, implementations, imports, interfaces, methods, native_methods, only_packages, static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes, \"attributes\" : displays parsed source files attributes, \"classes\" : displays parsed source files which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files, \"implementations\" : displays dependencies which are implemented by parsed source files, \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source files which are interfaces, \"methods\" : displays parsed source files methods, \"native_methods\" : displays links to the native dependency, \"only_packages\" : displays only packages of all parsed source files, \"static_imports\" : displays static imports of all parsed source files. Note : These arguments implementations may not be taken into account following the chosen PROGRAMMING_LANGUAGE.",
                 DISPLAY_OPTION1.getFullUsage().toString());
     }
 
