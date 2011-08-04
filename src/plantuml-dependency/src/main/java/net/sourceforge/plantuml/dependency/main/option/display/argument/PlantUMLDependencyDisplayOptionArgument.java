@@ -28,7 +28,7 @@ import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.EMPTY_OPTION_ARGUMENT_ERROR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
+import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.NOT_DISPLAY_ARGUMENT_ERROR;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.USAGE_DESCRIPTIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.valueOf;
@@ -93,9 +93,8 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
     @Override
     public Set < Display > parseArgument(final String argument) throws CommandLineException {
         Set < Display > displayArguments = null;
-        if (isEmpty(argument)) {
-            throw new CommandLineException(EMPTY_OPTION_ARGUMENT_ERROR);
-        } else {
+        
+        if (isNotEmpty(argument)) {
             displayArguments = new TreeSet < Display >();
             final StringTokenizer tokenizer = new StringTokenizer(argument, COMMA_CHAR);
             while (tokenizer.hasMoreTokens()) {
@@ -107,6 +106,8 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
                     throw new CommandLineException(buildLogString(NOT_DISPLAY_ARGUMENT_ERROR, argument), e);
                 }
             }
+        } else {
+            throw new CommandLineException(EMPTY_OPTION_ARGUMENT_ERROR);
         }
 
         return displayArguments;

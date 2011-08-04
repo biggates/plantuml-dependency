@@ -72,7 +72,7 @@ public class PlantUMLDependencyProgramTask extends Task {
      * @return the array of {@link String} containing PlantUML Dependency command line arguments.
      * @since 1.1.0
      */
-    private String[] createArgs(final Map < String, String > argumentsMap) {
+    private static String[] createArgs(final Map < String, String > argumentsMap) {
 
         final List < String > argsList = new ArrayList < String >();
 

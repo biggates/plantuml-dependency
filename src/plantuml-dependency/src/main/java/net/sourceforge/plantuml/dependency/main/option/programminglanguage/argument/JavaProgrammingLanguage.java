@@ -172,7 +172,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             if any exception occurs while reading or parsing the source file content.
      * @since 1.0
      */
-    private GenericDependency createDependencyFromRaw(final JavaRawDependency javaRawDependency,
+    private static GenericDependency createDependencyFromRaw(final JavaRawDependency javaRawDependency,
             final String sourceFileContent, final ProgrammingLanguageContext programmingLanguageContext)
             throws PlantUMLDependencyException {
 
@@ -241,7 +241,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return the {@link GenericDependency} created or updated.
      * @since 1.0
      */
-    private GenericDependency createOrUpdateAbstractDependency(final JavaRawDependency javaRawDependency,
+    private static GenericDependency createOrUpdateAbstractDependency(final JavaRawDependency javaRawDependency,
             final DependencyType dependencyType, final ProgrammingLanguageContext programmingLanguageContext) {
         GenericDependency dependency = programmingLanguageContext.getDependencies(javaRawDependency.getFullName());
 
@@ -268,7 +268,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *         <code>false</code> otherwise.
      * @since 1.0
      */
-    private boolean extractAbstract(final String group) {
+    private static boolean extractAbstract(final String group) {
         return isEmpty(group) ? false : true;
     }
 
@@ -288,7 +288,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *         Returns an empty {@link Set} if no import has been found.
      * @since 1.0
      */
-    private Set < GenericDependency > extractImportDependencies(final String javaSourceFileContent,
+    private static Set < GenericDependency > extractImportDependencies(final String javaSourceFileContent,
             final ProgrammingLanguageContext programmingLanguageContext) {
 
         final Set < GenericDependency > importDependenciesSet = new HashSet < GenericDependency >();
@@ -330,7 +330,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *         Returns an empty {@link Set} if no import has been found.
      * @since 1.0
      */
-    private Set < GenericDependency > extractImportDependenciesSet(final String javaSourceFileContent,
+    private static Set < GenericDependency > extractImportDependenciesSet(final String javaSourceFileContent,
             final Pattern importRegExp, final ProgrammingLanguageContext programmingLanguageContext) {
         final Set < GenericDependency > importDependenciesSet = new TreeSet < GenericDependency >();
         final Matcher matcher = importRegExp.matcher(javaSourceFileContent);
@@ -365,7 +365,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             if any exception occurs while extracting name.
      * @since 1.0
      */
-    private String extractName(final String group) throws PlantUMLDependencyException {
+    private static String extractName(final String group) throws PlantUMLDependencyException {
         if (isEmpty(group)) {
             throw new PlantUMLDependencyException(DEPENDENCY_NAME_NULL_ERROR);
         } else {
@@ -382,7 +382,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return the java package name if found, otherwise it returns a blank string.
      * @since 1.0
      */
-    private String extractPackageName(final String javaSourceFileContent) {
+    private static String extractPackageName(final String javaSourceFileContent) {
         String packageName = BLANK_STRING;
         final Matcher matcher = PACKAGE_REGEXP.matcher(javaSourceFileContent);
 
@@ -420,7 +420,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             instances.
      * @since 1.0
      */
-    private Set < GenericDependency > extractParentDependencies(final JavaType type, final JavaParentType parentType,
+    private static Set < GenericDependency > extractParentDependencies(final JavaType type, final JavaParentType parentType,
             final Set < String > parents, final Set < GenericDependency > importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext, final String currentPackageName)
             throws PlantUMLDependencyException {
@@ -448,7 +448,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *         import {@link Set}, <code>null</code> otherwise.
      * @since 1.0
      */
-    private GenericDependency findDependencyInImport(final String dependencyName,
+    private static GenericDependency findDependencyInImport(final String dependencyName,
             final Set < GenericDependency > importDependencies) {
         GenericDependency dependency = null;
         final Iterator < GenericDependency > iter = importDependencies.iterator();
@@ -476,7 +476,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *         if found in the import {@link Set}, <code>null</code> otherwise.
      * @since 1.0
      */
-    private GenericDependency findDependencyInImport(final String dependencyName, final String dependencyPackageName,
+    private static GenericDependency findDependencyInImport(final String dependencyName, final String dependencyPackageName,
             final Set < GenericDependency > importDependencies) {
         GenericDependency dependency = null;
         final Iterator < GenericDependency > iter = importDependencies.iterator();
@@ -502,7 +502,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return the index of the character representing the end of a generic definition. If not
      *         found, <code>beginningIndex</code> is returned.
      */
-    private int getNextEndOfGenericIndex(final int beginningIndex, final String str) {
+    private static int getNextEndOfGenericIndex(final int beginningIndex, final String str) {
         int index = beginningIndex;
         int numberOfGenerics = 1;
 
@@ -539,7 +539,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *         found (i.e. end of file) , <code>str.length() - 1</code> is returned.
      * @since 1.0
      */
-    private int getNextEndOfSimpleLineCommentIndex(final int beginningIndex, final String str) {
+    private static int getNextEndOfSimpleLineCommentIndex(final int beginningIndex, final String str) {
         int index = beginningIndex;
         boolean found = false;
 
@@ -580,7 +580,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             {@link GenericDependency} instance.
      * @since 1.0
      */
-    private GenericDependency getOrCreateParentDependency(final JavaType type, final JavaParentType parentType,
+    private static GenericDependency getOrCreateParentDependency(final JavaType type, final JavaParentType parentType,
             final String parentNameOrFullName, final String currentPackageName,
             final Set < GenericDependency > importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
@@ -626,7 +626,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             {@link GenericDependency} instance.
      * @since 1.0
      */
-    private GenericDependency getOrCreateParentDependencyWithFullName(final JavaType type,
+    private static GenericDependency getOrCreateParentDependencyWithFullName(final JavaType type,
             final JavaParentType parentType, final String parentFullName,
             final Set < GenericDependency > importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext, final int packageSeparatorIndex)
@@ -680,7 +680,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             {@link GenericDependency} instance.
      * @since 1.0
      */
-    private GenericDependency getOrCreateParentDependencyWithName(final JavaType type, final JavaParentType parentType,
+    private static GenericDependency getOrCreateParentDependencyWithName(final JavaType type, final JavaParentType parentType,
             final String currentPackageName, final Set < GenericDependency > importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext, final String parentName)
             throws PlantUMLDependencyException {
@@ -731,7 +731,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             {@link GenericDependency} instance.
      * @since 1.0
      */
-    private GenericDependency getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(final JavaType type,
+    private static GenericDependency getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(final JavaType type,
             final JavaParentType parentType, final String currentPackageName,
             final ProgrammingLanguageContext programmingLanguageContext, final String parentName,
             final String parentFullNameWithSamePackage) throws PlantUMLDependencyException {
@@ -787,7 +787,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             instance.
      * @since 1.0
      */
-    private GenericDependency readDependencyFromPreparedFile(final String javaSourceFileContent,
+    private static GenericDependency readDependencyFromPreparedFile(final String javaSourceFileContent,
             final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
         final JavaRawDependency javaRawDependency = readJavaRawDependencyFromPreparedFile(javaSourceFileContent);
         return createDependencyFromRaw(javaRawDependency, javaSourceFileContent, programmingLanguageContext);
@@ -806,7 +806,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             instance.
      * @since 1.0
      */
-    private JavaRawDependency readJavaRawDependencyFromPreparedFile(final String javaSourceFileContent)
+    private static JavaRawDependency readJavaRawDependencyFromPreparedFile(final String javaSourceFileContent)
             throws PlantUMLDependencyException {
         final JavaRawDependency javaRawDependency = new JavaRawDependency();
 
@@ -851,7 +851,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *         in the analysis.
      * @since 1.0
      */
-    private String removeSourceFileCommentsAndGenerics(final String javaSourceFileContent) {
+    private static String removeSourceFileCommentsAndGenerics(final String javaSourceFileContent) {
         final StringBuffer buffer = new StringBuffer();
 
         int cursor = 0;

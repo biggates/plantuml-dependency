@@ -129,11 +129,11 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
         ProgrammingLanguage programmingLanguage = null;
 
         programmingLanguage = PROGRAMMING_LANGUAGE_MAP.get(programmingLanguageName.toLowerCase());
-        if (programmingLanguage == null) {
+        if (programmingLanguage != null) {
+            LOGGER.fine(buildLogString(PROGRAMMING_LANGUAGE_FOUND_FINE, programmingLanguage));
+        } else {
             throw new IllegalArgumentException(buildLogString(UNKNOWN_PROGRAMMING_LANGUAGE_ERROR,
                     programmingLanguageName));
-        } else {
-            LOGGER.fine(buildLogString(PROGRAMMING_LANGUAGE_FOUND_FINE, programmingLanguage));
         }
 
         return programmingLanguage;

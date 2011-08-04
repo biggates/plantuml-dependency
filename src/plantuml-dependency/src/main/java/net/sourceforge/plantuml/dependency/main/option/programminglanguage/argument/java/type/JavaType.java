@@ -124,10 +124,10 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
         checkNullOrEmpty(javaTypeKeyword, JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR);
 
         final JavaType javaType = JAVA_TYPE_MAP.get(javaTypeKeyword.toLowerCase());
-        if (javaType == null) {
-            throw new IllegalArgumentException(buildLogString(UNKNOWN_JAVA_TYPE_ERROR, javaTypeKeyword));
-        } else {
+        if (javaType != null) {
             LOGGER.fine(buildLogString(JAVA_TYPE_FOUND_FINE, javaTypeKeyword));
+        } else {
+            throw new IllegalArgumentException(buildLogString(UNKNOWN_JAVA_TYPE_ERROR, javaTypeKeyword));
         }
 
         return javaType;

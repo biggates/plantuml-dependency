@@ -25,7 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument;
 
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
+import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.getProgrammingLanguageNamesSet;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.valueOfIgnoringCase;
@@ -84,14 +84,15 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgument extends Abstrac
     @Override
     public ProgrammingLanguage parseArgument(final String argument) throws CommandLineException {
         ProgrammingLanguage language = null;
-        if (isEmpty(argument)) {
-            throw new CommandLineException(PROGRAMMING_LANGUAGE_NAME_NULL_ERROR);
-        } else {
+        
+        if (isNotEmpty(argument)) {
             try {
                 language = valueOfIgnoringCase(argument.toUpperCase());
             } catch (final IllegalArgumentException e) {
                 throw new CommandLineException(e.getMessage(), e);
             }
+        } else {
+            throw new CommandLineException(PROGRAMMING_LANGUAGE_NAME_NULL_ERROR);
         }
 
         return language;

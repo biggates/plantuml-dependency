@@ -199,7 +199,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @since 1.0
      */
     @SuppressWarnings("unchecked")
-    private ProgrammingLanguageContext readDependenciesMapFromFiles(final ProgrammingLanguage language,
+    private static ProgrammingLanguageContext readDependenciesMapFromFiles(final ProgrammingLanguage language,
             final FileSet includeExcludeFiles, final Set < Display > displayOpt) {
         final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext(displayOpt);
 
@@ -236,7 +236,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *             if any parsing exception occurs while reading the source file.
      * @since 1.0
      */
-    private GenericDependency readDependencyFromFile(final File file,
+    private static GenericDependency readDependencyFromFile(final File file,
             final ProgrammingLanguageContext programmingLanguageContext, final ProgrammingLanguage language)
             throws PlantUMLDependencyException {
         final String sourceFileContent = readFileIntoString(file);
