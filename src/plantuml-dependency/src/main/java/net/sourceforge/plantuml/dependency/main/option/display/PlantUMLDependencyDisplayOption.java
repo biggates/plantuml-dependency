@@ -29,6 +29,7 @@ import static java.util.Collections.unmodifiableSet;
 import static net.sourceforge.mazix.cli.option.status.OptionStatus.HIDDEN_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -42,9 +43,9 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUML
 /**
  * The display option, telling the program what to display in the generated file. <i>Note : no
  * option should have the same main or secondary names</i>.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -62,34 +63,34 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
 
     /**
      * Default constructor.
-     *
+     * 
      * @since 1.0
      */
     public PlantUMLDependencyDisplayOption() {
         super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayOptionArgument(true),
-                new StringBuffer("To specify class diagram objects to display. If not specified, the default is \""
-                        + DEFAULT_DISPLAY_OPTIONS + "\""), SPACE_CHAR, HIDDEN_OPTIONAL_OPTION_STATUS);
+                new StringBuffer("To specify class diagram objects to display. If not specified, the default is "
+                        + DEFAULT_DISPLAY_OPTIONS), SPACE_CHAR, HIDDEN_OPTIONAL_OPTION_STATUS);
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return DEFAULT_DISPLAY_OPTIONS;
+        return DEFAULT_DISPLAY_OPTIONS_STRING;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return DEFAULT_DISPLAY_OPTIONS;
+        return DEFAULT_DISPLAY_OPTIONS_STRING;
     }
 }

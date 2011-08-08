@@ -24,8 +24,10 @@
 
 package net.sourceforge.plantuml.dependency.constants;
 
+import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.mazix.components.utils.string.StringUtils.convertCollectionToSeparatedString;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
@@ -35,9 +37,14 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
+
+import java.util.Set;
+import java.util.TreeSet;
+
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The class which stores all necessary plantUML dependency constants as Strings.
@@ -49,9 +56,13 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDe
 public final class PlantUMLDependencyConstants {
 
     /** The default display options to apply if not specified. */
-    public static final String DEFAULT_DISPLAY_OPTIONS = ABSTRACT_CLASSES + COMMA_CHAR + CLASSES + COMMA_CHAR + ENUMS
-            + COMMA_CHAR + IMPORTS + COMMA_CHAR + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR
-            + NATIVE_METHODS + COMMA_CHAR + IMPLEMENTATIONS + COMMA_CHAR + EXTENSIONS;
+    public static final Set < Display > DEFAULT_DISPLAY_OPTIONS = new TreeSet < Display >(asList(new Display[] {
+            ABSTRACT_CLASSES, CLASSES, ENUMS, IMPORTS, INTERFACES, STATIC_IMPORTS, NATIVE_METHODS, IMPLEMENTATIONS,
+            EXTENSIONS}));
+
+    /** The default display options argument as a String to apply if not specified. */
+    public static final String DEFAULT_DISPLAY_OPTIONS_STRING = convertCollectionToSeparatedString(
+            DEFAULT_DISPLAY_OPTIONS, COMMA_CHAR);
 
     /** The default exclude options to apply if not specified. */
     public static final String DEFAULT_EXCLUDE_OPTIONS = "**/*~";
@@ -65,15 +76,15 @@ public final class PlantUMLDependencyConstants {
     /** Logging properties path. */
     public static final String LOGGING_PROPERTIES_PATH = "net/sourceforge/plantuml/dependency/log/logging.properties";
 
-    /** Version properties path. */
-    public static final String VERSION_PROPERTIES_PATH = "net/sourceforge/plantuml/dependency/version/version.properties";
-
     /** The custom dependency which is used to link with native code. */
     public static final GenericDependency NATIVE_DEPENDENCY = new GenericDependencyImpl(new NativeDependencyTypeImpl(
             "Native_Code", BLANK_STRING));
 
     /** The PlantUML description which is used to graphically identify the native dependency. */
     public static final String NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION = " << (N,yellow) >>";
+
+    /** Version properties path. */
+    public static final String VERSION_PROPERTIES_PATH = "net/sourceforge/plantuml/dependency/version/version.properties";
 
     /**
      * Private constructor to prevent from instantiation.

@@ -30,8 +30,8 @@ import static net.sourceforge.mazix.components.constants.CharacterConstants.SLAS
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.DISPLAY_SET2;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.DISPLAY_SET3;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -68,7 +68,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
                     new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                             "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
-            DISPLAY_SET2);
+                    DEFAULT_DISPLAY_OPTIONS);
 
     /** Java programming language test 3 instance. */
     @DataPoint
@@ -77,7 +77,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
                     new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                             "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
-            DISPLAY_SET3);
+                    DISPLAY_OPTIONS);
 
     /** Java programming language test 4 instance. */
     @DataPoint
@@ -87,7 +87,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
                             "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "GenericDependency", "net.sourceforge.plantuml.dependency.generic")})), DISPLAY_SET3);
+                    "GenericDependency", "net.sourceforge.plantuml.dependency.generic")})), DISPLAY_OPTIONS);
 
     /** Java programming language test 5 instance. */
     @DataPoint

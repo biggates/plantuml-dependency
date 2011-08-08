@@ -24,10 +24,14 @@
 
 package net.sourceforge.plantuml.dependency.main.option.display.argument;
 
+import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COLON_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.QUOTATION_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
+
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * The enumeration which specifies display options.
@@ -63,17 +67,16 @@ public enum Display {
     /** The display static imports argument. */
     STATIC_IMPORTS("displays static imports of all parsed source files");
 
-    /** The full usage descriptions for all display options constant. */
-    public static final String USAGE_DESCRIPTIONS = getFullUsageDescriptions();
-
     /**
      * Build the string which contains the usage descriptions of all displays options which are
      * available.
      * 
-     * @return the full usage description of all displays options which are available.
+     * @param displayOptions
+     *            the Set of all displays options to get the full usage description from.
+     * @return the full usage description of all displays options.
      * @since 1.1.1
      */
-    private static String getFullUsageDescriptions() {
+    public static String getFullUsageDescriptions(Set < Display > displayOptions) {
         final StringBuffer buffer = new StringBuffer();
 
         for (int i = 0; i < values().length - 1; i++) {
@@ -89,6 +92,26 @@ public enum Display {
 
         return buffer.toString();
     }
+    
+    public static String getSetAsSeparataredCommaString(Set < Display > displayOptions) {
+        final StringBuffer buffer = new StringBuffer();
+
+        for (int i = 0; i < values().length - 1; i++) {
+
+            final Display display = values()[i];
+            buffer.append(display.getFullUsageDescription());
+            buffer.append(COMMA_CHAR);
+            buffer.append(SPACE_CHAR);
+        }
+
+        final Display lastDisplay = values()[values().length - 1];
+        buffer.append(lastDisplay.getFullUsageDescription());
+
+        return buffer.toString();
+    }
+
+    /** The Set containing all displays options which are available. */
+    public static final Set < Display > DISPLAY_OPTIONS = new TreeSet < Display >(asList(values()));
 
     /** The string containing the display usage description. */
     private String usageDescription;

@@ -25,8 +25,8 @@
 package net.sourceforge.plantuml.dependency.main.option.output;
 
 import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.DISPLAY_SET2;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.DISPLAY_SET3;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET2;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.CPP;
@@ -63,37 +63,37 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     /** Output option execution test 1 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION1 = new PlantUMLDependencyOutputOptionExecution(
-            TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET3, 1);
+            TEST_FILE1, JAVA, FILE_SET1, DISPLAY_OPTIONS, 1);
 
     /** Output option execution test 2 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION2 = new PlantUMLDependencyOutputOptionExecution(
-            TEST_FILE2, JAVA, FILE_SET1, DISPLAY_SET3, 1);
+            TEST_FILE2, JAVA, FILE_SET1, DISPLAY_OPTIONS, 1);
 
     /** Output option execution test 3 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION3 = new PlantUMLDependencyOutputOptionExecution(
-            TEST_FILE1, CPP, FILE_SET2, DISPLAY_SET3, 1);
+            TEST_FILE1, CPP, FILE_SET2, DISPLAY_OPTIONS, 1);
 
     /** Output option execution test 4 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION4 = new PlantUMLDependencyOutputOptionExecution(
-            TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET3, 1);
+            TEST_FILE1, JAVA, FILE_SET1, DISPLAY_OPTIONS, 1);
 
     /** Output option execution test 5 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION5 = new PlantUMLDependencyOutputOptionExecution(
-            TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET2, 1);
+            TEST_FILE1, JAVA, FILE_SET1, DEFAULT_DISPLAY_OPTIONS, 1);
 
     /** Output option execution test 6 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION6 = new PlantUMLDependencyOutputOptionExecution(
-            TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET3, 2);
+            TEST_FILE1, JAVA, FILE_SET1, DISPLAY_OPTIONS, 2);
 
     /** Output option execution test 7 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION7 = new PlantUMLDependencyOutputOptionExecution(
-            TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET3, 1);
+            TEST_FILE1, JAVA, FILE_SET1, DISPLAY_OPTIONS, 1);
 
     /** Output option execution test 8 instance. */
     @DataPoint

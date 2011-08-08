@@ -32,19 +32,10 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_S
 import static net.sourceforge.mazix.components.constants.CommonConstants.CURRENT_DIRECTORY;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ATTRIBUTES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ATTRIBUTES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.METHODS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PACKAGES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.values;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -64,7 +55,7 @@ import org.apache.tools.ant.types.FileSet;
 
 /**
  * The class which stores all necessary plantUML dependency constants used for Junit tests.
- *
+ * 
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.1.1
@@ -153,22 +144,15 @@ public final class PlantUMLDependencyTestConstants {
     /** Display set test 1 instance. */
     public static final Set < Display > DISPLAY_SET1 = new TreeSet < Display >();
 
-    /** Display set test 2 instance. */
-    public static final Set < Display > DISPLAY_SET2 = new TreeSet < Display >(asList(new Display[] {CLASSES, ENUMS,
-            IMPORTS, INTERFACES, ONLY_PACKAGES, STATIC_IMPORTS, NATIVE_METHODS, IMPLEMENTATIONS, EXTENSIONS}));
-
-    /** Display set test 3 instance. */
-    public static final Set < Display > DISPLAY_SET3 = new TreeSet < Display >(asList(values()));
-
     /** Display set test 4 instance. */
-    public static final Set < Display > DISPLAY_SET4 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
+    public static final Set < Display > DISPLAY_SET2 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
 
     /** Display set test 5 instance. */
-    public static final Set < Display > DISPLAY_SET5 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
+    public static final Set < Display > DISPLAY_SET3 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
 
     /** Display set test 6 instance. */
-    public static final Set < Display > DISPLAY_SET6 = new TreeSet < Display >(asList(new Display[] {
-            ABSTRACT_CLASSES, METHODS, ATTRIBUTES}));
+    public static final Set < Display > DISPLAY_SET4 = new TreeSet < Display >(asList(new Display[] {ABSTRACT_CLASSES,
+            METHODS, ATTRIBUTES}));
 
     /** Generic dependency set test 1 instance. */
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET1 = new TreeSet < GenericDependency >(
@@ -625,7 +609,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     *
+     * 
      * @since 1.0
      */
     private PlantUMLDependencyTestConstants() {

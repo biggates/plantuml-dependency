@@ -171,9 +171,9 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetDefaultArgumentAsStringIfOptionSpecified() throws CommandLineException {
         final String defaultArgument = DISPLAY_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
-        assertEquals(ABSTRACT_CLASSES + COMMA_CHAR + CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + IMPORTS + COMMA_CHAR
-                + INTERFACES + COMMA_CHAR + STATIC_IMPORTS + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR + IMPLEMENTATIONS
-                + COMMA_CHAR + EXTENSIONS, defaultArgument);
+        assertEquals(ABSTRACT_CLASSES + COMMA_CHAR + CLASSES + COMMA_CHAR + ENUMS + COMMA_CHAR + EXTENSIONS
+                + COMMA_CHAR + IMPLEMENTATIONS + COMMA_CHAR + IMPORTS + COMMA_CHAR + INTERFACES + COMMA_CHAR
+                + NATIVE_METHODS + COMMA_CHAR + STATIC_IMPORTS, defaultArgument);
     }
 
     /**
@@ -182,7 +182,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-d, --display DISPLAY_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is \"abstract_classes,classes,enums,imports,interfaces,static_imports,native_methods,implementations,extensions\"\n\t\tDISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, attributes, classes, enums, extensions, implementations, imports, interfaces, methods, native_methods, only_packages, static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes, \"attributes\" : displays parsed source files attributes, \"classes\" : displays parsed source files which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files, \"implementations\" : displays dependencies which are implemented by parsed source files, \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source files which are interfaces, \"methods\" : displays parsed source files methods, \"native_methods\" : displays links to the native dependency, \"only_packages\" : displays only packages of all parsed source files, \"static_imports\" : displays static imports of all parsed source files. Note : These arguments implementations may not be taken into account following the chosen PROGRAMMING_LANGUAGE.",
+                "-d, --display DISPLAY_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]\n\t\tDISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, attributes, classes, enums, extensions, implementations, imports, interfaces, methods, native_methods, only_packages, static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes, \"attributes\" : displays parsed source files attributes, \"classes\" : displays parsed source files which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files, \"implementations\" : displays dependencies which are implemented by parsed source files, \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source files which are interfaces, \"methods\" : displays parsed source files methods, \"native_methods\" : displays links to the native dependency, \"only_packages\" : displays only packages of all parsed source files, \"static_imports\" : displays static imports of all parsed source files. Note : These arguments implementations may not be taken into account following the chosen PROGRAMMING_LANGUAGE.",
                 DISPLAY_OPTION1.getFullUsage().toString());
     }
 

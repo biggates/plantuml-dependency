@@ -27,7 +27,7 @@ package net.sourceforge.plantuml.dependency.main.ant;
 import static java.util.logging.Level.INFO;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonFileConstants.TXT_EXTENSION;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_EXCLUDE_OPTIONS;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_INCLUDE_OPTIONS;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
@@ -60,7 +60,7 @@ public class PlantUMLDependencyProgramTaskTest {
     private static PlantUMLDependencyProgramTask createPlantUMLDependencyTask1() {
         final PlantUMLDependencyProgramTask task = new PlantUMLDependencyProgramTask();
         task.setBaseDir(DOT_CHAR);
-        task.setDisplay(DEFAULT_DISPLAY_OPTIONS);
+        task.setDisplay(DEFAULT_DISPLAY_OPTIONS_STRING);
         task.setExcludes(DEFAULT_EXCLUDE_OPTIONS);
         task.setIncludes(DEFAULT_INCLUDE_OPTIONS + DEFAULT_PROGRAMMING_LANGUAGE.getName());
         task.setOutput("plantuml" + TXT_EXTENSION);
@@ -95,7 +95,7 @@ public class PlantUMLDependencyProgramTaskTest {
      */
     @Test
     public void testGetDisplay() {
-        assertEquals(DEFAULT_DISPLAY_OPTIONS, PLANTUML_DEPENDENCY_TASK2.getDisplay());
+        assertEquals(DEFAULT_DISPLAY_OPTIONS_STRING, PLANTUML_DEPENDENCY_TASK2.getDisplay());
     }
 
     /**
@@ -169,8 +169,8 @@ public class PlantUMLDependencyProgramTaskTest {
     @Test
     public void testSetDisplay() {
         final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
-        testTask.setDisplay(DEFAULT_DISPLAY_OPTIONS);
-        assertEquals(DEFAULT_DISPLAY_OPTIONS, testTask.getDisplay());
+        testTask.setDisplay(DEFAULT_DISPLAY_OPTIONS_STRING);
+        assertEquals(DEFAULT_DISPLAY_OPTIONS_STRING, testTask.getDisplay());
     }
 
     /**
@@ -241,7 +241,7 @@ public class PlantUMLDependencyProgramTaskTest {
     @Test
     public void testToString() {
         assertEquals(
-                "PlantUMLDependencyProgramTask [output=plantuml.txt, verboseLevel=INFO, programmingLanguage=java, includes=**/*.java, excludes=**/*~, display=abstract_classes,classes,enums,imports,interfaces,static_imports,native_methods,implementations,extensions, baseDir=.]",
+                "PlantUMLDependencyProgramTask [output=plantuml.txt, verboseLevel=INFO, programmingLanguage=java, includes=**/*.java, excludes=**/*~, display=abstract_classes,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports, baseDir=.]",
                 PLANTUML_DEPENDENCY_TASK2.toString());
     }
 }
