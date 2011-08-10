@@ -165,7 +165,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param programmingLanguageContext
      *            the context instance containing all dependencies which have already been seen in
      *            previous treatment, and other information which can be shared when parsing several
-     *            source files, mustn't be <code>null</code>.
+     *            source files, such as the display options, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance read from the source file and from the raw
      *         dependency.
      * @throws PlantUMLDependencyException

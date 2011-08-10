@@ -35,7 +35,14 @@ import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependency
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ATTRIBUTES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.METHODS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -144,15 +151,32 @@ public final class PlantUMLDependencyTestConstants {
     /** Display set test 1 instance. */
     public static final Set < Display > DISPLAY_SET1 = new TreeSet < Display >();
 
-    /** Display set test 4 instance. */
-    public static final Set < Display > DISPLAY_SET2 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
+    /** Display set test 2 instance. */
+    public static final Set < Display > DISPLAY_SET2 = new TreeSet < Display >(asList(new Display[] {ABSTRACT_CLASSES}));
 
-    /** Display set test 5 instance. */
+    /** Display set test 3 instance. */
     public static final Set < Display > DISPLAY_SET3 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
 
+    /** Display set test 4 instance. */
+    public static final Set < Display > DISPLAY_SET4 = new TreeSet < Display >(asList(new Display[] {ENUMS}));
+
+    /** Display set test 5 instance. */
+    public static final Set < Display > DISPLAY_SET5 = new TreeSet < Display >(asList(new Display[] {IMPORTS}));
+
     /** Display set test 6 instance. */
-    public static final Set < Display > DISPLAY_SET4 = new TreeSet < Display >(asList(new Display[] {ABSTRACT_CLASSES,
-            METHODS, ATTRIBUTES}));
+    public static final Set < Display > DISPLAY_SET6 = new TreeSet < Display >(asList(new Display[] {INTERFACES}));
+
+    /** Display set test 7 instance. */
+    public static final Set < Display > DISPLAY_SET7 = new TreeSet < Display >(asList(new Display[] {STATIC_IMPORTS}));
+
+    /** Display set test 8 instance. */
+    public static final Set < Display > DISPLAY_SET8 = new TreeSet < Display >(asList(new Display[] {NATIVE_METHODS}));
+
+    /** Display set test 9 instance. */
+    public static final Set < Display > DISPLAY_SET9 = new TreeSet < Display >(asList(new Display[] {IMPLEMENTATIONS}));
+
+    /** Display set test 10 instance. */
+    public static final Set < Display > DISPLAY_SET10 = new TreeSet < Display >(asList(new Display[] {EXTENSIONS}));
 
     /** Generic dependency set test 1 instance. */
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET1 = new TreeSet < GenericDependency >(
@@ -378,6 +402,33 @@ public final class PlantUMLDependencyTestConstants {
                     asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
                             "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(), false);
+
+    /** Class dependency type test 27 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE27 = new ClassDependencyTypeImpl(
+            "TestDisplayOption", "net.sourceforge.plantuml.dependency",
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {
+                    new GenericDependencyImpl("File", "java.io"),
+                    new GenericDependencyImpl("FileInputStream", "java.io"),
+                    new GenericDependencyImpl("FileNotFoundException", "java.io"),
+                    new GenericDependencyImpl("InputStream", "java.io"),
+                    new GenericDependencyImpl("Serializable", "java.io"),
+                    new GenericDependencyImpl("BigInteger", "java.math"),
+                    new GenericDependencyImpl("Random", "java.util"),
+                    new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
+                    new GenericDependencyImpl("ProgrammingLanguage",
+                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                    new GenericDependencyImpl("JavaRawDependency",
+                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java"),
+                    new GenericDependencyImpl("Arrays", "java.util"),
+                    new GenericDependencyImpl("Level", "java.util.logging")})), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("DeepCloneable",
+                            "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("BigInteger", "java.math")})), false);
+
+    /** Class dependency type test 28 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE28 = new ClassDependencyTypeImpl(
+            "TestDisplayOption", "net.sourceforge.plantuml.dependency", new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
 
     /** Interface dependency type test 1 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
@@ -607,6 +658,12 @@ public final class PlantUMLDependencyTestConstants {
     /** Generic dependency test 38 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY38 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE26);
 
+    /** Generic dependency test 39 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY39 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE27);
+
+    /** Generic dependency test 40 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY40 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE28);
+    
     /**
      * Private constructor to prevent from instantiation.
      * 
