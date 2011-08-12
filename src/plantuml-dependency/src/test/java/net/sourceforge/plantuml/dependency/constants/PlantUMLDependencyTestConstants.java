@@ -193,7 +193,7 @@ public final class PlantUMLDependencyTestConstants {
     /** Display set test 14 instance. */
     public static final Set < Display > DISPLAY_SET14 = new TreeSet < Display >(asList(new Display[] {CLASSES,
             STATIC_IMPORTS}));
-    
+
     /** Display set test 15 instance. */
     public static final Set < Display > DISPLAY_SET15 = new TreeSet < Display >(asList(new Display[] {CLASSES,
             NATIVE_METHODS}));
@@ -405,7 +405,7 @@ public final class PlantUMLDependencyTestConstants {
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {
                     new GenericDependencyImpl("JavaProgram", "net.sourceforge.mazix.cli.program"), NATIVE_DEPENDENCY})),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
-                    "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >(), false);
+                    "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >(), true);
 
     /** Class dependency type test 25 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE25 = new ClassDependencyTypeImpl(
@@ -488,6 +488,12 @@ public final class PlantUMLDependencyTestConstants {
                     asList(new GenericDependency[] {new GenericDependencyImpl("Arrays", "java.util"),
                             new GenericDependencyImpl("Level", "java.util.logging")})),
             new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
+
+    /** Class dependency type test 33 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE33 = new ClassDependencyTypeImpl(
+            "TestDisplayOption", "net.sourceforge.plantuml.dependency", new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {NATIVE_DEPENDENCY})), new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(), true);
 
     /** Interface dependency type test 1 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
@@ -734,6 +740,9 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Generic dependency test 44 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY44 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE32);
+
+    /** Generic dependency test 45 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY45 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE33);
 
     /**
      * Private constructor to prevent from instantiation.
