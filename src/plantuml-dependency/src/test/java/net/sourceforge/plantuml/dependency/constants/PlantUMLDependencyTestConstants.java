@@ -33,14 +33,12 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.CURRENT
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ATTRIBUTES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 
@@ -62,7 +60,7 @@ import org.apache.tools.ant.types.FileSet;
 
 /**
  * The class which stores all necessary plantUML dependency constants used for Junit tests.
- * 
+ *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.1.1
@@ -414,7 +412,7 @@ public final class PlantUMLDependencyTestConstants {
                             new GenericDependencyImpl("Java_Program", "net.sourceforge.mazix.cli.pro_gram"),
                             NATIVE_DEPENDENCY})), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("Java_Program",
-                            "net.sourceforge.mazix.cli.pro_gram")})), new TreeSet < GenericDependency >(), false);
+                            "net.sourceforge.mazix.cli.pro_gram")})), new TreeSet < GenericDependency >(), true);
 
     /** Class dependency type test 26 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE26 = new ClassDependencyTypeImpl("TestImplements",
@@ -746,7 +744,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     * 
+     *
      * @since 1.0
      */
     private PlantUMLDependencyTestConstants() {

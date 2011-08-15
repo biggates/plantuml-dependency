@@ -78,4 +78,12 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
     protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
         return getParentInterfaces().contains(genericDependency);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " [" + super.toString() + "]";
+    }
 }

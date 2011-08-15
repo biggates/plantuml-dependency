@@ -50,7 +50,7 @@ public final class RegularExpressionConstants {
     public static final Pattern STATIC_IMPORT_REGEXP = compile("import +static +([\\w. ]+)\\.([\\w.]+?)\\.(?:.*?) *;");
 
     /** The pattern representing the native methods. */
-    public static final Pattern NATIVE_METHODS_REGEXP = compile("native +void +[\\w]* *\\( *\\)? *;");
+    public static final Pattern NATIVE_METHODS_REGEXP = compile("native +.* +[\\w]* *\\( *\\)? *;");
 
     /**
      * Private constructor to prevent from instantiation.

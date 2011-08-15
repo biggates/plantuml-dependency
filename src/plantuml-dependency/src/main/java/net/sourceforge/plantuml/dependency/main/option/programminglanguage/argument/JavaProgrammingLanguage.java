@@ -179,7 +179,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final Set < GenericDependency > importDependencies = extractImportDependencies(sourceFileContent,
                 programmingLanguageContext);
 
+        boolean hasNativeMethods = false;
         if (programmingLanguageContext.hasToDisplay(NATIVE_METHODS) && javaRawDependency.hasNativeMethods()) {
+            hasNativeMethods = javaRawDependency.hasNativeMethods();
             importDependencies.add(NATIVE_DEPENDENCY);
             programmingLanguageContext.addSeenDependencies(NATIVE_DEPENDENCY);
         } else {
@@ -209,7 +211,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
                 importDependencies, parentImplementationsDependencies, parentExtentionsDependencies,
-                javaRawDependency.hasNativeMethods());
+                hasNativeMethods);
         return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
     }
 
