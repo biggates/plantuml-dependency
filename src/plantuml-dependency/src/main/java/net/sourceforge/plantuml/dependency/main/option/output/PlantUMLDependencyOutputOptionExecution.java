@@ -231,7 +231,8 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param language
      *            the programming language of the source files to parse, mustn't be
      *            <code>null</code>.
-     * @return the {@link GenericDependency} instance parsed in the source file.
+     * @return the {@link GenericDependency} instance parsed in the source file, may be
+     *         <code>null</code> if the context display options doesn't manage the dependency type.
      * @throws PlantUMLDependencyException
      *             if any parsing exception occurs while reading the source file.
      * @since 1.0

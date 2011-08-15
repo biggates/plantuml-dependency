@@ -244,7 +244,8 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      *            previous treatment, and other information which can be shared when parsing several
      *            source files, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance if it has been found and correctly parsed,
-     *         <code>null</code> otherwise.
+     *         <code>null</code> otherwise. May also be <code>null</code> if the context display
+     *         options doesn't manage the dependency type.
      * @throws PlantUMLDependencyException
      *             if any parsing exception occurs while reading the source file.
      * @since 1.0

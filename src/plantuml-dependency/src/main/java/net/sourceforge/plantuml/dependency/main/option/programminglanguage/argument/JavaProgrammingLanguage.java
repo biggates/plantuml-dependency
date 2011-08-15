@@ -51,16 +51,24 @@ import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.CR
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_ALREADY_SEEN_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_SEEN_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_DOESNT_MANAGED_DEPENDENCY_TYPE_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_ISNT_MANAGED_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.NO_PACKAGE_FOUND_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.UPDATING_DEPENDENCY_FINE;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.CLASS;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.ENUM;
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.INTERFACE;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -91,66 +99,11 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.conte
  */
 class JavaProgrammingLanguage extends ProgrammingLanguage {
 
-    /** Serial version UID. */
-    private static final long serialVersionUID = 62105384573195242L;
-
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(JavaProgrammingLanguage.class.getName());
 
-    /**
-     * Get the index of the character representing the end of a multi line java comment (i.e. star +
-     * slash) in the passed string, starting from the passed index.
-     *
-     * @param beginningIndex
-     *            the index where to start to look for the end comment character, must be between 0
-     *            and <code>str.length()</code>.
-     * @param str
-     *            the string where to look for the end comment character.
-     * @return the index of the character representing the end of a multi line java comment. If not
-     *         found, <code>beginningIndex</code> is returned.
-     * @since 1.0
-     */
-    private static int getNextEndOfMultiLineCommentIndex(final int beginningIndex, final String str) {
-        int index = beginningIndex;
-        boolean found = false;
-
-        while (index < str.length() && !found) {
-            final char currentCharacter = str.charAt(index);
-            if (currentCharacter == STAR_CHAR.charAt(0)) {
-                if (index + 1 < str.length()) {
-                    final char nextCharacter = str.charAt(index + 1);
-                    if (nextCharacter == SLASH_CHAR.charAt(0)) {
-                        index += 2;
-                        found = true;
-                    } else {
-                        index++;
-                    }
-                } else {
-                    index++;
-                }
-            } else {
-                index++;
-            }
-        }
-
-        if (!found) {
-            index = beginningIndex;
-        }
-
-        return index;
-    }
-
-    /**
-     * Default constructor.
-     *
-     * @param programmingLanguageName
-     *            the programming language name to get the instance from, mustn't be
-     *            <code>null</code> nor empty.
-     * @since 1.0
-     */
-    protected JavaProgrammingLanguage(final String programmingLanguageName) {
-        super(programmingLanguageName);
-    }
+    /** Serial version UID. */
+    private static final long serialVersionUID = 62105384573195242L;
 
     /**
      * Creates the {@link GenericDependency} instance from the raw dependency and the java source
@@ -208,21 +161,20 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, EXTENSIONS));
         }
 
-        final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
-                javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
-                importDependencies, parentImplementationsDependencies, parentExtentionsDependencies,
-                hasNativeMethods);
-        return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
-    }
+        GenericDependency genericDependency = null;
+        if (hasTypeToDisplay(programmingLanguageContext, javaRawDependency)) {
+            final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
+                    javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
+                    importDependencies, parentImplementationsDependencies, parentExtentionsDependencies,
+                    hasNativeMethods);
+            genericDependency = createOrUpdateAbstractDependency(javaRawDependency, dependencyType,
+                    programmingLanguageContext);
+        } else {
+            LOGGER.fine(buildLogString(DISPLAY_MODE_DOESNT_MANAGED_DEPENDENCY_TYPE_FINE, new Object[] {
+                    javaRawDependency, programmingLanguageContext}));
+        }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    public ProgrammingLanguageContext createNewContext(final Set < Display > displayOpt) {
-        return new JavaProgrammingLanguageContext(displayOpt);
+        return genericDependency;
     }
 
     /**
@@ -422,8 +374,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             instances.
      * @since 1.0
      */
-    private static Set < GenericDependency > extractParentDependencies(final JavaType type, final JavaParentType parentType,
-            final Set < String > parents, final Set < GenericDependency > importDependencies,
+    private static Set < GenericDependency > extractParentDependencies(final JavaType type,
+            final JavaParentType parentType, final Set < String > parents,
+            final Set < GenericDependency > importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext, final String currentPackageName)
             throws PlantUMLDependencyException {
 
@@ -478,8 +431,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *         if found in the import {@link Set}, <code>null</code> otherwise.
      * @since 1.0
      */
-    private static GenericDependency findDependencyInImport(final String dependencyName, final String dependencyPackageName,
-            final Set < GenericDependency > importDependencies) {
+    private static GenericDependency findDependencyInImport(final String dependencyName,
+            final String dependencyPackageName, final Set < GenericDependency > importDependencies) {
         GenericDependency dependency = null;
         final Iterator < GenericDependency > iter = importDependencies.iterator();
         while (dependency == null && iter.hasNext()) {
@@ -522,6 +475,49 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         }
 
         if (numberOfGenerics != 0) {
+            index = beginningIndex;
+        }
+
+        return index;
+    }
+
+    /**
+     * Get the index of the character representing the end of a multi line java comment (i.e. star +
+     * slash) in the passed string, starting from the passed index.
+     *
+     * @param beginningIndex
+     *            the index where to start to look for the end comment character, must be between 0
+     *            and <code>str.length()</code>.
+     * @param str
+     *            the string where to look for the end comment character.
+     * @return the index of the character representing the end of a multi line java comment. If not
+     *         found, <code>beginningIndex</code> is returned.
+     * @since 1.0
+     */
+    private static int getNextEndOfMultiLineCommentIndex(final int beginningIndex, final String str) {
+        int index = beginningIndex;
+        boolean found = false;
+
+        while (index < str.length() && !found) {
+            final char currentCharacter = str.charAt(index);
+            if (currentCharacter == STAR_CHAR.charAt(0)) {
+                if (index + 1 < str.length()) {
+                    final char nextCharacter = str.charAt(index + 1);
+                    if (nextCharacter == SLASH_CHAR.charAt(0)) {
+                        index += 2;
+                        found = true;
+                    } else {
+                        index++;
+                    }
+                } else {
+                    index++;
+                }
+            } else {
+                index++;
+            }
+        }
+
+        if (!found) {
             index = beginningIndex;
         }
 
@@ -682,8 +678,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *             {@link GenericDependency} instance.
      * @since 1.0
      */
-    private static GenericDependency getOrCreateParentDependencyWithName(final JavaType type, final JavaParentType parentType,
-            final String currentPackageName, final Set < GenericDependency > importDependencies,
+    private static GenericDependency getOrCreateParentDependencyWithName(final JavaType type,
+            final JavaParentType parentType, final String currentPackageName,
+            final Set < GenericDependency > importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext, final String parentName)
             throws PlantUMLDependencyException {
         GenericDependency dependency = null;
@@ -758,18 +755,25 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
-     * {@inheritDoc}
+     * Looks if the raw dependency has to be displayed following its type and the passed context.
      *
-     * @since 1.0
+     * @param programmingLanguageContext
+     *            the {@link ProgrammingLanguageContext} which has display options to look for,
+     *            mustn't be <code>null</code>.
+     * @param javaRawDependency
+     *            the {@link JavaRawDependency} to test if it has to be displayed, mustn't be
+     *            <code>null</code>.
+     * @return <code>true</code> if the dependency has to be displayed, <code>false</code>
+     *         otherwise.
+     * @since 1.1.1
      */
-    @Override
-    public GenericDependency readDependencyFromFile(final String sourceFileContent,
-            final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
-        final String preparedSourceFileContent = removeSourceFileCommentsAndGenerics(sourceFileContent);
-        final GenericDependency genericDependency = readDependencyFromPreparedFile(preparedSourceFileContent,
-                programmingLanguageContext);
-        programmingLanguageContext.addParsedAndSeenDependencies(genericDependency);
-        return genericDependency;
+    private static boolean hasTypeToDisplay(final ProgrammingLanguageContext programmingLanguageContext,
+            final JavaRawDependency javaRawDependency) {
+        return ((programmingLanguageContext.hasToDisplay(CLASSES) && javaRawDependency.getType() == CLASS && !javaRawDependency
+                .isAbstract())
+                || (programmingLanguageContext.hasToDisplay(ENUMS) && javaRawDependency.getType() == ENUM) || (programmingLanguageContext
+                .hasToDisplay(INTERFACES) && javaRawDependency.getType() == INTERFACE)
+                || (programmingLanguageContext.hasToDisplay(ABSTRACT_CLASSES) && javaRawDependency.isAbstract()));
     }
 
     /**
@@ -893,5 +897,46 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         }
 
         return buffer.toString().trim();
+    }
+
+    /**
+     * Default constructor.
+     *
+     * @param programmingLanguageName
+     *            the programming language name to get the instance from, mustn't be
+     *            <code>null</code> nor empty.
+     * @since 1.0
+     */
+    protected JavaProgrammingLanguage(final String programmingLanguageName) {
+        super(programmingLanguageName);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.0
+     */
+    @Override
+    public ProgrammingLanguageContext createNewContext(final Set < Display > displayOpt) {
+        return new JavaProgrammingLanguageContext(displayOpt);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.1.1
+     */
+    @Override
+    public GenericDependency readDependencyFromFile(final String sourceFileContent,
+            final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
+        final String preparedSourceFileContent = removeSourceFileCommentsAndGenerics(sourceFileContent);
+        final GenericDependency genericDependency = readDependencyFromPreparedFile(preparedSourceFileContent,
+                programmingLanguageContext);
+        if (genericDependency == null) {
+            //TODO
+        } else {
+            programmingLanguageContext.addParsedAndSeenDependencies(genericDependency);
+        }
+        return genericDependency;
     }
 }
