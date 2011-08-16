@@ -39,36 +39,39 @@ public final class FineConstants {
 
     /** The dependency already seen info message. */
     public static final String DEPENDENCY_ALREADY_SEEN_FINE = "[fine-plantuml-dependency-001] : The dependency \"{0}\" has already been seen, don't have to add it to the seen object Map";
-
+    
     /** The dependency not seen with default type info message. */
     public static final String DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE = "[fine-plantuml-dependency-002] : The dependency \"{0}\" has not been seen yet, creating it with default type";
 
     /** The dependency not seen info message. */
     public static final String DEPENDENCY_NOT_SEEN_FINE = "[fine-plantuml-dependency-003] : The dependency \"{0}\" has not been seen yet, creating it with type \"{1}\"";
 
+    /** The dependency not treated info message. */
+    public static final String DEPENDENCY_NOT_TREATED_FINE = "[fine-plantuml-dependency-004] : No dependency to treat in the source file";
+
     /** The display mode doesn't managed the dependency type fine message. */
-    public static final String DISPLAY_MODE_DOESNT_MANAGED_DEPENDENCY_TYPE_FINE = "[fine-plantuml-dependency-004] : Display mode in the context \"{0}\" doesn't managed the type of the dependency \"{1}\"";
+    public static final String DISPLAY_MODE_DOESNT_MANAGED_DEPENDENCY_TYPE_FINE = "[fine-plantuml-dependency-005] : Display mode in the context \"{0}\" doesn't managed the type of the dependency \"{1}\"";
 
     /** The display mode isn't managed fine message. */
-    public static final String DISPLAY_MODE_ISNT_MANAGED_FINE = "[fine-plantuml-dependency-005] : Display mode \"{0}\" doesn't have to be managed";
+    public static final String DISPLAY_MODE_ISNT_MANAGED_FINE = "[fine-plantuml-dependency-006] : Display mode \"{0}\" doesn't have to be managed";
 
     /** The import is an interface fine message. */
-    public static final String IMPORT_IS_AN_INTERFACE_FINE = "[fine-plantuml-dependency-006] : Import \"{0}\" is an interface, UML link don't have to be generated";
+    public static final String IMPORT_IS_AN_INTERFACE_FINE = "[fine-plantuml-dependency-007] : Import \"{0}\" is an interface, UML link don't have to be generated";
 
     /** The parent type string empty fine message. */
-    public static final String JAVA_PARENT_TYPE_STRING_EMPTY_FINE = "[fine-plantuml-dependency-007] : The java parent type string to parse is empty, no parent to extract";
+    public static final String JAVA_PARENT_TYPE_STRING_EMPTY_FINE = "[fine-plantuml-dependency-008] : The java parent type string to parse is empty, no parent to extract";
 
     /** The java type found fine message. */
-    public static final String JAVA_TYPE_FOUND_FINE = "[fine-plantuml-dependency-008] : Java type \"{0}\" has been found";
+    public static final String JAVA_TYPE_FOUND_FINE = "[fine-plantuml-dependency-009] : Java type \"{0}\" has been found";
 
     /** The no package found fine message. */
-    public static final String NO_PACKAGE_FOUND_FINE = "[fine-plantuml-dependency-009] : No package name has been found";
+    public static final String NO_PACKAGE_FOUND_FINE = "[fine-plantuml-dependency-010] : No package name has been found";
 
     /** The programming language found fine message. */
-    public static final String PROGRAMMING_LANGUAGE_FOUND_FINE = "[fine-plantuml-dependency-010] : Programming language \"{0}\" has been found";
+    public static final String PROGRAMMING_LANGUAGE_FOUND_FINE = "[fine-plantuml-dependency-011] : Programming language \"{0}\" has been found";
 
     /** The updating dependency fine message. */
-    public static final String UPDATING_DEPENDENCY_FINE = "[fine-plantuml-dependency-011] : Updating the dependency \"{0}\" with the type \"{1}\"";
+    public static final String UPDATING_DEPENDENCY_FINE = "[fine-plantuml-dependency-012] : Updating the dependency \"{0}\" with the type \"{1}\"";
 
     /**
      * Private constructor to prevent from instantiation.

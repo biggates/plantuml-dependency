@@ -51,6 +51,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.CR
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_ALREADY_SEEN_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_SEEN_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_TREATED_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_DOESNT_MANAGED_DEPENDENCY_TYPE_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_ISNT_MANAGED_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.NO_PACKAGE_FOUND_FINE;
@@ -933,7 +934,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final GenericDependency genericDependency = readDependencyFromPreparedFile(preparedSourceFileContent,
                 programmingLanguageContext);
         if (genericDependency == null) {
-            //TODO
+            LOGGER.fine(DEPENDENCY_NOT_TREATED_FINE);
         } else {
             programmingLanguageContext.addParsedAndSeenDependencies(genericDependency);
         }
