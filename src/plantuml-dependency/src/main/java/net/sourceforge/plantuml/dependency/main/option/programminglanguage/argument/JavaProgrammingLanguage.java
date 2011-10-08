@@ -52,7 +52,6 @@ import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DE
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_SEEN_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_TREATED_FINE;
-import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_ISNT_MANAGED_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.NO_PACKAGE_FOUND_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.UPDATING_DEPENDENCY_FINE;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
@@ -255,13 +254,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             if (dependency == null) {
                 LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE, fullName));
                 dependency = new GenericDependencyImpl(name, packageName);
-
-                if (programmingLanguageContext.hasToDisplay(display)) {
-                    programmingLanguageContext.addSeenDependencies(dependency);
-                } else {
-                    LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, display));
-                }
-
+                programmingLanguageContext.addSeenDependencies(dependency);
             } else {
                 LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, fullName));
             }

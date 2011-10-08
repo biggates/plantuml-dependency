@@ -396,7 +396,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY39, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
                 javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
-        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(13, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY40.getFullName()));
     }
 
@@ -969,7 +969,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
                 .createNewContext(DISPLAY_SET6);
         assertEquals(GENERIC_DEPENDENCY6, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
-        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY6.getFullName()));
     }
 
