@@ -248,21 +248,13 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         final Set < GenericDependency > importDependenciesSet = new HashSet < GenericDependency >();
 
-        if (programmingLanguageContext.hasToDisplay(IMPORTS)) {
-            final Set < GenericDependency > normalImportDependenciesSet = extractImportDependenciesSet(
-                    javaSourceFileContent, NORMAL_IMPORT_REGEXP, programmingLanguageContext);
-            importDependenciesSet.addAll(normalImportDependenciesSet);
-        } else {
-            LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, IMPORTS));
-        }
+        final Set < GenericDependency > normalImportDependenciesSet = extractImportDependenciesSet(
+                javaSourceFileContent, NORMAL_IMPORT_REGEXP, programmingLanguageContext, IMPORTS);
+        importDependenciesSet.addAll(normalImportDependenciesSet);
 
-        if (programmingLanguageContext.hasToDisplay(STATIC_IMPORTS)) {
-            final Set < GenericDependency > staticImportDependenciesSet = extractImportDependenciesSet(
-                    javaSourceFileContent, STATIC_IMPORT_REGEXP, programmingLanguageContext);
-            importDependenciesSet.addAll(staticImportDependenciesSet);
-        } else {
-            LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, STATIC_IMPORTS));
-        }
+        final Set < GenericDependency > staticImportDependenciesSet = extractImportDependenciesSet(
+                javaSourceFileContent, STATIC_IMPORT_REGEXP, programmingLanguageContext, STATIC_IMPORTS);
+        importDependenciesSet.addAll(staticImportDependenciesSet);
 
         return importDependenciesSet;
     }
@@ -286,7 +278,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0
      */
     private static Set < GenericDependency > extractImportDependenciesSet(final String javaSourceFileContent,
-            final Pattern importRegExp, final ProgrammingLanguageContext programmingLanguageContext) {
+            final Pattern importRegExp, final ProgrammingLanguageContext programmingLanguageContext,
+            final Display display) {
         final Set < GenericDependency > importDependenciesSet = new TreeSet < GenericDependency >();
         final Matcher matcher = importRegExp.matcher(javaSourceFileContent);
 
@@ -298,7 +291,13 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             if (dependency == null) {
                 LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE, fullName));
                 dependency = new GenericDependencyImpl(name, packageName);
-                programmingLanguageContext.addSeenDependencies(dependency);
+
+                if (programmingLanguageContext.hasToDisplay(display)) {
+                    programmingLanguageContext.addSeenDependencies(dependency);
+                } else {
+                    LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, display));
+                }
+
             } else {
                 LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, fullName));
             }
@@ -772,9 +771,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final JavaRawDependency javaRawDependency) {
         return ((programmingLanguageContext.hasToDisplay(CLASSES) && javaRawDependency.getType() == CLASS && !javaRawDependency
                 .isAbstract())
-                || (programmingLanguageContext.hasToDisplay(ENUMS) && javaRawDependency.getType() == ENUM) || (programmingLanguageContext
-                .hasToDisplay(INTERFACES) && javaRawDependency.getType() == INTERFACE)
-                || (programmingLanguageContext.hasToDisplay(ABSTRACT_CLASSES) && javaRawDependency.isAbstract()));
+                || (programmingLanguageContext.hasToDisplay(ENUMS) && javaRawDependency.getType() == ENUM)
+                || (programmingLanguageContext.hasToDisplay(INTERFACES) && javaRawDependency.getType() == INTERFACE) || (programmingLanguageContext
+                .hasToDisplay(ABSTRACT_CLASSES) && javaRawDependency.isAbstract()));
     }
 
     /**
