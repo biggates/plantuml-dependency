@@ -414,5 +414,4 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         buffer.append(END_PLANTUML);
         writeIntoFile(buffer.toString(), file);
     }
-
 }

@@ -52,24 +52,13 @@ import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DE
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_SEEN_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_TREATED_FINE;
-import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_DOESNT_MANAGED_DEPENDENCY_TYPE_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_ISNT_MANAGED_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.NO_PACKAGE_FOUND_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.UPDATING_DEPENDENCY_FINE;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.CLASS;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.ENUM;
-import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.INTERFACE;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -133,49 +122,24 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final Set < GenericDependency > importDependencies = extractImportDependencies(sourceFileContent,
                 programmingLanguageContext);
 
-        boolean hasNativeMethods = false;
-        if (programmingLanguageContext.hasToDisplay(NATIVE_METHODS) && javaRawDependency.hasNativeMethods()) {
-            hasNativeMethods = javaRawDependency.hasNativeMethods();
+        final boolean hasNativeMethods = javaRawDependency.hasNativeMethods();
+        if (hasNativeMethods) {
             importDependencies.add(NATIVE_DEPENDENCY);
             programmingLanguageContext.addSeenDependencies(NATIVE_DEPENDENCY);
-        } else {
-            LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, NATIVE_DEPENDENCY));
         }
 
-        Set < GenericDependency > parentImplementationsDependencies = null;
-        if (programmingLanguageContext.hasToDisplay(IMPLEMENTATIONS)) {
-            parentImplementationsDependencies = extractParentDependencies(javaRawDependency.getType(), IMPLEMENTATION,
-                    javaRawDependency.getParentImplementations(), importDependencies, programmingLanguageContext,
-                    javaRawDependency.getPackageName());
-        } else {
-            parentImplementationsDependencies = new HashSet < GenericDependency >();
-            LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, IMPLEMENTATIONS));
-        }
+        final Set < GenericDependency > parentImplementationsDependencies = extractParentDependencies(javaRawDependency
+                .getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(), importDependencies,
+                programmingLanguageContext, javaRawDependency.getPackageName());
 
-        Set < GenericDependency > parentExtentionsDependencies = null;
-        if (programmingLanguageContext.hasToDisplay(EXTENSIONS)) {
-            parentExtentionsDependencies = extractParentDependencies(javaRawDependency.getType(), EXTENSION,
-                    javaRawDependency.getParentExtentions(), importDependencies, programmingLanguageContext,
-                    javaRawDependency.getPackageName());
-        } else {
-            parentExtentionsDependencies = new HashSet < GenericDependency >();
-            LOGGER.fine(buildLogString(DISPLAY_MODE_ISNT_MANAGED_FINE, EXTENSIONS));
-        }
+        final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(javaRawDependency
+                .getType(), EXTENSION, javaRawDependency.getParentExtentions(), importDependencies,
+                programmingLanguageContext, javaRawDependency.getPackageName());
 
-        GenericDependency genericDependency = null;
-        if (hasTypeToDisplay(programmingLanguageContext, javaRawDependency)) {
-            final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
-                    javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
-                    importDependencies, parentImplementationsDependencies, parentExtentionsDependencies,
-                    hasNativeMethods);
-            genericDependency = createOrUpdateAbstractDependency(javaRawDependency, dependencyType,
-                    programmingLanguageContext);
-        } else {
-            LOGGER.fine(buildLogString(DISPLAY_MODE_DOESNT_MANAGED_DEPENDENCY_TYPE_FINE, new Object[] {
-                    javaRawDependency, programmingLanguageContext}));
-        }
-
-        return genericDependency;
+        final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
+                javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
+                importDependencies, parentImplementationsDependencies, parentExtentionsDependencies, hasNativeMethods);
+        return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
     }
 
     /**
@@ -752,28 +716,6 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         programmingLanguageContext.addSeenDependencies(dependency);
 
         return dependency;
-    }
-
-    /**
-     * Looks if the raw dependency has to be displayed following its type and the passed context.
-     *
-     * @param programmingLanguageContext
-     *            the {@link ProgrammingLanguageContext} which has display options to look for,
-     *            mustn't be <code>null</code>.
-     * @param javaRawDependency
-     *            the {@link JavaRawDependency} to test if it has to be displayed, mustn't be
-     *            <code>null</code>.
-     * @return <code>true</code> if the dependency has to be displayed, <code>false</code>
-     *         otherwise.
-     * @since 1.1.1
-     */
-    private static boolean hasTypeToDisplay(final ProgrammingLanguageContext programmingLanguageContext,
-            final JavaRawDependency javaRawDependency) {
-        return ((programmingLanguageContext.hasToDisplay(CLASSES) && javaRawDependency.getType() == CLASS && !javaRawDependency
-                .isAbstract())
-                || (programmingLanguageContext.hasToDisplay(ENUMS) && javaRawDependency.getType() == ENUM)
-                || (programmingLanguageContext.hasToDisplay(INTERFACES) && javaRawDependency.getType() == INTERFACE) || (programmingLanguageContext
-                .hasToDisplay(ABSTRACT_CLASSES) && javaRawDependency.isAbstract()));
     }
 
     /**
