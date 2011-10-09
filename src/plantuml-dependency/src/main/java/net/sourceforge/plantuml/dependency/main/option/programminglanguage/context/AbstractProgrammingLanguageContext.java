@@ -401,17 +401,15 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         checkNull(file, FILE_NULL_ERROR);
 
         final StringBuffer buffer = new StringBuffer(START_PLANTUML);
+        final StringBuffer buffer2 = new StringBuffer();
 
-        // TODO one "for" loop with 2 concatenated string buffer
-        for (final GenericDependency abstractDependency : getParsedAndSeenDependencies()) {
-            buffer.append(abstractDependency.getDependencyType().getPlantUMLDeclaration());
+        for (final GenericDependency genericDependency : getParsedAndSeenDependencies()) {
+            buffer.append(genericDependency.getDependencyType().getPlantUMLDeclaration());
+            buffer2.append(genericDependency.getDependencyType().getPlantUMLLinksDescription());
         }
 
-        for (final GenericDependency abstractImportDependency : getParsedAndSeenDependencies()) {
-            buffer.append(abstractImportDependency.getDependencyType().getPlantUMLLinksDescription());
-        }
-
-        buffer.append(END_PLANTUML);
+        buffer2.append(END_PLANTUML);
         writeIntoFile(buffer.toString(), file);
+        writeIntoFile(buffer2.toString(), file, true);
     }
 }

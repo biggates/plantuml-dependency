@@ -105,7 +105,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     boolean hasToDisplay(Display display);
 
     /**
-     * Writes the PlantUML description output file following all dependencies and the display option
+     * Writes the PlantUML description output file following all dependencies and the display options
      * of the context.
      *
      * @param file
