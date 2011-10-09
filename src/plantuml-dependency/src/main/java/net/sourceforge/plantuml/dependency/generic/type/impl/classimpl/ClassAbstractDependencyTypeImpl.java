@@ -25,11 +25,14 @@
 package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.ABSTRACT_CLASS_PLANTUML;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The class abstract implementation of the
@@ -38,7 +41,7 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
 
@@ -98,5 +101,15 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
         final StringBuffer buffer = new StringBuffer(ABSTRACT_CLASS_PLANTUML);
         buffer.append(getFullName());
         return buffer;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.1.1
+     */
+    @Override
+    public boolean isDisplayable(final Collection < Display > displayOptions) {
+        return displayOptions.contains(ABSTRACT_CLASSES);
     }
 }

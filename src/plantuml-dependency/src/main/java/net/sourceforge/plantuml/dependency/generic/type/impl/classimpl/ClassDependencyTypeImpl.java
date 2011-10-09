@@ -27,7 +27,9 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -35,13 +37,14 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The class implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType} interface.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -58,7 +61,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * Default constructor.
-     *
+     * 
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -73,7 +76,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * Full constructor.
-     *
+     * 
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -102,7 +105,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -115,7 +118,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -128,7 +131,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -147,7 +150,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -157,12 +160,22 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
     protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
         return getParentInterfaces().contains(genericDependency) || getParentClasses().contains(genericDependency);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.1.1
+     */
+    @Override
+    public boolean isDisplayable(final Collection < Display > displayOptions) {
+        return displayOptions.contains(CLASSES);
     }
 
     /**

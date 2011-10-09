@@ -25,10 +25,12 @@
 package net.sourceforge.plantuml.dependency.generic.type;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 
 import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The interface which describes a generic dependency type, no matter the programming language is. A
@@ -37,7 +39,7 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public interface DependencyType extends Comparable < DependencyType >, Serializable, DeepCloneable < DependencyType > {
 
@@ -111,8 +113,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
     Set < GenericDependency > getParentInterfaces();
 
     /**
-     * Gets the PlantUML declaration describing the current dependency type. See the <a href=
-     * "http://sourceforge.net/projects/plantuml/files/PlantUML%20Language%20Reference%20Guide.pdf/download"
+     * Gets the PlantUML declaration describing the current dependency type. See the <a href="http://sourceforge.net/projects/plantuml/files/PlantUML%20Language%20Reference%20Guide.pdf/download"
      * >PlantUML Language Reference Guide.pdf</a> or <a
      * href="http://plantuml.sourceforge.net/classes.html"
      * >http://plantuml.sourceforge.net/classes.html</a> page.
@@ -141,4 +142,16 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * @since 1.0
      */
     boolean hasNativeMethods();
+
+    /**
+     * Tells if the dependency has to be displayed following the passed display options.
+     *
+     * @param displayOptions
+     *            the {@link Collection} of display options, mustn't be <code>null</code>, if empty,
+     *            this method always returns <code>false</code>.
+     * @return <code>true</code> if the dependency has to be displayed, <code>false</code>
+     *         otherwise.
+     * @since 1.1.1
+     */
+    boolean isDisplayable(Collection < Display > displayOptions);
 }

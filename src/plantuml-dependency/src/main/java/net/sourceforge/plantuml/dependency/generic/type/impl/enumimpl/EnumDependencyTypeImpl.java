@@ -25,12 +25,15 @@
 package net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl;
 
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.ENUM_PLANTUML;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The enum implementation of the
@@ -108,6 +111,16 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
     @Override
     protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
         return getParentInterfaces().contains(genericDependency);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.1.1
+     */
+    @Override
+    public boolean isDisplayable(final Collection < Display > displayOptions) {
+        return displayOptions.contains(ENUMS);
     }
 
     /**

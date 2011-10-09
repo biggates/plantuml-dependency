@@ -26,15 +26,20 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl;
 
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
+
+import java.util.Collection;
+
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The native implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -45,7 +50,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * Default constructor.
-     *
+     * 
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -59,7 +64,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -73,12 +78,22 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
     protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
         return getParentInterfaces().contains(genericDependency);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.1.1
+     */
+    @Override
+    public boolean isDisplayable(final Collection < Display > displayOptions) {
+        return displayOptions.contains(NATIVE_METHODS);
     }
 
     /**

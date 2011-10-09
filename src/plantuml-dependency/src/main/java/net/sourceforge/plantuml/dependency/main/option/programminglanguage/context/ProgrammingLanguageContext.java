@@ -39,7 +39,7 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.0
+ * @version 1.1.1
  */
 public interface ProgrammingLanguageContext extends Comparable < ProgrammingLanguageContext >, Serializable,
         DeepCloneable < ProgrammingLanguageContext > {
@@ -85,6 +85,19 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     Collection < GenericDependency > getParsedAndSeenDependencies();
 
     /**
+     * Gets all dependencies which have been seen (as import for instance) and parsed within the
+     * context and which have to be displayed following display options.
+     *
+     * @param displayOpts
+     *            the {@link Collection} of display options, mustn't be <code>null</code>.
+     * @return the {@link Collection} of all {@link GenericDependency} which have been seen (as
+     *         import for instance) and parsed and associated with this context and which have to be
+     *         displayed following display options.
+     * @since 1.1.1
+     */
+    Collection < GenericDependency > getDisplayableParsedAndSeenDependencies(Collection < Display > displayOpts);
+
+    /**
      * Gets all dependencies which have been parsed within the context.
      *
      * @return the {@link Collection} of all {@link GenericDependency} which have been parsed and
@@ -92,6 +105,18 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      * @since 1.0
      */
     Collection < GenericDependency > getParsedDependencies();
+
+    /**
+     * Gets all dependencies which have been parsed within the context and which have to be
+     * displayed following display options.
+     *
+     * @param displayOpts
+     *            the {@link Collection} of display options, mustn't be <code>null</code>.
+     * @return the {@link Collection} of all {@link GenericDependency} which have been parsed and
+     *         associated with this context.
+     * @since 1.1.1
+     */
+    Collection < GenericDependency > getDisplayableParsedDependencies(Collection < Display > displayOpts);
 
     /**
      * Tells if the following {@link Display} is managed or not by this context.
@@ -105,8 +130,8 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     boolean hasToDisplay(Display display);
 
     /**
-     * Writes the PlantUML description output file following all dependencies and the display options
-     * of the context.
+     * Writes the PlantUML description output file following all dependencies and the display
+     * options of the context.
      *
      * @param file
      *            the output file where to generate the plantUML description, mustn't be

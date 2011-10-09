@@ -56,15 +56,21 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.0
+ * @version 1.1.1
  */
 public abstract class AbstractProgrammingLanguageContext implements ProgrammingLanguageContext {
+
+    /** The class logger. */
+    private static final transient Logger LOGGER = getLogger(AbstractProgrammingLanguageContext.class.getName());
 
     /** Serial version UID. */
     private static final long serialVersionUID = -2181655116426569842L;
 
-    /** The class logger. */
-    private static final transient Logger LOGGER = getLogger(AbstractProgrammingLanguageContext.class.getName());
+    /**
+     * The display options which have to appear in the plantUML description, mustn't be
+     * <code>null</code>.
+     */
+    private Set < Display > displayOptions;
 
     /**
      * The {@link Map} containing all dependencies which have already been treated or seen, it
@@ -79,12 +85,6 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * {@link GenericDependency} as values.
      */
     private Map < String, GenericDependency > parsedDependenciesMap;
-
-    /**
-     * The display options which have to appear in the plantUML description, mustn't be
-     * <code>null</code>.
-     */
-    private Set < Display > displayOptions;
 
     /**
      * Default constructor.
@@ -174,6 +174,17 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     public void addSeenDependencies(final GenericDependency dependency) {
         checkNull(dependency, DEPENDENCY_NULL_ERROR);
         getParsedAndSeenDependenciesMap().put(dependency.getFullName(), dependency);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 0.8
+     */
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        // TODO [graffity] Auto-generated method stub
+        return super.clone();
     }
 
     /**
@@ -287,6 +298,23 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     }
 
     /**
+     * {@inheritDoc}
+     *
+     * @since 1.1.1
+     */
+    @Override
+    public Collection < GenericDependency > getDisplayableParsedAndSeenDependencies(final Collection < Display > displayOpts) {
+        final Set < GenericDependency > displayableParsedAndSeenDependencies = new HashSet < GenericDependency >();
+        for (final GenericDependency dependency : getParsedAndSeenDependencies()) {
+            if (dependency.getDependencyType().isDisplayable(displayOpts)) {
+                displayableParsedAndSeenDependencies.add(dependency);
+            }
+        }
+
+        return displayableParsedAndSeenDependencies;
+    }
+
+    /**
      * Gets the value of <code>parsedAndSeenDependenciesMap</code>.
      *
      * @return the value of <code>parsedAndSeenDependenciesMap</code>.
@@ -305,6 +333,23 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     @Override
     public Collection < GenericDependency > getParsedDependencies() {
         return getParsedDependenciesMap().values();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.1.1
+     */
+    @Override
+    public Collection < GenericDependency > getDisplayableParsedDependencies(final Collection < Display > displayOpts) {
+        final Set < GenericDependency > displayableParsedDependencies = new HashSet < GenericDependency >();
+        for (final GenericDependency dependency : getParsedDependencies()) {
+            if (dependency.getDependencyType().isDisplayable(displayOpts)) {
+                displayableParsedDependencies.add(dependency);
+            }
+        }
+
+        return displayableParsedDependencies;
     }
 
     /**
@@ -403,7 +448,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         final StringBuffer buffer = new StringBuffer(START_PLANTUML);
         final StringBuffer buffer2 = new StringBuffer();
 
-        for (final GenericDependency genericDependency : getParsedAndSeenDependencies()) {
+        for (final GenericDependency genericDependency : getDisplayableParsedAndSeenDependencies(getDisplayOptions())) {
             buffer.append(genericDependency.getDependencyType().getPlantUMLDeclaration());
             buffer2.append(genericDependency.getDependencyType().getPlantUMLLinksDescription());
         }
