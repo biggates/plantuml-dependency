@@ -449,8 +449,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         final StringBuffer buffer2 = new StringBuffer();
 
         for (final GenericDependency genericDependency : getDisplayableParsedAndSeenDependencies(getDisplayOptions())) {
-            buffer.append(genericDependency.getDependencyType().getPlantUMLDeclaration());
-            buffer2.append(genericDependency.getDependencyType().getPlantUMLLinksDescription());
+            buffer.append(genericDependency.getDependencyType().getPlantUMLDeclaration(getDisplayOptions()));
+            buffer2.append(genericDependency.getDependencyType().getPlantUMLLinksDescription(getDisplayOptions()));
         }
 
         buffer2.append(END_PLANTUML);

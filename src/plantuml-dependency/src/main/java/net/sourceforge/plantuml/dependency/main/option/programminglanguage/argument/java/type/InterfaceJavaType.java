@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 
 import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
+import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NULL_ERROR;
@@ -51,9 +51,9 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.Inter
 
 /**
  * The interface {@link JavaType} implementation.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -64,7 +64,7 @@ class InterfaceJavaType extends JavaType {
 
     /**
      * Default constructor.
-     *
+     * 
      * @param programmingLanguageKeyword
      *            The java type language keyword, mustn't be <code>null</code>.
      * @since 1.0
@@ -75,7 +75,7 @@ class InterfaceJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -95,7 +95,7 @@ class InterfaceJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -121,7 +121,7 @@ class InterfaceJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -131,7 +131,7 @@ class InterfaceJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -141,17 +141,17 @@ class InterfaceJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
     public Set < String > extractParentImplementations(final String implementsString)
             throws PlantUMLDependencyException {
-        if (isNotEmpty(implementsString)) {
-            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR,
-                    new Object[] {implementsString, getLanguageKeyword()}));
-        } else {
+        if (isEmpty(implementsString)) {
             return new TreeSet < String >();
         }
+        throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR,
+                new Object[] {implementsString, getLanguageKeyword()}));
+
     }
 }

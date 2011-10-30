@@ -67,6 +67,9 @@ public enum Display {
     /** The display static imports argument. */
     STATIC_IMPORTS("displays static imports of all parsed source files");
 
+    /** The Set containing all displays options which are available. */
+    public static final Set < Display > DISPLAY_OPTIONS = new TreeSet < Display >(asList(values()));
+
     /**
      * Build the string which contains the usage descriptions of all displays options which are
      * available.
@@ -76,24 +79,7 @@ public enum Display {
      * @return the full usage description of all displays options.
      * @since 1.1.1
      */
-    public static String getFullUsageDescriptions(Set < Display > displayOptions) {
-        final StringBuffer buffer = new StringBuffer();
-
-        for (int i = 0; i < values().length - 1; i++) {
-
-            final Display display = values()[i];
-            buffer.append(display.getFullUsageDescription());
-            buffer.append(COMMA_CHAR);
-            buffer.append(SPACE_CHAR);
-        }
-
-        final Display lastDisplay = values()[values().length - 1];
-        buffer.append(lastDisplay.getFullUsageDescription());
-
-        return buffer.toString();
-    }
-    
-    public static String getSetAsSeparataredCommaString(Set < Display > displayOptions) {
+    public static String getFullUsageDescriptions(final Set < Display > displayOptions) {
         final StringBuffer buffer = new StringBuffer();
 
         for (int i = 0; i < values().length - 1; i++) {
@@ -110,8 +96,28 @@ public enum Display {
         return buffer.toString();
     }
 
-    /** The Set containing all displays options which are available. */
-    public static final Set < Display > DISPLAY_OPTIONS = new TreeSet < Display >(asList(values()));
+    /**
+     * Prints the {@link Set} of all display options as a comma separated String.
+     * 
+     * @return the comma separated String of all display options.
+     * @since 1.1.1
+     */
+    public static String getSetAsSeparataredCommaString() {
+        final StringBuffer buffer = new StringBuffer();
+
+        for (int i = 0; i < values().length - 1; i++) {
+
+            final Display display = values()[i];
+            buffer.append(display.getFullUsageDescription());
+            buffer.append(COMMA_CHAR);
+            buffer.append(SPACE_CHAR);
+        }
+
+        final Display lastDisplay = values()[values().length - 1];
+        buffer.append(lastDisplay.getFullUsageDescription());
+
+        return buffer.toString();
+    }
 
     /** The string containing the display usage description. */
     private String usageDescription;

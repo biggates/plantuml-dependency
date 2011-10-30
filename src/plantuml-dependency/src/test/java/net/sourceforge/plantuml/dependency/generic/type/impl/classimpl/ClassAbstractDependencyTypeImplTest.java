@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET3;
@@ -187,18 +188,18 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration(Set)}
      * .
      */
     @Test
     public void testGetPlantUMLDeclaration() {
         assertEquals(LINE_SEPARATOR + "abstract class java.lang.Integer", CLASS_ABSTRACT_DEPENDENCY_TYPE1
-                .getPlantUMLDeclaration().toString());
+                .getPlantUMLDeclaration(DEFAULT_DISPLAY_OPTIONS).toString());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription(Set)}
      * .
      */
     @Test
@@ -206,12 +207,12 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
         assertEquals(LINE_SEPARATOR + "java.lang.Integer ..> java.io.Serializable" + LINE_SEPARATOR
                 + "java.lang.Integer ..> java.lang.Comparable" + LINE_SEPARATOR
                 + "java.lang.Number <|-- java.lang.Integer", CLASS_ABSTRACT_DEPENDENCY_TYPE9
-                .getPlantUMLLinksDescription().toString());
+                .getPlantUMLLinksDescription(DEFAULT_DISPLAY_OPTIONS).toString());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription(Set)}
      * .
      */
     @Test
@@ -221,12 +222,12 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
                 + "java.lang.Integer ..> java.lang.Number" + LINE_SEPARATOR + "java.lang.Object <|-- java.lang.Integer"
                 + LINE_SEPARATOR + "java.lang.Set <|-- java.lang.Integer" + LINE_SEPARATOR
                 + "javax.lang.Cloneable <|-- java.lang.Integer", CLASS_ABSTRACT_DEPENDENCY_TYPE8
-                .getPlantUMLLinksDescription().toString());
+                .getPlantUMLLinksDescription(DEFAULT_DISPLAY_OPTIONS).toString());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription(Set)}
      * .
      */
     @Test
@@ -236,6 +237,6 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
                 + "java.lang.Set <|-- java.lang.Integer" + LINE_SEPARATOR
                 + "javax.lang.Cloneable <|-- java.lang.Integer" + LINE_SEPARATOR
                 + "java.lang.Number <|-- java.lang.Integer", CLASS_ABSTRACT_DEPENDENCY_TYPE7
-                .getPlantUMLLinksDescription().toString());
+                .getPlantUMLLinksDescription(DEFAULT_DISPLAY_OPTIONS).toString());
     }
 }

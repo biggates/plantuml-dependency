@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 
 import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
+import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.NATIVE_METHODS_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NAME_NULL_ERROR;
@@ -138,12 +138,11 @@ class EnumJavaType extends JavaType {
      */
     @Override
     public Set < String > extractParentExtentions(final String extendsString) throws PlantUMLDependencyException {
-        if (isNotEmpty(extendsString)) {
-            throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR,
-                    new Object[] {extendsString, getLanguageKeyword()}));
-        } else {
+        if (isEmpty(extendsString)) {
             return new TreeSet < String >();
         }
+        throw new PlantUMLDependencyException(buildLogString(JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR,
+                new Object[] {extendsString, getLanguageKeyword()}));
     }
 
     /**

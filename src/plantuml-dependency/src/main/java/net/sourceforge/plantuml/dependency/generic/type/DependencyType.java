@@ -118,20 +118,26 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * href="http://plantuml.sourceforge.net/classes.html"
      * >http://plantuml.sourceforge.net/classes.html</a> page.
      *
+     * @param displayOptions
+     *            the {@link Set} of all displays options to display the PlantUML declaration,
+     *            mustn't be <code>null</code>.
      * @return the plantUML declaration as a {@link StringBuffer} describing the current dependency
      *         type.
-     * @since 1.0
+     * @since 1.1.1
      */
-    StringBuffer getPlantUMLDeclaration();
+    StringBuffer getPlantUMLDeclaration(Set < Display > displayOptions);
 
     /**
      * Gets the PlantUML links description, following the imports and the dependency type parents.
      *
+     * @param displayOptions
+     *            the {@link Set} of all displays options to display the PlantUML links description,
+     *            mustn't be <code>null</code>.
      * @return the plantUML description as a {@link StringBuffer} describing links to imports and
      *         the dependency type parents.
-     * @since 1.0
+     * @since 1.1.1
      */
-    StringBuffer getPlantUMLLinksDescription();
+    StringBuffer getPlantUMLLinksDescription(Set < Display > displayOptions);
 
     /**
      * Tells if the dependency contains native methods or not.

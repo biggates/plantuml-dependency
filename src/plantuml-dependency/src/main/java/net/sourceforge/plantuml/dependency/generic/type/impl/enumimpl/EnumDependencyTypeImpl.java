@@ -96,8 +96,8 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.0
      */
     @Override
-    protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = super.generatePlantUMLDeclaration();
+    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
+        final StringBuffer buffer = super.generatePlantUMLDeclaration(displayOptions);
         buffer.append(ENUM_PLANTUML);
         buffer.append(getFullName());
         return buffer;

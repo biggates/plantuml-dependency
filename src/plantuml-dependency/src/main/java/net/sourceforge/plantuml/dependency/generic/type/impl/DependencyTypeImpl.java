@@ -43,6 +43,7 @@ import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The default implementation of the
@@ -196,8 +197,6 @@ public abstract class DependencyTypeImpl implements DependencyType {
             // TODO deepClone don't manage cycles
             d.importDependencies = new TreeSet < GenericDependency >(getImportDependencies());
             d.parentInterfaces = new TreeSet < GenericDependency >(getParentInterfaces());
-            d.plantUMLDeclaration = new StringBuffer(getPlantUMLDeclaration());
-            d.plantUMLLinksDescription = new StringBuffer(getPlantUMLLinksDescription());
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
         }
@@ -254,11 +253,14 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * Generates the plantUML declaration.
      *
+     * @param displayOptions
+     *            the {@link Set} of all displays options to display the PlantUML declaration,
+     *            mustn't be <code>null</code>.
      * @return the {@link StringBuffer} containing the plantUML declaration of the current
      *         dependency type.
      * @since 1.0
      */
-    protected StringBuffer generatePlantUMLDeclaration() {
+    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
         return new StringBuffer();
     }
 
@@ -287,11 +289,14 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * Generates the plantUML links description.
      *
+     * @param displayOptions
+     *            the {@link Set} of all displays options to display the PlantUML links description,
+     *            mustn't be <code>null</code>.
      * @return the {@link StringBuffer} containing the plantUML links description of the current
      *         dependency type.
      * @since 1.0
      */
-    private StringBuffer generatePlantUMLLinksDescription() {
+    private StringBuffer generatePlantUMLLinksDescription(final Set < Display > displayOptions) {
         final StringBuffer buffer = new StringBuffer();
         buffer.append(generatePlantUMLDescriptionHeader());
 
@@ -392,9 +397,9 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     @Override
-    public StringBuffer getPlantUMLDeclaration() {
+    public StringBuffer getPlantUMLDeclaration(final Set < Display > displayOptions) {
         if (plantUMLDeclaration == null) {
-            plantUMLDeclaration = generatePlantUMLDeclaration();
+            plantUMLDeclaration = generatePlantUMLDeclaration(displayOptions);
         }
         return plantUMLDeclaration;
     }
@@ -405,9 +410,9 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     @Override
-    public StringBuffer getPlantUMLLinksDescription() {
+    public StringBuffer getPlantUMLLinksDescription(final Set < Display > displayOptions) {
         if (plantUMLLinksDescription == null) {
-            plantUMLLinksDescription = generatePlantUMLLinksDescription();
+            plantUMLLinksDescription = generatePlantUMLLinksDescription(displayOptions);
         }
         return plantUMLLinksDescription;
     }

@@ -29,6 +29,7 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyCo
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 
 import java.util.Collection;
+import java.util.Set;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
@@ -37,9 +38,9 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 /**
  * The native implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -50,7 +51,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -64,12 +65,12 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
-    protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = super.generatePlantUMLDeclaration();
+    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
+        final StringBuffer buffer = super.generatePlantUMLDeclaration(displayOptions);
         buffer.append(CLASS_PLANTUML);
         buffer.append(getFullName());
         buffer.append(NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION);
@@ -78,7 +79,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -88,7 +89,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

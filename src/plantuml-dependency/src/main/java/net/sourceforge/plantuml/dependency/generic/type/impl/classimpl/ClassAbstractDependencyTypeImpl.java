@@ -97,7 +97,7 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @since 1.0
      */
     @Override
-    protected StringBuffer generatePlantUMLDeclaration() {
+    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
         final StringBuffer buffer = new StringBuffer(ABSTRACT_CLASS_PLANTUML);
         buffer.append(getFullName());
         return buffer;

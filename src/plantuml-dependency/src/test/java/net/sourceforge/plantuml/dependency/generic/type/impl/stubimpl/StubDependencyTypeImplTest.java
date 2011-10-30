@@ -26,6 +26,7 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl;
 
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Set;
@@ -38,9 +39,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link StubDependencyTypeImpl}.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -126,22 +127,23 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration(Set)}
      * .
      */
     @Test
     public void testGetPlantUMLDeclaration() {
-        assertEquals(LINE_SEPARATOR + "class java.lang.Integer", STUB_DEPENDENCY_TYPE1.getPlantUMLDeclaration()
-                .toString());
+        assertEquals(LINE_SEPARATOR + "class java.lang.Integer", STUB_DEPENDENCY_TYPE1.getPlantUMLDeclaration(
+                DEFAULT_DISPLAY_OPTIONS).toString());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription(Set)}
      * .
      */
     @Test
     public void testGetPlantUMLLinksDescription() {
-        assertEquals(BLANK_STRING, STUB_DEPENDENCY_TYPE1.getPlantUMLLinksDescription().toString());
+        assertEquals(BLANK_STRING, STUB_DEPENDENCY_TYPE1.getPlantUMLLinksDescription(DEFAULT_DISPLAY_OPTIONS)
+                .toString());
     }
 }

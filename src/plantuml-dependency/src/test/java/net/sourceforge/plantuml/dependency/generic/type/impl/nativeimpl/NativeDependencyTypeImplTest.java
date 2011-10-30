@@ -25,17 +25,20 @@
 package net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl;
 
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION;
 import static org.junit.Assert.assertEquals;
+
+import java.util.Set;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link NativeDependencyTypeImpl}.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -96,12 +99,12 @@ public class NativeDependencyTypeImplTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration(Set)}
      * .
      */
     @Test
     public void testGetPlantUMLDeclaration() {
         assertEquals(LINE_SEPARATOR + "class java.lang.Integer" + NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION,
-                NATIVE_DEPENDENCY_TYPE1.getPlantUMLDeclaration().toString());
+                NATIVE_DEPENDENCY_TYPE1.getPlantUMLDeclaration(DEFAULT_DISPLAY_OPTIONS).toString());
     }
 }

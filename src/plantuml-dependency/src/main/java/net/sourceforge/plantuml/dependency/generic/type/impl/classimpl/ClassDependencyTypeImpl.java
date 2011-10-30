@@ -42,9 +42,9 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 /**
  * The class implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -61,7 +61,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * Default constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -76,7 +76,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * Full constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -105,7 +105,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -118,12 +118,12 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
-    protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = super.generatePlantUMLDeclaration();
+    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
+        final StringBuffer buffer = super.generatePlantUMLDeclaration(displayOptions);
         buffer.append(CLASS_PLANTUML);
         buffer.append(getFullName());
         return buffer;
@@ -131,7 +131,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -150,7 +150,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -160,7 +160,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -170,7 +170,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

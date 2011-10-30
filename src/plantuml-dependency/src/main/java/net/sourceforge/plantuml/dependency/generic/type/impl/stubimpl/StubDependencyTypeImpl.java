@@ -28,6 +28,7 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CL
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 
 import java.util.Collection;
+import java.util.Set;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
@@ -67,8 +68,8 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.0
      */
     @Override
-    protected StringBuffer generatePlantUMLDeclaration() {
-        final StringBuffer buffer = super.generatePlantUMLDeclaration();
+    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
+        final StringBuffer buffer = super.generatePlantUMLDeclaration(displayOptions);
         buffer.append(CLASS_PLANTUML);
         buffer.append(getFullName());
         return buffer;
