@@ -27,7 +27,6 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 
-import java.util.Collection;
 import java.util.Set;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
@@ -37,11 +36,11 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 /**
  * The stub implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
@@ -50,7 +49,7 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -64,7 +63,7 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -77,7 +76,7 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -87,11 +86,11 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
-    public boolean isDisplayable(final Collection < Display > displayOptions) {
+    public boolean isDisplayable(final Set < Display > displayOptions) {
         return displayOptions.contains(CLASSES);
     }
 

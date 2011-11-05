@@ -27,7 +27,6 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.ABSTRACT_CLASS_PLANTUML;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 
-import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -109,7 +108,7 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @since 1.1.1
      */
     @Override
-    public boolean isDisplayable(final Collection < Display > displayOptions) {
+    public boolean isDisplayable(final Set < Display > displayOptions) {
         return displayOptions.contains(ABSTRACT_CLASSES);
     }
 }

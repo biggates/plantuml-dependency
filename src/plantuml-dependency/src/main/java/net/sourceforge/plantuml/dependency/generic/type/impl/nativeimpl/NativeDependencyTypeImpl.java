@@ -28,7 +28,6 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CL
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 
-import java.util.Collection;
 import java.util.Set;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
@@ -42,7 +41,7 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public class NativeDependencyTypeImpl extends DependencyTypeImpl {
 
@@ -93,7 +92,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.1.1
      */
     @Override
-    public boolean isDisplayable(final Collection < Display > displayOptions) {
+    public boolean isDisplayable(final Set < Display > displayOptions) {
         return displayOptions.contains(NATIVE_METHODS);
     }
 

@@ -27,7 +27,6 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.ENUM_PLANTUML;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 
-import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -42,7 +41,7 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public class EnumDependencyTypeImpl extends DependencyTypeImpl {
 
@@ -119,7 +118,7 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.1.1
      */
     @Override
-    public boolean isDisplayable(final Collection < Display > displayOptions) {
+    public boolean isDisplayable(final Set < Display > displayOptions) {
         return displayOptions.contains(ENUMS);
     }
 

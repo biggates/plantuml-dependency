@@ -25,7 +25,6 @@
 package net.sourceforge.plantuml.dependency.generic.type;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Set;
 
 import net.sourceforge.mazix.components.clone.DeepCloneable;
@@ -153,11 +152,11 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * Tells if the dependency has to be displayed following the passed display options.
      *
      * @param displayOptions
-     *            the {@link Collection} of display options, mustn't be <code>null</code>, if empty,
+     *            the {@link Set} of display options, mustn't be <code>null</code>, if empty,
      *            this method always returns <code>false</code>.
      * @return <code>true</code> if the dependency has to be displayed, <code>false</code>
      *         otherwise.
      * @since 1.1.1
      */
-    boolean isDisplayable(Collection < Display > displayOptions);
+    boolean isDisplayable(Set < Display > displayOptions);
 }

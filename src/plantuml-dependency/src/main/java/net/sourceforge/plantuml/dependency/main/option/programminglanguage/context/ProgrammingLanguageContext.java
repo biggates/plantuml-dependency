@@ -27,6 +27,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.cont
 import java.io.File;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
@@ -35,9 +36,9 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 /**
  * The interface which describes a context shared by all dependencies which are parsed. It is mainly
  * used to save all treated dependencies but also global states.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.1.1
  */
@@ -47,7 +48,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     /**
      * Adds in the parsed and seen dependencies in the context. If the dependency is already in the
      * context, it is replaced.
-     *
+     * 
      * @param dependency
      *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
      * @since 1.0
@@ -56,7 +57,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
 
     /**
      * Adds in the seen dependencies in the context.
-     *
+     * 
      * @param dependency
      *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
      * @since 1.0
@@ -65,7 +66,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
 
     /**
      * Gets the dependency in the context following its name.
-     *
+     * 
      * @param fullName
      *            the dependency full name to get, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance following its full name if found in the
@@ -76,8 +77,33 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
 
     /**
      * Gets all dependencies which have been seen (as import for instance) and parsed within the
+     * context and which have to be displayed following display options.
+     * 
+     * @param displayOpts
+     *            the {@link Set} of display options, mustn't be <code>null</code>.
+     * @return the {@link Collection} of all {@link GenericDependency} which have been seen (as
+     *         import for instance) and parsed and associated with this context and which have to be
+     *         displayed following display options.
+     * @since 1.1.1
+     */
+    Collection < GenericDependency > getDisplayableParsedAndSeenDependencies(Set < Display > displayOpts);
+
+    /**
+     * Gets all dependencies which have been parsed within the context and which have to be
+     * displayed following display options.
+     * 
+     * @param displayOpts
+     *            the {@link Set} of display options, mustn't be <code>null</code>.
+     * @return the {@link Collection} of all {@link GenericDependency} which have been parsed and
+     *         associated with this context.
+     * @since 1.1.1
+     */
+    Collection < GenericDependency > getDisplayableParsedDependencies(Set < Display > displayOpts);
+
+    /**
+     * Gets all dependencies which have been seen (as import for instance) and parsed within the
      * context.
-     *
+     * 
      * @return the {@link Collection} of all {@link GenericDependency} which have been seen (as
      *         import for instance) and parsed and associated with this context.
      * @since 1.0
@@ -85,21 +111,8 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     Collection < GenericDependency > getParsedAndSeenDependencies();
 
     /**
-     * Gets all dependencies which have been seen (as import for instance) and parsed within the
-     * context and which have to be displayed following display options.
-     *
-     * @param displayOpts
-     *            the {@link Collection} of display options, mustn't be <code>null</code>.
-     * @return the {@link Collection} of all {@link GenericDependency} which have been seen (as
-     *         import for instance) and parsed and associated with this context and which have to be
-     *         displayed following display options.
-     * @since 1.1.1
-     */
-    Collection < GenericDependency > getDisplayableParsedAndSeenDependencies(Collection < Display > displayOpts);
-
-    /**
      * Gets all dependencies which have been parsed within the context.
-     *
+     * 
      * @return the {@link Collection} of all {@link GenericDependency} which have been parsed and
      *         associated with this context.
      * @since 1.0
@@ -107,20 +120,8 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     Collection < GenericDependency > getParsedDependencies();
 
     /**
-     * Gets all dependencies which have been parsed within the context and which have to be
-     * displayed following display options.
-     *
-     * @param displayOpts
-     *            the {@link Collection} of display options, mustn't be <code>null</code>.
-     * @return the {@link Collection} of all {@link GenericDependency} which have been parsed and
-     *         associated with this context.
-     * @since 1.1.1
-     */
-    Collection < GenericDependency > getDisplayableParsedDependencies(Collection < Display > displayOpts);
-
-    /**
      * Tells if the following {@link Display} is managed or not by this context.
-     *
+     * 
      * @param display
      *            the {@link Display}, mustn't be <code>null</code>.
      * @return <code>true</code> if the {@link Display} is managed by the context,
@@ -132,7 +133,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     /**
      * Writes the PlantUML description output file following all dependencies and the display
      * options of the context.
-     *
+     * 
      * @param file
      *            the output file where to generate the plantUML description, mustn't be
      *            <code>null</code>.

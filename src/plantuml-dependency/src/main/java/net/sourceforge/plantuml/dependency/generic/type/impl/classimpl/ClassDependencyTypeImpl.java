@@ -28,8 +28,8 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SE
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
 
-import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -46,7 +46,7 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public class ClassDependencyTypeImpl extends DependencyTypeImpl implements ClassDependencyType {
 
@@ -132,13 +132,13 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.1.1
      */
     @Override
-    protected StringBuffer generatePlantUMLDescriptionFooter() {
-        final StringBuffer buffer = new StringBuffer();
+    protected StringBuffer generatePlantUMLDescriptionFooter(final Set < Display > displayOptions) {
+        final StringBuffer buffer = super.generatePlantUMLDescriptionFooter(displayOptions);
 
-        for (final GenericDependency classDependency : getParentClasses()) {
+        for (final GenericDependency classDependency : getParentClassesToGeneratePlantUML(displayOptions)) {
             buffer.append(LINE_SEPARATOR);
             buffer.append(classDependency.getFullName());
             buffer.append(IMPLEMENTS_LEFT_PLANTUML);
@@ -159,6 +159,28 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
     }
 
     /**
+     * Gets the parent interfaces which have to be generated appear in the plantUML file.
+     *
+     * @param displayOptions
+     *            the {@link Set} of all displays options to display the PlantUML links description,
+     *            mustn't be <code>null</code>.
+     * @return the {@link Set} of {@link GenericDependency} which have to be generated appear in the
+     *         plantUML file.
+     * @since 1.1.1
+     */
+    private Set < GenericDependency > getParentClassesToGeneratePlantUML(final Set < Display > displayOptions) {
+        Set < GenericDependency > classesSet = null;
+
+        if (displayOptions.contains(EXTENSIONS)) {
+            classesSet = getParentClasses();
+        } else {
+            classesSet = new TreeSet < GenericDependency >();
+        }
+
+        return classesSet;
+    }
+
+    /**
      * {@inheritDoc}
      *
      * @since 1.0
@@ -174,7 +196,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      * @since 1.1.1
      */
     @Override
-    public boolean isDisplayable(final Collection < Display > displayOptions) {
+    public boolean isDisplayable(final Set < Display > displayOptions) {
         return displayOptions.contains(CLASSES);
     }
 
