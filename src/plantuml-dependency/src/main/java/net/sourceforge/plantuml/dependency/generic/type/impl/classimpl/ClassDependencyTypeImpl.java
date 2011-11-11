@@ -36,15 +36,17 @@ import java.util.TreeSet;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The class implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType} interface.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.1.1
  */
@@ -61,7 +63,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * Default constructor.
-     *
+     * 
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -70,21 +72,21 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      * @since 1.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
+        this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
                 new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
     }
 
     /**
      * Full constructor.
-     *
+     * 
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
      *            The dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
-     * @param importDependenciesSet
-     *            the {@link Set} of all {@link GenericDependency} which are needed by the current
-     *            dependency type to work, mustn't be <code>null</code>.
+     * @param importDependencies
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
      * @param parentInterfacesSet
      *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
      *            used by the current dependency type, mustn't be <code>null</code>.
@@ -96,16 +98,16 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      * @since 1.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
+            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet,
             final Set < GenericDependency > parentClassesSet, final boolean hasNativeMethods) {
-        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, hasNativeMethods);
+        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, hasNativeMethods);
         // TODO optimization
         parentClasses = parentClassesSet;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -118,7 +120,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -131,7 +133,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.1
      */
     @Override
@@ -150,7 +152,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -160,7 +162,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * Gets the parent interfaces which have to be generated appear in the plantUML file.
-     *
+     * 
      * @param displayOptions
      *            the {@link Set} of all displays options to display the PlantUML links description,
      *            mustn't be <code>null</code>.
@@ -182,7 +184,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -192,7 +194,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.1
      */
     @Override

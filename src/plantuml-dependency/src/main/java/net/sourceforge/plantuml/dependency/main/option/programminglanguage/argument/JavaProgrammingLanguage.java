@@ -42,8 +42,8 @@ import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.JAVA_LANG_PACKAGE;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.JAVA_TYPE_REGEXP;
-import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.NORMAL_IMPORT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.PACKAGE_REGEXP;
+import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.STANDARD_IMPORT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.STATIC_IMPORT_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_CANT_BE_EXTRACTED_ERROR;
@@ -54,13 +54,12 @@ import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DE
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_NOT_TREATED_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.NO_PACKAGE_FOUND_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.UPDATING_DEPENDENCY_FINE;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
+import static net.sourceforge.plantuml.dependency.generic.type.ImportType.NATIVE;
+import static net.sourceforge.plantuml.dependency.generic.type.ImportType.STANDARD;
+import static net.sourceforge.plantuml.dependency.generic.type.ImportType.STATIC;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
@@ -71,6 +70,8 @@ import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
+import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType;
@@ -118,26 +119,27 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String sourceFileContent, final ProgrammingLanguageContext programmingLanguageContext)
             throws PlantUMLDependencyException {
 
-        final Set < GenericDependency > importDependencies = extractImportDependencies(sourceFileContent,
+        final ImportDependenciesCollection importDependenciesCollection = extractImportDependencies(sourceFileContent,
                 programmingLanguageContext);
 
         final boolean hasNativeMethods = javaRawDependency.hasNativeMethods();
         if (hasNativeMethods) {
-            importDependencies.add(NATIVE_DEPENDENCY);
+            importDependenciesCollection.addImportDependencies(NATIVE, NATIVE_DEPENDENCY);
             programmingLanguageContext.addSeenDependencies(NATIVE_DEPENDENCY);
         }
 
         final Set < GenericDependency > parentImplementationsDependencies = extractParentDependencies(javaRawDependency
-                .getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(), importDependencies,
+                .getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(), importDependenciesCollection,
                 programmingLanguageContext, javaRawDependency.getPackageName());
 
         final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(javaRawDependency
-                .getType(), EXTENSION, javaRawDependency.getParentExtentions(), importDependencies,
+                .getType(), EXTENSION, javaRawDependency.getParentExtentions(), importDependenciesCollection,
                 programmingLanguageContext, javaRawDependency.getPackageName());
 
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
-                importDependencies, parentImplementationsDependencies, parentExtentionsDependencies, hasNativeMethods);
+                importDependenciesCollection, parentImplementationsDependencies, parentExtentionsDependencies,
+                hasNativeMethods);
         return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
     }
 
@@ -202,24 +204,24 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the context instance containing all dependencies which have already been seen in
      *            previous treatment, and other information which can be shared when parsing several
      *            source files, mustn't be <code>null</code>.
-     * @return the {@link Set} of all import dependencies found in the java source file content.
-     *         Returns an empty {@link Set} if no import has been found.
+     * @return the {@link ImportDependenciesCollection} of import dependencies found in the java
+     *         source file content.
      * @since 1.0
      */
-    private static Set < GenericDependency > extractImportDependencies(final String javaSourceFileContent,
+    private static ImportDependenciesCollection extractImportDependencies(final String javaSourceFileContent,
             final ProgrammingLanguageContext programmingLanguageContext) {
 
-        final Set < GenericDependency > importDependenciesSet = new HashSet < GenericDependency >();
+        final ImportDependenciesCollection importDependenciesCollection = new ImportDependenciesCollectionImpl();
 
-        final Set < GenericDependency > normalImportDependenciesSet = extractImportDependenciesSet(
-                javaSourceFileContent, NORMAL_IMPORT_REGEXP, programmingLanguageContext, IMPORTS);
-        importDependenciesSet.addAll(normalImportDependenciesSet);
+        final Set < GenericDependency > standardImportDependenciesSet = extractImportDependenciesSet(
+                javaSourceFileContent, STANDARD_IMPORT_REGEXP, programmingLanguageContext);
+        importDependenciesCollection.addImportDependenciesSet(STANDARD, standardImportDependenciesSet);
 
         final Set < GenericDependency > staticImportDependenciesSet = extractImportDependenciesSet(
-                javaSourceFileContent, STATIC_IMPORT_REGEXP, programmingLanguageContext, STATIC_IMPORTS);
-        importDependenciesSet.addAll(staticImportDependenciesSet);
+                javaSourceFileContent, STATIC_IMPORT_REGEXP, programmingLanguageContext);
+        importDependenciesCollection.addImportDependenciesSet(STATIC, staticImportDependenciesSet);
 
-        return importDependenciesSet;
+        return importDependenciesCollection;
     }
 
     /**
@@ -241,8 +243,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0
      */
     private static Set < GenericDependency > extractImportDependenciesSet(final String javaSourceFileContent,
-            final Pattern importRegExp, final ProgrammingLanguageContext programmingLanguageContext,
-            final Display display) {
+            final Pattern importRegExp, final ProgrammingLanguageContext programmingLanguageContext) {
         final Set < GenericDependency > importDependenciesSet = new TreeSet < GenericDependency >();
         final Matcher matcher = importRegExp.matcher(javaSourceFileContent);
 
@@ -279,9 +280,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     private static String extractName(final String group) throws PlantUMLDependencyException {
         if (isEmpty(group)) {
             throw new PlantUMLDependencyException(DEPENDENCY_NAME_NULL_ERROR);
-        } else {
-            return group;
         }
+
+        return group;
     }
 
     /**
@@ -317,8 +318,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the {@link Set} of all parents' names or full names previously found, mustn't be
      *            <code>null</code>.
      * @param importDependencies
-     *            the {@link Set} of all {@link GenericDependency} containing imports, mustn't be
-     *            <code>null</code>.
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
      * @param programmingLanguageContext
      *            the context instance containing all dependencies which have already been seen in
      *            previous treatment, and other information which can be shared when parsing several
@@ -333,7 +334,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private static Set < GenericDependency > extractParentDependencies(final JavaType type,
             final JavaParentType parentType, final Set < String > parents,
-            final Set < GenericDependency > importDependencies,
+            final ImportDependenciesCollection importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext, final String currentPackageName)
             throws PlantUMLDependencyException {
 
@@ -345,61 +346,6 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         }
 
         return parentsSet;
-    }
-
-    /**
-     * Finds the dependency following its name in the import dependencies {@link Set}. be careful,
-     * this method doesn't take care of the package name.
-     *
-     * @param dependencyName
-     *            the dependency name to look for, mustn't be <code>null</code>.
-     * @param importDependencies
-     *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
-     *            mustn't be <code>null</code>.
-     * @return the {@link GenericDependency} instance associated to the passed name if found in the
-     *         import {@link Set}, <code>null</code> otherwise.
-     * @since 1.0
-     */
-    private static GenericDependency findDependencyInImport(final String dependencyName,
-            final Set < GenericDependency > importDependencies) {
-        GenericDependency dependency = null;
-        final Iterator < GenericDependency > iter = importDependencies.iterator();
-        while (dependency == null && iter.hasNext()) {
-            final GenericDependency abstractImportDependency = iter.next();
-            if (abstractImportDependency.getName().equals(dependencyName)) {
-                dependency = abstractImportDependency;
-            }
-        }
-        return dependency;
-    }
-
-    /**
-     * Finds the dependency following its name and its package name in the import dependencies
-     * {@link Set}.
-     *
-     * @param dependencyName
-     *            the dependency name to look for, mustn't be <code>null</code>.
-     * @param dependencyPackageName
-     *            the dependency package name to look for, mustn't be <code>null</code>.
-     * @param importDependencies
-     *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
-     *            mustn't be <code>null</code>.
-     * @return the {@link GenericDependency} instance associated to the passed name and package name
-     *         if found in the import {@link Set}, <code>null</code> otherwise.
-     * @since 1.0
-     */
-    private static GenericDependency findDependencyInImport(final String dependencyName,
-            final String dependencyPackageName, final Set < GenericDependency > importDependencies) {
-        GenericDependency dependency = null;
-        final Iterator < GenericDependency > iter = importDependencies.iterator();
-        while (dependency == null && iter.hasNext()) {
-            final GenericDependency abstractImportDependency = iter.next();
-            if (abstractImportDependency.getName().equals(dependencyName)
-                    && abstractImportDependency.getPackageName().equals(dependencyPackageName)) {
-                dependency = abstractImportDependency;
-            }
-        }
-        return dependency;
     }
 
     /**
@@ -523,8 +469,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param currentPackageName
      *            the current dependency package name, mustn't be <code>null</code>.
      * @param importDependencies
-     *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
-     *            mustn't be <code>null</code>.
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
      * @param programmingLanguageContext
      *            the context instance containing all dependencies which have already been seen in
      *            previous treatment, and other information which can be shared when parsing several
@@ -537,7 +483,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private static GenericDependency getOrCreateParentDependency(final JavaType type, final JavaParentType parentType,
             final String parentNameOrFullName, final String currentPackageName,
-            final Set < GenericDependency > importDependencies,
+            final ImportDependenciesCollection importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
 
         GenericDependency dependency = null;
@@ -565,8 +511,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param parentFullName
      *            the parent dependency full name, mustn't be <code>null</code>.
      * @param importDependencies
-     *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
-     *            mustn't be <code>null</code>.
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
      * @param programmingLanguageContext
      *            the context instance containing all dependencies which have already been seen in
      *            previous treatment, and other information which can be shared when parsing several
@@ -583,12 +529,12 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private static GenericDependency getOrCreateParentDependencyWithFullName(final JavaType type,
             final JavaParentType parentType, final String parentFullName,
-            final Set < GenericDependency > importDependencies,
+            final ImportDependenciesCollection importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext, final int packageSeparatorIndex)
             throws PlantUMLDependencyException {
         final String parentName = parentFullName.substring(packageSeparatorIndex + 1);
         final String parentPackageName = parentFullName.substring(0, packageSeparatorIndex);
-        GenericDependency dependency = findDependencyInImport(parentName, parentPackageName, importDependencies);
+        GenericDependency dependency = importDependencies.findDependency(parentName, parentPackageName);
 
         if (dependency == null) {
             dependency = programmingLanguageContext.getDependencies(parentFullName);
@@ -621,8 +567,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param currentPackageName
      *            the current dependency package name, mustn't be <code>null</code>.
      * @param importDependencies
-     *            the {@link Set} of all {@link GenericDependency} containing imports to look in,
-     *            mustn't be <code>null</code>.
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
      * @param programmingLanguageContext
      *            the context instance containing all dependencies which have already been seen in
      *            previous treatment, and other information which can be shared when parsing several
@@ -637,11 +583,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private static GenericDependency getOrCreateParentDependencyWithName(final JavaType type,
             final JavaParentType parentType, final String currentPackageName,
-            final Set < GenericDependency > importDependencies,
+            final ImportDependenciesCollection importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext, final String parentName)
             throws PlantUMLDependencyException {
         GenericDependency dependency = null;
-        dependency = findDependencyInImport(parentName, importDependencies);
+        dependency = importDependencies.findDependency(parentName);
 
         if (dependency == null) {
             final String parentFullNameWithSamePackage = currentPackageName + DOT_CHAR + parentName;

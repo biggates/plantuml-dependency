@@ -44,6 +44,7 @@ import java.util.Set;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
@@ -79,7 +80,7 @@ class ClassJavaType extends JavaType {
      */
     @Override
     public DependencyType createDependencyType(final String dependencyName, final String dependencyPackageName,
-            final boolean isAbstract, final Set < GenericDependency > importDependencies,
+            final boolean isAbstract, final ImportDependenciesCollection importDependencies,
             final Set < GenericDependency > parentImplementationsDependencies,
             final Set < GenericDependency > parentExtentionsDependencies, final boolean hasNativeMethods) {
         checkNull(dependencyName, JAVA_TYPE_NAME_NULL_ERROR);

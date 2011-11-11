@@ -163,9 +163,9 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
     public int compareTo(final ProgrammingLanguage o) {
         if (this == o) {
             return EQUAL.getResult();
-        } else {
-            return getName().compareTo(o.getName());
         }
+
+        return getName().compareTo(o.getName());
     }
 
     /**
@@ -210,7 +210,6 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      * Gets the value of <code>name</code>.
      *
      * @return the value of <code>name</code>.
-     * @see #setName(String)
      * @since 1.0
      */
     public String getName() {

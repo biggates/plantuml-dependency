@@ -40,7 +40,8 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
  * @since 1.0
  * @version 1.1.1
  */
-public interface DependencyType extends Comparable < DependencyType >, Serializable, DeepCloneable < DependencyType > {
+public interface DependencyType extends Comparable < DependencyType >, Serializable, DeepCloneable < DependencyType >,
+        Displayable {
 
     /**
      * Gets the dependency full name, usually the package and the dependency name.
@@ -57,17 +58,17 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
     String getFullName();
 
     /**
-     * Gets the {@link Set} of all {@link GenericDependency} which are needed by the current
-     * dependency type to work. If no dependencies are needed, it returns an empty {@link Set}.
+     * Gets the {@link ImportDependenciesCollection} containing all {@link GenericDependency} which
+     * are needed by the current dependency type to work.
      * <p>
      * For instance, in java it is represented by the <i>import</i> keyword.
      * </p>
      *
-     * @return the {@link Set} of all {@link GenericDependency} which are needed by the current
-     *         dependency type to work.
+     * @return the {@link ImportDependenciesCollection} instance containing all
+     *         {@link GenericDependency} which are needed by the current dependency type to work.
      * @since 1.0
      */
-    Set < GenericDependency > getImportDependencies();
+    ImportDependenciesCollection getImportDependenciesCollection();
 
     /**
      * Gets the dependency name, usually the class name.
@@ -147,16 +148,4 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * @since 1.0
      */
     boolean hasNativeMethods();
-
-    /**
-     * Tells if the dependency has to be displayed following the passed display options.
-     *
-     * @param displayOptions
-     *            the {@link Set} of display options, mustn't be <code>null</code>, if empty,
-     *            this method always returns <code>false</code>.
-     * @return <code>true</code> if the dependency has to be displayed, <code>false</code>
-     *         otherwise.
-     * @since 1.1.1
-     */
-    boolean isDisplayable(Set < Display > displayOptions);
 }

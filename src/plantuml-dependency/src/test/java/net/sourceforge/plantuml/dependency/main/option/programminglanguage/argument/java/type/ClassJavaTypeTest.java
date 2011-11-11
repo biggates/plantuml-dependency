@@ -67,42 +67,42 @@ public class ClassJavaTypeTest extends ObjectTest < ClassJavaType > {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#createDependencyType(String, String, boolean, Set, Set, Set, boolean)}
-     * .
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#createDependencyType(String, String, boolean, net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection, Set, Set, boolean)
+     * )} .
      */
     @Test
     public void testCreateDependencyTypeAbstract() {
         assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_ABSTRACT_DEPENDENCY_TYPE1
                 .getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getPackageName(), true, CLASS_ABSTRACT_DEPENDENCY_TYPE1
-                .getImportDependencies(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentInterfaces(),
+                .getImportDependenciesCollection(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentInterfaces(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#createDependencyType(String, String, boolean, Set, Set, Set, boolean)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#createDependencyType(String, String, boolean, net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection, Set, Set, boolean)}
      * .
      */
     @Test
     public void testCreateDependencyTypeAbstractWithNativeMethods() {
         assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE11, JAVA_TYPE1.createDependencyType(CLASS_ABSTRACT_DEPENDENCY_TYPE11
                 .getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE11.getPackageName(), true, CLASS_ABSTRACT_DEPENDENCY_TYPE11
-                .getImportDependencies(), CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentInterfaces(),
+                .getImportDependenciesCollection(), CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentInterfaces(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE11
                         .hasNativeMethods()));
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#createDependencyType(String, String, boolean, Set, Set, Set, boolean)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#createDependencyType(String, String, boolean, net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection, Set, Set, boolean)}
      * .
      */
     @Test
     public void testCreateDependencyTypeNotAbstract() {
         assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_DEPENDENCY_TYPE1.getName(),
-                CLASS_DEPENDENCY_TYPE1.getPackageName(), false, CLASS_DEPENDENCY_TYPE1.getImportDependencies(),
-                CLASS_DEPENDENCY_TYPE1.getParentInterfaces(), CLASS_DEPENDENCY_TYPE1.getParentClasses(),
-                CLASS_DEPENDENCY_TYPE1.hasNativeMethods()));
+                CLASS_DEPENDENCY_TYPE1.getPackageName(), false, CLASS_DEPENDENCY_TYPE1
+                        .getImportDependenciesCollection(), CLASS_DEPENDENCY_TYPE1.getParentInterfaces(),
+                CLASS_DEPENDENCY_TYPE1.getParentClasses(), CLASS_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
     /**

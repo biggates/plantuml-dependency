@@ -130,8 +130,8 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
         assertEquals(expectedDependency, resultDependency);
         assertEquals(expectedDependency.getDependencyType().hasNativeMethods(), resultDependency.getDependencyType()
                 .hasNativeMethods());
-        assertEquals(expectedDependency.getDependencyType().getImportDependencies(), resultDependency
-                .getDependencyType().getImportDependencies());
+        assertEquals(expectedDependency.getDependencyType().getImportDependenciesCollection(), resultDependency
+                .getDependencyType().getImportDependenciesCollection());
         assertEquals(expectedDependency.getDependencyType().getParentInterfaces(), resultDependency.getDependencyType()
                 .getParentInterfaces());
         if (expectedDependency.getDependencyType() instanceof ClassDependencyType) {

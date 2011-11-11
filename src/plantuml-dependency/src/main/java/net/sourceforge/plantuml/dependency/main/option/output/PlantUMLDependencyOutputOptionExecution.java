@@ -249,7 +249,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *
      * @param value
      *            the <code>displayOptions</code> to set, can be <code>null</code>.
-     * @see #getdisplayOptions(
+     * @see #getDisplayOptions()
      * @since 1.0
      */
     private void setDisplayOptions(final Set < Display > value) {

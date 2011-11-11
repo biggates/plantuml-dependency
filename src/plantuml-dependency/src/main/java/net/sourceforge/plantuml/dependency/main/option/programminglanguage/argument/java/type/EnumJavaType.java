@@ -48,14 +48,15 @@ import java.util.TreeSet;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
 
 /**
  * The enum {@link JavaType} implementation.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -66,7 +67,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * Default constructor.
-     *
+     * 
      * @param programmingLanguageKeyword
      *            The java type language keyword, mustn't be <code>null</code>.
      * @since 1.0
@@ -77,12 +78,12 @@ class EnumJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
     public DependencyType createDependencyType(final String dependencyName, final String dependencyPackageName,
-            final boolean isAbstract, final Set < GenericDependency > importDependencies,
+            final boolean isAbstract, final ImportDependenciesCollection importDependencies,
             final Set < GenericDependency > parentImplementationsDependencies,
             final Set < GenericDependency > parentExtentionsDependencies, final boolean hasNativeMethods) {
         checkNull(dependencyName, JAVA_TYPE_NAME_NULL_ERROR);
@@ -97,7 +98,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -123,7 +124,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -133,7 +134,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -147,7 +148,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override

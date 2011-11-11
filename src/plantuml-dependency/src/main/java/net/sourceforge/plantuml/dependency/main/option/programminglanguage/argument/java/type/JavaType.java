@@ -50,6 +50,7 @@ import java.util.logging.Logger;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 
 /**
  * The abstract class which describes all existing java types such as classes, interfaces and
@@ -156,9 +157,9 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     public int compareTo(final JavaType o) {
         if (this == o) {
             return EQUAL.getResult();
-        } else {
-            return getLanguageKeyword().compareTo(o.getLanguageKeyword());
         }
+
+        return getLanguageKeyword().compareTo(o.getLanguageKeyword());
     }
 
     /**
@@ -172,8 +173,8 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      * @param isAbstract
      *            the boolean telling if the java dependency is abstract or not.
      * @param importDependencies
-     *            the {@link Set} of all {@link GenericDependency} which are imported, mustn't be
-     *            <code>null</code>.
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
      * @param parentImplementationsDependencies
      *            the {@link Set} of all {@link GenericDependency} which are implemented, mustn't be
      *            <code>null</code>.
@@ -187,7 +188,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      * @since 1.0
      */
     public abstract DependencyType createDependencyType(String dependencyName, String dependencyPackageName,
-            boolean isAbstract, Set < GenericDependency > importDependencies,
+            boolean isAbstract, ImportDependenciesCollection importDependencies,
             Set < GenericDependency > parentImplementationsDependencies,
             Set < GenericDependency > parentExtentionsDependencies, boolean hasNativeMethods);
 

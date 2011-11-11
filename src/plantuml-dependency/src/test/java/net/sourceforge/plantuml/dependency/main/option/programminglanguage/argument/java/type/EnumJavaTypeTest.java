@@ -69,39 +69,39 @@ public class EnumJavaTypeTest extends ObjectTest < EnumJavaType > {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#createDependencyType(String, String, boolean, Set, Set, Set, boolean)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#createDependencyType(String, String, boolean, net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection, Set, Set, boolean)}
      * .
      */
     @Test
     public void testCreateDependencyTypeAbstract() {
         assertEquals(ENUM_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE1.getName(),
-                ENUM_DEPENDENCY_TYPE1.getPackageName(), true, ENUM_DEPENDENCY_TYPE1.getImportDependencies(),
+                ENUM_DEPENDENCY_TYPE1.getPackageName(), true, ENUM_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
                 ENUM_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), ENUM_DEPENDENCY_TYPE1
                         .hasNativeMethods()));
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#createDependencyType(String, String, boolean, Set, Set, Set, boolean)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#createDependencyType(String, String, boolean, net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection, Set, Set, boolean)}
      * .
      */
     @Test
     public void testCreateDependencyTypeAbstractWithNativeMethods() {
         assertEquals(ENUM_DEPENDENCY_TYPE9, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE9.getName(),
-                ENUM_DEPENDENCY_TYPE9.getPackageName(), true, ENUM_DEPENDENCY_TYPE9.getImportDependencies(),
+                ENUM_DEPENDENCY_TYPE9.getPackageName(), true, ENUM_DEPENDENCY_TYPE9.getImportDependenciesCollection(),
                 ENUM_DEPENDENCY_TYPE9.getParentInterfaces(), new TreeSet < GenericDependency >(), ENUM_DEPENDENCY_TYPE9
                         .hasNativeMethods()));
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#createDependencyType(String, String, boolean, Set, Set, Set, boolean)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#createDependencyType(String, String, boolean, net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection, Set, Set, boolean)}
      * .
      */
     @Test
     public void testCreateDependencyTypeNotAbstract() {
         assertEquals(ENUM_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE1.getName(),
-                ENUM_DEPENDENCY_TYPE1.getPackageName(), false, ENUM_DEPENDENCY_TYPE1.getImportDependencies(),
+                ENUM_DEPENDENCY_TYPE1.getPackageName(), false, ENUM_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
                 ENUM_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), ENUM_DEPENDENCY_TYPE1
                         .hasNativeMethods()));
     }

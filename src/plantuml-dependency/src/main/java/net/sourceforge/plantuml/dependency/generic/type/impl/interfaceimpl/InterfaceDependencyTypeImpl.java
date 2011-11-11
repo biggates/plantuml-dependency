@@ -31,15 +31,17 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The interface implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.1.1
  */
@@ -50,7 +52,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * Default constructor.
-     *
+     * 
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -59,34 +61,34 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.0
      */
     public InterfaceDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
+        this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
                 new TreeSet < GenericDependency >());
     }
 
     /**
      * Full constructor.
-     *
+     * 
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
      *            The dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
-     * @param importDependenciesSet
-     *            the {@link Set} of all {@link GenericDependency} which are needed by the current
-     *            dependency type to work, mustn't be <code>null</code>.
+     * @param importDependencies
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
      * @param parentInterfacesSet
      *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
      *            used by the current dependency type, mustn't be <code>null</code>.
      * @since 1.0
      */
     public InterfaceDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet) {
-        super(dependencyName, dependencyPackageName, importDependenciesSet, parentInterfacesSet, false);
+            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet) {
+        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, false);
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -99,7 +101,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -109,7 +111,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.1
      */
     @Override

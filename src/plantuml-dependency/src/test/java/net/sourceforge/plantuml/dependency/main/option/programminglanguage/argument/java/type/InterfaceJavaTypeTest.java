@@ -66,37 +66,37 @@ public class InterfaceJavaTypeTest extends ObjectTest < InterfaceJavaType > {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#createDependencyType(String, String, boolean, Set, Set, Set, boolean)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#createDependencyType(String, String, boolean, net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection, Set, Set, boolean)}
      * .
      */
     @Test
     public void testCreateDependencyTypeAbstract() {
         assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
-                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true, INTERFACE_DEPENDENCY_TYPE1.getImportDependencies(),
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true, INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
                 INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), true));
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#createDependencyType(String, String, boolean, Set, Set, Set, boolean)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#createDependencyType(String, String, boolean, net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection, Set, Set, boolean)}
      * .
      */
     @Test
     public void testCreateDependencyTypeAbstractWithNativeMethods() {
         assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
-                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true, INTERFACE_DEPENDENCY_TYPE1.getImportDependencies(),
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true, INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
                 INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), true));
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#createDependencyType(String, String, boolean, Set, Set, Set, boolean)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#createDependencyType(String, String, boolean, net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection, Set, Set, boolean)}
      * .
      */
     @Test
     public void testCreateDependencyTypeNotAbstract() {
         assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
-                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), false, INTERFACE_DEPENDENCY_TYPE1.getImportDependencies(),
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), false, INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
                 INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), false));
     }
 

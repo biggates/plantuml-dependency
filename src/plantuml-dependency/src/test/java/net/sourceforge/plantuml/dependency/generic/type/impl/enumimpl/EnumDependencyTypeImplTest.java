@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl;
 
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET1;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.IMPORT_DEPENDENCIES_COLLECTION1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET3;
 import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
@@ -39,15 +39,16 @@ import java.util.TreeSet;
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link EnumDependencyTypeImpl}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -56,37 +57,37 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     /** Enum dependency type test 1 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE1 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3, false);
+            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET3, false);
 
     /** Enum dependency type test 2 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE2 = new EnumDependencyTypeImpl("FileOutputStream",
-            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3, false);
+            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET3, false);
 
     /** Enum dependency type test 3 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE3 = new EnumDependencyTypeImpl("Integer", "java.io",
-            GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3, false);
+            IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET3, false);
 
     /** Enum dependency type test 4 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE4 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET3, false);
+            "java.lang", new ImportDependenciesCollectionImpl(), GENERIC_DEPENDENCY_SET3, false);
 
     /** Enum dependency type test 5 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE5 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", GENERIC_DEPENDENCY_SET1, new TreeSet < GenericDependency >(), false);
+            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, new TreeSet < GenericDependency >(), false);
 
     /** Enum dependency type test 6 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE6 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3, false);
+            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET3, false);
 
     /** Enum dependency type test 7 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE7 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET2, false);
+            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET2, false);
 
     /** Enum dependency type test 8 instance. */
     @DataPoint
@@ -96,7 +97,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     /** Enum dependency type test 9 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE9 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", GENERIC_DEPENDENCY_SET1, GENERIC_DEPENDENCY_SET3, true);
+            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET3, true);
 
     /** Enum dependency type test 10 instance. */
     @DataPoint
@@ -114,12 +115,13 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getImportDependencies()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getImportDependenciesCollection()}
      * .
      */
     @Test
     public void testGetImportDependencies() {
-        final Set < GenericDependency > importDependencies = ENUM_DEPENDENCY_TYPE1.getImportDependencies();
+        final Set < GenericDependency > importDependencies = ENUM_DEPENDENCY_TYPE1.getImportDependenciesCollection()
+                .getAllImportDependencies();
         assertEquals(3, importDependencies.size());
         assertTrue(importDependencies.contains(GENERIC_DEPENDENCY1));
         assertTrue(importDependencies.contains(new GenericDependencyImpl("Serializable", "java.io")));

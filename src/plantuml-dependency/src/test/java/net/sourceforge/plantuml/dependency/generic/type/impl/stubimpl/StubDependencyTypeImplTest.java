@@ -39,9 +39,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link StubDependencyTypeImpl}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -86,12 +86,13 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getImportDependencies()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getImportDependenciesCollection()}
      * .
      */
     @Test
     public void testGetImportDependencies() {
-        final Set < GenericDependency > importDependencies = STUB_DEPENDENCY_TYPE1.getImportDependencies();
+        final Set < GenericDependency > importDependencies = STUB_DEPENDENCY_TYPE1.getImportDependenciesCollection()
+                .getAllImportDependencies();
         assertEquals(0, importDependencies.size());
     }
 

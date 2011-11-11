@@ -36,6 +36,7 @@ import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmp
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.USES_RIGHT_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.IMPORT_IS_AN_INTERFACE_FINE;
+import static net.sourceforge.plantuml.dependency.generic.type.ImportType.IMPORT_TYPES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 
 import java.util.Set;
@@ -44,14 +45,15 @@ import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
+import net.sourceforge.plantuml.dependency.generic.type.ImportType;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
- * The default implementation of the
- * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
- *
+ * The default implementation of the {@link DependencyType} interface.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.1.1
  */
@@ -65,7 +67,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Generates the full dependency name following its package and its simple name.
-     *
+     * 
      * @param dependencyPackageName
      *            the dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
@@ -90,10 +92,10 @@ public abstract class DependencyTypeImpl implements DependencyType {
     private final String fullName;
 
     /**
-     * The {@link Set} of all {@link GenericDependency} which are needed by the current dependency
-     * type to work.
+     * The {@link ImportDependenciesCollection} containing all import dependencies which are needed
+     * by the current dependency type to work.
      */
-    private Set < GenericDependency > importDependencies;
+    private ImportDependenciesCollection importDependenciesCollection;
 
     /** The dependency type name, such as "String". */
     private final String name;
@@ -121,7 +123,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Default constructor.
-     *
+     * 
      * @param dependencyName
      *            the dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -130,21 +132,21 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        this(dependencyName, dependencyPackageName, new TreeSet < GenericDependency >(),
+        this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
                 new TreeSet < GenericDependency >(), false);
     }
 
     /**
      * Full constructor.
-     *
+     * 
      * @param dependencyName
      *            the dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
      *            the dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
-     * @param importDependenciesSet
-     *            the {@link Set} of all {@link GenericDependency} which are needed by the current
-     *            dependency type to work, mustn't be <code>null</code>.
+     * @param importDependencies
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
      * @param parentInterfacesSet
      *            the {@link Set} of all interfaces as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
@@ -153,7 +155,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final Set < GenericDependency > importDependenciesSet, final Set < GenericDependency > parentInterfacesSet,
+            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet,
             final boolean nativeMth) {
         // TODO tests null
         // TODO tests that no space are present in the name
@@ -161,14 +163,14 @@ public abstract class DependencyTypeImpl implements DependencyType {
         packageName = dependencyPackageName;
         fullName = generateFullName(dependencyPackageName, dependencyName);
         // TODO optimization
-        importDependencies = importDependenciesSet;
+        importDependenciesCollection = importDependencies;
         parentInterfaces = parentInterfacesSet;
         nativeMethods = nativeMth;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -186,7 +188,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -196,7 +198,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
         try {
             d = (DependencyTypeImpl) super.clone();
             // TODO deepClone don't manage cycles
-            d.importDependencies = new TreeSet < GenericDependency >(getImportDependencies());
+            d.importDependenciesCollection = getImportDependenciesCollection().deepClone();
             d.parentInterfaces = new TreeSet < GenericDependency >(getParentInterfaces());
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
@@ -207,7 +209,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -234,7 +236,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Extracts full names of the given dependency {@link Set}.
-     *
+     * 
      * @param genericDependencySet
      *            the {@link Set} containing {@link GenericDependency} instance where to extract
      *            full names, mustn't be <code>null</code>.
@@ -253,7 +255,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Generates the plantUML declaration.
-     *
+     * 
      * @param displayOptions
      *            the {@link Set} of all displays options to display the PlantUML declaration,
      *            mustn't be <code>null</code>.
@@ -267,7 +269,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Generates the plantUML description footer.
-     *
+     * 
      * @param displayOptions
      *            the {@link Set} of all displays options to display the PlantUML links description,
      *            mustn't be <code>null</code>.
@@ -281,7 +283,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Generates the plantUML description header.
-     *
+     * 
      * @param displayOptions
      *            the {@link Set} of all displays options to display the PlantUML links description,
      *            mustn't be <code>null</code>.
@@ -295,7 +297,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * Generates the plantUML links description.
-     *
+     * 
      * @param displayOptions
      *            the {@link Set} of all displays options to display the PlantUML links description,
      *            mustn't be <code>null</code>.
@@ -327,7 +329,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -337,51 +339,48 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
-    public Set < GenericDependency > getImportDependencies() {
-        return importDependencies;
+    public ImportDependenciesCollection getImportDependenciesCollection() {
+        return importDependenciesCollection;
     }
 
     /**
-     * Gets the {@link Set} of all imports as {@link GenericDependency} which are not extended by
-     * the current dependencies.
-     *
-     * @return the {@link Set} of all import as {@link GenericDependency} which are used by the
-     *         current dependency type but which are not directly implemented by this one.
-     * @since 1.0
-     */
-    private Set < GenericDependency > getImportDependenciesNotExtended() {
-        final Set < GenericDependency > importDependenciesNotImplemented = new TreeSet < GenericDependency >();
-
-        for (final GenericDependency genericDependency : getImportDependencies()) {
-            if (hasImportNotToBeGenerated(genericDependency)) {
-                LOGGER.fine(buildLogString(IMPORT_IS_AN_INTERFACE_FINE, genericDependency));
-            } else {
-                importDependenciesNotImplemented.add(genericDependency);
-            }
-        }
-
-        return importDependenciesNotImplemented;
-    }
-
-    /**
+     * Gets the import dependencies which have to be generated in the plantUML description file.
+     * 
      * @param displayOptions
      *            the {@link Set} of all displays options to display the PlantUML links description,
      *            mustn't be <code>null</code>.
-     * @return
+     * @return the {@link Set} of import {@link GenericDependency} which have to be generated in the
+     *         plantUML file.
      * @since 1.1.1
      */
     private Set < GenericDependency > getImportDependenciesToGeneratePlantUML(final Set < Display > displayOptions) {
-        // TODO [graffity] Auto-generated method stub
-        return getImportDependenciesNotExtended();
+        final Set < GenericDependency > importDependenciesNotImplementedAndDisplayable = new TreeSet < GenericDependency >();
+
+        for (final ImportType importType : IMPORT_TYPES) {
+            if (displayOptions.contains(importType.getDisplayOption())) {
+                for (final GenericDependency genericDependency : getImportDependenciesCollection()
+                        .getImportDependenciesWithType(importType)) {
+                    if (hasImportNotToBeGenerated(genericDependency)) {
+                        LOGGER.fine(buildLogString(IMPORT_IS_AN_INTERFACE_FINE, genericDependency));
+                    } else {
+                        importDependenciesNotImplementedAndDisplayable.add(genericDependency);
+                    }
+                }
+            } else {
+                // TODO log, import type doesn't have to be displayed
+            }
+        }
+
+        return importDependenciesNotImplementedAndDisplayable;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -391,7 +390,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -401,7 +400,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -410,12 +409,13 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
-     * Gets the parent interfaces which have to be generated appear in the plantUML file.
-     *
+     * Gets the parent interfaces which have to be generated in the plantUML description file.
+     * 
      * @param displayOptions
      *            the {@link Set} of all displays options to display the PlantUML links description,
      *            mustn't be <code>null</code>.
-     * @return the {@link Set} of {@link GenericDependency} which have to be generated appear in the plantUML file.
+     * @return the {@link Set} of parent {@link GenericDependency} which have to be generated in the
+     *         plantUML file.
      * @since 1.1.1
      */
     private Set < GenericDependency > getParentInterfacesToGeneratePlantUML(final Set < Display > displayOptions) {
@@ -432,7 +432,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -445,7 +445,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -458,7 +458,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -472,7 +472,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * This method tells if the current import has to be generated in the PlantUML description or
      * not.
-     *
+     * 
      * @param genericDependency
      *            the import to test if it has to be generated or not, shouldn't be
      *            <code>null</code>.
@@ -484,7 +484,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -494,14 +494,16 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
     public String toString() {
         return getClass().getSimpleName() + " [name=" + name + ", packageName=" + packageName + ", fullName="
-                + fullName + ", importDependencies=" + extractFullNames(importDependencies) + ", parentInterfaces="
-                + extractFullNames(parentInterfaces) + ", nativeMethods=" + nativeMethods + ", plantUMLDeclaration="
-                + plantUMLDeclaration + ", plantUMLLinksDescription=" + plantUMLLinksDescription + "]";
+                + fullName + ", importDependencies="
+                + extractFullNames(getImportDependenciesCollection().getAllImportDependencies())
+                + ", parentInterfaces=" + extractFullNames(parentInterfaces) + ", nativeMethods=" + nativeMethods
+                + ", plantUMLDeclaration=" + plantUMLDeclaration + ", plantUMLLinksDescription="
+                + plantUMLLinksDescription + "]";
     }
 }

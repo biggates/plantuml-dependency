@@ -43,8 +43,8 @@ public final class RegularExpressionConstants {
     /** The pattern representing the java package. */
     public static final Pattern PACKAGE_REGEXP = compile("package +([\\w. ]*?) *;");
 
-    /** The pattern representing the normal import. */
-    public static final Pattern NORMAL_IMPORT_REGEXP = compile("import +(?:((?:\\w* *\\. *)*\\w*) *\\. *)*(\\w*) *;");
+    /** The pattern representing the standard import. */
+    public static final Pattern STANDARD_IMPORT_REGEXP = compile("import +(?:((?:\\w* *\\. *)*\\w*) *\\. *)*(\\w*) *;");
 
     /** The pattern representing the static import. */
     public static final Pattern STATIC_IMPORT_REGEXP = compile("import +static +([\\w. ]+)\\.([\\w.]+?)\\.(?:.*?) *;");
