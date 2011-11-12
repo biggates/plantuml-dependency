@@ -42,9 +42,9 @@ import net.sourceforge.plantuml.dependency.generic.type.ImportType;
 
 /**
  * The default implementation of the {@link ImportDependenciesCollection} interface.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -65,7 +65,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * Default constructor. Initializes the import dependencies collection to empty.
-     *
+     * 
      * @since 1.1.1
      */
     public ImportDependenciesCollectionImpl() {
@@ -78,7 +78,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
     /**
      * Medium constructor. Initializes the import dependencies collection with the passed Set and
      * the ImportType.
-     *
+     * 
      * @param importType
      *            the import type {@link ImportType} instance, mustn't be <code>null</code>.
      * @param importDependenciesSet
@@ -94,7 +94,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.1
      */
     @Override
@@ -104,7 +104,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.1
      */
     @Override
@@ -115,7 +115,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.1
      */
     @Override
@@ -135,7 +135,34 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     *
+     * 
+     * @since 1.1.1
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ImportDependenciesCollectionImpl other = (ImportDependenciesCollectionImpl) obj;
+        if (importDependenciesMap == null) {
+            if (other.importDependenciesMap != null) {
+                return false;
+            }
+        } else if (!importDependenciesMap.equals(other.importDependenciesMap)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @since 1.1.1
      */
     @Override
@@ -155,7 +182,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.1
      */
     @Override
@@ -176,7 +203,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.1
      */
     @Override
@@ -186,7 +213,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * Gets the value of <code>importDependenciesMap</code>.
-     *
+     * 
      * @return the value of <code>importDependenciesMap</code>.
      * @since 1.1.1
      */
@@ -196,7 +223,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.1
      */
     @Override
@@ -208,7 +235,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.1.1
      */
     @Override
@@ -227,5 +254,18 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
         }
 
         return dependenciesSet;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.1.1
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((importDependenciesMap == null) ? 0 : importDependenciesMap.hashCode());
+        return result;
     }
 }
