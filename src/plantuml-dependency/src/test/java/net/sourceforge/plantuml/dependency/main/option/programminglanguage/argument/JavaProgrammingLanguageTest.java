@@ -97,9 +97,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link JavaProgrammingLanguage}.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.1.1
  */
@@ -119,7 +119,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
 
     /**
      * Asserts that two {@link GenericDependency} instance are strictly identical.
-     *
+     * 
      * @param expectedDependency
      *            the expected {@link GenericDependency} instance, mustn't be <code>null</code>.
      * @param resultDependency
@@ -146,7 +146,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
@@ -162,7 +162,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -171,7 +171,8 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nabstract class Test {\r\n\r\n}";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET3);
-        assertEquals(GENERIC_DEPENDENCY4, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(GENERIC_DEPENDENCY4, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent,
+                programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY4.getFullName()));
@@ -181,7 +182,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -201,7 +202,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -221,7 +222,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -241,7 +242,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -265,7 +266,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -288,7 +289,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -311,7 +312,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -337,7 +338,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -360,7 +361,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -384,7 +385,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -404,7 +405,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -432,7 +433,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -440,7 +441,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
     // good (don't read in imports)
     public void testReadDependencyFromFileClassWithExtendsInImportWithStandardEmptyContextAndExtensionsDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    public native int testNative();\r\n\r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\npublic TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET12);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(
@@ -454,7 +455,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -475,7 +476,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -495,7 +496,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -515,7 +516,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -535,7 +536,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -559,7 +560,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -582,7 +583,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -605,7 +606,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -631,7 +632,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -657,7 +658,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -680,7 +681,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -703,7 +704,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -726,7 +727,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -749,7 +750,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -772,7 +773,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -795,7 +796,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -824,7 +825,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -862,7 +863,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -894,7 +895,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -918,7 +919,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -938,7 +939,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -958,7 +959,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -967,7 +968,8 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherTestExtends;\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class Test < AnotherTestExtends > {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET6);
-        assertEquals(GENERIC_DEPENDENCY6, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(GENERIC_DEPENDENCY6, JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent,
+                programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY6.getFullName()));
@@ -977,7 +979,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1000,7 +1002,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1024,7 +1026,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1047,7 +1049,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1070,7 +1072,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1090,7 +1092,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1110,7 +1112,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1130,7 +1132,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1158,7 +1160,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1190,7 +1192,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1214,7 +1216,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1238,7 +1240,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1262,7 +1264,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1286,7 +1288,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1309,7 +1311,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1337,7 +1339,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1369,7 +1371,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1409,7 +1411,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1437,7 +1439,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1483,7 +1485,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1503,7 +1505,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1523,7 +1525,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1543,7 +1545,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1563,7 +1565,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1583,7 +1585,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1607,7 +1609,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1627,7 +1629,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1647,7 +1649,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1667,7 +1669,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1687,7 +1689,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1707,7 +1709,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
@@ -1721,7 +1723,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -1741,7 +1743,7 @@ public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLan
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
-     *
+     * 
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
