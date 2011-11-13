@@ -42,9 +42,9 @@ import net.sourceforge.plantuml.dependency.generic.type.ImportType;
 
 /**
  * The default implementation of the {@link ImportDependenciesCollection} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -65,7 +65,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * Default constructor. Initializes the import dependencies collection to empty.
-     * 
+     *
      * @since 1.1.1
      */
     public ImportDependenciesCollectionImpl() {
@@ -78,23 +78,41 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
     /**
      * Medium constructor. Initializes the import dependencies collection with the passed Set and
      * the ImportType.
-     * 
+     *
      * @param importType
      *            the import type {@link ImportType} instance, mustn't be <code>null</code>.
-     * @param importDependenciesSet
+     * @param dependenciesSet
      *            the {@link Set} containing import {@link GenericDependency} instances, mustn't be
      *            <code>null</code>.
      * @since 1.1.1
      */
-    public ImportDependenciesCollectionImpl(final ImportType importType,
-            final Set < GenericDependency > importDependenciesSet) {
+    public ImportDependenciesCollectionImpl(final ImportType importType, final Set < GenericDependency > dependenciesSet) {
         this();
-        addImportDependenciesSet(importType, importDependenciesSet);
+        addImportDependenciesSet(importType, dependenciesSet);
+    }
+
+    /**
+     * Medium constructor. Initializes the import dependencies collection with the passed Set and
+     * the ImportType.
+     *
+     * @param dependenciesMap
+     *            the {@link Map} of all {@link GenericDependency} which are needed by the current
+     *            dependency type to work. It has {@link ImportType} as keys and the {@link Set} of
+     *            import dependencies as values, mustn't be <code>null</code>.
+     * @since 1.1.1
+     */
+    public ImportDependenciesCollectionImpl(final Map < ImportType, Set < GenericDependency > > dependenciesMap) {
+        importDependenciesMap = new TreeMap < ImportType, Set < GenericDependency > >(dependenciesMap);
+        for (final ImportType importType : IMPORT_TYPES) {
+            if (!importDependenciesMap.containsKey(importType)) {
+                importDependenciesMap.put(importType, new TreeSet < GenericDependency >());
+            }
+        }
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -104,7 +122,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -115,7 +133,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -135,7 +153,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -162,7 +180,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -182,7 +200,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -203,7 +221,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -213,7 +231,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * Gets the value of <code>importDependenciesMap</code>.
-     * 
+     *
      * @return the value of <code>importDependenciesMap</code>.
      * @since 1.1.1
      */
@@ -223,7 +241,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -235,7 +253,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -258,7 +276,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -267,5 +285,48 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
         int result = 1;
         result = prime * result + ((importDependenciesMap == null) ? 0 : importDependenciesMap.hashCode());
         return result;
+    }
+
+    /**
+     * Converts the import dependencies map {@link Map} as a String containing dependencies full
+     * names.
+     *
+     * @param dependenciesMap
+     *            the {@link Map} of all {@link GenericDependency} which are needed by the current
+     *            dependency type to work. It has {@link ImportType} as keys and the {@link Set} of
+     *            import dependencies as values.
+     * @return the String reprensenting the import dependencies {@link Map}.
+     * @since 1.1.1
+     */
+    private String printDependencyMap(final Map < ImportType, Set < GenericDependency >> dependenciesMap) {
+        final Map < ImportType, Set < String > > printableMap = new TreeMap < ImportType, Set < String > >();
+
+        for (final Map.Entry < ImportType, Set < GenericDependency > > entry : dependenciesMap.entrySet()) {
+            final ImportType importType = entry.getKey();
+            final Set < GenericDependency > dependenciesSet = entry.getValue();
+
+            Set < String > importDependencies = printableMap.get(importType);
+            if (importDependencies == null) {
+                importDependencies = new TreeSet < String >();
+                printableMap.put(importType, importDependencies);
+            }
+
+            for (final GenericDependency dependency : dependenciesSet) {
+                importDependencies.add(dependency.getFullName());
+            }
+        }
+
+        return printableMap.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.1.1
+     */
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " [importDependenciesMap=" + printDependencyMap(importDependenciesMap)
+                + "]";
     }
 }

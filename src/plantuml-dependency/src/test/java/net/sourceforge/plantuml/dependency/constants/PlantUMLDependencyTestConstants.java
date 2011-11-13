@@ -32,7 +32,9 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_S
 import static net.sourceforge.mazix.components.constants.CommonConstants.CURRENT_DIRECTORY;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
+import static net.sourceforge.plantuml.dependency.generic.type.ImportType.NATIVE;
 import static net.sourceforge.plantuml.dependency.generic.type.ImportType.STANDARD;
+import static net.sourceforge.plantuml.dependency.generic.type.ImportType.STATIC;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
@@ -44,6 +46,7 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import net.sourceforge.mazix.cli.command.CommandLine;
@@ -53,6 +56,7 @@ import net.sourceforge.mazix.cli.option.impl.verbose.VerboseOption;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
+import net.sourceforge.plantuml.dependency.generic.type.ImportType;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
@@ -217,7 +221,6 @@ public final class PlantUMLDependencyTestConstants {
     /** Generic dependency set test 4 instance. */
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET4 = new TreeSet < GenericDependency >(
             asList(new GenericDependency[] {new GenericDependencyImpl("Object", "java.lang")}));
-
 
     /** Verbose option test 1 instance. */
     public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(new StringBuffer(
@@ -403,21 +406,33 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Class dependency type test 24 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE24 = new ClassDependencyTypeImpl("TestImplements",
-            "com.plantuml.test", new ImportDependenciesCollectionImpl(STANDARD, new TreeSet < GenericDependency >(
-                    asList(new GenericDependency[] {
-                            new GenericDependencyImpl("JavaProgram", "net.sourceforge.mazix.cli.program"),
-                            NATIVE_DEPENDENCY}))), new TreeSet < GenericDependency >(
-                    asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
-                            "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >(), true);
+            "com.plantuml.test", new ImportDependenciesCollectionImpl(
+                    new TreeMap < ImportType, Set < GenericDependency >>() {
+                        private static final long serialVersionUID = 1L;
+                        {
+                            put(STANDARD, new TreeSet < GenericDependency >(
+                                    asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
+                                            "net.sourceforge.mazix.cli.program")})));
+                            put(NATIVE, new TreeSet < GenericDependency >(
+                                    asList(new GenericDependency[] {NATIVE_DEPENDENCY})));
+                        }
+                    }), new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "JavaProgram", "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >(), true);
 
     /** Class dependency type test 25 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE25 = new ClassDependencyTypeImpl(
-            "Test_Implements", "com.plantuml.te_st", new ImportDependenciesCollectionImpl(STANDARD,
-                    new TreeSet < GenericDependency >(asList(new GenericDependency[] {
-                            new GenericDependencyImpl("Java_Program", "net.sourceforge.mazix.cli.pro_gram"),
-                            NATIVE_DEPENDENCY}))), new TreeSet < GenericDependency >(
-                    asList(new GenericDependency[] {new GenericDependencyImpl("Java_Program",
-                            "net.sourceforge.mazix.cli.pro_gram")})), new TreeSet < GenericDependency >(), true);
+            "Test_Implements", "com.plantuml.te_st", new ImportDependenciesCollectionImpl(
+                    new TreeMap < ImportType, Set < GenericDependency >>() {
+                        private static final long serialVersionUID = 1L;
+                        {
+                            put(STANDARD, new TreeSet < GenericDependency >(
+                                    asList(new GenericDependency[] {new GenericDependencyImpl("Java_Program",
+                                            "net.sourceforge.mazix.cli.pro_gram")})));
+                            put(NATIVE, new TreeSet < GenericDependency >(
+                                    asList(new GenericDependency[] {NATIVE_DEPENDENCY})));
+                        }
+                    }), new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "Java_Program", "net.sourceforge.mazix.cli.pro_gram")})), new TreeSet < GenericDependency >(), true);
 
     /** Class dependency type test 26 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE26 = new ClassDependencyTypeImpl("TestImplements",
@@ -428,27 +443,32 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Class dependency type test 27 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE27 = new ClassDependencyTypeImpl(
-            "TestDisplayOption",
-            "net.sourceforge.plantuml.dependency",
-            new ImportDependenciesCollectionImpl(
-                    STANDARD,
-                    new TreeSet < GenericDependency >(
-                            asList(new GenericDependency[] {
-                                    new GenericDependencyImpl("File", "java.io"),
-                                    new GenericDependencyImpl("FileInputStream", "java.io"),
-                                    new GenericDependencyImpl("FileNotFoundException", "java.io"),
-                                    new GenericDependencyImpl("InputStream", "java.io"),
-                                    new GenericDependencyImpl("Serializable", "java.io"),
-                                    new GenericDependencyImpl("BigInteger", "java.math"),
-                                    new GenericDependencyImpl("Random", "java.util"),
-                                    new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
-                                    new GenericDependencyImpl("ProgrammingLanguage",
-                                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
-                                    new GenericDependencyImpl("JavaRawDependency",
-                                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java"),
-                                    new GenericDependencyImpl("Arrays", "java.util"),
-                                    new GenericDependencyImpl("Level", "java.util.logging")}))),
-            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+            "TestDisplayOption", "net.sourceforge.plantuml.dependency", new ImportDependenciesCollectionImpl(
+                    new TreeMap < ImportType, Set < GenericDependency >>() {
+                        private static final long serialVersionUID = 1L;
+                        {
+                            put(
+                                    STANDARD,
+                                    new TreeSet < GenericDependency >(
+                                            asList(new GenericDependency[] {
+                                                    new GenericDependencyImpl("File", "java.io"),
+                                                    new GenericDependencyImpl("FileInputStream", "java.io"),
+                                                    new GenericDependencyImpl("FileNotFoundException", "java.io"),
+                                                    new GenericDependencyImpl("InputStream", "java.io"),
+                                                    new GenericDependencyImpl("Serializable", "java.io"),
+                                                    new GenericDependencyImpl("BigInteger", "java.math"),
+                                                    new GenericDependencyImpl("Random", "java.util"),
+                                                    new GenericDependencyImpl("DeepCloneable",
+                                                            "net.sourceforge.mazix.components.clone"),
+                                                    new GenericDependencyImpl("ProgrammingLanguage",
+                                                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                                                    new GenericDependencyImpl("JavaRawDependency",
+                                                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java")})));
+                            put(STATIC, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
+                                    new GenericDependencyImpl("Level", "java.util.logging"),
+                                    new GenericDependencyImpl("Arrays", "java.util")})));
+                        }
+                    }), new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("BigInteger", "java.math")})), false);
 
@@ -503,7 +523,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Class dependency type test 33 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE33 = new ClassDependencyTypeImpl(
-            "TestDisplayOption", "net.sourceforge.plantuml.dependency", new ImportDependenciesCollectionImpl(STANDARD,
+            "TestDisplayOption", "net.sourceforge.plantuml.dependency", new ImportDependenciesCollectionImpl(NATIVE,
                     new TreeSet < GenericDependency >(asList(new GenericDependency[] {NATIVE_DEPENDENCY}))),
             new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), true);
 
