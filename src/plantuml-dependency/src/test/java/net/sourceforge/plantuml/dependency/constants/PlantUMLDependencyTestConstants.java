@@ -436,7 +436,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Class dependency type test 26 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE26 = new ClassDependencyTypeImpl("TestImplements",
-            "com.plantuml.test", new ImportDependenciesCollectionImpl(STANDARD, new TreeSet < GenericDependency >(
+            "com.plantuml.test", new ImportDependenciesCollectionImpl(STATIC, new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
                             "net.sourceforge.mazix.cli.program")}))), new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(), false);
@@ -479,53 +479,34 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Class dependency type test 29 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE29 = new ClassDependencyTypeImpl(
-            "TestDisplayOption", "net.sourceforge.plantuml.dependency", new ImportDependenciesCollectionImpl(),
-            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(),
-            false);
-
-    /** Class dependency type test 30 instance. */
-    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE30 = new ClassDependencyTypeImpl(
-            "TestDisplayOption", "net.sourceforge.plantuml.dependency", new ImportDependenciesCollectionImpl(),
-            new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(
-                    asList(new GenericDependency[] {new GenericDependencyImpl(new InterfaceDependencyTypeImpl(
-                            "BigInteger", "java.math"))})), false);
-
-    /** Class dependency type test 31 instance. */
-    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE31 = new ClassDependencyTypeImpl(
-            "TestDisplayOption",
-            "net.sourceforge.plantuml.dependency",
-            new ImportDependenciesCollectionImpl(
-                    STANDARD,
-                    new TreeSet < GenericDependency >(
-                            asList(new GenericDependency[] {
-                                    new GenericDependencyImpl("File", "java.io"),
-                                    new GenericDependencyImpl("FileInputStream", "java.io"),
-                                    new GenericDependencyImpl("FileNotFoundException", "java.io"),
-                                    new GenericDependencyImpl("InputStream", "java.io"),
-                                    new GenericDependencyImpl("Serializable", "java.io"),
-                                    new GenericDependencyImpl("BigInteger", "java.math"),
-                                    new GenericDependencyImpl("Random", "java.util"),
-                                    new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
-                                    new GenericDependencyImpl("ProgrammingLanguage",
-                                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
-                                    new GenericDependencyImpl("JavaRawDependency",
-                                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java")}))),
-            new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
-
-    /** Class dependency type test 32 instance. */
-    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE32 = new ClassDependencyTypeImpl(
-            "TestDisplayOption", "net.sourceforge.plantuml.dependency", new ImportDependenciesCollectionImpl(STANDARD,
-                    new TreeSet < GenericDependency >(asList(new GenericDependency[] {
-                            new GenericDependencyImpl("Arrays", "java.util"),
-                            new GenericDependencyImpl("Level", "java.util.logging")}))),
-            new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
-
-    /** Class dependency type test 33 instance. */
-    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE33 = new ClassDependencyTypeImpl(
-            "TestDisplayOption", "net.sourceforge.plantuml.dependency", new ImportDependenciesCollectionImpl(NATIVE,
-                    new TreeSet < GenericDependency >(asList(new GenericDependency[] {NATIVE_DEPENDENCY}))),
-            new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), true);
+            "TestDisplayOption", "net.sourceforge.plantuml.dependency", new ImportDependenciesCollectionImpl(
+                    new TreeMap < ImportType, Set < GenericDependency >>() {
+                        private static final long serialVersionUID = 1L;
+                        {
+                            put(
+                                    STANDARD,
+                                    new TreeSet < GenericDependency >(
+                                            asList(new GenericDependency[] {
+                                                    new GenericDependencyImpl("File", "java.io"),
+                                                    new GenericDependencyImpl("FileInputStream", "java.io"),
+                                                    new GenericDependencyImpl("FileNotFoundException", "java.io"),
+                                                    new GenericDependencyImpl("InputStream", "java.io"),
+                                                    new GenericDependencyImpl("Serializable", "java.io"),
+                                                    new GenericDependencyImpl("BigInteger", "java.math"),
+                                                    new GenericDependencyImpl("Random", "java.util"),
+                                                    new GenericDependencyImpl("DeepCloneable",
+                                                            "net.sourceforge.mazix.components.clone"),
+                                                    new GenericDependencyImpl("ProgrammingLanguage",
+                                                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                                                    new GenericDependencyImpl("JavaRawDependency",
+                                                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java")})));
+                            put(STATIC, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
+                                    new GenericDependencyImpl("Arrays", "java.util"),
+                                    new GenericDependencyImpl("Level", "java.util.logging")})));
+                        }
+                    }), new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("BigInteger", "java.math")})), false);
 
     /** Interface dependency type test 1 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
@@ -769,20 +750,8 @@ public final class PlantUMLDependencyTestConstants {
     /** Generic dependency test 40 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY40 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE28);
 
-    /** Generic dependency test 41 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY41 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE29);
-
-    /** Generic dependency test 42 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY42 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE30);
-
     /** Generic dependency test 43 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY43 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE31);
-
-    /** Generic dependency test 44 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY44 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE32);
-
-    /** Generic dependency test 45 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY45 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE33);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY41 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE29);
 
     /**
      * Private constructor to prevent from instantiation.

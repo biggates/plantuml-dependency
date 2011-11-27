@@ -40,10 +40,10 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.F
 
 import java.io.File;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
@@ -52,9 +52,9 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 /**
  * An abstract implementation of the {@link ProgrammingLanguageContext} interface, providing common
  * behaviors.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.1
  */
@@ -88,28 +88,28 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Default constructor.
-     * 
+     *
      * @since 1.0
      */
     protected AbstractProgrammingLanguageContext() {
-        this(new HashSet < GenericDependency >(), new HashSet < Display >());
+        this(new TreeSet < GenericDependency >(), new TreeSet < Display >());
     }
 
     /**
      * Medium constructor.
-     * 
+     *
      * @param displayOpt
      *            the display options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
      * @since 1.0
      */
     protected AbstractProgrammingLanguageContext(final Set < Display > displayOpt) {
-        this(new HashSet < GenericDependency >(), displayOpt);
+        this(new TreeSet < GenericDependency >(), displayOpt);
     }
 
     /**
      * Medium constructor.
-     * 
+     *
      * @param parsedAndSeenDependencies
      *            the original {@link Set} of {@link GenericDependency} to put in the context,
      *            mustn't be <code>null</code>.
@@ -125,7 +125,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Full constructor.
-     * 
+     *
      * @param parsedAndSeenDependencies
      *            the original {@link Set} of {@link GenericDependency} to put in the context,
      *            mustn't be <code>null</code>.
@@ -150,12 +150,12 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
             secondDependenciesMap.put(genericDependency.getFullName(), genericDependency);
         }
         setSeenDependenciesMap(new TreeMap < String, GenericDependency >(secondDependenciesMap));
-        setDisplayOptions(new HashSet < Display >(displayOpt));
+        setDisplayOptions(new TreeSet < Display >(displayOpt));
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -167,7 +167,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -178,7 +178,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 0.8
      */
     @Override
@@ -189,7 +189,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -202,7 +202,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -216,7 +216,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
                 a.parsedAndSeenDependenciesMap.put(genericDependency.getFullName(), genericDependency.deepClone());
             }
             a.parsedDependenciesMap = new TreeMap < String, GenericDependency >(a.parsedDependenciesMap);
-            a.displayOptions = new HashSet < Display >(getDisplayOptions());
+            a.displayOptions = new TreeSet < Display >(getDisplayOptions());
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
         }
@@ -226,7 +226,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -267,7 +267,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -278,12 +278,12 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
     public Collection < GenericDependency > getDisplayableParsedAndSeenDependencies(final Set < Display > displayOpts) {
-        final Set < GenericDependency > displayableParsedAndSeenDependencies = new HashSet < GenericDependency >();
+        final Set < GenericDependency > displayableParsedAndSeenDependencies = new TreeSet < GenericDependency >();
         for (final GenericDependency dependency : getParsedAndSeenDependencies()) {
             if (dependency.getDependencyType().isDisplayable(displayOpts)) {
                 displayableParsedAndSeenDependencies.add(dependency);
@@ -295,12 +295,12 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
     public Collection < GenericDependency > getDisplayableParsedDependencies(final Set < Display > displayOpts) {
-        final Set < GenericDependency > displayableParsedDependencies = new HashSet < GenericDependency >();
+        final Set < GenericDependency > displayableParsedDependencies = new TreeSet < GenericDependency >();
         for (final GenericDependency dependency : getParsedDependencies()) {
             if (dependency.getDependencyType().isDisplayable(displayOpts)) {
                 displayableParsedDependencies.add(dependency);
@@ -312,7 +312,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Gets the value of <code>displayOptions</code>.
-     * 
+     *
      * @return the value of <code>displayOptions</code>.
      * @see #setDisplayOptions(Set)
      * @since 1.0
@@ -323,7 +323,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -333,7 +333,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Gets the value of <code>parsedAndSeenDependenciesMap</code>.
-     * 
+     *
      * @return the value of <code>parsedAndSeenDependenciesMap</code>.
      * @see #setParsedAndSeenDependenciesMap(Map)
      * @since 1.0
@@ -344,7 +344,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -354,7 +354,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Gets the value of <code>parsedDependenciesMap</code>.
-     * 
+     *
      * @return the value of <code>parsedDependenciesMap</code>.
      * @see #setParsedDependenciesMap(Map)
      * @since 1.0
@@ -365,7 +365,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -381,7 +381,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -391,7 +391,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Sets the value of <code>displayOptions</code>.
-     * 
+     *
      * @param value
      *            the <code>displayOptions</code> to set, can be <code>null</code>.
      * @see #getDisplayOptions()
@@ -403,7 +403,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Sets the value of <code>parsedAndSeenDependenciesMap</code>.
-     * 
+     *
      * @param value
      *            the <code>parsedAndSeenDependenciesMap</code> to set, can be <code>null</code>.
      * @see #getParsedAndSeenDependenciesMap()
@@ -415,7 +415,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Sets the value of <code>seenDependenciesMap</code>.
-     * 
+     *
      * @param value
      *            the <code>seenDependenciesMap</code> to set, can be <code>null</code>.
      * @see #getSeenDependenciesMap()
@@ -427,7 +427,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -438,7 +438,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
