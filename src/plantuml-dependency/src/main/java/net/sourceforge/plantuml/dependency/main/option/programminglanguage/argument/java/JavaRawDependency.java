@@ -41,9 +41,9 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argum
 /**
  * The Java raw dependency, extracted from a Java source file, without any business control nor
  * checking.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -85,7 +85,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Empty constructor.
-     *
+     * 
      * @since 1.0
      */
     public JavaRawDependency() {
@@ -94,7 +94,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Default constructor.
-     *
+     * 
      * @param isAbs
      *            the boolean telling if the java dependency is abstract or not.
      * @param dependencyPackageName
@@ -127,26 +127,24 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
     public int compareTo(final JavaRawDependency j) {
-        if (this == j) {
-            return EQUAL.getResult();
-        } else {
-            final int comparison = packageName.compareTo(j.packageName);
+        int comparison = EQUAL.getResult();
+        if (this != j) {
+            comparison = packageName.compareTo(j.packageName);
             if (comparison == EQUAL.getResult()) {
-                return name.compareTo(j.name);
-            } else {
-                return comparison;
+                comparison = name.compareTo(j.name);
             }
         }
+        return comparison;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -166,7 +164,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -200,7 +198,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Gets the full name of the dependency, i.e. the package name + the class name.
-     *
+     * 
      * @return the the full name of the dependency.
      * @since 1.0
      */
@@ -210,7 +208,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Gets the value of <code>name</code>.
-     *
+     * 
      * @return the value of <code>name</code>.
      * @see #setName(String)
      * @since 1.0
@@ -221,7 +219,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Gets the value of <code>packageName</code>.
-     *
+     * 
      * @return the value of <code>packageName</code>.
      * @see #setPackageName(String)
      * @since 1.0
@@ -232,7 +230,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Gets the value of <code>parentExtentions</code>.
-     *
+     * 
      * @return the value of <code>parentExtentions</code>.
      * @see #setParentExtentions(Set)
      * @since 1.0
@@ -243,7 +241,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Gets the value of <code>parentImplementations</code>.
-     *
+     * 
      * @return the value of <code>parentImplementations</code>.
      * @see #setParentImplementations(Set)
      * @since 1.0
@@ -254,7 +252,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Gets the value of <code>type</code>.
-     *
+     * 
      * @return the value of <code>type</code>.
      * @see #setType(JavaType)
      * @since 1.0
@@ -265,7 +263,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
@@ -278,19 +276,8 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     }
 
     /**
-     * Gets the value of <code>isAbstract</code>.
-     *
-     * @return the value of <code>isAbstract</code>.
-     * @see #setAbstract(boolean)
-     * @since 1.0
-     */
-    public boolean isAbstract() {
-        return isAbstract;
-    }
-
-    /**
      * Gets the value of <code>nativeMethods</code>.
-     *
+     * 
      * @return the value of <code>nativeMethods</code>.
      * @see #setNativeMethods(boolean)
      * @since 1.0
@@ -300,8 +287,19 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     }
 
     /**
+     * Gets the value of <code>isAbstract</code>.
+     * 
+     * @return the value of <code>isAbstract</code>.
+     * @see #setAbstract(boolean)
+     * @since 1.0
+     */
+    public boolean isAbstract() {
+        return isAbstract;
+    }
+
+    /**
      * Sets the value of <code>isAbstract</code>.
-     *
+     * 
      * @param value
      *            the <code>isAbstract</code> to set, can be <code>null</code>.
      * @see #isAbstract()
@@ -313,7 +311,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Sets the value of <code>name</code>.
-     *
+     * 
      * @param value
      *            the <code>name</code> to set, can be <code>null</code>.
      * @see #getName()
@@ -325,7 +323,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Sets the value of <code>nativeMethods</code>.
-     *
+     * 
      * @param value
      *            the <code>nativeMethods</code> to set, can be <code>null</code>.
      * @see #hasNativeMethods()
@@ -337,7 +335,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Sets the value of <code>packageName</code>.
-     *
+     * 
      * @param value
      *            the <code>packageName</code> to set, can be <code>null</code>.
      * @see #getPackageName()
@@ -349,7 +347,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Sets the value of <code>parentExtentions</code>.
-     *
+     * 
      * @param value
      *            the <code>parentExtentions</code> to set, can be <code>null</code>.
      * @see #getParentExtentions()
@@ -361,7 +359,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Sets the value of <code>parentImplementations</code>.
-     *
+     * 
      * @param value
      *            the <code>parentImplementations</code> to set, can be <code>null</code>.
      * @see #getParentImplementations()
@@ -373,7 +371,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * Sets the value of <code>type</code>.
-     *
+     * 
      * @param value
      *            the <code>type</code> to set, can be <code>null</code>.
      * @see #getType()
@@ -385,7 +383,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @since 1.0
      */
     @Override
