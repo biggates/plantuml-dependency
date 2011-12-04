@@ -26,7 +26,6 @@ package net.sourceforge.plantuml.dependency.constants;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.convertCollectionToSeparatedString;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
@@ -48,7 +47,7 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
  * The class which stores all necessary plantUML dependency constants as Strings.
- * 
+ *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.1.0
@@ -78,7 +77,7 @@ public final class PlantUMLDependencyConstants {
 
     /** The custom dependency which is used to link with native code. */
     public static final GenericDependency NATIVE_DEPENDENCY = new GenericDependencyImpl(new NativeDependencyTypeImpl(
-            "Native_Code", BLANK_STRING));
+            "NativeCall", "javax.native"));
 
     /** The PlantUML description which is used to graphically identify the native dependency. */
     public static final String NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION = " << (N,yellow) >>";
@@ -88,7 +87,7 @@ public final class PlantUMLDependencyConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     * 
+     *
      * @since 1.0
      */
     private PlantUMLDependencyConstants() {
