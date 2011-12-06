@@ -131,7 +131,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      */
     @Override
     public void execute() throws CommandLineException {
-        final ProgrammingLanguageContext programmingLanguageContext = readDependenciesMapFromFiles(
+        final ProgrammingLanguageContext programmingLanguageContext = readDependenciesContextFromFiles(
                 getProgrammingLanguage(), getInputFileSet(), getDisplayOptions());
         programmingLanguageContext.writePlantUMLFile(getOutputFile());
         LOGGER.info(buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies().size()));
@@ -182,9 +182,9 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     }
 
     /**
-     * Creates a dependencies {@link java.util.Map} following a set of files in the passed
-     * programming language. This methods parses each source files of the set in order to create the
-     * {@link java.util.Map} .
+     * Creates a dependencies {@link ProgrammingLanguageContext} following a set of files in the
+     * passed programming language. This methods parses each source files of the set in order to add
+     * them in the context.
      *
      * @param language
      *            the programming language of the source files to parse, mustn't be
@@ -195,11 +195,12 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param displayOpt
      *            the display option which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
-     * @return the {@link java.util.Collection} of all parsed {@link GenericDependency}.
+     * @return the {@link ProgrammingLanguageContext} instance containing all parsed
+     *         {@link GenericDependency}.
      * @since 1.0
      */
     @SuppressWarnings("unchecked")
-    private static ProgrammingLanguageContext readDependenciesMapFromFiles(final ProgrammingLanguage language,
+    private static ProgrammingLanguageContext readDependenciesContextFromFiles(final ProgrammingLanguage language,
             final FileSet includeExcludeFiles, final Set < Display > displayOpt) {
         final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext(displayOpt);
 
