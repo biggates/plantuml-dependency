@@ -24,37 +24,29 @@
 
 package net.sourceforge.plantuml.dependency.constants;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
-
 /**
  * The class which stores all necessary plantUML constants as Strings.
  *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
 public final class PlantUMLConstants {
+
+    /** The string representing the plantUML "enduml" tag. */
+    public static final String END_PLANTUML = "@enduml";
+
+    /** The string representing the plantUML "--|>" tag. */
+    public static final String IMPLEMENTS_RIGHT_PLANTUML = " --|> ";
 
     /** The string representing the plantUML "startuml" tag. */
     public static final String START_PLANTUML = "@startuml";
 
-    /** The string representing the plantUML "enduml" tag. */
-    public static final String END_PLANTUML = LINE_SEPARATOR + "@enduml";
+    /** The string representing the plantUML left stereotype separator tag. */
+    public static final String STEREOTYPE_LEFT_SEPARATOR = " << ";
 
-    /** The string representing the plantUML "class" tag. */
-    public static final String CLASS_PLANTUML = LINE_SEPARATOR + "class ";
-
-    /** The string representing the plantUML "abstract" tag. */
-    public static final String ABSTRACT_CLASS_PLANTUML = LINE_SEPARATOR + "abstract class ";
-
-    /** The string representing the plantUML "enum" tag. */
-    public static final String ENUM_PLANTUML = LINE_SEPARATOR + "enum ";
-
-    /** The string representing the plantUML "interface" tag. */
-    public static final String INTERFACE_PLANTUML = LINE_SEPARATOR + "interface ";
-
-    /** The string representing the plantUML "<|--" tag. */
-    public static final String IMPLEMENTS_LEFT_PLANTUML = " <|-- ";
+    /** The string representing the plantUML right stereotype separator tag. */
+    public static final String STEREOTYPE_RIGHT_SEPARATOR = " >> ";
 
     /** The string representing the plantUML "..>" tag. */
     public static final String USES_RIGHT_PLANTUML = " ..> ";

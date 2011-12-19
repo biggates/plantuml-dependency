@@ -24,9 +24,6 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
 
@@ -40,13 +37,17 @@ import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollec
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl;
 
 /**
  * The class implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.1
  */
@@ -63,7 +64,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * Default constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -78,7 +79,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * Full constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -107,7 +108,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -120,39 +121,35 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     * 
-     * @since 1.0
-     */
-    @Override
-    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
-        final StringBuffer buffer = super.generatePlantUMLDeclaration(displayOptions);
-        buffer.append(CLASS_PLANTUML);
-        buffer.append(getFullName());
-        return buffer;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
-    protected StringBuffer generatePlantUMLDescriptionFooter(final Set < Display > displayOptions) {
-        final StringBuffer buffer = super.generatePlantUMLDescriptionFooter(displayOptions);
-
-        for (final GenericDependency classDependency : getParentClassesToGeneratePlantUML(displayOptions)) {
-            buffer.append(LINE_SEPARATOR);
-            buffer.append(classDependency.getFullName());
-            buffer.append(IMPLEMENTS_LEFT_PLANTUML);
-            buffer.append(getFullName());
-        }
-
-        return buffer;
+    protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
+        return new PlantUMLClassElementImpl(getFullName());
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
+     * @since 1.1.1
+     */
+    @Override
+    protected Set < PlantUMLClassesDiagramRelation > generatePlantUMLClassesDiagramRelationFooter(
+            final Set < Display > displayOptions) {
+        final Set < PlantUMLClassesDiagramRelation > linkSet = super
+                .generatePlantUMLClassesDiagramRelationFooter(displayOptions);
+
+        for (final GenericDependency classDependency : getParentClassesToGeneratePlantUML(displayOptions)) {
+            linkSet.add(new PlantUMLClassesDiagramImplementRelationImpl(getFullName(), classDependency.getFullName()));
+        }
+
+        return linkSet;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
      * @since 1.0
      */
     @Override
@@ -162,7 +159,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * Gets the parent interfaces which have to be generated appear in the plantUML file.
-     * 
+     *
      * @param displayOptions
      *            the {@link Set} of all displays options to display the PlantUML links description,
      *            mustn't be <code>null</code>.
@@ -184,7 +181,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -194,7 +191,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

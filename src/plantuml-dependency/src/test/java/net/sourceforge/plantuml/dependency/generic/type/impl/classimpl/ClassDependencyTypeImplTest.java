@@ -24,12 +24,12 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
+import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.IMPORT_DEPENDENCIES_COLLECTION1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET4;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.IMPORT_DEPENDENCIES_COLLECTION1;
 import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -41,15 +41,19 @@ import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link ClassDependencyTypeImpl}.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -63,8 +67,8 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
     /** Class dependency type test 2 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE2 = new ClassDependencyTypeImpl(
-            "FileOutputStream", "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET2,
-            false);
+            "FileOutputStream", "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET3,
+            GENERIC_DEPENDENCY_SET2, false);
 
     /** Class dependency type test 3 instance. */
     @DataPoint
@@ -74,17 +78,20 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
     /** Class dependency type test 4 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE4 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", new ImportDependenciesCollectionImpl(), GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET2, false);
+            "java.lang", new ImportDependenciesCollectionImpl(), GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET2,
+            false);
 
     /** Class dependency type test 5 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE5 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET2, false);
+            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET2,
+            false);
 
     /** Class dependency type test 6 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE6 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET3, new TreeSet < GenericDependency >(), false);
+            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET3, new TreeSet < GenericDependency >(),
+            false);
 
     /** Class dependency type test 7 instance. */
     @DataPoint
@@ -99,7 +106,8 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
     /** Class dependency type test 9 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE9 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET2, new TreeSet < GenericDependency >(), false);
+            "java.lang", IMPORT_DEPENDENCIES_COLLECTION1, GENERIC_DEPENDENCY_SET2, new TreeSet < GenericDependency >(),
+            false);
 
     /** Class dependency type test 10 instance. */
     @DataPoint
@@ -181,55 +189,59 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration(Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramElement()}
      * .
      */
     @Test
-    public void testGetPlantUMLDeclaration() {
-        assertEquals(LINE_SEPARATOR + "class java.lang.Integer", CLASS_DEPENDENCY_TYPE1.getPlantUMLDeclaration(
-                DEFAULT_DISPLAY_OPTIONS).toString());
+    public void testGetPlantUMLClassesDiagramElement() {
+        assertEquals(new PlantUMLClassElementImpl("java.lang.Integer"), CLASS_DEPENDENCY_TYPE1
+                .getPlantUMLClassesDiagramElement());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription(Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
-    public void testGetPlantUMLLinksDescriptionWithInterfaceAndImportDependencies() {
-        assertEquals(LINE_SEPARATOR + "java.lang.Integer ..> java.io.Serializable" + LINE_SEPARATOR
-                + "java.lang.Integer ..> java.lang.Comparable" + LINE_SEPARATOR
-                + "java.lang.Number <|-- java.lang.Integer", CLASS_DEPENDENCY_TYPE9.getPlantUMLLinksDescription(
-                DEFAULT_DISPLAY_OPTIONS).toString());
+    public void testGetPlantUMLClassesDiagramRelationsWithInterfaceAndImportDependencies() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                new PlantUMLClassesDiagramUseRelationImpl("java.lang.Integer", "java.io.Serializable"),
+                new PlantUMLClassesDiagramUseRelationImpl("java.lang.Integer", "java.lang.Comparable"),
+                new PlantUMLClassesDiagramImplementRelationImpl("java.lang.Integer", "java.lang.Number")})),
+                CLASS_DEPENDENCY_TYPE9.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription(Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
-    public void testGetPlantUMLLinksDescriptionWithoutParentAndImportDependencies() {
-        assertEquals(LINE_SEPARATOR + "java.lang.Integer ..> java.io.Serializable" + LINE_SEPARATOR
-                + "java.lang.Integer ..> java.lang.Comparable" + LINE_SEPARATOR
-                + "java.lang.Integer ..> java.lang.Number" + LINE_SEPARATOR + "java.lang.Object <|-- java.lang.Integer"
-                + LINE_SEPARATOR + "java.lang.Set <|-- java.lang.Integer" + LINE_SEPARATOR
-                + "javax.lang.Cloneable <|-- java.lang.Integer", CLASS_DEPENDENCY_TYPE8.getPlantUMLLinksDescription(
-                DEFAULT_DISPLAY_OPTIONS).toString());
+    public void testGetPlantUMLClassesDiagramRelationsWithoutParentAndImportDependencies() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                new PlantUMLClassesDiagramUseRelationImpl("java.lang.Integer", "java.io.Serializable"),
+                new PlantUMLClassesDiagramUseRelationImpl("java.lang.Integer", "java.lang.Comparable"),
+                new PlantUMLClassesDiagramUseRelationImpl("java.lang.Integer", "java.lang.Number"),
+                new PlantUMLClassesDiagramImplementRelationImpl("java.lang.Integer", "java.lang.Set"),
+                new PlantUMLClassesDiagramImplementRelationImpl("java.lang.Integer", "javax.lang.Cloneable"),
+                new PlantUMLClassesDiagramImplementRelationImpl("java.lang.Integer", "java.lang.Object")})),
+                CLASS_DEPENDENCY_TYPE8.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription(Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
-    public void testGetPlantUMLLinksDescriptionWithParentAndImportDependencies() {
-        assertEquals(LINE_SEPARATOR + "java.lang.Integer ..> java.io.Serializable" + LINE_SEPARATOR
-                + "java.lang.Integer ..> java.lang.Comparable" + LINE_SEPARATOR
-                + "java.lang.Set <|-- java.lang.Integer" + LINE_SEPARATOR
-                + "javax.lang.Cloneable <|-- java.lang.Integer" + LINE_SEPARATOR
-                + "java.lang.Number <|-- java.lang.Integer", CLASS_DEPENDENCY_TYPE7.getPlantUMLLinksDescription(
-                DEFAULT_DISPLAY_OPTIONS).toString());
+    public void testGetPlantUMLClassesDiagramRelationsWithParentAndImportDependencies() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                new PlantUMLClassesDiagramUseRelationImpl("java.lang.Integer", "java.io.Serializable"),
+                new PlantUMLClassesDiagramUseRelationImpl("java.lang.Integer", "java.lang.Comparable"),
+                new PlantUMLClassesDiagramUseRelationImpl("java.lang.Integer", "java.lang.Number"),
+                new PlantUMLClassesDiagramImplementRelationImpl("java.lang.Integer", "java.lang.Set"),
+                new PlantUMLClassesDiagramImplementRelationImpl("java.lang.Integer", "javax.lang.Cloneable")})),
+                CLASS_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 }

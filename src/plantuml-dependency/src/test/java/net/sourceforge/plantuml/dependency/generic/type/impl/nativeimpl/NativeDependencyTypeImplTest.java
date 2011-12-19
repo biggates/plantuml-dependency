@@ -24,12 +24,10 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_PLANTUML_STEREOTYPE;
 import static org.junit.Assert.assertEquals;
-
-import java.util.Set;
+import net.sourceforge.mazix.components.DeepCloneableObjectTest;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -42,7 +40,7 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0
  * @version 1.0
  */
-public class NativeDependencyTypeImplTest {
+public class NativeDependencyTypeImplTest extends DeepCloneableObjectTest < NativeDependencyTypeImplTest > {
 
     /** Native dependency type test 1 instance. */
     @DataPoint
@@ -99,12 +97,12 @@ public class NativeDependencyTypeImplTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration(Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramElement()}
      * .
      */
     @Test
-    public void testGetPlantUMLDeclaration() {
-        assertEquals(LINE_SEPARATOR + "class java.lang.Integer" + NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION,
-                NATIVE_DEPENDENCY_TYPE1.getPlantUMLDeclaration(DEFAULT_DISPLAY_OPTIONS).toString());
+    public void testGetPlantUMLClassesDiagramElement() {
+        assertEquals(new PlantUMLClassElementImpl("java.lang.Integer", NATIVE_PLANTUML_STEREOTYPE),
+                NATIVE_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramElement());
     }
 }

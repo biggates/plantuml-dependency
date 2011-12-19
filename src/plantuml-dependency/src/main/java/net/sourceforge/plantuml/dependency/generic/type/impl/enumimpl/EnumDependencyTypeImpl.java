@@ -24,7 +24,6 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl;
 
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.ENUM_PLANTUML;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 
 import java.util.Set;
@@ -35,6 +34,8 @@ import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollec
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLEnumElementImpl;
 
 /**
  * The enum implementation of the
@@ -94,14 +95,11 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @since 1.0
+     * @since 1.1.1
      */
     @Override
-    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
-        final StringBuffer buffer = super.generatePlantUMLDeclaration(displayOptions);
-        buffer.append(ENUM_PLANTUML);
-        buffer.append(getFullName());
-        return buffer;
+    protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
+        return new PlantUMLEnumElementImpl(getFullName());
     }
 
     /**

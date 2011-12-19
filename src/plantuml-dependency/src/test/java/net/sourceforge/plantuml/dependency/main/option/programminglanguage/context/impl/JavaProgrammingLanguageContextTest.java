@@ -25,25 +25,18 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SLASH_CHAR;
-import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
-import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
-import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImplTest.PLANTUML_CLASSES_DIAGRAM_TEST2;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import java.io.File;
 import java.util.TreeSet;
 
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 
@@ -68,7 +61,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
                     new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                             "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
-                    DEFAULT_DISPLAY_OPTIONS);
+            DEFAULT_DISPLAY_OPTIONS);
 
     /** Java programming language test 3 instance. */
     @DataPoint
@@ -77,7 +70,7 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
                     new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                             "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
-                    DISPLAY_OPTIONS);
+            DISPLAY_OPTIONS);
 
     /** Java programming language test 4 instance. */
     @DataPoint
@@ -96,30 +89,6 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
     /** Java programming language test 6 instance. */
     @DataPoint
     public static final JavaProgrammingLanguageContext JAVA_PROGRAMMING_LANGUAGE_CONTEXT6 = null;
-
-    /** Test file instance. */
-    private static final File TEST_FILE = new File(DOT_CHAR + SLASH_CHAR + "plantumlTest.txt");
-
-    /**
-     * This method is called before each test to reset the create a test file.
-     *
-     * @since 1.0
-     */
-    @Before
-    public void initializeFiles() {
-        writeIntoFile("Test", TEST_FILE);
-    }
-
-    /**
-     * This method is called after all tests, it is used to remove the temporary file used for the
-     * tests.
-     *
-     * @since 1.0
-     */
-    @After
-    public void removeFile() {
-        TEST_FILE.delete();
-    }
 
     /**
      * Test method for
@@ -219,27 +188,13 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#writePlantUMLFile(java.io.File)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getPlantUMLClassesDiagram()}
      * .
      */
     @Test
-    public void testWritePlantUMLFile() {
-        JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.writePlantUMLFile(TEST_FILE);
-        final String plantumlContent1 = readFileIntoString(TEST_FILE);
-        assertEquals(
-                "@startuml" + LINE_SEPARATOR + "class net.sourceforge.plantuml.dependency.generic.GenericDependency" + LINE_SEPARATOR + "class net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage" + LINE_SEPARATOR + "@enduml",
-                plantumlContent1);
+    public void testGetPlantUMLClassesDiagram() {
+        assertEquals(PLANTUML_CLASSES_DIAGRAM_TEST2, JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.getPlantUMLClassesDiagram());
     }
 
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#writePlantUMLFile(java.io.File)}
-     * .
-     */
-    @Test(expected = NullPointerException.class)
-    public void testWritePlantUMLFileNull() {
-        JAVA_PROGRAMMING_LANGUAGE_CONTEXT1.writePlantUMLFile(null);
-    }
-
-    // TODO better test the WritePlantUMLFile method with display option and with specific context
+    // TODO better test the getPlantUMLDiagram method with display option and with specific context
 }

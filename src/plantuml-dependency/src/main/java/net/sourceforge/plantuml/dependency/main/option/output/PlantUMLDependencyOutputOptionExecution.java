@@ -28,6 +28,7 @@ import static java.util.logging.Level.INFO;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
+import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.READING_SOURCE_FILE_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.TREATED_DEPENDENCY_INFO;
@@ -46,6 +47,7 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext;
+import net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram;
 
 import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.ant.types.resources.FileResource;
@@ -53,9 +55,9 @@ import org.apache.tools.ant.types.resources.FileResource;
 /**
  * The default option execution associated to the "-o" option, allowing to specify an output file,
  * processing the input source files and generating the plantUML description.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.1.1
  */
@@ -67,125 +69,11 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(PlantUMLDependencyOutputOptionExecution.class.getName());
 
-    /** The output file where to generate the plantUML description. */
-    private File outputFile;
-
-    /**
-     * The {@link FileSet} describing all files to include or exclude and also the base directory
-     * where to look for.
-     */
-    // FIXME should have a serializable input file set
-    private transient FileSet inputFileSet;
-
-    /** The programming language to parse. */
-    private ProgrammingLanguage programmingLanguage;
-
-    /** The display option which have to appear in the plantUML description. */
-    private Set < Display > displayOptions;
-
-    /**
-     * Default constructor.
-     *
-     * @param file
-     *            the output file where to generate the plantUML description, mustn't be
-     *            <code>null</code>.
-     * @param language
-     *            The programming language to parse, mustn't be <code>null</code>.
-     * @param includeExcludeFiles
-     *            the {@link FileSet} describing all files to include or exclude and also the base
-     *            directory where to look for, mustn't be <code>null</code>.
-     * @param displayOpt
-     *            the display option which have to appear in the plantUML description.
-     * @param optionPriority
-     *            the option priority as an integer. <i>Note : the priority must be unique amongst
-     *            all options</i>.
-     * @since 1.0
-     */
-    public PlantUMLDependencyOutputOptionExecution(final File file, final ProgrammingLanguage language,
-            final FileSet includeExcludeFiles, final Set < Display > displayOpt, final int optionPriority) {
-        super(optionPriority);
-        setOutputFile(file);
-        setInputFileSet(includeExcludeFiles);
-        setProgrammingLanguage(language);
-        setDisplayOptions(displayOpt);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    public OptionExecution deepClone() {
-        final PlantUMLDependencyOutputOptionExecution p = (PlantUMLDependencyOutputOptionExecution) super.deepClone();
-        p.outputFile = new File(outputFile.getAbsolutePath());
-        p.inputFileSet = (FileSet) inputFileSet.clone();
-        p.displayOptions = new TreeSet < Display >(displayOptions);
-        return p;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    public void execute() throws CommandLineException {
-        final ProgrammingLanguageContext programmingLanguageContext = readDependenciesContextFromFiles(
-                getProgrammingLanguage(), getInputFileSet(), getDisplayOptions());
-        programmingLanguageContext.writePlantUMLFile(getOutputFile());
-        LOGGER.info(buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies().size()));
-    }
-
-    /**
-     * Gets the value of <code>displayOptions</code>.
-     *
-     * @return the value of <code>displayOptions</code>.
-     * @see #setDisplayOptions(Set)
-     * @since 1.0
-     */
-    private Set < Display > getDisplayOptions() {
-        return displayOptions;
-    }
-
-    /**
-     * Gets the value of <code>inputFileSet</code>.
-     *
-     * @return the value of <code>inputFileSet</code>.
-     * @see #setInputFileSet(FileSet)
-     * @since 1.0
-     */
-    private FileSet getInputFileSet() {
-        return inputFileSet;
-    }
-
-    /**
-     * Gets the value of <code>outputFile</code>.
-     *
-     * @return the value of <code>outputFile</code>.
-     * @see #setOutputFile(File)
-     * @since 1.0
-     */
-    private File getOutputFile() {
-        return outputFile;
-    }
-
-    /**
-     * Gets the value of <code>programmingLanguage</code>.
-     *
-     * @return the value of <code>programmingLanguage</code>.
-     * @see #setProgrammingLanguage(ProgrammingLanguage)
-     * @since 1.0
-     */
-    private ProgrammingLanguage getProgrammingLanguage() {
-        return programmingLanguage;
-    }
-
     /**
      * Creates a dependencies {@link ProgrammingLanguageContext} following a set of files in the
      * passed programming language. This methods parses each source files of the set in order to add
      * them in the context.
-     *
+     * 
      * @param language
      *            the programming language of the source files to parse, mustn't be
      *            <code>null</code>.
@@ -222,7 +110,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     /**
      * Creates a dependency following a single file in the passed programming language. Also updates
      * the dependencies {@link java.util.Map} with other dependency seen in the source file.
-     *
+     * 
      * @param file
      *            the source file to parse, mustn't be <code>null</code>.
      * @param programmingLanguageContext
@@ -245,9 +133,124 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
         return language.readDependencyFromFile(sourceFileContent, programmingLanguageContext);
     }
 
+    /** The output file where to generate the plantUML description. */
+    private File outputFile;
+
+    /**
+     * The {@link FileSet} describing all files to include or exclude and also the base directory
+     * where to look for.
+     */
+    // FIXME should have a serializable input file set
+    private transient FileSet inputFileSet;
+
+    /** The programming language to parse. */
+    private ProgrammingLanguage programmingLanguage;
+
+    /** The display option which have to appear in the plantUML description. */
+    private Set < Display > displayOptions;
+
+    /**
+     * Default constructor.
+     * 
+     * @param file
+     *            the output file where to generate the plantUML description, mustn't be
+     *            <code>null</code>.
+     * @param language
+     *            The programming language to parse, mustn't be <code>null</code>.
+     * @param includeExcludeFiles
+     *            the {@link FileSet} describing all files to include or exclude and also the base
+     *            directory where to look for, mustn't be <code>null</code>.
+     * @param displayOpt
+     *            the display option which have to appear in the plantUML description.
+     * @param optionPriority
+     *            the option priority as an integer. <i>Note : the priority must be unique amongst
+     *            all options</i>.
+     * @since 1.0
+     */
+    public PlantUMLDependencyOutputOptionExecution(final File file, final ProgrammingLanguage language,
+            final FileSet includeExcludeFiles, final Set < Display > displayOpt, final int optionPriority) {
+        super(optionPriority);
+        setOutputFile(file);
+        setInputFileSet(includeExcludeFiles);
+        setProgrammingLanguage(language);
+        setDisplayOptions(displayOpt);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public OptionExecution deepClone() {
+        final PlantUMLDependencyOutputOptionExecution p = (PlantUMLDependencyOutputOptionExecution) super.deepClone();
+        p.outputFile = new File(outputFile.getAbsolutePath());
+        p.inputFileSet = (FileSet) inputFileSet.clone();
+        p.displayOptions = new TreeSet < Display >(displayOptions);
+        return p;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.0
+     */
+    @Override
+    public void execute() throws CommandLineException {
+        final ProgrammingLanguageContext programmingLanguageContext = readDependenciesContextFromFiles(
+                getProgrammingLanguage(), getInputFileSet(), getDisplayOptions());
+        final PlantUMLDiagram plantUMLDiagram = programmingLanguageContext.getPlantUMLClassesDiagram();
+        writeIntoFile(plantUMLDiagram.getDescription(), getOutputFile());
+        LOGGER.info(buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies().size()));
+    }
+
+    /**
+     * Gets the value of <code>displayOptions</code>.
+     * 
+     * @return the value of <code>displayOptions</code>.
+     * @see #setDisplayOptions(Set)
+     * @since 1.0
+     */
+    private Set < Display > getDisplayOptions() {
+        return displayOptions;
+    }
+
+    /**
+     * Gets the value of <code>inputFileSet</code>.
+     * 
+     * @return the value of <code>inputFileSet</code>.
+     * @see #setInputFileSet(FileSet)
+     * @since 1.0
+     */
+    private FileSet getInputFileSet() {
+        return inputFileSet;
+    }
+
+    /**
+     * Gets the value of <code>outputFile</code>.
+     * 
+     * @return the value of <code>outputFile</code>.
+     * @see #setOutputFile(File)
+     * @since 1.0
+     */
+    private File getOutputFile() {
+        return outputFile;
+    }
+
+    /**
+     * Gets the value of <code>programmingLanguage</code>.
+     * 
+     * @return the value of <code>programmingLanguage</code>.
+     * @see #setProgrammingLanguage(ProgrammingLanguage)
+     * @since 1.0
+     */
+    private ProgrammingLanguage getProgrammingLanguage() {
+        return programmingLanguage;
+    }
+
     /**
      * Sets the value of <code>displayOptions</code>.
-     *
+     * 
      * @param value
      *            the <code>displayOptions</code> to set, can be <code>null</code>.
      * @see #getDisplayOptions()
@@ -259,7 +262,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Sets the value of <code>inputFileSet</code>.
-     *
+     * 
      * @param value
      *            the <code>inputFileSet</code> to set, can be <code>null</code>.
      * @see #getInputFileSet()
@@ -271,7 +274,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Sets the value of <code>outputFile</code>.
-     *
+     * 
      * @param value
      *            the <code>outputFile</code> to set, can be <code>null</code>.
      * @see #getOutputFile()
@@ -283,7 +286,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Sets the value of <code>programmingLanguage</code>.
-     *
+     * 
      * @param value
      *            the <code>programmingLanguage</code> to set, can be <code>null</code>.
      * @see #getProgrammingLanguage()

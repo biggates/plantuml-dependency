@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.constants;
 
 import static java.util.Arrays.asList;
+import static net.sourceforge.mazix.components.color.HTMLColor.YELLOW;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.convertCollectionToSeparatedString;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
@@ -44,6 +45,9 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl;
 
 /**
  * The class which stores all necessary plantUML dependency constants as Strings.
@@ -79,8 +83,9 @@ public final class PlantUMLDependencyConstants {
     public static final GenericDependency NATIVE_DEPENDENCY = new GenericDependencyImpl(new NativeDependencyTypeImpl(
             "NativeCall", "javax.native"));
 
-    /** The PlantUML description which is used to graphically identify the native dependency. */
-    public static final String NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION = " << (N,yellow) >>";
+    /** The custom native plantUML stereotype. */
+    public static final PlantUMLStereotype NATIVE_PLANTUML_STEREOTYPE = new PlantUMLStereotypeImpl(
+            new PlantUMLSpottedCharacterImpl('N', YELLOW));
 
     /** Version properties path. */
     public static final String VERSION_PROPERTIES_PATH = "net/sourceforge/plantuml/dependency/version/version.properties";

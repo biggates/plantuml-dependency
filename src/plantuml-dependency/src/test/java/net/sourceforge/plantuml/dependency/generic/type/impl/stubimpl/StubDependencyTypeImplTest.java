@@ -24,15 +24,16 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
-import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -128,23 +129,23 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLDeclaration(Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramElement()}
      * .
      */
     @Test
-    public void testGetPlantUMLDeclaration() {
-        assertEquals(LINE_SEPARATOR + "class java.lang.Integer", STUB_DEPENDENCY_TYPE1.getPlantUMLDeclaration(
-                DEFAULT_DISPLAY_OPTIONS).toString());
+    public void testGetPlantUMLClassesDiagramElement() {
+        assertEquals(new PlantUMLClassElementImpl("java.lang.Integer"), STUB_DEPENDENCY_TYPE1
+                .getPlantUMLClassesDiagramElement());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLLinksDescription(Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
-    public void testGetPlantUMLLinksDescription() {
-        assertEquals(BLANK_STRING, STUB_DEPENDENCY_TYPE1.getPlantUMLLinksDescription(DEFAULT_DISPLAY_OPTIONS)
-                .toString());
+    public void testGetPlantUMLClassesDiagramRelations() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(), STUB_DEPENDENCY_TYPE1
+                .getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 }

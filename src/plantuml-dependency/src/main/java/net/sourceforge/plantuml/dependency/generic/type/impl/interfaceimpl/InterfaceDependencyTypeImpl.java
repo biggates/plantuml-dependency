@@ -24,7 +24,6 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl;
 
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.INTERFACE_PLANTUML;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
 
 import java.util.Set;
@@ -35,13 +34,15 @@ import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollec
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLInterfaceElementImpl;
 
 /**
  * The interface implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.1
  */
@@ -52,7 +53,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -67,7 +68,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * Full constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -88,20 +89,17 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
-     * @since 1.0
+     *
+     * @since 1.1.1
      */
     @Override
-    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
-        final StringBuffer buffer = super.generatePlantUMLDeclaration(displayOptions);
-        buffer.append(INTERFACE_PLANTUML);
-        buffer.append(getFullName());
-        return buffer;
+    protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
+        return new PlantUMLInterfaceElementImpl(getFullName());
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -111,7 +109,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

@@ -27,14 +27,11 @@ package net.sourceforge.plantuml.dependency.generic.type.impl;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.IMPLEMENTS_LEFT_PLANTUML;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.USES_RIGHT_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.IMPORT_IS_AN_INTERFACE_FINE;
 import static net.sourceforge.plantuml.dependency.generic.type.ImportType.IMPORT_TYPES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
@@ -48,6 +45,10 @@ import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantuml.dependency.generic.type.ImportType;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl;
 
 /**
  * The default implementation of the {@link DependencyType} interface.
@@ -112,14 +113,18 @@ public abstract class DependencyTypeImpl implements DependencyType {
      */
     private Set < GenericDependency > parentInterfaces;
 
-    /** The plantUML declaration as a {@link StringBuffer} describing the current dependency type. */
-    private StringBuffer plantUMLDeclaration;
+    /**
+     * The plantUML classes diagram element as a {@link PlantUMLClassesDiagramElement} instance
+     * describing the current dependency type.
+     */
+    private PlantUMLClassesDiagramElement plantUMLClassesDiagramElement;
 
     /**
-     * The plantUML description as a {@link StringBuffer} describing links to imports and the
+     * The set of all PlantUML classes diagram relations as a {@link Set} of
+     * {@link PlantUMLClassesDiagramRelation} instances describing relations to imports and the
      * dependency type parents.
      */
-    private StringBuffer plantUMLLinksDescription;
+    private Set < PlantUMLClassesDiagramRelation > plantUMLClassesDiagramRelationSet;
 
     /**
      * Default constructor.
@@ -254,77 +259,58 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
-     * Generates the plantUML declaration.
+     * Generates the plantUML classes diagram element.
      *
-     * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML declaration,
-     *            mustn't be <code>null</code>.
-     * @return the {@link StringBuffer} containing the plantUML declaration of the current
-     *         dependency type.
-     * @since 1.0
+     * @return the {@link PlantUMLClassesDiagramElement} containing the plantUML classes diagram
+     *         element of the current dependency type.
+     * @since 1.1.1
      */
-    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
-        return new StringBuffer();
-    }
+    protected abstract PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement();
 
     /**
-     * Generates the plantUML description footer.
+     * Generates the plantUML classes diagram relations footer.
      *
      * @param displayOptions
      *            the {@link Set} of all displays options to display the PlantUML links description,
      *            mustn't be <code>null</code>.
-     * @return the {@link StringBuffer} containing the plantUML description footer of the current
-     *         dependency type.
-     * @since 1.0
+     * @return the set of additional PlantUML classes diagram relations as a {@link Set} of
+     *         {@link PlantUMLClassesDiagramRelation} instances describing relations to imports and
+     *         the dependency type parents.
+     * @since 1.1.1
      */
-    protected StringBuffer generatePlantUMLDescriptionFooter(final Set < Display > displayOptions) {
-        return new StringBuffer();
+    protected Set < PlantUMLClassesDiagramRelation > generatePlantUMLClassesDiagramRelationFooter(
+            final Set < Display > displayOptions) {
+        return new TreeSet < PlantUMLClassesDiagramRelation >();
     }
 
     /**
-     * Generates the plantUML description header.
+     * Generates the plantUML classes diagram relations.
      *
      * @param displayOptions
      *            the {@link Set} of all displays options to display the PlantUML links description,
      *            mustn't be <code>null</code>.
-     * @return the {@link StringBuffer} containing the plantUML description header of the current
-     *         dependency type.
-     * @since 1.0
+     * @return the set of all PlantUML classes diagram relations as a {@link Set} of
+     *         {@link PlantUMLClassesDiagramRelation} instances describing relations to imports and
+     *         the dependency type parents.
+     * @since 1.1.1
      */
-    protected StringBuffer generatePlantUMLDescriptionHeader(final Set < Display > displayOptions) {
-        return new StringBuffer();
-    }
-
-    /**
-     * Generates the plantUML links description.
-     *
-     * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML links description,
-     *            mustn't be <code>null</code>.
-     * @return the {@link StringBuffer} containing the plantUML links description of the current
-     *         dependency type.
-     * @since 1.0
-     */
-    private StringBuffer generatePlantUMLLinksDescription(final Set < Display > displayOptions) {
-        final StringBuffer buffer = new StringBuffer();
-        buffer.append(generatePlantUMLDescriptionHeader(displayOptions));
+    private Set < PlantUMLClassesDiagramRelation > generatePlantUMLClassesDiagramRelations(
+            final Set < Display > displayOptions) {
+        final Set < PlantUMLClassesDiagramRelation > linkSet = new TreeSet < PlantUMLClassesDiagramRelation >();
 
         for (final GenericDependency abstractImportDependency : getImportDependenciesToGeneratePlantUML(displayOptions)) {
-            buffer.append(LINE_SEPARATOR);
-            buffer.append(getFullName());
-            buffer.append(USES_RIGHT_PLANTUML);
-            buffer.append(abstractImportDependency.getFullName());
+            linkSet
+                    .add(new PlantUMLClassesDiagramUseRelationImpl(getFullName(), abstractImportDependency
+                            .getFullName()));
         }
 
         for (final GenericDependency interfaceDependency : getParentInterfacesToGeneratePlantUML(displayOptions)) {
-            buffer.append(LINE_SEPARATOR);
-            buffer.append(interfaceDependency.getFullName());
-            buffer.append(IMPLEMENTS_LEFT_PLANTUML);
-            buffer.append(getFullName());
+            linkSet.add(new PlantUMLClassesDiagramImplementRelationImpl(getFullName(), interfaceDependency
+                    .getFullName()));
         }
 
-        buffer.append(generatePlantUMLDescriptionFooter(displayOptions));
-        return buffer;
+        linkSet.addAll(generatePlantUMLClassesDiagramRelationFooter(displayOptions));
+        return linkSet;
     }
 
     /**
@@ -433,27 +419,31 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.1.1
      */
     @Override
-    public StringBuffer getPlantUMLDeclaration(final Set < Display > displayOptions) {
-        if (plantUMLDeclaration == null) {
-            plantUMLDeclaration = generatePlantUMLDeclaration(displayOptions);
+    public PlantUMLClassesDiagramElement getPlantUMLClassesDiagramElement() {
+        if (plantUMLClassesDiagramElement == null) {
+            plantUMLClassesDiagramElement = generatePlantUMLClassesDiagramElement();
         }
-        return plantUMLDeclaration;
+        return plantUMLClassesDiagramElement;
     }
 
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.1.1
      */
     @Override
-    public StringBuffer getPlantUMLLinksDescription(final Set < Display > displayOptions) {
-        if (plantUMLLinksDescription == null) {
-            plantUMLLinksDescription = generatePlantUMLLinksDescription(displayOptions);
+    // FIXME the plantUMLClassesDiagramRelation is generated the first time, but if the call it a
+    // second
+    // time with a different displayOptions
+    public Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations(
+            final Set < Display > displayOptions) {
+        if (plantUMLClassesDiagramRelationSet == null) {
+            plantUMLClassesDiagramRelationSet = generatePlantUMLClassesDiagramRelations(displayOptions);
         }
-        return plantUMLLinksDescription;
+        return plantUMLClassesDiagramRelationSet;
     }
 
     /**
@@ -501,9 +491,9 @@ public abstract class DependencyTypeImpl implements DependencyType {
     public String toString() {
         return getClass().getSimpleName() + " [name=" + name + ", packageName=" + packageName + ", fullName="
                 + fullName + ", importDependencies="
-                + extractFullNames(importDependenciesCollection.getAllImportDependencies())
-                + ", parentInterfaces=" + extractFullNames(parentInterfaces) + ", nativeMethods=" + nativeMethods
-                + ", plantUMLDeclaration=" + plantUMLDeclaration + ", plantUMLLinksDescription="
-                + plantUMLLinksDescription + "]";
+                + extractFullNames(importDependenciesCollection.getAllImportDependencies()) + ", parentInterfaces="
+                + extractFullNames(parentInterfaces) + ", nativeMethods=" + nativeMethods + ", plantUMLDeclaration="
+                + plantUMLClassesDiagramElement + ", plantUMLClassesDiagramRelationSet="
+                + plantUMLClassesDiagramRelationSet + "]";
     }
 }

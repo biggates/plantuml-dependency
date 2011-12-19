@@ -24,7 +24,6 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.ABSTRACT_CLASS_PLANTUML;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 
 import java.util.Set;
@@ -34,6 +33,8 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLAbstractClassElementImpl;
 
 /**
  * The class abstract implementation of the
@@ -95,13 +96,11 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @since 1.0
+     * @since 1.1.1
      */
     @Override
-    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
-        final StringBuffer buffer = new StringBuffer(ABSTRACT_CLASS_PLANTUML);
-        buffer.append(getFullName());
-        return buffer;
+    protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
+        return new PlantUMLAbstractClassElementImpl(getFullName());
     }
 
     /**

@@ -24,7 +24,6 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
@@ -32,6 +31,7 @@ import java.util.Set;
 import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram;
 
 /**
  * The interface which describes a context shared by all dependencies which are parsed. It is mainly
@@ -120,6 +120,15 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     Collection < GenericDependency > getParsedDependencies();
 
     /**
+     * Gets the {@link PlantUMLClassesDiagram} instance representing the context, following display
+     * options.
+     * 
+     * @return the plantUML diagram instance representing the context, following display options.
+     * @since 1.1.1
+     */
+    PlantUMLClassesDiagram getPlantUMLClassesDiagram();
+
+    /**
      * Tells if the following {@link Display} is managed or not by this context.
      * 
      * @param display
@@ -129,15 +138,4 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      * @since 1.0
      */
     boolean hasToDisplay(Display display);
-
-    /**
-     * Writes the PlantUML description output file following all dependencies and the display
-     * options of the context.
-     * 
-     * @param file
-     *            the output file where to generate the plantUML description, mustn't be
-     *            <code>null</code>.
-     * @since 1.0
-     */
-    void writePlantUMLFile(File file);
 }

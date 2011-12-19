@@ -24,8 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl;
 
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.CLASS_PLANTUML;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_PLANTUML_STEREOTYPE;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
 
 import java.util.Set;
@@ -33,6 +32,8 @@ import java.util.Set;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
 
 /**
  * The native implementation of the
@@ -65,15 +66,11 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.1.1
      */
     @Override
-    protected StringBuffer generatePlantUMLDeclaration(final Set < Display > displayOptions) {
-        final StringBuffer buffer = super.generatePlantUMLDeclaration(displayOptions);
-        buffer.append(CLASS_PLANTUML);
-        buffer.append(getFullName());
-        buffer.append(NATIVE_DEPENDENCY_PLANTUML_DESCRIPTION);
-        return buffer;
+    protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
+        return new PlantUMLClassElementImpl(getFullName(), NATIVE_PLANTUML_STEREOTYPE);
     }
 
     /**

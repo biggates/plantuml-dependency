@@ -30,6 +30,8 @@ import java.util.Set;
 import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 
 /**
  * The interface which describes a generic dependency type, no matter the programming language is. A
@@ -113,31 +115,31 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
     Set < GenericDependency > getParentInterfaces();
 
     /**
-     * Gets the PlantUML declaration describing the current dependency type. See the <a href="http://sourceforge.net/projects/plantuml/files/PlantUML%20Language%20Reference%20Guide.pdf/download"
+     * Gets the PlantUML classes diagram element describing the current dependency type in the
+     * plantUML language. See the <a href="http://sourceforge.net/projects/plantuml/files/PlantUML%20Language%20Reference%20Guide.pdf/download"
      * >PlantUML Language Reference Guide.pdf</a> or <a
      * href="http://plantuml.sourceforge.net/classes.html"
      * >http://plantuml.sourceforge.net/classes.html</a> page.
      *
-     * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML declaration,
-     *            mustn't be <code>null</code>.
-     * @return the plantUML declaration as a {@link StringBuffer} describing the current dependency
-     *         type.
+     * @return the plantUML classes diagram element as a {@link PlantUMLClassesDiagramElement}
+     *         instance describing the current dependency type.
      * @since 1.1.1
      */
-    StringBuffer getPlantUMLDeclaration(Set < Display > displayOptions);
+    PlantUMLClassesDiagramElement getPlantUMLClassesDiagramElement();
 
     /**
-     * Gets the PlantUML links description, following the imports and the dependency type parents.
+     * Gets the PlantUML classes diagram relations, following the imports and the dependency type
+     * parents.
      *
      * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML links description,
-     *            mustn't be <code>null</code>.
-     * @return the plantUML description as a {@link StringBuffer} describing links to imports and
+     *            the {@link Set} of all displays options to display the PlantUML classes diagram
+     *            relations, mustn't be <code>null</code>.
+     * @return the set of all PlantUML classes diagram relations as a {@link Set} of
+     *         {@link PlantUMLClassesDiagramRelation} instances describing relations to imports and
      *         the dependency type parents.
      * @since 1.1.1
      */
-    StringBuffer getPlantUMLLinksDescription(Set < Display > displayOptions);
+    Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations(Set < Display > displayOptions);
 
     /**
      * Tells if the dependency contains native methods or not.

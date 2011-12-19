@@ -31,14 +31,9 @@ import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.BEFORE;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
-import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NULL_ERROR;
-import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.FILE_NULL_ERROR;
 
-import java.io.File;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -48,6 +43,10 @@ import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 
 /**
  * An abstract implementation of the {@link ProgrammingLanguageContext} interface, providing common
@@ -366,6 +365,26 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     /**
      * {@inheritDoc}
      *
+     * @since 1.1.1
+     */
+    @Override
+    public PlantUMLClassesDiagram getPlantUMLClassesDiagram() {
+        final Set < PlantUMLClassesDiagramElement > plantUMLClassesDiagramElements = new TreeSet < PlantUMLClassesDiagramElement >();
+        final Set < PlantUMLClassesDiagramRelation > plantUMLClassesDiagramRelations = new TreeSet < PlantUMLClassesDiagramRelation >();
+
+        for (final GenericDependency genericDependency : getDisplayableParsedAndSeenDependencies(getDisplayOptions())) {
+            plantUMLClassesDiagramElements
+                    .add(genericDependency.getDependencyType().getPlantUMLClassesDiagramElement());
+            plantUMLClassesDiagramRelations.addAll(genericDependency.getDependencyType().getPlantUMLClassesDiagramRelations(
+                    getDisplayOptions()));
+        }
+
+        return new PlantUMLClassesDiagramImpl(plantUMLClassesDiagramElements, plantUMLClassesDiagramRelations);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
      * @since 1.0
      */
     @Override
@@ -434,29 +453,5 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     public String toString() {
         return getClass().getSimpleName() + " [parsedAndSeenDependenciesMap=" + parsedAndSeenDependenciesMap
                 + ", parsedDependenciesMap=" + parsedDependenciesMap + ", displayOptions=" + displayOptions + "]";
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    public void writePlantUMLFile(final File file) {
-        checkNull(file, FILE_NULL_ERROR);
-
-        final StringBuffer plantUMLDeclaractionBuffer = new StringBuffer(START_PLANTUML);
-        final StringBuffer plantUMLLinksDescriptionBuffer = new StringBuffer();
-
-        for (final GenericDependency genericDependency : getDisplayableParsedAndSeenDependencies(getDisplayOptions())) {
-            plantUMLDeclaractionBuffer.append(genericDependency.getDependencyType().getPlantUMLDeclaration(
-                    getDisplayOptions()));
-            plantUMLLinksDescriptionBuffer.append(genericDependency.getDependencyType().getPlantUMLLinksDescription(
-                    getDisplayOptions()));
-        }
-
-        plantUMLLinksDescriptionBuffer.append(END_PLANTUML);
-        writeIntoFile(plantUMLDeclaractionBuffer.toString(), file);
-        writeIntoFile(plantUMLLinksDescriptionBuffer.toString(), file, true);
     }
 }
