@@ -35,7 +35,7 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.P
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -55,7 +55,7 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
 
     /**
      * Full constructor.
-     * 
+     *
      * @param fullName
      *            the element full name, mustn't be <code>null</code>.
      * @since 1.1.1
@@ -67,7 +67,7 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -89,7 +89,7 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -107,7 +107,7 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -143,21 +143,21 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
      * @return
      * @since 1.1.1
      */
-    protected abstract String getAdditionalDescription();
+    protected abstract String getAdditionalPlantUMLTextDescription();
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
-    public String getDescription() {
-        return getElementTag().getTagName() + getAdditionalDescription();
+    public String getPlantUMLTextDescription() {
+        return getElementTag().getTagName() + getAdditionalPlantUMLTextDescription();
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -167,7 +167,7 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -177,7 +177,7 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -191,7 +191,7 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
 
     /**
      * Sets the value of <code>elementTag</code>.
-     * 
+     *
      * @param value
      *            the <code>elementTag</code> to set, can be <code>null</code>.
      * @see #getElementTag()
@@ -203,7 +203,7 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

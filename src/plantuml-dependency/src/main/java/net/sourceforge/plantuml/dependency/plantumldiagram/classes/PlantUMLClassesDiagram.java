@@ -31,21 +31,39 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.Plant
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 
 /**
+ * The interface which represents a plantUML classes diagram. A plantUML classes diagram is mainly
+ * defined by two things : the elements and their relations to each other.<br>
+ * For instance, this class may be an object oriented description of the following plantUML text :<br>
+ * <code>
+ * <font color="red">{@literal @}startuml<br>
+ * Class01 "1" *-- "many" Class02 : contains<br>
+ * Class03 o-- Class04 : agregation<br>
+ * Class05 --> "1" Class06<br>
+ * {@literal @}enduml</font>
+ * </code>
+ *
+ * @see <a href="http://plantuml.sourceforge.net/classes.html">PlantUML classes diagram page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
 public interface PlantUMLClassesDiagram extends PlantUMLDiagram {
 
     /**
-     * @return
+     * Gets all elements contained in the plantUML classes diagram.
+     *
+     * @return the {@link Set} of all {@link PlantUMLClassesDiagramElement} contained in the
+     *         plantUML classes diagram.
      * @since 1.1.1
      */
     Set < PlantUMLClassesDiagramElement > getPlantUMLClassesDiagramElements();
 
     /**
-     * @return
+     * Gets all relations contained in the plantUML classes diagram.
+     *
+     * @return the {@link Set} of all {@link PlantUMLClassesDiagramRelation} contained in the
+     *         plantUML classes diagram.
      * @since 1.1.1
      */
     Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations();

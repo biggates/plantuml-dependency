@@ -29,6 +29,7 @@ import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
+import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -40,8 +41,10 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.Plant
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 
 /**
+ * The class implementing the {@link PlantUMLClassesDiagram} interface.
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -54,26 +57,35 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
     private static final transient Logger LOGGER = getLogger(PlantUMLClassesDiagramImpl.class.getName());
 
     /**
-     *
+     * The {@link Set} of all {@link PlantUMLClassesDiagramElement} contained in the plantUML
+     * classes diagram.
      */
     private Set < PlantUMLClassesDiagramElement > plantUMLClassesDiagramElements;
 
     /**
-     *
+     * The {@link Set} of all {@link PlantUMLClassesDiagramRelation} contained in the plantUML
+     * classes diagram.
      */
     private Set < PlantUMLClassesDiagramRelation > plantUMLClassesDiagramRelations;
 
     /**
+     * Default constructor. Elements and relations are empty.
+     *
      * @since 1.1.1
      */
     public PlantUMLClassesDiagramImpl() {
-        plantUMLClassesDiagramElements = new TreeSet < PlantUMLClassesDiagramElement >();
-        plantUMLClassesDiagramRelations = new TreeSet < PlantUMLClassesDiagramRelation >();
+        this(new TreeSet < PlantUMLClassesDiagramElement >(), new TreeSet < PlantUMLClassesDiagramRelation >());
     }
 
     /**
+     * Full constructor.
+     *
      * @param classesDiagramElements
+     *            the {@link Set} of all {@link PlantUMLClassesDiagramElement} contained in the
+     *            plantUML classes diagram, mustn't be <code>null</code>.
      * @param classesDiagramRelations
+     *            the {@link Set} of all {@link PlantUMLClassesDiagramRelation} contained in the
+     *            plantUML classes diagram, mustn't be <code>null</code>.
      * @since 1.1.1
      */
     public PlantUMLClassesDiagramImpl(final Set < PlantUMLClassesDiagramElement > classesDiagramElements,
@@ -84,7 +96,7 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -110,7 +122,7 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -144,30 +156,32 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
-    public String getDescription() {
+    public String getPlantUMLTextDescription() {
         final StringBuffer plantUMLDeclaractionBuffer = new StringBuffer(START_PLANTUML);
-        final StringBuffer plantUMLRelationsDescriptionBuffer = new StringBuffer();
 
         for (final PlantUMLClassesDiagramElement plantUMLElement : getPlantUMLClassesDiagramElements()) {
+            plantUMLDeclaractionBuffer.append(LINE_SEPARATOR);
             plantUMLDeclaractionBuffer.append(plantUMLElement);
         }
 
         for (final PlantUMLClassesDiagramRelation plantUMLClassesDiagramRelation : getPlantUMLClassesDiagramRelations()) {
-            plantUMLRelationsDescriptionBuffer.append(plantUMLClassesDiagramRelation);
+            plantUMLDeclaractionBuffer.append(LINE_SEPARATOR);
+            plantUMLDeclaractionBuffer.append(plantUMLClassesDiagramRelation);
         }
 
-        plantUMLRelationsDescriptionBuffer.append(END_PLANTUML);
+        plantUMLDeclaractionBuffer.append(LINE_SEPARATOR);
+        plantUMLDeclaractionBuffer.append(END_PLANTUML);
 
-        return plantUMLRelationsDescriptionBuffer.toString();
+        return plantUMLDeclaractionBuffer.toString();
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -177,7 +191,7 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -187,7 +201,7 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -203,7 +217,7 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

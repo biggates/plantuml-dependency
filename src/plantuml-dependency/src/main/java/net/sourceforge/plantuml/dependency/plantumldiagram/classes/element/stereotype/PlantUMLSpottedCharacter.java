@@ -31,8 +31,26 @@ import net.sourceforge.mazix.components.color.HTMLColor;
 import net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription;
 
 /**
+ * Interface which represents a plantUML classes diagram spotted character. <code>
+ * {@literal @}startuml<br>
+ * class System << <font color="red">(S,#FF7700)</font> Singleton >><br>
+ * {@literal @}enduml
+ * </code>
+ *
+ * <br>
+ * <br>
+ * Note that the generated text will only convert colors into their hexadecimal code, never in the
+ * text form such as ;<br>
+ * <code>
+ * {@literal @}startuml<br>
+ * class Date << <font color="red">(D,orchid)</font> >><br>
+ * {@literal @}enduml
+ * </code>
+ *
+ * @see <a href="http://plantuml.sourceforge.net/classes.html#Specific">PlantUML classes diagram
+ *      Specific Spot page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -40,13 +58,17 @@ public interface PlantUMLSpottedCharacter extends WithDescription, DeepCloneable
         Serializable {
 
     /**
-     * @return
+     * Gets the spotted character.
+     *
+     * @return the spotted character.
      * @since 1.1.1
      */
     char getCharacter();
 
     /**
-     * @return
+     * Gets the spotted color.
+     *
+     * @return the {@link HTMLColor} instance.
      * @since 1.1.1
      */
     HTMLColor getColor();

@@ -24,16 +24,25 @@
 
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype;
 
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl;
+
 /**
+ * The interface which marks an object having a plantUML stereotype.
+ *
+ * @see <a href="http://plantuml.sourceforge.net/classes.html#Notes">PlantUML classes diagram Notes
+ *      and stereotype page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
 public interface WithStereotype {
 
     /**
-     * @return
+     * Gets the element stereotype. It may be <code>null</code> if the element doesn't have any specific
+     * stereotype.
+     *
+     * @return the element stereotype, as a {@link PlantUMLStereotypeImpl} instance, if one specified.
      * @since 1.1.1
      */
     PlantUMLStereotype getStereotype();

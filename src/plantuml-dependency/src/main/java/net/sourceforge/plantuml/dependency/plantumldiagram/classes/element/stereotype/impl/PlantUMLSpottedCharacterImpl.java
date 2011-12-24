@@ -37,8 +37,10 @@ import net.sourceforge.mazix.components.color.HTMLColor;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter;
 
 /**
+ * The default {@link PlantUMLSpottedCharacter} implementation.
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -50,19 +52,19 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(PlantUMLSpottedCharacterImpl.class.getName());
 
-    /**
-     *
-     */
+    /** The spotted character. */
     private final char character;
 
-    /**
-     *
-     */
+    /** The spotted color */
     private final HTMLColor color;
 
     /**
+     * Full constructor.
+     *
      * @param charact
+     *            the spotted character, mustn't be empty.
      * @param col
+     *            the spotted color, mustn't be <code>null</code>.
      * @since 1.1.1
      */
     public PlantUMLSpottedCharacterImpl(final char charact, final HTMLColor col) {
@@ -72,7 +74,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -90,7 +92,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -120,7 +122,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -130,7 +132,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -140,17 +142,17 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
-    public String getDescription() {
-        return LEFT_PARENTHESIS_CHAR + getCharacter() + COMMA_CHAR + getColor().toHexString() + RIGHT_PARENTHESIS_CHAR;
+    public String getPlantUMLTextDescription() {
+        return LEFT_PARENTHESIS_CHAR + getCharacter() + COMMA_CHAR + getColor().toHTMLHexString() + RIGHT_PARENTHESIS_CHAR;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -164,7 +166,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

@@ -29,8 +29,21 @@ import java.io.Serializable;
 import net.sourceforge.mazix.components.clone.DeepCloneable;
 
 /**
+ * The mother interface which represents a plantUML diagram. Several types of UML diagram can be
+ * done thanks to plantUML :<br>
+ * <ul>
+ * <li>sequence diagram</li>
+ * <li>use case diagram</li>
+ * <li>class diagram</li>
+ * <li>activity diagram</li>
+ * <li>component diagram</li>
+ * <li>state diagram</li>
+ * <li>object diagram</li>
+ * </ul>
+ *
+ * @see <a href="http://plantuml.sourceforge.net/index.html">PlantUML home page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */

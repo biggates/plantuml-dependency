@@ -25,16 +25,21 @@
 package net.sourceforge.plantuml.dependency.plantumldiagram;
 
 /**
+ * The interface which marks an object as serializable into a plantUML text description.
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
 public interface WithDescription {
 
     /**
-     * @return
+     * Returns the {@link String} representing the object as a plantUML text. Following the object,
+     * it is usually a text corresponding to one of the plantUML diagram.
+     *
+     * @return the {@link String} representing the object as a plantUML text description.
      * @since 1.1.1
      */
-    String getDescription();
+    String getPlantUMLTextDescription();
 }

@@ -55,9 +55,9 @@ import org.apache.tools.ant.types.resources.FileResource;
 /**
  * The default option execution associated to the "-o" option, allowing to specify an output file,
  * processing the input source files and generating the plantUML description.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.1
  */
@@ -73,7 +73,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * Creates a dependencies {@link ProgrammingLanguageContext} following a set of files in the
      * passed programming language. This methods parses each source files of the set in order to add
      * them in the context.
-     * 
+     *
      * @param language
      *            the programming language of the source files to parse, mustn't be
      *            <code>null</code>.
@@ -110,7 +110,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     /**
      * Creates a dependency following a single file in the passed programming language. Also updates
      * the dependencies {@link java.util.Map} with other dependency seen in the source file.
-     * 
+     *
      * @param file
      *            the source file to parse, mustn't be <code>null</code>.
      * @param programmingLanguageContext
@@ -151,7 +151,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Default constructor.
-     * 
+     *
      * @param file
      *            the output file where to generate the plantUML description, mustn't be
      *            <code>null</code>.
@@ -178,7 +178,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -192,7 +192,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -200,13 +200,13 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
         final ProgrammingLanguageContext programmingLanguageContext = readDependenciesContextFromFiles(
                 getProgrammingLanguage(), getInputFileSet(), getDisplayOptions());
         final PlantUMLDiagram plantUMLDiagram = programmingLanguageContext.getPlantUMLClassesDiagram();
-        writeIntoFile(plantUMLDiagram.getDescription(), getOutputFile());
+        writeIntoFile(plantUMLDiagram.getPlantUMLTextDescription(), getOutputFile());
         LOGGER.info(buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies().size()));
     }
 
     /**
      * Gets the value of <code>displayOptions</code>.
-     * 
+     *
      * @return the value of <code>displayOptions</code>.
      * @see #setDisplayOptions(Set)
      * @since 1.0
@@ -217,7 +217,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Gets the value of <code>inputFileSet</code>.
-     * 
+     *
      * @return the value of <code>inputFileSet</code>.
      * @see #setInputFileSet(FileSet)
      * @since 1.0
@@ -228,7 +228,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Gets the value of <code>outputFile</code>.
-     * 
+     *
      * @return the value of <code>outputFile</code>.
      * @see #setOutputFile(File)
      * @since 1.0
@@ -239,7 +239,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Gets the value of <code>programmingLanguage</code>.
-     * 
+     *
      * @return the value of <code>programmingLanguage</code>.
      * @see #setProgrammingLanguage(ProgrammingLanguage)
      * @since 1.0
@@ -250,7 +250,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Sets the value of <code>displayOptions</code>.
-     * 
+     *
      * @param value
      *            the <code>displayOptions</code> to set, can be <code>null</code>.
      * @see #getDisplayOptions()
@@ -262,7 +262,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Sets the value of <code>inputFileSet</code>.
-     * 
+     *
      * @param value
      *            the <code>inputFileSet</code> to set, can be <code>null</code>.
      * @see #getInputFileSet()
@@ -274,7 +274,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Sets the value of <code>outputFile</code>.
-     * 
+     *
      * @param value
      *            the <code>outputFile</code> to set, can be <code>null</code>.
      * @see #getOutputFile()
@@ -286,7 +286,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
 
     /**
      * Sets the value of <code>programmingLanguage</code>.
-     * 
+     *
      * @param value
      *            the <code>programmingLanguage</code> to set, can be <code>null</code>.
      * @see #getProgrammingLanguage()

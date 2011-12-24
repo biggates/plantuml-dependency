@@ -30,21 +30,38 @@ import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription;
 
 /**
+ * Interface which represents a plantUML classes diagram stereotype. For instance, this class may be
+ * an object oriented description of the following plantUML text :<br>
+ * <code>
+ * {@literal @}startuml<br>
+ * class Object <font color="red"><< general >></font><br>
+ * class System <font color="red"><< (S,#FF7700) Singleton >></font><br>
+ * {@literal @}enduml
+ * </code>
+ *
+ * @see <a href="http://plantuml.sourceforge.net/classes.html#Notes">PlantUML classes diagram Notes
+ *      and stereotype page</a>
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
 public interface PlantUMLStereotype extends WithDescription, DeepCloneable < PlantUMLStereotype >, Serializable {
 
     /**
-     * @return
+     * Gets the plantUML spotted character. It may be <code>null</code> if the element doesn't have
+     * any specific spotted character.
+     *
+     * @return the spotted character as a {@link PlantUMLSpottedCharacter}, if one specified.
      * @since 1.1.1
      */
     PlantUMLSpottedCharacter getPlantUMLSpottedCharacter();
 
     /**
-     * @return
+     * Gets the stereotype inner text.
+     *
+     * @return Gets the stereotype inner text, as a String.
      * @since 1.1.1
      */
     String getText();

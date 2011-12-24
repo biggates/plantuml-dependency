@@ -25,19 +25,27 @@
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl;
 
 import static java.util.Arrays.asList;
+import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImplTest.PLANTUML_CLASSES_ELEMENT_TEST1;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImplTest.PLANTUML_CLASSES_ELEMENT_TEST2;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.TreeSet;
 
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 
 /**
+ * JUnit test classes for {@link PlantUMLClassesDiagramImpl}.
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.1.1
@@ -52,30 +60,43 @@ public class PlantUMLClassesDiagramImplTest extends DeepCloneableObjectTest < Pl
     /** PlantUML classes diagram test 2 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST2 = new PlantUMLClassesDiagramImpl(
-            new TreeSet < PlantUMLClassesDiagramElement >(
-                    asList(new PlantUMLClassesDiagramElement[] {
-                            new PlantUMLClassElementImpl(
-                                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"),
-                            new PlantUMLClassElementImpl(
-                                    "net.sourceforge.plantuml.dependency.generic.GenericDependency")})),
+            new TreeSet < PlantUMLClassesDiagramElement >(asList(new PlantUMLClassesDiagramElement[] {
+                    PLANTUML_CLASSES_ELEMENT_TEST1, PLANTUML_CLASSES_ELEMENT_TEST2})),
             new TreeSet < PlantUMLClassesDiagramRelation >());
 
     /** PlantUML classes diagram test 3 instance. */
     @DataPoint
-    public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST3 = new PlantUMLClassesDiagramImpl();
+    public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST3 = new PlantUMLClassesDiagramImpl(
+            new TreeSet < PlantUMLClassesDiagramElement >(asList(new PlantUMLClassesDiagramElement[] {
+                    PLANTUML_CLASSES_ELEMENT_TEST1, PLANTUML_CLASSES_ELEMENT_TEST2})),
+            new TreeSet < PlantUMLClassesDiagramRelation >());
 
     /** PlantUML classes diagram test 4 instance. */
     @DataPoint
-    public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST4 = null;
+    public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST4 = new PlantUMLClassesDiagramImpl();
+
+    /** PlantUML classes diagram test 5 instance. */
+    @DataPoint
+    public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST5 = null;
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl#getDescription()}
+     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl#getPlantUMLTextDescription()}
      * .
      */
     @Test
-    public void testGetDescription() {
-        fail("Not yet implemented");
+    public void testGetPlantUMLTextDescriptionEmpty() {
+        assertEquals(START_PLANTUML + LINE_SEPARATOR + END_PLANTUML, PLANTUML_CLASSES_DIAGRAM_TEST3.getPlantUMLTextDescription());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl#getPlantUMLTextDescription()}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLTextDescriptionWithAllDifferentElements() {
+        assertEquals(START_PLANTUML + LINE_SEPARATOR + END_PLANTUML, PLANTUML_CLASSES_DIAGRAM_TEST3.getPlantUMLTextDescription());
     }
 
     /**
@@ -85,7 +106,11 @@ public class PlantUMLClassesDiagramImplTest extends DeepCloneableObjectTest < Pl
      */
     @Test
     public void testGetPlantUMLClassesDiagramElements() {
-        fail("Not yet implemented");
+        assertEquals(2, PLANTUML_CLASSES_DIAGRAM_TEST2.getPlantUMLClassesDiagramElements().size());
+        assertTrue(PLANTUML_CLASSES_DIAGRAM_TEST2.getPlantUMLClassesDiagramElements().contains(
+                PLANTUML_CLASSES_ELEMENT_TEST1));
+        assertTrue(PLANTUML_CLASSES_DIAGRAM_TEST2.getPlantUMLClassesDiagramElements().contains(
+                PLANTUML_CLASSES_ELEMENT_TEST2));
     }
 
     /**

@@ -33,7 +33,7 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stere
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -50,7 +50,7 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
 
     /**
      * Medium constructor.
-     * 
+     *
      * @param fullName
      *            the element full name, mustn't be <code>null</code>.
      * @since 1.1.1
@@ -61,7 +61,7 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
 
     /**
      * Full constructor.
-     * 
+     *
      * @param fullName
      *            the element full name, mustn't be <code>null</code>.
      * @param stereotyp
@@ -75,7 +75,7 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -87,7 +87,7 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -114,17 +114,17 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
-    protected String getAdditionalDescription() {
-        return getStereotype() != null ? getStereotype().getDescription() : BLANK_STRING;
+    protected String getAdditionalPlantUMLTextDescription() {
+        return getStereotype() != null ? getStereotype().getPlantUMLTextDescription() : BLANK_STRING;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -134,7 +134,7 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -147,7 +147,7 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
