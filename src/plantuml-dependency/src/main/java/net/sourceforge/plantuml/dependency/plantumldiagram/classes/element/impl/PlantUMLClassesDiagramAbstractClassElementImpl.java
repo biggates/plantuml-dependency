@@ -34,7 +34,7 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stere
  * @since 1.1.1
  * @version 1.1.1
  */
-public class PlantUMLAbstractClassElementImpl extends PlantUMLClassElementImpl implements
+public class PlantUMLClassesDiagramAbstractClassElementImpl extends PlantUMLClassesDiagramClassElementImpl implements
         PlantUMLClassesDiagramAbstractClassElement {
 
     /** Serial version UID. */
@@ -47,7 +47,7 @@ public class PlantUMLAbstractClassElementImpl extends PlantUMLClassElementImpl i
      *            the element full name, mustn't be <code>null</code>.
      * @since 1.1.1
      */
-    public PlantUMLAbstractClassElementImpl(final String fullName) {
+    public PlantUMLClassesDiagramAbstractClassElementImpl(final String fullName) {
         this(fullName, null);
     }
 
@@ -59,7 +59,7 @@ public class PlantUMLAbstractClassElementImpl extends PlantUMLClassElementImpl i
      * @param stereotyp
      * @since 1.1.1
      */
-    public PlantUMLAbstractClassElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
+    public PlantUMLClassesDiagramAbstractClassElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
         super(fullName, stereotyp);
         setElementTag(ABSTRACT_CLASS_TAG);
     }

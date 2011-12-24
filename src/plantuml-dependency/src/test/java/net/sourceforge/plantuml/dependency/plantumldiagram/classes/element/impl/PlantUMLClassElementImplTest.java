@@ -42,22 +42,22 @@ public class PlantUMLClassElementImplTest extends
 
     /** PlantUML classes diagram test 1 instance. */
     @DataPoint
-    public static final PlantUMLClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST1 = new PlantUMLClassElementImpl(
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST1 = new PlantUMLClassesDiagramClassElementImpl(
             "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage");
 
     /** PlantUML classes diagram test 2 instance. */
     @DataPoint
-    public static final PlantUMLClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST2 = new PlantUMLClassElementImpl(
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST2 = new PlantUMLClassesDiagramClassElementImpl(
             "net.sourceforge.plantuml.dependency.generic.GenericDependency");
 
     /** PlantUML classes diagram test 3 instance. */
     @DataPoint
-    public static final PlantUMLClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST3 = new PlantUMLClassElementImpl(
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST3 = new PlantUMLClassesDiagramClassElementImpl(
             "net.sourceforge.plantuml.dependency.generic.GenericDependency");
 
     /** PlantUML classes diagram test 4 instance. */
     @DataPoint
-    public static final PlantUMLClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST4 = null;
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST4 = null;
 
     /**
      * Test method for
@@ -91,7 +91,7 @@ public class PlantUMLClassElementImplTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl#getStereotype()}
+     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl#getStereotype()}
      * .
      */
     @Test

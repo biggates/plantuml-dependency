@@ -33,7 +33,7 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
 
 /**
  * The native implementation of the
@@ -70,7 +70,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
      */
     @Override
     protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
-        return new PlantUMLClassElementImpl(getFullName(), NATIVE_PLANTUML_STEREOTYPE);
+        return new PlantUMLClassesDiagramClassElementImpl(getFullName(), NATIVE_PLANTUML_STEREOTYPE);
     }
 
     /**

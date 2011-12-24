@@ -27,7 +27,7 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_PLANTUML_STEREOTYPE;
 import static org.junit.Assert.assertEquals;
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -102,7 +102,7 @@ public class NativeDependencyTypeImplTest extends DeepCloneableObjectTest < Nati
      */
     @Test
     public void testGetPlantUMLClassesDiagramElement() {
-        assertEquals(new PlantUMLClassElementImpl("java.lang.Integer", NATIVE_PLANTUML_STEREOTYPE),
+        assertEquals(new PlantUMLClassesDiagramClassElementImpl("java.lang.Integer", NATIVE_PLANTUML_STEREOTYPE),
                 NATIVE_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramElement());
     }
 }

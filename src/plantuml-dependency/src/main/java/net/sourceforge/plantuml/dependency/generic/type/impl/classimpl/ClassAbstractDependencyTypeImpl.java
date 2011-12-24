@@ -34,7 +34,7 @@ import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollec
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLAbstractClassElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImpl;
 
 /**
  * The class abstract implementation of the
@@ -100,7 +100,7 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      */
     @Override
     protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
-        return new PlantUMLAbstractClassElementImpl(getFullName());
+        return new PlantUMLClassesDiagramAbstractClassElementImpl(getFullName());
     }
 
     /**

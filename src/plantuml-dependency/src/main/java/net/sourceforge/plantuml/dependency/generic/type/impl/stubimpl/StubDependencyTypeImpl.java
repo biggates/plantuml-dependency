@@ -32,7 +32,7 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
 
 /**
  * The stub implementation of the
@@ -69,7 +69,7 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
      */
     @Override
     protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
-        return new PlantUMLClassElementImpl(getFullName());
+        return new PlantUMLClassesDiagramClassElementImpl(getFullName());
     }
 
     /**

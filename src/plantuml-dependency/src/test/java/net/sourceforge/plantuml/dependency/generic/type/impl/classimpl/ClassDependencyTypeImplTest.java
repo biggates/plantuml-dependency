@@ -41,7 +41,7 @@ import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl;
@@ -194,7 +194,7 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
      */
     @Test
     public void testGetPlantUMLClassesDiagramElement() {
-        assertEquals(new PlantUMLClassElementImpl("java.lang.Integer"), CLASS_DEPENDENCY_TYPE1
+        assertEquals(new PlantUMLClassesDiagramClassElementImpl("java.lang.Integer"), CLASS_DEPENDENCY_TYPE1
                 .getPlantUMLClassesDiagramElement());
     }
 

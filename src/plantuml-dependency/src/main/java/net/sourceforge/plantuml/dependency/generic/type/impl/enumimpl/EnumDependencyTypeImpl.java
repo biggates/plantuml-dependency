@@ -35,7 +35,7 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLEnumElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl;
 
 /**
  * The enum implementation of the
@@ -99,7 +99,7 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      */
     @Override
     protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
-        return new PlantUMLEnumElementImpl(getFullName());
+        return new PlantUMLClassesDiagramEnumElementImpl(getFullName());
     }
 
     /**

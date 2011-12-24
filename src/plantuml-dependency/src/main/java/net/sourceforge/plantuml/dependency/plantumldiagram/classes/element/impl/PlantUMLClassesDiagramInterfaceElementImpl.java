@@ -1,5 +1,5 @@
 /*
- PlantUMLEnumElementImpl.java
+ PlantUMLInterfaceElementImpl.java
  Creation date : 6/12/2011
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
@@ -25,10 +25,10 @@
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl;
 
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
-import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.ENUM_TAG;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.INTERFACE_TAG;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramEnumElement;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramInterfaceElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype;
 
 /**
@@ -37,11 +37,11 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stere
  * @since 1.1.1
  * @version 1.1.1
  */
-public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramElement implements
-        PlantUMLClassesDiagramEnumElement {
+public class PlantUMLClassesDiagramInterfaceElementImpl extends AbstractPlantUMLClassesDiagramElement implements
+        PlantUMLClassesDiagramInterfaceElement {
 
     /** Serial version UID. */
-    private static final long serialVersionUID = -880278043290474038L;
+    private static final long serialVersionUID = 9121299518759595597L;
 
     /**
      *
@@ -55,7 +55,7 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
      *            the element full name, mustn't be <code>null</code>.
      * @since 1.1.1
      */
-    public PlantUMLEnumElementImpl(final String fullName) {
+    public PlantUMLClassesDiagramInterfaceElementImpl(final String fullName) {
         this(fullName, null);
     }
 
@@ -67,10 +67,10 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
      * @param stereotyp
      * @since 1.1.1
      */
-    public PlantUMLEnumElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
+    public PlantUMLClassesDiagramInterfaceElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
         super(fullName);
         stereotype = stereotyp;
-        setElementTag(ENUM_TAG);
+        setElementTag(INTERFACE_TAG);
     }
 
     /**
@@ -80,7 +80,7 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
      */
     @Override
     public PlantUMLClassesDiagramElement deepClone() {
-        final PlantUMLEnumElementImpl p = (PlantUMLEnumElementImpl) super.deepClone();
+        final PlantUMLClassesDiagramInterfaceElementImpl p = (PlantUMLClassesDiagramInterfaceElementImpl) super.deepClone();
         p.stereotype = getStereotype().deepClone();
         return p;
     }
@@ -101,7 +101,7 @@ public class PlantUMLEnumElementImpl extends AbstractPlantUMLClassesDiagramEleme
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final PlantUMLEnumElementImpl other = (PlantUMLEnumElementImpl) obj;
+        final PlantUMLClassesDiagramInterfaceElementImpl other = (PlantUMLClassesDiagramInterfaceElementImpl) obj;
         if (stereotype == null) {
             if (other.stereotype != null) {
                 return false;

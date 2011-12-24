@@ -40,7 +40,7 @@ import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLEnumElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl;
@@ -171,7 +171,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
      */
     @Test
     public void testGetPlantUMLClassesDiagramElement() {
-        assertEquals(new PlantUMLEnumElementImpl("java.lang.Integer"), ENUM_DEPENDENCY_TYPE1
+        assertEquals(new PlantUMLClassesDiagramEnumElementImpl("java.lang.Integer"), ENUM_DEPENDENCY_TYPE1
                 .getPlantUMLClassesDiagramElement());
     }
 

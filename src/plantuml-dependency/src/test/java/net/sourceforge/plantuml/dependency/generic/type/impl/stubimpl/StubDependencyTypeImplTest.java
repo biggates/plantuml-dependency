@@ -32,7 +32,7 @@ import java.util.TreeSet;
 
 import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 
 import org.junit.Test;
@@ -134,7 +134,7 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetPlantUMLClassesDiagramElement() {
-        assertEquals(new PlantUMLClassElementImpl("java.lang.Integer"), STUB_DEPENDENCY_TYPE1
+        assertEquals(new PlantUMLClassesDiagramClassElementImpl("java.lang.Integer"), STUB_DEPENDENCY_TYPE1
                 .getPlantUMLClassesDiagramElement());
     }
 

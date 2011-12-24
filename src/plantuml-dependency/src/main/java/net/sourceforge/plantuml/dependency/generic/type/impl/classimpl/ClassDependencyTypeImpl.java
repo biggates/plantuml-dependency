@@ -38,7 +38,7 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl;
 
@@ -126,7 +126,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      */
     @Override
     protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
-        return new PlantUMLClassElementImpl(getFullName());
+        return new PlantUMLClassesDiagramClassElementImpl(getFullName());
     }
 
     /**
