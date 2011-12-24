@@ -35,73 +35,72 @@ import java.util.TreeSet;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 /**
- * This enumerations represents all kind of import types which can be used following the programming
- * language, for instance, in Java, two types can be used : standard imports and static imports.
- * These types are naturally combined with a display options to know if they have to appear in the
- * generated plantUML description file. This is be used to filter imports following their types.
- *
+ * This enumerations represents all kind of import types which can be used following the programming language, for
+ * instance, in Java, two types can be used : standard imports and static imports. These types are naturally combined
+ * with a display options to know if they have to appear in the generated plantUML description file. This is be used to
+ * filter imports following their types.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.1.1
  * @version 1.1.1
  */
 public enum ImportType implements Displayable {
-    /** The native import type. */
-    NATIVE(NATIVE_METHODS),
-    /** The standard import type. */
-    STANDARD(IMPORTS),
-    /** The static import type. */
-    STATIC(STATIC_IMPORTS);
+	/** The native import type. */
+	NATIVE(NATIVE_METHODS),
+	/** The standard import type. */
+	STANDARD(IMPORTS),
+	/** The static import type. */
+	STATIC(STATIC_IMPORTS);
 
-    /** The Set containing all import types which are available. */
-    public static final Set < ImportType > IMPORT_TYPES = new TreeSet < ImportType >(asList(values()));
+	/** The Set containing all import types which are available. */
+	public static final Set<ImportType> IMPORT_TYPES = new TreeSet<ImportType>(asList(values()));
 
-    /**
-     * The display options which filter the import type to be generated in the plantUML description
-     * file.
-     */
-    private Display displayOption;
+	/**
+	 * The display options which filter the import type to be generated in the plantUML description file.
+	 */
+	private Display displayOption;
 
-    /**
-     * Full constructor.
-     *
-     * @param displayOpt
-     *            the display options which filter the import type to be generated in the plantUML
-     *            description file, mustn't be <code>null</code>.
-     * @since 1.1.1
-     */
-    private ImportType(final Display displayOpt) {
-        setDisplayOption(displayOpt);
-    }
+	/**
+	 * Full constructor.
+	 * 
+	 * @param displayOpt
+	 *            the display options which filter the import type to be generated in the plantUML description file,
+	 *            mustn't be <code>null</code>.
+	 * @since 1.1.1
+	 */
+	private ImportType(final Display displayOpt) {
+		setDisplayOption(displayOpt);
+	}
 
-    /**
-     * Gets the value of <code>displayOption</code>.
-     *
-     * @return the value of <code>displayOption</code>.
-     * @since 1.1.1
-     */
-    public Display getDisplayOption() {
-        return displayOption;
-    }
+	/**
+	 * Gets the value of <code>displayOption</code>.
+	 * 
+	 * @return the value of <code>displayOption</code>.
+	 * @since 1.1.1
+	 */
+	public Display getDisplayOption() {
+		return displayOption;
+	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
-    public boolean isDisplayable(final Set < Display > displayOptions) {
-        return displayOptions.contains(getDisplayOption());
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @since 1.1.1
+	 */
+	@Override
+	public boolean isDisplayable(final Set<Display> displayOptions) {
+		return displayOptions.contains(getDisplayOption());
+	}
 
-    /**
-     * Sets the value of <code>displayOption</code>.
-     *
-     * @param value
-     *            the <code>displayOption</code> to set, can be <code>null</code>.
-     * @since 1.1.1
-     */
-    private void setDisplayOption(final Display displayOption) {
-        this.displayOption = displayOption;
-    }
+	/**
+	 * Sets the value of <code>displayOption</code>.
+	 * 
+	 * @param value
+	 *            the <code>displayOption</code> to set, can be <code>null</code>.
+	 * @since 1.1.1
+	 */
+	private void setDisplayOption(final Display value) {
+		displayOption = value;
+	}
 }

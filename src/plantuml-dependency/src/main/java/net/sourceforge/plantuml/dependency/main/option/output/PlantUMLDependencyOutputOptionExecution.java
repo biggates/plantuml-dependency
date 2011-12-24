@@ -87,7 +87,6 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *         {@link GenericDependency}.
      * @since 1.0
      */
-    @SuppressWarnings("unchecked")
     private static ProgrammingLanguageContext readDependenciesContextFromFiles(final ProgrammingLanguage language,
             final FileSet includeExcludeFiles, final Set < Display > displayOpt) {
         final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext(displayOpt);
