@@ -30,6 +30,7 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.Abstr
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag;
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
@@ -68,10 +69,23 @@ public class PlantUMLClassesDiagramClassElementImpl extends AbstractPlantUMLClas
      * @since 1.1.1
      */
     public PlantUMLClassesDiagramClassElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
-        super(fullName);
+        super(fullName, CLASS_TAG);
         stereotype = stereotyp;
-        setElementTag(CLASS_TAG);
     }
+    
+	/**
+	 * Full constructor.
+	 * 
+	 * @param fullName
+	 *            the element full name, mustn't be <code>null</code>.
+	 * @param tag
+	 *            plantUML element tag available in the plantUML classes diagram language, mustn't be <code>null</code>.
+	 * @since 1.1.1
+	 */
+	protected PlantUMLClassesDiagramClassElementImpl(final String fullName, final PlantUMLClassesDiagramElementTag tag, final PlantUMLStereotype stereotyp) {
+		super(fullName, tag);
+		stereotype = stereotyp;
+	}
 
     /**
      * {@inheritDoc}

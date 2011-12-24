@@ -68,9 +68,8 @@ public class PlantUMLClassesDiagramInterfaceElementImpl extends AbstractPlantUML
      * @since 1.1.1
      */
     public PlantUMLClassesDiagramInterfaceElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
-        super(fullName);
+        super(fullName, INTERFACE_TAG);
         stereotype = stereotyp;
-        setElementTag(INTERFACE_TAG);
     }
 
     /**

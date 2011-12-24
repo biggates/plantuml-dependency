@@ -35,42 +35,41 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stere
  * @version 1.1.1
  */
 public class PlantUMLClassesDiagramAbstractClassElementImpl extends PlantUMLClassesDiagramClassElementImpl implements
-        PlantUMLClassesDiagramAbstractClassElement {
+		PlantUMLClassesDiagramAbstractClassElement {
 
-    /** Serial version UID. */
-    private static final long serialVersionUID = 6101443785458060906L;
+	/** Serial version UID. */
+	private static final long serialVersionUID = 6101443785458060906L;
 
-    /**
-     * Medium constructor.
-     * 
-     * @param fullName
-     *            the element full name, mustn't be <code>null</code>.
-     * @since 1.1.1
-     */
-    public PlantUMLClassesDiagramAbstractClassElementImpl(final String fullName) {
-        this(fullName, null);
-    }
+	/**
+	 * Medium constructor.
+	 * 
+	 * @param fullName
+	 *            the element full name, mustn't be <code>null</code>.
+	 * @since 1.1.1
+	 */
+	public PlantUMLClassesDiagramAbstractClassElementImpl(final String fullName) {
+		this(fullName, null);
+	}
 
-    /**
-     * Full constructor.
-     * 
-     * @param fullName
-     *            the element full name, mustn't be <code>null</code>.
-     * @param stereotyp
-     * @since 1.1.1
-     */
-    public PlantUMLClassesDiagramAbstractClassElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
-        super(fullName, stereotyp);
-        setElementTag(ABSTRACT_CLASS_TAG);
-    }
+	/**
+	 * Full constructor.
+	 * 
+	 * @param fullName
+	 *            the element full name, mustn't be <code>null</code>.
+	 * @param stereotyp
+	 * @since 1.1.1
+	 */
+	public PlantUMLClassesDiagramAbstractClassElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
+		super(fullName, ABSTRACT_CLASS_TAG, stereotyp);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 1.1.1
-     */
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + " [" + super.toString() + "]";
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @since 1.1.1
+	 */
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + " [" + super.toString() + "]";
+	}
 }

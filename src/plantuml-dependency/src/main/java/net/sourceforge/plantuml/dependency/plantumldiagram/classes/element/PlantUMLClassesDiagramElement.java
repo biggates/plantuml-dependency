@@ -31,6 +31,8 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag;
 
 /**
+ * The interface representing the class element, following the plantUML classes diagram language.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.1.1

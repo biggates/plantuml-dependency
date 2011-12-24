@@ -68,9 +68,8 @@ public class PlantUMLClassesDiagramEnumElementImpl extends AbstractPlantUMLClass
      * @since 1.1.1
      */
     public PlantUMLClassesDiagramEnumElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
-        super(fullName);
+        super(fullName, ENUM_TAG);
         stereotype = stereotyp;
-        setElementTag(ENUM_TAG);
     }
 
     /**

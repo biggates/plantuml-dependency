@@ -25,6 +25,9 @@
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag;
 
 /**
+ * The enumeration which lists all plantUML element tag available in the plantUML classes diagram language.
+ * 
+ * @see <a href="http://plantuml.sourceforge.net/classes.html#Abstract">PlantUML classes diagram page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.1.1
@@ -32,46 +35,39 @@ package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag;
  */
 public enum PlantUMLClassesDiagramElementTag {
 
-    /**
-     *
-     */
-    ABSTRACT_CLASS_TAG("abstract class "),
+	/** The "abstract class" tag. */
+	ABSTRACT_CLASS_TAG("abstract class "),
 
-    /**
-     *
-     */
-    CLASS_TAG("class "),
+	/** The "class" tag. */
+	CLASS_TAG("class "),
 
-    /**
-     *
-     */
-    ENUM_TAG("enum "),
+	/** The "enum" tag. */
+	ENUM_TAG("enum "),
 
-    /**
-     *
-     */
-    INTERFACE_TAG("interface ");
+	/** The "interface" tag. */
+	INTERFACE_TAG("interface ");
 
-    /**
-     *
-     */
-    private String tagName;
+	/** The tag name representing the element in the plantUML classes diagram language. */
+	private String tagName;
 
-    /**
-     * @param name
-     * @since 1.1.1
-     */
-    private PlantUMLClassesDiagramElementTag(final String name) {
-        tagName = name;
-    }
+	/**
+	 * Full constructor.
+	 * 
+	 * @param name
+	 *            the tag name representing the element in the plantUML classes diagram language.
+	 * @since 1.1.1
+	 */
+	private PlantUMLClassesDiagramElementTag(final String name) {
+		tagName = name;
+	}
 
-    /**
-     * Gets the value of <code>tagName</code>.
-     * 
-     * @return the value of <code>tagName</code>.
-     * @since 1.1.1
-     */
-    public String getTagName() {
-        return tagName;
-    }
+	/**
+	 * Gets the value of <code>tagName</code>.
+	 * 
+	 * @return the value of <code>tagName</code>.
+	 * @since 1.1.1
+	 */
+	public String getTagName() {
+		return tagName;
+	}
 }
