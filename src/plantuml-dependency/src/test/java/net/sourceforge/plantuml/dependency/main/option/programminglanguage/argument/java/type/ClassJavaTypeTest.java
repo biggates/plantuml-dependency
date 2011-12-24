@@ -37,7 +37,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
-import net.sourceforge.mazix.components.ObjectTest;
+import net.sourceforge.mazix.components.ObjectTestWithString;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 
 import org.junit.Test;
@@ -51,7 +51,7 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0
  * @version 1.0
  */
-public class ClassJavaTypeTest extends ObjectTest < ClassJavaType > {
+public class ClassJavaTypeTest extends ObjectTestWithString < ClassJavaType > {
 
     /** Java type test 1 instance. */
     @DataPoint

@@ -35,7 +35,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Collection;
 import java.util.Set;
 
-import net.sourceforge.mazix.components.ObjectTest;
+import net.sourceforge.mazix.components.ObjectTestWithString;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -48,7 +48,7 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0
  * @version 1.0
  */
-public class ProgrammingLanguageTest extends ObjectTest < ProgrammingLanguage > {
+public class ProgrammingLanguageTest extends ObjectTestWithString < ProgrammingLanguage > {
 
     /** Programming language test 1 instance. */
     @DataPoint

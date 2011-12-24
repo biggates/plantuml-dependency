@@ -79,7 +79,7 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import net.sourceforge.mazix.components.ObjectTest;
+import net.sourceforge.mazix.components.ObjectTestWithString;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType;
@@ -99,7 +99,7 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0
  * @version 1.1.1
  */
-public class JavaProgrammingLanguageTest extends ObjectTest < JavaProgrammingLanguage > {
+public class JavaProgrammingLanguageTest extends ObjectTestWithString < JavaProgrammingLanguage > {
 
     /** Java programming language test 1 instance. */
     @DataPoint

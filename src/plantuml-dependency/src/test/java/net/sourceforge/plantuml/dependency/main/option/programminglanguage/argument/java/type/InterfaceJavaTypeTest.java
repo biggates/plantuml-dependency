@@ -35,7 +35,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.ObjectTest;
+import net.sourceforge.mazix.components.ObjectTestWithString;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 
@@ -50,7 +50,7 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0
  * @version 1.0
  */
-public class InterfaceJavaTypeTest extends ObjectTest < InterfaceJavaType > {
+public class InterfaceJavaTypeTest extends ObjectTestWithString < InterfaceJavaType > {
 
     /** Java type test 1 instance. */
     @DataPoint
@@ -72,8 +72,9 @@ public class InterfaceJavaTypeTest extends ObjectTest < InterfaceJavaType > {
     @Test
     public void testCreateDependencyTypeAbstract() {
         assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
-                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true, INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), true));
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true, INTERFACE_DEPENDENCY_TYPE1
+                        .getImportDependenciesCollection(), INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(),
+                new TreeSet < GenericDependency >(), true));
     }
 
     /**
@@ -84,8 +85,9 @@ public class InterfaceJavaTypeTest extends ObjectTest < InterfaceJavaType > {
     @Test
     public void testCreateDependencyTypeAbstractWithNativeMethods() {
         assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
-                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true, INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), true));
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true, INTERFACE_DEPENDENCY_TYPE1
+                        .getImportDependenciesCollection(), INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(),
+                new TreeSet < GenericDependency >(), true));
     }
 
     /**
@@ -96,8 +98,9 @@ public class InterfaceJavaTypeTest extends ObjectTest < InterfaceJavaType > {
     @Test
     public void testCreateDependencyTypeNotAbstract() {
         assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
-                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), false, INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), false));
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), false, INTERFACE_DEPENDENCY_TYPE1
+                        .getImportDependenciesCollection(), INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(),
+                new TreeSet < GenericDependency >(), false));
     }
 
     /**

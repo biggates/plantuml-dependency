@@ -26,20 +26,20 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.CPP;
 import static org.junit.Assert.assertTrue;
-import net.sourceforge.mazix.components.ObjectTest;
+import net.sourceforge.mazix.components.ObjectTestWithString;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link CppProgrammingLanguage}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
-public class CppProgrammingLanguageTest extends ObjectTest < CppProgrammingLanguage > {
+public class CppProgrammingLanguageTest extends ObjectTestWithString < CppProgrammingLanguage > {
 
     /** C++ programming language test 1 instance. */
     @DataPoint
