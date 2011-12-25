@@ -27,7 +27,7 @@ package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype;
 
 /**
- * The mother interface of all plantUML classes diagram elements.
+ * The interface representing the "class" element, following the plantUML classes diagram language.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 

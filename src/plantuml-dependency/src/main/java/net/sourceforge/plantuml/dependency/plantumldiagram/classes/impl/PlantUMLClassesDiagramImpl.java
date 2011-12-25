@@ -41,7 +41,7 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.Plant
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 
 /**
- * The class implementing the {@link PlantUMLClassesDiagram} interface.
+ * The default {@link PlantUMLClassesDiagram} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *

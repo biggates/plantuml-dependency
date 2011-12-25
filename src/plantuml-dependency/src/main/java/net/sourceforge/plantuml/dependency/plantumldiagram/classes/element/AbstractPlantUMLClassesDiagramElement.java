@@ -64,7 +64,7 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
 	 *            plantUML element tag available in the plantUML classes diagram language, mustn't be <code>null</code>.
 	 * @since 1.1.1
 	 */
-	public AbstractPlantUMLClassesDiagramElement(final String fullName, final PlantUMLClassesDiagramElementTag tag) {
+	protected AbstractPlantUMLClassesDiagramElement(final String fullName, final PlantUMLClassesDiagramElementTag tag) {
 		name = fullName;
 		elementTag = tag;
 	}

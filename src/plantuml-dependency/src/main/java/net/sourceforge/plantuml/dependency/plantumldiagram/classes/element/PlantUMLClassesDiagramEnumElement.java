@@ -27,7 +27,7 @@ package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype;
 
 /**
- * The interface representing the enum element, following the plantUML classes diagram language.
+ * The interface representing the "enum" element, following the plantUML classes diagram language.
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 

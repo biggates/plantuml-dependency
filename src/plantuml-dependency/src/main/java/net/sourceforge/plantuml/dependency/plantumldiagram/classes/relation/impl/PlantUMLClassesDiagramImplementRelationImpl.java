@@ -28,23 +28,29 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.Abst
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramImplementRelation;
 
 /**
+ * The default {@link PlantUMLClassesDiagramImplementRelation} implementation.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.1.1
  * @version 1.1.1
  */
 public class PlantUMLClassesDiagramImplementRelationImpl extends AbstractPlantUMLClassesDiagramRelation implements
-        PlantUMLClassesDiagramImplementRelation {
+		PlantUMLClassesDiagramImplementRelation {
 
-    /** Serial version UID. */
-    private static final long serialVersionUID = -5028190456866304518L;
+	/** Serial version UID. */
+	private static final long serialVersionUID = -5028190456866304518L;
 
-    /**
-     * @param firstName
-     * @param secondName
-     * @since 1.1.1
-     */
-    public PlantUMLClassesDiagramImplementRelationImpl(final String firstName, final String secondName) {
-        super(firstName, secondName);
-    }
+	/**
+	 * Full constructor.
+	 * 
+	 * @param firstName
+	 *            The first element name of the relation, mustn't be <code>null</code> nor empty.
+	 * @param secondName
+	 *            The second element name of the relation, mustn't be <code>null</code> nor empty.
+	 * @since 1.1.1
+	 */
+	public PlantUMLClassesDiagramImplementRelationImpl(final String firstName, final String secondName) {
+		super(firstName, secondName);
+	}
 }

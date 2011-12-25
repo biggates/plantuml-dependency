@@ -28,23 +28,29 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.Abst
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramUseRelation;
 
 /**
+ * The default {@link PlantUMLClassesDiagramUseRelation} implementation.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.1.1
  * @version 1.1.1
  */
 public class PlantUMLClassesDiagramUseRelationImpl extends AbstractPlantUMLClassesDiagramRelation implements
-        PlantUMLClassesDiagramUseRelation {
+		PlantUMLClassesDiagramUseRelation {
 
-    /** Serial version UID. */
-    private static final long serialVersionUID = -8771385906634491398L;
+	/** Serial version UID. */
+	private static final long serialVersionUID = -8771385906634491398L;
 
-    /**
-     * @param firstName
-     * @param secondName
-     * @since 1.1.1
-     */
-    public PlantUMLClassesDiagramUseRelationImpl(final String firstName, final String secondName) {
-        super(firstName, secondName);
-    }
+	/**
+	 * Full constructor.
+	 * 
+	 * @param firstName
+	 *            The first element name of the relation, mustn't be <code>null</code> nor empty.
+	 * @param secondName
+	 *            The second element name of the relation, mustn't be <code>null</code> nor empty.
+	 * @since 1.1.1
+	 */
+	public PlantUMLClassesDiagramUseRelationImpl(final String firstName, final String secondName) {
+		super(firstName, secondName);
+	}
 }

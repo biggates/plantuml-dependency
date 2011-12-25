@@ -61,7 +61,7 @@ public class PlantUMLClassElementImplTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getDescription()}
+     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getPlantUMLTextDescription()}
      * .
      */
     @Test

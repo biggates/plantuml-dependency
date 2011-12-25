@@ -29,6 +29,8 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.Plant
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype;
 
 /**
+ * The default {@link PlantUMLClassesDiagramAbstractClassElement} implementation.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.1.1
@@ -57,6 +59,7 @@ public class PlantUMLClassesDiagramAbstractClassElementImpl extends PlantUMLClas
 	 * @param fullName
 	 *            the element full name, mustn't be <code>null</code>.
 	 * @param stereotyp
+	 *            the element stereotype, if any, may be <code>null</code>.
 	 * @since 1.1.1
 	 */
 	public PlantUMLClassesDiagramAbstractClassElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {

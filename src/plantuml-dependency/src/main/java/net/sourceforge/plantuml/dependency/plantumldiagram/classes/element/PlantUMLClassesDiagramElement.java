@@ -31,25 +31,31 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag;
 
 /**
- * The interface representing the class element, following the plantUML classes diagram language.
+ * The mother interface of all plantUML classes diagram elements. The classic elements are usually "class", "interface",
+ * "enum" and "abstract class".
  * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.1.1
  * @version 1.1.1
  */
-public interface PlantUMLClassesDiagramElement extends WithDescription,
-        DeepCloneable < PlantUMLClassesDiagramElement >, Serializable, Comparable < PlantUMLClassesDiagramElement > {
+public interface PlantUMLClassesDiagramElement extends WithDescription, DeepCloneable<PlantUMLClassesDiagramElement>,
+		Serializable, Comparable<PlantUMLClassesDiagramElement> {
 
-    /**
-     * @return
-     * @since 1.1.1
-     */
-    PlantUMLClassesDiagramElementTag getElementTag();
+	/**
+	 * Gets the element tag, which represents the element string used in the plantUML classes diagram language.
+	 * 
+	 * @return the element tag, as a {@link PlantUMLClassesDiagramElementTag} instance.
+	 * @since 1.1.1
+	 */
+	PlantUMLClassesDiagramElementTag getElementTag();
 
-    /**
-     * @return
-     * @since 1.1.1
-     */
-    String getName();
+	/**
+	 * Gets the full element name, i.e. the package name and the element name. For instance, it can be
+	 * "java.lang.String".
+	 * 
+	 * @return the full element name.
+	 * @since 1.1.1
+	 */
+	String getName();
 }

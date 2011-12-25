@@ -33,139 +33,141 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stere
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag;
 
 /**
+ * The default {@link PlantUMLClassesDiagramClassElement} implementation.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.1.1
  * @version 1.1.1
  */
 public class PlantUMLClassesDiagramClassElementImpl extends AbstractPlantUMLClassesDiagramElement implements
-        PlantUMLClassesDiagramClassElement {
+		PlantUMLClassesDiagramClassElement {
 
-    /** Serial version UID. */
-    private static final long serialVersionUID = 9113761739200276659L;
+	/** Serial version UID. */
+	private static final long serialVersionUID = 9113761739200276659L;
 
-    /**
-     *
-     */
-    private PlantUMLStereotype stereotype;
+	/** The element stereotype, if any. */
+	private PlantUMLStereotype stereotype;
 
-    /**
-     * Medium constructor.
-     *
-     * @param fullName
-     *            the element full name, mustn't be <code>null</code>.
-     * @since 1.1.1
-     */
-    public PlantUMLClassesDiagramClassElementImpl(final String fullName) {
-        this(fullName, null);
-    }
+	/**
+	 * Medium constructor.
+	 * 
+	 * @param fullName
+	 *            the element full name, mustn't be <code>null</code>.
+	 * @since 1.1.1
+	 */
+	public PlantUMLClassesDiagramClassElementImpl(final String fullName) {
+		this(fullName, null);
+	}
 
-    /**
-     * Full constructor.
-     *
-     * @param fullName
-     *            the element full name, mustn't be <code>null</code>.
-     * @param stereotyp
-     * @since 1.1.1
-     */
-    public PlantUMLClassesDiagramClassElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
-        super(fullName, CLASS_TAG);
-        stereotype = stereotyp;
-    }
-    
 	/**
 	 * Full constructor.
 	 * 
 	 * @param fullName
 	 *            the element full name, mustn't be <code>null</code>.
 	 * @param tag
-	 *            plantUML element tag available in the plantUML classes diagram language, mustn't be <code>null</code>.
+	 *            the plantUML element tag available in the plantUML classes diagram language, mustn't be <code>null</code>.
 	 * @since 1.1.1
 	 */
-	protected PlantUMLClassesDiagramClassElementImpl(final String fullName, final PlantUMLClassesDiagramElementTag tag, final PlantUMLStereotype stereotyp) {
+	protected PlantUMLClassesDiagramClassElementImpl(final String fullName, final PlantUMLClassesDiagramElementTag tag,
+			final PlantUMLStereotype stereotyp) {
 		super(fullName, tag);
 		stereotype = stereotyp;
 	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
-    public PlantUMLClassesDiagramElement deepClone() {
-        final PlantUMLClassesDiagramClassElementImpl p = (PlantUMLClassesDiagramClassElementImpl) super.deepClone();
-        p.stereotype = getStereotype() == null ? null : getStereotype().deepClone();
-        return p;
-    }
+	/**
+	 * Full constructor.
+	 * 
+	 * @param fullName
+	 *            the element full name, mustn't be <code>null</code>.
+	 * @param stereotyp
+	 *            the element stereotype, if any, may be <code>null</code>.
+	 * @since 1.1.1
+	 */
+	public PlantUMLClassesDiagramClassElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
+		super(fullName, CLASS_TAG);
+		stereotype = stereotyp;
+	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final PlantUMLClassesDiagramClassElementImpl other = (PlantUMLClassesDiagramClassElementImpl) obj;
-        if (stereotype == null) {
-            if (other.stereotype != null) {
-                return false;
-            }
-        } else if (!stereotype.equals(other.stereotype)) {
-            return false;
-        }
-        return true;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @since 1.1.1
+	 */
+	@Override
+	public PlantUMLClassesDiagramElement deepClone() {
+		final PlantUMLClassesDiagramClassElementImpl p = (PlantUMLClassesDiagramClassElementImpl) super.deepClone();
+		p.stereotype = getStereotype() == null ? null : getStereotype().deepClone();
+		return p;
+	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
-    protected String getAdditionalPlantUMLTextDescription() {
-        return getStereotype() != null ? getStereotype().getPlantUMLTextDescription() : BLANK_STRING;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @since 1.1.1
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final PlantUMLClassesDiagramClassElementImpl other = (PlantUMLClassesDiagramClassElementImpl) obj;
+		if (stereotype == null) {
+			if (other.stereotype != null) {
+				return false;
+			}
+		} else if (!stereotype.equals(other.stereotype)) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
-    public PlantUMLStereotype getStereotype() {
-        return stereotype;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @since 1.1.1
+	 */
+	@Override
+	protected String getAdditionalPlantUMLTextDescription() {
+		return getStereotype() != null ? getStereotype().getPlantUMLTextDescription() : BLANK_STRING;
+	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((stereotype == null) ? 0 : stereotype.hashCode());
-        return result;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @since 1.1.1
+	 */
+	@Override
+	public PlantUMLStereotype getStereotype() {
+		return stereotype;
+	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + " [" + super.toString() + ",stereotype=" + stereotype + "]";
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @since 1.1.1
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((stereotype == null) ? 0 : stereotype.hashCode());
+		return result;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @since 1.1.1
+	 */
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + " [" + super.toString() + ",stereotype=" + stereotype + "]";
+	}
 }
