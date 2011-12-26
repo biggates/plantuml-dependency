@@ -37,7 +37,7 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.1.1
  * @version
  */
-public class PlantUMLClassElementImplTest extends
+public class PlantUMLClassesDiagramClassElementImplTest extends
         ComparableAndDeepCloneableObjectTest < PlantUMLClassesDiagramImplTest > {
 
     /** PlantUML classes diagram test 1 instance. */
