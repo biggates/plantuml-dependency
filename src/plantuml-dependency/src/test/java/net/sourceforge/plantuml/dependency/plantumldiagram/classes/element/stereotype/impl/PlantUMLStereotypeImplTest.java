@@ -29,7 +29,6 @@ import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.elemen
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImplTest.PLANTUML_SPOTTED_CHAR_TEST3;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImplTest.PLANTUML_SPOTTED_CHAR_TEST4;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
 
 import org.junit.Test;
@@ -93,8 +92,28 @@ public class PlantUMLStereotypeImplTest extends ComparableAndDeepCloneableObject
      * .
      */
     @Test
-    public void testGetPlantUMLTextDescription() {
-        fail("Not yet implemented");
+    public void testGetPlantUMLTextDescriptionWithoutSpottedCharacterWithText() {
+        assertEquals(" << Generic >>", PLANTUML_STEREOTYPE_TEST1.getPlantUMLTextDescription());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl#getPlantUMLTextDescription()}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLTextDescriptionWithSpottedCharacterWithoutText() {
+        assertEquals(" << (A,#f0f8ff) >>", PLANTUML_STEREOTYPE_TEST3.getPlantUMLTextDescription());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl#getPlantUMLTextDescription()}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLTextDescriptionWithSpottedCharacterWithText() {
+        assertEquals(" << (B,#f0f8ff) Test it ! >>", PLANTUML_STEREOTYPE_TEST6.getPlantUMLTextDescription());
     }
 
     /**

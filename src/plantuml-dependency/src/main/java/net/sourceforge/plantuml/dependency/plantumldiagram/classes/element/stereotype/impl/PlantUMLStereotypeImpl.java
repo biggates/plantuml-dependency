@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl;
 
+import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
@@ -197,7 +198,8 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
     public String getPlantUMLTextDescription() {
         return STEREOTYPE_LEFT_SEPARATOR
                 + (getPlantUMLSpottedCharacter() == null ? BLANK_STRING : getPlantUMLSpottedCharacter()
-                        .getPlantUMLTextDescription() + SPACE_CHAR) + getText() + STEREOTYPE_RIGHT_SEPARATOR;
+                        .getPlantUMLTextDescription() + (isEmpty(getText()) ? BLANK_STRING : SPACE_CHAR)) + getText()
+                + STEREOTYPE_RIGHT_SEPARATOR;
     }
 
     /**

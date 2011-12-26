@@ -46,7 +46,7 @@ public final class PlantUMLConstants {
     public static final String STEREOTYPE_LEFT_SEPARATOR = " << ";
 
     /** The string representing the plantUML right stereotype separator tag. */
-    public static final String STEREOTYPE_RIGHT_SEPARATOR = " >> ";
+    public static final String STEREOTYPE_RIGHT_SEPARATOR = " >>";
 
     /** The string representing the plantUML "..>" tag. */
     public static final String USES_RIGHT_PLANTUML = " ..> ";
