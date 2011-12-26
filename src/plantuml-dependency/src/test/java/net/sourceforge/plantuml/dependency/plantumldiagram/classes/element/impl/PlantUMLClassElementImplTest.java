@@ -65,7 +65,7 @@ public class PlantUMLClassElementImplTest extends
      * .
      */
     @Test
-    public void testGetDescription() {
+    public void testGetPlantUMLTextDescription() {
         fail("Not yet implemented");
     }
 
