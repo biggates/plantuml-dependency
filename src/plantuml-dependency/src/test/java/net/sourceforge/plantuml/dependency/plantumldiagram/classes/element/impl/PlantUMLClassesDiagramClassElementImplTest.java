@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl;
 
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImplTest;
 
@@ -33,7 +34,7 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.1.1
  * @version
  */
@@ -57,7 +58,12 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
 
     /** PlantUML classes diagram test 4 instance. */
     @DataPoint
-    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST4 = null;
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST4 = new PlantUMLClassesDiagramClassElementImpl(
+            "net.sourceforge.plantuml.dependency.generic.GenericDependency");
+
+    /** PlantUML classes diagram test 5 instance. */
+    @DataPoint
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST5 = null;
 
     /**
      * Test method for
@@ -86,7 +92,8 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
      */
     @Test
     public void testGetName() {
-        fail("Not yet implemented");
+        assertEquals(PLANTUML_CLASSES_ELEMENT_TEST3.getName(),
+                "net.sourceforge.plantuml.dependency.generic.GenericDependency");
     }
 
     /**
@@ -98,5 +105,4 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
     public void testGetStereotype() {
         fail("Not yet implemented");
     }
-
 }

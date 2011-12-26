@@ -38,21 +38,22 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription;
  * class System <font color="red"><< (S,#FF7700) Singleton >></font><br>
  * {@literal @}enduml
  * </code>
- *
+ * 
  * @see <a href="http://plantuml.sourceforge.net/classes.html#Notes">PlantUML classes diagram Notes
  *      and stereotype page</a>
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.1.1
  * @version 1.1.1
  */
-public interface PlantUMLStereotype extends WithDescription, DeepCloneable < PlantUMLStereotype >, Serializable {
+public interface PlantUMLStereotype extends Comparable < PlantUMLStereotype >, WithDescription,
+        DeepCloneable < PlantUMLStereotype >, Serializable {
 
     /**
      * Gets the plantUML spotted character. It may be <code>null</code> if the element doesn't have
      * any specific spotted character.
-     *
+     * 
      * @return the spotted character as a {@link PlantUMLSpottedCharacter}, if one specified.
      * @since 1.1.1
      */
@@ -60,7 +61,7 @@ public interface PlantUMLStereotype extends WithDescription, DeepCloneable < Pla
 
     /**
      * Gets the stereotype inner text.
-     *
+     * 
      * @return Gets the stereotype inner text, as a String.
      * @since 1.1.1
      */

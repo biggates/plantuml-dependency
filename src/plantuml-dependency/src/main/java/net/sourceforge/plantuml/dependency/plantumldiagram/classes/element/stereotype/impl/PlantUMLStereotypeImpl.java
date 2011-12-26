@@ -29,6 +29,7 @@ import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
+import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.STEREOTYPE_LEFT_SEPARATOR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.STEREOTYPE_RIGHT_SEPARATOR;
 
@@ -103,12 +104,39 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
      * @since 1.1.1
      */
     @Override
+    public int compareTo(final PlantUMLStereotype o) {
+        int comparison;
+
+        if (this == o) {
+            comparison = EQUAL.getResult();
+        } else {
+            if (getPlantUMLSpottedCharacter() == null || o.getPlantUMLSpottedCharacter() == null) {
+                comparison = getText().compareTo(o.getText());
+            } else {
+                comparison = getPlantUMLSpottedCharacter().compareTo(o.getPlantUMLSpottedCharacter());
+                if (comparison == EQUAL.getResult()) {
+                    comparison = getText().compareTo(o.getText());
+                }
+            }
+        }
+
+        return comparison;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @since 1.1.1
+     */
+    @Override
     public PlantUMLStereotype deepClone() {
         PlantUMLStereotypeImpl p = null;
 
         try {
             p = (PlantUMLStereotypeImpl) super.clone();
-            p.plantUMLSpottedCharacter = getPlantUMLSpottedCharacter().deepClone();
+            if (getPlantUMLSpottedCharacter() != null) {
+                p.plantUMLSpottedCharacter = getPlantUMLSpottedCharacter().deepClone();
+            }
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
         }
@@ -169,8 +197,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
     public String getPlantUMLTextDescription() {
         return STEREOTYPE_LEFT_SEPARATOR
                 + (getPlantUMLSpottedCharacter() == null ? BLANK_STRING : getPlantUMLSpottedCharacter()
-                        .getPlantUMLTextDescription()
-                        + SPACE_CHAR) + getText() + STEREOTYPE_RIGHT_SEPARATOR;
+                        .getPlantUMLTextDescription() + SPACE_CHAR) + getText() + STEREOTYPE_RIGHT_SEPARATOR;
     }
 
     /**

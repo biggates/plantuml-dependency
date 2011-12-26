@@ -1,6 +1,6 @@
 /*
  PlantUMLSpottedCharacterImplTest.java
- Creation date : 24 déc. 2011
+ Creation date : 24/12/2011
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
@@ -21,6 +21,7 @@
  http://www.fsf.org/licensing/licenses/gpl.html
  http://www.gnu.org/licenses/lgpl.html
  */
+
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl;
 
 import static net.sourceforge.mazix.components.color.HTMLColor.ALICE_BLUE;
