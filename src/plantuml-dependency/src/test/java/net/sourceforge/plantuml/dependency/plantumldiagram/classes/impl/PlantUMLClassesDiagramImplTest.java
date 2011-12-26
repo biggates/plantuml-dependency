@@ -51,7 +51,7 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.1.1
  * @version 1.1.1
  */
-public class PlantUMLClassesDiagramImplTest extends DeepCloneableObjectTest < PlantUMLClassesDiagramImplTest > {
+public class PlantUMLClassesDiagramImplTest extends DeepCloneableObjectTest < PlantUMLClassesDiagramImpl > {
 
     /** PlantUML classes diagram test 1 instance. */
     @DataPoint

@@ -24,22 +24,25 @@
 
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl;
 
-import static org.junit.Assert.fail;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImplTest.PLANTUML_STEREOTYPE_TEST6;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.CLASS_TAG;
 import static org.junit.Assert.assertEquals;
 import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImplTest;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 
 /**
+ * JUnit test classes for {@link PlantUMLClassesDiagramImpl}.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
  * @since 1.1.1
- * @version
+ * @version 1.1.1
  */
 public class PlantUMLClassesDiagramClassElementImplTest extends
-        ComparableAndDeepCloneableObjectTest < PlantUMLClassesDiagramImplTest > {
+        ComparableAndDeepCloneableObjectTest < PlantUMLClassesDiagramImpl > {
 
     /** PlantUML classes diagram test 1 instance. */
     @DataPoint
@@ -59,21 +62,11 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
     /** PlantUML classes diagram test 4 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST4 = new PlantUMLClassesDiagramClassElementImpl(
-            "net.sourceforge.plantuml.dependency.generic.GenericDependency");
+            "net.sourceforge.plantuml.dependency.generic.GenericDependency", PLANTUML_STEREOTYPE_TEST6);
 
     /** PlantUML classes diagram test 5 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASSES_ELEMENT_TEST5 = null;
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getPlantUMLTextDescription()}
-     * .
-     */
-    @Test
-    public void testGetPlantUMLTextDescription() {
-        fail("Not yet implemented");
-    }
 
     /**
      * Test method for
@@ -82,7 +75,7 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
      */
     @Test
     public void testGetElementTag() {
-        fail("Not yet implemented");
+        assertEquals(CLASS_TAG, PLANTUML_CLASSES_ELEMENT_TEST4.getElementTag());
     }
 
     /**
@@ -98,11 +91,33 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
 
     /**
      * Test method for
+     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getPlantUMLTextDescription()}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLTextDescriptionWithoutStereotype() {
+        assertEquals("class net.sourceforge.plantuml.dependency.generic.GenericDependency",
+                PLANTUML_CLASSES_ELEMENT_TEST2.getPlantUMLTextDescription());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getPlantUMLTextDescription()}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLTextDescriptionWithStereotype() {
+        assertEquals("class net.sourceforge.plantuml.dependency.generic.GenericDependency << (B,#f0f8ff) Test it ! >>",
+                PLANTUML_CLASSES_ELEMENT_TEST4.getPlantUMLTextDescription());
+    }
+
+    /**
+     * Test method for
      * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl#getStereotype()}
      * .
      */
     @Test
     public void testGetStereotype() {
-        fail("Not yet implemented");
+        assertEquals(PLANTUML_STEREOTYPE_TEST6, PLANTUML_CLASSES_ELEMENT_TEST4.getStereotype());
     }
 }
