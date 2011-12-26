@@ -28,8 +28,8 @@ import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
-import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASSES_ELEMENT_TEST1;
-import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASSES_ELEMENT_TEST2;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST1;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST2;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -61,14 +61,14 @@ public class PlantUMLClassesDiagramImplTest extends DeepCloneableObjectTest < Pl
     @DataPoint
     public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST2 = new PlantUMLClassesDiagramImpl(
             new TreeSet < PlantUMLClassesDiagramElement >(asList(new PlantUMLClassesDiagramElement[] {
-                    PLANTUML_CLASSES_ELEMENT_TEST1, PLANTUML_CLASSES_ELEMENT_TEST2})),
+                    PLANTUML_CLASS_ELEMENT_TEST1, PLANTUML_CLASS_ELEMENT_TEST2})),
             new TreeSet < PlantUMLClassesDiagramRelation >());
 
     /** PlantUML classes diagram test 3 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST3 = new PlantUMLClassesDiagramImpl(
             new TreeSet < PlantUMLClassesDiagramElement >(asList(new PlantUMLClassesDiagramElement[] {
-                    PLANTUML_CLASSES_ELEMENT_TEST1, PLANTUML_CLASSES_ELEMENT_TEST2})),
+                    PLANTUML_CLASS_ELEMENT_TEST1, PLANTUML_CLASS_ELEMENT_TEST2})),
             new TreeSet < PlantUMLClassesDiagramRelation >());
 
     /** PlantUML classes diagram test 4 instance. */
@@ -108,9 +108,9 @@ public class PlantUMLClassesDiagramImplTest extends DeepCloneableObjectTest < Pl
     public void testGetPlantUMLClassesDiagramElements() {
         assertEquals(2, PLANTUML_CLASSES_DIAGRAM_TEST2.getPlantUMLClassesDiagramElements().size());
         assertTrue(PLANTUML_CLASSES_DIAGRAM_TEST2.getPlantUMLClassesDiagramElements().contains(
-                PLANTUML_CLASSES_ELEMENT_TEST1));
+                PLANTUML_CLASS_ELEMENT_TEST1));
         assertTrue(PLANTUML_CLASSES_DIAGRAM_TEST2.getPlantUMLClassesDiagramElements().contains(
-                PLANTUML_CLASSES_ELEMENT_TEST2));
+                PLANTUML_CLASS_ELEMENT_TEST2));
     }
 
     /**
