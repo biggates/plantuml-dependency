@@ -86,7 +86,7 @@ public class PlantUMLClassesDiagramImplTest extends DeepCloneableObjectTest < Pl
      */
     @Test
     public void testGetPlantUMLTextDescriptionEmpty() {
-        assertEquals(START_PLANTUML + LINE_SEPARATOR + END_PLANTUML, PLANTUML_CLASSES_DIAGRAM_TEST3.getPlantUMLTextDescription());
+        assertEquals(START_PLANTUML + LINE_SEPARATOR + END_PLANTUML, PLANTUML_CLASSES_DIAGRAM_TEST4.getPlantUMLTextDescription());
     }
 
     /**

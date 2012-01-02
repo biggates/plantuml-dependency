@@ -27,10 +27,11 @@ package net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation;
 import java.io.Serializable;
 
 import net.sourceforge.mazix.components.clone.DeepCloneable;
+import net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription;
 
 /**
- * The mother interface of all plantUML classes diagram relations. The classic relations used are usually "implements",
- * "extends" and "uses".<br>
+ * The mother interface of all plantUML classes diagram relations. The classic relations used are
+ * usually "implements", "extends" and "uses".<br>
  * A relation contains two element and the relation should always be read as follows :<br>
  * "First Element -> Second Element"
  * 
@@ -39,22 +40,30 @@ import net.sourceforge.mazix.components.clone.DeepCloneable;
  * @since 1.1.1
  * @version 1.1.1
  */
-public interface PlantUMLClassesDiagramRelation extends DeepCloneable<PlantUMLClassesDiagramRelation>, Serializable,
-		Comparable<PlantUMLClassesDiagramRelation> {
+public interface PlantUMLClassesDiagramRelation extends WithDescription,
+        DeepCloneable < PlantUMLClassesDiagramRelation >, Serializable, Comparable < PlantUMLClassesDiagramRelation > {
 
-	/**
-	 * Gets the first element name of the relation. For instance, it can be "java.lang.String".
-	 * 
-	 * @return the first element name of the relation.
-	 * @since 1.1.1
-	 */
-	String getFirstElementName();
+    /**
+     * Gets the first element name of the relation. For instance, it can be "java.lang.String".
+     * 
+     * @return the first element name of the relation.
+     * @since 1.1.1
+     */
+    String getFirstElementName();
 
-	/**
-	 * Gets the second element name of the relation. For instance, it can be "java.lang.String".
-	 * 
-	 * @return the second element name of the relation.
-	 * @since 1.1.1
-	 */
-	String getSecondElementName();
+    /**
+     * Gets the second element name of the relation. For instance, it can be "java.lang.String".
+     * 
+     * @return the second element name of the relation.
+     * @since 1.1.1
+     */
+    String getSecondElementName();
+
+    /**
+     * Gets the relation type used in the plantUML language.
+     * 
+     * @return the relation type used in the plantUML language.
+     * @since 1.1.1
+     */
+    PlantUMLClassesDiagramRelationType getType();
 }

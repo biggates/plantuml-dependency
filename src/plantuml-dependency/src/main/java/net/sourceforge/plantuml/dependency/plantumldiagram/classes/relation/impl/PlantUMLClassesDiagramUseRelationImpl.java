@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl;
 
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelationType.USE_RELATION_TYPE;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramUseRelation;
 
@@ -36,21 +37,21 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.Plan
  * @version 1.1.1
  */
 public class PlantUMLClassesDiagramUseRelationImpl extends AbstractPlantUMLClassesDiagramRelation implements
-		PlantUMLClassesDiagramUseRelation {
+        PlantUMLClassesDiagramUseRelation {
 
-	/** Serial version UID. */
-	private static final long serialVersionUID = -8771385906634491398L;
+    /** Serial version UID. */
+    private static final long serialVersionUID = -8771385906634491398L;
 
-	/**
-	 * Full constructor.
-	 * 
-	 * @param firstName
-	 *            The first element name of the relation, mustn't be <code>null</code> nor empty.
-	 * @param secondName
-	 *            The second element name of the relation, mustn't be <code>null</code> nor empty.
-	 * @since 1.1.1
-	 */
-	public PlantUMLClassesDiagramUseRelationImpl(final String firstName, final String secondName) {
-		super(firstName, secondName);
-	}
+    /**
+     * Full constructor.
+     * 
+     * @param firstName
+     *            The first element name of the relation, mustn't be <code>null</code> nor empty.
+     * @param secondName
+     *            The second element name of the relation, mustn't be <code>null</code> nor empty.
+     * @since 1.1.1
+     */
+    public PlantUMLClassesDiagramUseRelationImpl(final String firstName, final String secondName) {
+        super(firstName, secondName, USE_RELATION_TYPE);
+    }
 }

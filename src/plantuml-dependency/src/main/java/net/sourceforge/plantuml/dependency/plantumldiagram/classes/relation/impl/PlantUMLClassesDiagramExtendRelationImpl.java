@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl;
 
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelationType.EXTEND_RELATION_TYPE;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramExtendRelation;
 
@@ -36,21 +37,21 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.Plan
  * @version 1.1.1
  */
 public class PlantUMLClassesDiagramExtendRelationImpl extends AbstractPlantUMLClassesDiagramRelation implements
-		PlantUMLClassesDiagramExtendRelation {
+        PlantUMLClassesDiagramExtendRelation {
 
-	/** Serial version UID. */
-	private static final long serialVersionUID = -1070564647806961773L;
+    /** Serial version UID. */
+    private static final long serialVersionUID = -1070564647806961773L;
 
-	/**
-	 * Full constructor.
-	 * 
-	 * @param firstName
-	 *            The first element name of the relation, mustn't be <code>null</code> nor empty.
-	 * @param secondName
-	 *            The second element name of the relation, mustn't be <code>null</code> nor empty.
-	 * @since 1.1.1
-	 */
-	public PlantUMLClassesDiagramExtendRelationImpl(final String firstName, final String secondName) {
-		super(firstName, secondName);
-	}
+    /**
+     * Full constructor.
+     * 
+     * @param firstName
+     *            The first element name of the relation, mustn't be <code>null</code> nor empty.
+     * @param secondName
+     *            The second element name of the relation, mustn't be <code>null</code> nor empty.
+     * @since 1.1.1
+     */
+    public PlantUMLClassesDiagramExtendRelationImpl(final String firstName, final String secondName) {
+        super(firstName, secondName, EXTEND_RELATION_TYPE);
+    }
 }

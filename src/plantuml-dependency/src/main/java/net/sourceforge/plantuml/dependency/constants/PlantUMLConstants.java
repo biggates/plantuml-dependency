@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.constants;
 
 /**
  * The class which stores all necessary plantUML constants as Strings.
- *
+ * 
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.1.1
@@ -35,9 +35,6 @@ public final class PlantUMLConstants {
 
     /** The string representing the plantUML "enduml" tag. */
     public static final String END_PLANTUML = "@enduml";
-
-    /** The string representing the plantUML "--|>" tag. */
-    public static final String IMPLEMENTS_RIGHT_PLANTUML = " --|> ";
 
     /** The string representing the plantUML "startuml" tag. */
     public static final String START_PLANTUML = "@startuml";
@@ -48,12 +45,9 @@ public final class PlantUMLConstants {
     /** The string representing the plantUML right stereotype separator tag. */
     public static final String STEREOTYPE_RIGHT_SEPARATOR = " >>";
 
-    /** The string representing the plantUML "..>" tag. */
-    public static final String USES_RIGHT_PLANTUML = " ..> ";
-
     /**
      * Private constructor to prevent from instantiation.
-     *
+     * 
      * @since 1.0
      */
     private PlantUMLConstants() {

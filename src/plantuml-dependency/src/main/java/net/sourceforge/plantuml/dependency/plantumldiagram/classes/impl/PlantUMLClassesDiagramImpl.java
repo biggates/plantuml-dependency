@@ -26,16 +26,17 @@ package net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl;
 
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
-import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 
 import net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram;
+import net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
@@ -163,14 +164,14 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
     public String getPlantUMLTextDescription() {
         final StringBuffer plantUMLDeclaractionBuffer = new StringBuffer(START_PLANTUML);
 
-        for (final PlantUMLClassesDiagramElement plantUMLElement : getPlantUMLClassesDiagramElements()) {
+        for (final WithDescription plantUMLElement : getPlantUMLClassesDiagramElements()) {
             plantUMLDeclaractionBuffer.append(LINE_SEPARATOR);
-            plantUMLDeclaractionBuffer.append(plantUMLElement);
+            plantUMLDeclaractionBuffer.append(plantUMLElement.getPlantUMLTextDescription());
         }
 
-        for (final PlantUMLClassesDiagramRelation plantUMLClassesDiagramRelation : getPlantUMLClassesDiagramRelations()) {
+        for (final WithDescription plantUMLClassesDiagramRelation : getPlantUMLClassesDiagramRelations()) {
             plantUMLDeclaractionBuffer.append(LINE_SEPARATOR);
-            plantUMLDeclaractionBuffer.append(plantUMLClassesDiagramRelation);
+            plantUMLDeclaractionBuffer.append(plantUMLClassesDiagramRelation.getPlantUMLTextDescription());
         }
 
         plantUMLDeclaractionBuffer.append(LINE_SEPARATOR);
