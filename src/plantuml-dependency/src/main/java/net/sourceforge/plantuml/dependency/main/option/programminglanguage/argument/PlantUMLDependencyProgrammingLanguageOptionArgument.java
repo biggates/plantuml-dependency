@@ -84,7 +84,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgument extends Abstrac
     @Override
     public ProgrammingLanguage parseArgument(final String argument) throws CommandLineException {
         ProgrammingLanguage language = null;
-        
+
         if (isNotEmpty(argument)) {
             try {
                 language = valueOfIgnoringCase(argument.toUpperCase());

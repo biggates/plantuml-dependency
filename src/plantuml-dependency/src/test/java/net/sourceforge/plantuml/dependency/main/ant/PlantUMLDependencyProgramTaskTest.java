@@ -37,9 +37,9 @@ import org.junit.Test;
 
 /**
  * JUnit test classes for {@link PlantUMLDependencyProgramTask}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.0
  * @version 1.1.0
  */
@@ -53,7 +53,7 @@ public class PlantUMLDependencyProgramTaskTest {
 
     /**
      * Creates a {@link PlantUMLDependencyProgramTask} test instance.
-     * 
+     *
      * @return a {@link PlantUMLDependencyProgramTask} test instance.
      * @since 1.1.0
      */

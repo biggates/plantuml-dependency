@@ -37,7 +37,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
-import net.sourceforge.mazix.components.ObjectTestWithString;
+import net.sourceforge.mazix.components.ComparableObjectTest;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 
 import org.junit.Test;
@@ -49,9 +49,9 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
-public class ClassJavaTypeTest extends ObjectTestWithString < ClassJavaType > {
+public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
 
     /** Java type test 1 instance. */
     @DataPoint
@@ -72,9 +72,10 @@ public class ClassJavaTypeTest extends ObjectTestWithString < ClassJavaType > {
      */
     @Test
     public void testCreateDependencyTypeAbstract() {
-        assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_ABSTRACT_DEPENDENCY_TYPE1
-                .getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getPackageName(), true, CLASS_ABSTRACT_DEPENDENCY_TYPE1
-                .getImportDependenciesCollection(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentInterfaces(),
+        assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getPackageName(), true,
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentInterfaces(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
@@ -85,11 +86,12 @@ public class ClassJavaTypeTest extends ObjectTestWithString < ClassJavaType > {
      */
     @Test
     public void testCreateDependencyTypeAbstractWithNativeMethods() {
-        assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE11, JAVA_TYPE1.createDependencyType(CLASS_ABSTRACT_DEPENDENCY_TYPE11
-                .getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE11.getPackageName(), true, CLASS_ABSTRACT_DEPENDENCY_TYPE11
-                .getImportDependenciesCollection(), CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentInterfaces(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE11
-                        .hasNativeMethods()));
+        assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE11, JAVA_TYPE1.createDependencyType(
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE11.getPackageName(), true,
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getImportDependenciesCollection(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentInterfaces(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentClasses(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.hasNativeMethods()));
     }
 
     /**
@@ -100,8 +102,8 @@ public class ClassJavaTypeTest extends ObjectTestWithString < ClassJavaType > {
     @Test
     public void testCreateDependencyTypeNotAbstract() {
         assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_DEPENDENCY_TYPE1.getName(),
-                CLASS_DEPENDENCY_TYPE1.getPackageName(), false, CLASS_DEPENDENCY_TYPE1
-                        .getImportDependenciesCollection(), CLASS_DEPENDENCY_TYPE1.getParentInterfaces(),
+                CLASS_DEPENDENCY_TYPE1.getPackageName(), false,
+                CLASS_DEPENDENCY_TYPE1.getImportDependenciesCollection(), CLASS_DEPENDENCY_TYPE1.getParentInterfaces(),
                 CLASS_DEPENDENCY_TYPE1.getParentClasses(), CLASS_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
@@ -114,8 +116,8 @@ public class ClassJavaTypeTest extends ObjectTestWithString < ClassJavaType > {
      */
     @Test
     public void testCreateParentDependencyTypeExtention() throws PlantUMLDependencyException {
-        assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createParentDependencyType(EXTENSION, CLASS_DEPENDENCY_TYPE1
-                .getName(), CLASS_DEPENDENCY_TYPE1.getPackageName()));
+        assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createParentDependencyType(EXTENSION,
+                CLASS_DEPENDENCY_TYPE1.getName(), CLASS_DEPENDENCY_TYPE1.getPackageName()));
     }
 
     /**

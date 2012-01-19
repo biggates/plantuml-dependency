@@ -37,9 +37,9 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.
 /**
  * The stub implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.1
  */
@@ -50,7 +50,7 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -64,7 +64,7 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -74,7 +74,7 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -84,7 +84,7 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

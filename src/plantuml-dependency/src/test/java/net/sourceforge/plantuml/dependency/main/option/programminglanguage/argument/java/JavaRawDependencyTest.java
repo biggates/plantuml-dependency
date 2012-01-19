@@ -34,7 +34,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
+import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -45,9 +45,9 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
-public class JavaRawDependencyTest extends DeepCloneableObjectTest < JavaRawDependency > {
+public class JavaRawDependencyTest extends ComparableAndDeepCloneableObjectTest < JavaRawDependency > {
 
     /** Java raw dependency test 1 instance. */
     @DataPoint

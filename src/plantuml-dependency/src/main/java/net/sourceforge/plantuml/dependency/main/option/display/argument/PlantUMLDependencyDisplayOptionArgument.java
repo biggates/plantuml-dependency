@@ -26,12 +26,11 @@ package net.sourceforge.plantuml.dependency.main.option.display.argument;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.EMPTY_OPTION_ARGUMENT_ERROR;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.NOT_DISPLAY_ARGUMENT_ERROR;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.getFullUsageDescriptions;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.getAllDisplayOptionsFullUsageDescriptions;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.valueOf;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.values;
 
@@ -63,7 +62,9 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
     private static final String USAGE_DESCRIPTION = MAIN_USAGE
             + " specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : "
             + asList(values())
-            + ". " + getFullUsageDescriptions(DEFAULT_DISPLAY_OPTIONS) + ". Note : These arguments implementations may not be taken into account following the chosen PROGRAMMING_LANGUAGE.";
+            + ". "
+            + getAllDisplayOptionsFullUsageDescriptions()
+            + ". Note : These arguments implementations may not be taken into account following the chosen PROGRAMMING_LANGUAGE.";
 
     /**
      * Default constructor.
@@ -94,7 +95,7 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
     @Override
     public Set < Display > parseArgument(final String argument) throws CommandLineException {
         Set < Display > displayArguments = null;
-        
+
         if (isNotEmpty(argument)) {
             displayArguments = new TreeSet < Display >();
             final StringTokenizer tokenizer = new StringTokenizer(argument, COMMA_CHAR);

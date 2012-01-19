@@ -32,6 +32,7 @@ import static net.sourceforge.mazix.components.utils.comparable.ComparableResult
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_DOESNT_MANAGED_IMPORT_TYPE_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.IMPORT_IS_AN_INTERFACE_FINE;
 import static net.sourceforge.plantuml.dependency.generic.type.ImportType.IMPORT_TYPES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
@@ -299,14 +300,13 @@ public abstract class DependencyTypeImpl implements DependencyType {
         final Set < PlantUMLClassesDiagramRelation > linkSet = new TreeSet < PlantUMLClassesDiagramRelation >();
 
         for (final GenericDependency abstractImportDependency : getImportDependenciesToGeneratePlantUML(displayOptions)) {
-            linkSet
-                    .add(new PlantUMLClassesDiagramUseRelationImpl(getFullName(), abstractImportDependency
-                            .getFullName()));
+            linkSet.add(new PlantUMLClassesDiagramUseRelationImpl(getPlantUMLClassesDiagramElement(),
+                    abstractImportDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
         for (final GenericDependency interfaceDependency : getParentInterfacesToGeneratePlantUML(displayOptions)) {
-            linkSet.add(new PlantUMLClassesDiagramImplementRelationImpl(getFullName(), interfaceDependency
-                    .getFullName()));
+            linkSet.add(new PlantUMLClassesDiagramImplementRelationImpl(getPlantUMLClassesDiagramElement(),
+                    interfaceDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
         linkSet.addAll(generatePlantUMLClassesDiagramRelationFooter(displayOptions));
@@ -357,7 +357,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
                     }
                 }
             } else {
-                // TODO log, import type doesn't have to be displayed
+                LOGGER.fine(buildLogString(DISPLAY_MODE_DOESNT_MANAGED_IMPORT_TYPE_FINE, importType));
             }
         }
 

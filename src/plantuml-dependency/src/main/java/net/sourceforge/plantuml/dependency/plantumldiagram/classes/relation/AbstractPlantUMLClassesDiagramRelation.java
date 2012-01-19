@@ -31,11 +31,13 @@ import static net.sourceforge.mazix.components.utils.comparable.ComparableResult
 
 import java.util.logging.Logger;
 
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
+
 /**
  * The abstract implementation of the {@link PlantUMLClassesDiagramRelation} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -47,36 +49,36 @@ public abstract class AbstractPlantUMLClassesDiagramRelation implements PlantUML
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(AbstractPlantUMLClassesDiagramRelation.class.getName());
 
-    /** The first element name of the relation. For instance, it can be "java.lang.String". */
-    private final String firstElementName;
+    /** The first element of the relation. */
+    private final PlantUMLClassesDiagramElement firstElement;
 
-    /** The second element name of the relation. For instance, it can be "java.lang.String". */
-    private final String secondElementName;
+    /** The second element of the relation. */
+    private final PlantUMLClassesDiagramElement secondElement;
 
     /** The relation type used in the plantUML language. */
     private final PlantUMLClassesDiagramRelationType type;
 
     /**
      * Full constructor.
-     * 
-     * @param firstName
-     *            The first element name of the relation, mustn't be <code>null</code> nor empty.
-     * @param secondName
-     *            The second element name of the relation, mustn't be <code>null</code> nor empty.
+     *
+     * @param firstElt
+     *            The first element of the relation, mustn't be <code>null</code> nor empty.
+     * @param secondElt
+     *            The second element of the relation, mustn't be <code>null</code> nor empty.
      * @param relationType
      *            The relation type used in the plantUML language, mustn't be <code>null</code>.
      * @since 1.1.1
      */
-    protected AbstractPlantUMLClassesDiagramRelation(final String firstName, final String secondName,
-            final PlantUMLClassesDiagramRelationType relationType) {
-        firstElementName = firstName;
-        secondElementName = secondName;
+    protected AbstractPlantUMLClassesDiagramRelation(final PlantUMLClassesDiagramElement firstElt,
+            final PlantUMLClassesDiagramElement secondElt, final PlantUMLClassesDiagramRelationType relationType) {
+        firstElement = firstElt;
+        secondElement = secondElt;
         type = relationType;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -86,9 +88,9 @@ public abstract class AbstractPlantUMLClassesDiagramRelation implements PlantUML
         if (this == o) {
             comparison = EQUAL.getResult();
         } else {
-            comparison = getFirstElementName().compareTo(o.getFirstElementName());
+            comparison = getFirstElement().compareTo(o.getFirstElement());
             if (comparison == 0) {
-                comparison = getSecondElementName().compareTo(o.getSecondElementName());
+                comparison = getSecondElement().compareTo(o.getSecondElement());
                 if (comparison == 0) {
                     comparison = getType().compareTo(getType());
                 }
@@ -100,7 +102,7 @@ public abstract class AbstractPlantUMLClassesDiagramRelation implements PlantUML
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -118,7 +120,7 @@ public abstract class AbstractPlantUMLClassesDiagramRelation implements PlantUML
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -133,18 +135,18 @@ public abstract class AbstractPlantUMLClassesDiagramRelation implements PlantUML
             return false;
         }
         final AbstractPlantUMLClassesDiagramRelation other = (AbstractPlantUMLClassesDiagramRelation) obj;
-        if (firstElementName == null) {
-            if (other.firstElementName != null) {
+        if (firstElement == null) {
+            if (other.firstElement != null) {
                 return false;
             }
-        } else if (!firstElementName.equals(other.firstElementName)) {
+        } else if (!firstElement.equals(other.firstElement)) {
             return false;
         }
-        if (secondElementName == null) {
-            if (other.secondElementName != null) {
+        if (secondElement == null) {
+            if (other.secondElement != null) {
                 return false;
             }
-        } else if (!secondElementName.equals(other.secondElementName)) {
+        } else if (!secondElement.equals(other.secondElement)) {
             return false;
         }
         if (type != other.type) {
@@ -155,37 +157,37 @@ public abstract class AbstractPlantUMLClassesDiagramRelation implements PlantUML
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
-    public String getFirstElementName() {
-        return firstElementName;
+    public PlantUMLClassesDiagramElement getFirstElement() {
+        return firstElement;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
     public String getPlantUMLTextDescription() {
-        return getFirstElementName() + getType().getRightRelationSymbol() + getSecondElementName();
+        return getFirstElement().getName() + getType().getRightRelationSymbol() + getSecondElement().getName();
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
-    public String getSecondElementName() {
-        return secondElementName;
+    public PlantUMLClassesDiagramElement getSecondElement() {
+        return secondElement;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -195,27 +197,27 @@ public abstract class AbstractPlantUMLClassesDiagramRelation implements PlantUML
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((firstElementName == null) ? 0 : firstElementName.hashCode());
-        result = prime * result + ((secondElementName == null) ? 0 : secondElementName.hashCode());
+        result = prime * result + ((firstElement == null) ? 0 : firstElement.hashCode());
+        result = prime * result + ((secondElement == null) ? 0 : secondElement.hashCode());
         result = prime * result + ((type == null) ? 0 : type.hashCode());
         return result;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [firstElementName=" + firstElementName + ", secondElementName="
-                + secondElementName + ", type=" + type + "]";
+        return getClass().getSimpleName() + " [firstElementName=" + firstElement + ", secondElement="
+                + secondElement + ", type=" + type + "]";
     }
 }

@@ -33,24 +33,24 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription;
 /**
  * Interface which represents a plantUML classes diagram spotted character. <code>
  * {@literal @}startuml<br>
- * class System << <font color="red">(S,#FF7700)</font> Singleton >><br>
+ * class System << (S,#FF7700) Singleton >><br>
  * {@literal @}enduml
  * </code>
- * 
+ *
  * <br>
  * <br>
  * Note that the generated text will only convert colors into their hexadecimal code, never in the
  * text form such as ;<br>
  * <code>
  * {@literal @}startuml<br>
- * class Date << <font color="red">(D,orchid)</font> >><br>
+ * class Date << (D,orchid) >><br>
  * {@literal @}enduml
  * </code>
- * 
+ *
  * @see <a href="http://plantuml.sourceforge.net/classes.html#Specific">PlantUML classes diagram
  *      Specific Spot page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -59,7 +59,7 @@ public interface PlantUMLSpottedCharacter extends Comparable < PlantUMLSpottedCh
 
     /**
      * Gets the spotted character.
-     * 
+     *
      * @return the spotted character.
      * @since 1.1.1
      */
@@ -67,7 +67,7 @@ public interface PlantUMLSpottedCharacter extends Comparable < PlantUMLSpottedCh
 
     /**
      * Gets the spotted color.
-     * 
+     *
      * @return the {@link HTMLColor} instance.
      * @since 1.1.1
      */

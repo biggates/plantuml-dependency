@@ -39,9 +39,9 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stere
 
 /**
  * The default {@link PlantUMLSpottedCharacter} implementation.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -56,12 +56,12 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
     /** The spotted character. */
     private final char character;
 
-    /** The spotted color */
+    /** The spotted color. */
     private final HTMLColor color;
 
     /**
      * Full constructor.
-     * 
+     *
      * @param charact
      *            the spotted character, mustn't be empty.
      * @param col
@@ -75,7 +75,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -96,7 +96,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -114,7 +114,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -144,7 +144,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -154,7 +154,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -164,7 +164,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -175,7 +175,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -189,7 +189,7 @@ public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

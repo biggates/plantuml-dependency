@@ -27,6 +27,8 @@ package net.sourceforge.plantuml.dependency.generic.type.impl;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
+import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.IMPORT_TYPE_NOT_FOUND;
 import static net.sourceforge.plantuml.dependency.generic.type.ImportType.IMPORT_TYPES;
 
 import java.util.Iterator;
@@ -267,7 +269,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
             if (importTypesSet.contains(importType)) {
                 dependenciesSet.addAll(importDependencies);
             } else {
-                // TODO log
+                LOGGER.fine(buildLogString(IMPORT_TYPE_NOT_FOUND, importType));
             }
         }
 

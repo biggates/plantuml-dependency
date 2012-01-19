@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -27,11 +27,11 @@ package net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation;
 /**
  * The enumeration which lists all plantUML relation types available in the plantUML classes diagram
  * language.
- * 
+ *
  * @see <a href="http://plantuml.sourceforge.net/classes.html#Relations">PlantUML classes diagram
  *      page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -43,7 +43,7 @@ public enum PlantUMLClassesDiagramRelationType {
     /** The implement relation type. */
     IMPLEMENT_RELATION_TYPE(" --|> "),
 
-    /** The use relation type */
+    /** The use relation type. */
     USE_RELATION_TYPE(" ..> ");
 
     /** The right relation symbol used in the plantUML classes diagram language. */
@@ -51,7 +51,7 @@ public enum PlantUMLClassesDiagramRelationType {
 
     /**
      * Full constructor.
-     * 
+     *
      * @param rightSymbol
      *            the right relation symbol used in the plantUML classes diagram language.
      * @since 1.1.1
@@ -62,7 +62,7 @@ public enum PlantUMLClassesDiagramRelationType {
 
     /**
      * Gets the value of <code>rightRelationSymbol</code>.
-     * 
+     *
      * @return the value of <code>rightRelationSymbol</code>.
      * @since 1.1.1
      */

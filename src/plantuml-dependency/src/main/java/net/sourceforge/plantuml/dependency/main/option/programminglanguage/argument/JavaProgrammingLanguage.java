@@ -26,10 +26,12 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 
 import static java.lang.Class.forName;
 import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.BACK_SLASH_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.CARRIAGE_RETURN_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.INFERIOR_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.LINE_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.QUOTATION_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SLASH_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.STAR_CHAR;
@@ -128,13 +130,13 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             programmingLanguageContext.addSeenDependencies(NATIVE_DEPENDENCY);
         }
 
-        final Set < GenericDependency > parentImplementationsDependencies = extractParentDependencies(javaRawDependency
-                .getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(), importDependenciesCollection,
-                programmingLanguageContext, javaRawDependency.getPackageName());
+        final Set < GenericDependency > parentImplementationsDependencies = extractParentDependencies(
+                javaRawDependency.getType(), IMPLEMENTATION, javaRawDependency.getParentImplementations(),
+                importDependenciesCollection, programmingLanguageContext, javaRawDependency.getPackageName());
 
-        final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(javaRawDependency
-                .getType(), EXTENSION, javaRawDependency.getParentExtentions(), importDependenciesCollection,
-                programmingLanguageContext, javaRawDependency.getPackageName());
+        final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(
+                javaRawDependency.getType(), EXTENSION, javaRawDependency.getParentExtentions(),
+                importDependenciesCollection, programmingLanguageContext, javaRawDependency.getPackageName());
 
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
@@ -356,7 +358,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the index where to start to look for the end of a generic definition, must be
      *            between 0 and <code>str.length()</code>.
      * @param str
-     *            the string where to look for the end comment character.
+     *            the string where to look for the end generic definition character.
      * @return the index of the character representing the end of a generic definition. If not
      *         found, <code>beginningIndex</code> is returned.
      */
@@ -452,6 +454,40 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             } else {
                 index++;
             }
+        }
+
+        return index;
+    }
+
+    /**
+     * Get the index of the character representing the end of a string content (i.e. the first
+     * quotation character) in the passed string, starting from the passed index.
+     *
+     * @param beginningIndex
+     *            the index where to start to look for the end of a string end content, must be
+     *            between 0 and <code>str.length()</code>.
+     * @param str
+     *            the string where to look for the end string character.
+     * @return the index of the character representing the end of a string content. If not found,
+     *         <code>beginningIndex</code> is returned.
+     */
+    private static int getNextEndOfStringContent(final int beginningIndex, final String str) {
+        int index = beginningIndex;
+        boolean found = false;
+
+        while (index < str.length() && !found) {
+            final char currentCharacter = str.charAt(index);
+            if (currentCharacter == QUOTATION_CHAR.charAt(0)) {
+                final char previousCharacter = str.charAt(index - 1);
+                if (previousCharacter != BACK_SLASH_CHAR.charAt(0)) {
+                    found = true;
+                }
+            }
+            index++;
+        }
+
+        if (!found) {
+            index = beginningIndex;
         }
 
         return index;
@@ -729,7 +765,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * Prepares the java source file content to remove all unnecessary strings which are not used in
-     * the analysis, i.e. comments and generic.
+     * the analysis, i.e. comments, generic and string content within the source code.
      *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
@@ -767,6 +803,15 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             } else if (currentCharacter == INFERIOR_CHAR.charAt(0)) {
                 if (cursor + 1 < javaSourceFileContent.length()) {
                     cursor = getNextEndOfGenericIndex(cursor + 1, javaSourceFileContent);
+                } else {
+                    buffer.append(currentCharacter);
+                    cursor++;
+                }
+            } else if (currentCharacter == QUOTATION_CHAR.charAt(0)) {
+                if (cursor + 1 < javaSourceFileContent.length()) {
+                    cursor = getNextEndOfStringContent(cursor + 1, javaSourceFileContent);
+                    buffer.append(QUOTATION_CHAR);
+                    buffer.append(QUOTATION_CHAR);
                 } else {
                     buffer.append(currentCharacter);
                     cursor++;

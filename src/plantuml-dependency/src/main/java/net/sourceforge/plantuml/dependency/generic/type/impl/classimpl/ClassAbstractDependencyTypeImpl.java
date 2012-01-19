@@ -39,9 +39,9 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.
 /**
  * The class abstract implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType} interface.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.1
  */
@@ -52,7 +52,7 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -67,7 +67,7 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
 
     /**
      * Full constructor.
-     * 
+     *
      * @param dependencyName
      *            The dependency type name, such as "String", mustn't be <code>null</code>.
      * @param dependencyPackageName
@@ -95,7 +95,7 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -105,7 +105,7 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

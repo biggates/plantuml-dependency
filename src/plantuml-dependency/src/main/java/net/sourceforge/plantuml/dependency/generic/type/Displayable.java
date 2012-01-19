@@ -31,9 +31,9 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 /**
  * The interface which describes a displayable element, i.e. an element which can be displayed or
  * not in the generated plantUML description file.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -41,7 +41,7 @@ public interface Displayable {
 
     /**
      * Tells if the dependency has to be displayed following the passed display options.
-     * 
+     *
      * @param displayOptions
      *            the {@link Set} of display options, mustn't be <code>null</code>, if empty, this
      *            method always returns <code>false</code>.

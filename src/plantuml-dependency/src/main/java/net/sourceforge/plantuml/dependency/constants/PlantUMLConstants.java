@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.constants;
 
 /**
  * The class which stores all necessary plantUML constants as Strings.
- * 
+ *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
  * @version 1.1.1
@@ -47,7 +47,7 @@ public final class PlantUMLConstants {
 
     /**
      * Private constructor to prevent from instantiation.
-     * 
+     *
      * @since 1.0
      */
     private PlantUMLConstants() {

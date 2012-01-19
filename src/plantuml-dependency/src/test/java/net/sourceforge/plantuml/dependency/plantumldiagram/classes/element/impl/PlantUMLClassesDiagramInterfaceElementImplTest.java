@@ -4,7 +4,7 @@
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License 
+ modify it under the terms of the GNU General Public License
  or GNU Lesser General Public License as published by the
  Free Software Foundation; either version 3 of the License,
  or (at your option) any later version.
@@ -34,36 +34,46 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
 public class PlantUMLClassesDiagramInterfaceElementImplTest extends
         ComparableAndDeepCloneableObjectTest < PlantUMLClassesDiagramInterfaceElementImpl > {
 
-    /** PlantUML classes diagram test 1 instance. */
+    /** PlantUML classes diagram interface element test 1 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST1 = new PlantUMLClassesDiagramInterfaceElementImpl(
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage");
+            "net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription");
 
-    /** PlantUML classes diagram test 2 instance. */
+    /** PlantUML classes diagram interface element test 2 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST2 = new PlantUMLClassesDiagramInterfaceElementImpl(
-            "net.sourceforge.plantuml.dependency.generic.GenericDependency");
+            "net.sourceforge.plantuml.dependency.constants.PlantUMLConstants");
 
-    /** PlantUML classes diagram test 3 instance. */
+    /** PlantUML classes diagram interface element test 3 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST3 = new PlantUMLClassesDiagramInterfaceElementImpl(
-            "net.sourceforge.plantuml.dependency.generic.GenericDependency");
+            "net.sourceforge.plantuml.dependency.constants.PlantUMLConstants");
 
-    /** PlantUML classes diagram test 4 instance. */
+    /** PlantUML classes diagram interface element test 4 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST4 = new PlantUMLClassesDiagramInterfaceElementImpl(
-            "net.sourceforge.plantuml.dependency.generic.GenericDependency", PLANTUML_STEREOTYPE_TEST6);
+            "net.sourceforge.plantuml.dependency.constants.PlantUMLConstants", PLANTUML_STEREOTYPE_TEST6);
 
-    /** PlantUML classes diagram test 5 instance. */
+    /** PlantUML classes diagram interface element test 5 instance. */
     @DataPoint
-    public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST5 = null;
+    public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST5 = new PlantUMLClassesDiagramInterfaceElementImpl(
+            "java.lang.Integer");
+
+    /** PlantUML classes diagram interface element test 6 instance. */
+    @DataPoint
+    public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST6 = new PlantUMLClassesDiagramInterfaceElementImpl(
+            "PlantUMLConstants", PLANTUML_STEREOTYPE_TEST6);
+
+    /** PlantUML classes diagram interface element test 8 instance. */
+    @DataPoint
+    public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST8 = null;
 
     /**
      * Test method for
@@ -83,7 +93,7 @@ public class PlantUMLClassesDiagramInterfaceElementImplTest extends
     @Test
     public void testGetName() {
         assertEquals(PLANTUML_INTERFACE_ELEMENT_TEST3.getName(),
-                "net.sourceforge.plantuml.dependency.generic.GenericDependency");
+                "net.sourceforge.plantuml.dependency.constants.PlantUMLConstants");
     }
 
     /**
@@ -93,7 +103,7 @@ public class PlantUMLClassesDiagramInterfaceElementImplTest extends
      */
     @Test
     public void testGetPlantUMLTextDescriptionWithoutStereotype() {
-        assertEquals(INTERFACE_TAG.getTagName() + "net.sourceforge.plantuml.dependency.generic.GenericDependency",
+        assertEquals(INTERFACE_TAG.getTagName() + PLANTUML_INTERFACE_ELEMENT_TEST2.getName(),
                 PLANTUML_INTERFACE_ELEMENT_TEST2.getPlantUMLTextDescription());
     }
 
@@ -104,9 +114,8 @@ public class PlantUMLClassesDiagramInterfaceElementImplTest extends
      */
     @Test
     public void testGetPlantUMLTextDescriptionWithStereotype() {
-        assertEquals(INTERFACE_TAG.getTagName()
-                + "net.sourceforge.plantuml.dependency.generic.GenericDependency << (B,#f0f8ff) Test it ! >>",
-                PLANTUML_INTERFACE_ELEMENT_TEST4.getPlantUMLTextDescription());
+        assertEquals(INTERFACE_TAG.getTagName() + PLANTUML_INTERFACE_ELEMENT_TEST4.getName()
+                + " << (B,#f0f8ff) Test it ! >>", PLANTUML_INTERFACE_ELEMENT_TEST4.getPlantUMLTextDescription());
     }
 
     /**

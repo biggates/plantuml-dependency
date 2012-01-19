@@ -33,9 +33,9 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.P
 /**
  * The mother interface of all plantUML classes diagram elements. The classic elements are usually
  * "class", "interface", "enum" and "abstract class".
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -45,7 +45,7 @@ public interface PlantUMLClassesDiagramElement extends WithDescription,
     /**
      * Gets the element tag, which represents the element string used in the plantUML classes
      * diagram language.
-     * 
+     *
      * @return the element tag, as a {@link PlantUMLClassesDiagramElementTag} instance.
      * @since 1.1.1
      */
@@ -54,7 +54,7 @@ public interface PlantUMLClassesDiagramElement extends WithDescription,
     /**
      * Gets the full element name, i.e. the package name and the element name. For instance, it can
      * be "java.lang.String".
-     * 
+     *
      * @return the full element name.
      * @since 1.1.1
      */

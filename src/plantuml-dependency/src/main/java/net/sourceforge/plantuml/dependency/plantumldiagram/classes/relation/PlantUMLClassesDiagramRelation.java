@@ -28,15 +28,16 @@ import java.io.Serializable;
 
 import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 
 /**
  * The mother interface of all plantUML classes diagram relations. The classic relations used are
  * usually "implements", "extends" and "uses".<br>
  * A relation contains two element and the relation should always be read as follows :<br>
  * "First Element -> Second Element"
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -44,24 +45,24 @@ public interface PlantUMLClassesDiagramRelation extends WithDescription,
         DeepCloneable < PlantUMLClassesDiagramRelation >, Serializable, Comparable < PlantUMLClassesDiagramRelation > {
 
     /**
-     * Gets the first element name of the relation. For instance, it can be "java.lang.String".
-     * 
-     * @return the first element name of the relation.
+     * Gets the first element of the relation.
+     *
+     * @return the first element of the relation.
      * @since 1.1.1
      */
-    String getFirstElementName();
+    PlantUMLClassesDiagramElement getFirstElement();
 
     /**
-     * Gets the second element name of the relation. For instance, it can be "java.lang.String".
-     * 
-     * @return the second element name of the relation.
+     * Gets the second element of the relation.
+     *
+     * @return the second element of the relation.
      * @since 1.1.1
      */
-    String getSecondElementName();
+    PlantUMLClassesDiagramElement getSecondElement();
 
     /**
      * Gets the relation type used in the plantUML language.
-     * 
+     *
      * @return the relation type used in the plantUML language.
      * @since 1.1.1
      */

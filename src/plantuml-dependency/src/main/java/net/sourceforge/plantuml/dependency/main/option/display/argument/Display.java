@@ -30,14 +30,15 @@ import static net.sourceforge.mazix.components.constants.CharacterConstants.COMM
 import static net.sourceforge.mazix.components.constants.CharacterConstants.QUOTATION_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
 /**
  * The enumeration which specifies display options.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.1
  */
@@ -71,9 +72,19 @@ public enum Display {
     public static final Set < Display > DISPLAY_OPTIONS = new TreeSet < Display >(asList(values()));
 
     /**
+     * Prints the all display options as a comma separated String of their full descriptions.
+     *
+     * @return the comma separated String of all display options descriptions.
+     * @since 1.1.1
+     */
+    public static String getAllDisplayOptionsFullUsageDescriptions() {
+        return getFullUsageDescriptions(DISPLAY_OPTIONS);
+    }
+
+    /**
      * Build the string which contains the usage descriptions of all displays options which are
      * available.
-     * 
+     *
      * @param displayOptions
      *            the Set of all displays options to get the full usage description from.
      * @return the full usage description of all displays options.
@@ -81,40 +92,15 @@ public enum Display {
      */
     public static String getFullUsageDescriptions(final Set < Display > displayOptions) {
         final StringBuffer buffer = new StringBuffer();
-
-        for (int i = 0; i < values().length - 1; i++) {
-
-            final Display display = values()[i];
+        Iterator < Display > iterator = displayOptions.iterator();
+        while (iterator.hasNext()) {
+            Display display = iterator.next();
             buffer.append(display.getFullUsageDescription());
-            buffer.append(COMMA_CHAR);
-            buffer.append(SPACE_CHAR);
+            if (iterator.hasNext()) {
+                buffer.append(COMMA_CHAR);
+                buffer.append(SPACE_CHAR);
+            }
         }
-
-        final Display lastDisplay = values()[values().length - 1];
-        buffer.append(lastDisplay.getFullUsageDescription());
-
-        return buffer.toString();
-    }
-
-    /**
-     * Prints the {@link Set} of all display options as a comma separated String.
-     * 
-     * @return the comma separated String of all display options.
-     * @since 1.1.1
-     */
-    public static String getSetAsSeparataredCommaString() {
-        final StringBuffer buffer = new StringBuffer();
-
-        for (int i = 0; i < values().length - 1; i++) {
-
-            final Display display = values()[i];
-            buffer.append(display.getFullUsageDescription());
-            buffer.append(COMMA_CHAR);
-            buffer.append(SPACE_CHAR);
-        }
-
-        final Display lastDisplay = values()[values().length - 1];
-        buffer.append(lastDisplay.getFullUsageDescription());
 
         return buffer.toString();
     }
@@ -124,7 +110,7 @@ public enum Display {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param usageDesc
      *            the display usage description.
      * @since 1.1.1
@@ -135,7 +121,7 @@ public enum Display {
 
     /**
      * Gets the string containing the full display usage description.
-     * 
+     *
      * @return the full display usage description.
      * @since 1.1.1
      */
@@ -153,7 +139,7 @@ public enum Display {
 
     /**
      * Gets the string containing the display usage description.
-     * 
+     *
      * @return the display usage description.
      * @since 1.1.1
      */
@@ -163,7 +149,7 @@ public enum Display {
 
     /**
      * Sets the value of usageDescription.
-     * 
+     *
      * @param value
      *            the usageDescription to set.
      * @see #getUsageDescription()
@@ -175,7 +161,7 @@ public enum Display {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

@@ -54,9 +54,9 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.Inter
 
 /**
  * The enum {@link JavaType} implementation.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */
@@ -67,7 +67,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param programmingLanguageKeyword
      *            The java type language keyword, mustn't be <code>null</code>.
      * @since 1.0
@@ -78,7 +78,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -98,7 +98,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -124,7 +124,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -134,7 +134,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override
@@ -148,7 +148,7 @@ class EnumJavaType extends JavaType {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.0
      */
     @Override

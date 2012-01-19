@@ -26,9 +26,9 @@ package net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation;
 
 /**
  * The interface representing the "implements" relation, following the plantUML classes diagram language.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */

@@ -33,9 +33,9 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stere
 
 /**
  * The default {@link PlantUMLClassesDiagramInterfaceElement} implementation.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -50,7 +50,7 @@ public class PlantUMLClassesDiagramInterfaceElementImpl extends AbstractPlantUML
 
     /**
      * Medium constructor.
-     * 
+     *
      * @param fullName
      *            the element full name, mustn't be <code>null</code>.
      * @since 1.1.1
@@ -61,7 +61,7 @@ public class PlantUMLClassesDiagramInterfaceElementImpl extends AbstractPlantUML
 
     /**
      * Full constructor.
-     * 
+     *
      * @param fullName
      *            the element full name, mustn't be <code>null</code>.
      * @param stereotyp
@@ -75,7 +75,7 @@ public class PlantUMLClassesDiagramInterfaceElementImpl extends AbstractPlantUML
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -88,7 +88,7 @@ public class PlantUMLClassesDiagramInterfaceElementImpl extends AbstractPlantUML
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -115,7 +115,7 @@ public class PlantUMLClassesDiagramInterfaceElementImpl extends AbstractPlantUML
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -125,7 +125,7 @@ public class PlantUMLClassesDiagramInterfaceElementImpl extends AbstractPlantUML
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -135,7 +135,7 @@ public class PlantUMLClassesDiagramInterfaceElementImpl extends AbstractPlantUML
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -148,7 +148,7 @@ public class PlantUMLClassesDiagramInterfaceElementImpl extends AbstractPlantUML
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

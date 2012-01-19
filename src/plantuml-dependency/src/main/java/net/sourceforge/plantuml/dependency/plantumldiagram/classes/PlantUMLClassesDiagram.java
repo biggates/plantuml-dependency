@@ -35,11 +35,11 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.Plan
  * defined by two things : the elements and their relations to each other.<br>
  * For instance, this class may be an object oriented description of the following plantUML text :<br>
  * <code>
- * <font color="red">{@literal @}startuml<br>
+ * {@literal @}startuml<br>
  * Class01 "1" *-- "many" Class02 : contains<br>
  * Class03 o-- Class04 : agregation<br>
  * Class05 --> "1" Class06<br>
- * {@literal @}enduml</font>
+ * {@literal @}enduml
  * </code>
  *
  * @see <a href="http://plantuml.sourceforge.net/classes.html">PlantUML classes diagram page</a>

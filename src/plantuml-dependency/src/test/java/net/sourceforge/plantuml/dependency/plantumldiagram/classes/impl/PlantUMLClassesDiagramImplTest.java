@@ -28,11 +28,14 @@ import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.END_PLANTUML;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.START_PLANTUML;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImplTest.PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST3;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST1;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST2;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImplTest.PLANTUML_ENUM_ELEMENT_TEST3;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST3;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST1;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.TreeSet;
 
@@ -77,27 +80,16 @@ public class PlantUMLClassesDiagramImplTest extends DeepCloneableObjectTest < Pl
 
     /** PlantUML classes diagram test 5 instance. */
     @DataPoint
-    public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST5 = null;
+    public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST5 = new PlantUMLClassesDiagramImpl(
+            new TreeSet < PlantUMLClassesDiagramElement >(asList(new PlantUMLClassesDiagramElement[] {
+                    PLANTUML_CLASS_ELEMENT_TEST1, PLANTUML_CLASS_ELEMENT_TEST2, PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST3,
+                    PLANTUML_ENUM_ELEMENT_TEST3, PLANTUML_INTERFACE_ELEMENT_TEST3})),
+            new TreeSet < PlantUMLClassesDiagramRelation >(
+                    asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST1})));
 
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl#getPlantUMLTextDescription()}
-     * .
-     */
-    @Test
-    public void testGetPlantUMLTextDescriptionEmpty() {
-        assertEquals(START_PLANTUML + LINE_SEPARATOR + END_PLANTUML, PLANTUML_CLASSES_DIAGRAM_TEST4.getPlantUMLTextDescription());
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl#getPlantUMLTextDescription()}
-     * .
-     */
-    @Test
-    public void testGetPlantUMLTextDescriptionWithAllDifferentElements() {
-        assertEquals(START_PLANTUML + LINE_SEPARATOR + END_PLANTUML, PLANTUML_CLASSES_DIAGRAM_TEST3.getPlantUMLTextDescription());
-    }
+    /** PlantUML classes diagram test 6 instance. */
+    @DataPoint
+    public static final PlantUMLClassesDiagramImpl PLANTUML_CLASSES_DIAGRAM_TEST6 = null;
 
     /**
      * Test method for
@@ -120,6 +112,36 @@ public class PlantUMLClassesDiagramImplTest extends DeepCloneableObjectTest < Pl
      */
     @Test
     public void testGetPlantUMLClassesDiagramRelations() {
-        fail("Not yet implemented");
+        assertEquals(1, PLANTUML_CLASSES_DIAGRAM_TEST5.getPlantUMLClassesDiagramRelations().size());
+        assertTrue(PLANTUML_CLASSES_DIAGRAM_TEST5.getPlantUMLClassesDiagramRelations().contains(
+                PLANTUML_USE_RELATION_TEST1));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl#getPlantUMLTextDescription()}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLTextDescriptionEmpty() {
+        assertEquals(START_PLANTUML + LINE_SEPARATOR + END_PLANTUML,
+                PLANTUML_CLASSES_DIAGRAM_TEST4.getPlantUMLTextDescription());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl#getPlantUMLTextDescription()}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLTextDescriptionWithAllDifferentElements() {
+        assertEquals(
+                START_PLANTUML + LINE_SEPARATOR + PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST3.getPlantUMLTextDescription()
+                        + LINE_SEPARATOR + PLANTUML_CLASS_ELEMENT_TEST2.getPlantUMLTextDescription() + LINE_SEPARATOR
+                        + PLANTUML_CLASS_ELEMENT_TEST1.getPlantUMLTextDescription() + LINE_SEPARATOR
+                        + PLANTUML_ENUM_ELEMENT_TEST3.getPlantUMLTextDescription() + LINE_SEPARATOR
+                        + PLANTUML_INTERFACE_ELEMENT_TEST3.getPlantUMLTextDescription() + LINE_SEPARATOR
+                        + PLANTUML_USE_RELATION_TEST1.getPlantUMLTextDescription() + LINE_SEPARATOR + END_PLANTUML,
+                PLANTUML_CLASSES_DIAGRAM_TEST5.getPlantUMLTextDescription());
     }
 }

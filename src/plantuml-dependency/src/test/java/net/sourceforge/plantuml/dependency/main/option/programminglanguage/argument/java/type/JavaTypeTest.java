@@ -34,7 +34,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
 
-import net.sourceforge.mazix.components.ObjectTestWithString;
+import net.sourceforge.mazix.components.ComparableObjectTest;
 import net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;
 
 import org.junit.Test;
@@ -46,9 +46,9 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1.1
  */
-public class JavaTypeTest extends ObjectTestWithString < ProgrammingLanguage > {
+public class JavaTypeTest extends ComparableObjectTest < ProgrammingLanguage > {
 
     /** Java type test 1 instance. */
     @DataPoint

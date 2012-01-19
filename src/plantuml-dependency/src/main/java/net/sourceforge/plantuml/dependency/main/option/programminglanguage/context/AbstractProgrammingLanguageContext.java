@@ -178,17 +178,6 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     /**
      * {@inheritDoc}
      *
-     * @since 0.8
-     */
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        // TODO [graffity] Auto-generated method stub
-        return super.clone();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
      * @since 1.0
      */
     @Override
@@ -276,12 +265,17 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     }
 
     /**
-     * {@inheritDoc}
+     * Gets all dependencies which have been seen (as import for instance) and parsed within the
+     * context and which have to be displayed following display options.
      *
+     * @param displayOpts
+     *            the {@link Set} of display options, mustn't be <code>null</code>.
+     * @return the {@link Collection} of all {@link GenericDependency} which have been seen (as
+     *         import for instance) and parsed and associated with this context and which have to be
+     *         displayed following display options.
      * @since 1.1.1
      */
-    @Override
-    public Collection < GenericDependency > getDisplayableParsedAndSeenDependencies(final Set < Display > displayOpts) {
+    private Collection < GenericDependency > getDisplayableParsedAndSeenDependencies(final Set < Display > displayOpts) {
         final Set < GenericDependency > displayableParsedAndSeenDependencies = new TreeSet < GenericDependency >();
         for (final GenericDependency dependency : getParsedAndSeenDependencies()) {
             if (dependency.getDependencyType().isDisplayable(displayOpts)) {
@@ -290,23 +284,6 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         }
 
         return displayableParsedAndSeenDependencies;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
-    public Collection < GenericDependency > getDisplayableParsedDependencies(final Set < Display > displayOpts) {
-        final Set < GenericDependency > displayableParsedDependencies = new TreeSet < GenericDependency >();
-        for (final GenericDependency dependency : getParsedDependencies()) {
-            if (dependency.getDependencyType().isDisplayable(displayOpts)) {
-                displayableParsedDependencies.add(dependency);
-            }
-        }
-
-        return displayableParsedDependencies;
     }
 
     /**
@@ -375,8 +352,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         for (final GenericDependency genericDependency : getDisplayableParsedAndSeenDependencies(getDisplayOptions())) {
             plantUMLClassesDiagramElements
                     .add(genericDependency.getDependencyType().getPlantUMLClassesDiagramElement());
-            plantUMLClassesDiagramRelations.addAll(genericDependency.getDependencyType().getPlantUMLClassesDiagramRelations(
-                    getDisplayOptions()));
+            plantUMLClassesDiagramRelations.addAll(genericDependency.getDependencyType()
+                    .getPlantUMLClassesDiagramRelations(getDisplayOptions()));
         }
 
         return new PlantUMLClassesDiagramImpl(plantUMLClassesDiagramElements, plantUMLClassesDiagramRelations);

@@ -41,9 +41,9 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stere
 
 /**
  * The default {@link PlantUMLStereotype} implementation.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -63,7 +63,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * Medium constructor.
-     * 
+     *
      * @param spottedCharacter
      *            The spotted character as a {@link PlantUMLSpottedCharacter}, if any. May be
      *            <code>null</code>.
@@ -75,7 +75,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * Medium constructor.
-     * 
+     *
      * @param txt
      *            the stereotype inner text, may be empty but not <code>null</code>.
      * @since 1.1.1
@@ -86,7 +86,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * Full constructor.
-     * 
+     *
      * @param txt
      *            the stereotype inner text, may be empty but not <code>null</code>.
      * @param spottedCharacter
@@ -101,7 +101,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -126,7 +126,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -147,7 +147,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -181,7 +181,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -191,7 +191,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -204,7 +204,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -214,7 +214,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override
@@ -228,7 +228,7 @@ public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.1.1
      */
     @Override

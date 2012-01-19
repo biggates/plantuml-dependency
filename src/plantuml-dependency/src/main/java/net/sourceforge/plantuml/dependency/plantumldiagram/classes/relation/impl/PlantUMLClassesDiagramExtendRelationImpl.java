@@ -25,14 +25,15 @@
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl;
 
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelationType.EXTEND_RELATION_TYPE;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramExtendRelation;
 
 /**
  * The default {@link PlantUMLClassesDiagramExtendRelation} implementation.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */
@@ -44,14 +45,14 @@ public class PlantUMLClassesDiagramExtendRelationImpl extends AbstractPlantUMLCl
 
     /**
      * Full constructor.
-     * 
-     * @param firstName
-     *            The first element name of the relation, mustn't be <code>null</code> nor empty.
-     * @param secondName
-     *            The second element name of the relation, mustn't be <code>null</code> nor empty.
+     *
+     * @param firstElt
+     *            The first element of the relation, mustn't be <code>null</code> nor empty.
+     * @param secondElt
+     *            The second element of the relation, mustn't be <code>null</code> nor empty.
      * @since 1.1.1
      */
-    public PlantUMLClassesDiagramExtendRelationImpl(final String firstName, final String secondName) {
-        super(firstName, secondName, EXTEND_RELATION_TYPE);
+    public PlantUMLClassesDiagramExtendRelationImpl(final PlantUMLClassesDiagramElement firstElt, final PlantUMLClassesDiagramElement secondElt) {
+        super(firstElt, secondElt, EXTEND_RELATION_TYPE);
     }
 }

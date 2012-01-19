@@ -40,7 +40,7 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramExtendRelationImpl;
 
 /**
  * The class implementation of the
@@ -141,7 +141,8 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
                 .generatePlantUMLClassesDiagramRelationFooter(displayOptions);
 
         for (final GenericDependency classDependency : getParentClassesToGeneratePlantUML(displayOptions)) {
-            linkSet.add(new PlantUMLClassesDiagramImplementRelationImpl(getFullName(), classDependency.getFullName()));
+            linkSet.add(new PlantUMLClassesDiagramExtendRelationImpl(getPlantUMLClassesDiagramElement(),
+                    classDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
         return linkSet;

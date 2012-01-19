@@ -28,9 +28,9 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stere
 
 /**
  * The interface representing the "enum" element, following the plantUML classes diagram language.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.1
  * @version 1.1.1
  */

@@ -26,14 +26,18 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.cont
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PACKAGES;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImplTest.PLANTUML_CLASSES_DIAGRAM_TEST2;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
+import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 
@@ -42,13 +46,14 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link JavaProgrammingLanguageContext}.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.1.0
  */
-public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest < JavaProgrammingLanguageContextTest > {
+public class JavaProgrammingLanguageContextTest extends
+        ComparableAndDeepCloneableObjectTest < JavaProgrammingLanguageContextTest > {
 
     /** Java programming language test 1 instance. */
     @DataPoint
@@ -194,6 +199,26 @@ public class JavaProgrammingLanguageContextTest extends DeepCloneableObjectTest 
     @Test
     public void testGetPlantUMLClassesDiagram() {
         assertEquals(PLANTUML_CLASSES_DIAGRAM_TEST2, JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.getPlantUMLClassesDiagram());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#hasToDisplay(net.sourceforge.plantuml.dependency.main.option.display.argument.Display)}
+     * .
+     */
+    @Test
+    public void testHasToDisplayWithExistingDisplay() {
+        assertTrue(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.hasToDisplay(ABSTRACT_CLASSES));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#hasToDisplay(net.sourceforge.plantuml.dependency.main.option.display.argument.Display)}
+     * .
+     */
+    @Test
+    public void testHasToDisplayWithNotExistingDisplay() {
+        assertFalse(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.hasToDisplay(ONLY_PACKAGES));
     }
 
     // TODO better test the getPlantUMLDiagram method with display option and with specific context
