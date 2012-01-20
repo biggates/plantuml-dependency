@@ -3,7 +3,7 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 
 ?, Mar 2012 - 1.1.1
 ====================
-- PlantUML elements and relations are now sorted in the generated output file
+- Elements (classes, enums, interfaces and abstract classes) are now sorted in the generated output file
 - Fixed a bug which causes to write import and native dependencies in the output file from string contents contained in the parsed source files. String contents are now removed from the source code before analysis
 - Fixed a bug which causes the program to stop when a java source file couldn't be read (bug 3377023 : http://sourceforge.net/tracker/?func=detail&aid=3377023&group_id=334674&atid=1402785)
 - Fixed a bug with native dependency regular expression which didn't work in some particular cases
@@ -28,7 +28,9 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 
 Command line Usage
 ====================
-	java -jar plantuml-dependency-1.0.1.jar [OPTIONS]
+
+Usage:
+	java -jar plantuml-dependency-1.2.0.jar [OPTIONS]
 
 
 where optional options are:
@@ -39,6 +41,10 @@ where optional options are:
 	-b, --basedir DIR
 		The base directory where to look for source files. If not specified, the default pattern is "." i.e. the directory where the program is launched from.
 		DIR specifies a valid and exsiting directory path, not a single file. It can be absolute or relative.
+
+	-d, --display DISPLAY_OPTIONS
+		To specify class diagram objects to display. If not specified, the default is [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]
+		DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. "abstract_classes" : displays parsed source files which are abstract classes, "classes" : displays parsed source files which are classes (not abstract), "enums" : displays parsed source files which are enums, "extensions" : displays dependencies which are extended by parsed source files, "implementations" : displays dependencies which are implemented by parsed source files, "imports" : displays import (not static) of all parsed source files, "interfaces" : displays parsed source files which are interfaces, "native_methods" : displays links to the native dependency, "static_imports" : displays static imports of all parsed source files.
 
 	-e, --exclude FILE_PATTERN
 		To exclude files that match the provided pattern. If not specified, no file is excluded.
@@ -53,23 +59,24 @@ where optional options are:
 
 	-o, --output FILE
 		To specify the output file path where to generate the PlantUML description.
-		FILE specifies a valid file path, where the file doesn't already exist and is not a directory. It can be absolute or relative.
+		FILE specifies a valid file path, where the file can exist or not and is not a directory. It can be absolute or relative. If the file already exists, it overrides it.
 
 	-v, --verbose [VERBOSE_LEVEL]
 		To display log information.
-		VERBOSE_LEVEL specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300. By default, if the verbose option is specified but the level is not set, the value "INFO":800 is taken.
+		VERBOSE_LEVEL specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300. By default, if the verbose option is specified but the level is not set, the value "INFO":800 is taken. If not specified, the default value is "WARNING":900.
 
 	-version
 		To display versions information about PlantUML Dependency and Java.
 
 Examples:
 
-	java -jar plantuml-dependency-1.0.1.jar -h
-	java -jar plantuml-dependency-1.0.1.jar -o plantuml.txt -b /home/graffity/workspace/plantuml-dependency -i **/*Test.java
-	java -jar plantuml-dependency-1.0.1.jar -version -v
+	java -jar plantuml-dependency-1.2.0.jar -h
+	java -jar plantuml-dependency-1.2.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d abstract_classes,interfaces -v
+	java -jar plantuml-dependency-1.2.0.jar -o plantuml.txt -b C:\Documents and Settings\Benjamin\workspace\plantuml-dependency -i **/*Test.java
+	java -jar plantuml-dependency-1.2.0.jar -version -v
 
 Known bugs or program limitations:
 
-	- Be careful, in order to correctly parse source files, it must compile without any errors
+	- Be careful, in order to correctly parse source files, they must compile without any errors
 	- Import instructions "import package_name.*" are ignored because the dependencies are not explicitly defined, use precise imports instead
 	- Links between dependencies are found out by parsing "import" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code

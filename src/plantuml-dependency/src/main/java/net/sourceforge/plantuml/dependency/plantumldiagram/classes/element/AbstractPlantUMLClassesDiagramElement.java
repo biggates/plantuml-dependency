@@ -49,7 +49,7 @@ public abstract class AbstractPlantUMLClassesDiagramElement implements PlantUMLC
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(AbstractPlantUMLClassesDiagramElement.class.getName());
 
-    /** The plantUML element name. */
+    /** The plantUML element full name. */
     private final String name;
 
     /** The plantUML element tag. */

@@ -39,7 +39,6 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PACKAGES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -87,7 +86,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
         final Set < Display > argument = DISPLAY_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE7);
         assertEquals(3, argument.size());
         assertTrue(argument.contains(ENUMS));
-        assertTrue(argument.contains(ONLY_PACKAGES));
+        assertTrue(argument.contains(CLASSES));
         assertTrue(argument.contains(STATIC_IMPORTS));
     }
 
@@ -182,7 +181,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-d, --display DISPLAY_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]\n\t\tDISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, attributes, classes, enums, extensions, implementations, imports, interfaces, methods, native_methods, only_packages, static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes, \"attributes\" : displays parsed source files attributes, \"classes\" : displays parsed source files which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files, \"implementations\" : displays dependencies which are implemented by parsed source files, \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source files which are interfaces, \"methods\" : displays parsed source files methods, \"native_methods\" : displays links to the native dependency, \"only_packages\" : displays only packages of all parsed source files, \"static_imports\" : displays static imports of all parsed source files. Note : These arguments implementations may not be taken into account following the chosen PROGRAMMING_LANGUAGE.",
+                "-d, --display DISPLAY_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]\n\t\tDISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes, \"classes\" : displays parsed source files which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files, \"implementations\" : displays dependencies which are implemented by parsed source files, \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source files which are interfaces, \"native_methods\" : displays links to the native dependency, \"static_imports\" : displays static imports of all parsed source files.",
                 DISPLAY_OPTION1.getFullUsage().toString());
     }
 

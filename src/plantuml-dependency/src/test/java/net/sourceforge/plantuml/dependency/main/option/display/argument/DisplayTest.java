@@ -37,9 +37,9 @@ import org.junit.Test;
 
 /**
  * JUnit test classes for {@link Display}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.1.0
  * @version 1.1.0
  */
@@ -53,7 +53,7 @@ public class DisplayTest {
     @Test
     public void testGetAllDisplayOptionsDescriptionAsSeparataredCommaString() {
         assertEquals(
-                "\"abstract_classes\" : displays parsed source files which are abstract classes, \"attributes\" : displays parsed source files attributes, \"classes\" : displays parsed source files which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files, \"implementations\" : displays dependencies which are implemented by parsed source files, \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source files which are interfaces, \"methods\" : displays parsed source files methods, \"native_methods\" : displays links to the native dependency, \"only_packages\" : displays only packages of all parsed source files, \"static_imports\" : displays static imports of all parsed source files",
+                "\"abstract_classes\" : displays parsed source files which are abstract classes, \"classes\" : displays parsed source files which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files, \"implementations\" : displays dependencies which are implemented by parsed source files, \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source files which are interfaces, \"native_methods\" : displays links to the native dependency, \"static_imports\" : displays static imports of all parsed source files",
                 getAllDisplayOptionsFullUsageDescriptions());
     }
 

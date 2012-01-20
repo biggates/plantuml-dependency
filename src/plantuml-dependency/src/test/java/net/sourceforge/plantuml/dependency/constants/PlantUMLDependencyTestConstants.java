@@ -111,7 +111,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Command line test 7 instance. */
     public static final CommandLine COMMAND_LINE7 = new CommandLineImpl(new String[] {"-v", "-d",
-            "only_packages,static_imports,enums", "-o", "plantuml.txt"});
+            "classes,static_imports,enums", "-o", "plantuml.txt"});
 
     /** Command line test 8 instance. */
     public static final CommandLine COMMAND_LINE8 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-e",

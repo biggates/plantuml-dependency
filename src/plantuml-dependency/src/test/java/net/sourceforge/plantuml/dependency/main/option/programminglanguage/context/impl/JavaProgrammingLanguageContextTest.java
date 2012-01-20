@@ -28,10 +28,8 @@ import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ONLY_PACKAGES;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImplTest.PLANTUML_CLASSES_DIAGRAM_TEST2;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -46,9 +44,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link JavaProgrammingLanguageContext}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.0
  */
@@ -216,10 +214,11 @@ public class JavaProgrammingLanguageContextTest extends
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#hasToDisplay(net.sourceforge.plantuml.dependency.main.option.display.argument.Display)}
      * .
      */
-    @Test
-    public void testHasToDisplayWithNotExistingDisplay() {
-        assertFalse(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.hasToDisplay(ONLY_PACKAGES));
-    }
+    // FIXME to uncomment when the ONLY_PACKAGES will be available
+    // @Test
+    // public void testHasToDisplayWithNotExistingDisplay() {
+    // assertFalse(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.hasToDisplay(ONLY_PACKAGES));
+    // }
 
     // TODO better test the getPlantUMLDiagram method with display option and with specific context
 }

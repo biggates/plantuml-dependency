@@ -30,6 +30,7 @@ import static java.util.Arrays.asList;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils.createProgramVersionFromPropertiesFileWithinClassClassloader;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.readLoggerConfigurationFromResourceFromClassClassLoader;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
@@ -196,17 +197,15 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         final String[] example2 = new String[] {versionOption.getName(), verboseLevelOption.getName()};
         final String[] example3 = new String[] {outputOption.getName(), "plantuml.txt", baseDirectoryOption.getName(),
                 getProperty("user.dir"), includeOption.getName(), "**/*Test.java"};
-        // final String[] example4 = new String[] {outputOption.getName(),
-        // "/home/test/plantuml.txt", "-b", DOT_CHAR,
-        // includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
-        // displayOption.getName(), "only_packages,interfaces", verboseOption.getName()};
+        final String[] example4 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
+                includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
+                displayOption.getName(), "abstract_classes,interfaces", verboseLevelOption.getName()};
         addExampleCommandLine(new CommandLineImpl(example1));
         addExampleCommandLine(new CommandLineImpl(example2));
         addExampleCommandLine(new CommandLineImpl(example3));
-        // FIXME to add when the display option will be ready
-        // plantumlDependencyProgram.addExampleCommandLine(new CommandLineImpl(example4));
+        addExampleCommandLine(new CommandLineImpl(example4));
 
-        addKnownBugOrLimitation("- Be careful, in order to correctly parse source files, it must compile without any errors");
+        addKnownBugOrLimitation("- Be careful, in order to correctly parse source files, they must compile without any errors");
         addKnownBugOrLimitation("- Import instructions \"import package_name.*\" are ignored because the dependencies are not explicitly defined, use precise imports instead");
         addKnownBugOrLimitation("- Links between dependencies are found out by parsing \"import\" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code");
     }

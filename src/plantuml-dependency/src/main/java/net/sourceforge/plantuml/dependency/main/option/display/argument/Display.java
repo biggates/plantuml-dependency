@@ -46,7 +46,8 @@ public enum Display {
     /** The display abstract classes argument. */
     ABSTRACT_CLASSES("displays parsed source files which are abstract classes"),
     /** The display attributes argument. */
-    ATTRIBUTES("displays parsed source files attributes"),
+    // FIXME to remove when it will be implemented
+    // ATTRIBUTES("displays parsed source files attributes"),
     /** The display classes argument. */
     CLASSES("displays parsed source files which are classes (not abstract)"),
     /** The display enumerations argument. */
@@ -60,11 +61,13 @@ public enum Display {
     /** The display interfaces argument. */
     INTERFACES("displays parsed source files which are interfaces"),
     /** The display methods argument. */
-    METHODS("displays parsed source files methods"),
+    // FIXME to remove when it will be implemented
+    // METHODS("displays parsed source files methods"),
     /** The display native methods argument. */
     NATIVE_METHODS("displays links to the native dependency"),
     /** The display only packages argument. */
-    ONLY_PACKAGES("displays only packages of all parsed source files"),
+    // FIXME to remove when it will be implemented
+    // ONLY_PACKAGES("displays only packages of all parsed source files"),
     /** The display static imports argument. */
     STATIC_IMPORTS("displays static imports of all parsed source files");
 
@@ -92,9 +95,9 @@ public enum Display {
      */
     public static String getFullUsageDescriptions(final Set < Display > displayOptions) {
         final StringBuffer buffer = new StringBuffer();
-        Iterator < Display > iterator = displayOptions.iterator();
+        final Iterator < Display > iterator = displayOptions.iterator();
         while (iterator.hasNext()) {
-            Display display = iterator.next();
+            final Display display = iterator.next();
             buffer.append(display.getFullUsageDescription());
             if (iterator.hasNext()) {
                 buffer.append(COMMA_CHAR);
