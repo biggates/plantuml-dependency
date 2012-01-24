@@ -53,7 +53,7 @@ public class DisplayTest {
     @Test
     public void testGetAllDisplayOptionsDescriptionAsSeparataredCommaString() {
         assertEquals(
-                "\"abstract_classes\" : displays parsed source files which are abstract classes, \"classes\" : displays parsed source files which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files, \"implementations\" : displays dependencies which are implemented by parsed source files, \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source files which are interfaces, \"native_methods\" : displays links to the native dependency, \"static_imports\" : displays static imports of all parsed source files",
+                "\"abstract_classes\" : displays parsed source files which are abstract classes, \"classes\" : displays parsed and seen source files (as import or as extension) which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), \"implementations\" : displays dependencies which are implemented by parsed source files (i.e. interfaces), \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, \"native_methods\" : displays links to the native dependency, \"static_imports\" : displays static imports of all parsed source files",
                 getAllDisplayOptionsFullUsageDescriptions());
     }
 
@@ -76,7 +76,7 @@ public class DisplayTest {
     @Test
     public void testGetFullUsageDescriptionsDefaultSet() {
         assertEquals(
-                "\"abstract_classes\" : displays parsed source files which are abstract classes, \"classes\" : displays parsed source files which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files, \"implementations\" : displays dependencies which are implemented by parsed source files, \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source files which are interfaces, \"native_methods\" : displays links to the native dependency, \"static_imports\" : displays static imports of all parsed source files",
+                "\"abstract_classes\" : displays parsed source files which are abstract classes, \"classes\" : displays parsed and seen source files (as import or as extension) which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), \"implementations\" : displays dependencies which are implemented by parsed source files (i.e. interfaces), \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, \"native_methods\" : displays links to the native dependency, \"static_imports\" : displays static imports of all parsed source files",
                 getFullUsageDescriptions(DEFAULT_DISPLAY_OPTIONS));
     }
 

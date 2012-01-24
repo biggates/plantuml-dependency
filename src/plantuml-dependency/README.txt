@@ -3,7 +3,7 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 
 ?, Mar 2012 - 1.2.0
 ====================
-- Added a new feature : the display option which allows to filter output elements, such as classes, interfaces, enums, abstract classes and so on... Ant task updated.
+- Introducing a new feature : the display option which allows to filter output elements, such as classes, interfaces, enums, abstract classes and so on... Ant task updated.
 - Elements (classes, enums, interfaces and abstract classes) are now better sorted in the generated output file
 - Fixed a bug which causes to write import and native dependencies in the output file from string contents contained in the parsed source files. String contents are now removed from the source code before analysis
 - Fixed a bug which causes the program to stop when a java source file couldn't be read (bug 3377023 : http://sourceforge.net/tracker/?func=detail&aid=3377023&group_id=334674&atid=1402785)
@@ -45,7 +45,7 @@ where optional options are:
 
 	-d, --display DISPLAY_OPTIONS
 		To specify class diagram objects to display. If not specified, the default is [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]
-		DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. "abstract_classes" : displays parsed source files which are abstract classes, "classes" : displays parsed source files which are classes (not abstract), "enums" : displays parsed source files which are enums, "extensions" : displays dependencies which are extended by parsed source files, "implementations" : displays dependencies which are implemented by parsed source files, "imports" : displays import (not static) of all parsed source files, "interfaces" : displays parsed source files which are interfaces, "native_methods" : displays links to the native dependency, "static_imports" : displays static imports of all parsed source files.
+		DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. "abstract_classes" : displays parsed source files which are abstract classes, "classes" : displays parsed and seen source files (as import or as extension) which are classes (not abstract), "enums" : displays parsed source files which are enums, "extensions" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), "implementations" : displays dependencies which are implemented by parsed source files (i.e. interfaces), "imports" : displays import (not static) of all parsed source files, "interfaces" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, "native_methods" : displays links to the native dependency, "static_imports" : displays static imports of all parsed source files.
 
 	-e, --exclude FILE_PATTERN
 		To exclude files that match the provided pattern. If not specified, no file is excluded.
@@ -81,3 +81,4 @@ Known bugs or program limitations:
 	- Be careful, in order to correctly parse source files, they must compile without any errors
 	- Import instructions "import package_name.*" are ignored because the dependencies are not explicitly defined, use precise imports instead
 	- Links between dependencies are found out by parsing "import" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code
+

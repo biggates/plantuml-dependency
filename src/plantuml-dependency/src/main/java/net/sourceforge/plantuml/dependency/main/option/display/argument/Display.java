@@ -49,17 +49,17 @@ public enum Display {
     // FIXME to remove when it will be implemented
     // ATTRIBUTES("displays parsed source files attributes"),
     /** The display classes argument. */
-    CLASSES("displays parsed source files which are classes (not abstract)"),
+    CLASSES("displays parsed and seen source files (as import or as extension) which are classes (not abstract)"),
     /** The display enumerations argument. */
     ENUMS("displays parsed source files which are enums"),
     /** The display extensions argument. */
-    EXTENSIONS("displays dependencies which are extended by parsed source files"),
+    EXTENSIONS("displays dependencies which are extended by parsed source files (i.e. classes or interfaces)"),
     /** The display implementations argument. */
-    IMPLEMENTATIONS("displays dependencies which are implemented by parsed source files"),
+    IMPLEMENTATIONS("displays dependencies which are implemented by parsed source files (i.e. interfaces)"),
     /** The display imports argument. */
     IMPORTS("displays import (not static) of all parsed source files"),
     /** The display interfaces argument. */
-    INTERFACES("displays parsed source files which are interfaces"),
+    INTERFACES("displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces"),
     /** The display methods argument. */
     // FIXME to remove when it will be implemented
     // METHODS("displays parsed source files methods"),

@@ -14,88 +14,89 @@
 	</head>
 
 	<body>
-	<!-- Debut de la div de l'en_tete -->
-	<div id="en_tete">
-	<h1>PlantUML Dependency</h1>
-	<p>Open-Source tool in Java to parse source code to automatically draw UML class Diagram using PlantUML</p>
-	</div>
-	<!-- Fin de la div de l'en_tete -->
+		<!-- Debut de la div de l'en_tete -->
+		<div id="en_tete">
+			<h1>PlantUML Dependency</h1>
+			<p>Open-Source tool in Java to parse source code to automatically draw UML class Diagram using PlantUML</p>
+		</div>
+		<!-- Fin de la div de l'en_tete -->
 
-	<!-- Debut de la div du Menu -->
-	<div id="menu">
-	<div align="center">
-	<h1><a href="../index.html">Home</a></h1>
-	</div>
-	<ul>
-		<li><a href="../screenshot/screenshot.html">Screenshots</a></li>
-		<li><a href="../download/download.html">Download</a></li>
-		<li><a href="../news/news.html">What's New ?</a></li>
-		<li><a href="../running/running.html">Running</a></li>
-		<li><a href="../maven-site/index.html">Maven site</a></li>
-		<li><a href="../faq/faq.html">F.A.Q.</a></li>
-		<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
-		<li><a href="../external_links/external_links.html">External Links</a></li>
-	</ul>
-	<p>
-		<a href="http://validator.w3.org/check?uri=referer"><img style="border:0" src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
-	</p>
-	<p>
-    	<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Valide !" height="31" width="88" /></a>
-	</p>
-	<font size="1">Last update : 5 Jul, 2011</font>
-	</div>
-	<!-- fin de la div du Menu -->
+		<!-- Debut de la div du Menu -->
+		<div id="menu">
+			<div align="center">
+				<h1><a href="../index.html">Home</a></h1>
+			</div>
+			<ul>
+				<li><a href="../screenshot/screenshot.html">Screenshots</a></li>
+				<li><a href="../download/download.html">Download</a></li>
+				<li><a href="../news/news.html">What's New ?</a></li>
+				<li><a href="../running/running.html">Running</a></li>
+				<li><a href="../maven-site/index.html">Maven site</a></li>
+				<li><a href="../faq/faq.html">F.A.Q.</a></li>
+				<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
+				<li><a href="../external_links/external_links.html">External Links</a></li>
+			</ul>
+			<p>
+				<a href="http://validator.w3.org/check?uri=referer"><img style="border:0" src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+			</p>
+			<p>
+		    	<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Valide !" height="31" width="88" /></a>
+			</p>
+			<font size="1">Last update : 5 Jul, 2011</font>
+		</div>
+		<!-- fin de la div du Menu -->
 
-	<div id="corps">
-	<h2>Command line</h2>
-	You can run <b>PlantUML Dependency</b> using the following simplest command :
+		<div id="corps">
+			<h2>Command line</h2>
+			You can run <b>PlantUML Dependency</b> using the following simplest command :
 
-	<div class="scriptplantu">
-	<ul>
-		<li>java -jar plantuml-dependency-1.2.0.jar -o plantuml.txt</li>
-	</ul>
-	</div>
-	<p>This will look for all <code>java source files</code> into the current directory recursively, creating a <i>plantuml.txt</i> file describing the <b>PlantUML</b> class diagram description.</p>
+			<div class="scriptplantu">
+				<ul>
+					<li>java -jar plantuml-dependency-1.2.0.jar -o plantuml.txt</li>
+				</ul>
+			</div>
+			<p>This will look for all <code>java source files</code> into the current directory recursively, creating a <i>plantuml.txt</i> file describing the <b>PlantUML</b> class diagram description.</p>
 
-	<p>For processing an other directory, you can use :</p>
+			<p>For processing an other directory, you can use :</p>
 
-	<div class="scriptplantu">
-	<ul>
-		<li>java -jar plantuml-dependency-1.2.0.jar -b "c:/directory1"</li>
-	</ul>
-	</div>
+			<div class="scriptplantu">
+				<ul>
+					<li>java -jar plantuml-dependency-1.2.0.jar -b "c:/directory1"</li>
+				</ul>
+			</div>
 
-	<p>To filter source files to parse, you can use <a href="http://ant.apache.org/manual/dirtasks.html">ANT patterns</a> to include or exclude files :</p>
+			<p>To filter source files to parse, you can use <a href="http://ant.apache.org/manual/dirtasks.html">ANT patterns</a> to include or exclude files :</p>
 
-	<div class="scriptplantu">
-	<ul>
-		<li>java -jar plantuml-dependency-1.2.0.jar -i **/*Test*.java -e **/*Generated*.java</li>
-	</ul>
-	</div>
+			<div class="scriptplantu">
+				<ul>
+					<li>java -jar plantuml-dependency-1.2.0.jar -i **/*Test*.java -e **/*Generated*.java</li>
+				</ul>
+			</div>
 
-	<p>To change the output file path, you can use :</p>
+			<p>To change the output file path, you can use :</p>
 
-	<div class="scriptplantu">
-	<ul>
-		<li>java -jar plantuml-dependency-1.2.0.jar -o "c:/directory1/test-plantuml.txt"</li>
-	</ul>
-	</div>
+			<div class="scriptplantu">
+				<ul>
+					<li>java -jar plantuml-dependency-1.2.0.jar -o "c:/directory1/test-plantuml.txt"</li>
+				</ul>
+			</div>
 
-	<h3>Help</h3>
-	You can have an help message by launching :
-	<div class="scriptplantu">
-	<ul>
-		<li>java -jar plantuml-dependency-1.2.0.jar --help</li>
-	</ul>
-	</div>
+			<h3>Help</h3>
+			You can have an help message by launching :
+			<div class="scriptplantu">
+				<ul>
+					<li>java -jar plantuml-dependency-1.2.0.jar --help</li>
+				</ul>
+			</div>
 
-	This will output:
-	<div class="scriptplantu">
-	<pre>
+			This will output:
+			<div class="scriptplantu">
+				<pre>
 	PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net}
 
 	Usage:
-	java -jar plantuml-dependency-1.2.0.jar [OPTIONS]
+		java -jar plantuml-dependency-1.2.0.jar [OPTIONS]
+
 
 	where optional options are:
 
@@ -108,7 +109,7 @@
 
 		-d, --display DISPLAY_OPTIONS
 			To specify class diagram objects to display. If not specified, the default is [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]
-			DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. "abstract_classes" : displays parsed source files which are abstract classes, "classes" : displays parsed source files which are classes (not abstract), "enums" : displays parsed source files which are enums, "extensions" : displays dependencies which are extended by parsed source files, "implementations" : displays dependencies which are implemented by parsed source files, "imports" : displays import (not static) of all parsed source files, "interfaces" : displays parsed source files which are interfaces, "native_methods" : displays links to the native dependency, "static_imports" : displays static imports of all parsed source files.
+			DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. "abstract_classes" : displays parsed source files which are abstract classes, "classes" : displays parsed and seen source files (as import or as extension) which are classes (not abstract), "enums" : displays parsed source files which are enums, "extensions" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), "implementations" : displays dependencies which are implemented by parsed source files (i.e. interfaces), "imports" : displays import (not static) of all parsed source files, "interfaces" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, "native_methods" : displays links to the native dependency, "static_imports" : displays static imports of all parsed source files.
 
 		-e, --exclude FILE_PATTERN
 			To exclude files that match the provided pattern. If not specified, no file is excluded.
@@ -143,20 +144,22 @@
 
 		- Be careful, in order to correctly parse source files, they must compile without any errors
 		- Import instructions "import package_name.*" are ignored because the dependencies are not explicitly defined, use precise imports instead
-		- Links between dependencies are found out by parsing "import" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code</pre></div>
-	</div>
+		- Links between dependencies are found out by parsing "import" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code
+				</pre>
+			</div>
+		</div>
 
-	<!-- Debut de la div du pied de page -->
-	<div id="pied_de_page">
-	<table width="100%" border="0">
-		<tr align="center">
-			<td width="13%"><a href="#">Back to top</a></td>
-			<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img border="0" src="mail.gif" alt="" /></a>&nbsp;<a href="mailto:graffity2199@users.sourceforge.net">Contact</a></td>
-			<td width="13%"><a title="Your help is really appreciate" href="https://sourceforge.net/donate/index.php?group_id=334674"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /></a></td>
-			<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=259736&amp;type=10" width="80" height="15" alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
-		</tr>
-	</table>
-	</div>
-	<!-- Fin de la div du pied de page -->
+		<!-- Debut de la div du pied de page -->
+		<div id="pied_de_page">
+			<table width="100%" border="0">
+				<tr align="center">
+					<td width="13%"><a href="#">Back to top</a></td>
+					<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img border="0" src="mail.gif" alt="" /></a>&nbsp;<a href="mailto:graffity2199@users.sourceforge.net">Contact</a></td>
+					<td width="13%"><a title="Your help is really appreciate" href="https://sourceforge.net/donate/index.php?group_id=334674"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /></a></td>
+					<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=259736&amp;type=10" width="80" height="15" alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
+				</tr>
+			</table>
+		</div>
+		<!-- Fin de la div du pied de page -->
 	</body>
 </html>
