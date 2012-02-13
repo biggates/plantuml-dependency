@@ -209,5 +209,6 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         addKnownBugOrLimitation("- Import instructions \"import package_name.*\" are ignored because the dependencies are not explicitly defined, use precise imports instead");
         addKnownBugOrLimitation("- Links between dependencies are found out by parsing \"import\" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code");
         addKnownBugOrLimitation("- PlantUML Dependency is compliant up to Java 1.6 source files");
+        addKnownBugOrLimitation("- As PlantUML Dependency is reading source files imports, it will generate object - imports relation even if the imports are not used within the object (usually, this raises a warning within the IDE)");
     }
 }
