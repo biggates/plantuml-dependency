@@ -303,7 +303,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         if (matcher.find()) {
             packageName = matcher.group(1).replace(SPACE_CHAR, BLANK_STRING);
         } else {
-            LOGGER.info(NO_PACKAGE_FOUND_FINE);
+            LOGGER.fine(NO_PACKAGE_FOUND_FINE);
         }
 
         return packageName;
