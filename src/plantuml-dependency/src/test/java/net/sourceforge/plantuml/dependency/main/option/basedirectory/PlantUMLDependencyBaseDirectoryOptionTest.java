@@ -42,9 +42,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link PlantUMLDependencyBaseDirectoryOption}.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.0
  */
@@ -67,7 +67,7 @@ public class PlantUMLDependencyBaseDirectoryOptionTest extends
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test
@@ -80,7 +80,7 @@ public class PlantUMLDependencyBaseDirectoryOptionTest extends
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test(expected = CommandLineException.class)
@@ -93,7 +93,7 @@ public class PlantUMLDependencyBaseDirectoryOptionTest extends
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test
@@ -107,7 +107,7 @@ public class PlantUMLDependencyBaseDirectoryOptionTest extends
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test(expected = CommandLineException.class)
@@ -119,7 +119,7 @@ public class PlantUMLDependencyBaseDirectoryOptionTest extends
      * Test method for
      * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test
@@ -132,12 +132,13 @@ public class PlantUMLDependencyBaseDirectoryOptionTest extends
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
-     *
+     * 
      * @throws CommandLineException
      */
     @Test
     public void testGetDefaultArgumentAsStringIfOptionSpecified() throws CommandLineException {
-        final String defaultArgument = BASE_DIRECTORY_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
+        final String defaultArgument = BASE_DIRECTORY_OPTION1
+                .getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
         assertEquals(DOT_CHAR, defaultArgument);
     }
 
@@ -147,7 +148,7 @@ public class PlantUMLDependencyBaseDirectoryOptionTest extends
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-b, --basedir DIR\n\t\tThe base directory where to look for source files. If not specified, the default pattern is \".\" i.e. the directory where the program is launched from.\n\t\tDIR specifies a valid and exsiting directory path, not a single file. It can be absolute or relative.",
+                "-b, --basedir DIR\n\t\tThe base directory where to look for source files. If not specified, the default pattern is \".\" i.e. the directory where the program is launched from.\n\t\tDIR specifies a valid and existing directory path, not a single file. It can be absolute or relative.",
                 BASE_DIRECTORY_OPTION1.getFullUsage().toString());
     }
 

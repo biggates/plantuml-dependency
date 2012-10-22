@@ -25,7 +25,6 @@
 package net.sourceforge.plantuml.dependency.main.program;
 
 import static java.lang.System.currentTimeMillis;
-import static java.lang.System.getProperty;
 import static java.util.Arrays.asList;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
@@ -68,9 +67,9 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.Plant
 
 /**
  * The PlantUML dependency {@link JavaProgram} implementation.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.1.0
  */
@@ -87,7 +86,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      * file and should be used only when the program is used as a stand alone application. If you
      * call PlantUML Dependency from an other Java program, you should use the
      * {@link #process(String[])} method.
-     *
+     * 
      * @param args
      *            command line arguments.
      * @throws PlantUMLDependencyException
@@ -100,7 +99,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
                     PlantUMLDependencyProgram.class);
             process(args);
         } catch (final PlantUMLDependencyException e) {
-            LOGGER.log(SEVERE, e.getMessage());
+            LOGGER.log(SEVERE, e.getMessage(), e);
             throw e;
         } catch (final IOException e) {
             throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
@@ -109,7 +108,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
     /**
      * The PlantUML Dependency program entry point.
-     *
+     * 
      * @param args
      *            command line arguments.
      * @throws PlantUMLDependencyException
@@ -143,21 +142,23 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
     /**
      * Default constructor.
-     *
+     * 
      * @param programVersion
      *            the current {@link ProgramVersion}, mustn't be <code>null</code>.
-     *
+     * 
      * @throws MalformedURLException
      *             if the program URL doesn't have a good format.
      * @throws CommandLineException
      *             if any exception occurs while creating the program.
-     *
+     * 
      * @since 1.0
      */
     public PlantUMLDependencyProgram(final ProgramVersion programVersion) throws MalformedURLException,
             CommandLineException {
         super("PlantUML Dependency", new URL("http://plantuml-depend.sourceforge.net"), "plantuml-dependency-"
-                + programVersion.getFullVersionNumber() + ".jar", asList(new String[] {"GPL v3", "LGPL v3"}),
+                + programVersion.getFullVersionNumber() + ".jar", asList(new String[] {
+                "GPL v3, 29 June 2007 (http://www.gnu.org/licenses/gpl-3.0.txt)",
+                "LGPL v3, 29 June 2007 (http://www.gnu.org/licenses/lgpl-3.0.txt)"}),
                 asList(new String[] {"Benjamin Croizet (graffity2199@yahoo.fr)"}), programVersion, new StringBuffer(
                         "reverse engineering java source files to generate PlantUML description"));
 
@@ -196,7 +197,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         final String[] example1 = new String[] {helpOption.getName()};
         final String[] example2 = new String[] {versionOption.getName(), verboseLevelOption.getName()};
         final String[] example3 = new String[] {outputOption.getName(), "plantuml.txt", baseDirectoryOption.getName(),
-                getProperty("user.dir"), includeOption.getName(), "**/*Test.java"};
+                "\"C:\\Users\\PlantUML test\"", includeOption.getName(), "**/*Test.java"};
         final String[] example4 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
                 includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
                 displayOption.getName(), "abstract_classes,interfaces", verboseLevelOption.getName()};
