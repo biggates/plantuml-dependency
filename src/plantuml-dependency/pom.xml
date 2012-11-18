@@ -226,18 +226,6 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>sources-as-jars</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<descriptors>
-								<descriptor>src/main/assembly/sources-as-jars.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-					<execution>
 						<id>documentations-as-jars</id>
 						<phase>package</phase>
 						<goals>
