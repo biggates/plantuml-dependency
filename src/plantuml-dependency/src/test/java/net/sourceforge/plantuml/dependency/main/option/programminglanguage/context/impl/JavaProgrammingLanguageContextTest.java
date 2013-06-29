@@ -44,9 +44,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link JavaProgrammingLanguageContext}.
- *
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * 
  * @since 1.0
  * @version 1.1.0
  */
@@ -208,17 +208,6 @@ public class JavaProgrammingLanguageContextTest extends
     public void testHasToDisplayWithExistingDisplay() {
         assertTrue(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.hasToDisplay(ABSTRACT_CLASSES));
     }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#hasToDisplay(net.sourceforge.plantuml.dependency.main.option.display.argument.Display)}
-     * .
-     */
-    // FIXME to uncomment when the ONLY_PACKAGES will be available
-    // @Test
-    // public void testHasToDisplayWithNotExistingDisplay() {
-    // assertFalse(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.hasToDisplay(ONLY_PACKAGES));
-    // }
 
     // TODO better test the getPlantUMLDiagram method with display option and with specific context
 }

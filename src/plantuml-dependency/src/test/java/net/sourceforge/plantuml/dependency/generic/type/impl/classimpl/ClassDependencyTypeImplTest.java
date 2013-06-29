@@ -59,9 +59,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link ClassDependencyTypeImpl}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.0
  */

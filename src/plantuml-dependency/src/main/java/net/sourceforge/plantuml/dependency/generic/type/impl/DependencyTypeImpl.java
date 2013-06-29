@@ -35,6 +35,7 @@ import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmp
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_DOESNT_MANAGED_IMPORT_TYPE_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.IMPORT_IS_AN_INTERFACE_FINE;
 import static net.sourceforge.plantuml.dependency.generic.type.ImportType.IMPORT_TYPES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 
 import java.util.Set;
@@ -432,18 +433,25 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
+     * @since 1.1.3
+     */
+    @Override
+    public Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations() {
+        if (plantUMLClassesDiagramRelationSet == null) {
+            plantUMLClassesDiagramRelationSet = getPlantUMLClassesDiagramRelations(DISPLAY_OPTIONS);
+        }
+        return plantUMLClassesDiagramRelationSet;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
      * @since 1.1.1
      */
     @Override
-    // FIXME the plantUMLClassesDiagramRelation is generated the first time, but if the call it a
-    // second
-    // time with a different displayOptions
     public Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations(
             final Set < Display > displayOptions) {
-        if (plantUMLClassesDiagramRelationSet == null) {
-            plantUMLClassesDiagramRelationSet = generatePlantUMLClassesDiagramRelations(displayOptions);
-        }
-        return plantUMLClassesDiagramRelationSet;
+        return generatePlantUMLClassesDiagramRelations(displayOptions);
     }
 
     /**

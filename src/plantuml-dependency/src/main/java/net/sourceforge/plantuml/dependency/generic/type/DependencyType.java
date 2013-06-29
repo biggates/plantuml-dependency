@@ -116,7 +116,8 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
 
     /**
      * Gets the PlantUML classes diagram element describing the current dependency type in the
-     * plantUML language. See the <a href="http://sourceforge.net/projects/plantuml/files/PlantUML%20Language%20Reference%20Guide.pdf/download"
+     * plantUML language. See the <a href=
+     * "http://sourceforge.net/projects/plantuml/files/PlantUML%20Language%20Reference%20Guide.pdf/download"
      * >PlantUML Language Reference Guide.pdf</a> or <a
      * href="http://plantuml.sourceforge.net/classes.html"
      * >http://plantuml.sourceforge.net/classes.html</a> page.
@@ -126,6 +127,16 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * @since 1.1.1
      */
     PlantUMLClassesDiagramElement getPlantUMLClassesDiagramElement();
+
+    /**
+     * Gets the whole PlantUML classes diagram relations.
+     *
+     * @return the set of all PlantUML classes diagram relations as a {@link Set} of
+     *         {@link PlantUMLClassesDiagramRelation} instances describing relations to imports and
+     *         the dependency type parents.
+     * @since 1.2.0
+     */
+    Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations();
 
     /**
      * Gets the PlantUML classes diagram relations, following the imports and the dependency type
