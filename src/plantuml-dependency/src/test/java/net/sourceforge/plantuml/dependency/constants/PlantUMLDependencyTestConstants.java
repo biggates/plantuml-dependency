@@ -165,7 +165,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /** File set test 1 instance. */
     public static final FileSet FILE_SET2 = createFileSet(CURRENT_DIRECTORY, "**/*A*.java");
-
+    
     /** Display set test 1 instance. */
     public static final Set < Display > DISPLAY_SET1 = new TreeSet < Display >();
 
@@ -423,6 +423,11 @@ public final class PlantUMLDependencyTestConstants {
                     "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("BigInteger", "java.math")})), false);
 
+    /** Class dependency type test 30 instance. */
+    public static final ClassAbstractDependencyTypeImpl CLASS_DEPENDENCY_TYPE30 = new ClassAbstractDependencyTypeImpl(
+            "GenericEndpoint", "com.plantuml.test", IMPORT_COLLECTION_TEST1, new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(), false);
+
     /** Interface dependency type test 1 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileClassWithMultipleExtendsGenerics",
@@ -638,6 +643,9 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Generic dependency test 43 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY41 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE29);
+
+    /** Generic dependency test 42 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY42 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE30);
 
     /**
      * Private constructor to prevent from instantiation.
