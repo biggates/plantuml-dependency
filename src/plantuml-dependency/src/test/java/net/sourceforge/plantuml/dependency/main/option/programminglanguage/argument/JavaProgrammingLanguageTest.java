@@ -211,15 +211,15 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileAbstractClassWithAnnotationWithStandardEmptyContextAndDefaultDisplaySet()
+    public void testReadDependencyFromFileAbstractClassWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\n@MappedSuperclass\r\npublic abstract class GenericEndpoint {\r\n\r\n}";
+        final String javaSourceFileContent = "/*\r\n GenericEndpoint.java\r\n Creation date : 30 juin 2013\r\n Copyright © Benjamin Croizet (graffity2199@yahoo.fr)\r\n*/\r\npackage com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n/**\r\n * @author Benjamin Croizet \r\n * @since 1.0\r\n * @version\r\n */\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"name\"   }  )\r\n@    MappedSuperclass\r\npublic abstract class GenericEndpoint {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42,
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
-        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(4, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY42.getFullName()));
     }
 

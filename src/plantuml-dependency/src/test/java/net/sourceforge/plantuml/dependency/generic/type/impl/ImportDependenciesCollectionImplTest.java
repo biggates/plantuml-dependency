@@ -269,11 +269,19 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
 
     /** Display import dependencies collection test 23 instance. */
     @DataPoint
-    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST23 = new ImportDependenciesCollectionImpl();
+    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST23 = new ImportDependenciesCollectionImpl(
+            STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
+                    new GenericDependencyImpl("ElementType", "java.lang.annotation"),
+                    new GenericDependencyImpl("XmlType", "javax.xml.bind.annotation"),
+                    new GenericDependencyImpl("Addressing", "javax.xml.ws.soap")})));
+
+    /** Display import dependencies collection test 23 instance. */
+    @DataPoint
+    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST24 = new ImportDependenciesCollectionImpl();
 
     /** Display import dependencies collection test 24 instance. */
     @DataPoint
-    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST29 = null;
+    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST25 = null;
 
     /**
      * Test method for
