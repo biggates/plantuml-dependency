@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
 public final class RegularExpressionConstants {
 
     /** The pattern representing the java type. */
-    public static final Pattern JAVA_TYPE_REGEXP = compile("([@\\w.]*) *(?:public|final|) *(abstract|) *(?:public|final|) *(class|interface|enum) +([\\w. <>,]*?)(?: +extends +([\\w. <>,]*?)|)(?: +implements +([\\w. <>,]*?)|) *\\{");
+    public static final Pattern JAVA_TYPE_REGEXP = compile("[\\w.]* *(?:public|final|) *(abstract|) *(?:public|final|) *(class|interface|enum) +([\\w. <>,]*?)(?: +extends +([\\w. <>,]*?)|)(?: +implements +([\\w. <>,]*?)|) *\\{");
 
     /** The pattern representing the java package. */
     public static final Pattern PACKAGE_REGEXP = compile("package +([\\w. ]*?) *;");
