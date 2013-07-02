@@ -273,7 +273,15 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
             STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
                     new GenericDependencyImpl("ElementType", "java.lang.annotation"),
                     new GenericDependencyImpl("XmlType", "javax.xml.bind.annotation"),
-                    new GenericDependencyImpl("Addressing", "javax.xml.ws.soap")})));
+                    new GenericDependencyImpl("Addressing", "javax.xml.ws.soap"),
+                    new GenericDependencyImpl("Testabstract", "java.lang"),
+                    new GenericDependencyImpl("Deprecated", "java.lang"),
+                    new GenericDependencyImpl("SuppressWarnings", "java.lang"),
+                    new GenericDependencyImpl("Annotationinterface", "java.lang"),
+                    new GenericDependencyImpl("AnotherAnnotation", "java.lang"),
+                    new GenericDependencyImpl("MyAnnotation", "java.lang"),
+                    new GenericDependencyImpl("Override", "java.lang"),
+                    new GenericDependencyImpl("MappedSuperclass", "java.lang")})));
 
     /** Display import dependencies collection test 23 instance. */
     @DataPoint

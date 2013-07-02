@@ -213,7 +213,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileAbstractClassWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n GenericEndpoint.java\r\n Creation date : 30 juin 2013\r\n Copyright © Benjamin Croizet (graffity2199@yahoo.fr)\r\n*/\r\npackage com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n/**\r\n * @author Benjamin Croizet \r\n * @since 1.0\r\n * @version\r\n */\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"name\"   }  )\r\n@    MappedSuperclass\r\npublic abstract class GenericEndpoint {\r\n\r\n}\r\n";
+        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"name\"   }  )\r\n@    MappedSuperclass\r\npublic abstract class GenericEndpoint {\r\n@   Override  \r\n public void toto() {\r\nString t = \"@test\";}\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42,
@@ -223,7 +223,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY42.getFullName()));
     }
 
-    // TODO test annotation with interface, class, enum etc...
+    // TODO test annotation with enum etc...
 
     /**
      * Test method for
@@ -463,6 +463,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     // java.lang and one in the current same package)
     // TODO test with the context
     // TODO test method and attributes
+    // TODO test read dependency from enum ?
 
     /**
      * Test method for
@@ -1009,6 +1010,26 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY2.getFullName()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"name\"   }  )\r\n@    MappedSuperclass\r\npublic class GenericEndpoint {\r\n@   Override  \r\n public void toto() {\r\nString t = \"@test\";}\r\n}\r\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(4, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY42.getFullName()));
     }
 
     /**
@@ -1656,6 +1677,28 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY24.getFullName()));
     }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileInterfaceWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"@test\"   }  )\r\n@    MappedSuperclass\r\ninterface GenericEndpoint {\r\n}\r\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY24,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY24.getFullName()));
+    }
+
+    // TODO
 
     /**
      * Test method for

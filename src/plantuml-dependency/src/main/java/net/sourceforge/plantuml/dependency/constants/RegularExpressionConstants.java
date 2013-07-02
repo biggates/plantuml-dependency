@@ -37,8 +37,14 @@ import java.util.regex.Pattern;
  */
 public final class RegularExpressionConstants {
 
+    /** The pattern representing annotations. */
+    public static final Pattern ANNOTATIONS_REGEXP = compile("@ *\\w*");
+
     /** The pattern representing the java type. */
     public static final Pattern JAVA_TYPE_REGEXP = compile("[\\w.]* *(?:public|final|) *(abstract|) *(?:public|final|) *(class|interface|enum) +([\\w. <>,]*?)(?: +extends +([\\w. <>,]*?)|)(?: +implements +([\\w. <>,]*?)|) *\\{");
+
+    /** The pattern representing the native methods. */
+    public static final Pattern NATIVE_METHODS_REGEXP = compile("native +.* +[\\w]* *\\( *\\)? *;");
 
     /** The pattern representing the java package. */
     public static final Pattern PACKAGE_REGEXP = compile("package +([\\w. ]*?) *;");
@@ -48,9 +54,6 @@ public final class RegularExpressionConstants {
 
     /** The pattern representing the static import. */
     public static final Pattern STATIC_IMPORT_REGEXP = compile("import +static +([\\w. ]+)\\.([\\w.]+?)\\.(?:.*?) *;");
-
-    /** The pattern representing the native methods. */
-    public static final Pattern NATIVE_METHODS_REGEXP = compile("native +.* +[\\w]* *\\( *\\)? *;");
 
     /**
      * Private constructor to prevent from instantiation.
