@@ -74,6 +74,7 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
@@ -161,6 +162,7 @@ public final class PlantUMLDependencyTestConstants {
     /** Command line test 20 instance. */
     public static final CommandLine COMMAND_LINE20 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-i"});
 
+    /** File set test 1 instance. */
     public static final FileSet FILE_SET1 = createFileSet(CURRENT_DIRECTORY, "**/*.java");
 
     /** File set test 1 instance. */
@@ -247,6 +249,10 @@ public final class PlantUMLDependencyTestConstants {
     /** Implementations set test 1 instance. */
     public static final Set < String > IMPLEMENTATIONS_SET1 = new TreeSet < String >(asList(new String[] {
             "java.lang.Comparable", "java.io.Serializable"}));
+
+    /** Annotations set test 1 instance. */
+    public static final Set < String > ANNOTATIONS_SET1 = new TreeSet < String >(asList(new String[] {
+            "javax.xml.bind.annotation.XmlType", "java.lang.Override"}));
 
     /** Class dependency type test 2 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE2 = new ClassDependencyTypeImpl("Test",
@@ -512,6 +518,16 @@ public final class PlantUMLDependencyTestConstants {
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "DeepCloneable", "net.sourceforge.mazix.components.clone")})));
 
+    /** Enum dependency type test 1 instance. */
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE1 = new EnumDependencyTypeImpl(
+            "TestReadDependencyFromFileEnum", "net.sourceforge.plantuml.dependency.main.option.programminglanguage",
+            IMPORT_COLLECTION_TEST1, new TreeSet < GenericDependency >(), false);
+
+    /** Enum dependency type test 2 instance. */
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE2 = new EnumDependencyTypeImpl(
+            "TestReadDependencyFromFileEnum", BLANK_STRING,
+            IMPORT_COLLECTION_TEST1, new TreeSet < GenericDependency >(), false);
+
     /** Generic dependency test 2 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY2 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE2);
 
@@ -646,6 +662,12 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Generic dependency test 42 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY42 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE30);
+
+    /** Generic dependency test 43 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY43 = new GenericDependencyImpl(ENUM_DEPENDENCY_TYPE1);
+
+    /** Generic dependency test 44 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY44 = new GenericDependencyImpl(ENUM_DEPENDENCY_TYPE2);
 
     /**
      * Private constructor to prevent from instantiation.

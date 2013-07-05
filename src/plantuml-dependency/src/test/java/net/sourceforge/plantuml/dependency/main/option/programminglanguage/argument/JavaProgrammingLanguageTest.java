@@ -72,6 +72,8 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY40;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY41;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY42;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY43;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY44;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY5;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY6;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY7;
@@ -165,6 +167,29 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
      * .
      *
+     * Test reproducing the <a href="https://sourceforge.net/p/plantuml-depend/bugs/3/">#3
+     * Annotations cause problems</a> bug.
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileAbstractClassWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"name\"   }  )\r\n@    MappedSuperclass\r\npublic abstract class GenericEndpoint {\r\n@   Override  \r\n public void toto() {\r\nString t = \"@test\";}\r\n \r\n@   Override  \r\n public void titi() {\r\nString t = \"@test\";}\r\n}\r\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(4, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY42.getFullName()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
      * @throws PlantUMLDependencyException
      */
     @Test
@@ -198,29 +223,6 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY4.getFullName()));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
-     * .
-     *
-     * Test reproducing the <a href="https://sourceforge.net/p/plantuml-depend/bugs/3/">#3
-     * Annotations cause problems</a> bug.
-     *
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testReadDependencyFromFileAbstractClassWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
-            throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"name\"   }  )\r\n@    MappedSuperclass\r\npublic abstract class GenericEndpoint {\r\n@   Override  \r\n public void toto() {\r\nString t = \"@test\";}\r\n}\r\n";
-        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
-                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
-        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
-        assertEquals(4, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY42.getFullName()));
     }
 
     // TODO test annotation with enum etc...
@@ -263,6 +265,26 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY7.getFullName()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileClassWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"name\"   }  )\r\n@    MappedSuperclass\r\npublic class GenericEndpoint {\r\n@   Override  \r\n public void toto() {\r\nString t = \"@test\";}\r\n}\r\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(4, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY42.getFullName()));
     }
 
     /**
@@ -435,6 +457,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY40.getFullName()));
     }
 
+    // TODO test several class name with the same name but not with the same package (one in
+    // java.lang and one in the current same package)
+    // TODO test with the context
+    // TODO test method and attributes
+    // TODO test read dependency from enum ?
+
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
@@ -458,12 +486,6 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends")
                         .getDependencyType().getClass());
     }
-
-    // TODO test several class name with the same name but not with the same package (one in
-    // java.lang and one in the current same package)
-    // TODO test with the context
-    // TODO test method and attributes
-    // TODO test read dependency from enum ?
 
     /**
      * Test method for
@@ -1020,26 +1042,6 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testReadDependencyFromFileClassWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
-            throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"name\"   }  )\r\n@    MappedSuperclass\r\npublic class GenericEndpoint {\r\n@   Override  \r\n public void toto() {\r\nString t = \"@test\";}\r\n}\r\n";
-        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
-                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
-        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
-        assertEquals(4, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY42.getFullName()));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
-     * .
-     *
-     * @throws PlantUMLDependencyException
-     */
-    @Test
     public void testReadDependencyFromFileClassWithStandardEmptyContextAndInterfaceDisplaySet()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport com.plantuml.train.test.AnotherTestExtends;\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class Test < AnotherTestExtends > {\r\n\r\n}\r\n";
@@ -1176,6 +1178,106 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
      * @throws PlantUMLDependencyException
      */
     @Test
+    public void testReadDependencyFromFileEnumWithoutPackageWithStandardEmptyContextAndDefaultDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "public enum TestReadDependencyFromFileEnum {\n\n}\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY44,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY44.getFullName()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileEnumWithStandardEmptyContextAndAbstractClassDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "public enum TestReadDependencyFromFileEnum {\n\n}\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DISPLAY_SET2);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY44,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY44.getFullName()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileEnumWithStandardEmptyContextAndClassDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "public enum TestReadDependencyFromFileEnum {\n\n}\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DISPLAY_SET3);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY44,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY44.getFullName()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileEnumWithStandardEmptyContextAndDefaultDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nenum TestReadDependencyFromFileEnum {\n\n}\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY43,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY43.getFullName()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileEnumWithStandardEmptyContextAndEnumDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "public enum TestReadDependencyFromFileEnum {\n\n}\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DISPLAY_SET4);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY44,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY44.getFullName()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
     public void testReadDependencyFromFileFinalClassWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\nfinal class Test {\r\n\r\n}";
@@ -1226,6 +1328,26 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY25.getFullName()));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testReadDependencyFromFileInterfaceWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"@test\"   }  )\r\n@    MappedSuperclass\r\ninterface GenericEndpoint {\r\n}\r\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY24,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY24.getFullName()));
     }
 
     /**
@@ -1677,28 +1799,6 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY24.getFullName()));
     }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
-     * .
-     *
-     * @throws PlantUMLDependencyException
-     */
-    @Test
-    public void testReadDependencyFromFileInterfaceWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
-            throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"@test\"   }  )\r\n@    MappedSuperclass\r\ninterface GenericEndpoint {\r\n}\r\n";
-        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
-                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY24,
-                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
-        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
-        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY24.getFullName()));
-    }
-
-    // TODO
 
     /**
      * Test method for

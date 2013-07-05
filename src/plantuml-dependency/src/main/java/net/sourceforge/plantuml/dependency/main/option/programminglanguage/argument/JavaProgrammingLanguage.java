@@ -43,6 +43,7 @@ import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.JAVA_LANG_PACKAGE;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
+import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.ANNOTATIONS_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.JAVA_TYPE_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.PACKAGE_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.STANDARD_IMPORT_REGEXP;
@@ -192,6 +193,29 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private static boolean extractAbstract(final String group) {
         return isEmpty(group) ? false : true;
+    }
+
+    /**
+     * Following a java source file content, reads, parses and extracts all annotations dependencies
+     * (classes and methods).
+     *
+     * @param javaSourceFileContent
+     *            the java source file content to analyze as a {@link String}, mustn't be
+     *            <code>null</code>.
+     * @return the {@link Set} of annotations dependency names parsed from the {@link String}.
+     * @since 1.2.0
+     */
+    private static Set < String > extractAnnotations(final String javaSourceFileContent) {
+        final Set < String > annotations = new TreeSet < String >();
+
+        final Matcher matcher = ANNOTATIONS_REGEXP.matcher(javaSourceFileContent);
+
+        while (matcher.find()) {
+            final String annotation = matcher.group(1);
+            annotations.add(annotation);
+        }
+
+        return annotations;
     }
 
     /**
@@ -738,7 +762,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String packageName = extractPackageName(javaSourceFileContent);
             javaRawDependency.setPackageName(packageName);
 
-            // TODO extract all source annotation, upon the class and upon the methods
+            final Set < String > annotations = extractAnnotations(javaSourceFileContent);
+            javaRawDependency.setAnnotations(annotations);
 
             final boolean isAbstract = extractAbstract(matcher.group(1));
             javaRawDependency.setAbstract(isAbstract);
