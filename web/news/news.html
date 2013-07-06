@@ -41,10 +41,13 @@
 					<li>
 						<b>?, Dec 2013</b>: <a href="../download/download.html"><b>PlantUML Dependency</b></a> public release, version 1.2.0.
 						<ul>
-							<li>Introducing a new and complex feature : the <a href="../display_option/display_option.html"><b>Display option</b></a> which allows to filter output elements and relations, such as classes, interfaces, enums, abstract classes and so on...  <a href="../ant_task/ant_task.html"><b>Ant</b></a> task and help messages have been updated.</li>
+							<li>Introducing a new and powerful feature : the <a href="../display_option/display_option.html"><b>Display option</b></a> which allows to filter output elements and relations, such as classes, interfaces, enums, abstract classes and so on...  <a href="../ant_task/ant_task.html"><b>Ant</b></a> task and help messages have been updated. (feature <a href="http://sourceforge.net/p/plantuml-depend/feature-requests/3/"><b>3</b></a>)</li>
+							<li>Annotations java files are now fully supported (feature <a href="http://sourceforge.net/p/plantuml-depend/feature-requests/22/"><b>22</b></a>)</li>
 							<li>Elements (classes, enums, interfaces and abstract classes) are now better sorted in the generated output file</li>
+							<li>Fixed a bug with dependencies which have a similar name to a java.lang class or interface (bug <a href="https://sourceforge.net/p/plantuml-depend/bugs/5/"><b>5</b></a>)</li>
+							<li>Fixed a bug which causes to badly parse class when annotations are used (bug <a href="http://sourceforge.net/p/plantuml-depend/bugs/3/"><b>3</b></a>)</li>
 							<li>Fixed a bug which causes to write import and native dependencies in the output file from string contents contained in the parsed source files. String contents are now removed from the source code before analysis</li>
-							<li>Fixed a bug which causes the program to stop when a java source file couldn't be read (bug 3377023 : http://sourceforge.net/tracker/?func=detail&amp;aid=3377023&amp;group_id=334674&amp;atid=1402785)</li>
+							<li>Fixed a bug which causes the program to stop when a java source file couldn't be read (bug <a href="http://sourceforge.net/p/plantuml-depend/bugs/2/"><b>2</b></a>)</li>
 							<li>Fixed a bug with native dependency regular expression which didn't work in some particular cases</li>
 						</ul>
 					</li>
