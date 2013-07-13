@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
 public final class RegularExpressionConstants {
 
     /** The pattern representing annotations. */
-    public static final Pattern ANNOTATIONS_REGEXP = compile("@ *(\\w*)");
+    public static final Pattern ANNOTATIONS_REGEXP = compile("@ *([\\w\\.]*)");
 
     /** The pattern representing the java type. */
     public static final Pattern JAVA_TYPE_REGEXP = compile("[\\w.]* *(?:public|final|) *(abstract|) *(?:public|final|) *(class|interface|enum) +([\\w. <>,]*?)(?: +extends +([\\w. <>,]*?)|)(?: +implements +([\\w. <>,]*?)|) *\\{");

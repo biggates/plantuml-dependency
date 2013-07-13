@@ -29,6 +29,7 @@ import static net.sourceforge.mazix.components.color.HTMLColor.YELLOW;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.convertCollectionToSeparatedString;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ANNOTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
@@ -54,13 +55,13 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stere
  *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
- * @version 1.1.0
+ * @version 1.2.0
  */
 public final class PlantUMLDependencyConstants {
 
     /** The default display options to apply if not specified. */
     public static final Set < Display > DEFAULT_DISPLAY_OPTIONS = new TreeSet < Display >(asList(new Display[] {
-            ABSTRACT_CLASSES, CLASSES, ENUMS, IMPORTS, INTERFACES, STATIC_IMPORTS, NATIVE_METHODS, IMPLEMENTATIONS,
+            ABSTRACT_CLASSES, ANNOTATIONS, CLASSES, ENUMS, IMPORTS, INTERFACES, STATIC_IMPORTS, NATIVE_METHODS, IMPLEMENTATIONS,
             EXTENSIONS}));
 
     /** The default display options argument as a String to apply if not specified. */

@@ -58,8 +58,8 @@ public final class FineConstants {
     /** The display mode isn't managed fine message. */
     public static final String DISPLAY_MODE_ISNT_MANAGED_FINE = "[fine-plantuml-dependency-007] : Display mode \"{0}\" doesn't have to be managed";
 
-    /** The import is an interface fine message. */
-    public static final String IMPORT_IS_AN_INTERFACE_FINE = "[fine-plantuml-dependency-008] : Import \"{0}\" is an interface, UML link don't have to be generated";
+    /** The import is an parent fine message. */
+    public static final String IMPORT_IS_A_PARENT_FINE = "[fine-plantuml-dependency-008] : Import \"{0}\" is a parent, UML link don't have to be generated";
 
     /** The import is an interface fine message. */
     public static final String IMPORT_TYPE_NOT_FOUND = "[fine-plantuml-dependency-009] : Import type \"{0}\" not found in the import collection, skipping it...";
