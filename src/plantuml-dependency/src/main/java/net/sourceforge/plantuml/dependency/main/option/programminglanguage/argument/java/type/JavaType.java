@@ -53,12 +53,12 @@ import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 
 /**
- * The abstract class which describes all existing java types such as classes, interfaces and
- * enumerations.
+ * The abstract class which describes all existing java types such as classes, interfaces,
+ * enumerations and annotations.
  *
  * @author Benjamin Croizet (graffity2199@yahoo.fr)
  * @since 1.0
- * @version 1.0
+ * @version 1.2.0
  */
 public abstract class JavaType implements Comparable < JavaType >, Serializable {
 
@@ -67,6 +67,9 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
     /** The class logger. */
     private static final transient Logger LOGGER = getLogger(JavaType.class.getName());
+
+    /** The "annotation" java type. */
+    public static final JavaType ANNOTATION = new AnnotationJavaType("@interface");
 
     /** The "class" java type. */
     public static final JavaType CLASS = new ClassJavaType("class");
@@ -93,6 +96,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     private static Map < String, JavaType > createJavaTypeMap() {
         final Map < String, JavaType > javaTypeMap = new TreeMap < String, JavaType >();
 
+        javaTypeMap.put(ANNOTATION.getLanguageKeyword(), ANNOTATION);
         javaTypeMap.put(CLASS.getLanguageKeyword(), CLASS);
         javaTypeMap.put(ENUM.getLanguageKeyword(), ENUM);
         javaTypeMap.put(INTERFACE.getLanguageKeyword(), INTERFACE);
@@ -163,6 +167,24 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     }
 
     /**
+     * Creates the annotation {@link DependencyType} instance associated to the current java type
+     * following the passed parameters.
+     *
+     * @param annotationName
+     *            the dependency annotation name, such as "String", mustn't be <code>null</code>.
+     * @param annotationPackageName
+     *            the dependency annotation package name, such as "java.lang", mustn't be
+     *            <code>null</code>.
+     * @return the {@link DependencyType} instance which is an annotation of the current java type,
+     *         following the passed parameters.
+     * @throws PlantUMLDependencyException
+     *             if the requested java annotation type is incompatible with the current java type.
+     * @since 1.2.0
+     */
+    public abstract DependencyType createAnnotationDependencyType(String annotationName, String annotationPackageName)
+            throws PlantUMLDependencyException;
+
+    /**
      * Creates the {@link DependencyType} instance associated to the current java type following
      * passed parameters.
      *
@@ -181,6 +203,9 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      * @param parentExtentionsDependencies
      *            the {@link Set} of all {@link GenericDependency} which are extended, mustn't be
      *            <code>null</code>.
+     * @param annotationDependencies
+     *            the {@link Set} of all {@link GenericDependency} which are used as annotation,
+     *            mustn't be <code>null</code>.
      * @param hasNativeMethods
      *            the boolean indicating if the dependency has native methods inside.
      * @return the {@link DependencyType} instance, following the current java type and the passed
@@ -190,7 +215,8 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     public abstract DependencyType createDependencyType(String dependencyName, String dependencyPackageName,
             boolean isAbstract, ImportDependenciesCollection importDependencies,
             Set < GenericDependency > parentImplementationsDependencies,
-            Set < GenericDependency > parentExtentionsDependencies, boolean hasNativeMethods);
+            Set < GenericDependency > parentExtentionsDependencies, Set < GenericDependency > annotationDependencies,
+            boolean hasNativeMethods);
 
     /**
      * Creates the parent {@link DependencyType} instance associated to the current java type

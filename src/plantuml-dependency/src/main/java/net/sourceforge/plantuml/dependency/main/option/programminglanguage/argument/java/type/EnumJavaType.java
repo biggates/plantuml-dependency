@@ -29,11 +29,14 @@ import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.NATIVE_METHODS_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_ANNOTATION_TYPE_NAME_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_ANNOTATION_TYPE_PACKAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_UNKNOWN_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_ANNOTATIONS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_EXTENTIONS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPORTS_NULL_ERROR;
@@ -49,6 +52,7 @@ import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
+import net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
 
@@ -58,7 +62,7 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.Inter
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.2.0
  */
 class EnumJavaType extends JavaType {
 
@@ -79,21 +83,36 @@ class EnumJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
+     * @since 1.2.0
+     */
+    @Override
+    public DependencyType createAnnotationDependencyType(final String annotationName, final String annotationPackageName)
+            throws PlantUMLDependencyException {
+        checkNull(annotationName, JAVA_ANNOTATION_TYPE_NAME_NULL_ERROR);
+        checkNull(annotationPackageName, JAVA_ANNOTATION_TYPE_PACKAGE_NAME_NULL_ERROR);
+        return new AnnotationDependencyTypeImpl(annotationName, annotationPackageName);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
      * @since 1.0
      */
     @Override
     public DependencyType createDependencyType(final String dependencyName, final String dependencyPackageName,
             final boolean isAbstract, final ImportDependenciesCollection importDependencies,
             final Set < GenericDependency > parentImplementationsDependencies,
-            final Set < GenericDependency > parentExtentionsDependencies, final boolean hasNativeMethods) {
+            final Set < GenericDependency > parentExtentionsDependencies,
+            final Set < GenericDependency > annotationDependencies, final boolean hasNativeMethods) {
         checkNull(dependencyName, JAVA_TYPE_NAME_NULL_ERROR);
         checkNull(dependencyPackageName, JAVA_TYPE_PACKAGE_NAME_NULL_ERROR);
         checkNull(importDependencies, JAVA_TYPE_IMPORTS_NULL_ERROR);
         checkNull(parentImplementationsDependencies, JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR);
         checkNull(parentExtentionsDependencies, JAVA_TYPE_EXTENTIONS_NULL_ERROR);
+        checkNull(annotationDependencies, JAVA_TYPE_ANNOTATIONS_NULL_ERROR);
 
         return new EnumDependencyTypeImpl(dependencyName, dependencyPackageName, importDependencies,
-                parentImplementationsDependencies, hasNativeMethods);
+                parentImplementationsDependencies, annotationDependencies, hasNativeMethods);
     }
 
     /**

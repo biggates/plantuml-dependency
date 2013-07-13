@@ -88,7 +88,7 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.conte
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.1
+ * @version 1.2.0
  */
 class JavaProgrammingLanguage extends ProgrammingLanguage {
 
@@ -125,6 +125,10 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final ImportDependenciesCollection importDependenciesCollection = extractImportDependencies(sourceFileContent,
                 programmingLanguageContext);
 
+        final Set < GenericDependency > annotationsDependencies = extractAnnotationsDependencies(sourceFileContent,
+                javaRawDependency.getType(), importDependenciesCollection, programmingLanguageContext,
+                javaRawDependency.getPackageName());
+
         final boolean hasNativeMethods = javaRawDependency.hasNativeMethods();
         if (hasNativeMethods) {
             importDependenciesCollection.addImportDependencies(NATIVE, NATIVE_DEPENDENCY);
@@ -142,14 +146,14 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
                 importDependenciesCollection, parentImplementationsDependencies, parentExtentionsDependencies,
-                hasNativeMethods);
+                annotationsDependencies, hasNativeMethods);
         return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
     }
 
     /**
      * Creates or updates the dependency type or the passed raw dependency. If the dependency has
-     * already been seen (i.e. it appears in the <code>dependenciesMap</code>) it just updates its
-     * {@link DependencyType}, otherwise it creates the dependency.
+     * already been seen (i.e. it appears in the <code>programmingLanguageContext</code>) it just
+     * updates its {@link DependencyType}, otherwise it creates the dependency.
      *
      * @param javaRawDependency
      *            the {@link JavaRawDependency} containing raw data of the dependency contained in
@@ -197,31 +201,55 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * Following a java source file content, reads, parses and extracts all annotations dependencies
-     * (classes and methods).
+     * (classes and methods). This method also adds the annotations dependencies in the dependencies
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext}
+     * if they have not been already seen.
      *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
-     * @return the {@link Set} of annotations dependency names parsed from the {@link String}.
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param importDependencies
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
+     * @param currentPackageName
+     *            the current dependency package name, mustn't be <code>null</code>.
+     * @return the {@link Set} of all annotations dependencies found in the java source file
+     *         content. Returns an empty {@link Set} if no annotations have been found.
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the annotation
+     *             {@link GenericDependency} instance.
      * @since 1.2.0
      */
-    private static Set < String > extractAnnotations(final String javaSourceFileContent) {
-        final Set < String > annotations = new TreeSet < String >();
+    private static Set < GenericDependency > extractAnnotationsDependencies(final String javaSourceFileContent,
+            final JavaType type, final ImportDependenciesCollection importDependencies,
+            final ProgrammingLanguageContext programmingLanguageContext, final String currentPackageName)
+            throws PlantUMLDependencyException {
+        final Set < GenericDependency > annotationDependenciesSet = new TreeSet < GenericDependency >();
 
         final Matcher matcher = ANNOTATIONS_REGEXP.matcher(javaSourceFileContent);
 
         while (matcher.find()) {
-            final String annotation = matcher.group(1);
-            annotations.add(annotation);
+            final String annotationNameOrFullName = matcher.group(1);
+            final GenericDependency dependency = getOrCreateAnnotationDependency(annotationNameOrFullName,
+                    currentPackageName, type, importDependencies, programmingLanguageContext);
+            annotationDependenciesSet.add(dependency);
         }
 
-        return annotations;
+        return annotationDependenciesSet;
     }
 
     /**
      * Following a java source file content, reads, parses and extracts all import dependencies
      * (static and normal imports). This method also adds the import dependencies in the
-     * dependencies {@link java.util.Map} if they have not been already seen.
+     * dependencies
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext}
+     * if they have not been already seen.
      *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
@@ -253,7 +281,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * Following a java source file content and the import regular expression, reads, parses and
      * extracts all import dependencies. This method also adds the import dependencies in the
-     * dependencies {@link java.util.Map} if they have not been already seen.
+     * dependencies
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext}
+     * if they have not been already seen.
      *
      * @param javaSourceFileContent
      *            the java source file content to analyze as a {@link String}, mustn't be
@@ -365,8 +395,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             throws PlantUMLDependencyException {
 
         final Set < GenericDependency > parentsSet = new TreeSet < GenericDependency >();
-        for (final String parentName : parents) {
-            final GenericDependency dependency = getOrCreateParentDependency(type, parentType, parentName,
+        for (final String parentNameOrFullName : parents) {
+            final GenericDependency dependency = getOrCreateParentDependency(type, parentType, parentNameOrFullName,
                     currentPackageName, importDependencies, programmingLanguageContext);
             parentsSet.add(dependency);
         }
@@ -518,6 +548,197 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
+     * Gets or creates the annotation dependency.
+     *
+     * @param annotationNameOrFullName
+     *            the annotation dependency name or full name, mustn't be <code>null</code>.
+     * @param currentPackageName
+     *            the current dependency package name, mustn't be <code>null</code>.
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param importDependencies
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
+     * @return the annotation {@link GenericDependency} instance.
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the annotation
+     *             {@link GenericDependency} instance.
+     * @since 1.2.0
+     */
+    private static GenericDependency getOrCreateAnnotationDependency(final String annotationNameOrFullName,
+            final String currentPackageName, final JavaType type,
+            final ImportDependenciesCollection importDependencies,
+            final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
+
+        GenericDependency dependency = null;
+        final int packageSeparatorIndex = annotationNameOrFullName.lastIndexOf(DOT_CHAR);
+
+        if (packageSeparatorIndex == MINUS_ONE_RETURN_CODE) {
+            dependency = getOrCreateAnnotationDependencyWithName(annotationNameOrFullName, currentPackageName, type,
+                    importDependencies, programmingLanguageContext);
+        } else {
+            dependency = getOrCreateAnnotationDependencyWithFullName(annotationNameOrFullName, type,
+                    importDependencies, programmingLanguageContext, packageSeparatorIndex);
+        }
+
+        return dependency;
+    }
+
+    /**
+     * Gets or creates the annotation dependency if it is described with its full name.
+     *
+     * @param annotationFullName
+     *            the annotation dependency full name, mustn't be <code>null</code>.
+     * @param importDependencies
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
+     * @param packageSeparatorIndex
+     *            the character separator index in the <code>annotationFullName</code> string which
+     *            separates the package from the dependency name, must be >= 0 and inferior to
+     *            <code>annotationFullName.length()</code>.
+     * @return the annotation {@link GenericDependency} instance.
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the parent
+     *             {@link GenericDependency} instance.
+     * @since 1.2.0
+     */
+    private static GenericDependency getOrCreateAnnotationDependencyWithFullName(final String annotationFullName,
+            final JavaType type, final ImportDependenciesCollection importDependencies,
+            final ProgrammingLanguageContext programmingLanguageContext, final int packageSeparatorIndex)
+            throws PlantUMLDependencyException {
+        final String parentName = annotationFullName.substring(packageSeparatorIndex + 1);
+        final String parentPackageName = annotationFullName.substring(0, packageSeparatorIndex);
+        GenericDependency dependency = importDependencies.findDependency(parentName, parentPackageName);
+
+        if (dependency == null) {
+            dependency = programmingLanguageContext.getDependencies(annotationFullName);
+            if (dependency == null) {
+                final DependencyType dependencyType = type
+                        .createAnnotationDependencyType(parentName, parentPackageName);
+                LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullName, dependencyType}));
+                dependency = new GenericDependencyImpl(dependencyType);
+                programmingLanguageContext.addSeenDependencies(dependency);
+            } else {
+                LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullName));
+            }
+        } else {
+            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullName));
+
+            final DependencyType dependencyType = type.createAnnotationDependencyType(dependency.getName(),
+                    dependency.getPackageName());
+            dependency.setDependencyType(dependencyType);
+        }
+
+        return dependency;
+    }
+
+    /**
+     * Gets or creates the parent dependency if it is not described with its full name, i.e. if it
+     * is not in the import, or in the same package or in the "java.lang" package.
+     *
+     * @param annotationName
+     *            the annotation dependency name, mustn't be <code>null</code>.
+     * @param currentPackageName
+     *            the current dependency package name, mustn't be <code>null</code>.
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param importDependencies
+     *            the {@link ImportDependenciesCollection} containing all import dependencies which
+     *            are needed by the current dependency type to work, mustn't be <code>null</code>.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
+     * @return the annotation {@link GenericDependency} instance.
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the annotation
+     *             {@link GenericDependency} instance.
+     * @since 1.2.0
+     */
+    private static GenericDependency getOrCreateAnnotationDependencyWithName(final String annotationName,
+            final String currentPackageName, final JavaType type,
+            final ImportDependenciesCollection importDependencies,
+            final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
+        GenericDependency dependency = null;
+        dependency = importDependencies.findDependency(annotationName);
+
+        if (dependency == null) {
+            final String annotationFullNameWithSamePackage = currentPackageName + DOT_CHAR + annotationName;
+            dependency = programmingLanguageContext.getDependencies(annotationFullNameWithSamePackage);
+            if (dependency == null) {
+                dependency = getOrCreateAnnotationDependencyWithNameFromJavaLangOrSamePackage(currentPackageName, type,
+                        programmingLanguageContext, annotationName, annotationFullNameWithSamePackage);
+            } else {
+                LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullNameWithSamePackage));
+            }
+        } else {
+            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
+            final DependencyType dependencyType = type.createAnnotationDependencyType(dependency.getName(),
+                    dependency.getPackageName());
+            dependency.setDependencyType(dependencyType);
+        }
+
+        return dependency;
+    }
+
+    /**
+     * Gets or creates the annotation dependency if it is not described with its full name, i.e. if
+     * it is in the same package or in the "java.lang" package.
+     *
+     * @param currentPackageName
+     *            the current dependency package name, mustn't be <code>null</code>.
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
+     * @param annotationName
+     *            the annotation dependency name, mustn't be <code>null</code>.
+     * @param annotationFullNameWithSamePackage
+     *            the annotation dependency full name with the same package as the current
+     *            dependency, mustn't be <code>null</code>.
+     * @return the annotation {@link GenericDependency} instance.
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the parent
+     *             {@link GenericDependency} instance.
+     * @since 1.2.0
+     */
+    private static GenericDependency getOrCreateAnnotationDependencyWithNameFromJavaLangOrSamePackage(
+            final String currentPackageName, final JavaType type,
+            final ProgrammingLanguageContext programmingLanguageContext, final String annotationName,
+            final String annotationFullNameWithSamePackage) throws PlantUMLDependencyException {
+        GenericDependency dependency = null;
+        String annotationPackageName = JAVA_LANG_PACKAGE;
+        String annotationFullName = annotationPackageName + DOT_CHAR + annotationName;
+
+        try {
+            forName(annotationFullName);
+        } catch (final ClassNotFoundException e) {
+            annotationFullName = annotationFullNameWithSamePackage;
+            annotationPackageName = currentPackageName;
+        }
+
+        final DependencyType dependencyType = type
+                .createAnnotationDependencyType(annotationName, annotationPackageName);
+        LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullName, dependencyType}));
+        dependency = new GenericDependencyImpl(dependencyType);
+        programmingLanguageContext.addSeenDependencies(dependency);
+
+        return dependency;
+    }
+
+    /**
      * Gets or creates the parent dependency.
      *
      * @param type
@@ -561,8 +782,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
-     * Gets or creates the parent dependency if it is not described with its full name, i.e. if it
-     * is in the import, or in the same package or in the "java.lang" package.
+     * Gets or creates the parent dependency if it is described with its full name.
      *
      * @param type
      *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
@@ -618,7 +838,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     }
 
     /**
-     * Gets or creates the parent dependency if it is described with its simple name.
+     * Gets or creates the parent dependency if it is not described with its full name, i.e. if it
+     * is not in the import, or in the same package or in the "java.lang" package.
      *
      * @param type
      *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
@@ -761,9 +982,6 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         if (matcher.find()) {
             final String packageName = extractPackageName(javaSourceFileContent);
             javaRawDependency.setPackageName(packageName);
-
-            final Set < String > annotations = extractAnnotations(javaSourceFileContent);
-            javaRawDependency.setAnnotations(annotations);
 
             final boolean isAbstract = extractAbstract(matcher.group(1));
             javaRawDependency.setAbstract(isAbstract);

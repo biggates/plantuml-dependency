@@ -72,12 +72,6 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     private boolean nativeMethods;
 
     /**
-     * The {@link Set} of all dependency annotations (classes and methods) full names (package +
-     * class).
-     */
-    private Set < String > annotations;
-
-    /**
      * The {@link Set} of all dependency extensions full names (package + class), i.e. classes or
      * interfaces the dependency "extends".
      */
@@ -112,9 +106,6 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @param extentions
      *            the {@link Set} of all dependency extensions full names (package + class), i.e.
      *            classes or interfaces the dependency "extends".
-     * @param annotations
-     *            the {@link Set} of all dependency annotations (classes and methods) full names
-     *            (package + class).
      * @param implementations
      *            the {@link Set} dependency implementations full names (package + class), i.e.
      *            interfaces the dependency "implements".
@@ -124,12 +115,11 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      */
     public JavaRawDependency(final boolean isAbs, final String dependencyPackageName, final JavaType javaType,
             final String dependencyName, final Set < String > extentions, final Set < String > implementations,
-            final Set < String > annotations, final boolean nativeMth) {
+            final boolean nativeMth) {
         setAbstract(isAbs);
         setPackageName(dependencyPackageName);
         setType(javaType);
         setName(dependencyName);
-        setAnnotations(annotations);
         setParentExtentions(extentions);
         setParentImplementations(implementations);
         setNativeMethods(nativeMth);
@@ -163,7 +153,6 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
         try {
             j = (JavaRawDependency) super.clone();
-            j.annotations = new TreeSet < String >(getAnnotations());
             j.parentExtentions = new TreeSet < String >(getParentExtentions());
             j.parentImplementations = new TreeSet < String >(getParentImplementations());
         } catch (final CloneNotSupportedException cnse) {
@@ -205,17 +194,6 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
             return false;
         }
         return true;
-    }
-
-    /**
-     * Gets the value of <code>annotations</code>.
-     *
-     * @return the value of <code>annotations</code>.
-     * @see #setAnnotations(Set)
-     * @since 1.2.0
-     */
-    public Set < String > getAnnotations() {
-        return annotations;
     }
 
     /**
@@ -332,17 +310,6 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     }
 
     /**
-     * Sets the value of <code>annotations</code>.
-     *
-     * @param value
-     *            the <code>annotations</code> to set, can be <code>null</code>.
-     * @since 1.2.0
-     */
-    public void setAnnotations(final Set < String > value) {
-        annotations = value;
-    }
-
-    /**
      * Sets the value of <code>name</code>.
      *
      * @param value
@@ -422,7 +389,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     @Override
     public String toString() {
         return getClass().getSimpleName() + " [isAbstract=" + isAbstract + ", packageName=" + packageName + ", type="
-                + type + ", name=" + name + ", nativeMethods=" + nativeMethods + ", annotations=" + annotations
-                + ", parentExtentions=" + parentExtentions + ", parentImplementations=" + parentImplementations + "]";
+                + type + ", name=" + name + ", nativeMethods=" + nativeMethods + ", parentExtentions="
+                + parentExtentions + ", parentImplementations=" + parentImplementations + "]";
     }
 }

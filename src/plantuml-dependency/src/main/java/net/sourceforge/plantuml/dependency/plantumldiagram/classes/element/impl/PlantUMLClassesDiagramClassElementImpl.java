@@ -38,7 +38,7 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.P
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class PlantUMLClassesDiagramClassElementImpl extends AbstractPlantUMLClassesDiagramElement implements
         PlantUMLClassesDiagramClassElement {
@@ -72,7 +72,7 @@ public class PlantUMLClassesDiagramClassElementImpl extends AbstractPlantUMLClas
      *            the element stereotype, if any, may be <code>null</code>.
      * @since 1.1.1
      */
-    protected PlantUMLClassesDiagramClassElementImpl(final String fullName, final PlantUMLClassesDiagramElementTag tag,
+    public PlantUMLClassesDiagramClassElementImpl(final String fullName, final PlantUMLClassesDiagramElementTag tag,
             final PlantUMLStereotype stereotyp) {
         super(fullName, tag);
         stereotype = stereotyp;
