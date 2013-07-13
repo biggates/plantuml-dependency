@@ -24,7 +24,6 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java;
 
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.ANNOTATIONS_SET1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.EXTENSIONS_SET1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.IMPLEMENTATIONS_SET1;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.CLASS;
@@ -46,81 +45,63 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class JavaRawDependencyTest extends ComparableAndDeepCloneableObjectTest < JavaRawDependency > {
 
     /** Java raw dependency test 1 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY1 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, new TreeSet < String >(), false);
+            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 2 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY2 = new JavaRawDependency(false, "java.lang", CLASS,
-            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, new TreeSet < String >(), false);
+            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 3 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY3 = new JavaRawDependency(true, "java.io", CLASS, "Byte",
-            EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, new TreeSet < String >(), false);
+            EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 4 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY4 = new JavaRawDependency(true, "java.lang", INTERFACE,
-            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, new TreeSet < String >(), false);
+            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 5 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY5 = new JavaRawDependency(true, "java.lang", CLASS,
-            "String", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, new TreeSet < String >(), false);
+            "String", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 6 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY6 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", new TreeSet < String >(), IMPLEMENTATIONS_SET1, new TreeSet < String >(), false);
+            "Byte", new TreeSet < String >(), IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 7 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY7 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", EXTENSIONS_SET1, new TreeSet < String >(), new TreeSet < String >(), false);
+            "Byte", EXTENSIONS_SET1, new TreeSet < String >(), false);
 
     /** Java raw dependency test 8 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY8 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, new TreeSet < String >(), false);
+            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, false);
 
     /** Java raw dependency test 9 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY9 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, ANNOTATIONS_SET1, false);
+            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, true);
 
     /** Java raw dependency test 10 instance. */
     @DataPoint
     public static final JavaRawDependency JAVA_RAW_DEPENDENCY10 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", EXTENSIONS_SET1, IMPLEMENTATIONS_SET1, new TreeSet < String >(), true);
+            "Byte", new TreeSet < String >(), new TreeSet < String >(), false);
 
     /** Java raw dependency test 11 instance. */
     @DataPoint
-    public static final JavaRawDependency JAVA_RAW_DEPENDENCY11 = new JavaRawDependency(true, "java.lang", CLASS,
-            "Byte", new TreeSet < String >(), new TreeSet < String >(), new TreeSet < String >(), false);
-
-    /** Java raw dependency test 12 instance. */
-    @DataPoint
-    public static final JavaRawDependency JAVA_RAW_DEPENDENCY12 = null;
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency#getAnnotations()}
-     * .
-     */
-    @Test
-    public void testGetAnnotations() {
-        final Set < String > implementations = JAVA_RAW_DEPENDENCY9.getAnnotations();
-        assertEquals(2, implementations.size());
-        assertTrue(implementations.contains("javax.xml.bind.annotation.XmlType"));
-        assertTrue(implementations.contains("java.lang.Override"));
-    }
+    public static final JavaRawDependency JAVA_RAW_DEPENDENCY11 = null;
 
     /**
      * Test method for

@@ -25,7 +25,7 @@
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag;
 
 /**
- * The enumeration which lists all plantUML element tag available in the plantUML classes diagram
+ * The enumeration which lists all plantUML element tags available in the plantUML classes diagram
  * language.
  *
  * @see <a href="http://plantuml.sourceforge.net/classes.html#Abstract">PlantUML classes diagram

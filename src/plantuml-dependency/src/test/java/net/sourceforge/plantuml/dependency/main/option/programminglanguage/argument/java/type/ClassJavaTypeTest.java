@@ -49,7 +49,7 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
 
@@ -76,7 +76,8 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getPackageName(), true,
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentInterfaces(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.hasNativeMethods()));
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getAnnotations(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
     /**
@@ -91,7 +92,7 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
                 CLASS_ABSTRACT_DEPENDENCY_TYPE11.getImportDependenciesCollection(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentInterfaces(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentClasses(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE11.hasNativeMethods()));
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getAnnotations(), CLASS_ABSTRACT_DEPENDENCY_TYPE11.hasNativeMethods()));
     }
 
     /**
@@ -104,7 +105,7 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
         assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_DEPENDENCY_TYPE1.getName(),
                 CLASS_DEPENDENCY_TYPE1.getPackageName(), false,
                 CLASS_DEPENDENCY_TYPE1.getImportDependenciesCollection(), CLASS_DEPENDENCY_TYPE1.getParentInterfaces(),
-                CLASS_DEPENDENCY_TYPE1.getParentClasses(), CLASS_DEPENDENCY_TYPE1.hasNativeMethods()));
+                CLASS_DEPENDENCY_TYPE1.getParentClasses(), CLASS_DEPENDENCY_TYPE1.getAnnotations(), CLASS_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
     /**
@@ -201,4 +202,6 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
         assertEquals(1, parents.size());
         assertTrue(parents.contains("Cloneable"));
     }
+
+    // TODO testAnnotationDependencyType
 }

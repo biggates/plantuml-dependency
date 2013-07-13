@@ -55,7 +55,7 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.1.0
- * @version 1.1.0
+ * @version 1.2.0
  */
 public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTest < ImportDependenciesCollectionImpl > {
 
@@ -273,15 +273,7 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
             STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
                     new GenericDependencyImpl("ElementType", "java.lang.annotation"),
                     new GenericDependencyImpl("XmlType", "javax.xml.bind.annotation"),
-                    new GenericDependencyImpl("Addressing", "javax.xml.ws.soap"),
-                    new GenericDependencyImpl("Testabstract", "java.lang"),
-                    new GenericDependencyImpl("Deprecated", "java.lang"),
-                    new GenericDependencyImpl("SuppressWarnings", "java.lang"),
-                    new GenericDependencyImpl("Annotationinterface", "java.lang"),
-                    new GenericDependencyImpl("AnotherAnnotation", "java.lang"),
-                    new GenericDependencyImpl("MyAnnotation", "java.lang"),
-                    new GenericDependencyImpl("Override", "java.lang"),
-                    new GenericDependencyImpl("MappedSuperclass", "java.lang")})));
+                    new GenericDependencyImpl("Addressing", "javax.xml.ws.soap"),})));
 
     /** Display import dependencies collection test 23 instance. */
     @DataPoint

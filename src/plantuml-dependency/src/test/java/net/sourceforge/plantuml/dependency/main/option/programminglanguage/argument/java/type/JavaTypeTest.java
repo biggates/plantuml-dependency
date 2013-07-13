@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
+import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.ANNOTATION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.CLASS;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.ENUM;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType.INTERFACE;
@@ -46,7 +47,7 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class JavaTypeTest extends ComparableObjectTest < ProgrammingLanguage > {
 
@@ -78,10 +79,11 @@ public class JavaTypeTest extends ComparableObjectTest < ProgrammingLanguage > {
     @Test
     public void testGetProgrammingLanguageCollection() {
         final Collection < JavaType > javaTypes = getJavaTypeCollection();
-        assertEquals(3, javaTypes.size());
+        assertEquals(4, javaTypes.size());
         assertTrue(javaTypes.contains(CLASS));
         assertTrue(javaTypes.contains(ENUM));
         assertTrue(javaTypes.contains(INTERFACE));
+        assertTrue(javaTypes.contains(ANNOTATION));
     }
 
     /**

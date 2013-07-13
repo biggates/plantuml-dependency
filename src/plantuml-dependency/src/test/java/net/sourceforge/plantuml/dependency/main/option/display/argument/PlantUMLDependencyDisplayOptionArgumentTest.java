@@ -44,7 +44,7 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.2.0
  */
 public class PlantUMLDependencyDisplayOptionArgumentTest extends
         DeepCloneableObjectTest < PlantUMLDependencyDisplayOptionArgument > {
@@ -76,7 +76,7 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
     @Test
     public void testGetFullUsageDescription() {
         assertEquals(
-                "DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes, \"classes\" : displays parsed and seen source files (as import or as extension) which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), \"implementations\" : displays dependencies which are implemented by parsed source files (i.e. interfaces), \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, \"native_methods\" : displays links to the native dependency, \"static_imports\" : displays static imports of all parsed source files.",
+                "DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, annotations, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes, \"annotations\" : displays annotations (classes and methods) of all parsed source files, \"classes\" : displays parsed and seen source files (as import or as extension) which are classes (not abstract), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), \"implementations\" : displays dependencies which are implemented by parsed source files (i.e. interfaces), \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, \"native_methods\" : displays links to the native dependency, \"static_imports\" : displays static imports of all parsed source files.",
                 DISPLAY_OPTION_ARGUMENT1.getFullUsageDescription().toString());
     }
 

@@ -48,7 +48,7 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaType > {
 
@@ -71,12 +71,11 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
      */
     @Test
     public void testCreateDependencyTypeAbstract() {
-        assertEquals(
-                INTERFACE_DEPENDENCY_TYPE1,
-                JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
-                        INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true,
-                        INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                        INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), true));
+        assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true,
+                INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
+                INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(),
+                INTERFACE_DEPENDENCY_TYPE1.getAnnotations(), true));
     }
 
     /**
@@ -86,12 +85,11 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
      */
     @Test
     public void testCreateDependencyTypeAbstractWithNativeMethods() {
-        assertEquals(
-                INTERFACE_DEPENDENCY_TYPE1,
-                JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
-                        INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true,
-                        INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                        INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), true));
+        assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true,
+                INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
+                INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(),
+                INTERFACE_DEPENDENCY_TYPE1.getAnnotations(), true));
     }
 
     /**
@@ -101,12 +99,11 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
      */
     @Test
     public void testCreateDependencyTypeNotAbstract() {
-        assertEquals(
-                INTERFACE_DEPENDENCY_TYPE1,
-                JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
-                        INTERFACE_DEPENDENCY_TYPE1.getPackageName(), false,
-                        INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                        INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(), false));
+        assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
+                INTERFACE_DEPENDENCY_TYPE1.getPackageName(), false,
+                INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
+                INTERFACE_DEPENDENCY_TYPE1.getParentInterfaces(), new TreeSet < GenericDependency >(),
+                INTERFACE_DEPENDENCY_TYPE1.getAnnotations(), false));
     }
 
     /**
@@ -251,4 +248,6 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
     public void testExtractParentImplementationsWithSingleParentWithoutGenerics() throws PlantUMLDependencyException {
         JAVA_TYPE1.extractParentImplementations("Cloneable");
     }
+
+    // TODO testAnnotationDependencyType
 }
