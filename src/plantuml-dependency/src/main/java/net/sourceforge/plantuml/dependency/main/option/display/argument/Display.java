@@ -40,7 +40,7 @@ import java.util.TreeSet;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.1
+ * @version 1.2.0
  */
 public enum Display {
     /** The display abstract classes argument. */
@@ -48,6 +48,8 @@ public enum Display {
     /** The display attributes argument. */
     // FIXME to remove when it will be implemented
     // ATTRIBUTES("displays parsed source files attributes"),
+    /** The display annotations argument. */
+    ANNOTATIONS("displays annotations (classes and methods) of all parsed source files"),
     /** The display classes argument. */
     CLASSES("displays parsed and seen source files (as import or as extension) which are classes (not abstract)"),
     /** The display enumerations argument. */

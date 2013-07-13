@@ -1,6 +1,6 @@
 /*
- InterfaceDependencyTypeImpl.java
- Creation date : 20/06/2010
+ AnnotationDependencyTypeImpl.java
+ Creation date : 11/07/2013
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
@@ -22,9 +22,9 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl;
+package net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl;
 
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ANNOTATIONS;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -35,21 +35,21 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImpl;
+import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl;
 
 /**
- * The interface implementation of the
+ * The annotation implementation of the
  * {@link net.sourceforge.plantuml.dependency.generic.type.DependencyType} interface.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
- * @since 1.0
+ * @since 1.2.0
  * @version 1.2.0
  */
-public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
+public class AnnotationDependencyTypeImpl extends DependencyTypeImpl {
 
     /** Serial version UID. */
-    private static final long serialVersionUID = 5962361438336541275L;
+    private static final long serialVersionUID = 5334015594567999340L;
 
     /**
      * Default constructor.
@@ -59,11 +59,11 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
      * @param dependencyPackageName
      *            The dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
-     * @since 1.0
+     * @since 1.2.0
      */
-    public InterfaceDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
-                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
+    public AnnotationDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
+        super(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
     }
 
     /**
@@ -77,48 +77,45 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
      * @param importDependencies
      *            the {@link ImportDependenciesCollection} containing all import dependencies which
      *            are needed by the current dependency type to work, mustn't be <code>null</code>.
-     * @param parentInterfacesSet
-     *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
-     *            used by the current dependency type, mustn't be <code>null</code>.
      * @param annotationsSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
-     * @since 1.0
+     * @since 1.2.0
      */
-    public InterfaceDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet,
-            final Set < GenericDependency > annotationsSet) {
-        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, annotationsSet, false);
+    public AnnotationDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
+            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > annotationsSet) {
+        super(dependencyName, dependencyPackageName, importDependencies, new TreeSet < GenericDependency >(),
+                annotationsSet, false);
     }
 
     /**
      * {@inheritDoc}
      *
-     * @since 1.1.1
+     * @since 1.2.0
      */
     @Override
     protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
-        return new PlantUMLClassesDiagramInterfaceElementImpl(getFullName());
+        return new PlantUMLClassesDiagramAnnotationElementImpl(getFullName());
     }
 
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.2.0
      */
     @Override
     protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
-        return getParentInterfaces().contains(genericDependency);
+        return false;
     }
 
     /**
      * {@inheritDoc}
      *
-     * @since 1.1.1
+     * @since 1.2.0
      */
     @Override
     public boolean isDisplayable(final Set < Display > displayOptions) {
-        return displayOptions.contains(INTERFACES);
+        return displayOptions.contains(ANNOTATIONS);
     }
 
     /**

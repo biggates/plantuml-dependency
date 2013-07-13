@@ -47,7 +47,7 @@ import net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUML
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.2.0
  */
 public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument < Set < Display > > {
 

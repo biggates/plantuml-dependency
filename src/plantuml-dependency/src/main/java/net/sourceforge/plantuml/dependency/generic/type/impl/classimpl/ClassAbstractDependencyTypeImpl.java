@@ -43,7 +43,7 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
 
@@ -62,7 +62,8 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
-                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
+                new TreeSet < GenericDependency >(), false);
     }
 
     /**
@@ -79,6 +80,9 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @param parentInterfacesSet
      *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
      *            used by the current dependency type, mustn't be <code>null</code>.
+     * @param annotationsSet
+     *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
+     *            the current dependency type, mustn't be <code>null</code>.
      * @param parentClassesSet
      *            the {@link Set} of all parent classes as {@link GenericDependency} which are used
      *            by the current dependency type, mustn't be <code>null</code>.
@@ -88,9 +92,10 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet,
-            final Set < GenericDependency > parentClassesSet, final boolean hasNativeMethods) {
-        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, parentClassesSet,
-                hasNativeMethods);
+            final Set < GenericDependency > annotationsSet, final Set < GenericDependency > parentClassesSet,
+            final boolean hasNativeMethods) {
+        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, annotationsSet,
+                parentClassesSet, hasNativeMethods);
     }
 
     /**

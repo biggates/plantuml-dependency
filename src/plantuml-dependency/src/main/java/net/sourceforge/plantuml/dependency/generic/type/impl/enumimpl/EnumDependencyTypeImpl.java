@@ -44,7 +44,7 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class EnumDependencyTypeImpl extends DependencyTypeImpl {
 
@@ -63,7 +63,7 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      */
     public EnumDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         super(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
-                new TreeSet < GenericDependency >(), false);
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
     }
 
     /**
@@ -80,14 +80,18 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      * @param parentInterfacesSet
      *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
      *            used by the current dependency type, mustn't be <code>null</code>.
+     * @param annotationsSet
+     *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
+     *            the current dependency type, mustn't be <code>null</code>.
      * @param hasNativeMethods
      *            the boolean indicating if the dependency has native methods inside.
      * @since 1.0
      */
     public EnumDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet,
-            final boolean hasNativeMethods) {
-        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, hasNativeMethods);
+            final Set < GenericDependency > annotationsSet, final boolean hasNativeMethods) {
+        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, annotationsSet,
+                hasNativeMethods);
     }
 
     /**

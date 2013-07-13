@@ -35,15 +35,26 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.Plan
 
 /**
  * The interface which describes a generic dependency type, no matter the programming language is. A
- * dependency type might be a class, an interface or an enumeration.
+ * dependency type might be a class, an interface, an enumeration or an annotation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.1
+ * @version 1.2.0
  */
 public interface DependencyType extends Comparable < DependencyType >, Serializable, DeepCloneable < DependencyType >,
         Displayable {
+
+    /**
+     * Gets the {@link Set} of all annotation as {@link GenericDependency} which are used by the
+     * current dependency type. If no dependencies annotations are used, it returns an empty
+     * {@link Set}.
+     *
+     * @return the {@link Set} of all annotations as {@link GenericDependency} which are used by the
+     *         current dependency type.
+     * @since 1.2.0
+     */
+    Set < GenericDependency > getAnnotations();
 
     /**
      * Gets the dependency full name, usually the package and the dependency name.
