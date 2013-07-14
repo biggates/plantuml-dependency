@@ -184,7 +184,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42,
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
-        assertEquals(4, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(13, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY42.getFullName()));
     }
 

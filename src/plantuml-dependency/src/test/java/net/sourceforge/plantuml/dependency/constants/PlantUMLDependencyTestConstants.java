@@ -168,7 +168,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /** File set test 1 instance. */
     public static final FileSet FILE_SET2 = createFileSet(CURRENT_DIRECTORY, "**/*A*.java");
-        
+
     /** Display set test 1 instance. */
     public static final Set < Display > DISPLAY_SET1 = new TreeSet < Display >();
 
@@ -416,9 +416,10 @@ public final class PlantUMLDependencyTestConstants {
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE27 = new ClassDependencyTypeImpl(
             "TestDisplayOption", "net.sourceforge.plantuml.dependency", IMPORT_COLLECTION_TEST16,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(),
-            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl("BigInteger",
-                    "java.math")})), false);
+                    "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl(new AnnotationDependencyTypeImpl(
+                            "Override", "java.lang"))})), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("BigInteger", "java.math")})), false);
 
     /** Class dependency type test 28 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE28 = new ClassDependencyTypeImpl(
@@ -430,14 +431,37 @@ public final class PlantUMLDependencyTestConstants {
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE29 = new ClassDependencyTypeImpl(
             "TestDisplayOption", "net.sourceforge.plantuml.dependency", IMPORT_COLLECTION_TEST17,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(),
-            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl("BigInteger",
-                    "java.math")})), false);
+                    "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl(new AnnotationDependencyTypeImpl(
+                            "Override", "java.lang"))})), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("BigInteger", "java.math")})), false);
 
     /** Class dependency type test 30 instance. */
     public static final ClassAbstractDependencyTypeImpl CLASS_DEPENDENCY_TYPE30 = new ClassAbstractDependencyTypeImpl(
-            "GenericEndpoint", "com.plantuml.test", IMPORT_COLLECTION_TEST23, new TreeSet < GenericDependency >(),
-            new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
+            "GenericEndpoint",
+            "com.plantuml.test",
+            IMPORT_COLLECTION_TEST23,
+            new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Annotationinterface",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("AnotherAnnotation",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("MappedSuperclass",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("MyAnnotation",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Testabstract",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated", "java.lang")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Override", "java.lang")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("SuppressWarnings", "java.lang")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Generated", "javax.annotation")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("XmlType",
+                                    "javax.xml.bind.annotation")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Addressing",
+                                    "javax.xml.ws.soap"))})), new TreeSet < GenericDependency >(), false);
 
     /** Interface dependency type test 1 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
