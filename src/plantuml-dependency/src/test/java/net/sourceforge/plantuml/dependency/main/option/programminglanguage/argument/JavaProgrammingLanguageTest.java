@@ -75,6 +75,7 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY43;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY44;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY45;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY47;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY5;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY6;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY7;
@@ -283,11 +284,11 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"name\"   }  )\r\n@    MappedSuperclass\r\n@ javax.annotation.Generated(value=\"\")\r\npublic class GenericEndpoint {\r\n@   Override  \r\n public void toto() {\r\nString t = \"@test\";}\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
-        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42,
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY47,
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
-        assertEquals(4, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY42.getFullName()));
+        assertEquals(13, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY47.getFullName()));
     }
 
     /**
@@ -1348,7 +1349,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY45,
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
-        assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(12, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY45.getFullName()));
     }
 

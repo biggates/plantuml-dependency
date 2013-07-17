@@ -193,7 +193,8 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      */
     @Override
     protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
-        return getParentInterfaces().contains(genericDependency) || getParentClasses().contains(genericDependency);
+        return getParentInterfaces().contains(genericDependency) || getParentClasses().contains(genericDependency)
+                || getAnnotations().contains(genericDependency);
     }
 
     /**

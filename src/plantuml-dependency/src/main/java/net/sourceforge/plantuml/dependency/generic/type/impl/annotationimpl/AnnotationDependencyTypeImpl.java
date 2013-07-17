@@ -105,7 +105,7 @@ public class AnnotationDependencyTypeImpl extends DependencyTypeImpl {
      */
     @Override
     protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
-        return false;
+        return getAnnotations().contains(genericDependency);
     }
 
     /**

@@ -91,7 +91,7 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      * .
      */
     @Test
-    public void testGetImportDependencies() {
+    public void testGetImportDependenciesCollection() {
         final Set < GenericDependency > importDependencies = STUB_DEPENDENCY_TYPE1.getImportDependenciesCollection()
                 .getAllImportDependencies();
         assertEquals(0, importDependencies.size());
@@ -134,8 +134,8 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetPlantUMLClassesDiagramElement() {
-        assertEquals(new PlantUMLClassesDiagramClassElementImpl("java.lang.Integer"), STUB_DEPENDENCY_TYPE1
-                .getPlantUMLClassesDiagramElement());
+        assertEquals(new PlantUMLClassesDiagramClassElementImpl("java.lang.Integer"),
+                STUB_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramElement());
     }
 
     /**
@@ -145,7 +145,7 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetPlantUMLClassesDiagramRelations() {
-        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(), STUB_DEPENDENCY_TYPE1
-                .getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                STUB_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 }

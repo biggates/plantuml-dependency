@@ -35,6 +35,7 @@ import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmp
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_DOESNT_MANAGED_IMPORT_TYPE_FINE;
 import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.IMPORT_IS_A_PARENT_FINE;
 import static net.sourceforge.plantuml.dependency.generic.type.ImportType.IMPORT_TYPES;
+import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ANNOTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
 
@@ -321,6 +322,11 @@ public abstract class DependencyTypeImpl implements DependencyType {
                     interfaceDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
+        for (final GenericDependency annotationDependency : getAnnotationsToGeneratePlantUML(displayOptions)) {
+            linkSet.add(new PlantUMLClassesDiagramUseRelationImpl(getPlantUMLClassesDiagramElement(),
+                    annotationDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
+        }
+
         linkSet.addAll(generatePlantUMLClassesDiagramRelationFooter(displayOptions));
         return linkSet;
     }
@@ -333,6 +339,28 @@ public abstract class DependencyTypeImpl implements DependencyType {
     @Override
     public Set < GenericDependency > getAnnotations() {
         return annotations;
+    }
+
+    /**
+     * Gets the annotations which have to be generated in the plantUML description file.
+     *
+     * @param displayOptions
+     *            the {@link Set} of all displays options to display the PlantUML links description,
+     *            mustn't be <code>null</code>.
+     * @return the {@link Set} of annotation {@link GenericDependency} which have to be generated in
+     *         the plantUML file.
+     * @since 1.2.0
+     */
+    private Set < GenericDependency > getAnnotationsToGeneratePlantUML(final Set < Display > displayOptions) {
+        Set < GenericDependency > annotationsSet = null;
+
+        if (displayOptions.contains(ANNOTATIONS)) {
+            annotationsSet = getAnnotations();
+        } else {
+            annotationsSet = new TreeSet < GenericDependency >();
+        }
+
+        return annotationsSet;
     }
 
     /**

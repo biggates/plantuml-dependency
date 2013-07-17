@@ -108,7 +108,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
      */
     @Override
     protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
-        return getParentInterfaces().contains(genericDependency);
+        return getParentInterfaces().contains(genericDependency) || getAnnotations().contains(genericDependency);
     }
 
     /**

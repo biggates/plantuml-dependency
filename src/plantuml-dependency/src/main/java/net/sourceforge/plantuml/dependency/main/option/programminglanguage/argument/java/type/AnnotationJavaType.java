@@ -55,7 +55,7 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.Anno
  * @since 1.0
  * @version 1.2.0
  */
-public class AnnotationJavaType extends JavaType {
+class AnnotationJavaType extends JavaType {
 
     /** Serial version UID. */
     private static final long serialVersionUID = -8422451071464390542L;

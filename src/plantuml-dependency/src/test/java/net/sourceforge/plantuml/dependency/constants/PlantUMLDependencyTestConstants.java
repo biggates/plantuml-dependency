@@ -463,6 +463,33 @@ public final class PlantUMLDependencyTestConstants {
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Addressing",
                                     "javax.xml.ws.soap"))})), new TreeSet < GenericDependency >(), false);
 
+    /** Class dependency type test 31 instance. */
+    public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE31 = new ClassDependencyTypeImpl(
+            "GenericEndpoint",
+            "com.plantuml.test",
+            IMPORT_COLLECTION_TEST23,
+            new TreeSet < GenericDependency >(),
+            new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Annotationinterface",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("AnotherAnnotation",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("MappedSuperclass",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("MyAnnotation",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Testabstract",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated", "java.lang")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Override", "java.lang")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("SuppressWarnings", "java.lang")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Generated", "javax.annotation")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("XmlType",
+                                    "javax.xml.bind.annotation")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Addressing",
+                                    "javax.xml.ws.soap"))})), new TreeSet < GenericDependency >(), false);
+
     /** Interface dependency type test 1 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileClassWithMultipleExtendsGenerics",
@@ -554,7 +581,25 @@ public final class PlantUMLDependencyTestConstants {
     /** Interface dependency type test 13 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE13 = new InterfaceDependencyTypeImpl(
             "GenericEndpoint", "com.plantuml.test", IMPORT_COLLECTION_TEST23, new TreeSet < GenericDependency >(),
-            new TreeSet < GenericDependency >());
+            new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Annotationinterface",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("AnotherAnnotation",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("MappedSuperclass",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("MyAnnotation",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Testabstract",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated", "java.lang")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("SuppressWarnings", "java.lang")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Generated", "javax.annotation")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("XmlType",
+                                    "javax.xml.bind.annotation")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Addressing",
+                                    "javax.xml.ws.soap"))})));
 
     /** Enum dependency type test 1 instance. */
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE1 = new EnumDependencyTypeImpl(
@@ -569,6 +614,14 @@ public final class PlantUMLDependencyTestConstants {
     /** Annotation dependency type test 1 instance. */
     public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE1 = new AnnotationDependencyTypeImpl(
             "Override", "javax.lang");
+
+    /** Annotation dependency type test 2 instance. */
+    public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE2 = new AnnotationDependencyTypeImpl(
+            "Deprecated", "javax.lang");
+
+    /** Annotation dependency type test 3 instance. */
+    public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE3 = new AnnotationDependencyTypeImpl(
+            "Generated", "javax.annotation");
 
     /** Generic dependency test 2 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY2 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE2);
@@ -719,6 +772,17 @@ public final class PlantUMLDependencyTestConstants {
     public static final GenericDependencyImpl GENERIC_DEPENDENCY46 = new GenericDependencyImpl(
             ANNOTATION_DEPENDENCY_TYPE1);
 
+    /** Generic dependency test 47 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY47 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE31);
+
+    /** Generic dependency test 48 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY48 = new GenericDependencyImpl(
+            ANNOTATION_DEPENDENCY_TYPE2);
+
+    /** Generic dependency test 49 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY49 = new GenericDependencyImpl(
+            ANNOTATION_DEPENDENCY_TYPE3);
+
     /** Generic dependency set test 2 instance. */
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET2 = new TreeSet < GenericDependency >(
             asList(new GenericDependency[] {GENERIC_DEPENDENCY1}));
@@ -735,6 +799,15 @@ public final class PlantUMLDependencyTestConstants {
     /** Generic dependency set test 5 instance. */
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET5 = new TreeSet < GenericDependency >(
             asList(new GenericDependency[] {GENERIC_DEPENDENCY46}));
+
+    /** Generic dependency set test 6 instance. */
+    public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET6 = new TreeSet < GenericDependency >(
+            asList(new GenericDependency[] {GENERIC_DEPENDENCY48, GENERIC_DEPENDENCY49}));
+
+    /** Generic dependency set test 7 instance. */
+    public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET7 = new TreeSet < GenericDependency >(
+            asList(new GenericDependency[] {new GenericDependencyImpl("Serializable", "java.io"),
+                    new GenericDependencyImpl("Set", "java.lang")}));
 
     /**
      * Private constructor to prevent from instantiation.

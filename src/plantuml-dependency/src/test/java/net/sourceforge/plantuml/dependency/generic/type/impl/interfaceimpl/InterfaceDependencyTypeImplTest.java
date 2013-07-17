@@ -38,6 +38,7 @@ import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relati
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST11;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST12;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST13;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST25;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -139,7 +140,7 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      * .
      */
     @Test
-    public void testGetImportDependencies() {
+    public void testGetImportDependenciesCollection() {
         final Set < GenericDependency > importDependencies = INTERFACE_DEPENDENCY_TYPE1
                 .getImportDependenciesCollection().getAllImportDependencies();
         assertEquals(3, importDependencies.size());
@@ -199,7 +200,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelationsWithInterfaceAndImportDependencies() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
-                PLANTUML_USE_RELATION_TEST11, PLANTUML_USE_RELATION_TEST12, PLANTUML_IMPLEMENT_RELATION_TEST12})),
+                PLANTUML_USE_RELATION_TEST11, PLANTUML_USE_RELATION_TEST12, PLANTUML_IMPLEMENT_RELATION_TEST12,
+                PLANTUML_USE_RELATION_TEST25})),
                 INTERFACE_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
@@ -210,9 +212,11 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetPlantUMLClassesDiagramRelationsWithoutInterfaceAndImportDependencies() {
-        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
-                PLANTUML_USE_RELATION_TEST11, PLANTUML_USE_RELATION_TEST12, PLANTUML_USE_RELATION_TEST13,
-                PLANTUML_IMPLEMENT_RELATION_TEST13, PLANTUML_IMPLEMENT_RELATION_TEST14})),
+        assertEquals(
+                new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                        PLANTUML_USE_RELATION_TEST11, PLANTUML_USE_RELATION_TEST12, PLANTUML_USE_RELATION_TEST13,
+                        PLANTUML_IMPLEMENT_RELATION_TEST13, PLANTUML_IMPLEMENT_RELATION_TEST14,
+                        PLANTUML_USE_RELATION_TEST25})),
                 INTERFACE_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 }

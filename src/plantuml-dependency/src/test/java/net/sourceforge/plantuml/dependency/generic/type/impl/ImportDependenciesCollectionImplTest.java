@@ -45,6 +45,7 @@ import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantuml.dependency.generic.type.ImportType;
+import net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -275,13 +276,21 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                     new GenericDependencyImpl("XmlType", "javax.xml.bind.annotation"),
                     new GenericDependencyImpl("Addressing", "javax.xml.ws.soap"),})));
 
-    /** Display import dependencies collection test 23 instance. */
-    @DataPoint
-    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST24 = new ImportDependenciesCollectionImpl();
-
     /** Display import dependencies collection test 24 instance. */
     @DataPoint
-    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST25 = null;
+    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST24 = new ImportDependenciesCollectionImpl(
+            STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {GENERIC_DEPENDENCY1,
+                    new GenericDependencyImpl("Serializable", "java.io"),
+                    new GenericDependencyImpl("Comparable", "java.lang"),
+                    new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated", "javax.lang"))})));
+
+    /** Display import dependencies collection test 25 instance. */
+    @DataPoint
+    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST25 = new ImportDependenciesCollectionImpl();
+
+    /** Display import dependencies collection test 26 instance. */
+    @DataPoint
+    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST26 = null;
 
     /**
      * Test method for
