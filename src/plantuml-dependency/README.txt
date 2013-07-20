@@ -3,10 +3,13 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 
 ?, Dec 2013 - 1.2.0
 ====================
-- Introducing a new feature : the display option which allows to filter output elements, such as classes, interfaces, enums, abstract classes and so on... Ant task updated.
-- Elements (classes, enums, interfaces and abstract classes) are now better sorted in the generated output file
+- Introducing a new and powerful feature : the Display option which allows to filter output elements and relations, such as classes, interfaces, enums, abstract classes, annotations and so on... Ant task and help messages have been updated. (feature 3)
+- Annotations java files are now fully supported (feature 22 and bug 22)
+- Elements (classes, enums, interfaces abstract classes and annotations) are now better sorted in the generated output file
+- Fixed a bug with dependencies which have a similar name to a java.lang class or interface (bug 5)
+- Fixed a bug which causes to badly parse class when annotations are used (bug 3)
 - Fixed a bug which causes to write import and native dependencies in the output file from string contents contained in the parsed source files. String contents are now removed from the source code before analysis
-- Fixed a bug which causes the program to stop when a java source file couldn't be read (bug 3377023 : http://sourceforge.net/tracker/?func=detail&aid=3377023&group_id=334674&atid=1402785)
+- Fixed a bug which causes the program to stop when a java source file couldn't be read (bug 2)
 - Fixed a bug with native dependency regular expression which didn't work in some particular cases
 
 5, Jul 2011 - 1.1.0

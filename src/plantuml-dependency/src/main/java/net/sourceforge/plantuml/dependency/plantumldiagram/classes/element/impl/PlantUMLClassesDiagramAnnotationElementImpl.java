@@ -25,12 +25,11 @@
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl;
 
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
-import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.CLASS_TAG;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.ANNOTATION_TAG;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAnnotationElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag;
 
 /**
  * The default {@link PlantUMLClassesDiagramAnnotationElement} implementation.
@@ -65,30 +64,12 @@ public class PlantUMLClassesDiagramAnnotationElementImpl extends AbstractPlantUM
      *
      * @param fullName
      *            the element full name, mustn't be <code>null</code>.
-     * @param tag
-     *            the plantUML element tag available in the plantUML classes diagram language,
-     *            mustn't be <code>null</code>.
-     * @param stereotyp
-     *            the element stereotype, if any, may be <code>null</code>.
-     * @since 1.2.0
-     */
-    public PlantUMLClassesDiagramAnnotationElementImpl(final String fullName,
-            final PlantUMLClassesDiagramElementTag tag, final PlantUMLStereotype stereotyp) {
-        super(fullName, tag);
-        stereotype = stereotyp;
-    }
-
-    /**
-     * Full constructor.
-     *
-     * @param fullName
-     *            the element full name, mustn't be <code>null</code>.
      * @param stereotyp
      *            the element stereotype, if any, may be <code>null</code>.
      * @since 1.2.0
      */
     public PlantUMLClassesDiagramAnnotationElementImpl(final String fullName, final PlantUMLStereotype stereotyp) {
-        super(fullName, CLASS_TAG);
+        super(fullName, ANNOTATION_TAG);
         stereotype = stereotyp;
     }
 

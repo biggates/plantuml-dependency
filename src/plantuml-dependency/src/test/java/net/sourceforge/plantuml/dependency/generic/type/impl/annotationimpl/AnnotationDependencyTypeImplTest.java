@@ -71,7 +71,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
     /** Annotation dependency type test 2 instance. */
     @DataPoint
     public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE2 = new AnnotationDependencyTypeImpl(
-            "SuppressWarnings", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET6);
+            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET6);
 
     /** Annotation dependency type test 3 instance. */
     @DataPoint

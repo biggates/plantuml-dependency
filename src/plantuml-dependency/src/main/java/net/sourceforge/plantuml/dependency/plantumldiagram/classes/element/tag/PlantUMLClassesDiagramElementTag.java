@@ -33,12 +33,15 @@ package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.2.0
  */
 public enum PlantUMLClassesDiagramElementTag {
 
     /** The "abstract class" tag. */
     ABSTRACT_CLASS_TAG("abstract class "),
+
+    /** The "annotation" tag. */
+    ANNOTATION_TAG("annotation "),
 
     /** The "class" tag. */
     CLASS_TAG("class "),

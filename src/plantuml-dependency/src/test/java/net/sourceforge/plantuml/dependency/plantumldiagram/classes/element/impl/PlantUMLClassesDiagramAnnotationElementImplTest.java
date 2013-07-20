@@ -25,7 +25,7 @@
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl;
 
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImplTest.PLANTUML_STEREOTYPE_TEST6;
-import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.CLASS_TAG;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.ANNOTATION_TAG;
 import static org.junit.Assert.assertEquals;
 import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
 
@@ -75,7 +75,12 @@ public class PlantUMLClassesDiagramAnnotationElementImplTest extends
 
     /** PlantUML classes diagram annotation element test 7 instance. */
     @DataPoint
-    public static final PlantUMLClassesDiagramAnnotationElementImpl PLANTUML_ANNOTATION_ELEMENT_TEST7 = null;
+    public static final PlantUMLClassesDiagramAnnotationElementImpl PLANTUML_ANNOTATION_ELEMENT_TEST7 = new PlantUMLClassesDiagramAnnotationElementImpl(
+            "javax.lang.Override", PLANTUML_STEREOTYPE_TEST6);
+
+    /** PlantUML classes diagram annotation element test 8 instance. */
+    @DataPoint
+    public static final PlantUMLClassesDiagramAnnotationElementImpl PLANTUML_ANNOTATION_ELEMENT_TEST8 = null;
 
     /**
      * Test method for
@@ -84,7 +89,7 @@ public class PlantUMLClassesDiagramAnnotationElementImplTest extends
      */
     @Test
     public void testGetElementTag() {
-        assertEquals(CLASS_TAG, PLANTUML_ANNOTATION_ELEMENT_TEST1.getElementTag());
+        assertEquals(ANNOTATION_TAG, PLANTUML_ANNOTATION_ELEMENT_TEST1.getElementTag());
     }
 
     /**
@@ -104,7 +109,7 @@ public class PlantUMLClassesDiagramAnnotationElementImplTest extends
      */
     @Test
     public void testGetPlantUMLTextDescriptionWithoutStereotype() {
-        assertEquals(CLASS_TAG.getTagName() + PLANTUML_ANNOTATION_ELEMENT_TEST1.getName(),
+        assertEquals(ANNOTATION_TAG.getTagName() + PLANTUML_ANNOTATION_ELEMENT_TEST1.getName(),
                 PLANTUML_ANNOTATION_ELEMENT_TEST1.getPlantUMLTextDescription());
     }
 
@@ -115,7 +120,7 @@ public class PlantUMLClassesDiagramAnnotationElementImplTest extends
      */
     @Test
     public void testGetPlantUMLTextDescriptionWithStereotype() {
-        assertEquals(CLASS_TAG.getTagName() + PLANTUML_ANNOTATION_ELEMENT_TEST4.getName()
+        assertEquals(ANNOTATION_TAG.getTagName() + PLANTUML_ANNOTATION_ELEMENT_TEST4.getName()
                 + " << (B,#f0f8ff) Test it ! >>", PLANTUML_ANNOTATION_ELEMENT_TEST4.getPlantUMLTextDescription());
     }
 

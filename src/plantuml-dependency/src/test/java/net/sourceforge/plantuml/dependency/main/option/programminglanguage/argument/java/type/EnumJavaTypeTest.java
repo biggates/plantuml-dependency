@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImplTest.ANNOTATION_DEPENDENCY_TYPE2;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImplTest.CLASS_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImplTest.ENUM_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImplTest.ENUM_DEPENDENCY_TYPE9;
@@ -66,6 +67,21 @@ public class EnumJavaTypeTest extends ComparableObjectTest < EnumJavaType > {
     /** Java type test 3 instance. */
     @DataPoint
     public static final JavaType JAVA_TYPE3 = null;
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#createAnnotationDependencyType(String, String)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testCreateAnnotationDependencyType() throws PlantUMLDependencyException {
+        assertEquals(
+                ANNOTATION_DEPENDENCY_TYPE2,
+                JAVA_TYPE1.createAnnotationDependencyType(ENUM_DEPENDENCY_TYPE1.getName(),
+                        ENUM_DEPENDENCY_TYPE1.getPackageName()));
+    }
 
     /**
      * Test method for
@@ -223,6 +239,4 @@ public class EnumJavaTypeTest extends ComparableObjectTest < EnumJavaType > {
         assertEquals(1, parents.size());
         assertTrue(parents.contains("Cloneable"));
     }
-
-    // TODO testAnnotationDependencyType
 }
