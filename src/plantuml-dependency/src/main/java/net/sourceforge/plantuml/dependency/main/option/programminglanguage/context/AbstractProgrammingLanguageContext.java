@@ -184,8 +184,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     public int compareTo(final ProgrammingLanguageContext o) {
         final int thisSize = getParsedDependencies().size();
         final int anotherSize = o.getParsedDependencies().size();
-        return (thisSize < anotherSize ? BEFORE.getResult() : (thisSize == anotherSize ? EQUAL.getResult() : AFTER
-                .getResult()));
+        return thisSize < anotherSize ? BEFORE.getResult() : thisSize == anotherSize ? EQUAL.getResult() : AFTER
+                .getResult();
     }
 
     /**

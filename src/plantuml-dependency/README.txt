@@ -11,6 +11,18 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 - Fixed a bug which causes to write import and native dependencies in the output file from string contents contained in the parsed source files. String contents are now removed from the source code before analysis
 - Fixed a bug which causes the program to stop when a java source file couldn't be read (bug 2)
 - Fixed a bug with native dependency regular expression which didn't work in some particular cases
+- Updated junit dependency version to 4.11 (was 4.7)
+- Updated cobertura-maven-plugin dependency version to 2.5.2 (was 2.4)
+- Updated maven-compiler-plugin dependency version to 3.1 (was 2.3.2)
+- Updated maven-jar-plugin dependency version to 2.4 (was 2.3.1)
+- Updated maven-source-plugin dependency version to 2.2.1 (was 2.1.2)
+- Updated maven-javadoc-plugin dependency version to 2.9.1 (was 2.7)
+- Updated maven-site-plugin dependency version to 3.3 (was 3.0)
+- Updated maven-surefire-report-plugin dependency version to 2.15 (was 2.7.1)
+- Updated maven-jxr-plugin dependency version to 2.3 (was 2.2)
+- Updated maven-pmd-plugin dependency version to 3.0.1 (was 2.5)
+- Updated findbugs-maven-plugin dependency version to 2.5.2 (was 2.3.1)
+- Updated maven-checkstyle-plugin dependency version to 2.10 (was 2.6)
 
 5, Jul 2011 - 1.1.0
 ====================
