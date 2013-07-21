@@ -53,15 +53,6 @@ import static net.sourceforge.plantuml.dependency.generic.type.impl.ImportDepend
 import static net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST7;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST8;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST9;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ENUMS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPLEMENTATIONS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.IMPORTS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.INTERFACES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.NATIVE_METHODS;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.STATIC_IMPORTS;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -77,7 +68,6 @@ import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbst
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
-import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 
 import org.apache.tools.ant.types.FileSet;
 
@@ -168,56 +158,6 @@ public final class PlantUMLDependencyTestConstants {
 
     /** File set test 1 instance. */
     public static final FileSet FILE_SET2 = createFileSet(CURRENT_DIRECTORY, "**/*A*.java");
-
-    /** Display set test 1 instance. */
-    public static final Set < Display > DISPLAY_SET1 = new TreeSet < Display >();
-
-    /** Display set test 2 instance. */
-    public static final Set < Display > DISPLAY_SET2 = new TreeSet < Display >(asList(new Display[] {ABSTRACT_CLASSES}));
-
-    /** Display set test 3 instance. */
-    public static final Set < Display > DISPLAY_SET3 = new TreeSet < Display >(asList(new Display[] {CLASSES}));
-
-    /** Display set test 4 instance. */
-    public static final Set < Display > DISPLAY_SET4 = new TreeSet < Display >(asList(new Display[] {ENUMS}));
-
-    /** Display set test 5 instance. */
-    public static final Set < Display > DISPLAY_SET5 = new TreeSet < Display >(asList(new Display[] {IMPORTS}));
-
-    /** Display set test 6 instance. */
-    public static final Set < Display > DISPLAY_SET6 = new TreeSet < Display >(asList(new Display[] {INTERFACES}));
-
-    /** Display set test 7 instance. */
-    public static final Set < Display > DISPLAY_SET7 = new TreeSet < Display >(asList(new Display[] {STATIC_IMPORTS}));
-
-    /** Display set test 8 instance. */
-    public static final Set < Display > DISPLAY_SET8 = new TreeSet < Display >(asList(new Display[] {NATIVE_METHODS}));
-
-    /** Display set test 9 instance. */
-    public static final Set < Display > DISPLAY_SET9 = new TreeSet < Display >(asList(new Display[] {IMPLEMENTATIONS}));
-
-    /** Display set test 10 instance. */
-    public static final Set < Display > DISPLAY_SET10 = new TreeSet < Display >(asList(new Display[] {EXTENSIONS}));
-
-    /** Display set test 11 instance. */
-    public static final Set < Display > DISPLAY_SET11 = new TreeSet < Display >(asList(new Display[] {CLASSES,
-            IMPLEMENTATIONS}));
-
-    /** Display set test 12 instance. */
-    public static final Set < Display > DISPLAY_SET12 = new TreeSet < Display >(asList(new Display[] {CLASSES,
-            EXTENSIONS}));
-
-    /** Display set test 13 instance. */
-    public static final Set < Display > DISPLAY_SET13 = new TreeSet < Display >(
-            asList(new Display[] {CLASSES, IMPORTS}));
-
-    /** Display set test 14 instance. */
-    public static final Set < Display > DISPLAY_SET14 = new TreeSet < Display >(asList(new Display[] {CLASSES,
-            STATIC_IMPORTS}));
-
-    /** Display set test 15 instance. */
-    public static final Set < Display > DISPLAY_SET15 = new TreeSet < Display >(asList(new Display[] {CLASSES,
-            NATIVE_METHODS}));
 
     /** Verbose option test 1 instance. */
     public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(new StringBuffer(
@@ -580,7 +520,10 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Interface dependency type test 13 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE13 = new InterfaceDependencyTypeImpl(
-            "GenericEndpoint", "com.plantuml.test", IMPORT_COLLECTION_TEST23, new TreeSet < GenericDependency >(),
+            "GenericEndpoint",
+            "com.plantuml.test",
+            IMPORT_COLLECTION_TEST23,
+            new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Annotationinterface",
@@ -808,13 +751,4 @@ public final class PlantUMLDependencyTestConstants {
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET7 = new TreeSet < GenericDependency >(
             asList(new GenericDependency[] {new GenericDependencyImpl("Serializable", "java.io"),
                     new GenericDependencyImpl("Set", "java.lang")}));
-
-    /**
-     * Private constructor to prevent from instantiation.
-     *
-     * @since 1.0
-     */
-    private PlantUMLDependencyTestConstants() {
-        super();
-    }
 }

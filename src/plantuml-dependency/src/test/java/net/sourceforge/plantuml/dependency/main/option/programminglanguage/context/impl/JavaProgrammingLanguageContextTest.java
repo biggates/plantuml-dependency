@@ -26,6 +26,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.cont
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET3;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImplTest.PLANTUML_CLASSES_DIAGRAM_TEST2;
@@ -44,9 +45,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link JavaProgrammingLanguageContext}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.1.0
  */
@@ -73,7 +74,7 @@ public class JavaProgrammingLanguageContextTest extends
                     new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                             "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
-            DISPLAY_OPTIONS);
+            DISPLAY_SET3);
 
     /** Java programming language test 4 instance. */
     @DataPoint
