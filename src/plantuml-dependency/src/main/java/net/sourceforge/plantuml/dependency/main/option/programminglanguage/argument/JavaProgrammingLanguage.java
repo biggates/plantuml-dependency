@@ -235,9 +235,14 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         while (matcher.find()) {
             final String annotationNameOrFullName = matcher.group(1);
-            final GenericDependency dependency = getOrCreateAnnotationDependency(annotationNameOrFullName,
-                    currentPackageName, type, importDependencies, programmingLanguageContext);
-            annotationDependenciesSet.add(dependency);
+
+            if ("interface".equals(annotationNameOrFullName)) {
+                // FIXME the ANNOTATIONS_REGEXP takes "@interface" into account and it shouldn't, we must ignore it
+            } else {
+                final GenericDependency dependency = getOrCreateAnnotationDependency(annotationNameOrFullName,
+                        currentPackageName, type, importDependencies, programmingLanguageContext);
+                annotationDependenciesSet.add(dependency);
+            }
         }
 
         return annotationDependenciesSet;
