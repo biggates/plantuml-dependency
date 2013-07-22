@@ -23,6 +23,7 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 - Updated maven-pmd-plugin dependency version to 3.0.1 (was 2.5)
 - Updated findbugs-maven-plugin dependency version to 2.5.2 (was 2.3.1)
 - Updated maven-checkstyle-plugin dependency version to 2.10 (was 2.6)
+- Updated org.apache.ant dependency version to 1.8.4 (was 1.8.2)
 
 5, Jul 2011 - 1.1.0
 ====================
