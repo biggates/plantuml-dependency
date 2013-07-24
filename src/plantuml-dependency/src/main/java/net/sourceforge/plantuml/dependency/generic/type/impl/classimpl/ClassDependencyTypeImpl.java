@@ -213,6 +213,6 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
     @Override
     public String toString() {
         return getClass().getSimpleName() + " [" + super.toString() + ", parentClasses="
-                + extractFullNames(parentClasses) + "]";
+                + parentClasses + "]";
     }
 }
