@@ -178,6 +178,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         } else {
             LOGGER.fine(buildLogString(UPDATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
                     dependencyType}));
+            programmingLanguageContext.removePotentialJavaLangSeenDependency(javaRawDependency.getFullName());
             dependency.setDependencyType(dependencyType);
         }
 
@@ -722,10 +723,12 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String currentPackageName, final JavaType type,
             final ProgrammingLanguageContext programmingLanguageContext, final String annotationName,
             final String annotationFullNameWithSamePackage) throws PlantUMLDependencyException {
-        GenericDependency dependency = null;
+
+        // FIXME
         String annotationPackageName = JAVA_LANG_PACKAGE;
         String annotationFullName = annotationPackageName + DOT_CHAR + annotationName;
 
+        /*GenericDependency dependency = null;
         try {
             forName(annotationFullName);
         } catch (final ClassNotFoundException e) {
@@ -737,7 +740,18 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 .createAnnotationDependencyType(annotationName, annotationPackageName);
         LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullName, dependencyType}));
         dependency = new GenericDependencyImpl(dependencyType);
-        programmingLanguageContext.addSeenDependencies(dependency);
+        programmingLanguageContext.addSeenDependencies(dependency);*/
+
+        DependencyType dependencyType = type.createAnnotationDependencyType(annotationName, currentPackageName);
+        LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullNameWithSamePackage, dependencyType}));
+        GenericDependency dependency = new GenericDependencyImpl(dependencyType);
+
+        try {
+            forName(annotationFullName);
+            programmingLanguageContext.addPotentialJavaLangSeenDependencies(dependency);
+        } catch (final ClassNotFoundException e) {
+            programmingLanguageContext.addSeenDependencies(dependency);
+        }
 
         return dependency;
     }
@@ -922,10 +936,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final JavaParentType parentType, final String currentPackageName,
             final ProgrammingLanguageContext programmingLanguageContext, final String parentName,
             final String parentFullNameWithSamePackage) throws PlantUMLDependencyException {
-        GenericDependency dependency = null;
+        // FIXME
         String parentPackageName = JAVA_LANG_PACKAGE;
         String parentFullName = parentPackageName + DOT_CHAR + parentName;
 
+        /*GenericDependency dependency = null;
         try {
             forName(parentFullName);
         } catch (final ClassNotFoundException e) {
@@ -937,7 +952,18 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 .createParentDependencyType(parentType, parentName, parentPackageName);
         LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullName, dependencyType}));
         dependency = new GenericDependencyImpl(dependencyType);
-        programmingLanguageContext.addSeenDependencies(dependency);
+        programmingLanguageContext.addSeenDependencies(dependency);*/
+
+        final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName, currentPackageName);
+        LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullNameWithSamePackage, dependencyType}));
+        GenericDependency dependency = new GenericDependencyImpl(dependencyType);
+
+        try {
+            forName(parentFullName);
+            programmingLanguageContext.addPotentialJavaLangSeenDependencies(dependency);
+        } catch (final ClassNotFoundException e) {
+            programmingLanguageContext.addSeenDependencies(dependency);
+        }
 
         return dependency;
     }

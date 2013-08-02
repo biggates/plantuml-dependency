@@ -93,6 +93,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * </p>
      *
      * @return the dependency name.
+     * @see #setFullName(String, String)
      * @since 1.0
      */
     String getName();
@@ -107,6 +108,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * </p>
      *
      * @return the dependency package name.
+     * @see #setFullName(String, String)
      * @since 1.0
      */
     String getPackageName();
@@ -172,4 +174,23 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * @since 1.0
      */
     boolean hasNativeMethods();
+
+    /**
+     * Sets the dependency full name, i.e. the package name and the class name.
+     * <p>
+     * For instance, in java it can be :<br>
+     * <i>String</i><br>
+     * <i>Serializable</i><br>
+     * <i>Decoration</i>
+     * </p>
+     *
+     * @param dependencyPackageName
+     *            the new package name to set, may be <code>null</code>.
+     * @param dependencyName
+     *            the dependency name to set, mustn't be <code>null</code>.
+     * @see #getName()
+     * @see #getPackageName()
+     * @since 1.2.0
+     */
+    void setFullName(String dependencyPackageName, String dependencyName);
 }

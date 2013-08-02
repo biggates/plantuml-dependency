@@ -93,7 +93,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /** The dependency type full name, such as "java.lang.String". */
-    private final String fullName;
+    private String fullName;
 
     /**
      * The {@link ImportDependenciesCollection} containing all import dependencies which are needed
@@ -102,13 +102,13 @@ public abstract class DependencyTypeImpl implements DependencyType {
     private ImportDependenciesCollection importDependenciesCollection;
 
     /** The dependency type name, such as "String". */
-    private final String name;
+    private String name;
 
     /** The boolean indicating if the dependency has native methods inside. */
     private final boolean nativeMethods;
 
     /** The dependency type package name, such as "java.lang". */
-    private final String packageName;
+    private String packageName;
 
     /**
      * The {@link Set} of all interfaces as {@link GenericDependency} which are used by the current
@@ -176,9 +176,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
             final Set < GenericDependency > annotationsSet, final boolean nativeMth) {
         // TODO tests null
         // TODO tests that no space are present in the name
-        name = dependencyName;
-        packageName = dependencyPackageName;
-        fullName = generateFullName(dependencyPackageName, dependencyName);
+        setFullName(dependencyPackageName, dependencyName);
         // TODO optimization
         importDependenciesCollection = importDependencies;
         parentInterfaces = parentInterfacesSet;
@@ -518,6 +516,18 @@ public abstract class DependencyTypeImpl implements DependencyType {
     @Override
     public boolean hasNativeMethods() {
         return nativeMethods;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.2.0
+     */
+    @Override
+    public void setFullName(final String dependencyPackageName, final String dependencyName) {
+        name = dependencyName;
+        packageName = dependencyPackageName;
+        fullName = generateFullName(packageName, name);
     }
 
     /**

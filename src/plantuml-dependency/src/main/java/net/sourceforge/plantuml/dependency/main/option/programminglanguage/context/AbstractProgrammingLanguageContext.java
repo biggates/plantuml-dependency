@@ -31,6 +31,7 @@ import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.BEFORE;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.JAVA_LANG_PACKAGE;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.DEPENDENCY_NULL_ERROR;
 
@@ -55,7 +56,7 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.Plan
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.1
+ * @version 1.2.0
  */
 public abstract class AbstractProgrammingLanguageContext implements ProgrammingLanguageContext {
 
@@ -77,6 +78,12 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * {@link GenericDependency} as values.
      */
     private Map < String, GenericDependency > parsedAndSeenDependenciesMap;
+
+    /**
+     *
+     */
+    // TODO Javadoc
+    private Map < String, GenericDependency > potentialJavaLangSeenDependenciesMap;
 
     /**
      * The {@link Map} containing all dependencies which have already been treated, it contains
@@ -149,6 +156,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
             secondDependenciesMap.put(genericDependency.getFullName(), genericDependency);
         }
         setSeenDependenciesMap(new TreeMap < String, GenericDependency >(secondDependenciesMap));
+        // FIXME add PotentialJavaLangSeenDependenciesMap in constructor parameters
+        setPotentialJavaLangSeenDependenciesMap(new TreeMap < String, GenericDependency >());
         setDisplayOptions(new TreeSet < Display >(displayOpt));
     }
 
@@ -162,6 +171,18 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         checkNull(dependency, DEPENDENCY_NULL_ERROR);
         getParsedDependenciesMap().put(dependency.getFullName(), dependency);
         getParsedAndSeenDependenciesMap().put(dependency.getFullName(), dependency);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.2.0
+     */
+    @Override
+    public void addPotentialJavaLangSeenDependencies(final GenericDependency dependency) {
+        checkNull(dependency, DEPENDENCY_NULL_ERROR);
+        getParsedAndSeenDependenciesMap().put(dependency.getFullName(), dependency);
+        getPotentialJavaLangSeenDependenciesMap().put(dependency.getFullName(), dependency);
     }
 
     /**
@@ -203,6 +224,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
             for (final GenericDependency genericDependency : getParsedAndSeenDependencies()) {
                 a.parsedAndSeenDependenciesMap.put(genericDependency.getFullName(), genericDependency.deepClone());
             }
+            a.potentialJavaLangSeenDependenciesMap = new TreeMap < String, GenericDependency >(
+                    a.potentialJavaLangSeenDependenciesMap);
             a.parsedDependenciesMap = new TreeMap < String, GenericDependency >(a.parsedDependenciesMap);
             a.displayOptions = new TreeSet < Display >(getDisplayOptions());
         } catch (final CloneNotSupportedException cnse) {
@@ -248,6 +271,13 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
                 return false;
             }
         } else if (!parsedDependenciesMap.equals(other.parsedDependenciesMap)) {
+            return false;
+        }
+        if (potentialJavaLangSeenDependenciesMap == null) {
+            if (other.potentialJavaLangSeenDependenciesMap != null) {
+                return false;
+            }
+        } else if (!potentialJavaLangSeenDependenciesMap.equals(other.potentialJavaLangSeenDependenciesMap)) {
             return false;
         }
         return true;
@@ -362,6 +392,27 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     /**
      * {@inheritDoc}
      *
+     * @since 1.2.0
+     */
+    @Override
+    public Collection < GenericDependency > getPotentialJavaLangSeenDependencies() {
+        return getPotentialJavaLangSeenDependenciesMap().values();
+    }
+
+    /**
+     * Gets the value of <code>potentialJavaLangSeenDependenciesMap</code>.
+     *
+     * @return the value of <code>potentialJavaLangSeenDependenciesMap</code>.
+     * @see #setPotentialJavaLangSeenDependenciesMap(Map)
+     * @since 1.2.0
+     */
+    private Map < String, GenericDependency > getPotentialJavaLangSeenDependenciesMap() {
+        return potentialJavaLangSeenDependenciesMap;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
      * @since 1.0
      */
     @Override
@@ -372,6 +423,9 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         result = prime * result
                 + ((parsedAndSeenDependenciesMap == null) ? 0 : parsedAndSeenDependenciesMap.hashCode());
         result = prime * result + ((parsedDependenciesMap == null) ? 0 : parsedDependenciesMap.hashCode());
+        result = prime
+                * result
+                + ((potentialJavaLangSeenDependenciesMap == null) ? 0 : potentialJavaLangSeenDependenciesMap.hashCode());
         return result;
     }
 
@@ -383,6 +437,31 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     @Override
     public boolean hasToDisplay(final Display display) {
         return getDisplayOptions().contains(display);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.2.0
+     */
+    @Override
+    public void removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang() {
+        for(GenericDependency dependency : getPotentialJavaLangSeenDependencies()) {
+            dependency.getDependencyType().setFullName(JAVA_LANG_PACKAGE, dependency.getName());
+        }
+
+        getPotentialJavaLangSeenDependenciesMap().clear();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.2.0
+     */
+    @Override
+    public void removePotentialJavaLangSeenDependency(final String fullName) {
+        checkNull(fullName, DEPENDENCY_NAME_NULL_ERROR);
+        getPotentialJavaLangSeenDependenciesMap().remove(fullName);
     }
 
     /**
@@ -410,6 +489,19 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     }
 
     /**
+     * Sets the value of <code>potentialJavaLangSeenDependenciesMap</code>.
+     *
+     * @param value
+     *            the <code>potentialJavaLangSeenDependenciesMap</code> to set, can be
+     *            <code>null</code>.
+     * @see #getPotentialJavaLangSeenDependenciesMap()
+     * @since 1.2.0
+     */
+    private void setPotentialJavaLangSeenDependenciesMap(final Map < String, GenericDependency > value) {
+        potentialJavaLangSeenDependenciesMap = value;
+    }
+
+    /**
      * Sets the value of <code>seenDependenciesMap</code>.
      *
      * @param value
@@ -428,7 +520,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      */
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [parsedAndSeenDependenciesMap=" + parsedAndSeenDependenciesMap
-                + ", parsedDependenciesMap=" + parsedDependenciesMap + ", displayOptions=" + displayOptions + "]";
+        return getClass().getSimpleName() + " [displayOptions=" + displayOptions + ", parsedAndSeenDependenciesMap="
+                + parsedAndSeenDependenciesMap + ", potentialJavaLangSeenDependenciesMap="
+                + potentialJavaLangSeenDependenciesMap + ", parsedDependenciesMap=" + parsedDependenciesMap + "]";
     }
 }

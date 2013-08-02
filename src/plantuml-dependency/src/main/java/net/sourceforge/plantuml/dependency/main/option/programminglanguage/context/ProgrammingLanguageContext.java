@@ -55,6 +55,14 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     void addParsedAndSeenDependencies(GenericDependency dependency);
 
     /**
+     * @param dependency
+     * @since 1.2.0
+     */
+    // FIXME Junit test
+    // FIXME Javadoc
+    void addPotentialJavaLangSeenDependencies(GenericDependency dependency);
+
+    /**
      * Adds in the seen dependencies in the context.
      *
      * @param dependency
@@ -72,6 +80,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *         context, <code>null</code> otherwise.
      * @since 1.0
      */
+    // FIXME rename in getDependency
     GenericDependency getDependencies(String fullName);
 
     /**
@@ -103,6 +112,14 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     PlantUMLClassesDiagram getPlantUMLClassesDiagram();
 
     /**
+     *
+     * @since 1.2.0
+     */
+    // FIXME Junit test
+    // FIXME Javadoc
+    Collection < GenericDependency > getPotentialJavaLangSeenDependencies();
+
+    /**
      * Tells if the following {@link Display} is managed or not by this context.
      *
      * @param display
@@ -112,4 +129,20 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      * @since 1.0
      */
     boolean hasToDisplay(Display display);
+
+    /**
+     * @param fullName
+     * @since 1.2.0
+     */
+    // FIXME Junit test
+    // FIXME Javadoc
+    void removePotentialJavaLangSeenDependency(String fullName);
+
+    /**
+     * @param fullName
+     * @since 1.2.0
+     */
+    // FIXME Junit test
+    // FIXME Javadoc
+    void removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang();
 }

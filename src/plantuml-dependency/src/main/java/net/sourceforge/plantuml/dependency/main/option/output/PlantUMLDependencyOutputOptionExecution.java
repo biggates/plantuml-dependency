@@ -103,6 +103,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
             }
         }
 
+        programmingLanguageContext.removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang();
         return programmingLanguageContext;
     }
 
