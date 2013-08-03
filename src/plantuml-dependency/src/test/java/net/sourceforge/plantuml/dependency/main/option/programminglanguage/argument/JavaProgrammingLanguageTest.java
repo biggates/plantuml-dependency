@@ -832,10 +832,11 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependencies("java.lang.Appendable"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.test.Appendable"));
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY16.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependencies("java.lang.Appendable").getDependencyType().getClass());
+                programmingLanguageContext.getDependencies("com.plantuml.test.Appendable").getDependencyType()
+                        .getClass());
     }
 
     /**
@@ -914,7 +915,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherInterfaceTest"));
         assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.AnotherTestExtends"));
         assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric"));
-        assertNotNull(programmingLanguageContext.getDependencies("java.lang.Cloneable"));
+        assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.test.Cloneable"));
         assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.test.InterfaceGenericsTest"));
         assertNotNull(programmingLanguageContext.getDependencies("com.plantuml.test.InterfaceTest"));
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY13.getFullName()));
@@ -928,7 +929,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 programmingLanguageContext.getDependencies("com.plantuml.train.test.TestExtendsGeneric")
                         .getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependencies("java.lang.Cloneable").getDependencyType().getClass());
+                programmingLanguageContext.getDependencies("com.plantuml.test.Cloneable").getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext.getDependencies("com.plantuml.test.InterfaceGenericsTest")
                         .getDependencyType().getClass());
@@ -1537,10 +1538,15 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependencies("java.lang.Comparable"));
+        assertNotNull(programmingLanguageContext
+                .getDependencies("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable"));
         assertNotNull(programmingLanguageContext.getDependencies(GENERIC_DEPENDENCY30.getFullName()));
-        assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependencies("java.lang.Comparable").getDependencyType().getClass());
+        assertEquals(
+                InterfaceDependencyTypeImpl.class,
+                programmingLanguageContext
+                        .getDependencies(
+                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable")
+                        .getDependencyType().getClass());
     }
 
     /**

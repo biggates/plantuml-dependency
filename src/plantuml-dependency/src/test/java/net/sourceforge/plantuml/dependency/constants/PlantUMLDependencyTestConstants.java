@@ -269,7 +269,7 @@ public final class PlantUMLDependencyTestConstants {
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE13 = new ClassDependencyTypeImpl(
             "TestMultipleImplementsAndExtendsGeneric", "com.plantuml.test", IMPORT_COLLECTION_TEST6,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {
-                    new GenericDependencyImpl("Cloneable", "java.lang"),
+                    new GenericDependencyImpl("Cloneable", "com.plantuml.test"),
                     new GenericDependencyImpl("InterfaceGenericsTest", "com.plantuml.test"),
                     new GenericDependencyImpl("InterfaceTest", "com.plantuml.test"),
                     new GenericDependencyImpl("AnotherInterfaceTest", "com.plantuml.train.test")})),
@@ -294,7 +294,8 @@ public final class PlantUMLDependencyTestConstants {
     /** Class dependency type test 16 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE16 = new ClassDependencyTypeImpl("TestImplements",
             "com.plantuml.test", IMPORT_COLLECTION_TEST1, new TreeSet < GenericDependency >(
-                    asList(new GenericDependency[] {new GenericDependencyImpl("Appendable", "java.lang")})),
+                    asList(new GenericDependency[] {new GenericDependencyImpl(
+                            "Appendable", "com.plantuml.test")})),
             new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 17 instance. */
@@ -386,7 +387,7 @@ public final class PlantUMLDependencyTestConstants {
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl(new AnnotationDependencyTypeImpl(
-                            "Override", "java.lang"))})), new TreeSet < GenericDependency >(
+                            "Override", "net.sourceforge.plantuml.dependency"))})), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("BigInteger", "java.math")})), false);
 
     /** Class dependency type test 30 instance. */
@@ -502,7 +503,7 @@ public final class PlantUMLDependencyTestConstants {
             "TestReadDependencyFromFileInterfaceWithExtendsNotInImportJavaLang",
             "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl("Comparable",
-                    "java.lang")})), new TreeSet < GenericDependency >());
+                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage")})), new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 9 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE9 = new InterfaceDependencyTypeImpl(
