@@ -117,8 +117,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * Medium constructor.
      *
      * @param parsedAndSeenDependencies
-     *            the original {@link Set} of {@link GenericDependency} to put in the context,
-     *            mustn't be <code>null</code>.
+     *            the original parsed and seen dependencies {@link Set} of {@link GenericDependency}
+     *            to put in the context, mustn't be <code>null</code>.
      * @param displayOpt
      *            the display options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
@@ -126,38 +126,52 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      */
     protected AbstractProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < Display > displayOpt) {
-        this(parsedAndSeenDependencies, parsedAndSeenDependencies, displayOpt);
+        this(parsedAndSeenDependencies, parsedAndSeenDependencies, new TreeSet < GenericDependency >(), displayOpt);
     }
 
     /**
      * Full constructor.
      *
      * @param parsedAndSeenDependencies
-     *            the original {@link Set} of {@link GenericDependency} to put in the context,
-     *            mustn't be <code>null</code>.
+     *            the original parsed and seen dependencies {@link Set} of {@link GenericDependency}
+     *            to put in the context, mustn't be <code>null</code>.
      * @param parsedDependencies
-     *            the original {@link Set} of {@link GenericDependency} to put in the context,
-     *            mustn't be <code>null</code>.
+     *            the original parsed dependencies {@link Set} of {@link GenericDependency} to put
+     *            in the context, mustn't be <code>null</code>.
+     * @param potentialJavaLangSeenDependencies
+     *            the original potential "java.lang" seen dependencies {@link Set} of
+     *            {@link GenericDependency} to put in the context, mustn't be <code>null</code>.
      * @param displayOpt
      *            the display options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
      * @since 1.0
      */
     protected AbstractProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
-            final Set < GenericDependency > parsedDependencies, final Set < Display > displayOpt) {
+            final Set < GenericDependency > parsedDependencies,
+            final Set < GenericDependency > potentialJavaLangSeenDependencies, final Set < Display > displayOpt) {
         // TODO test null
         final Map < String, GenericDependency > firstDependenciesMap = new TreeMap < String, GenericDependency >();
         for (final GenericDependency genericDependency : parsedAndSeenDependencies) {
             firstDependenciesMap.put(genericDependency.getFullName(), genericDependency);
         }
         setParsedAndSeenDependenciesMap(firstDependenciesMap);
+
+        // FIXME should test that all dependencies of the parsedDependencies Set are in the
+        // parsedAndSeenDependencies Set
         final Map < String, GenericDependency > secondDependenciesMap = new TreeMap < String, GenericDependency >();
         for (final GenericDependency genericDependency : parsedDependencies) {
             secondDependenciesMap.put(genericDependency.getFullName(), genericDependency);
         }
-        setSeenDependenciesMap(new TreeMap < String, GenericDependency >(secondDependenciesMap));
-        // FIXME add PotentialJavaLangSeenDependenciesMap in constructor parameters
-        setPotentialJavaLangSeenDependenciesMap(new TreeMap < String, GenericDependency >());
+        setParsedDependenciesMap(secondDependenciesMap);
+
+        // FIXME should test that all dependencies of the PotentialJavaLangSeenDependencies Set are
+        // in the parsedAndSeenDependencies Set
+        final Map < String, GenericDependency > thirdDependenciesMap = new TreeMap < String, GenericDependency >();
+        for (final GenericDependency genericDependency : potentialJavaLangSeenDependencies) {
+            thirdDependenciesMap.put(genericDependency.getFullName(), genericDependency);
+        }
+        setPotentialJavaLangSeenDependenciesMap(thirdDependenciesMap);
+
         setDisplayOptions(new TreeSet < Display >(displayOpt));
     }
 
@@ -446,7 +460,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      */
     @Override
     public void removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang() {
-        for(GenericDependency dependency : getPotentialJavaLangSeenDependencies()) {
+        for (GenericDependency dependency : getPotentialJavaLangSeenDependencies()) {
             dependency.getDependencyType().setFullName(JAVA_LANG_PACKAGE, dependency.getName());
         }
 
@@ -502,14 +516,14 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     }
 
     /**
-     * Sets the value of <code>seenDependenciesMap</code>.
+     * Sets the value of <code>parsedDependenciesMap</code>.
      *
      * @param value
-     *            the <code>seenDependenciesMap</code> to set, can be <code>null</code>.
-     * @see #getSeenDependenciesMap()
+     *            the <code>parsedDependenciesMap</code> to set, can be <code>null</code>.
+     * @see #getParsedDependenciesMap()
      * @since 1.0
      */
-    private void setSeenDependenciesMap(final Map < String, GenericDependency > value) {
+    private void setParsedDependenciesMap(final Map < String, GenericDependency > value) {
         parsedDependenciesMap = value;
     }
 

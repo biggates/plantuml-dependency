@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
@@ -38,7 +39,7 @@ import net.sourceforge.plantuml.dependency.main.option.programminglanguage.conte
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.0
+ * @version 1.2.0
  */
 public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageContext {
 
@@ -100,6 +101,29 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
      */
     public JavaProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < GenericDependency > parsedDependencies, final Set < Display > displayOpt) {
-        super(parsedAndSeenDependencies, parsedDependencies, displayOpt);
+        super(parsedAndSeenDependencies, parsedDependencies, new TreeSet < GenericDependency >(), displayOpt);
+    }
+
+    /**
+     * Full constructor.
+     *
+     * @param parsedAndSeenDependencies
+     *            the original parsed and seen dependencies {@link Set} of {@link GenericDependency}
+     *            to put in the context, mustn't be <code>null</code>.
+     * @param parsedDependencies
+     *            the original parsed dependencies {@link Set} of {@link GenericDependency} to put
+     *            in the context, mustn't be <code>null</code>.
+     * @param potentialJavaLangSeenDependencies
+     *            the original potential "java.lang" seen dependencies {@link Set} of
+     *            {@link GenericDependency} to put in the context, mustn't be <code>null</code>.
+     * @param displayOpt
+     *            the display options which have to appear in the plantUML description, mustn't be
+     *            <code>null</code>.
+     * @since 1.0
+     */
+    public JavaProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
+            final Set < GenericDependency > parsedDependencies,
+            final Set < GenericDependency > potentialJavaLangSeenDependencies, final Set < Display > displayOpt) {
+        super(parsedAndSeenDependencies, parsedDependencies, potentialJavaLangSeenDependencies, displayOpt);
     }
 }
