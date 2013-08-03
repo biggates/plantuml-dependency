@@ -45,8 +45,8 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
         DeepCloneable < ProgrammingLanguageContext > {
 
     /**
-     * Adds in the parsed and seen dependencies in the context. If the dependency is already in the
-     * context, it is replaced.
+     * Adds the dependency in the parsed and seen dependencies in the context. If the dependency is
+     * already in the context, it is replaced.
      *
      * @param dependency
      *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
@@ -55,15 +55,23 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     void addParsedAndSeenDependencies(GenericDependency dependency);
 
     /**
+     * Adds the dependency in the parsed and seen dependencies in the context and marks it as a
+     * potential "java.lang" dependency. This should be used when the dependency package can be
+     * known between the current package and the "java.lang" package because dependencies are read
+     * in a sequential way.
+     *
      * @param dependency
+     *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
+     * @see #getPotentialJavaLangSeenDependencies()
+     * @see #removePotentialJavaLangSeenDependency(String)
+     * @see #removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang()
      * @since 1.2.0
      */
     // FIXME Junit test
-    // FIXME Javadoc
     void addPotentialJavaLangSeenDependencies(GenericDependency dependency);
 
     /**
-     * Adds in the seen dependencies in the context.
+     * Adds the dependency in the seen dependencies in the context.
      *
      * @param dependency
      *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
@@ -80,8 +88,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *         context, <code>null</code> otherwise.
      * @since 1.0
      */
-    // FIXME rename in getDependency
-    GenericDependency getDependencies(String fullName);
+    GenericDependency getDependency(String fullName);
 
     /**
      * Gets all dependencies which have been seen (as import for instance) and parsed within the
@@ -112,11 +119,17 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     PlantUMLClassesDiagram getPlantUMLClassesDiagram();
 
     /**
+     * Gets all dependencies which have been marked as potential "java.lang" dependencies within the
+     * context.
      *
+     * @return the {@link Collection} of all {@link GenericDependency} which have been marked as
+     *         potential "java.lang" dependencies within the context.
+     * @see #addPotentialJavaLangSeenDependencies()
+     * @see #removePotentialJavaLangSeenDependency(String)
+     * @see #removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang()
      * @since 1.2.0
      */
     // FIXME Junit test
-    // FIXME Javadoc
     Collection < GenericDependency > getPotentialJavaLangSeenDependencies();
 
     /**
@@ -131,18 +144,30 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     boolean hasToDisplay(Display display);
 
     /**
-     * @param fullName
+     * Removes all the marked as potential "java.lang" dependencies from the context and change
+     * their package to "java.lang". This should be used at the end of the parsing process because
+     * it means that marked dependencies haven't been parsed.
+     *
      * @since 1.2.0
      */
     // FIXME Junit test
-    // FIXME Javadoc
-    void removePotentialJavaLangSeenDependency(String fullName);
+    void removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang();
 
     /**
+     * Remove the marked as potential "java.lang" dependency from the context. This should be used
+     * each time a new dependency is parsed. If the dependency full name isn't marked as potential
+     * "java.lang" dependency, this method doesn't do anything.
+     *
      * @param fullName
+     *            the dependency full name, usually the package and the dependency name.
+     *            <p>
+     *            For instance, in java it can be :<br>
+     *            <i>java.lang.String</i><br>
+     *            <i>java.io.Serializable</i><br>
+     *            <i>sun.font.Decoration</i>
+     *            </p>
      * @since 1.2.0
      */
     // FIXME Junit test
-    // FIXME Javadoc
-    void removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang();
+    void removePotentialJavaLangSeenDependency(String fullName);
 }

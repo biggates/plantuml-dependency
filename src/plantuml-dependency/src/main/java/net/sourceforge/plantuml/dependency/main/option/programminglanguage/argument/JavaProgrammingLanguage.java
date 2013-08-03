@@ -169,7 +169,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private static GenericDependency createOrUpdateAbstractDependency(final JavaRawDependency javaRawDependency,
             final DependencyType dependencyType, final ProgrammingLanguageContext programmingLanguageContext) {
-        GenericDependency dependency = programmingLanguageContext.getDependencies(javaRawDependency.getFullName());
+        GenericDependency dependency = programmingLanguageContext.getDependency(javaRawDependency.getFullName());
 
         if (dependency == null) {
             LOGGER.fine(buildLogString(CREATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
@@ -313,7 +313,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String packageName = matcher.group(1).replace(SPACE_CHAR, BLANK_STRING);
             final String name = matcher.group(2).trim();
             final String fullName = packageName + DOT_CHAR + name;
-            GenericDependency dependency = programmingLanguageContext.getDependencies(fullName);
+            GenericDependency dependency = programmingLanguageContext.getDependency(fullName);
             if (dependency == null) {
                 LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE, fullName));
                 dependency = new GenericDependencyImpl(name, packageName);
@@ -627,7 +627,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         GenericDependency dependency = importDependencies.findDependency(parentName, parentPackageName);
 
         if (dependency == null) {
-            dependency = programmingLanguageContext.getDependencies(annotationFullName);
+            dependency = programmingLanguageContext.getDependency(annotationFullName);
             if (dependency == null) {
                 final DependencyType dependencyType = type
                         .createAnnotationDependencyType(parentName, parentPackageName);
@@ -680,7 +680,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         if (dependency == null) {
             final String annotationFullNameWithSamePackage = currentPackageName + DOT_CHAR + annotationName;
-            dependency = programmingLanguageContext.getDependencies(annotationFullNameWithSamePackage);
+            dependency = programmingLanguageContext.getDependency(annotationFullNameWithSamePackage);
             if (dependency == null) {
                 dependency = getOrCreateAnnotationDependencyWithNameFromJavaLangOrSamePackage(currentPackageName, type,
                         programmingLanguageContext, annotationName, annotationFullNameWithSamePackage);
@@ -819,7 +819,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         GenericDependency dependency = importDependencies.findDependency(parentName, parentPackageName);
 
         if (dependency == null) {
-            dependency = programmingLanguageContext.getDependencies(parentFullName);
+            dependency = programmingLanguageContext.getDependency(parentFullName);
             if (dependency == null) {
                 final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
                         parentPackageName);
@@ -874,7 +874,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         if (dependency == null) {
             final String parentFullNameWithSamePackage = currentPackageName + DOT_CHAR + parentName;
-            dependency = programmingLanguageContext.getDependencies(parentFullNameWithSamePackage);
+            dependency = programmingLanguageContext.getDependency(parentFullNameWithSamePackage);
             if (dependency == null) {
                 dependency = getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(type, parentType,
                         currentPackageName, programmingLanguageContext, parentName, parentFullNameWithSamePackage);

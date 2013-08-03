@@ -168,7 +168,7 @@ public class JavaProgrammingLanguageContextTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getDependencies(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getDependency(java.lang.String)}
      * .
      */
     @Test
@@ -177,17 +177,17 @@ public class JavaProgrammingLanguageContextTest extends
                 new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                         "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
                 JAVA_PROGRAMMING_LANGUAGE_CONTEXT2
-                        .getDependencies("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
+                        .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getDependencies(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getDependency(java.lang.String)}
      * .
      */
     @Test
     public void testGetDependenciesWithNotExistingDependency() {
-        assertNull(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.getDependencies("net.sourceforge.test.GenericDependency"));
+        assertNull(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.getDependency("net.sourceforge.test.GenericDependency"));
     }
 
     /**

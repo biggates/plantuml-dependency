@@ -303,7 +303,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @since 1.0
      */
     @Override
-    public GenericDependency getDependencies(final String fullName) {
+    public GenericDependency getDependency(final String fullName) {
         checkNull(fullName, DEPENDENCY_NAME_NULL_ERROR);
         return getParsedAndSeenDependenciesMap().get(fullName);
     }

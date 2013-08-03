@@ -45,9 +45,6 @@ import java.util.TreeSet;
 public enum Display {
     /** The display abstract classes argument. */
     ABSTRACT_CLASSES("displays parsed source files which are abstract classes"),
-    /** The display attributes argument. */
-    // FIXME to remove when it will be implemented
-    // ATTRIBUTES("displays parsed source files attributes"),
     /** The display annotations argument. */
     ANNOTATIONS("displays annotations (classes and methods) of all parsed source files"),
     /** The display classes argument. */
@@ -62,14 +59,8 @@ public enum Display {
     IMPORTS("displays import (not static) of all parsed source files"),
     /** The display interfaces argument. */
     INTERFACES("displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces"),
-    /** The display methods argument. */
-    // FIXME to remove when it will be implemented
-    // METHODS("displays parsed source files methods"),
     /** The display native methods argument. */
     NATIVE_METHODS("displays links to the native dependency"),
-    /** The display only packages argument. */
-    // FIXME to remove when it will be implemented
-    // ONLY_PACKAGES("displays only packages of all parsed source files"),
     /** The display static imports argument. */
     STATIC_IMPORTS("displays static imports of all parsed source files");
 
