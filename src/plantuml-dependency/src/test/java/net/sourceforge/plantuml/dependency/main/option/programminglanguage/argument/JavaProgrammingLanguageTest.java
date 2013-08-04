@@ -37,6 +37,10 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDi
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET4;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET5;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET9;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY10;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY11;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY12;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY13;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY14;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY16;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY17;
@@ -46,7 +50,6 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY21;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY22;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY23;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY6;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY24;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY25;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY26;
@@ -57,7 +60,6 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY31;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY32;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY33;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY7;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY34;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY35;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY36;
@@ -68,7 +70,6 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY41;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY42;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY43;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY8;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY44;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY45;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY46;
@@ -76,11 +77,10 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY48;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY49;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY51;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY6;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY7;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY8;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY9;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY10;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY11;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY12;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY13;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.CPP;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
 import static org.junit.Assert.assertEquals;
@@ -278,7 +278,6 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
 
     // TODO test annotation with enum etc...
     // TODO test with the context
-    // TODO test method and attributes
 
     /**
      * Test method for
@@ -337,8 +336,53 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(13, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        // TODO dependencies check
+        assertNotNull(programmingLanguageContext.getDependency("java.lang.annotation.ElementType"));
+        assertNotNull(programmingLanguageContext.getDependency("javax.xml.bind.annotation.XmlType"));
+        assertNotNull(programmingLanguageContext.getDependency("javax.xml.ws.soap.Addressing"));
+        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Testabstract"));
+        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Deprecated"));
+        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.SuppressWarnings"));
+        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Annotationinterface"));
+        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.AnotherAnnotation"));
+        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.MyAnnotation"));
+        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.MappedSuperclass"));
+        assertNotNull(programmingLanguageContext.getDependency("javax.annotation.Generated"));
+        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Override"));
         assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY51.getFullName()));
+        assertEquals(StubDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("java.lang.annotation.ElementType").getDependencyType()
+                        .getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("javax.xml.bind.annotation.XmlType").getDependencyType()
+                        .getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("javax.xml.ws.soap.Addressing").getDependencyType()
+                        .getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("com.plantuml.test.Testabstract").getDependencyType()
+                        .getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("com.plantuml.test.Deprecated").getDependencyType()
+                        .getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("com.plantuml.test.SuppressWarnings").getDependencyType()
+                        .getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("com.plantuml.test.Annotationinterface").getDependencyType()
+                        .getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("com.plantuml.test.AnotherAnnotation").getDependencyType()
+                        .getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("com.plantuml.test.MyAnnotation").getDependencyType()
+                        .getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("com.plantuml.test.MappedSuperclass").getDependencyType()
+                        .getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("javax.annotation.Generated").getDependencyType().getClass());
+        assertEquals(AnnotationDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("com.plantuml.test.Override").getDependencyType().getClass());
     }
 
     /**

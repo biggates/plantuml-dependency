@@ -80,9 +80,11 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     private Map < String, GenericDependency > parsedAndSeenDependenciesMap;
 
     /**
-     *
+     * The {@link Map} containing all dependencies which have already been marked and seen as a
+     * potential "java.lang" dependency. This should be used when the dependency package can be
+     * known between the current package and the "java.lang" package because dependencies are read
+     * in a sequential way.
      */
-    // TODO Javadoc
     private Map < String, GenericDependency > potentialJavaLangSeenDependenciesMap;
 
     /**

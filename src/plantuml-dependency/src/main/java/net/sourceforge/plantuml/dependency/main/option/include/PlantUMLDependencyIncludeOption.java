@@ -81,6 +81,18 @@ public class PlantUMLDependencyIncludeOption extends AbstractOptionWithArgument 
                 "To include files that match the provided pattern. If not specified, the default pattern is \"**/*."
                         + DEFAULT_PROGRAMMING_LANGUAGE.getName() + "\"."), SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
         setProgrammingLanguageOption(programmingLanguageOpt);
+        // FIXME to uncomment if the PlantUMLDependencyProgrammingLanguageOption passes to ACTIVE
+        // (not
+        // HIDDEN)
+        // super(
+        // OPTION_MAIN_SYNOPSIS,
+        // OPTION_SYNOPSIS,
+        // new IncludeFilePatternOptionArgumentImpl(true),
+        // new StringBuffer(
+        // "To include files that match the provided pattern. If not specified, the default pattern is \"**/*.PROGRAMMING_LANGUAGE_FILE_EXTENSION\" depending on the programming language chosen (only \""
+        // + DEFAULT_PROGRAMMING_LANGUAGE.getName() + "\" is supported by now)."), SPACE_CHAR,
+        // ACTIVE_OPTIONAL_OPTION_STATUS);
+        // setProgrammingLanguageOption(programmingLanguageOpt);
     }
 
     /**
