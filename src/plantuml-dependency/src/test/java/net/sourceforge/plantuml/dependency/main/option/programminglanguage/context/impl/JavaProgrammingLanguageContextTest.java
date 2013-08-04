@@ -31,6 +31,7 @@ import static net.sourceforge.plantuml.dependency.main.option.display.argument.D
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImplTest.PLANTUML_CLASSES_DIAGRAM_TEST2;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -84,15 +85,28 @@ public class JavaProgrammingLanguageContextTest extends
                             "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "GenericDependency", "net.sourceforge.plantuml.dependency.generic")})), DISPLAY_OPTIONS);
+                    "GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "TestReadDependencyFromFileInterfaceWithoutPackage",
+                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage")})), DISPLAY_OPTIONS);
 
     /** Java programming language test 5 instance. */
     @DataPoint
-    public static final JavaProgrammingLanguageContext JAVA_PROGRAMMING_LANGUAGE_CONTEXT5 = new JavaProgrammingLanguageContext();
+    public static final JavaProgrammingLanguageContext JAVA_PROGRAMMING_LANGUAGE_CONTEXT5 = new JavaProgrammingLanguageContext(
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {
+                    new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
+                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
+                    new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                    "GenericDependency", "net.sourceforge.plantuml.dependency.generic")})), DISPLAY_OPTIONS);
 
     /** Java programming language test 6 instance. */
     @DataPoint
-    public static final JavaProgrammingLanguageContext JAVA_PROGRAMMING_LANGUAGE_CONTEXT6 = null;
+    public static final JavaProgrammingLanguageContext JAVA_PROGRAMMING_LANGUAGE_CONTEXT6 = new JavaProgrammingLanguageContext();
+
+    /** Java programming language test 7 instance. */
+    @DataPoint
+    public static final JavaProgrammingLanguageContext JAVA_PROGRAMMING_LANGUAGE_CONTEXT7 = null;
 
     /**
      * Test method for
@@ -123,6 +137,37 @@ public class JavaProgrammingLanguageContextTest extends
                 "net.sourceforge.mazix.components.clone"));
         assertEquals(3, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
         assertEquals(3, javaProgrammingLanguageContext.getParsedDependencies().size());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addPotentialJavaLangSeenDependencies(GenericDependency)}
+     * .
+     */
+    @Test
+    public void testAddPotentialJavaLangSeenDependenciesWithExistingDependency() {
+        final JavaProgrammingLanguageContext javaProgrammingLanguageContext = (JavaProgrammingLanguageContext) JAVA_PROGRAMMING_LANGUAGE_CONTEXT4
+                .deepClone();
+        javaProgrammingLanguageContext.addPotentialJavaLangSeenDependencies(new GenericDependencyImpl(
+                "TestReadDependencyFromFileInterfaceWithoutPackage",
+                "net.sourceforge.plantuml.dependency.main.option.programminglanguage"));
+        assertEquals(2, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(1, javaProgrammingLanguageContext.getPotentialJavaLangSeenDependencies().size());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#addPotentialJavaLangSeenDependencies(GenericDependency)}
+     * .
+     */
+    @Test
+    public void testAddPotentialJavaLangSeenDependenciesWithNotExistingDependency() {
+        final JavaProgrammingLanguageContext javaProgrammingLanguageContext = (JavaProgrammingLanguageContext) JAVA_PROGRAMMING_LANGUAGE_CONTEXT4
+                .deepClone();
+        javaProgrammingLanguageContext.addPotentialJavaLangSeenDependencies(new GenericDependencyImpl("DeepCloneable",
+                "net.sourceforge.mazix.components.clone"));
+        assertEquals(3, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(2, javaProgrammingLanguageContext.getPotentialJavaLangSeenDependencies().size());
     }
 
     /**
@@ -172,7 +217,7 @@ public class JavaProgrammingLanguageContextTest extends
      * .
      */
     @Test
-    public void testGetDependenciesWithExistingDependency() {
+    public void testGetDependencyWithExistingDependency() {
         assertEquals(
                 new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                         "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
@@ -186,7 +231,7 @@ public class JavaProgrammingLanguageContextTest extends
      * .
      */
     @Test
-    public void testGetDependenciesWithNotExistingDependency() {
+    public void testGetDependencyWithNotExistingDependency() {
         assertNull(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.getDependency("net.sourceforge.test.GenericDependency"));
     }
 
@@ -202,12 +247,75 @@ public class JavaProgrammingLanguageContextTest extends
 
     /**
      * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getPotentialJavaLangSeenDependencies()}
+     * .
+     */
+    @Test
+    public void testGetPotentialJavaLangSeenDependencies() {
+        assertEquals(1, JAVA_PROGRAMMING_LANGUAGE_CONTEXT4.getPotentialJavaLangSeenDependencies().size());
+    }
+
+    /**
+     * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#hasToDisplay(net.sourceforge.plantuml.dependency.main.option.display.argument.Display)}
      * .
      */
     @Test
     public void testHasToDisplayWithExistingDisplay() {
         assertTrue(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.hasToDisplay(ABSTRACT_CLASSES));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang()}
+     * .
+     */
+    @Test
+    public void testRemoveAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang() {
+        final GenericDependency dependency = new GenericDependencyImpl(
+                "TestReadDependencyFromFileInterfaceWithoutPackage",
+                "net.sourceforge.plantuml.dependency.main.option.programminglanguage");
+        final JavaProgrammingLanguageContext javaProgrammingLanguageContext = new JavaProgrammingLanguageContext(
+                new TreeSet < GenericDependency >(asList(new GenericDependency[] {dependency,
+                        new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
+                new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
+                        "GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
+                new TreeSet < GenericDependency >(asList(new GenericDependency[] {dependency})), DISPLAY_OPTIONS);
+        javaProgrammingLanguageContext.removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang();
+        assertEquals(2, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(0, javaProgrammingLanguageContext.getPotentialJavaLangSeenDependencies().size());
+        assertNotNull(javaProgrammingLanguageContext
+                .getDependency("java.lang.TestReadDependencyFromFileInterfaceWithoutPackage"));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#removePotentialJavaLangSeenDependency(String)}
+     * .
+     */
+    @Test
+    public void testRemovePotentialJavaLangSeenDependencyWithExistingDependency() {
+        final JavaProgrammingLanguageContext javaProgrammingLanguageContext = (JavaProgrammingLanguageContext) JAVA_PROGRAMMING_LANGUAGE_CONTEXT4
+                .deepClone();
+        javaProgrammingLanguageContext
+                .removePotentialJavaLangSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage");
+        assertEquals(2, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(0, javaProgrammingLanguageContext.getPotentialJavaLangSeenDependencies().size());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#removePotentialJavaLangSeenDependency(String)}
+     * .
+     */
+    @Test
+    public void testRemovePotentialJavaLangSeenDependencyWithNotExistingDependency() {
+        final JavaProgrammingLanguageContext javaProgrammingLanguageContext = (JavaProgrammingLanguageContext) JAVA_PROGRAMMING_LANGUAGE_CONTEXT4
+                .deepClone();
+        javaProgrammingLanguageContext
+                .removePotentialJavaLangSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable");
+        assertEquals(2, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(1, javaProgrammingLanguageContext.getPotentialJavaLangSeenDependencies().size());
     }
 
     // TODO better test the getPlantUMLDiagram method with display option and with specific context

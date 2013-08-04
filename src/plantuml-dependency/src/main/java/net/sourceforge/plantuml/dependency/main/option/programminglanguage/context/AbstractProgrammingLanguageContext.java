@@ -461,7 +461,9 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     @Override
     public void removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang() {
         for (GenericDependency dependency : getPotentialJavaLangSeenDependencies()) {
+            getParsedAndSeenDependenciesMap().remove(dependency.getFullName());
             dependency.getDependencyType().setFullName(JAVA_LANG_PACKAGE, dependency.getName());
+            addParsedAndSeenDependencies(dependency);
         }
 
         getPotentialJavaLangSeenDependenciesMap().clear();

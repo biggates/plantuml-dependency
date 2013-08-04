@@ -58,7 +58,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      * Adds the dependency in the parsed and seen dependencies in the context and marks it as a
      * potential "java.lang" dependency. This should be used when the dependency package can be
      * known between the current package and the "java.lang" package because dependencies are read
-     * in a sequential way.
+     * in a sequential way. If the dependency is already in the context, it is replaced.
      *
      * @param dependency
      *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
@@ -67,7 +67,6 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      * @see #removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang()
      * @since 1.2.0
      */
-    // FIXME Junit test
     void addPotentialJavaLangSeenDependencies(GenericDependency dependency);
 
     /**
@@ -129,7 +128,6 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      * @see #removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang()
      * @since 1.2.0
      */
-    // FIXME Junit test
     Collection < GenericDependency > getPotentialJavaLangSeenDependencies();
 
     /**
@@ -150,7 +148,6 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *
      * @since 1.2.0
      */
-    // FIXME Junit test
     void removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang();
 
     /**
@@ -168,6 +165,5 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *            </p>
      * @since 1.2.0
      */
-    // FIXME Junit test
     void removePotentialJavaLangSeenDependency(String fullName);
 }
