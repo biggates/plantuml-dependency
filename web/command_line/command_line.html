@@ -71,61 +71,62 @@
 			<p>This will output :</p>
 			<div class="scriptplantu">
 				<pre>
-	PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net}
+PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net}
 
-	Usage:
-		java -jar plantuml-dependency-1.2.0.jar [OPTIONS]
+Usage:
+	java -jar plantuml-dependency-1.2.0.jar [OPTIONS]
 
 
-	where optional options are:
+where optional options are:
 
-		-about, --author, --authors
-			To display information about PlantUML Dependency and its authors.
+	-about, --author, --authors
+		To display information about PlantUML Dependency, its license and its authors.
 
-		-b, --basedir DIR
-			The base directory where to look for source files. If not specified, the default pattern is "." i.e. the directory where the program is launched from.
-			DIR specifies a valid and exsiting directory path, not a single file. It can be absolute or relative.
+	-b, --basedir DIR
+		The base directory where to look for source files. If not specified, the default pattern is "." i.e. the directory where the program is launched from.
+		DIR specifies a valid and existing directory path, not a single file. It can be absolute or relative.
 
-		-d, --display DISPLAY_OPTIONS
-			To specify class diagram objects to display. If not specified, the default is [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]
-			DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. "abstract_classes" : displays parsed source files which are abstract classes, "classes" : displays parsed and seen source files (as import or as extension) which are classes (not abstract), "enums" : displays parsed source files which are enums, "extensions" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), "implementations" : displays dependencies which are implemented by parsed source files (i.e. interfaces), "imports" : displays import (not static) of all parsed source files, "interfaces" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, "native_methods" : displays links to the native dependency, "static_imports" : displays static imports of all parsed source files.
+	-d, --display DISPLAY_OPTIONS
+		To specify class diagram objects to display. If not specified, the default is [abstract_classes, annotations, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]
+		DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, annotations, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. "abstract_classes" : displays parsed source files which are abstract classes, "annotations" : displays annotations (classes and methods) of all parsed source files, "classes" : displays parsed and seen source files (as import or as extension) which are classes (not abstract), "enums" : displays parsed source files which are enums, "extensions" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), "implementations" : displays dependencies which are implemented by parsed source files (i.e. interfaces), "imports" : displays import (not static) of all parsed source files, "interfaces" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, "native_methods" : displays links to the native dependency, "static_imports" : displays static imports of all parsed source files.
 
-		-e, --exclude FILE_PATTERN
-			To exclude files that match the provided pattern. If not specified, no file is excluded.
-			FILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that "**", "*" or "?" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.
+	-e, --exclude FILE_PATTERN
+		To exclude files that match the provided pattern. If not specified, no file is excluded.
+		FILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that "**", "*" or "?" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.
 
-		-h, --help, -?
-			To display this help message.
+	-h, --help, -?
+		To display this help message.
 
-		-i, --include FILE_PATTERN
-			To include files that match the provided pattern. If not specified, the default pattern is "**/*.PROGRAMMING_LANGUAGE_FILE_EXTENSION" depending on the programming language chosen (only "java" is supported by now).
-			FILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that "**", "*" or "?" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.
+	-i, --include FILE_PATTERN
+		To include files that match the provided pattern. If not specified, the default pattern is "**/*.java".
+		FILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that "**", "*" or "?" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.
 
-		-o, --output FILE
-			To specify the output file path where to generate the PlantUML description.
-			FILE specifies a valid file path, where the file can exist or not and is not a directory. It can be absolute or relative. If the file already exists, it overrides it.
+	-o, --output FILE
+		To specify the output file path where to generate the PlantUML description.
+		FILE specifies a valid file path, where the file can exist or not and is not a directory. It can be absolute or relative. If the file already exists, it overrides it.
 
-		-v, --verbose [VERBOSE_LEVEL]
-			To display log information.
-			VERBOSE_LEVEL specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300. By default, if the verbose option is specified but the level is not set, the value "INFO":800 is taken. If not specified, the default value is "WARNING":900.
+	-v, --verbose [VERBOSE_LEVEL]
+		To display log information.
+		VERBOSE_LEVEL specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300. By default, if the verbose option is specified but the level is not set, the value "INFO":800 is taken. If not specified, the default value is "WARNING":900.
 
-		-version
-			To display versions information about PlantUML Dependency and Java.
+	-version
+		To display versions information about PlantUML Dependency and Java.
 
-	Examples:
+Examples:
 
-		java -jar plantuml-dependency-1.2.0.jar -h
-		java -jar plantuml-dependency-1.2.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d abstract_classes,interfaces -v
-		java -jar plantuml-dependency-1.2.0.jar -o plantuml.txt -b C:\Documents and Settings\Benjamin\workspace\plantuml-dependency -i **/*Test.java
-		java -jar plantuml-dependency-1.2.0.jar -version -v
+	java -jar plantuml-dependency-1.2.0.jar -h
+	java -jar plantuml-dependency-1.2.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d abstract_classes,interfaces -v
+	java -jar plantuml-dependency-1.2.0.jar -o plantuml.txt -b "C:\Users\PlantUML test" -i **/*Test.java
+	java -jar plantuml-dependency-1.2.0.jar -version -v
 
-	Known bugs or program limitations:
+Known bugs or program limitations:
 
-		- Be careful, in order to correctly parse source files, they must compile without any errors
-		- Import instructions "import package_name.*" are ignored because the dependencies are not explicitly defined, use precise imports instead
-		- Links between dependencies are found out by parsing "import" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code
-		- PlantUML Dependency is compliant up to Java 1.6 source files
-		- As PlantUML Dependency is reading source files imports, it will generate object - imports relation even if the imports are not used within the object (usually, this raises a warning within the IDE)
+	- As PlantUML Dependency reads source files imports, it will generate object - imports relation even if the imports are not used within the object (usually, this raises a warning within the IDE)
+	- Be careful, in order to correctly parse source files, it is better to have source code which compiles without any errors
+	- Generated annotations (if used) are only supported by PlantUML 7972 and above
+	- Import instructions "import package_name.*" are ignored because the dependencies are not explicitly defined, use precise imports instead
+	- Links between dependencies are found out by parsing "import" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code
+	- PlantUML Dependency is fully compliant up to Java 1.6 source files (and may work with Java 1.7 source files)
 				</pre>
 			</div>
 		</div>
