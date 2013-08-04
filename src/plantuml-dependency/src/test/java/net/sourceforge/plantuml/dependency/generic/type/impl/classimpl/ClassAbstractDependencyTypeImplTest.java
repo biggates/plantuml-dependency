@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY46;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY50;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET4;
@@ -103,43 +103,43 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
     /** Class abstract dependency type test 6 instance. */
     @DataPoint
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE6 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
-            new TreeSet < GenericDependency >(), false);
+            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3,
+            new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET2, false);
 
     /** Class abstract dependency type test 7 instance. */
     @DataPoint
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE7 = new ClassAbstractDependencyTypeImpl(
             "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
-            GENERIC_DEPENDENCY_SET2, false);
+            new TreeSet < GenericDependency >(), false);
 
     /** Class abstract dependency type test 8 instance. */
     @DataPoint
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE8 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET4, GENERIC_DEPENDENCY_SET5,
-            GENERIC_DEPENDENCY_SET3, false);
+            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
+            GENERIC_DEPENDENCY_SET2, true);
 
     /** Class abstract dependency type test 9 instance. */
     @DataPoint
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE9 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5,
-            new TreeSet < GenericDependency >(), false);
+            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
+            GENERIC_DEPENDENCY_SET2, false);
 
     /** Class abstract dependency type test 10 instance. */
     @DataPoint
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE10 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang");
+            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET4, GENERIC_DEPENDENCY_SET5,
+            GENERIC_DEPENDENCY_SET3, false);
 
     /** Class abstract dependency type test 11 instance. */
     @DataPoint
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE11 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
-            GENERIC_DEPENDENCY_SET2, true);
+            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5,
+            new TreeSet < GenericDependency >(), false);
 
     /** Class abstract dependency type test 12 instance. */
     @DataPoint
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE12 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3,
-            new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET2, false);
+            "Integer", "java.lang");
 
     /** Class abstract dependency type test 13 instance. */
     @DataPoint
@@ -154,7 +154,7 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
     public void testGetAnnotations() {
         final Set < GenericDependency > annotations = CLASS_ABSTRACT_DEPENDENCY_TYPE1.getAnnotations();
         assertEquals(1, annotations.size());
-        assertTrue(annotations.contains(GENERIC_DEPENDENCY46));
+        assertTrue(annotations.contains(GENERIC_DEPENDENCY50));
     }
 
     /**
@@ -247,7 +247,7 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST14, PLANTUML_USE_RELATION_TEST15, PLANTUML_IMPLEMENT_RELATION_TEST15,
                 PLANTUML_USE_RELATION_TEST27})),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE9.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
     /**
@@ -261,7 +261,7 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
                 PLANTUML_USE_RELATION_TEST14, PLANTUML_USE_RELATION_TEST15, PLANTUML_USE_RELATION_TEST16,
                 PLANTUML_IMPLEMENT_RELATION_TEST16, PLANTUML_EXTEND_RELATION_TEST8, PLANTUML_EXTEND_RELATION_TEST9,
                 PLANTUML_USE_RELATION_TEST27})),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                CLASS_ABSTRACT_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
     /**
@@ -276,6 +276,6 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
                         PLANTUML_USE_RELATION_TEST14, PLANTUML_USE_RELATION_TEST15, PLANTUML_EXTEND_RELATION_TEST10,
                         PLANTUML_IMPLEMENT_RELATION_TEST17, PLANTUML_IMPLEMENT_RELATION_TEST18,
                         PLANTUML_USE_RELATION_TEST27})),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                CLASS_ABSTRACT_DEPENDENCY_TYPE9.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 }

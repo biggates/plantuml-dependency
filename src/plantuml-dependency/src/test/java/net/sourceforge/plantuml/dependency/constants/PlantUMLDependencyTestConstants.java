@@ -580,164 +580,164 @@ public final class PlantUMLDependencyTestConstants {
     public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE3 = new AnnotationDependencyTypeImpl(
             "Generated", "javax.annotation");
 
-    /** Generic dependency test 2 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY2 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE2);
-
-    /** Generic dependency test 3 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY3 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE3);
-
-    /** Generic dependency test 4 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY4 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE4);
-
-    /** Generic dependency test 5 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY5 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE5);
-
     /** Generic dependency test 6 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY6 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE6);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY6 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE2);
 
     /** Generic dependency test 7 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY7 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE7);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY7 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE3);
 
     /** Generic dependency test 8 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY8 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE8);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY8 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE4);
 
     /** Generic dependency test 9 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY9 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE9);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY9 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE5);
 
     /** Generic dependency test 10 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY10 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE10);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY10 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE6);
 
     /** Generic dependency test 11 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY11 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE11);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY11 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE7);
 
     /** Generic dependency test 12 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY12 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE12);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY12 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE8);
 
     /** Generic dependency test 13 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY13 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE13);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY13 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE9);
 
     /** Generic dependency test 14 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY14 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE14);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY14 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE10);
 
     /** Generic dependency test 15 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY15 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE15);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY15 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE11);
 
     /** Generic dependency test 16 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY16 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE16);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY16 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE12);
 
     /** Generic dependency test 17 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY17 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE17);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY17 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE13);
 
     /** Generic dependency test 18 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY18 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE18);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY18 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE14);
 
     /** Generic dependency test 19 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY19 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE19);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY19 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE15);
 
     /** Generic dependency test 20 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY20 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE20);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY20 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE16);
 
     /** Generic dependency test 21 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY21 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE21);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY21 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE17);
 
     /** Generic dependency test 22 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY22 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE22);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY22 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE18);
 
     /** Generic dependency test 23 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY23 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE1);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY23 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE19);
 
     /** Generic dependency test 24 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY24 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE2);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY24 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE20);
 
     /** Generic dependency test 25 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY25 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE3);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY25 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE21);
 
     /** Generic dependency test 26 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY26 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE4);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY26 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE22);
 
     /** Generic dependency test 27 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY27 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE5);
+            INTERFACE_DEPENDENCY_TYPE1);
 
     /** Generic dependency test 28 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY28 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE6);
+            INTERFACE_DEPENDENCY_TYPE2);
 
     /** Generic dependency test 29 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY29 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE7);
+            INTERFACE_DEPENDENCY_TYPE3);
 
     /** Generic dependency test 30 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY30 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE8);
+            INTERFACE_DEPENDENCY_TYPE4);
 
     /** Generic dependency test 31 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY31 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE9);
+            INTERFACE_DEPENDENCY_TYPE5);
 
     /** Generic dependency test 32 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY32 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE10);
+            INTERFACE_DEPENDENCY_TYPE6);
 
     /** Generic dependency test 33 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY33 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE11);
+            INTERFACE_DEPENDENCY_TYPE7);
 
     /** Generic dependency test 34 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY34 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE23);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY34 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE8);
 
     /** Generic dependency test 35 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY35 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE12);
+            INTERFACE_DEPENDENCY_TYPE9);
 
     /** Generic dependency test 36 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY36 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE24);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY36 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE10);
 
     /** Generic dependency test 37 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY37 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE25);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY37 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE11);
 
     /** Generic dependency test 38 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY38 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE26);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY38 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE23);
 
     /** Generic dependency test 39 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY39 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE27);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY39 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE12);
 
     /** Generic dependency test 40 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY40 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE28);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY40 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE24);
 
-    /** Generic dependency test 43 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY41 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE29);
+    /** Generic dependency test 41 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY41 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE25);
 
     /** Generic dependency test 42 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY42 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE30);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY42 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE26);
 
     /** Generic dependency test 43 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY43 = new GenericDependencyImpl(ENUM_DEPENDENCY_TYPE1);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY43 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE27);
 
     /** Generic dependency test 44 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY44 = new GenericDependencyImpl(ENUM_DEPENDENCY_TYPE2);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY44 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE28);
 
     /** Generic dependency test 45 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY45 = new GenericDependencyImpl(
-            INTERFACE_DEPENDENCY_TYPE13);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY45 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE29);
 
     /** Generic dependency test 46 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY46 = new GenericDependencyImpl(
-            ANNOTATION_DEPENDENCY_TYPE1);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY46 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE30);
 
     /** Generic dependency test 47 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY47 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE31);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY47 = new GenericDependencyImpl(ENUM_DEPENDENCY_TYPE1);
 
     /** Generic dependency test 48 instance. */
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY48 = new GenericDependencyImpl(
-            ANNOTATION_DEPENDENCY_TYPE2);
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY48 = new GenericDependencyImpl(ENUM_DEPENDENCY_TYPE2);
 
     /** Generic dependency test 49 instance. */
     public static final GenericDependencyImpl GENERIC_DEPENDENCY49 = new GenericDependencyImpl(
+            INTERFACE_DEPENDENCY_TYPE13);
+
+    /** Generic dependency test 50 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY50 = new GenericDependencyImpl(
+            ANNOTATION_DEPENDENCY_TYPE1);
+
+    /** Generic dependency test 51 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY51 = new GenericDependencyImpl(CLASS_DEPENDENCY_TYPE31);
+
+    /** Generic dependency test 52 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY52 = new GenericDependencyImpl(
+            ANNOTATION_DEPENDENCY_TYPE2);
+
+    /** Generic dependency test 53 instance. */
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY53 = new GenericDependencyImpl(
             ANNOTATION_DEPENDENCY_TYPE3);
 
     /** Generic dependency set test 2 instance. */
@@ -755,11 +755,11 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Generic dependency set test 5 instance. */
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET5 = new TreeSet < GenericDependency >(
-            asList(new GenericDependency[] {GENERIC_DEPENDENCY46}));
+            asList(new GenericDependency[] {GENERIC_DEPENDENCY50}));
 
     /** Generic dependency set test 6 instance. */
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET6 = new TreeSet < GenericDependency >(
-            asList(new GenericDependency[] {GENERIC_DEPENDENCY48, GENERIC_DEPENDENCY49}));
+            asList(new GenericDependency[] {GENERIC_DEPENDENCY52, GENERIC_DEPENDENCY53}));
 
     /** Generic dependency set test 7 instance. */
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET7 = new TreeSet < GenericDependency >(

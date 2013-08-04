@@ -26,8 +26,8 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY48;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY49;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY52;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY53;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET6;
 import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST2;
@@ -92,16 +92,21 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
     /** Annotation dependency type test 6 instance. */
     @DataPoint
     public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE6 = new AnnotationDependencyTypeImpl(
-            "Override", "java.lang", new ImportDependenciesCollectionImpl(), new TreeSet < GenericDependency >());
+            "Override", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET6);
 
     /** Annotation dependency type test 7 instance. */
     @DataPoint
     public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE7 = new AnnotationDependencyTypeImpl(
-            "Override", "java.lang", IMPORT_COLLECTION_TEST24, GENERIC_DEPENDENCY_SET6);
+            "Override", "java.lang", new ImportDependenciesCollectionImpl(), new TreeSet < GenericDependency >());
 
     /** Annotation dependency type test 8 instance. */
     @DataPoint
-    public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE8 = null;
+    public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE8 = new AnnotationDependencyTypeImpl(
+            "Override", "java.lang", IMPORT_COLLECTION_TEST24, GENERIC_DEPENDENCY_SET6);
+
+    /** Annotation dependency type test 9 instance. */
+    @DataPoint
+    public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE9 = null;
 
     /**
      * Test method for
@@ -112,8 +117,8 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
     public void testGetAnnotations() {
         final Set < GenericDependency > annotations = ANNOTATION_DEPENDENCY_TYPE1.getAnnotations();
         assertEquals(2, annotations.size());
-        assertTrue(annotations.contains(GENERIC_DEPENDENCY48));
-        assertTrue(annotations.contains(GENERIC_DEPENDENCY49));
+        assertTrue(annotations.contains(GENERIC_DEPENDENCY52));
+        assertTrue(annotations.contains(GENERIC_DEPENDENCY53));
     }
 
     /**
@@ -192,7 +197,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST17, PLANTUML_USE_RELATION_TEST18, PLANTUML_USE_RELATION_TEST19,
                 PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST21})),
-                ANNOTATION_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                ANNOTATION_DEPENDENCY_TYPE8.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
     /**
@@ -203,6 +208,6 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
     @Test
     public void testGetPlantUMLClassesDiagramRelationsWithoutImportDependenciesAndWithoutAnnotations() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ANNOTATION_DEPENDENCY_TYPE6.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                ANNOTATION_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 }

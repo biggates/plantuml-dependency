@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY46;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY50;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET5;
@@ -121,7 +121,7 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetAnnotations() {
         final Set < GenericDependency > annotations = INTERFACE_DEPENDENCY_TYPE1.getAnnotations();
         assertEquals(1, annotations.size());
-        assertTrue(annotations.contains(GENERIC_DEPENDENCY46));
+        assertTrue(annotations.contains(GENERIC_DEPENDENCY50));
     }
 
     /**

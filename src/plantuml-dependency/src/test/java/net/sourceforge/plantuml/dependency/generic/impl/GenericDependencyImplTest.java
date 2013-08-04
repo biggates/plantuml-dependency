@@ -40,13 +40,29 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.2.0
  */
 public class GenericDependencyImplTest extends DeepCloneableObjectTest < GenericDependencyImpl > {
 
     /** Generic dependency test 1 instance. */
     @DataPoint
     public static final GenericDependencyImpl GENERIC_DEPENDENCY1 = new GenericDependencyImpl("Number", "java.lang");
+
+    /** Generic dependency test 2 instance. */
+    @DataPoint
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY2 = new GenericDependencyImpl("Integer", "java.lang");
+
+    /** Generic dependency test 3 instance. */
+    @DataPoint
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY3 = new GenericDependencyImpl("Number", "java.lang.number");
+
+    /** Generic dependency test 4 instance. */
+    @DataPoint
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY4 = new GenericDependencyImpl("Number", "java.lang");
+
+    /** Generic dependency test 5 instance. */
+    @DataPoint
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY5 = null;
 
     /**
      * Test method for

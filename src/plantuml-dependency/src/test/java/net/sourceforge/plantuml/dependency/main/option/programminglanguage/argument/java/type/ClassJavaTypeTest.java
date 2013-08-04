@@ -27,7 +27,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImplTest.ANNOTATION_DEPENDENCY_TYPE2;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImplTest.CLASS_ABSTRACT_DEPENDENCY_TYPE1;
-import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImplTest.CLASS_ABSTRACT_DEPENDENCY_TYPE11;
+import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImplTest.CLASS_ABSTRACT_DEPENDENCY_TYPE8;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImplTest.CLASS_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImplTest.INTERFACE_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
@@ -101,12 +101,12 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
      */
     @Test
     public void testCreateDependencyTypeAbstractWithNativeMethods() {
-        assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE11, JAVA_TYPE1.createDependencyType(
-                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE11.getPackageName(), true,
-                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getImportDependenciesCollection(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentInterfaces(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE11.getAnnotations(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE11.hasNativeMethods()));
+        assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE8, JAVA_TYPE1.createDependencyType(
+                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE8.getPackageName(), true,
+                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getImportDependenciesCollection(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getParentInterfaces(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE8.getAnnotations(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE8.hasNativeMethods()));
     }
 
     /**
