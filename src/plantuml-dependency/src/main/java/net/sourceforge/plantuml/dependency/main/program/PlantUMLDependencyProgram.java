@@ -206,12 +206,12 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         addExampleCommandLine(new CommandLineImpl(example3));
         addExampleCommandLine(new CommandLineImpl(example4));
 
-        addKnownBugOrLimitation("- As PlantUML Dependency is reading source files imports, it will generate object - imports relation even if the imports are not used within the object (usually, this raises a warning within the IDE)");
+        addKnownBugOrLimitation("- As PlantUML Dependency reads source files imports, it will generate object - imports relation even if the imports are not used within the object (usually, this raises a warning within the IDE)");
         addKnownBugOrLimitation("- Be careful, in order to correctly parse source files, it is better to have source code which compiles without any errors");
         addKnownBugOrLimitation("- Generated annotations (if used) are only supported by PlantUML 7972 and above");
         addKnownBugOrLimitation("- Import instructions \"import package_name.*\" are ignored because the dependencies are not explicitly defined, use precise imports instead");
         addKnownBugOrLimitation("- Links between dependencies are found out by parsing \"import\" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code");
-        addKnownBugOrLimitation("- PlantUML Dependency is compliant up to Java 1.6 source files");
+        addKnownBugOrLimitation("- PlantUML Dependency is fully compliant up to Java 1.6 source files (and may work with Java 1.7 source files)");
 
     }
 }

@@ -50,7 +50,7 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.2.0
  */
 public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyIncludeOption > {
 
@@ -172,9 +172,9 @@ public class PlantUMLDependencyIncludeOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-i, --include FILE_PATTERN\n\t\tTo include files that match the provided pattern. If not specified, the default pattern is \"**/*.PROGRAMMING_LANGUAGE_FILE_EXTENSION\" depending on the programming language chosen (only \""
+                "-i, --include FILE_PATTERN\n\t\tTo include files that match the provided pattern. If not specified, the default pattern is \"**/*."
                         + DEFAULT_PROGRAMMING_LANGUAGE.getName()
-                        + "\" is supported by now).\n\t\tFILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that \"**\", \"*\" or \"?\" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.",
+                        + "\".\n\t\tFILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that \"**\", \"*\" or \"?\" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.",
                 INCLUDE_OPTION1.getFullUsage().toString());
     }
 
