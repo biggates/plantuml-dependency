@@ -36,6 +36,7 @@ import static net.sourceforge.plantuml.dependency.generic.type.ImportType.STATIC
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -46,6 +47,10 @@ import net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantuml.dependency.generic.type.ImportType;
 import net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl;
+import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -286,11 +291,41 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
 
     /** Display import dependencies collection test 25 instance. */
     @DataPoint
-    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST25 = new ImportDependenciesCollectionImpl();
+    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST25 = new ImportDependenciesCollectionImpl(
+            new HashMap < ImportType, Set < GenericDependency > >() {
+                /** Serial version UID. */
+                private static final long serialVersionUID = -6430121225499443154L;
+
+                {
+                    put(STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
+                            new GenericDependencyImpl("Serializable", "java.io"),
+                            new GenericDependencyImpl(new InterfaceDependencyTypeImpl("Comparable", "java.lang")),
+                            new GenericDependencyImpl(new ClassDependencyTypeImpl("Number", "java.lang")),
+                            new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl("InputStream", "java.io")),
+                            new GenericDependencyImpl(new EnumDependencyTypeImpl("Display",
+                                    "net.sourceforge.plantuml.dependency.main.option.display.argument")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated", "javax.lang"))})));
+                    put(STATIC, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
+                            new GenericDependencyImpl("Cloneable", "java.lang"),
+                            new GenericDependencyImpl(new InterfaceDependencyTypeImpl("Character", "java.lang")),
+                            new GenericDependencyImpl(new ClassDependencyTypeImpl("Tag", "javax.activation")),
+                            new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl("AbstractOption",
+                                    "net.sourceforge.mazix.cli.option")),
+                            new GenericDependencyImpl(new EnumDependencyTypeImpl("ImportType",
+                                    "net.sourceforge.plantuml.dependency.generic.type")),
+                            new GenericDependencyImpl(
+                                    new AnnotationDependencyTypeImpl("Target", "java.lang.annotation"))})));
+                    put(NATIVE, new TreeSet < GenericDependency >(asList(new GenericDependency[] {NATIVE_DEPENDENCY})));
+                }
+            });
 
     /** Display import dependencies collection test 26 instance. */
     @DataPoint
-    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST26 = null;
+    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST26 = new ImportDependenciesCollectionImpl();
+
+    /** Display import dependencies collection test 27 instance. */
+    @DataPoint
+    public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST27 = null;
 
     /**
      * Test method for

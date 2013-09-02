@@ -26,6 +26,8 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1023;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY52;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY53;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET6;
@@ -199,6 +201,32 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
                 PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST21})),
                 ANNOTATION_DEPENDENCY_TYPE8.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelationsWithImportDependenciesAndAnnotationsAndAnnotationsDisplay() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST21})),
+                ANNOTATION_DEPENDENCY_TYPE8.getPlantUMLClassesDiagramRelations(DISPLAY_SET2));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelationsWithImportDependenciesAndAnnotationsAndNotAnnotationsDisplay() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST17, PLANTUML_USE_RELATION_TEST18, PLANTUML_USE_RELATION_TEST19})),
+                ANNOTATION_DEPENDENCY_TYPE8.getPlantUMLClassesDiagramRelations(DISPLAY_SET1023));
+    }
+
+    // TODO test display set with native and standard import
 
     /**
      * Test method for

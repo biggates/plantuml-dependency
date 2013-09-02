@@ -39,7 +39,7 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class PlantUMLClassesDiagramClassElementImplTest extends
         ComparableAndDeepCloneableObjectTest < PlantUMLClassesDiagramImpl > {
@@ -47,12 +47,12 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
     /** PlantUML classes diagram class element test 1 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST1 = new PlantUMLClassesDiagramClassElementImpl(
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage");
+            "net.sourceforge.plantuml.dependency.generic.GenericDependency");
 
     /** PlantUML classes diagram class element test 2 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST2 = new PlantUMLClassesDiagramClassElementImpl(
-            "net.sourceforge.plantuml.dependency.generic.GenericDependency");
+            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage");
 
     /** PlantUML classes diagram class element test 3 instance. */
     @DataPoint
@@ -61,52 +61,43 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
 
     /** PlantUML classes diagram class element test 4 instance. */
     @DataPoint
-    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST4 = new PlantUMLClassesDiagramClassElementImpl(
-            "net.sourceforge.plantuml.dependency.generic.GenericDependency", PLANTUML_STEREOTYPE_TEST6);
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST4 = null;
 
     /** PlantUML classes diagram class element test 5 instance. */
-    @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST5 = new PlantUMLClassesDiagramClassElementImpl(
-            "GenericDependency", PLANTUML_STEREOTYPE_TEST6);
+            "net.sourceforge.plantuml.dependency.generic.GenericDependency", PLANTUML_STEREOTYPE_TEST6);
 
     /** PlantUML classes diagram class element test 6 instance. */
-    @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST6 = new PlantUMLClassesDiagramClassElementImpl(
-            "java.lang.Integer");
+            "GenericDependency", PLANTUML_STEREOTYPE_TEST6);
 
     /** PlantUML classes diagram class element test 7 instance. */
-    @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST7 = new PlantUMLClassesDiagramClassElementImpl(
-            "java.io.Serializable");
+            "java.lang.Integer");
 
     /** PlantUML classes diagram class element test 8 instance. */
-    @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST8 = new PlantUMLClassesDiagramClassElementImpl(
-            "java.lang.Comparable");
+            "java.io.Serializable");
 
     /** PlantUML classes diagram class element test 9 instance. */
-    @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST9 = new PlantUMLClassesDiagramClassElementImpl(
-            "java.lang.Number");
+            "java.lang.Comparable");
 
     /** PlantUML classes diagram class element test 10 instance. */
-    @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST10 = new PlantUMLClassesDiagramClassElementImpl(
-            "java.lang.Object");
+            "java.lang.Number");
 
     /** PlantUML classes diagram class element test 11 instance. */
-    @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST11 = new PlantUMLClassesDiagramClassElementImpl(
-            "java.lang.Set");
+            "java.lang.Object");
 
     /** PlantUML classes diagram class element test 12 instance. */
-    @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST12 = new PlantUMLClassesDiagramClassElementImpl(
-            "javax.lang.Cloneable");
+            "java.lang.Set");
 
     /** PlantUML classes diagram class element test 13 instance. */
-    @DataPoint
-    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST13 = null;
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST13 = new PlantUMLClassesDiagramClassElementImpl(
+            "javax.lang.Cloneable");
 
     /**
      * Test method for
@@ -115,7 +106,7 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
      */
     @Test
     public void testGetElementTag() {
-        assertEquals(CLASS_TAG, PLANTUML_CLASS_ELEMENT_TEST4.getElementTag());
+        assertEquals(CLASS_TAG, PLANTUML_CLASS_ELEMENT_TEST5.getElementTag());
     }
 
     /**
@@ -136,8 +127,8 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
      */
     @Test
     public void testGetPlantUMLTextDescriptionWithoutStereotype() {
-        assertEquals(CLASS_TAG.getTagName() + PLANTUML_CLASS_ELEMENT_TEST2.getName(),
-                PLANTUML_CLASS_ELEMENT_TEST2.getPlantUMLTextDescription());
+        assertEquals(CLASS_TAG.getTagName() + PLANTUML_CLASS_ELEMENT_TEST1.getName(),
+                PLANTUML_CLASS_ELEMENT_TEST1.getPlantUMLTextDescription());
     }
 
     /**
@@ -147,8 +138,8 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
      */
     @Test
     public void testGetPlantUMLTextDescriptionWithStereotype() {
-        assertEquals(CLASS_TAG.getTagName() + PLANTUML_CLASS_ELEMENT_TEST4.getName() + " << (B,#f0f8ff) Test it ! >>",
-                PLANTUML_CLASS_ELEMENT_TEST4.getPlantUMLTextDescription());
+        assertEquals(CLASS_TAG.getTagName() + PLANTUML_CLASS_ELEMENT_TEST5.getName() + " << (B,#f0f8ff) Test it ! >>",
+                PLANTUML_CLASS_ELEMENT_TEST5.getPlantUMLTextDescription());
     }
 
     /**
@@ -158,6 +149,6 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
      */
     @Test
     public void testGetStereotype() {
-        assertEquals(PLANTUML_STEREOTYPE_TEST6, PLANTUML_CLASS_ELEMENT_TEST4.getStereotype());
+        assertEquals(PLANTUML_STEREOTYPE_TEST6, PLANTUML_CLASS_ELEMENT_TEST5.getStereotype());
     }
 }

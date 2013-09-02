@@ -46,9 +46,9 @@ public enum Display {
     /** The display abstract classes argument. */
     ABSTRACT_CLASSES("displays parsed source files which are abstract classes"),
     /** The display annotations argument. */
-    ANNOTATIONS("displays annotations (classes and methods) of all parsed source files"),
+    ANNOTATIONS("displays parsed source files which are annotations and annotations (upon classes and methods) of all parsed source files"),
     /** The display classes argument. */
-    CLASSES("displays parsed and seen source files (as import or as extension) which are classes (not abstract)"),
+    CLASSES("displays parsed source files which are classes (not abstract) and also dependencies which are considered as classes (because they are imported or extended)"),
     /** The display enumerations argument. */
     ENUMS("displays parsed source files which are enums"),
     /** The display extensions argument. */

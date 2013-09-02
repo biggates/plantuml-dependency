@@ -31,10 +31,10 @@ import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.elemen
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST10;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST11;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST12;
-import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST5;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST13;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST6;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST7;
-import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST9;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST8;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImplTest.PLANTUML_ENUM_ELEMENT_TEST3;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImplTest.PLANTUML_ENUM_ELEMENT_TEST6;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST3;
@@ -52,7 +52,7 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class PlantUMLClassesDiagramImplementRelationImplTest extends
         ComparableAndDeepCloneableObjectTest < PlantUMLClassesDiagramImplementRelationImpl > {
@@ -75,77 +75,77 @@ public class PlantUMLClassesDiagramImplementRelationImplTest extends
     /** PlantUML classes diagram implement relation test 4 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST4 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST5, PLANTUML_CLASS_ELEMENT_TEST5);
+            PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST5, PLANTUML_CLASS_ELEMENT_TEST6);
 
     /** PlantUML classes diagram implement relation test 5 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST5 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST9);
+            PLANTUML_CLASS_ELEMENT_TEST7, PLANTUML_CLASS_ELEMENT_TEST10);
 
     /** PlantUML classes diagram implement relation test 6 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST6 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST10);
+            PLANTUML_CLASS_ELEMENT_TEST7, PLANTUML_CLASS_ELEMENT_TEST11);
 
     /** PlantUML classes diagram implement relation test 7 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST7 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST11);
+            PLANTUML_CLASS_ELEMENT_TEST7, PLANTUML_CLASS_ELEMENT_TEST12);
 
     /** PlantUML classes diagram implement relation test 8 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST8 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST7);
+            PLANTUML_CLASS_ELEMENT_TEST7, PLANTUML_CLASS_ELEMENT_TEST8);
 
     /** PlantUML classes diagram implement relation test 9 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST9 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_ENUM_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST11);
+            PLANTUML_ENUM_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST12);
 
     /** PlantUML classes diagram implement relation test 10 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST10 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_ENUM_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST12);
+            PLANTUML_ENUM_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST13);
 
     /** PlantUML classes diagram implement relation test 11 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST11 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_ENUM_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST9);
+            PLANTUML_ENUM_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST10);
 
     /** PlantUML classes diagram implement relation test 12 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST12 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_INTERFACE_ELEMENT_TEST5, PLANTUML_CLASS_ELEMENT_TEST9);
+            PLANTUML_INTERFACE_ELEMENT_TEST5, PLANTUML_CLASS_ELEMENT_TEST10);
 
     /** PlantUML classes diagram implement relation test 13 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST13 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_INTERFACE_ELEMENT_TEST5, PLANTUML_CLASS_ELEMENT_TEST11);
+            PLANTUML_INTERFACE_ELEMENT_TEST5, PLANTUML_CLASS_ELEMENT_TEST12);
 
     /** PlantUML classes diagram implement relation test 14 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST14 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_INTERFACE_ELEMENT_TEST5, PLANTUML_CLASS_ELEMENT_TEST12);
+            PLANTUML_INTERFACE_ELEMENT_TEST5, PLANTUML_CLASS_ELEMENT_TEST13);
 
     /** PlantUML classes diagram implement relation test 15 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST15 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST9);
+            PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST10);
 
     /** PlantUML classes diagram implement relation test 16 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST16 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST10);
+            PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST11);
 
     /** PlantUML classes diagram implement relation test 17 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST17 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST11);
+            PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST12);
 
     /** PlantUML classes diagram implement relation test 18 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST18 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST12);
+            PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST13);
 
     /** PlantUML classes diagram implement relation test 19 instance. */
     @DataPoint
@@ -171,7 +171,7 @@ public class PlantUMLClassesDiagramImplementRelationImplTest extends
         assertEquals(
                 PLANTUML_INTERFACE_ELEMENT_TEST5.getName()
                         + PLANTUML_IMPLEMENT_RELATION_TEST12.getType().getRightRelationSymbol()
-                        + PLANTUML_CLASS_ELEMENT_TEST9.getName(),
+                        + PLANTUML_CLASS_ELEMENT_TEST10.getName(),
                 PLANTUML_IMPLEMENT_RELATION_TEST12.getPlantUMLTextDescription());
     }
 
