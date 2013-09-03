@@ -57,9 +57,9 @@ import org.junit.experimental.theories.DataPoint;
 
 /**
  * JUnit test classes for {@link EnumDependencyTypeImpl}.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * 
+ *
  * @since 1.0
  * @version 1.2.0
  */
@@ -91,34 +91,32 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE5 = new EnumDependencyTypeImpl("Integer",
             "java.lang", IMPORT_COLLECTION_TEST2, new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET5, false);
 
-    /** Enum dependency type test 6 instance. */
+    /** Enum dependency type test 10 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE6 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5, false);
-
-    /** Enum dependency type test 7 instance. */
-    @DataPoint
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE7 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5, false);
-
-    /** Enum dependency type test 8 instance. */
-    @DataPoint
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE8 = new EnumDependencyTypeImpl("Integer",
-            "java.lang");
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, new TreeSet < GenericDependency >(), false);
 
     /** Enum dependency type test 9 instance. */
     @DataPoint
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE9 = new EnumDependencyTypeImpl("Integer",
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE7 = new EnumDependencyTypeImpl("Integer",
             "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5, true);
 
-    /** Enum dependency type test 10 instance. */
+    /** Enum dependency type test 6 instance. */
     @DataPoint
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE10 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, new TreeSet < GenericDependency >(), false);
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYP8 = new EnumDependencyTypeImpl("Integer",
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5, false);
 
     /** Enum dependency type test 11 instance. */
     @DataPoint
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE11 = null;
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE9 = null;
+
+    /** Enum dependency type test 7 instance. */
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE10 = new EnumDependencyTypeImpl("Integer",
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5, false);
+
+    /** Enum dependency type test 8 instance. */
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE11 = new EnumDependencyTypeImpl("Integer",
+            "java.lang");
 
     /**
      * Test method for
@@ -210,7 +208,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST8, PLANTUML_USE_RELATION_TEST9, PLANTUML_IMPLEMENT_RELATION_TEST11,
                 PLANTUML_USE_RELATION_TEST28})),
-                ENUM_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
     /**

@@ -28,7 +28,7 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_S
 import static net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImplTest.ANNOTATION_DEPENDENCY_TYPE2;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImplTest.CLASS_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImplTest.ENUM_DEPENDENCY_TYPE1;
-import static net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImplTest.ENUM_DEPENDENCY_TYPE9;
+import static net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImplTest.ENUM_DEPENDENCY_TYPE7;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImplTest.INTERFACE_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
@@ -103,10 +103,10 @@ public class EnumJavaTypeTest extends ComparableObjectTest < EnumJavaType > {
      */
     @Test
     public void testCreateDependencyTypeAbstractWithNativeMethods() {
-        assertEquals(ENUM_DEPENDENCY_TYPE9, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE9.getName(),
-                ENUM_DEPENDENCY_TYPE9.getPackageName(), true, ENUM_DEPENDENCY_TYPE9.getImportDependenciesCollection(),
-                ENUM_DEPENDENCY_TYPE9.getParentInterfaces(), new TreeSet < GenericDependency >(),
-                ENUM_DEPENDENCY_TYPE9.getAnnotations(), ENUM_DEPENDENCY_TYPE9.hasNativeMethods()));
+        assertEquals(ENUM_DEPENDENCY_TYPE7, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE7.getName(),
+                ENUM_DEPENDENCY_TYPE7.getPackageName(), true, ENUM_DEPENDENCY_TYPE7.getImportDependenciesCollection(),
+                ENUM_DEPENDENCY_TYPE7.getParentInterfaces(), new TreeSet < GenericDependency >(),
+                ENUM_DEPENDENCY_TYPE7.getAnnotations(), ENUM_DEPENDENCY_TYPE7.hasNativeMethods()));
     }
 
     /**

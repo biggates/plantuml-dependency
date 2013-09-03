@@ -126,24 +126,21 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
 
     /** Class abstract dependency type test 10 instance. */
     @DataPoint
-    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE10 = new ClassAbstractDependencyTypeImpl(
+    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE10 = null;
+
+    /** Class abstract dependency type test 11 instance. */
+    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE11 = new ClassAbstractDependencyTypeImpl(
             "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET4, GENERIC_DEPENDENCY_SET5,
             GENERIC_DEPENDENCY_SET3, false);
 
-    /** Class abstract dependency type test 11 instance. */
-    @DataPoint
-    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE11 = new ClassAbstractDependencyTypeImpl(
+    /** Class abstract dependency type test 12 instance. */
+    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE12 = new ClassAbstractDependencyTypeImpl(
             "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5,
             new TreeSet < GenericDependency >(), false);
 
-    /** Class abstract dependency type test 12 instance. */
-    @DataPoint
-    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE12 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang");
-
     /** Class abstract dependency type test 13 instance. */
-    @DataPoint
-    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE13 = null;
+    public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE13 = new ClassAbstractDependencyTypeImpl(
+            "Integer", "java.lang");
 
     /**
      * Test method for
@@ -247,7 +244,7 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST14, PLANTUML_USE_RELATION_TEST15, PLANTUML_IMPLEMENT_RELATION_TEST15,
                 PLANTUML_USE_RELATION_TEST27})),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                CLASS_ABSTRACT_DEPENDENCY_TYPE12.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
     /**
@@ -261,7 +258,7 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
                 PLANTUML_USE_RELATION_TEST14, PLANTUML_USE_RELATION_TEST15, PLANTUML_USE_RELATION_TEST16,
                 PLANTUML_IMPLEMENT_RELATION_TEST16, PLANTUML_EXTEND_RELATION_TEST8, PLANTUML_EXTEND_RELATION_TEST9,
                 PLANTUML_USE_RELATION_TEST27})),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                CLASS_ABSTRACT_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
     /**
