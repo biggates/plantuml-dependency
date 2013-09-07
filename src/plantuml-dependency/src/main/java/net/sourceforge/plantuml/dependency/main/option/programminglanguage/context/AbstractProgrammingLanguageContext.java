@@ -462,7 +462,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      */
     @Override
     public void removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang() {
-        for (GenericDependency dependency : getPotentialJavaLangSeenDependencies()) {
+        for (final GenericDependency dependency : getPotentialJavaLangSeenDependencies()) {
             getParsedAndSeenDependenciesMap().remove(dependency.getFullName());
             dependency.getDependencyType().setFullName(JAVA_LANG_PACKAGE, dependency.getName());
             addParsedAndSeenDependencies(dependency);
@@ -507,6 +507,18 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     }
 
     /**
+     * Sets the value of <code>parsedDependenciesMap</code>.
+     *
+     * @param value
+     *            the <code>parsedDependenciesMap</code> to set, can be <code>null</code>.
+     * @see #getParsedDependenciesMap()
+     * @since 1.0
+     */
+    private void setParsedDependenciesMap(final Map < String, GenericDependency > value) {
+        parsedDependenciesMap = value;
+    }
+
+    /**
      * Sets the value of <code>potentialJavaLangSeenDependenciesMap</code>.
      *
      * @param value
@@ -517,18 +529,6 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      */
     private void setPotentialJavaLangSeenDependenciesMap(final Map < String, GenericDependency > value) {
         potentialJavaLangSeenDependenciesMap = value;
-    }
-
-    /**
-     * Sets the value of <code>parsedDependenciesMap</code>.
-     *
-     * @param value
-     *            the <code>parsedDependenciesMap</code> to set, can be <code>null</code>.
-     * @see #getParsedDependenciesMap()
-     * @since 1.0
-     */
-    private void setParsedDependenciesMap(final Map < String, GenericDependency > value) {
-        parsedDependenciesMap = value;
     }
 
     /**

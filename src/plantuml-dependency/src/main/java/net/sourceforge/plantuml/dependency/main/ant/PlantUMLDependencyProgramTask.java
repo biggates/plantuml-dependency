@@ -56,13 +56,6 @@ import org.apache.tools.ant.Task;
 public class PlantUMLDependencyProgramTask extends Task {
 
     /**
-     * The {@link Map} of arguments taken from the Ant build file. The {@link Map} perfectly matches
-     * the PlantUML Dependency command line arguments, with argument main synopsis as keys, and
-     * their associated value.
-     */
-    private final Map < String, String > argsMap = new HashMap < String, String >();
-
-    /**
      * Creates the array of {@link String} arguments to call PlantUML Dependency.
      *
      * @param argumentsMap
@@ -85,6 +78,13 @@ public class PlantUMLDependencyProgramTask extends Task {
 
         return argsList.toArray(new String[argsList.size()]);
     }
+
+    /**
+     * The {@link Map} of arguments taken from the Ant build file. The {@link Map} perfectly matches
+     * the PlantUML Dependency command line arguments, with argument main synopsis as keys, and
+     * their associated value.
+     */
+    private final Map < String, String > argsMap = new HashMap < String, String >();
 
     /**
      * {@inheritDoc}

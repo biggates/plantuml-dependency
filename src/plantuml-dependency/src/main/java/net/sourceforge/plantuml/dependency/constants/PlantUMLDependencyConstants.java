@@ -61,8 +61,8 @@ public final class PlantUMLDependencyConstants {
 
     /** The default display options to apply if not specified. */
     public static final Set < Display > DEFAULT_DISPLAY_OPTIONS = new TreeSet < Display >(asList(new Display[] {
-            ABSTRACT_CLASSES, ANNOTATIONS, CLASSES, ENUMS, IMPORTS, INTERFACES, STATIC_IMPORTS, NATIVE_METHODS, IMPLEMENTATIONS,
-            EXTENSIONS}));
+            ABSTRACT_CLASSES, ANNOTATIONS, CLASSES, ENUMS, IMPORTS, INTERFACES, STATIC_IMPORTS, NATIVE_METHODS,
+            IMPLEMENTATIONS, EXTENSIONS}));
 
     /** The default display options argument as a String to apply if not specified. */
     public static final String DEFAULT_DISPLAY_OPTIONS_STRING = convertCollectionToSeparatedString(

@@ -24,13 +24,13 @@
 
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl;
 
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.STEREOTYPE_LEFT_SEPARATOR;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLConstants.STEREOTYPE_RIGHT_SEPARATOR;
 

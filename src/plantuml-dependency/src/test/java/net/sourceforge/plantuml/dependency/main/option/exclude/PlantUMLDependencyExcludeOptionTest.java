@@ -116,19 +116,6 @@ public class PlantUMLDependencyExcludeOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
-     * .
-     *
-     * @throws CommandLineException
-     */
-    @Test
-    public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
-        final FileSet defaultArgument = EXCLUDE_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
-        assertNotNull(defaultArgument);
-    }
-
-    /**
-     * Test method for
      * {@link net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      *
@@ -138,6 +125,19 @@ public class PlantUMLDependencyExcludeOptionTest extends DeepCloneableObjectTest
     public void testGetDefaultArgumentAsStringIfOptionSpecified() throws CommandLineException {
         final String defaultArgument = EXCLUDE_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
         assertEquals("**/*~", defaultArgument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
+        final FileSet defaultArgument = EXCLUDE_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
+        assertNotNull(defaultArgument);
     }
 
     /**

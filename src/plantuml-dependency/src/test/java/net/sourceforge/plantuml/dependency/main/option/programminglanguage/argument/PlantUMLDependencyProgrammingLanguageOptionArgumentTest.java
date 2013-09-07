@@ -72,7 +72,8 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgumentTest extends
      */
     @Test
     public void testGetFullUsageDescription() {
-        assertEquals("PROGRAMMING_LANGUAGE specifies the programming language contains in the source files to analyse. Possible values : [cpp, java].",
+        assertEquals(
+                "PROGRAMMING_LANGUAGE specifies the programming language contains in the source files to analyse. Possible values : [cpp, java].",
                 PROGRAMMING_LANGUAGE_OPTION_ARGUMENT1.getFullUsageDescription().toString());
     }
 

@@ -112,8 +112,8 @@ class ClassJavaType extends JavaType {
 
         if (isAbstract) {
             dependencyType = new ClassAbstractDependencyTypeImpl(dependencyName, dependencyPackageName,
-                    importDependencies, parentImplementationsDependencies, annotationDependencies, parentExtentionsDependencies,
-                    hasNativeMethods);
+                    importDependencies, parentImplementationsDependencies, annotationDependencies,
+                    parentExtentionsDependencies, hasNativeMethods);
         } else {
             dependencyType = new ClassDependencyTypeImpl(dependencyName, dependencyPackageName, importDependencies,
                     parentImplementationsDependencies, annotationDependencies, parentExtentionsDependencies,

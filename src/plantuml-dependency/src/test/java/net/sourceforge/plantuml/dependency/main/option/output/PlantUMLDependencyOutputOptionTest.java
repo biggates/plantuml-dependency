@@ -154,19 +154,6 @@ public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest 
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
-     * .
-     *
-     * @throws CommandLineException
-     */
-    @Test
-    public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
-        final File defaultArgument = OUTPUT_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
-        assertTrue(defaultArgument.getName().contains(TXT_EXTENSION));
-    }
-
-    /**
-     * Test method for
      * {@link net.sourceforge.mazix.cli.option.impl.output.OutputOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
      * .
      *
@@ -176,6 +163,19 @@ public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest 
     public void testGetDefaultArgumentAsStringIfOptionSpecified() throws CommandLineException {
         final String defaultArgument = OUTPUT_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
         assertTrue(defaultArgument.contains(TXT_EXTENSION));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
+        final File defaultArgument = OUTPUT_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
+        assertTrue(defaultArgument.getName().contains(TXT_EXTENSION));
     }
 
     /**

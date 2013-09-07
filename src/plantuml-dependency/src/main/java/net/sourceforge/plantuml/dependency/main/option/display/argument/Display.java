@@ -46,9 +46,11 @@ public enum Display {
     /** The display abstract classes argument. */
     ABSTRACT_CLASSES("displays parsed source files which are abstract classes"),
     /** The display annotations argument. */
-    ANNOTATIONS("displays parsed source files which are annotations and annotations (upon classes and methods) of all parsed source files"),
+    ANNOTATIONS(
+            "displays parsed source files which are annotations and annotations (upon classes and methods) of all parsed source files"),
     /** The display classes argument. */
-    CLASSES("displays parsed source files which are classes (not abstract) and also dependencies which are considered as classes (because they are imported or extended)"),
+    CLASSES(
+            "displays parsed source files which are classes (not abstract) and also dependencies which are considered as classes (because they are imported or extended)"),
     /** The display enumerations argument. */
     ENUMS("displays parsed source files which are enums"),
     /** The display extensions argument. */
@@ -58,7 +60,8 @@ public enum Display {
     /** The display imports argument. */
     IMPORTS("displays import (not static) of all parsed source files"),
     /** The display interfaces argument. */
-    INTERFACES("displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces"),
+    INTERFACES(
+            "displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces"),
     /** The display native methods argument. */
     NATIVE_METHODS("displays links to the native dependency"),
     /** The display static imports argument. */

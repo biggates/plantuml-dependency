@@ -287,15 +287,14 @@ public final class PlantUMLDependencyTestConstants {
     /** Class dependency type test 15 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE15 = new ClassDependencyTypeImpl("Test",
             "com.plantuml.test", IMPORT_COLLECTION_TEST1, new TreeSet < GenericDependency >(),
-            new TreeSet < GenericDependency >(),
-            new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "ClassNotFoundException", "com.plantuml.test")})), false);
+            new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(
+                    asList(new GenericDependency[] {new GenericDependencyImpl("ClassNotFoundException",
+                            "com.plantuml.test")})), false);
 
     /** Class dependency type test 16 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE16 = new ClassDependencyTypeImpl("TestImplements",
             "com.plantuml.test", IMPORT_COLLECTION_TEST1, new TreeSet < GenericDependency >(
-                    asList(new GenericDependency[] {new GenericDependencyImpl(
-                            "Appendable", "com.plantuml.test")})),
+                    asList(new GenericDependency[] {new GenericDependencyImpl("Appendable", "com.plantuml.test")})),
             new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 17 instance. */
@@ -408,9 +407,11 @@ public final class PlantUMLDependencyTestConstants {
                                     "com.plantuml.test")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Testabstract",
                                     "com.plantuml.test")),
-                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated", "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated",
+                                    "com.plantuml.test")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Override", "com.plantuml.test")),
-                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("SuppressWarnings", "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("SuppressWarnings",
+                                    "com.plantuml.test")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Generated", "javax.annotation")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("XmlType",
                                     "javax.xml.bind.annotation")),
@@ -435,9 +436,11 @@ public final class PlantUMLDependencyTestConstants {
                                     "com.plantuml.test")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Testabstract",
                                     "com.plantuml.test")),
-                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated", "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated",
+                                    "com.plantuml.test")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Override", "com.plantuml.test")),
-                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("SuppressWarnings", "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("SuppressWarnings",
+                                    "com.plantuml.test")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Generated", "javax.annotation")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("XmlType",
                                     "javax.xml.bind.annotation")),
@@ -448,12 +451,13 @@ public final class PlantUMLDependencyTestConstants {
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileClassWithMultipleExtendsGenerics",
             "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST18,
-            new TreeSet < GenericDependency >(
-                    asList(new GenericDependency[] {
-                            new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
-                            new GenericDependencyImpl("Comparable", "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
-                            new GenericDependencyImpl("Map", "java.util"),
-                            new GenericDependencyImpl("Appendable", "net.sourceforge.plantuml.dependency.main.option.programminglanguage")})),
+            new TreeSet < GenericDependency >(asList(new GenericDependency[] {
+                    new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
+                    new GenericDependencyImpl("Comparable",
+                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
+                    new GenericDependencyImpl("Map", "java.util"),
+                    new GenericDependencyImpl("Appendable",
+                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage")})),
             new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 2 instance. */
@@ -503,7 +507,8 @@ public final class PlantUMLDependencyTestConstants {
             "TestReadDependencyFromFileInterfaceWithExtendsNotInImportJavaLang",
             "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl("Comparable",
-                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage")})), new TreeSet < GenericDependency >());
+                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage")})),
+            new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 9 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE9 = new InterfaceDependencyTypeImpl(
@@ -550,8 +555,10 @@ public final class PlantUMLDependencyTestConstants {
                                     "com.plantuml.test")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Testabstract",
                                     "com.plantuml.test")),
-                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated", "com.plantuml.test")),
-                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("SuppressWarnings", "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated",
+                                    "com.plantuml.test")),
+                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("SuppressWarnings",
+                                    "com.plantuml.test")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Generated", "javax.annotation")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("XmlType",
                                     "javax.xml.bind.annotation")),

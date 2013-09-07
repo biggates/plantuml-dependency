@@ -54,7 +54,8 @@ public class GenericDependencyImplTest extends DeepCloneableObjectTest < Generic
 
     /** Generic dependency test 3 instance. */
     @DataPoint
-    public static final GenericDependencyImpl GENERIC_DEPENDENCY3 = new GenericDependencyImpl("Number", "java.lang.number");
+    public static final GenericDependencyImpl GENERIC_DEPENDENCY3 = new GenericDependencyImpl("Number",
+            "java.lang.number");
 
     /** Generic dependency test 4 instance. */
     @DataPoint

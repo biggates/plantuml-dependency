@@ -52,7 +52,8 @@ public class PlantUMLClassesDiagramExtendRelationImpl extends AbstractPlantUMLCl
      *            The second element of the relation, mustn't be <code>null</code> nor empty.
      * @since 1.1.1
      */
-    public PlantUMLClassesDiagramExtendRelationImpl(final PlantUMLClassesDiagramElement firstElt, final PlantUMLClassesDiagramElement secondElt) {
+    public PlantUMLClassesDiagramExtendRelationImpl(final PlantUMLClassesDiagramElement firstElt,
+            final PlantUMLClassesDiagramElement secondElt) {
         super(firstElt, secondElt, EXTEND_RELATION_TYPE);
     }
 }

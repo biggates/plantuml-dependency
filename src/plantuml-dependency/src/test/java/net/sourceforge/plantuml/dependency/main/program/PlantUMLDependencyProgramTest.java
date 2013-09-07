@@ -47,7 +47,7 @@ public class PlantUMLDependencyProgramTest {
      *
      * @throws PlantUMLDependencyException
      */
-    @Test(expected=PlantUMLDependencyException.class)
+    @Test(expected = PlantUMLDependencyException.class)
     public void testMainWithoutExecutionOption() throws PlantUMLDependencyException {
         main(new String[] {"-l", DEFAULT_PROGRAMMING_LANGUAGE.getName(), "-i", "**/*.java"});
     }

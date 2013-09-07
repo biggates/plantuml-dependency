@@ -217,7 +217,7 @@ public abstract class AbstractPlantUMLClassesDiagramRelation implements PlantUML
      */
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [firstElementName=" + firstElement + ", secondElement="
-                + secondElement + ", type=" + type + "]";
+        return getClass().getSimpleName() + " [firstElementName=" + firstElement + ", secondElement=" + secondElement
+                + ", type=" + type + "]";
     }
 }

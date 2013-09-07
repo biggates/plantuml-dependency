@@ -161,6 +161,26 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
      * @since 1.1.1
      */
     @Override
+    public Set < PlantUMLClassesDiagramElement > getPlantUMLClassesDiagramElements() {
+        return new TreeSet < PlantUMLClassesDiagramElement >(plantUMLClassesDiagramElements);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.1.1
+     */
+    @Override
+    public Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations() {
+        return new TreeSet < PlantUMLClassesDiagramRelation >(plantUMLClassesDiagramRelations);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.1.1
+     */
+    @Override
     public String getPlantUMLTextDescription() {
         final StringBuffer plantUMLDeclaractionBuffer = new StringBuffer(START_PLANTUML);
 
@@ -178,26 +198,6 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
         plantUMLDeclaractionBuffer.append(END_PLANTUML);
 
         return plantUMLDeclaractionBuffer.toString();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
-    public Set < PlantUMLClassesDiagramElement > getPlantUMLClassesDiagramElements() {
-        return new TreeSet < PlantUMLClassesDiagramElement >(plantUMLClassesDiagramElements);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
-    public Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations() {
-        return new TreeSet < PlantUMLClassesDiagramRelation >(plantUMLClassesDiagramRelations);
     }
 
     /**
