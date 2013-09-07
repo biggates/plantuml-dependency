@@ -1,5 +1,5 @@
 /*
- PlantUMLDependencyOutputOptionExecutionTest1.java
+ PlantUMLDependencyOutputOptionExecutionTest2.java
  Creation date : 07/09/2013
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
