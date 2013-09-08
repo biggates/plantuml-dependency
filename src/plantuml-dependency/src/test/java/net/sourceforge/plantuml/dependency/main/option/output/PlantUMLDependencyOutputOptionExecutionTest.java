@@ -40,6 +40,7 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET4;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET5;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.CPP;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
@@ -175,6 +176,21 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     public void removeFile() {
         TEST_FILE1.delete();
         TEST_FILE2.delete();
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution#execute()}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testExecuteWithSelfAnnotationRelations() throws CommandLineException {
+        final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
+                TEST_FILE1, JAVA, FILE_SET5, DISPLAY_OPTIONS, 1);
+        outputOptionExecution.execute();
+        assertEquals("@startuml\r\n@enduml", readFileIntoString(TEST_FILE1));
     }
 
     /**
