@@ -325,6 +325,31 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
      * @throws PlantUMLDependencyException
      */
     @Test
+    public void testReadDependencyFromFileClassWithAnnotationsInStringsAndDefaultDisplaySet()
+            throws PlantUMLDependencyException {
+        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.JavaProgram;\r\n\r\npublic class TestImplements implements JavaProgram {\r\n\r\n    protected synchronized native int test();\r\n\r\n    public static final int ANNOTATION = '@';\r\n\r\n    /**\r\n     * {@inheritDoc}\r\n     * @since 1.0\r\n     */\r\n    \r\n    public int compareTo(JavaProgram o) {\r\n        switch (o.getJarName().getBytes()[0])\r\n        {\r\n        case '@': return 10;\r\n        }\r\n        int i = 0;\r\n        if (i == '@') {\r\n            return 12;\r\n        }\r\n\r\n        String directive = \"&lt;%@ taglib\";\r\n\r\n        return 0;\r\n    }\r\n}\r\n";
+        final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
+                .createNewContext(DEFAULT_DISPLAY_OPTIONS);
+        assertGenericDependencyAreEquals(GENERIC_DEPENDENCY40,
+                JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
+        assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
+        assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
+        assertNotNull(programmingLanguageContext.getDependency(NATIVE_DEPENDENCY.getFullName()));
+        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY40.getFullName()));
+        assertEquals(InterfaceDependencyTypeImpl.class,
+                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+                        .getDependencyType().getClass());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage#readDependencyFromFile(String, ProgrammingLanguageContext)}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
     public void testReadDependencyFromFileClassWithAnnotationsWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
         final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport java.lang.annotation.ElementType;\r\n\r\nimport javax.xml.bind.annotation.XmlType;\r\nimport javax.xml.ws.soap.Addressing;\r\n\r\n@    Testabstract\r\n@    Deprecated\r\n@    SuppressWarnings(   {  \"deprecation\"  ,  \"unckeked\"  }   )\r\n@    Addressing   (   enabled  =  true   )\r\n@    Annotationinterface\r\n@    AnotherAnnotation ( {  ElementType.CONSTRUCTOR  , ElementType.METHOD   } )\r\n@    MyAnnotation (  tab  =  {  1  ,  2  ,  3  ,  4  ,  5  }  )\r\n@    XmlType   (   propOrder   =   {   \"street\"   ,   \"city\"  ,   \"state\"  ,   \"zip\"   ,   \"name\"   }  )\r\n@    MappedSuperclass\r\n@ javax.annotation.Generated(value=\"\")\r\npublic class GenericEndpoint {\r\n@   Override  \r\n public void toto() {\r\nString t = \"@test\";}\r\n}\r\n";
