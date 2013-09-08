@@ -108,53 +108,57 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION7 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET1, DISPLAY_OPTIONS, 1);
 
-    /** Output option execution test 19 instance. */
+    /** Output option execution test 8 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION8 = null;
 
-    /** Output option execution test 8 instance. */
+    /** Output option execution test 9 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION9 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET3, DISPLAY_OPTIONS, 1);
 
-    /** Output option execution test 9 instance. */
+    /** Output option execution test 10 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION10 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET4, DISPLAY_OPTIONS, 1);
 
-    /** Output option execution test 10 instance. */
+    /** Output option execution test 11 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION11 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET2, 1);
 
-    /** Output option execution test 11 instance. */
+    /** Output option execution test 12 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION12 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET4, 1);
 
-    /** Output option execution test 12 instance. */
+    /** Output option execution test 13 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION13 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET5, 1);
 
-    /** Output option execution test 13 instance. */
+    /** Output option execution test 14 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION14 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET6, 1);
 
-    /** Output option execution test 14 instance. */
+    /** Output option execution test 15 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION15 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET7, 1);
 
-    /** Output option execution test 15 instance. */
+    /** Output option execution test 16 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION16 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET8, 1);
 
-    /** Output option execution test 16 instance. */
+    /** Output option execution test 17 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION17 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET9, 1);
 
-    /** Output option execution test 17 instance. */
+    /** Output option execution test 18 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION18 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET10, 1);
 
-    /** Output option execution test 18 instance. */
+    /** Output option execution test 19 instance. */
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION19 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET11, 1);
+
+    /** Output option execution test 20 instance. */
+    public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION20 = new PlantUMLDependencyOutputOptionExecution(
+            TEST_FILE1, JAVA, FILE_SET5, DISPLAY_OPTIONS, 1);
 
     /**
      * This method is called before each test to reset the create a test file.
@@ -176,21 +180,6 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     public void removeFile() {
         TEST_FILE1.delete();
         TEST_FILE2.delete();
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution#execute()}
-     * .
-     *
-     * @throws CommandLineException
-     */
-    @Test
-    public void testExecuteWithSelfAnnotationRelations() throws CommandLineException {
-        final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET5, DISPLAY_OPTIONS, 1);
-        outputOptionExecution.execute();
-        assertEquals("@startuml\r\n@enduml", readFileIntoString(TEST_FILE1));
     }
 
     /**
@@ -235,6 +224,21 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
         OUTPUT_OPTION_EXECUTION10.execute();
         assertEquals(
                 "@startuml\r\nclass net.sourceforge.plantuml.dependency.main.option.output.Class1\r\ninterface java.lang.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface4\r\nnet.sourceforge.plantuml.dependency.main.option.output.Class1 --|> net.sourceforge.plantuml.dependency.main.option.output.Readable\r\nnet.sourceforge.plantuml.dependency.main.option.output.test.Interface4 --|> java.lang.Readable\r\n@enduml",
+                readFileIntoString(TEST_FILE1));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution#execute()}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testExecuteWithDependenciesCycle() throws CommandLineException {
+        OUTPUT_OPTION_EXECUTION20.execute();
+        assertEquals(
+                "@startuml\r\nannotation net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.SelfAnnotationTest\r\nannotation net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.WAnnotationTest\r\nnet.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.SelfAnnotationTest ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.SelfAnnotationTest\r\nnet.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.WAnnotationTest ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.SelfAnnotationTest\r\n@enduml",
                 readFileIntoString(TEST_FILE1));
     }
 

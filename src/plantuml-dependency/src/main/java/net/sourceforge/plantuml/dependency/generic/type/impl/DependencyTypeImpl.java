@@ -136,6 +136,12 @@ public abstract class DependencyTypeImpl implements DependencyType {
     private Set < PlantUMLClassesDiagramRelation > plantUMLClassesDiagramRelationSet;
 
     /**
+     * This field is only used by the {@link #toString()} method to avoid recursive calls (leading
+     * to a {@link java.lang.StackOverflowError} when printing the dependencies graph.
+     */
+    private boolean isToStringResursiveCall = false;
+
+    /**
      * Default constructor.
      *
      * @param dependencyName
@@ -537,10 +543,20 @@ public abstract class DependencyTypeImpl implements DependencyType {
      */
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [fullName=" + fullName + ", importDependenciesCollection="
-                + importDependenciesCollection + ", name=" + name + ", nativeMethods=" + nativeMethods
-                + ", packageName=" + packageName + ", parentInterfaces=" + parentInterfaces + ", annotations="
-                + annotations + ", plantUMLClassesDiagramElement=" + plantUMLClassesDiagramElement
-                + ", plantUMLClassesDiagramRelationSet=" + plantUMLClassesDiagramRelationSet + "]";
+        String result = getClass().getSimpleName() + " [fullName=" + fullName;
+
+        if (isToStringResursiveCall) {
+            result += "....]";
+        } else {
+            isToStringResursiveCall = true;
+            result += ", importDependenciesCollection=" + importDependenciesCollection + ", name=" + name
+                    + ", nativeMethods=" + nativeMethods + ", packageName=" + packageName + ", parentInterfaces="
+                    + parentInterfaces + ", annotations=" + annotations + ", plantUMLClassesDiagramElement="
+                    + plantUMLClassesDiagramElement + ", plantUMLClassesDiagramRelationSet="
+                    + plantUMLClassesDiagramRelationSet + "]";
+            isToStringResursiveCall = false;
+        }
+
+        return result;
     }
 }
