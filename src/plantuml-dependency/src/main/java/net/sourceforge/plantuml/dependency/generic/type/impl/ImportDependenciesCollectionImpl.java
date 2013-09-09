@@ -300,7 +300,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
      * @return the String reprensenting the import dependencies {@link Map}.
      * @since 1.1.1
      */
-    private String printDependencyMap(final Map < ImportType, Set < GenericDependency >> dependenciesMap) {
+    private static String printDependencyMap(final Map < ImportType, Set < GenericDependency >> dependenciesMap) {
         final Map < ImportType, Set < String > > printableMap = new TreeMap < ImportType, Set < String > >();
 
         for (final Map.Entry < ImportType, Set < GenericDependency > > entry : dependenciesMap.entrySet()) {
