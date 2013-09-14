@@ -32,6 +32,7 @@ import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_
 import static net.sourceforge.mazix.components.constants.CharacterConstants.INFERIOR_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.LINE_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.QUOTATION_CHAR;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.QUOTE_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SLASH_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.STAR_CHAR;
@@ -408,6 +409,37 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         }
 
         return parentsSet;
+    }
+
+    /**
+     * Get the index of the character representing the end of a char content (i.e. the first quote
+     * character) in the passed string, starting from the passed index.
+     *
+     * @param beginningIndex
+     *            the index where to start to look for the end of a character end content, must be
+     *            between 0 and <code>str.length()</code>.
+     * @param str
+     *            the string where to look for the end character.
+     * @return the index of the character representing the end of a string content. If not found,
+     *         <code>beginningIndex</code> is returned.
+     */
+    private static int getNextEndOfCharContent(final int beginningIndex, final String str) {
+        int index = beginningIndex;
+        boolean found = false;
+
+        while (index < str.length() && !found) {
+            final char currentCharacter = str.charAt(index);
+            if (currentCharacter == QUOTE_CHAR.charAt(0)) {
+                found = true;
+            }
+            index++;
+        }
+
+        if (!found) {
+            index = beginningIndex;
+        }
+
+        return index;
     }
 
     /**
@@ -1047,6 +1079,15 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             } else if (currentCharacter == INFERIOR_CHAR.charAt(0)) {
                 if (cursor + 1 < javaSourceFileContent.length()) {
                     cursor = getNextEndOfGenericIndex(cursor + 1, javaSourceFileContent);
+                } else {
+                    buffer.append(currentCharacter);
+                    cursor++;
+                }
+            } else if (currentCharacter == QUOTE_CHAR.charAt(0)) {
+                if (cursor + 1 < javaSourceFileContent.length()) {
+                    cursor = getNextEndOfCharContent(cursor + 1, javaSourceFileContent);
+                    buffer.append(QUOTE_CHAR);
+                    buffer.append(QUOTE_CHAR);
                 } else {
                     buffer.append(currentCharacter);
                     cursor++;
