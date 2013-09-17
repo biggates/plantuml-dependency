@@ -476,8 +476,6 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 } else {
                     index++;
                 }
-            } else if (currentCharacter == INFERIOR_CHAR.charAt(0)) {
-                stopSearch = true;
             } else if (currentCharacter == QUOTE_CHAR.charAt(0)) {
                 stopSearch = true;
             } else if (currentCharacter == QUOTATION_CHAR.charAt(0)) {

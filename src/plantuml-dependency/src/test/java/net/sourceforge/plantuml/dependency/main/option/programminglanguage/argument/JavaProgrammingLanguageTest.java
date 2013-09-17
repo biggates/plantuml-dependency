@@ -1269,7 +1269,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithInferiorCharInCodeAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.JavaProgram;\r\n\r\npublic class TestImplements implements JavaProgram {\r\n\r\n    public static final int ANNOTATION = 0 < 1 ? 12 : 13;\r\n\r\n\tprotected synchronized native int test();\r\n\r\n    /**\r\n     * {@inheritDoc}\r\n     * @since 1.0\r\n     * tests >\r\n     */\r\n    public int compareTo(JavaProgram o) {\r\n\t\treturn 0;\r\n    }\r\n}\r\n";
+        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.JavaProgram;\r\n\r\npublic class TestImplements<E extends Enum<E>> implements JavaProgram {\r\n\r\n    public static final int ANNOTATION = 0 < 1 ? 12 : 13;\r\n\r\n\tprotected synchronized native int test();\r\n\r\n    /**\r\n     * {@inheritDoc}\r\n     * @since 1.0\r\n     * tests >\r\n     */\r\n    public int compareTo(JavaProgram o) {\r\n\t\treturn 0;\r\n    }\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY40,
