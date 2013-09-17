@@ -444,7 +444,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
     /**
      * Get the index of the character representing the end of a generic definition (i.e. the last
-     * superior character) in the passed string, starting from the passed index.
+     * superior character) in the passed string, starting from the passed index. If a comment char,
+     * a quote char or a quotation char is found, the search is stopped and the
+     * <code>beginningIndex</code> is returned.
      *
      * @param beginningIndex
      *            the index where to start to look for the end of a generic definition, must be
@@ -457,10 +459,30 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     private static int getNextEndOfGenericIndex(final int beginningIndex, final String str) {
         int index = beginningIndex;
         int numberOfGenerics = 1;
+        boolean stopSearch = false;
 
-        while (index < str.length() && numberOfGenerics != 0) {
+        while (index < str.length() && numberOfGenerics != 0 && !stopSearch) {
             final char currentCharacter = str.charAt(index);
-            if (currentCharacter == INFERIOR_CHAR.charAt(0)) {
+            if (currentCharacter == SLASH_CHAR.charAt(0)) {
+                if (index + 1 < str.length()) {
+                    final char nextCharacter = str.charAt(index + 1);
+                    if (nextCharacter == SLASH_CHAR.charAt(0)) {
+                        stopSearch = true;
+                    } else if (nextCharacter == STAR_CHAR.charAt(0)) {
+                        stopSearch = true;
+                    } else {
+                        index++;
+                    }
+                } else {
+                    index++;
+                }
+            } else if (currentCharacter == INFERIOR_CHAR.charAt(0)) {
+                stopSearch = true;
+            } else if (currentCharacter == QUOTE_CHAR.charAt(0)) {
+                stopSearch = true;
+            } else if (currentCharacter == QUOTATION_CHAR.charAt(0)) {
+                stopSearch = true;
+            } else if (currentCharacter == INFERIOR_CHAR.charAt(0)) {
                 numberOfGenerics++;
                 index++;
             } else if (currentCharacter == SUPERIOR_CHAR.charAt(0)) {
@@ -471,7 +493,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             }
         }
 
-        if (numberOfGenerics != 0) {
+        if (numberOfGenerics != 0 || stopSearch) {
             index = beginningIndex;
         }
 
