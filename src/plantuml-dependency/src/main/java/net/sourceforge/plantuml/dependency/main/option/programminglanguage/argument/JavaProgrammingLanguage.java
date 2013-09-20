@@ -429,7 +429,12 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         while (index < str.length() && !found) {
             final char currentCharacter = str.charAt(index);
-            if (currentCharacter == QUOTE_CHAR.charAt(0)) {
+            if (currentCharacter == BACK_SLASH_CHAR.charAt(0)) {
+                final char nextCharacter = str.charAt(index + 1);
+                if (nextCharacter == BACK_SLASH_CHAR.charAt(0) || nextCharacter == QUOTE_CHAR.charAt(0)) {
+                    index++;
+                }
+            } else if (currentCharacter == QUOTE_CHAR.charAt(0)) {
                 found = true;
             }
             index++;
@@ -589,11 +594,13 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         while (index < str.length() && !found) {
             final char currentCharacter = str.charAt(index);
-            if (currentCharacter == QUOTATION_CHAR.charAt(0)) {
-                final char previousCharacter = str.charAt(index - 1);
-                if (previousCharacter != BACK_SLASH_CHAR.charAt(0)) {
-                    found = true;
+            if (currentCharacter == BACK_SLASH_CHAR.charAt(0)) {
+                final char nextCharacter = str.charAt(index + 1);
+                if (nextCharacter == BACK_SLASH_CHAR.charAt(0) || nextCharacter == QUOTATION_CHAR.charAt(0)) {
+                    index++;
                 }
+            } else if (currentCharacter == QUOTATION_CHAR.charAt(0)) {
+                found = true;
             }
             index++;
         }
@@ -691,7 +698,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             }
         } else {
             LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullName));
-
+            // FIXME Need to check in the context before recreating the DependencyType and add in the context ?
             final DependencyType dependencyType = type.createAnnotationDependencyType(dependency.getName(),
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
@@ -727,8 +734,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String currentPackageName, final JavaType type,
             final ImportDependenciesCollection importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
-        GenericDependency dependency = null;
-        dependency = importDependencies.findDependency(annotationName);
+        GenericDependency dependency = importDependencies.findDependency(annotationName);
 
         if (dependency == null) {
             final String annotationFullNameWithSamePackage = currentPackageName + DOT_CHAR + annotationName;
@@ -741,6 +747,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             }
         } else {
             LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
+            // FIXME Need to check in the context before recreating the DependencyType and add in the context ?
             final DependencyType dependencyType = type.createAnnotationDependencyType(dependency.getName(),
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
@@ -883,6 +890,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             }
         } else {
             LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullName));
+            // FIXME Need to check in the context before recreating the DependencyType and add in the context ?
             final DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
@@ -921,8 +929,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final ImportDependenciesCollection importDependencies,
             final ProgrammingLanguageContext programmingLanguageContext, final String parentName)
             throws PlantUMLDependencyException {
-        GenericDependency dependency = null;
-        dependency = importDependencies.findDependency(parentName);
+        GenericDependency dependency = importDependencies.findDependency(parentName);
 
         if (dependency == null) {
             final String parentFullNameWithSamePackage = currentPackageName + DOT_CHAR + parentName;
@@ -935,6 +942,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             }
         } else {
             LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
+            // FIXME Need to check in the context before recreating the DependencyType and add in the context ?
             final DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
