@@ -187,51 +187,51 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(13, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("java.lang.annotation.ElementType"));
-        assertNotNull(programmingLanguageContext.getDependency("javax.xml.bind.annotation.XmlType"));
-        assertNotNull(programmingLanguageContext.getDependency("javax.xml.ws.soap.Addressing"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Testabstract"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Deprecated"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.SuppressWarnings"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Annotationinterface"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.AnotherAnnotation"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.MyAnnotation"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.MappedSuperclass"));
-        assertNotNull(programmingLanguageContext.getDependency("javax.annotation.Generated"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Override"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY46.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.lang.annotation.ElementType"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("javax.xml.bind.annotation.XmlType"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("javax.xml.ws.soap.Addressing"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Testabstract"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Deprecated"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.SuppressWarnings"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Annotationinterface"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.AnotherAnnotation"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MyAnnotation"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MappedSuperclass"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("javax.annotation.Generated"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Override"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY46.getFullName()));
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("java.lang.annotation.ElementType").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("java.lang.annotation.ElementType").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("javax.xml.bind.annotation.XmlType").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("javax.xml.bind.annotation.XmlType").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("javax.xml.ws.soap.Addressing").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("javax.xml.ws.soap.Addressing").getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Testabstract").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Testabstract").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Deprecated").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Deprecated").getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.SuppressWarnings").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.SuppressWarnings").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Annotationinterface").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Annotationinterface").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.AnotherAnnotation").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.AnotherAnnotation").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.MyAnnotation").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MyAnnotation").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.MappedSuperclass").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MappedSuperclass").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("javax.annotation.Generated").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("javax.annotation.Generated").getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Override").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Override").getDependencyType().getClass());
     }
 
     /**
@@ -251,7 +251,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY8.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY8.getFullName()));
     }
 
     /**
@@ -271,7 +271,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY8.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY8.getFullName()));
     }
 
     // TODO test annotation with enum etc...
@@ -294,7 +294,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY8.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY8.getFullName()));
     }
 
     /**
@@ -314,7 +314,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY11.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY11.getFullName()));
     }
 
     /**
@@ -334,51 +334,51 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(13, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("java.lang.annotation.ElementType"));
-        assertNotNull(programmingLanguageContext.getDependency("javax.xml.bind.annotation.XmlType"));
-        assertNotNull(programmingLanguageContext.getDependency("javax.xml.ws.soap.Addressing"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Testabstract"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Deprecated"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.SuppressWarnings"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Annotationinterface"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.AnotherAnnotation"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.MyAnnotation"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.MappedSuperclass"));
-        assertNotNull(programmingLanguageContext.getDependency("javax.annotation.Generated"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Override"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY51.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.lang.annotation.ElementType"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("javax.xml.bind.annotation.XmlType"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("javax.xml.ws.soap.Addressing"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Testabstract"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Deprecated"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.SuppressWarnings"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Annotationinterface"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.AnotherAnnotation"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MyAnnotation"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MappedSuperclass"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("javax.annotation.Generated"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Override"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY51.getFullName()));
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("java.lang.annotation.ElementType").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("java.lang.annotation.ElementType").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("javax.xml.bind.annotation.XmlType").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("javax.xml.bind.annotation.XmlType").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("javax.xml.ws.soap.Addressing").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("javax.xml.ws.soap.Addressing").getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Testabstract").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Testabstract").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Deprecated").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Deprecated").getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.SuppressWarnings").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.SuppressWarnings").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Annotationinterface").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Annotationinterface").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.AnotherAnnotation").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.AnotherAnnotation").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.MyAnnotation").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MyAnnotation").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.MappedSuperclass").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MappedSuperclass").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("javax.annotation.Generated").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("javax.annotation.Generated").getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Override").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Override").getDependencyType().getClass());
     }
 
     /**
@@ -398,11 +398,11 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(NATIVE_DEPENDENCY.getFullName()));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY40.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(NATIVE_DEPENDENCY.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY40.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -423,10 +423,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.TestExtends"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY9.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.TestExtends"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY9.getFullName()));
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.TestExtends").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.TestExtends").getDependencyType()
                         .getClass());
     }
 
@@ -447,10 +447,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.TestExtends"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY9.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.TestExtends"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY9.getFullName()));
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.TestExtends").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.TestExtends").getDependencyType()
                         .getClass());
     }
 
@@ -471,14 +471,14 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY12.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY12.getFullName()));
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends")
                         .getDependencyType().getClass());
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric")
                         .getDependencyType().getClass());
     }
 
@@ -499,10 +499,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY12.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY12.getFullName()));
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric")
                         .getDependencyType().getClass());
     }
 
@@ -524,10 +524,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY23.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY23.getFullName()));
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl")
                         .getDependencyType().getClass());
     }
 
@@ -548,58 +548,58 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(14, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("java.io.File"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileInputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileNotFoundException"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.InputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.Serializable"));
-        assertNotNull(programmingLanguageContext.getDependency("java.math.BigInteger"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Random"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.File"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Random"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Arrays"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.logging.Level"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY44.getFullName()));
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.File")
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY44.getFullName()));
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.FileInputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream")
                 .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("java.io.FileNotFoundException").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException").getDependencyType()
                         .getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.InputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.Serializable")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable")
                 .getDependencyType().getClass());
-        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.math.BigInteger")
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Random")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Random")
                 .getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Arrays")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.logging.Level")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level")
                 .getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -620,10 +620,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY10.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY10.getFullName()));
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends")
                         .getDependencyType().getClass());
     }
 
@@ -644,58 +644,58 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(14, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("java.io.File"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileInputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileNotFoundException"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.InputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.Serializable"));
-        assertNotNull(programmingLanguageContext.getDependency("java.math.BigInteger"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Random"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.File"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Random"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Arrays"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.logging.Level"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY45.getFullName()));
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.File")
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY45.getFullName()));
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.FileInputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream")
                 .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("java.io.FileNotFoundException").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException").getDependencyType()
                         .getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.InputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.Serializable")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable")
                 .getDependencyType().getClass());
-        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.math.BigInteger")
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Random")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Random")
                 .getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Arrays")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.logging.Level")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level")
                 .getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -716,58 +716,58 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(14, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("java.io.File"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileInputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileNotFoundException"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.InputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.Serializable"));
-        assertNotNull(programmingLanguageContext.getDependency("java.math.BigInteger"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Random"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.File"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Random"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Arrays"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.logging.Level"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY45.getFullName()));
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.File")
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY45.getFullName()));
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.FileInputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream")
                 .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("java.io.FileNotFoundException").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException").getDependencyType()
                         .getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.InputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.Serializable")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable")
                 .getDependencyType().getClass());
-        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.math.BigInteger")
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Random")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Random")
                 .getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Arrays")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.logging.Level")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level")
                 .getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -788,58 +788,58 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(14, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("java.io.File"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileInputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileNotFoundException"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.InputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.Serializable"));
-        assertNotNull(programmingLanguageContext.getDependency("java.math.BigInteger"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Random"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.File"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Random"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Arrays"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.logging.Level"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY45.getFullName()));
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.File")
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY45.getFullName()));
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.FileInputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream")
                 .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("java.io.FileNotFoundException").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException").getDependencyType()
                         .getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.InputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.Serializable")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable")
                 .getDependencyType().getClass());
-        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.math.BigInteger")
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Random")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Random")
                 .getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Arrays")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.logging.Level")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level")
                 .getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -860,58 +860,58 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(14, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("java.io.File"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileInputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileNotFoundException"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.InputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.Serializable"));
-        assertNotNull(programmingLanguageContext.getDependency("java.math.BigInteger"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Random"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.File"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Random"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Arrays"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.logging.Level"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY45.getFullName()));
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.File")
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY45.getFullName()));
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.FileInputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream")
                 .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("java.io.FileNotFoundException").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException").getDependencyType()
                         .getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.InputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.Serializable")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable")
                 .getDependencyType().getClass());
-        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.math.BigInteger")
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Random")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Random")
                 .getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Arrays")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.logging.Level")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level")
                 .getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -932,58 +932,58 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(14, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("java.io.File"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileInputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.FileNotFoundException"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.InputStream"));
-        assertNotNull(programmingLanguageContext.getDependency("java.io.Serializable"));
-        assertNotNull(programmingLanguageContext.getDependency("java.math.BigInteger"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Random"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.File"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Random"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Arrays"));
-        assertNotNull(programmingLanguageContext.getDependency("java.util.logging.Level"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY45.getFullName()));
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.File")
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY45.getFullName()));
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.FileInputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.FileInputStream")
                 .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("java.io.FileNotFoundException").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("java.io.FileNotFoundException").getDependencyType()
                         .getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.InputStream")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.InputStream")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.io.Serializable")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.Serializable")
                 .getDependencyType().getClass());
-        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.math.BigInteger")
+        assertEquals(ClassDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.math.BigInteger")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Random")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Random")
                 .getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Arrays")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays")
                 .getDependencyType().getClass());
-        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.logging.Level")
+        assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level")
                 .getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -1005,10 +1005,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY21.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY21.getFullName()));
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl")
                         .getDependencyType().getClass());
     }
 
@@ -1029,10 +1029,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.ClassNotFoundException"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY19.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.ClassNotFoundException"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY19.getFullName()));
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.ClassNotFoundException")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.ClassNotFoundException")
                         .getDependencyType().getClass());
     }
 
@@ -1053,10 +1053,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.TestExtends"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY9.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.TestExtends"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY9.getFullName()));
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.TestExtends").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.TestExtends").getDependencyType()
                         .getClass());
     }
 
@@ -1077,14 +1077,14 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY12.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY12.getFullName()));
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends")
                         .getDependencyType().getClass());
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric")
                         .getDependencyType().getClass());
     }
 
@@ -1105,14 +1105,14 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.InterfaceGenericsTest"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.Integer"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY26.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.InterfaceGenericsTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.Integer"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY26.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.InterfaceGenericsTest")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.InterfaceGenericsTest")
                         .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.Integer").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.Integer").getDependencyType()
                         .getClass());
     }
 
@@ -1133,10 +1133,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.InterfaceGenericsTest"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY14.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceGenericsTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY14.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.InterfaceGenericsTest").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceGenericsTest").getDependencyType()
                         .getClass());
     }
 
@@ -1157,10 +1157,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherInterfaceTest"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY18.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherInterfaceTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY18.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherInterfaceTest")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherInterfaceTest")
                         .getDependencyType().getClass());
     }
 
@@ -1181,10 +1181,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY24.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY24.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1205,10 +1205,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY22.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY22.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1229,10 +1229,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Appendable"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY20.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Appendable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY20.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Appendable").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Appendable").getDependencyType().getClass());
     }
 
     /**
@@ -1252,10 +1252,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.InterfaceTest"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY13.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY13.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.InterfaceTest").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceTest").getDependencyType()
                         .getClass());
     }
 
@@ -1276,11 +1276,11 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(NATIVE_DEPENDENCY.getFullName()));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY40.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(NATIVE_DEPENDENCY.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY40.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1300,18 +1300,18 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(4, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric.InnerTest"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY12.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric.InnerTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY12.getFullName()));
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends")
                         .getDependencyType().getClass());
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric")
                         .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric.InnerTest")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric.InnerTest")
                         .getDependencyType().getClass());
     }
 
@@ -1332,29 +1332,29 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(7, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherInterfaceTest"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Cloneable"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.InterfaceGenericsTest"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.InterfaceTest"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY17.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherInterfaceTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Cloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceGenericsTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY17.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherInterfaceTest")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherInterfaceTest")
                         .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends")
                         .getDependencyType().getClass());
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.TestExtendsGeneric")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.TestExtendsGeneric")
                         .getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Cloneable").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Cloneable").getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.InterfaceGenericsTest").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceGenericsTest").getDependencyType()
                         .getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.InterfaceTest").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceTest").getDependencyType()
                         .getClass());
     }
 
@@ -1375,21 +1375,21 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(5, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherInterfaceTest"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Cloneable"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.InterfaceGenericsTest"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.InterfaceTest"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY16.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherInterfaceTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Cloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceGenericsTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY16.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherInterfaceTest")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherInterfaceTest")
                         .getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Cloneable").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Cloneable").getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.InterfaceGenericsTest").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceGenericsTest").getDependencyType()
                         .getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.InterfaceTest").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.InterfaceTest").getDependencyType()
                         .getClass());
     }
 
@@ -1410,11 +1410,11 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(NATIVE_DEPENDENCY.getFullName()));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY40.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(NATIVE_DEPENDENCY.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY40.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1435,7 +1435,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY7.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY7.getFullName()));
     }
 
     /**
@@ -1455,7 +1455,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY6.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY6.getFullName()));
     }
 
     /**
@@ -1475,10 +1475,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY10.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY10.getFullName()));
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends")
                         .getDependencyType().getClass());
     }
 
@@ -1499,10 +1499,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY42.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY42.getFullName()));
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1522,7 +1522,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY6.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY6.getFullName()));
     }
 
     /**
@@ -1542,11 +1542,11 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(NATIVE_DEPENDENCY.getFullName()));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY40.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(NATIVE_DEPENDENCY.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY40.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1566,11 +1566,11 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(NATIVE_DEPENDENCY.getFullName()));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.pro_gram.Java_Program"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY41.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(NATIVE_DEPENDENCY.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.pro_gram.Java_Program"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY41.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.cli.pro_gram.Java_Program")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.pro_gram.Java_Program")
                         .getDependencyType().getClass());
     }
 
@@ -1591,10 +1591,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY10.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY10.getFullName()));
         assertEquals(ClassDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.train.test.AnotherTestExtends")
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.train.test.AnotherTestExtends")
                         .getDependencyType().getClass());
     }
 
@@ -1615,7 +1615,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY48.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY48.getFullName()));
     }
 
     /**
@@ -1635,7 +1635,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY48.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY48.getFullName()));
     }
 
     /**
@@ -1655,7 +1655,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY48.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY48.getFullName()));
     }
 
     /**
@@ -1675,7 +1675,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY47.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY47.getFullName()));
     }
 
     /**
@@ -1695,7 +1695,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY48.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY48.getFullName()));
     }
 
     /**
@@ -1715,7 +1715,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY6.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY6.getFullName()));
     }
 
     /**
@@ -1735,7 +1735,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY6.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY6.getFullName()));
     }
 
     /**
@@ -1755,7 +1755,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY29.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY29.getFullName()));
     }
 
     /**
@@ -1775,48 +1775,48 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(12, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("java.lang.annotation.ElementType"));
-        assertNotNull(programmingLanguageContext.getDependency("javax.xml.bind.annotation.XmlType"));
-        assertNotNull(programmingLanguageContext.getDependency("javax.xml.ws.soap.Addressing"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Testabstract"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Deprecated"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.SuppressWarnings"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.Annotationinterface"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.AnotherAnnotation"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.MyAnnotation"));
-        assertNotNull(programmingLanguageContext.getDependency("com.plantuml.test.MappedSuperclass"));
-        assertNotNull(programmingLanguageContext.getDependency("javax.annotation.Generated"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY49.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.lang.annotation.ElementType"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("javax.xml.bind.annotation.XmlType"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("javax.xml.ws.soap.Addressing"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Testabstract"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Deprecated"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.SuppressWarnings"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Annotationinterface"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.AnotherAnnotation"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MyAnnotation"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MappedSuperclass"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("javax.annotation.Generated"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY49.getFullName()));
         assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("java.lang.annotation.ElementType").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("java.lang.annotation.ElementType").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("javax.xml.bind.annotation.XmlType").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("javax.xml.bind.annotation.XmlType").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("javax.xml.ws.soap.Addressing").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("javax.xml.ws.soap.Addressing").getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Testabstract").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Testabstract").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Deprecated").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Deprecated").getDependencyType().getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.SuppressWarnings").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.SuppressWarnings").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.Annotationinterface").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.Annotationinterface").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.AnotherAnnotation").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.AnotherAnnotation").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.MyAnnotation").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MyAnnotation").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("com.plantuml.test.MappedSuperclass").getDependencyType()
+                programmingLanguageContext.getParsedOrSeenDependency("com.plantuml.test.MappedSuperclass").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("javax.annotation.Generated").getDependencyType().getClass());
+                programmingLanguageContext.getParsedOrSeenDependency("javax.annotation.Generated").getDependencyType().getClass());
     }
 
     /**
@@ -1837,12 +1837,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY35.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY35.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage")
                         .getDependencyType().getClass());
     }
@@ -1864,17 +1864,17 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY30.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY30.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
                         .getDependencyType().getClass());
     }
@@ -1896,10 +1896,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY31.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY31.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
     }
 
@@ -1921,12 +1921,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY32.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY32.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
+                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
                         .getDependencyType().getClass());
     }
 
@@ -1948,12 +1948,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY32.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY32.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
+                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
                         .getDependencyType().getClass());
     }
 
@@ -1975,12 +1975,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY33.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY33.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
+                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
                         .getDependencyType().getClass());
     }
 
@@ -2002,12 +2002,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY34.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY34.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable")
+                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable")
                         .getDependencyType().getClass());
     }
 
@@ -2029,12 +2029,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY35.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY35.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage")
                         .getDependencyType().getClass());
     }
@@ -2056,17 +2056,17 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY30.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY30.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
                         .getDependencyType().getClass());
     }
@@ -2088,25 +2088,25 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(4, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest.InnerTest"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY30.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest.InnerTest"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY30.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest.InnerTest")
                         .getDependencyType().getClass());
     }
@@ -2129,12 +2129,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY35.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY35.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage")
                         .getDependencyType().getClass());
     }
@@ -2156,43 +2156,43 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(7, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency("java.util.Map"));
-        assertNotNull(programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Map"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguageTest"));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguageTest"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable"));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable"));
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Appendable"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY27.getFullName()));
-        assertEquals(InterfaceDependencyTypeImpl.class, programmingLanguageContext.getDependency("java.util.Map")
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Appendable"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY27.getFullName()));
+        assertEquals(InterfaceDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.util.Map")
                 .getDependencyType().getClass());
         assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency(
+                        .getParsedOrSeenDependency(
                                 "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguageTest")
                         .getDependencyType().getClass());
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable")
+                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable")
                         .getDependencyType().getClass());
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Appendable")
+                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Appendable")
                         .getDependencyType().getClass());
     }
 
@@ -2213,7 +2213,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY36.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY36.getFullName()));
     }
 
     /**
@@ -2233,7 +2233,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY36.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY36.getFullName()));
     }
 
     /**
@@ -2253,7 +2253,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY36.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY36.getFullName()));
     }
 
     /**
@@ -2273,7 +2273,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY28.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY28.getFullName()));
     }
 
     /**
@@ -2293,7 +2293,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY36.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY36.getFullName()));
     }
 
     /**
@@ -2314,12 +2314,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY32.getFullName()));
+                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY32.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
+                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
                         .getDependencyType().getClass());
     }
 
@@ -2340,7 +2340,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY8.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY8.getFullName()));
     }
 
     /**
@@ -2360,7 +2360,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY6.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY6.getFullName()));
     }
 
     /**
@@ -2380,7 +2380,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY6.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY6.getFullName()));
     }
 
     /**
@@ -2400,7 +2400,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY6.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY6.getFullName()));
     }
 
     /**
@@ -2420,7 +2420,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY37.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY37.getFullName()));
     }
 
     /**
@@ -2454,7 +2454,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext));
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(1, programmingLanguageContext.getParsedAndSeenDependencies().size());
-        assertNotNull(programmingLanguageContext.getDependency(GENERIC_DEPENDENCY6.getFullName()));
+        assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY6.getFullName()));
     }
 
     /**

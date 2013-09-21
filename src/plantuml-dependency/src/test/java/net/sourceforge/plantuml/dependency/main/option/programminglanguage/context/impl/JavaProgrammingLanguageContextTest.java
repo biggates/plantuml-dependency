@@ -213,26 +213,26 @@ public class JavaProgrammingLanguageContextTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getDependency(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getParsedOrSeenDependency(java.lang.String)}
      * .
      */
     @Test
-    public void testGetDependencyWithExistingDependency() {
+    public void testGetParsedOrSeenDependencyWithExistingDependency() {
         assertEquals(
                 new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                         "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
                 JAVA_PROGRAMMING_LANGUAGE_CONTEXT2
-                        .getDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
+                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getDependency(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#getParsedOrSeenDependency(java.lang.String)}
      * .
      */
     @Test
-    public void testGetDependencyWithNotExistingDependency() {
-        assertNull(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.getDependency("net.sourceforge.test.GenericDependency"));
+    public void testGetParsedOrSeenDependencyWithNotExistingDependency() {
+        assertNull(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.getParsedOrSeenDependency("net.sourceforge.test.GenericDependency"));
     }
 
     /**
@@ -286,7 +286,7 @@ public class JavaProgrammingLanguageContextTest extends
         assertEquals(1, javaProgrammingLanguageContext.getParsedDependencies().size());
         assertEquals(0, javaProgrammingLanguageContext.getPotentialJavaLangSeenDependencies().size());
         assertNotNull(javaProgrammingLanguageContext
-                .getDependency("java.lang.TestReadDependencyFromFileInterfaceWithoutPackage"));
+                .getParsedOrSeenDependency("java.lang.TestReadDependencyFromFileInterfaceWithoutPackage"));
     }
 
     /**

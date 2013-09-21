@@ -300,17 +300,6 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    public GenericDependency getDependency(final String fullName) {
-        checkNull(fullName, DEPENDENCY_NAME_NULL_ERROR);
-        return getParsedAndSeenDependenciesMap().get(fullName);
-    }
-
-    /**
      * Gets all dependencies which have been seen (as import for instance) and parsed within the
      * context and which have to be displayed following display options.
      *
@@ -383,6 +372,28 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      */
     private Map < String, GenericDependency > getParsedDependenciesMap() {
         return parsedDependenciesMap;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.2.0
+     */
+    @Override
+    public GenericDependency getParsedDependency(final String fullName) {
+        checkNull(fullName, DEPENDENCY_NAME_NULL_ERROR);
+        return getParsedDependenciesMap().get(fullName);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.0
+     */
+    @Override
+    public GenericDependency getParsedOrSeenDependency(final String fullName) {
+        checkNull(fullName, DEPENDENCY_NAME_NULL_ERROR);
+        return getParsedAndSeenDependenciesMap().get(fullName);
     }
 
     /**

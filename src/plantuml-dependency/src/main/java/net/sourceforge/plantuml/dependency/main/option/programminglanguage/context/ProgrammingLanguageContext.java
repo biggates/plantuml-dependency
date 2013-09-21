@@ -79,17 +79,6 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     void addSeenDependencies(GenericDependency dependency);
 
     /**
-     * Gets the dependency in the context following its name.
-     *
-     * @param fullName
-     *            the dependency full name to get, mustn't be <code>null</code>.
-     * @return the {@link GenericDependency} instance following its full name if found in the
-     *         context, <code>null</code> otherwise.
-     * @since 1.0
-     */
-    GenericDependency getDependency(String fullName);
-
-    /**
      * Gets all dependencies which have been seen (as import for instance) and parsed within the
      * context.
      *
@@ -107,6 +96,28 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      * @since 1.0
      */
     Collection < GenericDependency > getParsedDependencies();
+
+    /**
+     * Gets the dependency in the parsed context following its name.
+     *
+     * @param fullName
+     *            the dependency full name to get, mustn't be <code>null</code>.
+     * @return the {@link GenericDependency} instance following its full name if found in the parsed
+     *         context, <code>null</code> otherwise.
+     * @since 1.2.0
+     */
+    GenericDependency getParsedDependency(String fullName);
+
+    /**
+     * Gets the dependency in the parsed and seen context following its name.
+     *
+     * @param fullName
+     *            the dependency full name to get, mustn't be <code>null</code>.
+     * @return the {@link GenericDependency} instance following its full name if found in the parsed
+     *         and seen context, <code>null</code> otherwise.
+     * @since 1.0
+     */
+    GenericDependency getParsedOrSeenDependency(String fullName);
 
     /**
      * Gets the {@link PlantUMLClassesDiagram} instance representing the context, following display

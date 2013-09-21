@@ -170,7 +170,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      */
     private static GenericDependency createOrUpdateAbstractDependency(final JavaRawDependency javaRawDependency,
             final DependencyType dependencyType, final ProgrammingLanguageContext programmingLanguageContext) {
-        GenericDependency dependency = programmingLanguageContext.getDependency(javaRawDependency.getFullName());
+        GenericDependency dependency = programmingLanguageContext.getParsedOrSeenDependency(javaRawDependency
+                .getFullName());
 
         if (dependency == null) {
             LOGGER.fine(buildLogString(CREATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
@@ -314,7 +315,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String packageName = matcher.group(1).replace(SPACE_CHAR, BLANK_STRING);
             final String name = matcher.group(2).trim();
             final String fullName = packageName + DOT_CHAR + name;
-            GenericDependency dependency = programmingLanguageContext.getDependency(fullName);
+            GenericDependency dependency = programmingLanguageContext.getParsedOrSeenDependency(fullName);
             if (dependency == null) {
                 LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE, fullName));
                 dependency = new GenericDependencyImpl(name, packageName);
@@ -686,7 +687,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         GenericDependency dependency = importDependencies.findDependency(parentName, parentPackageName);
 
         if (dependency == null) {
-            dependency = programmingLanguageContext.getDependency(annotationFullName);
+            dependency = programmingLanguageContext.getParsedOrSeenDependency(annotationFullName);
             if (dependency == null) {
                 final DependencyType dependencyType = type
                         .createAnnotationDependencyType(parentName, parentPackageName);
@@ -697,19 +698,52 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullName));
             }
         } else {
-            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullName));
-            // FIXME Need to check in the context before recreating the DependencyType and add in the context ?
-            final DependencyType dependencyType = type.createAnnotationDependencyType(dependency.getName(),
-                    dependency.getPackageName());
-            dependency.setDependencyType(dependencyType);
+            dependency = getOrCreateAnnotationDependencyWithImportDependency(type, programmingLanguageContext,
+                    dependency);
         }
 
         return dependency;
     }
 
     /**
-     * Gets or creates the parent dependency if it is not described with its full name, i.e. if it
-     * is not in the import, or in the same package or in the "java.lang" package.
+     * Gets or creates the annotation dependency if it has been found in the imports.
+     *
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
+     * @param importDependency
+     *            the dependency which has been found from the imports, mustn't be <code>null</code>
+     *            .
+     * @return the annotation {@link GenericDependency} instance.
+     * @throws if
+     *             any exception occurs while getting or creating the annotation
+     *             {@link GenericDependency} instance.
+     * @since 1.2.0
+     */
+    private static GenericDependency getOrCreateAnnotationDependencyWithImportDependency(final JavaType type,
+            final ProgrammingLanguageContext programmingLanguageContext, final GenericDependency importDependency)
+            throws PlantUMLDependencyException {
+        GenericDependency dependency = importDependency;
+        final GenericDependency parsedDependency = programmingLanguageContext.getParsedDependency(importDependency
+                .getFullName());
+        if (parsedDependency == null) {
+            final DependencyType dependencyType = type.createAnnotationDependencyType(importDependency.getName(),
+                    importDependency.getPackageName());
+            dependency.setDependencyType(dependencyType);
+        } else {
+            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
+            dependency = parsedDependency;
+        }
+
+        return dependency;
+    }
+
+    /**
+     * Gets or creates the annotation dependency if it is not described with its full name, i.e. if
+     * it is not in the import, or in the same package or in the "java.lang" package.
      *
      * @param annotationName
      *            the annotation dependency name, mustn't be <code>null</code>.
@@ -738,7 +772,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         if (dependency == null) {
             final String annotationFullNameWithSamePackage = currentPackageName + DOT_CHAR + annotationName;
-            dependency = programmingLanguageContext.getDependency(annotationFullNameWithSamePackage);
+            dependency = programmingLanguageContext.getParsedOrSeenDependency(annotationFullNameWithSamePackage);
             if (dependency == null) {
                 dependency = getOrCreateAnnotationDependencyWithNameFromJavaLangOrSamePackage(currentPackageName, type,
                         programmingLanguageContext, annotationName, annotationFullNameWithSamePackage);
@@ -746,11 +780,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullNameWithSamePackage));
             }
         } else {
-            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
-            // FIXME Need to check in the context before recreating the DependencyType and add in the context ?
-            final DependencyType dependencyType = type.createAnnotationDependencyType(dependency.getName(),
-                    dependency.getPackageName());
-            dependency.setDependencyType(dependencyType);
+            dependency = getOrCreateAnnotationDependencyWithImportDependency(type, programmingLanguageContext,
+                    dependency);
         }
 
         return dependency;
@@ -878,7 +909,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         GenericDependency dependency = importDependencies.findDependency(parentName, parentPackageName);
 
         if (dependency == null) {
-            dependency = programmingLanguageContext.getDependency(parentFullName);
+            dependency = programmingLanguageContext.getParsedOrSeenDependency(parentFullName);
             if (dependency == null) {
                 final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
                         parentPackageName);
@@ -889,11 +920,46 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullName));
             }
         } else {
-            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullName));
-            // FIXME Need to check in the context before recreating the DependencyType and add in the context ?
+            dependency = getOrCreateParentDependencyWithImportDependency(type, parentType, programmingLanguageContext,
+                    dependency);
+        }
+
+        return dependency;
+    }
+
+    /**
+     * Gets or creates the parent dependency if it has been found in the imports.
+     *
+     * @param type
+     *            the current dependency {@link JavaType}, mustn't be <code>null</code>.
+     * @param parentType
+     *            the parent {@link JavaParentType}, mustn't be <code>null</code>.
+     * @param programmingLanguageContext
+     *            the context instance containing all dependencies which have already been seen in
+     *            previous treatment, and other information which can be shared when parsing several
+     *            source files, mustn't be <code>null</code>.
+     * @param importDependency
+     *            the dependency which has been found from the imports, mustn't be <code>null</code>
+     *            .
+     * @return the parent {@link GenericDependency} instance.
+     * @throws if
+     *             any exception occurs while getting or creating the annotation
+     *             {@link GenericDependency} instance.
+     * @since 1.2.0
+     */
+    private static GenericDependency getOrCreateParentDependencyWithImportDependency(final JavaType type,
+            final JavaParentType parentType, final ProgrammingLanguageContext programmingLanguageContext,
+            final GenericDependency importDependency) throws PlantUMLDependencyException {
+        GenericDependency dependency = importDependency;
+        final GenericDependency parsedDependency = programmingLanguageContext.getParsedDependency(importDependency
+                .getFullName());
+        if (parsedDependency == null) {
             final DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
+        } else {
+            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
+            dependency = parsedDependency;
         }
 
         return dependency;
@@ -933,7 +999,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
 
         if (dependency == null) {
             final String parentFullNameWithSamePackage = currentPackageName + DOT_CHAR + parentName;
-            dependency = programmingLanguageContext.getDependency(parentFullNameWithSamePackage);
+            dependency = programmingLanguageContext.getParsedOrSeenDependency(parentFullNameWithSamePackage);
             if (dependency == null) {
                 dependency = getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(type, parentType,
                         currentPackageName, programmingLanguageContext, parentName, parentFullNameWithSamePackage);
@@ -941,11 +1007,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullNameWithSamePackage));
             }
         } else {
-            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
-            // FIXME Need to check in the context before recreating the DependencyType and add in the context ?
-            final DependencyType dependencyType = type.createParentDependencyType(parentType, dependency.getName(),
-                    dependency.getPackageName());
-            dependency.setDependencyType(dependencyType);
+            dependency = getOrCreateParentDependencyWithImportDependency(type, parentType, programmingLanguageContext,
+                    dependency);
         }
 
         return dependency;
