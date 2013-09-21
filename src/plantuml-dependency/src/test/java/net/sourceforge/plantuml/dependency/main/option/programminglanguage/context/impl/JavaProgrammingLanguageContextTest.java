@@ -283,6 +283,7 @@ public class JavaProgrammingLanguageContextTest extends
                 new TreeSet < GenericDependency >(asList(new GenericDependency[] {dependency})), DISPLAY_OPTIONS);
         javaProgrammingLanguageContext.removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang();
         assertEquals(2, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
+        assertEquals(1, javaProgrammingLanguageContext.getParsedDependencies().size());
         assertEquals(0, javaProgrammingLanguageContext.getPotentialJavaLangSeenDependencies().size());
         assertNotNull(javaProgrammingLanguageContext
                 .getDependency("java.lang.TestReadDependencyFromFileInterfaceWithoutPackage"));

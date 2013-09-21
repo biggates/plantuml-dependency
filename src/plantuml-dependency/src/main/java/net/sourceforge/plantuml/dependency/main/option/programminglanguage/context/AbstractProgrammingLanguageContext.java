@@ -465,7 +465,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         for (final GenericDependency dependency : getPotentialJavaLangSeenDependencies()) {
             getParsedAndSeenDependenciesMap().remove(dependency.getFullName());
             dependency.getDependencyType().setFullName(JAVA_LANG_PACKAGE, dependency.getName());
-            addParsedAndSeenDependencies(dependency);
+            addSeenDependencies(dependency);
         }
 
         getPotentialJavaLangSeenDependenciesMap().clear();
