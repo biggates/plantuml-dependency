@@ -60,6 +60,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.UP
 import static net.sourceforge.plantuml.dependency.generic.type.ImportType.NATIVE;
 import static net.sourceforge.plantuml.dependency.generic.type.ImportType.STANDARD;
 import static net.sourceforge.plantuml.dependency.generic.type.ImportType.STATIC;
+import static net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl.generateDependencyFullName;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 
@@ -314,7 +315,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         while (matcher.find()) {
             final String packageName = matcher.group(1).replace(SPACE_CHAR, BLANK_STRING);
             final String name = matcher.group(2).trim();
-            final String fullName = packageName + DOT_CHAR + name;
+            final String fullName = generateDependencyFullName(packageName, name);
             GenericDependency dependency = programmingLanguageContext.getParsedOrSeenDependency(fullName);
             if (dependency == null) {
                 LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE, fullName));
@@ -771,7 +772,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         GenericDependency dependency = importDependencies.findDependency(annotationName);
 
         if (dependency == null) {
-            final String annotationFullNameWithSamePackage = currentPackageName + DOT_CHAR + annotationName;
+            final String annotationFullNameWithSamePackage = generateDependencyFullName(currentPackageName, annotationName);
             dependency = programmingLanguageContext.getParsedOrSeenDependency(annotationFullNameWithSamePackage);
             if (dependency == null) {
                 dependency = getOrCreateAnnotationDependencyWithNameFromJavaLangOrSamePackage(currentPackageName, type,
@@ -820,7 +821,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final GenericDependency dependency = new GenericDependencyImpl(dependencyType);
 
         try {
-            final String potentialJavaLangAnnotationFullName = JAVA_LANG_PACKAGE + DOT_CHAR + annotationName;
+            final String potentialJavaLangAnnotationFullName = generateDependencyFullName(JAVA_LANG_PACKAGE, annotationName);
             forName(potentialJavaLangAnnotationFullName);
             programmingLanguageContext.addPotentialJavaLangSeenDependencies(dependency);
         } catch (final ClassNotFoundException e) {
@@ -998,7 +999,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         GenericDependency dependency = importDependencies.findDependency(parentName);
 
         if (dependency == null) {
-            final String parentFullNameWithSamePackage = currentPackageName + DOT_CHAR + parentName;
+            final String parentFullNameWithSamePackage = generateDependencyFullName(currentPackageName, parentName);
             dependency = programmingLanguageContext.getParsedOrSeenDependency(parentFullNameWithSamePackage);
             if (dependency == null) {
                 dependency = getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(type, parentType,
@@ -1050,7 +1051,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final GenericDependency dependency = new GenericDependencyImpl(dependencyType);
 
         try {
-            final String potentialJavaLangParentFullName = JAVA_LANG_PACKAGE + DOT_CHAR + parentName;
+            final String potentialJavaLangParentFullName = generateDependencyFullName(JAVA_LANG_PACKAGE, parentName);
             forName(potentialJavaLangParentFullName);
             programmingLanguageContext.addPotentialJavaLangSeenDependencies(dependency);
         } catch (final ClassNotFoundException e) {

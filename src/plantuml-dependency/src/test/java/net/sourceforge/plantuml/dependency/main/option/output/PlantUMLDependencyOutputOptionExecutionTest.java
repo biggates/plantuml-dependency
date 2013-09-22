@@ -41,6 +41,7 @@ import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTe
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET4;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET5;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET6;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.CPP;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
@@ -160,6 +161,10 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION20 = new PlantUMLDependencyOutputOptionExecution(
             TEST_FILE1, JAVA, FILE_SET5, DISPLAY_OPTIONS, 1);
 
+    /** Output option execution test 21 instance. */
+    public static final PlantUMLDependencyOutputOptionExecution OUTPUT_OPTION_EXECUTION21 = new PlantUMLDependencyOutputOptionExecution(
+            TEST_FILE1, JAVA, FILE_SET6, DISPLAY_OPTIONS, 1);
+
     /**
      * This method is called before each test to reset the create a test file.
      *
@@ -268,5 +273,18 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     public void testExecuteWithNoInputFiles() throws CommandLineException {
         OUTPUT_OPTION_EXECUTION9.execute();
         assertEquals("@startuml\r\n@enduml", readFileIntoString(TEST_FILE1));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution#execute()}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testExecuteWithNoPackageAndJavaLangAnnotation() throws CommandLineException {
+        OUTPUT_OPTION_EXECUTION21.execute();
+        assertEquals("@startuml\r\nannotation java.lang.Override\r\nclass Clock2\r\nclass java.applet.Applet\r\nclass java.awt.Color\r\nclass java.awt.Font\r\nclass java.awt.Graphics\r\nclass java.text.SimpleDateFormat\r\nclass java.util.Date\r\nclass java.util.Locale\r\ninterface java.lang.Runnable\r\nClock2 ..> java.lang.Override\r\nClock2 --|> java.applet.Applet\r\nClock2 ..> java.awt.Color\r\nClock2 ..> java.awt.Font\r\nClock2 ..> java.awt.Graphics\r\nClock2 ..> java.text.SimpleDateFormat\r\nClock2 ..> java.util.Date\r\nClock2 ..> java.util.Locale\r\nClock2 --|> java.lang.Runnable\r\n@enduml", readFileIntoString(TEST_FILE1));
     }
 }

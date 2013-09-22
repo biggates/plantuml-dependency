@@ -74,13 +74,14 @@ public abstract class DependencyTypeImpl implements DependencyType {
      *
      * @param dependencyPackageName
      *            the dependency type package name, such as "java.lang", mustn't be
-     *            <code>null</code>.
+     *            <code>null</code> but can be empty.
      * @param dependencyName
-     *            the dependency type name, such as "String", mustn't be <code>null</code>.
+     *            the dependency type name, such as "String", mustn't be <code>null</code> nor
+     *            empty.
      * @return the full dependency name.
      * @since 1.0
      */
-    private static String generateFullName(final String dependencyPackageName, final String dependencyName) {
+    public static String generateDependencyFullName(final String dependencyPackageName, final String dependencyName) {
         String fullName = null;
 
         if (isNotEmpty(dependencyPackageName)) {
@@ -533,7 +534,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     public void setFullName(final String dependencyPackageName, final String dependencyName) {
         name = dependencyName;
         packageName = dependencyPackageName;
-        fullName = generateFullName(packageName, name);
+        fullName = generateDependencyFullName(packageName, name);
     }
 
     /**

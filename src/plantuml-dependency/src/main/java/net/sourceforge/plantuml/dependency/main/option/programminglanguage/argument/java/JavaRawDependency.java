@@ -26,9 +26,9 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl.generateDependencyFullName;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -203,7 +203,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @since 1.0
      */
     public String getFullName() {
-        return getPackageName() + DOT_CHAR + getName();
+        return generateDependencyFullName(getPackageName(), getName());
     }
 
     /**

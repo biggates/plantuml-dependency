@@ -176,6 +176,10 @@ public final class PlantUMLDependencyTestConstants {
     public static final FileSet FILE_SET5 = createFileSet(CURRENT_DIRECTORY,
             "**/test/resources/net/sourceforge/plantuml/dependency/main/option/output/c/**/*.java");
 
+    /** File set test 6 instance. */
+    public static final FileSet FILE_SET6 = createFileSet(CURRENT_DIRECTORY,
+            "**/test/resources/net/sourceforge/plantuml/dependency/main/option/output/d/**/*.java");
+
     /** Verbose option test 1 instance. */
     public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(new StringBuffer(
             "To display log information."), ACTIVE_OPTIONAL_OPTION_STATUS);
