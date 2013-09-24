@@ -26,6 +26,7 @@ package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argu
 
 import static java.lang.Class.forName;
 import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.mazix.components.constants.CharacterConstants.AT_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.BACK_SLASH_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.CARRIAGE_RETURN_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
@@ -486,6 +487,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             } else if (currentCharacter == QUOTE_CHAR.charAt(0)) {
                 stopSearch = true;
             } else if (currentCharacter == QUOTATION_CHAR.charAt(0)) {
+                stopSearch = true;
+            } else if (currentCharacter == AT_CHAR.charAt(0)) {
                 stopSearch = true;
             } else if (currentCharacter == INFERIOR_CHAR.charAt(0)) {
                 numberOfGenerics++;

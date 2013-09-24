@@ -56,12 +56,13 @@ public class Class1 implements Readable {
 
     public static native void register_Natives();
 
-    /**
-     * {@inheritDoc}
-     * @since 1.0
-     */
+    public void test() {
+        boolean j = 0 < 1;
+    }
+
     @Override
     public int count() {
+        boolean i = 1 > 0;
         // TODO Auto-generated method stub
         String t = "@test";
         return 0;
