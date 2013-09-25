@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.main.option.output;
 
+import static java.util.logging.Level.OFF;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1;
@@ -35,6 +36,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.File;
 
 import net.sourceforge.mazix.cli.exception.CommandLineException;
+import net.sourceforge.mazix.components.utils.log.LogUtils;
 
 import org.junit.After;
 import org.junit.Test;
@@ -60,9 +62,30 @@ public class PlantUMLDependencyOutputOptionExecutionTest0 {
      * @since 1.2.0
      */
     public static void main(final String args[]) throws CommandLineException {
+        LogUtils.setLevelOfAllLoggersAndHandlers(OFF);
+        writeUnitTest(0, 1, "PlantUMLDependencyOutputOptionExecutionTest0.txt");
+        writeUnitTest(1, 11, "PlantUMLDependencyOutputOptionExecutionTest1.txt");
+        writeUnitTest(11, 56, "PlantUMLDependencyOutputOptionExecutionTest2.txt");
+        writeUnitTest(56, 176, "PlantUMLDependencyOutputOptionExecutionTest3.txt");
+        writeUnitTest(176, 386, "PlantUMLDependencyOutputOptionExecutionTest4.txt");
+        writeUnitTest(386, 639, "PlantUMLDependencyOutputOptionExecutionTest5.txt");
+        writeUnitTest(639, 848, "PlantUMLDependencyOutputOptionExecutionTest6.txt");
+        writeUnitTest(848, 968, "PlantUMLDependencyOutputOptionExecutionTest7.txt");
+        writeUnitTest(968, 1013, "PlantUMLDependencyOutputOptionExecutionTest8.txt");
+        writeUnitTest(1013, 1023, "PlantUMLDependencyOutputOptionExecutionTest9.txt");
+        writeUnitTest(1023, 1024, "PlantUMLDependencyOutputOptionExecutionTest10.txt");
+    }
+
+    public static void writeUnitTest(int startIndex, int endIndex, String filePath) throws CommandLineException {
         final StringBuilder buffer = new StringBuilder();
 
-        for (int i = 0; i < DISPLAY_SETS.size(); i++) {
+        for (int i = startIndex; i < endIndex; i++) {
+            buffer.append("import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET");
+            buffer.append(i + 1);
+            buffer.append(";\n\n");
+        }
+
+        for (int i = startIndex; i < endIndex; i++) {
             final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
                     TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SETS.get(i), 1);
             outputOptionExecution.execute();
@@ -87,16 +110,10 @@ public class PlantUMLDependencyOutputOptionExecutionTest0 {
             buffer.append("assertEquals(\"");
             buffer.append(plantumlDescriptionStr);
             buffer.append("\", readFileIntoString(TEST_FILE1));\n");
-            buffer.append("}\n\n");
+            buffer.append("}");
         }
 
-        for (int i = 0; i < DISPLAY_SETS.size(); i++) {
-            buffer.append("import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET");
-            buffer.append(i + 1);
-            buffer.append(";\n");
-        }
-
-        writeIntoFile(buffer.toString(), "plantumlTest.txt");
+        writeIntoFile(buffer.toString(), filePath);
     }
 
     /**
