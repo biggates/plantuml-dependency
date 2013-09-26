@@ -1146,7 +1146,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0
      */
     private static String removeSourceFileCommentsAndGenerics(final String javaSourceFileContent) {
-        final StringBuffer buffer = new StringBuffer();
+        final StringBuilder buffer = new StringBuilder();
 
         int cursor = 0;
         while (cursor < javaSourceFileContent.length()) {

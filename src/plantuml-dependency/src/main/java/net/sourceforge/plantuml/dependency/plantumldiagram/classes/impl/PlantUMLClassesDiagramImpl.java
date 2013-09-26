@@ -182,7 +182,7 @@ public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
      */
     @Override
     public String getPlantUMLTextDescription() {
-        final StringBuffer plantUMLDeclaractionBuffer = new StringBuffer(START_PLANTUML);
+        final StringBuilder plantUMLDeclaractionBuffer = new StringBuilder(START_PLANTUML);
 
         for (final WithDescription plantUMLElement : getPlantUMLClassesDiagramElements()) {
             plantUMLDeclaractionBuffer.append(LINE_SEPARATOR);

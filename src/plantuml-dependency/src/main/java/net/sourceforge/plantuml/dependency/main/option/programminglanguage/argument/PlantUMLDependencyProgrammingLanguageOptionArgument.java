@@ -63,7 +63,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgument extends Abstrac
      * @since 1.0
      */
     public PlantUMLDependencyProgrammingLanguageOptionArgument(final boolean optionArgumentIsMandatory) {
-        super(optionArgumentIsMandatory, new StringBuffer(USAGE_DESCRIPTION));
+        super(optionArgumentIsMandatory, new StringBuilder(USAGE_DESCRIPTION));
     }
 
     /**

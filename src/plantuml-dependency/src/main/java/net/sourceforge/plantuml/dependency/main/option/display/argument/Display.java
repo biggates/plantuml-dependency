@@ -90,7 +90,7 @@ public enum Display {
      * @since 1.1.1
      */
     public static String getFullUsageDescriptions(final Set < Display > displayOptions) {
-        final StringBuffer buffer = new StringBuffer();
+        final StringBuilder buffer = new StringBuilder();
         final Iterator < Display > iterator = displayOptions.iterator();
         while (iterator.hasNext()) {
             final Display display = iterator.next();
@@ -125,7 +125,7 @@ public enum Display {
      * @since 1.1.1
      */
     public String getFullUsageDescription() {
-        final StringBuffer buffer = new StringBuffer();
+        final StringBuilder buffer = new StringBuilder();
         buffer.append(QUOTATION_CHAR);
         buffer.append(toString());
         buffer.append(QUOTATION_CHAR);

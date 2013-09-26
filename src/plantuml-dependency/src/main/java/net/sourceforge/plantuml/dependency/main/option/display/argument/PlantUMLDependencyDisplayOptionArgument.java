@@ -77,7 +77,7 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
      * @since 1.0
      */
     public PlantUMLDependencyDisplayOptionArgument(final boolean optionArgumentIsMandatory) {
-        super(optionArgumentIsMandatory, new StringBuffer(USAGE_DESCRIPTION));
+        super(optionArgumentIsMandatory, new StringBuilder(USAGE_DESCRIPTION));
     }
 
     /**

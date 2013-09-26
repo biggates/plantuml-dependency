@@ -68,7 +68,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
      */
     public PlantUMLDependencyProgrammingLanguageOption() {
         super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyProgrammingLanguageOptionArgument(true),
-                new StringBuffer(
+                new StringBuilder(
                         "To choose the programming language to reverse engineering. If not specified, the default programming language is \""
                                 + DEFAULT_PROGRAMMING_LANGUAGE.getName() + "\"."), SPACE_CHAR,
                 HIDDEN_OPTIONAL_OPTION_STATUS);

@@ -67,7 +67,7 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
      * @since 1.0
      */
     public PlantUMLDependencyExcludeOption() {
-        super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new ExcludeFilePatternOptionArgumentImpl(true), new StringBuffer(
+        super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new ExcludeFilePatternOptionArgumentImpl(true), new StringBuilder(
                 "To exclude files that match the provided pattern. If not specified, no file is excluded."),
                 SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
     }

@@ -181,11 +181,11 @@ public final class PlantUMLDependencyTestConstants {
             "**/test/resources/net/sourceforge/plantuml/dependency/main/option/output/d/**/*.java");
 
     /** Verbose option test 1 instance. */
-    public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(new StringBuffer(
+    public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(new StringBuilder(
             "To display log information."), ACTIVE_OPTIONAL_OPTION_STATUS);
 
     /** Verbose option test 2 instance. */
-    public static final VerboseOption VERBOSE_OPTION2 = new VerboseOption(new StringBuffer(
+    public static final VerboseOption VERBOSE_OPTION2 = new VerboseOption(new StringBuilder(
             "To display log information."), ACTIVE_MANDATORY_OPTION_STATUS);
 
     /** Verbose level option test 1 instance. */

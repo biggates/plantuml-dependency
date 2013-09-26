@@ -130,7 +130,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
             final PlantUMLDependencyIncludeOption includeOpt, final PlantUMLDependencyExcludeOption excludeOpt,
             final PlantUMLDependencyDisplayOption displayOpt, final PlantUMLDependencyBaseDirectoryOption baseDirOpt,
             final int optionPriority) {
-        super(new ExistingOrNotFileOptionArgumentImpl(true), new StringBuffer(
+        super(new ExistingOrNotFileOptionArgumentImpl(true), new StringBuilder(
                 "To specify the output file path where to generate the PlantUML description."), SPACE_CHAR,
                 ACTIVE_OPTIONAL_OPTION_STATUS);
         setVerboseLevelOption(verboseLvlOpt);

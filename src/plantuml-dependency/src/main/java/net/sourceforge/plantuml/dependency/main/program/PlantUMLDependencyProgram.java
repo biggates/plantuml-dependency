@@ -159,7 +159,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
                 + programVersion.getFullVersionNumber() + ".jar", asList(new String[] {
                 "GPL v3, 29 June 2007 (http://www.gnu.org/licenses/gpl-3.0.txt)",
                 "LGPL v3, 29 June 2007 (http://www.gnu.org/licenses/lgpl-3.0.txt)"}),
-                asList(new String[] {"Benjamin Croizet (graffity2199@yahoo.fr)"}), programVersion, new StringBuffer(
+                asList(new String[] {"Benjamin Croizet (graffity2199@yahoo.fr)"}), programVersion, new StringBuilder(
                         "reverse engineering java source files to generate PlantUML description"));
 
         final VerboseLevelOption verboseLevelOption = new VerboseLevelOption();

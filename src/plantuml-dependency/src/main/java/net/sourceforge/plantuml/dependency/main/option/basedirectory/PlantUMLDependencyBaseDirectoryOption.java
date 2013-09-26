@@ -70,7 +70,7 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
                 OPTION_MAIN_SYNOPSIS,
                 OPTION_SYNOPSIS,
                 new ExistingDirectoryOptionArgumentImpl(true),
-                new StringBuffer(
+                new StringBuilder(
                         "The base directory where to look for source files. If not specified, the default pattern is \".\" i.e. the directory where the program is launched from."),
                 SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
     }
