@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl;
 
+import static java.util.logging.Level.FINE;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
@@ -269,7 +270,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
             if (importTypesSet.contains(importType)) {
                 dependenciesSet.addAll(importDependencies);
             } else {
-                LOGGER.fine(buildLogString(IMPORT_TYPE_NOT_FOUND, importType));
+                LOGGER.log(FINE, buildLogString(IMPORT_TYPE_NOT_FOUND, importType));
             }
         }
 

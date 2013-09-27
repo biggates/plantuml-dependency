@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument;
 
 import static java.lang.Class.forName;
+import static java.util.logging.Level.FINE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.AT_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.BACK_SLASH_CHAR;
@@ -176,11 +177,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 .getFullName());
 
         if (dependency == null) {
-            LOGGER.fine(buildLogString(CREATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
+            LOGGER.log(FINE, buildLogString(CREATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
                     dependencyType}));
             dependency = new GenericDependencyImpl(dependencyType);
         } else {
-            LOGGER.fine(buildLogString(UPDATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
+            LOGGER.log(FINE, buildLogString(UPDATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
                     dependencyType}));
             programmingLanguageContext.removePotentialJavaLangSeenDependency(javaRawDependency.getFullName());
             dependency.setDependencyType(dependencyType);
@@ -319,11 +320,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String fullName = generateDependencyFullName(packageName, name);
             GenericDependency dependency = programmingLanguageContext.getParsedOrSeenDependency(fullName);
             if (dependency == null) {
-                LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE, fullName));
+                LOGGER.log(FINE, buildLogString(DEPENDENCY_NOT_SEEN_DEFAULT_TYPE_FINE, fullName));
                 dependency = new GenericDependencyImpl(name, packageName);
                 programmingLanguageContext.addSeenDependencies(dependency);
             } else {
-                LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, fullName));
+                LOGGER.log(FINE, buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, fullName));
             }
             importDependenciesSet.add(dependency);
         }
@@ -367,7 +368,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         if (matcher.find()) {
             packageName = matcher.group(1).replace(SPACE_CHAR, BLANK_STRING);
         } else {
-            LOGGER.fine(NO_PACKAGE_FOUND_FINE);
+            LOGGER.log(FINE, NO_PACKAGE_FOUND_FINE);
         }
 
         return packageName;
@@ -695,11 +696,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             if (dependency == null) {
                 final DependencyType dependencyType = type
                         .createAnnotationDependencyType(parentName, parentPackageName);
-                LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullName, dependencyType}));
+                LOGGER.log(FINE, buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullName, dependencyType}));
                 dependency = new GenericDependencyImpl(dependencyType);
                 programmingLanguageContext.addSeenDependencies(dependency);
             } else {
-                LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullName));
+                LOGGER.log(FINE, buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullName));
             }
         } else {
             dependency = getOrCreateAnnotationDependencyWithImportDependency(type, programmingLanguageContext,
@@ -738,7 +739,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                     importDependency.getPackageName());
             dependency.setDependencyType(dependencyType);
         } else {
-            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
+            LOGGER.log(FINE, buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
             dependency = parsedDependency;
         }
 
@@ -781,7 +782,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 dependency = getOrCreateAnnotationDependencyWithNameFromJavaLangOrSamePackage(currentPackageName, type,
                         programmingLanguageContext, annotationName, annotationFullNameWithSamePackage);
             } else {
-                LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullNameWithSamePackage));
+                LOGGER.log(FINE, buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, annotationFullNameWithSamePackage));
             }
         } else {
             dependency = getOrCreateAnnotationDependencyWithImportDependency(type, programmingLanguageContext,
@@ -819,7 +820,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final ProgrammingLanguageContext programmingLanguageContext, final String annotationName,
             final String annotationFullNameWithSamePackage) throws PlantUMLDependencyException {
         final DependencyType dependencyType = type.createAnnotationDependencyType(annotationName, currentPackageName);
-        LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullNameWithSamePackage,
+        LOGGER.log(FINE, buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullNameWithSamePackage,
                 dependencyType}));
         final GenericDependency dependency = new GenericDependencyImpl(dependencyType);
 
@@ -917,11 +918,11 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             if (dependency == null) {
                 final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
                         parentPackageName);
-                LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullName, dependencyType}));
+                LOGGER.log(FINE, buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullName, dependencyType}));
                 dependency = new GenericDependencyImpl(dependencyType);
                 programmingLanguageContext.addSeenDependencies(dependency);
             } else {
-                LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullName));
+                LOGGER.log(FINE, buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullName));
             }
         } else {
             dependency = getOrCreateParentDependencyWithImportDependency(type, parentType, programmingLanguageContext,
@@ -962,7 +963,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                     dependency.getPackageName());
             dependency.setDependencyType(dependencyType);
         } else {
-            LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
+            LOGGER.log(FINE, buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, dependency.getFullName()));
             dependency = parsedDependency;
         }
 
@@ -1008,7 +1009,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 dependency = getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(type, parentType,
                         currentPackageName, programmingLanguageContext, parentName, parentFullNameWithSamePackage);
             } else {
-                LOGGER.fine(buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullNameWithSamePackage));
+                LOGGER.log(FINE, buildLogString(DEPENDENCY_ALREADY_SEEN_FINE, parentFullNameWithSamePackage));
             }
         } else {
             dependency = getOrCreateParentDependencyWithImportDependency(type, parentType, programmingLanguageContext,
@@ -1049,7 +1050,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String parentFullNameWithSamePackage) throws PlantUMLDependencyException {
         final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
                 currentPackageName);
-        LOGGER.fine(buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullNameWithSamePackage,
+        LOGGER.log(FINE, buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullNameWithSamePackage,
                 dependencyType}));
         final GenericDependency dependency = new GenericDependencyImpl(dependencyType);
 

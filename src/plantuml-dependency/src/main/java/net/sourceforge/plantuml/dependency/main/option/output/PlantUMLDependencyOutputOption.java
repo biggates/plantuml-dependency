@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.main.option.output;
 
+import static java.util.logging.Level.FINE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.VERBOSE_OPTION_NULL_ERROR;
 import static net.sourceforge.mazix.cli.constants.log.FineConstants.OPTION_NOT_SPECIFIED_FINE;
@@ -244,7 +245,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
             optionExecution = new PlantUMLDependencyOutputOptionExecution(outputFile, programmingLanguage,
                     includesExcludes, displayOptions, getPriority());
         } else {
-            LOGGER.fine(buildLogString(OPTION_NOT_SPECIFIED_FINE, getAllNames()));
+            LOGGER.log(FINE, buildLogString(OPTION_NOT_SPECIFIED_FINE, getAllNames()));
         }
 
         return optionExecution;

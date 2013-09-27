@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument;
 
 import static java.util.Collections.unmodifiableMap;
+import static java.util.logging.Level.FINE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNullOrEmpty;
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
@@ -130,7 +131,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
 
         programmingLanguage = PROGRAMMING_LANGUAGE_MAP.get(programmingLanguageName.toLowerCase());
         if (programmingLanguage != null) {
-            LOGGER.fine(buildLogString(PROGRAMMING_LANGUAGE_FOUND_FINE, programmingLanguage));
+            LOGGER.log(FINE, buildLogString(PROGRAMMING_LANGUAGE_FOUND_FINE, programmingLanguage));
         } else {
             throw new IllegalArgumentException(buildLogString(UNKNOWN_PROGRAMMING_LANGUAGE_ERROR,
                     programmingLanguageName));

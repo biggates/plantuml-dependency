@@ -26,6 +26,7 @@ package net.sourceforge.plantuml.dependency.main.program;
 
 import static java.lang.System.currentTimeMillis;
 import static java.util.Arrays.asList;
+import static java.util.logging.Level.INFO;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils.createProgramVersionFromPropertiesFileWithinClassClassloader;
@@ -117,8 +118,8 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      */
     public static void process(final String[] args) throws PlantUMLDependencyException {
         final long start = currentTimeMillis();
-        LOGGER.info(STARTING_PLANTUML_DEPENDENCY_INFO);
-        LOGGER.info(buildLogString(PLANTUML_DEPENDENCY_ARGUMENTS_INFO, Arrays.toString(args)));
+        LOGGER.log(INFO, STARTING_PLANTUML_DEPENDENCY_INFO);
+        LOGGER.log(INFO, buildLogString(PLANTUML_DEPENDENCY_ARGUMENTS_INFO, Arrays.toString(args)));
 
         try {
             final ProgramVersion programVersion = createProgramVersionFromPropertiesFileWithinClassClassloader(
@@ -137,7 +138,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
             throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
         }
 
-        LOGGER.info(buildLogString(EXECUTION_TIME_INFO, currentTimeMillis() - start));
+        LOGGER.log(INFO, buildLogString(EXECUTION_TIME_INFO, currentTimeMillis() - start));
     }
 
     /**

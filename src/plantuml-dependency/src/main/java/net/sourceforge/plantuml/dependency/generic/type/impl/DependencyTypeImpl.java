@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantuml.dependency.generic.type.impl;
 
+import static java.util.logging.Level.FINE;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
@@ -387,13 +388,13 @@ public abstract class DependencyTypeImpl implements DependencyType {
                 for (final GenericDependency genericDependency : getImportDependenciesCollection()
                         .getImportDependenciesWithType(importType)) {
                     if (hasImportNotToBeGenerated(genericDependency)) {
-                        LOGGER.fine(buildLogString(IMPORT_IS_A_PARENT_FINE, genericDependency));
+                        LOGGER.log(FINE, buildLogString(IMPORT_IS_A_PARENT_FINE, genericDependency));
                     } else {
                         importDependenciesNotImplementedAndDisplayable.add(genericDependency);
                     }
                 }
             } else {
-                LOGGER.fine(buildLogString(DISPLAY_MODE_DOESNT_MANAGED_IMPORT_TYPE_FINE, importType));
+                LOGGER.log(FINE, buildLogString(DISPLAY_MODE_DOESNT_MANAGED_IMPORT_TYPE_FINE, importType));
             }
         }
 

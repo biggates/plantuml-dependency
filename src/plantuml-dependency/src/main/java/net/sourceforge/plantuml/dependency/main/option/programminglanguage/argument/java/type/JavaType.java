@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
 import static java.util.Collections.unmodifiableMap;
+import static java.util.logging.Level.FINE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
@@ -130,7 +131,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
 
         final JavaType javaType = JAVA_TYPE_MAP.get(javaTypeKeyword.toLowerCase());
         if (javaType != null) {
-            LOGGER.fine(buildLogString(JAVA_TYPE_FOUND_FINE, javaTypeKeyword));
+            LOGGER.log(FINE, buildLogString(JAVA_TYPE_FOUND_FINE, javaTypeKeyword));
         } else {
             throw new IllegalArgumentException(buildLogString(UNKNOWN_JAVA_TYPE_ERROR, javaTypeKeyword));
         }
@@ -338,7 +339,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
         final Set < String > parents = new TreeSet < String >();
 
         if (isEmpty(parentsString)) {
-            LOGGER.fine(JAVA_PARENT_TYPE_STRING_EMPTY_FINE);
+            LOGGER.log(FINE, JAVA_PARENT_TYPE_STRING_EMPTY_FINE);
         } else {
             final StringTokenizer tokenizer = new StringTokenizer(parentsString, COMMA_CHAR);
             while (tokenizer.hasMoreTokens()) {

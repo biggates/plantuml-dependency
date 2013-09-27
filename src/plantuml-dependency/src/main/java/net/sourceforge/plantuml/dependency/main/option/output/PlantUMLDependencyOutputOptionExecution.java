@@ -201,7 +201,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
                 getProgrammingLanguage(), getInputFileSet(), getDisplayOptions());
         final PlantUMLDiagram plantUMLDiagram = programmingLanguageContext.getPlantUMLClassesDiagram();
         writeIntoFile(plantUMLDiagram.getPlantUMLTextDescription(), getOutputFile());
-        LOGGER.info(buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies().size()));
+        LOGGER.log(INFO, buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies().size()));
     }
 
     /**
