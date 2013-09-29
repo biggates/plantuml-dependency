@@ -27,6 +27,7 @@ package net.sourceforge.plantuml.dependency.main.option.output;
 import static java.util.logging.Level.OFF;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
 import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
+import static net.sourceforge.mazix.components.utils.log.LogUtils.setLevelOfAllLoggersAndHandlers;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SETS;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.FILE_SET1;
@@ -36,7 +37,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.File;
 
 import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.components.utils.log.LogUtils;
 
 import org.junit.After;
 import org.junit.Test;
@@ -62,7 +62,7 @@ public class PlantUMLDependencyOutputOptionExecutionTest0 {
      * @since 1.2.0
      */
     public static void main(final String args[]) throws CommandLineException {
-        LogUtils.setLevelOfAllLoggersAndHandlers(OFF);
+        setLevelOfAllLoggersAndHandlers(OFF);
         writeUnitTest(0, 1, "PlantUMLDependencyOutputOptionExecutionTest0.txt");
         writeUnitTest(1, 11, "PlantUMLDependencyOutputOptionExecutionTest1.txt");
         writeUnitTest(11, 56, "PlantUMLDependencyOutputOptionExecutionTest2.txt");
