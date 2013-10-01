@@ -113,16 +113,16 @@ public abstract class DependencyTypeImpl implements DependencyType {
     private String packageName;
 
     /**
-     * The {@link Set} of all interfaces as {@link GenericDependency} which are used by the current
-     * dependency type.
+     * The {@link Set} of all parent implementations as {@link GenericDependency} which are used by
+     * the current dependency type.
      */
-    private Set < GenericDependency > parentInterfaces;
+    private Set < GenericDependency > parentImplementationsDependencies;
 
     /**
      * The {@link Set} of all annotations as {@link GenericDependency} which are used by the current
      * dependency type.
      */
-    private Set < GenericDependency > annotations;
+    private Set < GenericDependency > annotationsDependencies;
 
     /**
      * The plantUML classes diagram element as a {@link PlantUMLClassesDiagramElement} instance
@@ -169,10 +169,10 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @param importDependencies
      *            the {@link ImportDependenciesCollection} containing all import dependencies which
      *            are needed by the current dependency type to work, mustn't be <code>null</code>.
-     * @param parentInterfacesSet
+     * @param parentImplementationsDependenciesSet
      *            the {@link Set} of all interfaces as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
-     * @param annotationsSet
+     * @param annotationsDependenciesSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
      * @param nativeMth
@@ -180,15 +180,16 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet,
-            final Set < GenericDependency > annotationsSet, final boolean nativeMth) {
+            final ImportDependenciesCollection importDependencies,
+            final Set < GenericDependency > parentImplementationsDependenciesSet, final Set < GenericDependency > annotationsDependenciesSet,
+            final boolean nativeMth) {
         // TODO tests null
         // TODO tests that no space are present in the name
         setFullName(dependencyPackageName, dependencyName);
         // TODO optimization
         importDependenciesCollection = importDependencies;
-        parentInterfaces = parentInterfacesSet;
-        annotations = annotationsSet;
+        parentImplementationsDependencies = parentImplementationsDependenciesSet;
+        annotationsDependencies = annotationsDependenciesSet;
         nativeMethods = nativeMth;
     }
 
@@ -223,8 +224,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
             d = (DependencyTypeImpl) super.clone();
             // TODO deepClone don't manage cycles
             d.importDependenciesCollection = getImportDependenciesCollection().deepClone();
-            d.parentInterfaces = new TreeSet < GenericDependency >(getParentInterfaces());
-            d.annotations = new TreeSet < GenericDependency >(getAnnotations());
+            d.parentImplementationsDependencies = new TreeSet < GenericDependency >(getParentImplementationsDependencies());
+            d.annotationsDependencies = new TreeSet < GenericDependency >(getAnnotationsDependencies());
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
         }
@@ -304,9 +305,9 @@ public abstract class DependencyTypeImpl implements DependencyType {
                     abstractImportDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
-        for (final GenericDependency interfaceDependency : getParentInterfacesToGeneratePlantUML(displayOptions)) {
+        for (final GenericDependency parentImplementationsDependency : getParentInterfacesToGeneratePlantUML(displayOptions)) {
             linkSet.add(new PlantUMLClassesDiagramImplementRelationImpl(getPlantUMLClassesDiagramElement(),
-                    interfaceDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
+                    parentImplementationsDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
         for (final GenericDependency annotationDependency : getAnnotationsToGeneratePlantUML(displayOptions)) {
@@ -324,8 +325,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.2.0
      */
     @Override
-    public Set < GenericDependency > getAnnotations() {
-        return annotations;
+    public Set < GenericDependency > getAnnotationsDependencies() {
+        return annotationsDependencies;
     }
 
     /**
@@ -342,7 +343,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
         Set < GenericDependency > annotationsSet = null;
 
         if (displayOptions.contains(ANNOTATIONS)) {
-            annotationsSet = getAnnotations();
+            annotationsSet = getAnnotationsDependencies();
         } else {
             annotationsSet = new TreeSet < GenericDependency >();
         }
@@ -427,8 +428,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.0
      */
     @Override
-    public Set < GenericDependency > getParentInterfaces() {
-        return parentInterfaces;
+    public Set < GenericDependency > getParentImplementationsDependencies() {
+        return parentImplementationsDependencies;
     }
 
     /**
@@ -445,7 +446,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
         Set < GenericDependency > interfacesSet = null;
 
         if (displayOptions.contains(IMPLEMENTATIONS)) {
-            interfacesSet = getParentInterfaces();
+            interfacesSet = getParentImplementationsDependencies();
         } else {
             interfacesSet = new TreeSet < GenericDependency >();
         }
@@ -553,7 +554,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
             isToStringResursiveCall = true;
             result += ", importDependenciesCollection=" + importDependenciesCollection + ", name=" + name
                     + ", nativeMethods=" + nativeMethods + ", packageName=" + packageName + ", parentInterfaces="
-                    + parentInterfaces + ", annotations=" + annotations + ", plantUMLClassesDiagramElement="
+                    + parentImplementationsDependencies + ", annotations=" + annotationsDependencies + ", plantUMLClassesDiagramElement="
                     + plantUMLClassesDiagramElement + ", plantUMLClassesDiagramRelationSet="
                     + plantUMLClassesDiagramRelationSet + "]";
             isToStringResursiveCall = false;

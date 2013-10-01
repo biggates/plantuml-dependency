@@ -80,7 +80,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
      */
     @Override
     protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
-        return getParentInterfaces().contains(genericDependency) || getAnnotations().contains(genericDependency);
+        return getParentImplementationsDependencies().contains(genericDependency) || getAnnotationsDependencies().contains(genericDependency);
     }
 
     /**

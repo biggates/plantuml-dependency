@@ -139,10 +139,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 .hasNativeMethods());
         assertEquals(expectedDependency.getDependencyType().getImportDependenciesCollection(), resultDependency
                 .getDependencyType().getImportDependenciesCollection());
-        assertEquals(expectedDependency.getDependencyType().getParentInterfaces(), resultDependency.getDependencyType()
-                .getParentInterfaces());
-        assertEquals(expectedDependency.getDependencyType().getAnnotations(), resultDependency.getDependencyType()
-                .getAnnotations());
+        assertEquals(expectedDependency.getDependencyType().getParentImplementationsDependencies(), resultDependency.getDependencyType()
+                .getParentImplementationsDependencies());
+        assertEquals(expectedDependency.getDependencyType().getAnnotationsDependencies(), resultDependency.getDependencyType()
+                .getAnnotationsDependencies());
         if (expectedDependency.getDependencyType() instanceof ClassDependencyType) {
             final ClassDependencyType expectedDependencyType = (ClassDependencyType) expectedDependency
                     .getDependencyType();

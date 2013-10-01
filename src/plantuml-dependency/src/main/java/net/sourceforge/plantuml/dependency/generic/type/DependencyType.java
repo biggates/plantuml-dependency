@@ -46,7 +46,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
         Displayable {
 
     /**
-     * Gets the {@link Set} of all annotation as {@link GenericDependency} which are used by the
+     * Gets the {@link Set} of all annotations as {@link GenericDependency} which are used by the
      * current dependency type. If no dependencies annotations are used, it returns an empty
      * {@link Set}.
      *
@@ -54,7 +54,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      *         current dependency type.
      * @since 1.2.0
      */
-    Set < GenericDependency > getAnnotations();
+    Set < GenericDependency > getAnnotationsDependencies();
 
     /**
      * Gets the dependency full name, usually the package and the dependency name.
@@ -114,18 +114,18 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
     String getPackageName();
 
     /**
-     * Gets the {@link Set} of all interface as {@link GenericDependency} which are used by the
-     * current dependency type, i.e. extended or implemented. If no dependencies interfaces are
-     * implemented nor extended, it returns an empty {@link Set}.
+     * Gets the {@link Set} of all parent interfaces as {@link GenericDependency} which are used by
+     * the current dependency type, i.e. implemented. If no dependencies interfaces are implemented,
+     * it returns an empty {@link Set}.
      * <p>
      * For instance, in java it is represented by the <i>implements</i> keyword.
      * </p>
      *
-     * @return the {@link Set} of all interfaces as {@link GenericDependency} which are used by the
-     *         current dependency type.
+     * @return the {@link Set} of all parent interfaces as {@link GenericDependency} which are used
+     *         by the current dependency type.
      * @since 1.0
      */
-    Set < GenericDependency > getParentInterfaces();
+    Set < GenericDependency > getParentImplementationsDependencies();
 
     /**
      * Gets the PlantUML classes diagram element describing the current dependency type in the

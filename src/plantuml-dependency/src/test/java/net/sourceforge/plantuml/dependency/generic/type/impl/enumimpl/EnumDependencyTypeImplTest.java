@@ -120,12 +120,12 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getAnnotations()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getAnnotationsDependencies()}
      * .
      */
     @Test
-    public void testGetAnnotations() {
-        final Set < GenericDependency > annotations = ENUM_DEPENDENCY_TYPE1.getAnnotations();
+    public void testGetAnnotationsDependencies() {
+        final Set < GenericDependency > annotations = ENUM_DEPENDENCY_TYPE1.getAnnotationsDependencies();
         assertEquals(1, annotations.size());
         assertTrue(annotations.contains(GENERIC_DEPENDENCY50));
     }
@@ -176,12 +176,12 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentInterfaces()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentImplementationsDependencies()}
      * .
      */
     @Test
     public void testGetParentInterfaces() {
-        final Set < GenericDependency > parentInterfaces = ENUM_DEPENDENCY_TYPE1.getParentInterfaces();
+        final Set < GenericDependency > parentInterfaces = ENUM_DEPENDENCY_TYPE1.getParentImplementationsDependencies();
         assertEquals(2, parentInterfaces.size());
         assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Cloneable", "javax.lang")));
         assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Set", "java.lang")));
