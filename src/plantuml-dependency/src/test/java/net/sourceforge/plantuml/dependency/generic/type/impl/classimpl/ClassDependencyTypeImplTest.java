@@ -78,56 +78,56 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
     /** Class dependency type test 1 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE1 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
-            GENERIC_DEPENDENCY_SET2, false);
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET3,
+            GENERIC_DEPENDENCY_SET5, false);
 
     /** Class dependency type test 2 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE2 = new ClassDependencyTypeImpl(
-            "FileOutputStream", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
-            GENERIC_DEPENDENCY_SET2, false);
+            "FileOutputStream", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET3,
+            GENERIC_DEPENDENCY_SET5, false);
 
     /** Class dependency type test 3 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE3 = new ClassDependencyTypeImpl("Integer",
-            "java.io", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
-            GENERIC_DEPENDENCY_SET2, false);
+            "java.io", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET3,
+            GENERIC_DEPENDENCY_SET5, false);
 
     /** Class dependency type test 4 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE4 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", new ImportDependenciesCollectionImpl(), GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET2,
-            GENERIC_DEPENDENCY_SET5, false);
+            "java.lang", new ImportDependenciesCollectionImpl(), GENERIC_DEPENDENCY_SET5, GENERIC_DEPENDENCY_SET3,
+            GENERIC_DEPENDENCY_SET2, false);
 
     /** Class dependency type test 5 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE5 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET5,
-            GENERIC_DEPENDENCY_SET2, false);
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, new TreeSet < GenericDependency >(),
+            GENERIC_DEPENDENCY_SET5, false);
 
     /** Class dependency type test 6 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE6 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, new TreeSet < GenericDependency >(),
-            GENERIC_DEPENDENCY_SET2, false);
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET3,
+            new TreeSet < GenericDependency >(), false);
 
     /** Class dependency type test 7 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE7 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
-            new TreeSet < GenericDependency >(), false);
+            "java.lang", IMPORT_COLLECTION_TEST2, new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET3,
+            GENERIC_DEPENDENCY_SET5, false);
 
     /** Class dependency type test 8 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE8 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
-            GENERIC_DEPENDENCY_SET2, true);
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET3,
+            GENERIC_DEPENDENCY_SET5, true);
 
     /** Class dependency type test 9 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE9 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
-            GENERIC_DEPENDENCY_SET2, false);
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET3,
+            GENERIC_DEPENDENCY_SET5, false);
 
     /** Class dependency type test 10 instance. */
     @DataPoint
@@ -135,18 +135,18 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
 
     /** Class dependency type test 11 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE11 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET4, GENERIC_DEPENDENCY_SET5,
-            GENERIC_DEPENDENCY_SET3, false);
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET4,
+            GENERIC_DEPENDENCY_SET5, false);
 
     /** Class dependency type test 12 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE12 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5,
-            new TreeSet < GenericDependency >(), false);
+            "java.lang", IMPORT_COLLECTION_TEST2, new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET2,
+            GENERIC_DEPENDENCY_SET5, false);
 
     /** Class dependency type test 13 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE13 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST24, GENERIC_DEPENDENCY_SET7, GENERIC_DEPENDENCY_SET6,
-            GENERIC_DEPENDENCY_SET2, false);
+            "java.lang", IMPORT_COLLECTION_TEST24, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET7,
+            GENERIC_DEPENDENCY_SET6, false);
 
     /**
      * Test method for
@@ -155,9 +155,9 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
      */
     @Test
     public void testGetAnnotationsDependencies() {
-        final Set < GenericDependency > annotations = CLASS_DEPENDENCY_TYPE1.getAnnotationsDependencies();
-        assertEquals(1, annotations.size());
-        assertTrue(annotations.contains(GENERIC_DEPENDENCY50));
+        final Set < GenericDependency > annotationsDependencies = CLASS_DEPENDENCY_TYPE1.getAnnotationsDependencies();
+        assertEquals(1, annotationsDependencies.size());
+        assertTrue(annotationsDependencies.contains(GENERIC_DEPENDENCY50));
     }
 
     /**
@@ -206,14 +206,15 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl#getParentClasses()}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentExtensionsDependencies()}
      * .
      */
     @Test
-    public void testGetParentClasses() {
-        final Set < GenericDependency > parentClasses = CLASS_DEPENDENCY_TYPE1.getParentClasses();
-        assertEquals(1, parentClasses.size());
-        assertTrue(parentClasses.contains(GENERIC_DEPENDENCY1));
+    public void testGetParentExtensionsDependencies() {
+        final Set < GenericDependency > parentExtensionsDependencies = CLASS_DEPENDENCY_TYPE1
+                .getParentExtensionsDependencies();
+        assertEquals(1, parentExtensionsDependencies.size());
+        assertTrue(parentExtensionsDependencies.contains(GENERIC_DEPENDENCY1));
     }
 
     /**
@@ -222,11 +223,12 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
      * .
      */
     @Test
-    public void testGetParentInterfaces() {
-        final Set < GenericDependency > parentInterfaces = CLASS_DEPENDENCY_TYPE1.getParentImplementationsDependencies();
-        assertEquals(2, parentInterfaces.size());
-        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Cloneable", "javax.lang")));
-        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Set", "java.lang")));
+    public void testGetParentImplementationsDependencies() {
+        final Set < GenericDependency > parentImplementationsDependencies = CLASS_DEPENDENCY_TYPE1
+                .getParentImplementationsDependencies();
+        assertEquals(2, parentImplementationsDependencies.size());
+        assertTrue(parentImplementationsDependencies.contains(new GenericDependencyImpl("Cloneable", "javax.lang")));
+        assertTrue(parentImplementationsDependencies.contains(new GenericDependencyImpl("Set", "java.lang")));
     }
 
     /**

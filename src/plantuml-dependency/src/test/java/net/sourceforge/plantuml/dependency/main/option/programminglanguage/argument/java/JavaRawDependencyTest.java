@@ -135,12 +135,12 @@ public class JavaRawDependencyTest extends ComparableAndDeepCloneableObjectTest 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency#getParentExtentions()}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency#getParentExtensions()}
      * .
      */
     @Test
-    public void testGetParentExtentions() {
-        final Set < String > extensions = JAVA_RAW_DEPENDENCY1.getParentExtentions();
+    public void testGetParentExtensions() {
+        final Set < String > extensions = JAVA_RAW_DEPENDENCY1.getParentExtensions();
         assertEquals(1, extensions.size());
         assertTrue(extensions.contains("java.lang.Number"));
     }

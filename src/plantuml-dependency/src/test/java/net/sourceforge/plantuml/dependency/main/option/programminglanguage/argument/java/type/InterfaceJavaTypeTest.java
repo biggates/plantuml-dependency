@@ -148,27 +148,27 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentExtentions(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentExtensions(java.lang.String)}
      * .
      *
      * @throws PlantUMLDependencyException
      */
     @Test
     public void testExtractParentExtentionsWithEmptyString() throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentExtentions(BLANK_STRING);
+        final Set < String > parents = JAVA_TYPE1.extractParentExtensions(BLANK_STRING);
         assertEquals(0, parents.size());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentExtentions(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType#extractParentExtensions(java.lang.String)}
      * .
      *
      * @throws PlantUMLDependencyException
      */
     @Test
     public void testExtractParentExtentionsWithSingleParentWithoutGenerics() throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle");
+        final Set < String > parents = JAVA_TYPE1.extractParentExtensions("Rectangle");
         assertEquals(1, parents.size());
         assertTrue(parents.contains("Rectangle"));
     }

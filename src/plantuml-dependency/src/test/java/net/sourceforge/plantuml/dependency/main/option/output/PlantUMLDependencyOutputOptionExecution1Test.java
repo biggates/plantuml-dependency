@@ -1,5 +1,5 @@
 /*
- PlantUMLDependencyOutputOptionExecutionTest1.java
+ PlantUMLDependencyOutputOptionExecution1Test.java
  Creation date : 07/09/2013
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
@@ -54,7 +54,7 @@ import org.junit.Test;
  * @since 1.2.0
  * @version 1.2.0
  */
-public class PlantUMLDependencyOutputOptionExecutionTest1 {
+public class PlantUMLDependencyOutputOptionExecution1Test {
 
     /** Test file 1 instance. */
     private static final File TEST_FILE1 = new File("plantuml.txt");

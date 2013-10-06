@@ -119,9 +119,10 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
      */
     @Test
     public void testGetAnnotationsDependencies() {
-        final Set < GenericDependency > annotations = INTERFACE_DEPENDENCY_TYPE1.getAnnotationsDependencies();
-        assertEquals(1, annotations.size());
-        assertTrue(annotations.contains(GENERIC_DEPENDENCY50));
+        final Set < GenericDependency > annotationsDependencies = INTERFACE_DEPENDENCY_TYPE1
+                .getAnnotationsDependencies();
+        assertEquals(1, annotationsDependencies.size());
+        assertTrue(annotationsDependencies.contains(GENERIC_DEPENDENCY50));
     }
 
     /**
@@ -170,15 +171,28 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
 
     /**
      * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentExtensionsDependencies()}
+     * .
+     */
+    @Test
+    public void testGetParentExtensionsDependencies() {
+        final Set < GenericDependency > parentExtensionsDependencies = INTERFACE_DEPENDENCY_TYPE1
+                .getParentExtensionsDependencies();
+        assertEquals(2, parentExtensionsDependencies.size());
+        assertTrue(parentExtensionsDependencies.contains(new GenericDependencyImpl("Cloneable", "javax.lang")));
+        assertTrue(parentExtensionsDependencies.contains(new GenericDependencyImpl("Set", "java.lang")));
+    }
+
+    /**
+     * Test method for
      * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentImplementationsDependencies()}
      * .
      */
     @Test
-    public void testGetParentInterfaces() {
-        final Set < GenericDependency > parentInterfaces = INTERFACE_DEPENDENCY_TYPE1.getParentImplementationsDependencies();
-        assertEquals(2, parentInterfaces.size());
-        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Cloneable", "javax.lang")));
-        assertTrue(parentInterfaces.contains(new GenericDependencyImpl("Set", "java.lang")));
+    public void testGetParentImplementationsDependencies() {
+        final Set < GenericDependency > parentImplementationsDependencies = INTERFACE_DEPENDENCY_TYPE1
+                .getParentImplementationsDependencies();
+        assertEquals(0, parentImplementationsDependencies.size());
     }
 
     /**

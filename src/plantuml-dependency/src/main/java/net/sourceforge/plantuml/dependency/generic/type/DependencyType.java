@@ -114,6 +114,20 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
     String getPackageName();
 
     /**
+     * Gets the {@link Set} of all parent extensions as {@link GenericDependency} which are used by
+     * the current dependency type, i.e. extended. If no dependencies are extended, it returns an
+     * empty {@link Set}.
+     * <p>
+     * For instance, in java it is represented by the <i>extends</i> keyword.
+     * </p>
+     *
+     * @return the {@link Set} of all parent extensions as {@link GenericDependency} which are used
+     *         by the current dependency type.
+     * @since 1.2.0
+     */
+    Set < GenericDependency > getParentExtensionsDependencies();
+
+    /**
      * Gets the {@link Set} of all parent interfaces as {@link GenericDependency} which are used by
      * the current dependency type, i.e. implemented. If no dependencies interfaces are implemented,
      * it returns an empty {@link Set}.

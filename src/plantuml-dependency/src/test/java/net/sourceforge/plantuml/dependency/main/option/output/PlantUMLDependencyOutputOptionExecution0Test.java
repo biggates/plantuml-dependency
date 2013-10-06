@@ -1,5 +1,5 @@
 /*
- PlantUMLDependencyOutputOptionExecutionTest0.java
+ PlantUMLDependencyOutputOptionExecution0Test.java
  Creation date : 07/09/2013
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
@@ -49,7 +49,7 @@ import org.junit.Test;
  * @since 1.2.0
  * @version 1.2.0
  */
-public class PlantUMLDependencyOutputOptionExecutionTest0 {
+public class PlantUMLDependencyOutputOptionExecution0Test {
 
     /** Test file 1 instance. */
     private static final File TEST_FILE1 = new File("plantuml.txt");
@@ -76,7 +76,8 @@ public class PlantUMLDependencyOutputOptionExecutionTest0 {
         writeUnitTest(1023, 1024, "PlantUMLDependencyOutputOptionExecutionTest10.txt");
     }
 
-    public static void writeUnitTest(int startIndex, int endIndex, String filePath) throws CommandLineException {
+    public static void writeUnitTest(final int startIndex, final int endIndex, final String filePath)
+            throws CommandLineException {
         final StringBuilder buffer = new StringBuilder();
 
         for (int i = startIndex; i < endIndex; i++) {

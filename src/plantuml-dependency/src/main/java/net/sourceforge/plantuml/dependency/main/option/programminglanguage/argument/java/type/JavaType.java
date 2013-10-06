@@ -198,11 +198,11 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      * @param importDependencies
      *            the {@link ImportDependenciesCollection} containing all import dependencies which
      *            are needed by the current dependency type to work, mustn't be <code>null</code>.
+     * @param parentExtensionsDependencies
+     *            the {@link Set} of all {@link GenericDependency} which are extended, mustn't be
+     *            <code>null</code>.
      * @param parentImplementationsDependencies
      *            the {@link Set} of all {@link GenericDependency} which are implemented, mustn't be
-     *            <code>null</code>.
-     * @param parentExtentionsDependencies
-     *            the {@link Set} of all {@link GenericDependency} which are extended, mustn't be
      *            <code>null</code>.
      * @param annotationDependencies
      *            the {@link Set} of all {@link GenericDependency} which are used as annotation,
@@ -215,8 +215,8 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      */
     public abstract DependencyType createDependencyType(String dependencyName, String dependencyPackageName,
             boolean isAbstract, ImportDependenciesCollection importDependencies,
-            Set < GenericDependency > parentImplementationsDependencies,
-            Set < GenericDependency > parentExtentionsDependencies, Set < GenericDependency > annotationDependencies,
+            Set < GenericDependency > parentExtensionsDependencies,
+            Set < GenericDependency > parentImplementationsDependencies, Set < GenericDependency > annotationDependencies,
             boolean hasNativeMethods);
 
     /**
@@ -297,7 +297,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      *             type.
      * @since 1.0
      */
-    public abstract Set < String > extractParentExtentions(String extendsString) throws PlantUMLDependencyException;
+    public abstract Set < String > extractParentExtensions(String extendsString) throws PlantUMLDependencyException;
 
     /**
      * Parses and extracts the {@link Set} of parent dependency names of type

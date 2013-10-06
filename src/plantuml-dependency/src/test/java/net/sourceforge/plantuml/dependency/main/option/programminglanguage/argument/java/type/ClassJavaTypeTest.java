@@ -90,7 +90,7 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getPackageName(), true,
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentExtensionsDependencies(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
@@ -105,7 +105,7 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
                 CLASS_ABSTRACT_DEPENDENCY_TYPE8.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE8.getPackageName(), true,
                 CLASS_ABSTRACT_DEPENDENCY_TYPE8.getImportDependenciesCollection(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE8.getParentImplementationsDependencies(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getParentClasses(), CLASS_ABSTRACT_DEPENDENCY_TYPE8.getAnnotationsDependencies(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getParentExtensionsDependencies(), CLASS_ABSTRACT_DEPENDENCY_TYPE8.getAnnotationsDependencies(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE8.hasNativeMethods()));
     }
 
@@ -119,7 +119,7 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
         assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_DEPENDENCY_TYPE1.getName(),
                 CLASS_DEPENDENCY_TYPE1.getPackageName(), false,
                 CLASS_DEPENDENCY_TYPE1.getImportDependenciesCollection(), CLASS_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                CLASS_DEPENDENCY_TYPE1.getParentClasses(), CLASS_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
+                CLASS_DEPENDENCY_TYPE1.getParentExtensionsDependencies(), CLASS_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
                 CLASS_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
@@ -151,27 +151,27 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#extractParentExtentions(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#extractParentExtensions(java.lang.String)}
      * .
      *
      * @throws PlantUMLDependencyException
      */
     @Test
     public void testExtractParentExtentionsWithEmptyString() throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentExtentions(BLANK_STRING);
+        final Set < String > parents = JAVA_TYPE1.extractParentExtensions(BLANK_STRING);
         assertEquals(0, parents.size());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#extractParentExtentions(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType#extractParentExtensions(java.lang.String)}
      * .
      *
      * @throws PlantUMLDependencyException
      */
     @Test
     public void testExtractParentExtentionsWithSingleParentWithoutGenerics() throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentExtentions("Rectangle");
+        final Set < String > parents = JAVA_TYPE1.extractParentExtensions("Rectangle");
         assertEquals(1, parents.size());
         assertTrue(parents.contains("Rectangle"));
     }

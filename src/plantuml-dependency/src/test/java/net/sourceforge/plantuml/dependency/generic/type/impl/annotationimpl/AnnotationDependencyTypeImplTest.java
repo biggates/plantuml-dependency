@@ -117,10 +117,11 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
      */
     @Test
     public void testGetAnnotationsDependencies() {
-        final Set < GenericDependency > annotations = ANNOTATION_DEPENDENCY_TYPE1.getAnnotationsDependencies();
-        assertEquals(2, annotations.size());
-        assertTrue(annotations.contains(GENERIC_DEPENDENCY52));
-        assertTrue(annotations.contains(GENERIC_DEPENDENCY53));
+        final Set < GenericDependency > annotationsDependencies = ANNOTATION_DEPENDENCY_TYPE1
+                .getAnnotationsDependencies();
+        assertEquals(2, annotationsDependencies.size());
+        assertTrue(annotationsDependencies.contains(GENERIC_DEPENDENCY52));
+        assertTrue(annotationsDependencies.contains(GENERIC_DEPENDENCY53));
     }
 
     /**
@@ -169,13 +170,26 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentExtensionsDependencies()}
+     * .
+     */
+    @Test
+    public void testGetParentExtensionsDependencies() {
+        final Set < GenericDependency > parentExtensionsDependencies = ANNOTATION_DEPENDENCY_TYPE1
+                .getParentExtensionsDependencies();
+        assertEquals(0, parentExtensionsDependencies.size());
+    }
+
+    /**
+     * Test method for
      * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentImplementationsDependencies()}
      * .
      */
     @Test
-    public void testGetParentInterfaces() {
-        final Set < GenericDependency > parentInterfaces = ANNOTATION_DEPENDENCY_TYPE1.getParentImplementationsDependencies();
-        assertEquals(0, parentInterfaces.size());
+    public void testGetParentImplementationsDependencies() {
+        final Set < GenericDependency > parentImplementationsDependencies = ANNOTATION_DEPENDENCY_TYPE1
+                .getParentImplementationsDependencies();
+        assertEquals(0, parentImplementationsDependencies.size());
     }
 
     /**

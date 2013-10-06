@@ -132,27 +132,27 @@ public class AnnotationJavaTypeTest extends ComparableObjectTest < AnnotationJav
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType#extractParentExtentions(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType#extractParentExtensions(java.lang.String)}
      * .
      *
      * @throws PlantUMLDependencyException
      */
     @Test
     public void testExtractParentExtentionsWithEmptyString() throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentExtentions(BLANK_STRING);
+        final Set < String > parents = JAVA_TYPE1.extractParentExtensions(BLANK_STRING);
         assertEquals(0, parents.size());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType#extractParentExtentions(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType#extractParentExtensions(java.lang.String)}
      * .
      *
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
     public void testExtractParentExtentionsWithSingleParentWithoutGenerics() throws PlantUMLDependencyException {
-        JAVA_TYPE1.extractParentExtentions("Rectangle");
+        JAVA_TYPE1.extractParentExtensions("Rectangle");
     }
 
     /**

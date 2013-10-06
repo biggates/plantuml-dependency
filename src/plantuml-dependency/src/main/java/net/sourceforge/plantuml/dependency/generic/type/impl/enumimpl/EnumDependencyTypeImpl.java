@@ -62,7 +62,7 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.0
      */
     public EnumDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        super(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
+        this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
                 new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
     }
 
@@ -77,10 +77,10 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      * @param importDependencies
      *            the {@link ImportDependenciesCollection} containing all import dependencies which
      *            are needed by the current dependency type to work, mustn't be <code>null</code>.
-     * @param parentInterfacesSet
-     *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
-     *            used by the current dependency type, mustn't be <code>null</code>.
-     * @param annotationsSet
+     * @param parentImplementationsDependenciesSet
+     *            the {@link Set} of all implementations as {@link GenericDependency} which are used
+     *            by the current dependency type, mustn't be <code>null</code>.
+     * @param annotationsDependenciesSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
      * @param hasNativeMethods
@@ -88,10 +88,11 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.0
      */
     public EnumDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet,
-            final Set < GenericDependency > annotationsSet, final boolean hasNativeMethods) {
-        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, annotationsSet,
-                hasNativeMethods);
+            final ImportDependenciesCollection importDependencies,
+            final Set < GenericDependency > parentImplementationsDependenciesSet,
+            final Set < GenericDependency > annotationsDependenciesSet, final boolean hasNativeMethods) {
+        super(dependencyName, dependencyPackageName, importDependencies, new TreeSet < GenericDependency >(),
+                parentImplementationsDependenciesSet, annotationsDependenciesSet, hasNativeMethods);
     }
 
     /**
@@ -102,16 +103,6 @@ public class EnumDependencyTypeImpl extends DependencyTypeImpl {
     @Override
     protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
         return new PlantUMLClassesDiagramEnumElementImpl(getFullName());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
-        return getParentImplementationsDependencies().contains(genericDependency) || getAnnotationsDependencies().contains(genericDependency);
     }
 
     /**

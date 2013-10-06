@@ -75,7 +75,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * The {@link Set} of all dependency extensions full names (package + class), i.e. classes or
      * interfaces the dependency "extends".
      */
-    private Set < String > parentExtentions;
+    private Set < String > parentExtensions;
 
     /**
      * The {@link Set} dependency implementations full names (package + class), i.e. interfaces the
@@ -103,7 +103,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      *            the dependency java type, such as "class" or "interface".
      * @param dependencyName
      *            the dependency name, such as "String".
-     * @param extentions
+     * @param extensions
      *            the {@link Set} of all dependency extensions full names (package + class), i.e.
      *            classes or interfaces the dependency "extends".
      * @param implementations
@@ -114,13 +114,13 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @since 1.0
      */
     public JavaRawDependency(final boolean isAbs, final String dependencyPackageName, final JavaType javaType,
-            final String dependencyName, final Set < String > extentions, final Set < String > implementations,
+            final String dependencyName, final Set < String > extensions, final Set < String > implementations,
             final boolean nativeMth) {
         setAbstract(isAbs);
         setPackageName(dependencyPackageName);
         setType(javaType);
         setName(dependencyName);
-        setParentExtentions(extentions);
+        setParentExtensions(extensions);
         setParentImplementations(implementations);
         setNativeMethods(nativeMth);
     }
@@ -153,7 +153,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
 
         try {
             j = (JavaRawDependency) super.clone();
-            j.parentExtentions = new TreeSet < String >(getParentExtentions());
+            j.parentExtensions = new TreeSet < String >(getParentExtensions());
             j.parentImplementations = new TreeSet < String >(getParentImplementations());
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
@@ -229,14 +229,14 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     }
 
     /**
-     * Gets the value of <code>parentExtentions</code>.
+     * Gets the value of <code>parentExtensions</code>.
      *
-     * @return the value of <code>parentExtentions</code>.
-     * @see #setParentExtentions(Set)
+     * @return the value of <code>parentExtensions</code>.
+     * @see #setParentExtensions(Set)
      * @since 1.0
      */
-    public Set < String > getParentExtentions() {
-        return parentExtentions;
+    public Set < String > getParentExtensions() {
+        return parentExtensions;
     }
 
     /**
@@ -346,15 +346,15 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     }
 
     /**
-     * Sets the value of <code>parentExtentions</code>.
+     * Sets the value of <code>parentExtensions</code>.
      *
      * @param value
-     *            the <code>parentExtentions</code> to set, can be <code>null</code>.
-     * @see #getParentExtentions()
+     *            the <code>parentExtensions</code> to set, can be <code>null</code>.
+     * @see #getParentExtensions()
      * @since 1.0
      */
-    public void setParentExtentions(final Set < String > value) {
-        parentExtentions = value;
+    public void setParentExtensions(final Set < String > value) {
+        parentExtensions = value;
     }
 
     /**
@@ -389,7 +389,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     @Override
     public String toString() {
         return getClass().getSimpleName() + " [isAbstract=" + isAbstract + ", packageName=" + packageName + ", type="
-                + type + ", name=" + name + ", nativeMethods=" + nativeMethods + ", parentExtentions="
-                + parentExtentions + ", parentImplementations=" + parentImplementations + "]";
+                + type + ", name=" + name + ", nativeMethods=" + nativeMethods + ", parentExtensions="
+                + parentExtensions + ", parentImplementations=" + parentImplementations + "]";
     }
 }

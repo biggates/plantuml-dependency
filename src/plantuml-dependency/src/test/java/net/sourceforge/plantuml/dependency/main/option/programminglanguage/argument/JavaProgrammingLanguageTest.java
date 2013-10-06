@@ -88,7 +88,6 @@ import static org.junit.Assert.assertNotNull;
 import net.sourceforge.mazix.components.ComparableObjectTest;
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
-import net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType;
 import net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
@@ -141,14 +140,10 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 .getDependencyType().getImportDependenciesCollection());
         assertEquals(expectedDependency.getDependencyType().getParentImplementationsDependencies(), resultDependency.getDependencyType()
                 .getParentImplementationsDependencies());
+        assertEquals(expectedDependency.getDependencyType().getParentExtensionsDependencies(), resultDependency.getDependencyType()
+                .getParentExtensionsDependencies());
         assertEquals(expectedDependency.getDependencyType().getAnnotationsDependencies(), resultDependency.getDependencyType()
                 .getAnnotationsDependencies());
-        if (expectedDependency.getDependencyType() instanceof ClassDependencyType) {
-            final ClassDependencyType expectedDependencyType = (ClassDependencyType) expectedDependency
-                    .getDependencyType();
-            final ClassDependencyType resultDependencyType = (ClassDependencyType) resultDependency.getDependencyType();
-            assertEquals(expectedDependencyType.getParentClasses(), resultDependencyType.getParentClasses());
-        }
     }
 
     /**

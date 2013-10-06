@@ -62,8 +62,8 @@ public class AnnotationDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.2.0
      */
     public AnnotationDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        super(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
-                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
+        this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
+                new TreeSet < GenericDependency >());
     }
 
     /**
@@ -77,15 +77,15 @@ public class AnnotationDependencyTypeImpl extends DependencyTypeImpl {
      * @param importDependencies
      *            the {@link ImportDependenciesCollection} containing all import dependencies which
      *            are needed by the current dependency type to work, mustn't be <code>null</code>.
-     * @param annotationsSet
+     * @param annotationsDependenciesSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
      * @since 1.2.0
      */
     public AnnotationDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > annotationsSet) {
-        super(dependencyName, dependencyPackageName, importDependencies, new TreeSet < GenericDependency >(),
-                annotationsSet, false);
+            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > annotationsDependenciesSet) {
+        super(dependencyName, dependencyPackageName, importDependencies, new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
+                annotationsDependenciesSet, false);
     }
 
     /**
@@ -96,16 +96,6 @@ public class AnnotationDependencyTypeImpl extends DependencyTypeImpl {
     @Override
     protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
         return new PlantUMLClassesDiagramAnnotationElementImpl(getFullName());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.2.0
-     */
-    @Override
-    protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
-        return getAnnotationsDependencies().contains(genericDependency);
     }
 
     /**

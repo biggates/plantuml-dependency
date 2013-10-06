@@ -1,5 +1,5 @@
 /*
- PlantUMLDependencyOutputOptionExecutionTest2.java
+ PlantUMLDependencyOutputOptionExecution2Test.java
  Creation date : 07/09/2013
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
@@ -89,7 +89,7 @@ import org.junit.Test;
  * @since 1.2.0
  * @version 1.2.0
  */
-public class PlantUMLDependencyOutputOptionExecutionTest2 {
+public class PlantUMLDependencyOutputOptionExecution2Test {
 
     /** Test file 1 instance. */
     private static final File TEST_FILE1 = new File("plantuml.txt");
@@ -658,7 +658,7 @@ public class PlantUMLDependencyOutputOptionExecutionTest2 {
                 TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET44, 1);
         outputOptionExecution.execute();
         assertEquals(
-                "@startuml\r\ninterface java.lang.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface1\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface2\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface5\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface6\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.TeaaTest\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface3\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface4\r\n@enduml",
+                "@startuml\r\ninterface java.lang.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface1\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface2\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface5\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface6\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.TeaaTest\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface3\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface4\r\nnet.sourceforge.plantuml.dependency.main.option.output.Interface2 --|> net.sourceforge.plantuml.dependency.main.option.output.Interface1\r\nnet.sourceforge.plantuml.dependency.main.option.output.Interface5 --|> net.sourceforge.plantuml.dependency.main.option.output.test.Interface4\r\nnet.sourceforge.plantuml.dependency.main.option.output.Interface6 --|> net.sourceforge.plantuml.dependency.main.option.output.Interface2\r\nnet.sourceforge.plantuml.dependency.main.option.output.Interface6 --|> net.sourceforge.plantuml.dependency.main.option.output.test.Interface3\r\nnet.sourceforge.plantuml.dependency.main.option.output.Interface6 --|> net.sourceforge.plantuml.dependency.main.option.output.test.Interface4\r\nnet.sourceforge.plantuml.dependency.main.option.output.TeaaTest --|> net.sourceforge.plantuml.dependency.main.option.output.Readable\r\nnet.sourceforge.plantuml.dependency.main.option.output.test.Interface4 --|> java.lang.Readable\r\n@enduml",
                 readFileIntoString(TEST_FILE1));
     }
 
@@ -721,7 +721,7 @@ public class PlantUMLDependencyOutputOptionExecutionTest2 {
                 TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET48, 1);
         outputOptionExecution.execute();
         assertEquals(
-                "@startuml\r\ninterface java.lang.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface1\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface2\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface5\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface6\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.TeaaTest\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface3\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface4\r\nnet.sourceforge.plantuml.dependency.main.option.output.Interface2 --|> net.sourceforge.plantuml.dependency.main.option.output.Interface1\r\nnet.sourceforge.plantuml.dependency.main.option.output.Interface5 --|> net.sourceforge.plantuml.dependency.main.option.output.test.Interface4\r\nnet.sourceforge.plantuml.dependency.main.option.output.Interface6 --|> net.sourceforge.plantuml.dependency.main.option.output.Interface2\r\nnet.sourceforge.plantuml.dependency.main.option.output.Interface6 --|> net.sourceforge.plantuml.dependency.main.option.output.test.Interface3\r\nnet.sourceforge.plantuml.dependency.main.option.output.Interface6 --|> net.sourceforge.plantuml.dependency.main.option.output.test.Interface4\r\nnet.sourceforge.plantuml.dependency.main.option.output.TeaaTest --|> net.sourceforge.plantuml.dependency.main.option.output.Readable\r\nnet.sourceforge.plantuml.dependency.main.option.output.test.Interface4 --|> java.lang.Readable\r\n@enduml",
+                "@startuml\r\ninterface java.lang.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface1\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface2\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface5\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface6\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.TeaaTest\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface3\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface4\r\n@enduml",
                 readFileIntoString(TEST_FILE1));
     }
 

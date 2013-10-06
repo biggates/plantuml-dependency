@@ -143,12 +143,12 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 importDependenciesCollection, programmingLanguageContext, javaRawDependency.getPackageName());
 
         final Set < GenericDependency > parentExtentionsDependencies = extractParentDependencies(
-                javaRawDependency.getType(), EXTENSION, javaRawDependency.getParentExtentions(),
+                javaRawDependency.getType(), EXTENSION, javaRawDependency.getParentExtensions(),
                 importDependenciesCollection, programmingLanguageContext, javaRawDependency.getPackageName());
 
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
-                importDependenciesCollection, parentImplementationsDependencies, parentExtentionsDependencies,
+                importDependenciesCollection, parentExtentionsDependencies, parentImplementationsDependencies,
                 annotationsDependencies, hasNativeMethods);
         return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
     }
@@ -1122,8 +1122,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final Set < String > parentImplementations = type.extractParentImplementations(matcher.group(5));
             javaRawDependency.setParentImplementations(parentImplementations);
 
-            final Set < String > parentExtentions = type.extractParentExtentions(matcher.group(4));
-            javaRawDependency.setParentExtentions(parentExtentions);
+            final Set < String > parentExtensions = type.extractParentExtensions(matcher.group(4));
+            javaRawDependency.setParentExtensions(parentExtensions);
 
             final boolean nativeMethods = type.extractNativeMethods(javaSourceFileContent);
             javaRawDependency.setNativeMethods(nativeMethods);

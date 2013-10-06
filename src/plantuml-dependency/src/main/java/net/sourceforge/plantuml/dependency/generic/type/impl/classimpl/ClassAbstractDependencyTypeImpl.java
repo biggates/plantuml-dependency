@@ -77,25 +77,25 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @param importDependencies
      *            the {@link ImportDependenciesCollection} containing all import dependencies which
      *            are needed by the current dependency type to work, mustn't be <code>null</code>.
-     * @param parentInterfacesSet
-     *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
-     *            used by the current dependency type, mustn't be <code>null</code>.
-     * @param annotationsSet
+     * @param parentExtensionsDependenciesSet
+     *            the {@link Set} of all extensions as {@link GenericDependency} which are used by
+     *            the current dependency type, mustn't be <code>null</code>.
+     * @param parentImplementationsDependenciesSet
+     *            the {@link Set} of all implementations as {@link GenericDependency} which are used
+     *            by the current dependency type, mustn't be <code>null</code>.
+     * @param annotationsDependenciesSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
-     * @param parentClassesSet
-     *            the {@link Set} of all parent classes as {@link GenericDependency} which are used
-     *            by the current dependency type, mustn't be <code>null</code>.
      * @param hasNativeMethods
      *            the boolean indicating if the dependency has native methods inside.
      * @since 1.0
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet,
-            final Set < GenericDependency > annotationsSet, final Set < GenericDependency > parentClassesSet,
+            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentExtensionsDependenciesSet,
+            final Set < GenericDependency > parentImplementationsDependenciesSet, final Set < GenericDependency > annotationsDependenciesSet,
             final boolean hasNativeMethods) {
-        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, annotationsSet,
-                parentClassesSet, hasNativeMethods);
+        super(dependencyName, dependencyPackageName, importDependencies, parentExtensionsDependenciesSet, parentImplementationsDependenciesSet,
+                annotationsDependenciesSet, hasNativeMethods);
     }
 
     /**

@@ -118,13 +118,24 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
 
     /**
      * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentExtensionsDependencies()}
+     * .
+     */
+    @Test
+    public void testGetParentExtensionsDependencies() {
+        final Set < GenericDependency > parentExtensionsDependencies = STUB_DEPENDENCY_TYPE1.getParentExtensionsDependencies();
+        assertEquals(0, parentExtensionsDependencies.size());
+    }
+
+    /**
+     * Test method for
      * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getParentImplementationsDependencies()}
      * .
      */
     @Test
-    public void testGetParentInterfaces() {
-        final Set < GenericDependency > parentInterfaces = STUB_DEPENDENCY_TYPE1.getParentImplementationsDependencies();
-        assertEquals(0, parentInterfaces.size());
+    public void testGetParentImplementationsDependencies() {
+        final Set < GenericDependency > parentImplementationsDependencies = STUB_DEPENDENCY_TYPE1.getParentImplementationsDependencies();
+        assertEquals(0, parentImplementationsDependencies.size());
     }
 
     /**

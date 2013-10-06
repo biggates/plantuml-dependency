@@ -98,25 +98,25 @@ class ClassJavaType extends JavaType {
     @Override
     public DependencyType createDependencyType(final String dependencyName, final String dependencyPackageName,
             final boolean isAbstract, final ImportDependenciesCollection importDependencies,
+            final Set < GenericDependency > parentExtensionsDependencies,
             final Set < GenericDependency > parentImplementationsDependencies,
-            final Set < GenericDependency > parentExtentionsDependencies,
             final Set < GenericDependency > annotationDependencies, final boolean hasNativeMethods) {
         checkNull(dependencyName, JAVA_TYPE_NAME_NULL_ERROR);
         checkNull(dependencyPackageName, JAVA_TYPE_PACKAGE_NAME_NULL_ERROR);
         checkNull(importDependencies, JAVA_TYPE_IMPORTS_NULL_ERROR);
         checkNull(parentImplementationsDependencies, JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR);
-        checkNull(parentExtentionsDependencies, JAVA_TYPE_EXTENTIONS_NULL_ERROR);
+        checkNull(parentExtensionsDependencies, JAVA_TYPE_EXTENTIONS_NULL_ERROR);
         checkNull(annotationDependencies, JAVA_TYPE_ANNOTATIONS_NULL_ERROR);
 
         DependencyType dependencyType = null;
 
         if (isAbstract) {
             dependencyType = new ClassAbstractDependencyTypeImpl(dependencyName, dependencyPackageName,
-                    importDependencies, parentImplementationsDependencies, annotationDependencies,
-                    parentExtentionsDependencies, hasNativeMethods);
+                    importDependencies, parentExtensionsDependencies, parentImplementationsDependencies,
+                    annotationDependencies, hasNativeMethods);
         } else {
             dependencyType = new ClassDependencyTypeImpl(dependencyName, dependencyPackageName, importDependencies,
-                    parentImplementationsDependencies, annotationDependencies, parentExtentionsDependencies,
+                    parentExtensionsDependencies, parentImplementationsDependencies, annotationDependencies,
                     hasNativeMethods);
         }
 
@@ -164,7 +164,7 @@ class ClassJavaType extends JavaType {
      * @since 1.0
      */
     @Override
-    public Set < String > extractParentExtentions(final String extendsString) throws PlantUMLDependencyException {
+    public Set < String > extractParentExtensions(final String extendsString) throws PlantUMLDependencyException {
         return extractParents(extendsString);
     }
 

@@ -150,32 +150,32 @@ public class EnumJavaTypeTest extends ComparableObjectTest < EnumJavaType > {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentExtentions(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentExtensions(java.lang.String)}
      * .
      *
      * @throws PlantUMLDependencyException
      */
     @Test
     public void testExtractParentExtentionsWithEmptyString() throws PlantUMLDependencyException {
-        final Set < String > parents = JAVA_TYPE1.extractParentExtentions(BLANK_STRING);
+        final Set < String > parents = JAVA_TYPE1.extractParentExtensions(BLANK_STRING);
         assertEquals(0, parents.size());
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentExtentions(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentExtensions(java.lang.String)}
      * .
      *
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
     public void testExtractParentExtentionsWithSingleParentWithImbricatedGenerics() throws PlantUMLDependencyException {
-        JAVA_TYPE1.extractParentExtentions("Rectangle < Toto < Test > >");
+        JAVA_TYPE1.extractParentExtensions("Rectangle < Toto < Test > >");
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentExtentions(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentExtensions(java.lang.String)}
      * .
      *
      * @throws PlantUMLDependencyException
@@ -183,19 +183,19 @@ public class EnumJavaTypeTest extends ComparableObjectTest < EnumJavaType > {
     @Test(expected = PlantUMLDependencyException.class)
     public void testExtractParentExtentionsWithSingleParentWithNotImbricatedGenerics()
             throws PlantUMLDependencyException {
-        JAVA_TYPE1.extractParentExtentions("Rectangle < Toto >");
+        JAVA_TYPE1.extractParentExtensions("Rectangle < Toto >");
     }
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentExtentions(java.lang.String)}
+     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#extractParentExtensions(java.lang.String)}
      * .
      *
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
     public void testExtractParentExtentionsWithSingleParentWithoutGenerics() throws PlantUMLDependencyException {
-        JAVA_TYPE1.extractParentExtentions("Rectangle");
+        JAVA_TYPE1.extractParentExtensions("Rectangle");
     }
 
     /**

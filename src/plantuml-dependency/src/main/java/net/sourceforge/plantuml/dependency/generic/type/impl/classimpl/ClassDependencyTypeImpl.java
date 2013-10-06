@@ -25,22 +25,17 @@
 package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
-import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.EXTENSIONS;
 
 import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.plantuml.dependency.generic.GenericDependency;
-import net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType;
-import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
 import net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantuml.dependency.main.option.display.argument.Display;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
-import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramExtendRelationImpl;
 
 /**
  * The class implementation of the
@@ -51,16 +46,10 @@ import net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl
  * @since 1.0
  * @version 1.2.0
  */
-public class ClassDependencyTypeImpl extends DependencyTypeImpl implements ClassDependencyType {
+public class ClassDependencyTypeImpl extends DependencyTypeImpl {
 
     /** Serial version UID. */
     private static final long serialVersionUID = -8464283913821256094L;
-
-    /**
-     * The {@link Set} of all parent classes as {@link GenericDependency} which are used by the
-     * current dependency type.
-     */
-    private Set < GenericDependency > parentClasses;
 
     /**
      * Default constructor.
@@ -89,40 +78,26 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      * @param importDependencies
      *            the {@link ImportDependenciesCollection} containing all import dependencies which
      *            are needed by the current dependency type to work, mustn't be <code>null</code>.
-     * @param parentInterfacesSet
-     *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
-     *            used by the current dependency type, mustn't be <code>null</code>.
-     * @param annotationsSet
+     * @param parentExtensionsDependenciesSet
+     *            the {@link Set} of all extensions as {@link GenericDependency} which are used by
+     *            the current dependency type, mustn't be <code>null</code>.
+     * @param parentImplementationsDependenciesSet
+     *            the {@link Set} of all implementations as {@link GenericDependency} which are used
+     *            by the current dependency type, mustn't be <code>null</code>.
+     * @param annotationsDependenciesSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
-     * @param parentClassesSet
-     *            the {@link Set} of all parent classes as {@link GenericDependency} which are used
-     *            by the current dependency type, mustn't be <code>null</code>.
      * @param hasNativeMethods
      *            the boolean indicating if the dependency has native methods inside.
      * @since 1.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet,
-            final Set < GenericDependency > annotationsSet, final Set < GenericDependency > parentClassesSet,
-            final boolean hasNativeMethods) {
-        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, annotationsSet,
-                hasNativeMethods);
-        // TODO optimization
-        parentClasses = parentClassesSet;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    public DependencyType deepClone() {
-        final ClassDependencyTypeImpl c = (ClassDependencyTypeImpl) super.deepClone();
-        // TODO deepClone don't manage cycles
-        c.parentClasses = new TreeSet < GenericDependency >(getParentClasses());
-        return c;
+            final ImportDependenciesCollection importDependencies,
+            final Set < GenericDependency > parentExtensionsDependenciesSet,
+            final Set < GenericDependency > parentImplementationsDependenciesSet,
+            final Set < GenericDependency > annotationsDependenciesSet, final boolean hasNativeMethods) {
+        super(dependencyName, dependencyPackageName, importDependencies, parentExtensionsDependenciesSet,
+                parentImplementationsDependenciesSet, annotationsDependenciesSet, hasNativeMethods);
     }
 
     /**
@@ -141,68 +116,6 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      * @since 1.1.1
      */
     @Override
-    protected Set < PlantUMLClassesDiagramRelation > generatePlantUMLClassesDiagramRelationFooter(
-            final Set < Display > displayOptions) {
-        final Set < PlantUMLClassesDiagramRelation > linkSet = super
-                .generatePlantUMLClassesDiagramRelationFooter(displayOptions);
-
-        for (final GenericDependency classDependency : getParentClassesToGeneratePlantUML(displayOptions)) {
-            linkSet.add(new PlantUMLClassesDiagramExtendRelationImpl(getPlantUMLClassesDiagramElement(),
-                    classDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
-        }
-
-        return linkSet;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    public Set < GenericDependency > getParentClasses() {
-        return parentClasses;
-    }
-
-    /**
-     * Gets the parent interfaces which have to be generated appear in the plantUML file.
-     *
-     * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML links description,
-     *            mustn't be <code>null</code>.
-     * @return the {@link Set} of {@link GenericDependency} which have to be generated appear in the
-     *         plantUML file.
-     * @since 1.1.1
-     */
-    private Set < GenericDependency > getParentClassesToGeneratePlantUML(final Set < Display > displayOptions) {
-        Set < GenericDependency > classesSet = null;
-
-        if (displayOptions.contains(EXTENSIONS)) {
-            classesSet = getParentClasses();
-        } else {
-            classesSet = new TreeSet < GenericDependency >();
-        }
-
-        return classesSet;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
-        return getParentImplementationsDependencies().contains(genericDependency) || getParentClasses().contains(genericDependency)
-                || getAnnotationsDependencies().contains(genericDependency);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.1.1
-     */
-    @Override
     public boolean isDisplayable(final Set < Display > displayOptions) {
         return displayOptions.contains(CLASSES);
     }
@@ -212,6 +125,6 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl implements Class
      */
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [" + super.toString() + ", parentClasses=" + parentClasses + "]";
+        return getClass().getSimpleName() + " [" + super.toString() + "]";
     }
 }

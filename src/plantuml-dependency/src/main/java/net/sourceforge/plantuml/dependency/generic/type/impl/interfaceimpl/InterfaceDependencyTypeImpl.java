@@ -77,18 +77,20 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
      * @param importDependencies
      *            the {@link ImportDependenciesCollection} containing all import dependencies which
      *            are needed by the current dependency type to work, mustn't be <code>null</code>.
-     * @param parentInterfacesSet
-     *            the {@link Set} of all parent interfaces as {@link GenericDependency} which are
-     *            used by the current dependency type, mustn't be <code>null</code>.
-     * @param annotationsSet
+     * @param parentExtensionsDependenciesSet
+     *            the {@link Set} of all extensions as {@link GenericDependency} which are used by
+     *            the current dependency type, mustn't be <code>null</code>.
+     * @param annotationsDependenciesSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
      * @since 1.0
      */
     public InterfaceDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentInterfacesSet,
-            final Set < GenericDependency > annotationsSet) {
-        super(dependencyName, dependencyPackageName, importDependencies, parentInterfacesSet, annotationsSet, false);
+            final ImportDependenciesCollection importDependencies,
+            final Set < GenericDependency > parentExtensionsDependenciesSet,
+            final Set < GenericDependency > annotationsDependenciesSet) {
+        super(dependencyName, dependencyPackageName, importDependencies, parentExtensionsDependenciesSet,
+                new TreeSet < GenericDependency >(), annotationsDependenciesSet, false);
     }
 
     /**
@@ -99,16 +101,6 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
     @Override
     protected PlantUMLClassesDiagramElement generatePlantUMLClassesDiagramElement() {
         return new PlantUMLClassesDiagramInterfaceElementImpl(getFullName());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    protected boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
-        return getParentImplementationsDependencies().contains(genericDependency) || getAnnotationsDependencies().contains(genericDependency);
     }
 
     /**
