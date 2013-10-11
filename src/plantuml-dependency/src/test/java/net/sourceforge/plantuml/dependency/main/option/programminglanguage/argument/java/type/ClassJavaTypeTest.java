@@ -89,8 +89,9 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
         assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getPackageName(), true,
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentExtensionsDependencies(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getParentExtensionsDependencies(), CLASS_ABSTRACT_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
@@ -104,8 +105,9 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
         assertEquals(CLASS_ABSTRACT_DEPENDENCY_TYPE8, JAVA_TYPE1.createDependencyType(
                 CLASS_ABSTRACT_DEPENDENCY_TYPE8.getName(), CLASS_ABSTRACT_DEPENDENCY_TYPE8.getPackageName(), true,
                 CLASS_ABSTRACT_DEPENDENCY_TYPE8.getImportDependenciesCollection(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getParentExtensionsDependencies(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE8.getParentImplementationsDependencies(),
-                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getParentExtensionsDependencies(), CLASS_ABSTRACT_DEPENDENCY_TYPE8.getAnnotationsDependencies(),
+                CLASS_ABSTRACT_DEPENDENCY_TYPE8.getAnnotationsDependencies(),
                 CLASS_ABSTRACT_DEPENDENCY_TYPE8.hasNativeMethods()));
     }
 
@@ -116,11 +118,14 @@ public class ClassJavaTypeTest extends ComparableObjectTest < ClassJavaType > {
      */
     @Test
     public void testCreateDependencyTypeNotAbstract() {
-        assertEquals(CLASS_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(CLASS_DEPENDENCY_TYPE1.getName(),
-                CLASS_DEPENDENCY_TYPE1.getPackageName(), false,
-                CLASS_DEPENDENCY_TYPE1.getImportDependenciesCollection(), CLASS_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                CLASS_DEPENDENCY_TYPE1.getParentExtensionsDependencies(), CLASS_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
-                CLASS_DEPENDENCY_TYPE1.hasNativeMethods()));
+        assertEquals(
+                CLASS_DEPENDENCY_TYPE1,
+                JAVA_TYPE1.createDependencyType(CLASS_DEPENDENCY_TYPE1.getName(),
+                        CLASS_DEPENDENCY_TYPE1.getPackageName(), false,
+                        CLASS_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
+                        CLASS_DEPENDENCY_TYPE1.getParentExtensionsDependencies(),
+                        CLASS_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
+                        CLASS_DEPENDENCY_TYPE1.getAnnotationsDependencies(), CLASS_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
     /**

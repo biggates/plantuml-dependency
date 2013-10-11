@@ -61,9 +61,8 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @since 1.0
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
-        this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
-                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
-                new TreeSet < GenericDependency >(), false);
+        this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(), null,
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
     }
 
     /**
@@ -77,9 +76,9 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @param importDependencies
      *            the {@link ImportDependenciesCollection} containing all import dependencies which
      *            are needed by the current dependency type to work, mustn't be <code>null</code>.
-     * @param parentExtensionsDependenciesSet
-     *            the {@link Set} of all extensions as {@link GenericDependency} which are used by
-     *            the current dependency type, mustn't be <code>null</code>.
+     * @param parentExtensionsDependency
+     *            the parent extensions {@link GenericDependency} which are used by the current
+     *            dependency type, may be <code>null</code>.
      * @param parentImplementationsDependenciesSet
      *            the {@link Set} of all implementations as {@link GenericDependency} which are used
      *            by the current dependency type, mustn't be <code>null</code>.
@@ -91,11 +90,11 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @since 1.0
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > parentExtensionsDependenciesSet,
-            final Set < GenericDependency > parentImplementationsDependenciesSet, final Set < GenericDependency > annotationsDependenciesSet,
-            final boolean hasNativeMethods) {
-        super(dependencyName, dependencyPackageName, importDependencies, parentExtensionsDependenciesSet, parentImplementationsDependenciesSet,
-                annotationsDependenciesSet, hasNativeMethods);
+            final ImportDependenciesCollection importDependencies, final GenericDependency parentExtensionsDependency,
+            final Set < GenericDependency > parentImplementationsDependenciesSet,
+            final Set < GenericDependency > annotationsDependenciesSet, final boolean hasNativeMethods) {
+        super(dependencyName, dependencyPackageName, importDependencies, parentExtensionsDependency,
+                parentImplementationsDependenciesSet, annotationsDependenciesSet, hasNativeMethods);
     }
 
     /**

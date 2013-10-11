@@ -25,6 +25,8 @@
 package net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type;
 
 import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
+import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNumberOfElementsInCollection;
+import static net.sourceforge.mazix.components.utils.collection.CollectionUtils.getCollectionFirstElement;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants.NATIVE_METHODS_REGEXP;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_ANNOTATION_TYPE_NAME_NULL_ERROR;
@@ -35,6 +37,7 @@ import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.J
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_PARENT_TYPE_UNKNOWN_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_ANNOTATIONS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_EXTENTIONS_NULL_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_EXTENTIONS_TOO_MANY_ELEMENTS_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_IMPORTS_NULL_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.JAVA_TYPE_NAME_NULL_ERROR;
@@ -106,17 +109,19 @@ class ClassJavaType extends JavaType {
         checkNull(importDependencies, JAVA_TYPE_IMPORTS_NULL_ERROR);
         checkNull(parentImplementationsDependencies, JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR);
         checkNull(parentExtensionsDependencies, JAVA_TYPE_EXTENTIONS_NULL_ERROR);
+        checkNumberOfElementsInCollection(parentExtensionsDependencies, 1, JAVA_TYPE_EXTENTIONS_TOO_MANY_ELEMENTS_ERROR);
         checkNull(annotationDependencies, JAVA_TYPE_ANNOTATIONS_NULL_ERROR);
 
         DependencyType dependencyType = null;
+        final GenericDependency parentExtensionDependency = getCollectionFirstElement(parentExtensionsDependencies);
 
         if (isAbstract) {
             dependencyType = new ClassAbstractDependencyTypeImpl(dependencyName, dependencyPackageName,
-                    importDependencies, parentExtensionsDependencies, parentImplementationsDependencies,
+                    importDependencies, parentExtensionDependency, parentImplementationsDependencies,
                     annotationDependencies, hasNativeMethods);
         } else {
             dependencyType = new ClassDependencyTypeImpl(dependencyName, dependencyPackageName, importDependencies,
-                    parentExtensionsDependencies, parentImplementationsDependencies, annotationDependencies,
+                    parentExtensionDependency, parentImplementationsDependencies, annotationDependencies,
                     hasNativeMethods);
         }
 

@@ -91,41 +91,44 @@ public final class ErrorConstants {
     /** The java type extensions dependencies null error message. */
     public static final String JAVA_TYPE_EXTENTIONS_NULL_ERROR = "[error-plantuml-dependency-018] : The java type extensions dependencies is null";
 
+    /** The java type extensions too many elements error message. */
+    public static final String JAVA_TYPE_EXTENTIONS_TOO_MANY_ELEMENTS_ERROR = "[error-plantuml-dependency-019] : The java type extensions dependencies has too many elements";
+
     /** The java type implementations dependencies null error message. */
-    public static final String JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR = "[error-plantuml-dependency-019] : The java type implementations dependencies is null";
+    public static final String JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR = "[error-plantuml-dependency-020] : The java type implementations dependencies is null";
 
     /** The java type import dependencies null error message. */
-    public static final String JAVA_TYPE_IMPORTS_NULL_ERROR = "[error-plantuml-dependency-020] : The java type import dependencies is null";
+    public static final String JAVA_TYPE_IMPORTS_NULL_ERROR = "[error-plantuml-dependency-021] : The java type import dependencies is null";
 
     /** The java type language keyword null error message. */
-    public static final String JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR = "[error-plantuml-dependency-021] : The java type language keyword is null";
+    public static final String JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR = "[error-plantuml-dependency-022] : The java type language keyword is null";
 
     /** The java type name null error message. */
-    public static final String JAVA_TYPE_NAME_NULL_ERROR = "[error-plantuml-dependency-022] : The java type name is null";
+    public static final String JAVA_TYPE_NAME_NULL_ERROR = "[error-plantuml-dependency-023] : The java type name is null";
 
     /** The java type package name null error message. */
-    public static final String JAVA_TYPE_PACKAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-023] : The java type package name is null";
+    public static final String JAVA_TYPE_PACKAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-024] : The java type package name is null";
 
     /** The not display argument error message. */
-    public static final String NOT_DISPLAY_ARGUMENT_ERROR = "[error-plantuml-dependency-024] : Can't parse option argument \"{0}\", it isn't a valid display argument";
+    public static final String NOT_DISPLAY_ARGUMENT_ERROR = "[error-plantuml-dependency-025] : Can't parse option argument \"{0}\", it isn't a valid display argument";
 
     /** The plantUML dependency error message. */
-    public static final String PLANTUML_DEPENDENCY_ERROR = "[error-plantuml-dependency-025] : An error has occured while running PlantUML Dependency, please check the log for more information";
+    public static final String PLANTUML_DEPENDENCY_ERROR = "[error-plantuml-dependency-026] : An error has occured while running PlantUML Dependency, please check the log for more information";
 
     /** The programming language name null error message. */
-    public static final String PROGRAMMING_LANGUAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-026] : The programming language name is null";
+    public static final String PROGRAMMING_LANGUAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-027] : The programming language name is null";
 
     /** The programming language option null error message. */
-    public static final String PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR = "[error-plantuml-dependency-027] : The programming language option is null";
+    public static final String PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR = "[error-plantuml-dependency-028] : The programming language option is null";
 
     /** The reading source file error message. */
-    public static final String READING_SOURCE_FILE_ERROR = "[error-plantuml-dependency-028] : Severe parsing errors have occurred while reading the source file \"{0}\", the file will be ignored";
+    public static final String READING_SOURCE_FILE_ERROR = "[error-plantuml-dependency-029] : Severe parsing errors have occurred while reading the source file \"{0}\", the file will be ignored";
 
     /** The unknown programming language error message. */
-    public static final String UNKNOWN_JAVA_TYPE_ERROR = "[error-plantuml-dependency-029] : The java type \"{0}\" is unknown";
+    public static final String UNKNOWN_JAVA_TYPE_ERROR = "[error-plantuml-dependency-030] : The java type \"{0}\" is unknown";
 
     /** The unknown programming language error message. */
-    public static final String UNKNOWN_PROGRAMMING_LANGUAGE_ERROR = "[error-plantuml-dependency-030] : The programming language \"{0}\" is unknown";
+    public static final String UNKNOWN_PROGRAMMING_LANGUAGE_ERROR = "[error-plantuml-dependency-031] : The programming language \"{0}\" is unknown";
 
     /**
      * Private constructor to prevent from instantiation.

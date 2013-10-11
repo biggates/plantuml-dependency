@@ -87,8 +87,8 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
     public void testCreateDependencyTypeAbstract() {
         assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
                 INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true,
-                INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                INTERFACE_DEPENDENCY_TYPE1.getParentImplementationsDependencies(), new TreeSet < GenericDependency >(),
+                INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(), new TreeSet < GenericDependency >(),
+                INTERFACE_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
                 INTERFACE_DEPENDENCY_TYPE1.getAnnotationsDependencies(), true));
     }
 
@@ -101,8 +101,8 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
     public void testCreateDependencyTypeAbstractWithNativeMethods() {
         assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
                 INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true,
-                INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                INTERFACE_DEPENDENCY_TYPE1.getParentImplementationsDependencies(), new TreeSet < GenericDependency >(),
+                INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(), new TreeSet < GenericDependency >(),
+                INTERFACE_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
                 INTERFACE_DEPENDENCY_TYPE1.getAnnotationsDependencies(), true));
     }
 
@@ -115,8 +115,8 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
     public void testCreateDependencyTypeNotAbstract() {
         assertEquals(INTERFACE_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(INTERFACE_DEPENDENCY_TYPE1.getName(),
                 INTERFACE_DEPENDENCY_TYPE1.getPackageName(), false,
-                INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                INTERFACE_DEPENDENCY_TYPE1.getParentImplementationsDependencies(), new TreeSet < GenericDependency >(),
+                INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(), new TreeSet < GenericDependency >(),
+                INTERFACE_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
                 INTERFACE_DEPENDENCY_TYPE1.getAnnotationsDependencies(), false));
     }
 

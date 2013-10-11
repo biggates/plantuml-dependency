@@ -85,9 +85,10 @@ public class AnnotationJavaTypeTest extends ComparableObjectTest < AnnotationJav
     public void testCreateDependencyTypeAnnotationAbstract() {
         assertEquals(ANNOTATION_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(
                 ANNOTATION_DEPENDENCY_TYPE1.getName(), ANNOTATION_DEPENDENCY_TYPE1.getPackageName(), true,
-                ANNOTATION_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                ANNOTATION_DEPENDENCY_TYPE1.getParentImplementationsDependencies(), new TreeSet < GenericDependency >(),
-                ANNOTATION_DEPENDENCY_TYPE1.getAnnotationsDependencies(), ANNOTATION_DEPENDENCY_TYPE1.hasNativeMethods()));
+                ANNOTATION_DEPENDENCY_TYPE1.getImportDependenciesCollection(), new TreeSet < GenericDependency >(),
+                ANNOTATION_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
+                ANNOTATION_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
+                ANNOTATION_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
     /**
@@ -99,9 +100,10 @@ public class AnnotationJavaTypeTest extends ComparableObjectTest < AnnotationJav
     public void testCreateDependencyTypeAnnotationNotAbstract() {
         assertEquals(ANNOTATION_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(
                 ANNOTATION_DEPENDENCY_TYPE1.getName(), ANNOTATION_DEPENDENCY_TYPE1.getPackageName(), false,
-                ANNOTATION_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                ANNOTATION_DEPENDENCY_TYPE1.getParentImplementationsDependencies(), new TreeSet < GenericDependency >(),
-                ANNOTATION_DEPENDENCY_TYPE1.getAnnotationsDependencies(), ANNOTATION_DEPENDENCY_TYPE1.hasNativeMethods()));
+                ANNOTATION_DEPENDENCY_TYPE1.getImportDependenciesCollection(), new TreeSet < GenericDependency >(),
+                ANNOTATION_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
+                ANNOTATION_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
+                ANNOTATION_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
     /**

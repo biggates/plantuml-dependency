@@ -92,7 +92,7 @@ public class EnumJavaTypeTest extends ComparableObjectTest < EnumJavaType > {
     public void testCreateDependencyTypeAbstract() {
         assertEquals(ENUM_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE1.getName(),
                 ENUM_DEPENDENCY_TYPE1.getPackageName(), true, ENUM_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                ENUM_DEPENDENCY_TYPE1.getParentImplementationsDependencies(), new TreeSet < GenericDependency >(),
+                new TreeSet < GenericDependency >(), ENUM_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
                 ENUM_DEPENDENCY_TYPE1.getAnnotationsDependencies(), ENUM_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 
@@ -105,7 +105,7 @@ public class EnumJavaTypeTest extends ComparableObjectTest < EnumJavaType > {
     public void testCreateDependencyTypeAbstractWithNativeMethods() {
         assertEquals(ENUM_DEPENDENCY_TYPE7, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE7.getName(),
                 ENUM_DEPENDENCY_TYPE7.getPackageName(), true, ENUM_DEPENDENCY_TYPE7.getImportDependenciesCollection(),
-                ENUM_DEPENDENCY_TYPE7.getParentImplementationsDependencies(), new TreeSet < GenericDependency >(),
+                new TreeSet < GenericDependency >(), ENUM_DEPENDENCY_TYPE7.getParentImplementationsDependencies(),
                 ENUM_DEPENDENCY_TYPE7.getAnnotationsDependencies(), ENUM_DEPENDENCY_TYPE7.hasNativeMethods()));
     }
 
@@ -118,7 +118,7 @@ public class EnumJavaTypeTest extends ComparableObjectTest < EnumJavaType > {
     public void testCreateDependencyTypeNotAbstract() {
         assertEquals(ENUM_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE1.getName(),
                 ENUM_DEPENDENCY_TYPE1.getPackageName(), false, ENUM_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
-                ENUM_DEPENDENCY_TYPE1.getParentImplementationsDependencies(), new TreeSet < GenericDependency >(),
+                new TreeSet < GenericDependency >(), ENUM_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
                 ENUM_DEPENDENCY_TYPE1.getAnnotationsDependencies(), ENUM_DEPENDENCY_TYPE1.hasNativeMethods()));
     }
 

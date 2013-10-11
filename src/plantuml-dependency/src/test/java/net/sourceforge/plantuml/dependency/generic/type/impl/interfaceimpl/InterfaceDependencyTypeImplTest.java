@@ -219,6 +219,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
                 INTERFACE_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
+    // TODO test display set with native and standard import
+
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
