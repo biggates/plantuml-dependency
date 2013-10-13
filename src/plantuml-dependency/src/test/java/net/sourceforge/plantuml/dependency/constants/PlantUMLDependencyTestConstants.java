@@ -764,4 +764,11 @@ public final class PlantUMLDependencyTestConstants {
     public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET7 = new TreeSet < GenericDependency >(
             asList(new GenericDependency[] {new GenericDependencyImpl("Serializable", "java.io"),
                     new GenericDependencyImpl("Set", "java.lang")}));
+
+    /** Generic dependency set test 8 instance. */
+    public static final Set < GenericDependency > GENERIC_DEPENDENCY_SET8 = new TreeSet < GenericDependency >(
+            asList(new GenericDependency[] {
+                    new GenericDependencyImpl(new InterfaceDependencyTypeImpl("DeepCloneable",
+                            "net.sourceforge.mazix.components.clone")),
+                    new GenericDependencyImpl(new InterfaceDependencyTypeImpl("Set", "java.lang"))}));
 }

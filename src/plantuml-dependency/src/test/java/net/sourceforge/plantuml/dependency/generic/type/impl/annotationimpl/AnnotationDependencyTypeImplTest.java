@@ -265,7 +265,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -277,7 +277,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -289,7 +289,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -301,7 +301,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -313,7 +313,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -325,7 +325,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -337,7 +337,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -349,7 +349,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -361,7 +361,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -373,7 +373,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -384,7 +384,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -395,7 +395,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -406,7 +406,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -417,7 +417,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -429,7 +429,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -440,7 +440,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -452,7 +452,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -464,7 +464,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -475,7 +475,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -486,7 +486,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -497,7 +497,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -509,7 +509,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -520,7 +520,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -532,7 +532,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -544,7 +544,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -555,7 +555,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -566,7 +566,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -578,7 +578,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -589,7 +589,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -601,7 +601,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -613,7 +613,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -624,7 +624,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -635,7 +635,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -646,7 +646,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -658,7 +658,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -669,7 +669,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -680,7 +680,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -691,7 +691,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -703,7 +703,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -714,7 +714,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -726,7 +726,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -738,7 +738,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -749,7 +749,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -761,7 +761,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -773,7 +773,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -785,7 +785,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -798,7 +798,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -810,7 +810,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test
@@ -822,7 +822,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(java.util.Set)}
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
      * .
      */
     @Test

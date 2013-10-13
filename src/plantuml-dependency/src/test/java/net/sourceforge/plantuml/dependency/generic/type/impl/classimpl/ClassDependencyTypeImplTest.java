@@ -26,12 +26,58 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.classimpl;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET12;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET13;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET14;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET15;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET16;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET17;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET18;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET19;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET20;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET21;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET22;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET23;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET24;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET25;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET26;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET27;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET28;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET29;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET30;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET31;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET32;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET33;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET34;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET35;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET36;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET37;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET38;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET39;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET40;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET41;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET42;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET43;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET44;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET45;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET46;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET47;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET48;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET49;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET50;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET51;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET52;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET53;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET54;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET55;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET56;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY50;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET3;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET5;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET6;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET7;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET8;
 import static net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST2;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST24;
@@ -40,9 +86,23 @@ import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relati
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImplTest.PLANTUML_IMPLEMENT_RELATION_TEST5;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImplTest.PLANTUML_IMPLEMENT_RELATION_TEST7;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImplTest.PLANTUML_IMPLEMENT_RELATION_TEST8;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST17;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST19;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST20;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST22;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST24;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST25;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST27;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST30;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST31;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST32;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST33;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST34;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST35;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST36;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST37;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST38;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST39;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST5;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST6;
 import static org.junit.Assert.assertEquals;
@@ -86,8 +146,8 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
     /** Class dependency type test 3 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE3 = new ClassDependencyTypeImpl("Integer",
-            "java.io", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY1, GENERIC_DEPENDENCY_SET3,
-            GENERIC_DEPENDENCY_SET5, false);
+            "java.io", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY1, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
+            false);
 
     /** Class dependency type test 4 instance. */
     @DataPoint
@@ -110,8 +170,7 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
     /** Class dependency type test 7 instance. */
     @DataPoint
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE7 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, null, GENERIC_DEPENDENCY_SET3,
-            GENERIC_DEPENDENCY_SET5, false);
+            "java.lang", IMPORT_COLLECTION_TEST2, null, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5, false);
 
     /** Class dependency type test 8 instance. */
     @DataPoint
@@ -131,8 +190,7 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
 
     /** Class dependency type test 11 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE11 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, null, GENERIC_DEPENDENCY_SET2,
-            GENERIC_DEPENDENCY_SET5, false);
+            "java.lang", IMPORT_COLLECTION_TEST2, null, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5, false);
 
     /** Class dependency type test 12 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE12 = new ClassDependencyTypeImpl("Integer",
@@ -141,8 +199,8 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
 
     /** Class dependency type test 13 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE13 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST25, GENERIC_DEPENDENCY1, GENERIC_DEPENDENCY_SET7,
-            GENERIC_DEPENDENCY_SET6, false);
+            "java.lang", IMPORT_COLLECTION_TEST25, new GenericDependencyImpl(new ClassDependencyTypeImpl("Object",
+                    "java.lang")), GENERIC_DEPENDENCY_SET8, GENERIC_DEPENDENCY_SET6, false);
 
     /**
      * Test method for
@@ -244,14 +302,532 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
      * .
      */
     @Test
+    public void testGetPlantUMLClassesDiagramRelations12() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST22})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET12));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations13() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST22})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET13));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations14() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST22})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET14));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations15() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST22})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET15));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations16() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST22})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET16));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations17() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST22})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET17));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations18() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST22})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET18));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations19() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST22, PLANTUML_USE_RELATION_TEST30})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET19));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations20() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST22, PLANTUML_USE_RELATION_TEST31})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET20));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations21() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET21));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations22() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET22));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations23() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET23));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations24() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET24));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations25() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST32})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET25));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations26() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET26));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations27() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST30})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET27));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations28() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST33})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET28));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations29() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET29));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations30() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET30));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations31() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET31));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations32() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST17, PLANTUML_USE_RELATION_TEST19})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET32));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations33() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET33));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations34() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST30})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET34));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations35() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST34, PLANTUML_USE_RELATION_TEST38})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET35));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations36() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET36));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations37() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET37));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations38() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST35})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET38));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations39() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET39));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations40() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST30})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET40));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations41() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST39})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET41));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations42() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET42));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations43() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET43));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations44() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET44));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations45() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST30})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET45));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations46() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET46));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations47() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET47));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations48() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET48));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations49() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST30})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET49));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations50() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET50));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations51() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST36})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET51));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations52() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST30})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET52));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations53() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET53));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations54() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST30})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET54));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations55() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST37})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET55));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations56() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST30})),
+                CLASS_DEPENDENCY_TYPE13.getPlantUMLClassesDiagramRelations(DISPLAY_SET56));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
     public void testGetPlantUMLClassesDiagramRelationsWithInterfaceAndImportDependenciesAndAnnotations() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_IMPLEMENT_RELATION_TEST5, PLANTUML_USE_RELATION_TEST5, PLANTUML_USE_RELATION_TEST6,
                 PLANTUML_USE_RELATION_TEST25})),
                 CLASS_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
-
-    // TODO test display set with native and standard import
 
     /**
      * Test method for
