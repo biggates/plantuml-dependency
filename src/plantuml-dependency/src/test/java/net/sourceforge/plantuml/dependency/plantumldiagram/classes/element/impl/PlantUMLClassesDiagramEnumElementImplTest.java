@@ -79,6 +79,10 @@ public class PlantUMLClassesDiagramEnumElementImplTest extends
     public static final PlantUMLClassesDiagramEnumElementImpl PLANTUML_ENUM_ELEMENT_TEST8 = new PlantUMLClassesDiagramEnumElementImpl(
             "net.sourceforge.plantuml.dependency.main.option.display.argument.Display");
 
+    /** PlantUML classes diagram enum element test 9 instance. */
+    public static final PlantUMLClassesDiagramEnumElementImpl PLANTUML_ENUM_ELEMENT_TEST9 = new PlantUMLClassesDiagramEnumElementImpl(
+            "net.sourceforge.plantuml.dependency.generic.type.ImportType");
+
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getElementTag()}
