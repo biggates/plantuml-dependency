@@ -36,7 +36,7 @@ import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relati
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImplTest.PLANTUML_IMPLEMENT_RELATION_TEST11;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImplTest.PLANTUML_IMPLEMENT_RELATION_TEST9;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST10;
-import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST28;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST29;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST8;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST9;
 import static org.junit.Assert.assertEquals;
@@ -220,7 +220,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelationsWithInterfaceAndImportDependenciesAndAnnotations() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST8, PLANTUML_USE_RELATION_TEST9, PLANTUML_IMPLEMENT_RELATION_TEST11,
-                PLANTUML_USE_RELATION_TEST28})),
+                PLANTUML_USE_RELATION_TEST29})),
                 ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
@@ -233,7 +233,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelationsWithoutInterfaceAndImportDependenciesAndAnnotations() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST8, PLANTUML_USE_RELATION_TEST9, PLANTUML_USE_RELATION_TEST10,
-                PLANTUML_IMPLEMENT_RELATION_TEST9, PLANTUML_IMPLEMENT_RELATION_TEST10, PLANTUML_USE_RELATION_TEST28})),
+                PLANTUML_IMPLEMENT_RELATION_TEST9, PLANTUML_IMPLEMENT_RELATION_TEST10, PLANTUML_USE_RELATION_TEST29})),
                 ENUM_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 }

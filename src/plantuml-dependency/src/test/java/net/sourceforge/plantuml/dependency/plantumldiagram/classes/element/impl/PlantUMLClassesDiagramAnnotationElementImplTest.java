@@ -82,6 +82,10 @@ public class PlantUMLClassesDiagramAnnotationElementImplTest extends
     @DataPoint
     public static final PlantUMLClassesDiagramAnnotationElementImpl PLANTUML_ANNOTATION_ELEMENT_TEST8 = null;
 
+    /** PlantUML classes diagram annotation element test 9 instance. */
+    public static final PlantUMLClassesDiagramAnnotationElementImpl PLANTUML_ANNOTATION_ELEMENT_TEST9 = new PlantUMLClassesDiagramAnnotationElementImpl(
+            "java.lang.annotation.Target");
+
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getElementTag()}

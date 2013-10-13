@@ -99,6 +99,22 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST13 = new PlantUMLClassesDiagramClassElementImpl(
             "javax.lang.Cloneable");
 
+    /** PlantUML classes diagram class element test 14 instance. */
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST14 = new PlantUMLClassesDiagramClassElementImpl(
+            "javax.native.NativeCall");
+
+    /** PlantUML classes diagram class element test 15 instance. */
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST15 = new PlantUMLClassesDiagramClassElementImpl(
+            "java.io.InputStream");
+
+    /** PlantUML classes diagram class element test 16 instance. */
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST16 = new PlantUMLClassesDiagramClassElementImpl(
+            "net.sourceforge.mazix.cli.option.AbstractOption");
+
+    /** PlantUML classes diagram class element test 17 instance. */
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST17 = new PlantUMLClassesDiagramClassElementImpl(
+            "javax.activation.Tag");
+
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getElementTag()}

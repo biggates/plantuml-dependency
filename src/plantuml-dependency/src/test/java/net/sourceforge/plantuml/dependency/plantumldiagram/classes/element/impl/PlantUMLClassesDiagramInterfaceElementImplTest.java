@@ -36,7 +36,7 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class PlantUMLClassesDiagramInterfaceElementImplTest extends
         ComparableAndDeepCloneableObjectTest < PlantUMLClassesDiagramInterfaceElementImpl > {
@@ -74,6 +74,14 @@ public class PlantUMLClassesDiagramInterfaceElementImplTest extends
     /** PlantUML classes diagram interface element test 8 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST8 = null;
+
+    /** PlantUML classes diagram interface element test 9 instance. */
+    public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST9 = new PlantUMLClassesDiagramInterfaceElementImpl(
+            "java.lang.Comparable");
+
+    /** PlantUML classes diagram interface element test 10 instance. */
+    public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST10 = new PlantUMLClassesDiagramInterfaceElementImpl(
+            "java.lang.Character");
 
     /**
      * Test method for

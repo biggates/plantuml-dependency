@@ -36,7 +36,7 @@ import org.junit.experimental.theories.DataPoint;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class PlantUMLClassesDiagramEnumElementImplTest extends
         ComparableAndDeepCloneableObjectTest < PlantUMLClassesDiagramEnumElementImpl > {
@@ -74,6 +74,10 @@ public class PlantUMLClassesDiagramEnumElementImplTest extends
     /** PlantUML classes diagram enum element test 7 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramEnumElementImpl PLANTUML_ENUM_ELEMENT_TEST7 = null;
+
+    /** PlantUML classes diagram enum element test 8 instance. */
+    public static final PlantUMLClassesDiagramEnumElementImpl PLANTUML_ENUM_ELEMENT_TEST8 = new PlantUMLClassesDiagramEnumElementImpl(
+            "net.sourceforge.plantuml.dependency.main.option.display.argument.Display");
 
     /**
      * Test method for
