@@ -199,8 +199,8 @@ public class ClassDependencyTypeImplTest extends DeepCloneableObjectTest < Class
 
     /** Class dependency type test 13 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE13 = new ClassDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST25, new GenericDependencyImpl(new ClassDependencyTypeImpl("Object",
-                    "java.lang")), GENERIC_DEPENDENCY_SET8, GENERIC_DEPENDENCY_SET6, false);
+            "java.lang", IMPORT_COLLECTION_TEST25, new GenericDependencyImpl(new ClassDependencyTypeImpl("File",
+                    "java.io")), GENERIC_DEPENDENCY_SET8, GENERIC_DEPENDENCY_SET6, false);
 
     /**
      * Test method for

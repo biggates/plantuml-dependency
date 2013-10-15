@@ -204,6 +204,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
         parentExtensionsDependencies = parentExtensionsDependenciesSet;
         parentImplementationsDependencies = parentImplementationsDependenciesSet;
         annotationsDependencies = annotationsDependenciesSet;
+        // FIXME this attribute doesn't do anything
         nativeMethods = nativeMth;
     }
 
@@ -300,9 +301,9 @@ public abstract class DependencyTypeImpl implements DependencyType {
             final Set < Display > displayOptions) {
         final Set < PlantUMLClassesDiagramRelation > linkSet = new TreeSet < PlantUMLClassesDiagramRelation >();
 
-        for (final GenericDependency abstractImportDependency : getImportDependenciesToGeneratePlantUML(displayOptions)) {
+        for (final GenericDependency importDependency : getImportDependenciesToGeneratePlantUML(displayOptions)) {
             linkSet.add(new PlantUMLClassesDiagramUseRelationImpl(getPlantUMLClassesDiagramElement(),
-                    abstractImportDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
+                    importDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
         for (final GenericDependency parentImplementationsDependency : getParentImplementationsToGeneratePlantUML(displayOptions)) {
@@ -392,6 +393,10 @@ public abstract class DependencyTypeImpl implements DependencyType {
             if (displayOptions.contains(importType.getDisplayOption())) {
                 for (final GenericDependency genericDependency : getImportDependenciesCollection()
                         .getImportDependenciesWithType(importType)) {
+                    // TODO check if the dependency type has to be generated
+
+
+                    // FIXME if the extension or the implementation is not generated, the relation will not be displayed
                     if (hasImportNotToBeGenerated(genericDependency)) {
                         LOGGER.log(FINE, buildLogString(IMPORT_IS_A_PARENT_FINE, genericDependency));
                     } else {

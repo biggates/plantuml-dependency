@@ -300,21 +300,29 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                     put(STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
                             new GenericDependencyImpl("Serializable", "java.io"),
                             new GenericDependencyImpl(new InterfaceDependencyTypeImpl("Comparable", "java.lang")),
+                            new GenericDependencyImpl(new InterfaceDependencyTypeImpl("Set", "java.lang")),
                             new GenericDependencyImpl(new ClassDependencyTypeImpl("Number", "java.lang")),
                             new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl("InputStream", "java.io")),
+                            new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl("File", "java.io")),
                             new GenericDependencyImpl(new EnumDependencyTypeImpl("Display",
                                     "net.sourceforge.plantuml.dependency.main.option.display.argument")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated", "javax.lang"))})));
-                    put(STATIC, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
-                            new GenericDependencyImpl("Cloneable", "java.lang"),
-                            new GenericDependencyImpl(new InterfaceDependencyTypeImpl("Character", "java.lang")),
-                            new GenericDependencyImpl(new ClassDependencyTypeImpl("Tag", "javax.activation")),
-                            new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl("AbstractOption",
-                                    "net.sourceforge.mazix.cli.option")),
-                            new GenericDependencyImpl(new EnumDependencyTypeImpl("ImportType",
-                                    "net.sourceforge.plantuml.dependency.generic.type")),
-                            new GenericDependencyImpl(
-                                    new AnnotationDependencyTypeImpl("Target", "java.lang.annotation"))})));
+                    put(STATIC,
+                            new TreeSet < GenericDependency >(
+                                    asList(new GenericDependency[] {
+                                            new GenericDependencyImpl("Cloneable", "java.lang"),
+                                            new GenericDependencyImpl(new InterfaceDependencyTypeImpl("Character",
+                                                    "java.lang")),
+                                            new GenericDependencyImpl(new ClassDependencyTypeImpl("Tag",
+                                                    "javax.activation")),
+                                            new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl(
+                                                    "AbstractOption", "net.sourceforge.mazix.cli.option")),
+                                            new GenericDependencyImpl(new EnumDependencyTypeImpl("ImportType",
+                                                    "net.sourceforge.plantuml.dependency.generic.type")),
+                                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Generated",
+                                                    "javax.annotation")),
+                                            new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Target",
+                                                    "java.lang.annotation"))})));
                     put(NATIVE, new TreeSet < GenericDependency >(asList(new GenericDependency[] {NATIVE_DEPENDENCY})));
                 }
             });
