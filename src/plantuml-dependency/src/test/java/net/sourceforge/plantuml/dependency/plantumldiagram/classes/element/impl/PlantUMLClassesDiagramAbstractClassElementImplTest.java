@@ -77,6 +77,18 @@ public class PlantUMLClassesDiagramAbstractClassElementImplTest extends
     @DataPoint
     public static final PlantUMLClassesDiagramAbstractClassElementImpl PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST7 = null;
 
+    /** PlantUML classes diagram abstract class element test 8 instance. */
+    public static final PlantUMLClassesDiagramAbstractClassElementImpl PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST8 = new PlantUMLClassesDiagramAbstractClassElementImpl(
+            "java.io.InputStream");
+
+    /** PlantUML classes diagram abstract class element test 9 instance. */
+    public static final PlantUMLClassesDiagramAbstractClassElementImpl PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST9 = new PlantUMLClassesDiagramAbstractClassElementImpl(
+            "java.io.File");
+
+    /** PlantUML classes diagram abstract class element test 10 instance. */
+    public static final PlantUMLClassesDiagramAbstractClassElementImpl PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST10 = new PlantUMLClassesDiagramAbstractClassElementImpl(
+            "net.sourceforge.mazix.cli.option.AbstractOption");
+
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getElementTag()}
