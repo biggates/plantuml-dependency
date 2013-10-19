@@ -107,6 +107,10 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST17 = new PlantUMLClassesDiagramClassElementImpl(
             "javax.activation.Tag");
 
+    /** PlantUML classes diagram class element test 18 instance. */
+    public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST18 = new PlantUMLClassesDiagramClassElementImpl(
+            "javax.lang.Cloneable");
+
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getElementTag()}

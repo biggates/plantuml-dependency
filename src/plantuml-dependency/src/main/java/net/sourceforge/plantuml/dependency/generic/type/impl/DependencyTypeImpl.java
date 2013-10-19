@@ -33,8 +33,9 @@ import static net.sourceforge.mazix.components.utils.comparable.ComparableResult
 import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
-import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_MODE_DOESNT_MANAGED_IMPORT_TYPE_FINE;
-import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.IMPORT_IS_A_PARENT_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DEPENDENCY_IS_NOT_DISPLAYABLE_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE;
+import static net.sourceforge.plantuml.dependency.constants.log.FineConstants.IMPORT_IS_AN_EXTENSION_AN_IMPLEMENTATION_OR_AN_ANNOTATION_FINE;
 import static net.sourceforge.plantuml.dependency.generic.type.ImportType.IMPORT_TYPES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ANNOTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.DISPLAY_OPTIONS;
@@ -302,8 +303,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
         final Set < PlantUMLClassesDiagramRelation > linkSet = new TreeSet < PlantUMLClassesDiagramRelation >();
 
         for (final GenericDependency importDependency : getImportDependenciesToGeneratePlantUML(displayOptions)) {
-            linkSet.add(new PlantUMLClassesDiagramUseRelationImpl(getPlantUMLClassesDiagramElement(),
-                    importDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
+            linkSet.add(new PlantUMLClassesDiagramUseRelationImpl(getPlantUMLClassesDiagramElement(), importDependency
+                    .getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
         for (final GenericDependency parentImplementationsDependency : getParentImplementationsToGeneratePlantUML(displayOptions)) {
@@ -345,15 +346,21 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.2.0
      */
     private Set < GenericDependency > getAnnotationsToGeneratePlantUML(final Set < Display > displayOptions) {
-        Set < GenericDependency > annotationsSet = null;
+        final Set < GenericDependency > annotationsDependenciesDisplayable = new TreeSet < GenericDependency >();
 
         if (displayOptions.contains(ANNOTATIONS)) {
-            annotationsSet = getAnnotationsDependencies();
+            for (final GenericDependency genericDependency : getAnnotationsDependencies()) {
+                if (genericDependency.getDependencyType().isDisplayable(displayOptions)) {
+                    annotationsDependenciesDisplayable.add(genericDependency);
+                } else {
+                    LOGGER.log(FINE, buildLogString(DEPENDENCY_IS_NOT_DISPLAYABLE_FINE, genericDependency));
+                }
+            }
         } else {
-            annotationsSet = new TreeSet < GenericDependency >();
+            LOGGER.log(FINE, buildLogString(DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE, ANNOTATIONS));
         }
 
-        return annotationsSet;
+        return annotationsDependenciesDisplayable;
     }
 
     /**
@@ -387,28 +394,32 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.1.1
      */
     private Set < GenericDependency > getImportDependenciesToGeneratePlantUML(final Set < Display > displayOptions) {
-        final Set < GenericDependency > importDependenciesNotImplementedAndDisplayable = new TreeSet < GenericDependency >();
+        final Set < GenericDependency > importDependenciesNotImplementedNorExtendedNorAnnonatedAndDisplayable = new TreeSet < GenericDependency >();
 
         for (final ImportType importType : IMPORT_TYPES) {
             if (displayOptions.contains(importType.getDisplayOption())) {
                 for (final GenericDependency genericDependency : getImportDependenciesCollection()
                         .getImportDependenciesWithType(importType)) {
-                    // TODO check if the dependency type has to be generated
-
-
-                    // FIXME if the extension or the implementation is not generated, the relation will not be displayed
-                    if (hasImportNotToBeGenerated(genericDependency)) {
-                        LOGGER.log(FINE, buildLogString(IMPORT_IS_A_PARENT_FINE, genericDependency));
+                    if (!isDependencyInExtensionsImplementationsOrAnnotationsDependencies(genericDependency)) {
+                        if (genericDependency.getDependencyType().isDisplayable(displayOptions)) {
+                            importDependenciesNotImplementedNorExtendedNorAnnonatedAndDisplayable
+                                    .add(genericDependency);
+                        } else {
+                            LOGGER.log(FINE, buildLogString(DEPENDENCY_IS_NOT_DISPLAYABLE_FINE, genericDependency));
+                        }
                     } else {
-                        importDependenciesNotImplementedAndDisplayable.add(genericDependency);
+                        LOGGER.log(
+                                FINE,
+                                buildLogString(IMPORT_IS_AN_EXTENSION_AN_IMPLEMENTATION_OR_AN_ANNOTATION_FINE,
+                                        genericDependency));
                     }
                 }
             } else {
-                LOGGER.log(FINE, buildLogString(DISPLAY_MODE_DOESNT_MANAGED_IMPORT_TYPE_FINE, importType));
+                LOGGER.log(FINE, buildLogString(DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE, importType.getDisplayOption()));
             }
         }
 
-        return importDependenciesNotImplementedAndDisplayable;
+        return importDependenciesNotImplementedNorExtendedNorAnnonatedAndDisplayable;
     }
 
     /**
@@ -452,15 +463,21 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.2.0
      */
     private Set < GenericDependency > getParentExtensionsToGeneratePlantUML(final Set < Display > displayOptions) {
-        Set < GenericDependency > classesSet = null;
+        final Set < GenericDependency > extensionsDependenciesDisplayable = new TreeSet < GenericDependency >();
 
         if (displayOptions.contains(EXTENSIONS)) {
-            classesSet = getParentExtensionsDependencies();
+            for (final GenericDependency genericDependency : getParentExtensionsDependencies()) {
+                if (genericDependency.getDependencyType().isDisplayable(displayOptions)) {
+                    extensionsDependenciesDisplayable.add(genericDependency);
+                } else {
+                    LOGGER.log(FINE, buildLogString(DEPENDENCY_IS_NOT_DISPLAYABLE_FINE, genericDependency));
+                }
+            }
         } else {
-            classesSet = new TreeSet < GenericDependency >();
+            LOGGER.log(FINE, buildLogString(DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE, EXTENSIONS));
         }
 
-        return classesSet;
+        return extensionsDependenciesDisplayable;
     }
 
     /**
@@ -484,15 +501,21 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @since 1.1.1
      */
     private Set < GenericDependency > getParentImplementationsToGeneratePlantUML(final Set < Display > displayOptions) {
-        Set < GenericDependency > interfacesSet = null;
+        final Set < GenericDependency > implementationsDependenciesDisplayable = new TreeSet < GenericDependency >();
 
         if (displayOptions.contains(IMPLEMENTATIONS)) {
-            interfacesSet = getParentImplementationsDependencies();
+            for (final GenericDependency genericDependency : getParentImplementationsDependencies()) {
+                if (genericDependency.getDependencyType().isDisplayable(displayOptions)) {
+                    implementationsDependenciesDisplayable.add(genericDependency);
+                } else {
+                    LOGGER.log(FINE, buildLogString(DEPENDENCY_IS_NOT_DISPLAYABLE_FINE, genericDependency));
+                }
+            }
         } else {
-            interfacesSet = new TreeSet < GenericDependency >();
+            LOGGER.log(FINE, buildLogString(DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE, IMPLEMENTATIONS));
         }
 
-        return interfacesSet;
+        return implementationsDependenciesDisplayable;
     }
 
     /**
@@ -546,23 +569,6 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
-     * This method tells if the current import link has to be generated in the PlantUML description
-     * or not.
-     *
-     * @param genericDependency
-     *            the import dependency to test if it has to be generated or not in the plantUML
-     *            description, shouldn't be <code>null</code>.
-     * @return <code>true</code> if the PlantUML description of the current import has to be
-     *         generated, <code>false</code> otherwise.
-     * @since 1.0
-     */
-    private boolean hasImportNotToBeGenerated(final GenericDependency genericDependency) {
-        return getParentImplementationsDependencies().contains(genericDependency)
-                || getParentExtensionsDependencies().contains(genericDependency)
-                || getAnnotationsDependencies().contains(genericDependency);
-    }
-
-    /**
      * {@inheritDoc}
      *
      * @since 1.0
@@ -570,6 +576,24 @@ public abstract class DependencyTypeImpl implements DependencyType {
     @Override
     public boolean hasNativeMethods() {
         return nativeMethods;
+    }
+
+    /**
+     * This method tells if the current dependency is in the extensions, implementations or
+     * annotations dependencies collection.
+     *
+     * @param genericDependency
+     *            the dependency to test if it is in the extensions, implementations or annotations
+     *            dependencies collection, shouldn't be <code>null</code>.
+     * @return <code>true</code> if the dependency is in the extensions, implementations or
+     *         annotations dependencies collection, <code>false</code> otherwise.
+     * @since 1.0
+     */
+    private boolean isDependencyInExtensionsImplementationsOrAnnotationsDependencies(
+            final GenericDependency genericDependency) {
+        return getParentImplementationsDependencies().contains(genericDependency)
+                || getParentExtensionsDependencies().contains(genericDependency)
+                || getAnnotationsDependencies().contains(genericDependency);
     }
 
     /**

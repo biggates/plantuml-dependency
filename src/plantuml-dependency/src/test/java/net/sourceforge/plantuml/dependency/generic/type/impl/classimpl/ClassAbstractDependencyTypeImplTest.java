@@ -92,20 +92,20 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
     /** Class abstract dependency type test 5 instance. */
     @DataPoint
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE5 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY50,
-            new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET2, false);
+            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY50, new TreeSet < GenericDependency >(),
+            GENERIC_DEPENDENCY_SET2, false);
 
     /** Class abstract dependency type test 6 instance. */
     @DataPoint
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE6 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, null,
-            GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET2, false);
+            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, null, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET2,
+            false);
 
     /** Class abstract dependency type test 7 instance. */
     @DataPoint
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE7 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, null,
-            GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5, false);
+            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, null, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
+            false);
 
     /** Class abstract dependency type test 8 instance. */
     @DataPoint
@@ -125,8 +125,8 @@ public class ClassAbstractDependencyTypeImplTest extends DeepCloneableObjectTest
 
     /** Class abstract dependency type test 12 instance. */
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE12 = new ClassAbstractDependencyTypeImpl(
-            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, null,
-            GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5, false);
+            "Integer", "java.lang", IMPORT_COLLECTION_TEST2, null, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5,
+            false);
 
     /** Class abstract dependency type test 13 instance. */
     public static final ClassAbstractDependencyTypeImpl CLASS_ABSTRACT_DEPENDENCY_TYPE13 = new ClassAbstractDependencyTypeImpl(
