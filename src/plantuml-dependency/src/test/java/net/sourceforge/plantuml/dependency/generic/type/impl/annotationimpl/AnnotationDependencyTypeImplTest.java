@@ -27,6 +27,7 @@ package net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl;
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1023;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1024;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET12;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET13;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET14;
@@ -263,6 +264,23 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
     public void testGetPlantUMLClassesDiagramElement() {
         assertEquals(new PlantUMLClassesDiagramAnnotationElementImpl("java.lang.Override"),
                 ANNOTATION_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramElement());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations1024() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST17, PLANTUML_USE_RELATION_TEST19, PLANTUML_USE_RELATION_TEST20,
+                PLANTUML_USE_RELATION_TEST22, PLANTUML_USE_RELATION_TEST30, PLANTUML_USE_RELATION_TEST31,
+                PLANTUML_USE_RELATION_TEST32, PLANTUML_USE_RELATION_TEST33, PLANTUML_USE_RELATION_TEST34,
+                PLANTUML_USE_RELATION_TEST35, PLANTUML_USE_RELATION_TEST36, PLANTUML_USE_RELATION_TEST37,
+                PLANTUML_USE_RELATION_TEST38, PLANTUML_USE_RELATION_TEST39, PLANTUML_USE_RELATION_TEST40,
+                PLANTUML_USE_RELATION_TEST41})),
+                ANNOTATION_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET1024));
     }
 
     /**
@@ -540,7 +558,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
     @Test
     public void testGetPlantUMLClassesDiagramRelations35() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
-                PLANTUML_USE_RELATION_TEST34, PLANTUML_USE_RELATION_TEST38})),
+                PLANTUML_USE_RELATION_TEST34, PLANTUML_USE_RELATION_TEST38, PLANTUML_USE_RELATION_TEST19})),
                 ANNOTATION_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET35));
     }
 
@@ -721,8 +739,8 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
      */
     @Test
     public void testGetPlantUMLClassesDiagramRelations51() {
-        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
-                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST36, PLANTUML_USE_RELATION_TEST41})),
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST36, PLANTUML_USE_RELATION_TEST41})),
                 ANNOTATION_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET51));
     }
 

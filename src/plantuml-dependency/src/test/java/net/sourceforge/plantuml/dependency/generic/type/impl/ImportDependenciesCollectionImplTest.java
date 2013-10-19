@@ -315,6 +315,8 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                                                     "java.lang")),
                                             new GenericDependencyImpl(new ClassDependencyTypeImpl("Tag",
                                                     "javax.activation")),
+                                            new GenericDependencyImpl(
+                                                    new ClassDependencyTypeImpl("Number", "java.lang")),
                                             new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl(
                                                     "AbstractOption", "net.sourceforge.mazix.cli.option")),
                                             new GenericDependencyImpl(new EnumDependencyTypeImpl("ImportType",

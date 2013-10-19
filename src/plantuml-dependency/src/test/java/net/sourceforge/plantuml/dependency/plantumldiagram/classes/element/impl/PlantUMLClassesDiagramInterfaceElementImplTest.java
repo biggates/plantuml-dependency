@@ -87,6 +87,10 @@ public class PlantUMLClassesDiagramInterfaceElementImplTest extends
     public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST11 = new PlantUMLClassesDiagramInterfaceElementImpl(
             "java.lang.Set");
 
+    /** PlantUML classes diagram interface element test 12 instance. */
+    public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST12 = new PlantUMLClassesDiagramInterfaceElementImpl(
+            "net.sourceforge.mazix.components.clone.DeepCloneable");
+
     /**
      * Test method for
      * {@link net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement#getElementTag()}

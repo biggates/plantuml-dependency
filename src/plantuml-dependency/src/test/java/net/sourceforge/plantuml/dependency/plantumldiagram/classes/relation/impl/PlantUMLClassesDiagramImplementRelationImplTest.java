@@ -37,6 +37,8 @@ import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.elemen
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST8;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImplTest.PLANTUML_ENUM_ELEMENT_TEST3;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImplTest.PLANTUML_ENUM_ELEMENT_TEST6;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST11;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST12;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST3;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST5;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelationType.IMPLEMENT_RELATION_TYPE;
@@ -150,6 +152,14 @@ public class PlantUMLClassesDiagramImplementRelationImplTest extends
     /** PlantUML classes diagram implement relation test 19 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST19 = null;
+
+    /** PlantUML classes diagram implement relation test 20 instance. */
+    public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST20 = new PlantUMLClassesDiagramImplementRelationImpl(
+            PLANTUML_CLASS_ELEMENT_TEST7, PLANTUML_INTERFACE_ELEMENT_TEST11);
+
+    /** PlantUML classes diagram implement relation test 21 instance. */
+    public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST21 = new PlantUMLClassesDiagramImplementRelationImpl(
+            PLANTUML_CLASS_ELEMENT_TEST7, PLANTUML_INTERFACE_ELEMENT_TEST12);
 
     /**
      * Test method for

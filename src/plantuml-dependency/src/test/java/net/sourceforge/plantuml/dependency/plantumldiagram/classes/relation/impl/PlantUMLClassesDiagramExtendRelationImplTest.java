@@ -25,6 +25,7 @@
 package net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl;
 
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImplTest.PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST6;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImplTest.PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST9;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST10;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST12;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST13;
@@ -106,6 +107,10 @@ public class PlantUMLClassesDiagramExtendRelationImplTest extends
     /** PlantUML classes diagram extend relation test 11 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramExtendRelationImpl PLANTUML_EXTEND_RELATION_TEST11 = null;
+
+    /** PlantUML classes diagram extend relation test 12 instance. */
+    public static final PlantUMLClassesDiagramExtendRelationImpl PLANTUML_EXTEND_RELATION_TEST12 = new PlantUMLClassesDiagramExtendRelationImpl(
+            PLANTUML_CLASS_ELEMENT_TEST7, PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST9);
 
     /**
      * Test method for
