@@ -108,7 +108,7 @@ public class PlantUMLClassesDiagramImplementRelationImplTest extends
     /** PlantUML classes diagram implement relation test 10 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST10 = new PlantUMLClassesDiagramImplementRelationImpl(
-            PLANTUML_ENUM_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST13);
+            PLANTUML_ENUM_ELEMENT_TEST6, PLANTUML_CLASS_ELEMENT_TEST18);
 
     /** PlantUML classes diagram implement relation test 11 instance. */
     @DataPoint
@@ -161,6 +161,14 @@ public class PlantUMLClassesDiagramImplementRelationImplTest extends
     /** PlantUML classes diagram implement relation test 21 instance. */
     public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST21 = new PlantUMLClassesDiagramImplementRelationImpl(
             PLANTUML_CLASS_ELEMENT_TEST7, PLANTUML_INTERFACE_ELEMENT_TEST12);
+
+    /** PlantUML classes diagram implement relation test 22 instance. */
+    public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST22 = new PlantUMLClassesDiagramImplementRelationImpl(
+            PLANTUML_ENUM_ELEMENT_TEST6, PLANTUML_INTERFACE_ELEMENT_TEST11);
+
+    /** PlantUML classes diagram implement relation test 23 instance. */
+    public static final PlantUMLClassesDiagramImplementRelationImpl PLANTUML_IMPLEMENT_RELATION_TEST23 = new PlantUMLClassesDiagramImplementRelationImpl(
+            PLANTUML_ENUM_ELEMENT_TEST6, PLANTUML_INTERFACE_ELEMENT_TEST12);
 
     /**
      * Test method for

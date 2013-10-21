@@ -29,10 +29,13 @@ import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.elemen
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST10;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST12;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST13;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST18;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST6;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImplTest.PLANTUML_CLASS_ELEMENT_TEST7;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImplTest.PLANTUML_ENUM_ELEMENT_TEST3;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST1;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST11;
+import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST12;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST2;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST3;
 import static net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST5;
@@ -111,6 +114,22 @@ public class PlantUMLClassesDiagramExtendRelationImplTest extends
     /** PlantUML classes diagram extend relation test 12 instance. */
     public static final PlantUMLClassesDiagramExtendRelationImpl PLANTUML_EXTEND_RELATION_TEST12 = new PlantUMLClassesDiagramExtendRelationImpl(
             PLANTUML_CLASS_ELEMENT_TEST7, PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST9);
+
+    /** PlantUML classes diagram extend relation test 13 instance. */
+    public static final PlantUMLClassesDiagramExtendRelationImpl PLANTUML_EXTEND_RELATION_TEST13 = new PlantUMLClassesDiagramExtendRelationImpl(
+            PLANTUML_INTERFACE_ELEMENT_TEST5, PLANTUML_INTERFACE_ELEMENT_TEST11);
+
+    /** PlantUML classes diagram extend relation test 14 instance. */
+    public static final PlantUMLClassesDiagramExtendRelationImpl PLANTUML_EXTEND_RELATION_TEST14 = new PlantUMLClassesDiagramExtendRelationImpl(
+            PLANTUML_INTERFACE_ELEMENT_TEST5, PLANTUML_INTERFACE_ELEMENT_TEST12);
+
+    /** PlantUML classes diagram extend relation test 15 instance. */
+    public static final PlantUMLClassesDiagramExtendRelationImpl PLANTUML_EXTEND_RELATION_TEST15 = new PlantUMLClassesDiagramExtendRelationImpl(
+            PLANTUML_INTERFACE_ELEMENT_TEST5, PLANTUML_CLASS_ELEMENT_TEST12);
+
+    /** PlantUML classes diagram extend relation test 16 instance. */
+    public static final PlantUMLClassesDiagramExtendRelationImpl PLANTUML_EXTEND_RELATION_TEST16 = new PlantUMLClassesDiagramExtendRelationImpl(
+            PLANTUML_INTERFACE_ELEMENT_TEST5, PLANTUML_CLASS_ELEMENT_TEST18);
 
     /**
      * Test method for
