@@ -90,7 +90,7 @@ public class InterfaceDependencyTypeImpl extends DependencyTypeImpl {
             final Set < GenericDependency > parentExtensionsDependenciesSet,
             final Set < GenericDependency > annotationsDependenciesSet) {
         super(dependencyName, dependencyPackageName, importDependencies, parentExtensionsDependenciesSet,
-                new TreeSet < GenericDependency >(), annotationsDependenciesSet, false);
+                new TreeSet < GenericDependency >(), annotationsDependenciesSet);
     }
 
     /**

@@ -207,8 +207,6 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      * @param annotationDependencies
      *            the {@link Set} of all {@link GenericDependency} which are used as annotation,
      *            mustn't be <code>null</code>.
-     * @param hasNativeMethods
-     *            the boolean indicating if the dependency has native methods inside.
      * @return the {@link DependencyType} instance, following the current java type and the passed
      *         parameters.
      * @since 1.0
@@ -216,8 +214,8 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     public abstract DependencyType createDependencyType(String dependencyName, String dependencyPackageName,
             boolean isAbstract, ImportDependenciesCollection importDependencies,
             Set < GenericDependency > parentExtensionsDependencies,
-            Set < GenericDependency > parentImplementationsDependencies, Set < GenericDependency > annotationDependencies,
-            boolean hasNativeMethods);
+            Set < GenericDependency > parentImplementationsDependencies,
+            Set < GenericDependency > annotationDependencies);
 
     /**
      * Creates the parent {@link DependencyType} instance associated to the current java type

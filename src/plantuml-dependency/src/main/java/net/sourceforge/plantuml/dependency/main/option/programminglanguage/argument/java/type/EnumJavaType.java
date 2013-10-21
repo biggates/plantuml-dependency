@@ -103,7 +103,7 @@ class EnumJavaType extends JavaType {
             final boolean isAbstract, final ImportDependenciesCollection importDependencies,
             final Set < GenericDependency > parentExtensionsDependencies,
             final Set < GenericDependency > parentImplementationsDependencies,
-            final Set < GenericDependency > annotationDependencies, final boolean hasNativeMethods) {
+            final Set < GenericDependency > annotationDependencies) {
         checkNull(dependencyName, JAVA_TYPE_NAME_NULL_ERROR);
         checkNull(dependencyPackageName, JAVA_TYPE_PACKAGE_NAME_NULL_ERROR);
         checkNull(importDependencies, JAVA_TYPE_IMPORTS_NULL_ERROR);
@@ -112,7 +112,7 @@ class EnumJavaType extends JavaType {
         checkNull(annotationDependencies, JAVA_TYPE_ANNOTATIONS_NULL_ERROR);
 
         return new EnumDependencyTypeImpl(dependencyName, dependencyPackageName, importDependencies,
-                parentImplementationsDependencies, annotationDependencies, hasNativeMethods);
+                parentImplementationsDependencies, annotationDependencies);
     }
 
     /**

@@ -133,55 +133,49 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     /** Enum dependency type test 1 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE1 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5, false);
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5);
 
     /** Enum dependency type test 2 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE2 = new EnumDependencyTypeImpl("FileOutputStream",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5, false);
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5);
 
     /** Enum dependency type test 3 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE3 = new EnumDependencyTypeImpl("Integer", "java.io",
-            IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5, false);
+            IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5);
 
     /** Enum dependency type test 4 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE4 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", new ImportDependenciesCollectionImpl(), GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5,
-            false);
+            "java.lang", new ImportDependenciesCollectionImpl(), GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5);
 
     /** Enum dependency type test 5 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE5 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET5, false);
+            "java.lang", IMPORT_COLLECTION_TEST2, new TreeSet < GenericDependency >(), GENERIC_DEPENDENCY_SET5);
 
     /** Enum dependency type test 6 instance. */
     @DataPoint
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE6 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, new TreeSet < GenericDependency >(), false);
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, new TreeSet < GenericDependency >());
 
     /** Enum dependency type test 7 instance. */
     @DataPoint
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE7 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5, true);
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYP7 = new EnumDependencyTypeImpl("Integer",
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5);
 
     /** Enum dependency type test 8 instance. */
     @DataPoint
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYP8 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET3, GENERIC_DEPENDENCY_SET5, false);
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE8 = null;
 
     /** Enum dependency type test 9 instance. */
-    @DataPoint
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE9 = null;
+    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE9 = new EnumDependencyTypeImpl("Integer",
+            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5);
 
     /** Enum dependency type test 10 instance. */
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE10 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET2, GENERIC_DEPENDENCY_SET5, false);
-
-    /** Enum dependency type test 11 instance. */
-    public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE11 = new EnumDependencyTypeImpl("Integer",
-            "java.lang", IMPORT_COLLECTION_TEST25, GENERIC_DEPENDENCY_SET8, GENERIC_DEPENDENCY_SET6, false);
+            "java.lang", IMPORT_COLLECTION_TEST25, GENERIC_DEPENDENCY_SET8, GENERIC_DEPENDENCY_SET6);
 
     /**
      * Test method for
@@ -292,7 +286,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
                         PLANTUML_USE_RELATION_TEST62, PLANTUML_USE_RELATION_TEST63, PLANTUML_USE_RELATION_TEST64,
                         PLANTUML_USE_RELATION_TEST65, PLANTUML_IMPLEMENT_RELATION_TEST22,
                         PLANTUML_IMPLEMENT_RELATION_TEST23})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET1024));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET1024));
     }
 
     /**
@@ -304,7 +298,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations12() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST52, PLANTUML_USE_RELATION_TEST53})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET12));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET12));
     }
 
     /**
@@ -316,7 +310,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations13() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST52, PLANTUML_USE_RELATION_TEST53})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET13));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET13));
     }
 
     /**
@@ -328,7 +322,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations14() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST52, PLANTUML_USE_RELATION_TEST53})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET14));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET14));
     }
 
     /**
@@ -340,7 +334,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations15() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST52, PLANTUML_USE_RELATION_TEST53})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET15));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET15));
     }
 
     /**
@@ -352,7 +346,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations16() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST52, PLANTUML_USE_RELATION_TEST53})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET16));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET16));
     }
 
     /**
@@ -364,7 +358,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations17() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST52, PLANTUML_USE_RELATION_TEST53})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET17));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET17));
     }
 
     /**
@@ -376,7 +370,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations18() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST52, PLANTUML_USE_RELATION_TEST53})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET18));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET18));
     }
 
     /**
@@ -388,7 +382,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations19() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST52, PLANTUML_USE_RELATION_TEST53, PLANTUML_USE_RELATION_TEST54})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET19));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET19));
     }
 
     /**
@@ -400,7 +394,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations20() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST52, PLANTUML_USE_RELATION_TEST53, PLANTUML_USE_RELATION_TEST55})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET20));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET20));
     }
 
     /**
@@ -411,7 +405,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations21() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET21));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET21));
     }
 
     /**
@@ -422,7 +416,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations22() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET22));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET22));
     }
 
     /**
@@ -433,7 +427,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations23() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET23));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET23));
     }
 
     /**
@@ -444,7 +438,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations24() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET24));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET24));
     }
 
     /**
@@ -456,7 +450,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations25() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST56, PLANTUML_USE_RELATION_TEST57})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET25));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET25));
     }
 
     /**
@@ -467,7 +461,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations26() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET26));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET26));
     }
 
     /**
@@ -479,7 +473,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations27() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST54})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET27));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET27));
     }
 
     /**
@@ -491,7 +485,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations28() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST65})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET28));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET28));
     }
 
     /**
@@ -502,7 +496,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations29() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET29));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET29));
     }
 
     /**
@@ -513,7 +507,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations30() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET30));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET30));
     }
 
     /**
@@ -524,7 +518,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations31() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET31));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET31));
     }
 
     /**
@@ -536,7 +530,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations32() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST8, PLANTUML_USE_RELATION_TEST10})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET32));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET32));
     }
 
     /**
@@ -547,7 +541,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations33() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET33));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET33));
     }
 
     /**
@@ -559,7 +553,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations34() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST54})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET34));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET34));
     }
 
     /**
@@ -571,7 +565,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations35() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST58, PLANTUML_USE_RELATION_TEST59, PLANTUML_USE_RELATION_TEST60})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET35));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET35));
     }
 
     /**
@@ -582,7 +576,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations36() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET36));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET36));
     }
 
     /**
@@ -593,7 +587,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations37() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET37));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET37));
     }
 
     /**
@@ -605,7 +599,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations38() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST61})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET38));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET38));
     }
 
     /**
@@ -616,7 +610,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations39() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET39));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET39));
     }
 
     /**
@@ -628,7 +622,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations40() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST54})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET40));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET40));
     }
 
     /**
@@ -640,7 +634,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations41() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST62})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET41));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET41));
     }
 
     /**
@@ -651,7 +645,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations42() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET42));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET42));
     }
 
     /**
@@ -662,7 +656,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations43() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET43));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET43));
     }
 
     /**
@@ -673,7 +667,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations44() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET44));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET44));
     }
 
     /**
@@ -685,7 +679,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations45() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST54})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET45));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET45));
     }
 
     /**
@@ -696,7 +690,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations46() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET46));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET46));
     }
 
     /**
@@ -707,7 +701,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations47() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET47));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET47));
     }
 
     /**
@@ -719,7 +713,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations48() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_IMPLEMENT_RELATION_TEST22, PLANTUML_IMPLEMENT_RELATION_TEST23})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET48));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET48));
     }
 
     /**
@@ -731,7 +725,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations49() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST54})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET49));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET49));
     }
 
     /**
@@ -742,7 +736,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations50() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET50));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET50));
     }
 
     /**
@@ -754,7 +748,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations51() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST63})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET51));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET51));
     }
 
     /**
@@ -766,7 +760,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations52() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST54})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET52));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET52));
     }
 
     /**
@@ -777,7 +771,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations53() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET53));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET53));
     }
 
     /**
@@ -789,7 +783,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations54() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST54})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET54));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET54));
     }
 
     /**
@@ -801,7 +795,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations55() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST64})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET55));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET55));
     }
 
     /**
@@ -813,7 +807,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
     public void testGetPlantUMLClassesDiagramRelations56() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST54})),
-                ENUM_DEPENDENCY_TYPE11.getPlantUMLClassesDiagramRelations(DISPLAY_SET56));
+                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_SET56));
     }
 
     /**
@@ -826,7 +820,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST8, PLANTUML_USE_RELATION_TEST9, PLANTUML_IMPLEMENT_RELATION_TEST11,
                 PLANTUML_USE_RELATION_TEST29})),
-                ENUM_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                ENUM_DEPENDENCY_TYPE9.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
     }
 
     /**

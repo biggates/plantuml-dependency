@@ -180,16 +180,6 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
     Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations(Set < Display > displayOptions);
 
     /**
-     * Tells if the dependency contains native methods or not.
-     *
-     * @return <code>true</code> if the dependency has native methods inside, <code>false</code>
-     *         otherwise. Be careful, this property is <code>false</code> by default, i.e. as long
-     *         as the dependency hasn't been parsed yet.
-     * @since 1.0
-     */
-    boolean hasNativeMethods();
-
-    /**
      * Sets the dependency full name, i.e. the package name and the class name.
      * <p>
      * For instance, in java it can be :<br>

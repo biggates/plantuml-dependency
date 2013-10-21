@@ -87,8 +87,7 @@ public class AnnotationJavaTypeTest extends ComparableObjectTest < AnnotationJav
                 ANNOTATION_DEPENDENCY_TYPE1.getName(), ANNOTATION_DEPENDENCY_TYPE1.getPackageName(), true,
                 ANNOTATION_DEPENDENCY_TYPE1.getImportDependenciesCollection(), new TreeSet < GenericDependency >(),
                 ANNOTATION_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                ANNOTATION_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
-                ANNOTATION_DEPENDENCY_TYPE1.hasNativeMethods()));
+                ANNOTATION_DEPENDENCY_TYPE1.getAnnotationsDependencies()));
     }
 
     /**
@@ -102,8 +101,7 @@ public class AnnotationJavaTypeTest extends ComparableObjectTest < AnnotationJav
                 ANNOTATION_DEPENDENCY_TYPE1.getName(), ANNOTATION_DEPENDENCY_TYPE1.getPackageName(), false,
                 ANNOTATION_DEPENDENCY_TYPE1.getImportDependenciesCollection(), new TreeSet < GenericDependency >(),
                 ANNOTATION_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                ANNOTATION_DEPENDENCY_TYPE1.getAnnotationsDependencies(),
-                ANNOTATION_DEPENDENCY_TYPE1.hasNativeMethods()));
+                ANNOTATION_DEPENDENCY_TYPE1.getAnnotationsDependencies()));
     }
 
     /**

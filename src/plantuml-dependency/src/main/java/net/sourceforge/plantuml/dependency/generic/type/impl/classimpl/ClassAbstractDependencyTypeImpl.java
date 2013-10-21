@@ -62,7 +62,7 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(), null,
-                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(), false);
+                new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
     }
 
     /**
@@ -85,16 +85,14 @@ public class ClassAbstractDependencyTypeImpl extends ClassDependencyTypeImpl {
      * @param annotationsDependenciesSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
-     * @param hasNativeMethods
-     *            the boolean indicating if the dependency has native methods inside.
      * @since 1.0
      */
     public ClassAbstractDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final ImportDependenciesCollection importDependencies, final GenericDependency parentExtensionsDependency,
             final Set < GenericDependency > parentImplementationsDependenciesSet,
-            final Set < GenericDependency > annotationsDependenciesSet, final boolean hasNativeMethods) {
+            final Set < GenericDependency > annotationsDependenciesSet) {
         super(dependencyName, dependencyPackageName, importDependencies, parentExtensionsDependency,
-                parentImplementationsDependenciesSet, annotationsDependenciesSet, hasNativeMethods);
+                parentImplementationsDependenciesSet, annotationsDependenciesSet);
     }
 
     /**

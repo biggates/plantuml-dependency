@@ -28,7 +28,6 @@ import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_S
 import static net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImplTest.ANNOTATION_DEPENDENCY_TYPE2;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImplTest.CLASS_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImplTest.ENUM_DEPENDENCY_TYPE1;
-import static net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImplTest.ENUM_DEPENDENCY_TYPE7;
 import static net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImplTest.INTERFACE_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
@@ -93,20 +92,7 @@ public class EnumJavaTypeTest extends ComparableObjectTest < EnumJavaType > {
         assertEquals(ENUM_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE1.getName(),
                 ENUM_DEPENDENCY_TYPE1.getPackageName(), true, ENUM_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
                 new TreeSet < GenericDependency >(), ENUM_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                ENUM_DEPENDENCY_TYPE1.getAnnotationsDependencies(), ENUM_DEPENDENCY_TYPE1.hasNativeMethods()));
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType#createDependencyType(String, String, boolean, net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection, Set, Set, boolean)}
-     * .
-     */
-    @Test
-    public void testCreateDependencyTypeAbstractWithNativeMethods() {
-        assertEquals(ENUM_DEPENDENCY_TYPE7, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE7.getName(),
-                ENUM_DEPENDENCY_TYPE7.getPackageName(), true, ENUM_DEPENDENCY_TYPE7.getImportDependenciesCollection(),
-                new TreeSet < GenericDependency >(), ENUM_DEPENDENCY_TYPE7.getParentImplementationsDependencies(),
-                ENUM_DEPENDENCY_TYPE7.getAnnotationsDependencies(), ENUM_DEPENDENCY_TYPE7.hasNativeMethods()));
+                ENUM_DEPENDENCY_TYPE1.getAnnotationsDependencies()));
     }
 
     /**
@@ -119,7 +105,7 @@ public class EnumJavaTypeTest extends ComparableObjectTest < EnumJavaType > {
         assertEquals(ENUM_DEPENDENCY_TYPE1, JAVA_TYPE1.createDependencyType(ENUM_DEPENDENCY_TYPE1.getName(),
                 ENUM_DEPENDENCY_TYPE1.getPackageName(), false, ENUM_DEPENDENCY_TYPE1.getImportDependenciesCollection(),
                 new TreeSet < GenericDependency >(), ENUM_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                ENUM_DEPENDENCY_TYPE1.getAnnotationsDependencies(), ENUM_DEPENDENCY_TYPE1.hasNativeMethods()));
+                ENUM_DEPENDENCY_TYPE1.getAnnotationsDependencies()));
     }
 
     /**

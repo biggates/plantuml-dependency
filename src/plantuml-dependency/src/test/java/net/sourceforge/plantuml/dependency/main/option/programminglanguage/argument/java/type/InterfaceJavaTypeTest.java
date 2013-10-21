@@ -89,7 +89,7 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
                 INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true,
                 INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(), new TreeSet < GenericDependency >(),
                 INTERFACE_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                INTERFACE_DEPENDENCY_TYPE1.getAnnotationsDependencies(), true));
+                INTERFACE_DEPENDENCY_TYPE1.getAnnotationsDependencies()));
     }
 
     /**
@@ -103,7 +103,7 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
                 INTERFACE_DEPENDENCY_TYPE1.getPackageName(), true,
                 INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(), new TreeSet < GenericDependency >(),
                 INTERFACE_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                INTERFACE_DEPENDENCY_TYPE1.getAnnotationsDependencies(), true));
+                INTERFACE_DEPENDENCY_TYPE1.getAnnotationsDependencies()));
     }
 
     /**
@@ -117,7 +117,7 @@ public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaT
                 INTERFACE_DEPENDENCY_TYPE1.getPackageName(), false,
                 INTERFACE_DEPENDENCY_TYPE1.getImportDependenciesCollection(), new TreeSet < GenericDependency >(),
                 INTERFACE_DEPENDENCY_TYPE1.getParentImplementationsDependencies(),
-                INTERFACE_DEPENDENCY_TYPE1.getAnnotationsDependencies(), false));
+                INTERFACE_DEPENDENCY_TYPE1.getAnnotationsDependencies()));
     }
 
     /**

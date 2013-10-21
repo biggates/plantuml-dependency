@@ -109,9 +109,6 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /** The dependency type name, such as "String". */
     private String name;
 
-    /** The boolean indicating if the dependency has native methods inside. */
-    private final boolean nativeMethods;
-
     /** The dependency type package name, such as "java.lang". */
     private String packageName;
 
@@ -165,7 +162,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
                 new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
-                new TreeSet < GenericDependency >(), false);
+                new TreeSet < GenericDependency >());
     }
 
     /**
@@ -188,15 +185,13 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @param annotationsDependenciesSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
-     * @param nativeMth
-     *            the boolean indicating if the dependency has native methods inside.
      * @since 1.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final ImportDependenciesCollection importDependencies,
             final Set < GenericDependency > parentExtensionsDependenciesSet,
             final Set < GenericDependency > parentImplementationsDependenciesSet,
-            final Set < GenericDependency > annotationsDependenciesSet, final boolean nativeMth) {
+            final Set < GenericDependency > annotationsDependenciesSet) {
         // TODO tests null
         // TODO tests that no space are present in the name
         setFullName(dependencyPackageName, dependencyName);
@@ -205,8 +200,6 @@ public abstract class DependencyTypeImpl implements DependencyType {
         parentExtensionsDependencies = parentExtensionsDependenciesSet;
         parentImplementationsDependencies = parentImplementationsDependenciesSet;
         annotationsDependencies = annotationsDependenciesSet;
-        // FIXME this attribute doesn't do anything
-        nativeMethods = nativeMth;
     }
 
     /**
@@ -569,16 +562,6 @@ public abstract class DependencyTypeImpl implements DependencyType {
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @since 1.0
-     */
-    @Override
-    public boolean hasNativeMethods() {
-        return nativeMethods;
-    }
-
-    /**
      * This method tells if the current dependency is in the extensions, implementations or
      * annotations dependencies collection.
      *
@@ -622,7 +605,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
         } else {
             isToStringResursiveCall = true;
             result += ", importDependenciesCollection=" + importDependenciesCollection + ", name=" + name
-                    + ", nativeMethods=" + nativeMethods + ", packageName=" + packageName
+                    + ", packageName=" + packageName
                     + ", parentExtensionsDependencies=" + parentExtensionsDependencies
                     + ", parentImplementationsDependencies=" + parentImplementationsDependencies + ", annotations="
                     + annotationsDependencies + ", plantUMLClassesDiagramElement=" + plantUMLClassesDiagramElement

@@ -149,7 +149,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         final DependencyType dependencyType = javaRawDependency.getType().createDependencyType(
                 javaRawDependency.getName(), javaRawDependency.getPackageName(), javaRawDependency.isAbstract(),
                 importDependenciesCollection, parentExtentionsDependencies, parentImplementationsDependencies,
-                annotationsDependencies, hasNativeMethods);
+                annotationsDependencies);
         return createOrUpdateAbstractDependency(javaRawDependency, dependencyType, programmingLanguageContext);
     }
 
@@ -177,12 +177,16 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
                 .getFullName());
 
         if (dependency == null) {
-            LOGGER.log(FINE, buildLogString(CREATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
-                    dependencyType}));
+            LOGGER.log(
+                    FINE,
+                    buildLogString(CREATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
+                            dependencyType}));
             dependency = new GenericDependencyImpl(dependencyType);
         } else {
-            LOGGER.log(FINE, buildLogString(UPDATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
-                    dependencyType}));
+            LOGGER.log(
+                    FINE,
+                    buildLogString(UPDATING_DEPENDENCY_FINE, new Object[] {javaRawDependency.getFullName(),
+                            dependencyType}));
             programmingLanguageContext.removePotentialJavaLangSeenDependency(javaRawDependency.getFullName());
             dependency.setDependencyType(dependencyType);
         }
@@ -696,7 +700,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             if (dependency == null) {
                 final DependencyType dependencyType = type
                         .createAnnotationDependencyType(parentName, parentPackageName);
-                LOGGER.log(FINE, buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullName, dependencyType}));
+                LOGGER.log(FINE,
+                        buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullName, dependencyType}));
                 dependency = new GenericDependencyImpl(dependencyType);
                 programmingLanguageContext.addSeenDependencies(dependency);
             } else {
@@ -776,7 +781,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
         GenericDependency dependency = importDependencies.findDependency(annotationName);
 
         if (dependency == null) {
-            final String annotationFullNameWithSamePackage = generateDependencyFullName(currentPackageName, annotationName);
+            final String annotationFullNameWithSamePackage = generateDependencyFullName(currentPackageName,
+                    annotationName);
             dependency = programmingLanguageContext.getParsedOrSeenDependency(annotationFullNameWithSamePackage);
             if (dependency == null) {
                 dependency = getOrCreateAnnotationDependencyWithNameFromJavaLangOrSamePackage(currentPackageName, type,
@@ -820,12 +826,15 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final ProgrammingLanguageContext programmingLanguageContext, final String annotationName,
             final String annotationFullNameWithSamePackage) throws PlantUMLDependencyException {
         final DependencyType dependencyType = type.createAnnotationDependencyType(annotationName, currentPackageName);
-        LOGGER.log(FINE, buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullNameWithSamePackage,
-                dependencyType}));
+        LOGGER.log(
+                FINE,
+                buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {annotationFullNameWithSamePackage,
+                        dependencyType}));
         final GenericDependency dependency = new GenericDependencyImpl(dependencyType);
 
         try {
-            final String potentialJavaLangAnnotationFullName = generateDependencyFullName(JAVA_LANG_PACKAGE, annotationName);
+            final String potentialJavaLangAnnotationFullName = generateDependencyFullName(JAVA_LANG_PACKAGE,
+                    annotationName);
             forName(potentialJavaLangAnnotationFullName);
             programmingLanguageContext.addPotentialJavaLangSeenDependencies(dependency);
         } catch (final ClassNotFoundException e) {
@@ -918,7 +927,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             if (dependency == null) {
                 final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
                         parentPackageName);
-                LOGGER.log(FINE, buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullName, dependencyType}));
+                LOGGER.log(FINE,
+                        buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullName, dependencyType}));
                 dependency = new GenericDependencyImpl(dependencyType);
                 programmingLanguageContext.addSeenDependencies(dependency);
             } else {
@@ -1050,8 +1060,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
             final String parentFullNameWithSamePackage) throws PlantUMLDependencyException {
         final DependencyType dependencyType = type.createParentDependencyType(parentType, parentName,
                 currentPackageName);
-        LOGGER.log(FINE, buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullNameWithSamePackage,
-                dependencyType}));
+        LOGGER.log(FINE,
+                buildLogString(DEPENDENCY_NOT_SEEN_FINE, new Object[] {parentFullNameWithSamePackage, dependencyType}));
         final GenericDependency dependency = new GenericDependencyImpl(dependencyType);
 
         try {
