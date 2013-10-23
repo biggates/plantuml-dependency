@@ -201,7 +201,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
                 "\"C:\\Users\\PlantUML test\"", includeOption.getName(), "**/*Test.java"};
         final String[] example4 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
                 includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
-                displayOption.getName(), "abstract_classes,interfaces", verboseLevelOption.getName()};
+                displayOption.getName(), "implementations,interfaces,extensions,imports,static_imports", verboseLevelOption.getName()};
         addExampleCommandLine(new CommandLineImpl(example1));
         addExampleCommandLine(new CommandLineImpl(example2));
         addExampleCommandLine(new CommandLineImpl(example3));
