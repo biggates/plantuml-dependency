@@ -44,28 +44,32 @@ import java.util.TreeSet;
  */
 public enum Display {
     /** The display abstract classes argument. */
-    ABSTRACT_CLASSES("displays parsed source files which are abstract classes"),
+    ABSTRACT_CLASSES("displays parsed source files which are abstract classes and relations to abstract classes"),
     /** The display annotations argument. */
     ANNOTATIONS(
-            "displays parsed source files which are annotations and annotations (upon classes and methods) of all parsed source files"),
+            "displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations"),
     /** The display classes argument. */
     CLASSES(
-            "displays parsed source files which are classes (not abstract) and also dependencies which are considered as classes (because they are imported or extended)"),
+            "displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes"),
     /** The display enumerations argument. */
-    ENUMS("displays parsed source files which are enums"),
+    ENUMS("displays parsed source files which are enums and relations to enums"),
     /** The display extensions argument. */
-    EXTENSIONS("displays dependencies which are extended by parsed source files (i.e. classes or interfaces)"),
+    EXTENSIONS(
+            "displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed"),
     /** The display implementations argument. */
-    IMPLEMENTATIONS("displays dependencies which are implemented by parsed source files (i.e. interfaces)"),
+    IMPLEMENTATIONS(
+            "displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed"),
     /** The display imports argument. */
-    IMPORTS("displays import (not static) of all parsed source files"),
+    IMPORTS(
+            "displays relations from parsed source files to import dependencies (not static) if their type is displayed"),
     /** The display interfaces argument. */
     INTERFACES(
-            "displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces"),
+            "displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces"),
     /** The display native methods argument. */
-    NATIVE_METHODS("displays links to the native dependency"),
+    NATIVE_METHODS("displays relations from parsed source files to the native dependency if they use native methods"),
     /** The display static imports argument. */
-    STATIC_IMPORTS("displays static imports of all parsed source files");
+    STATIC_IMPORTS(
+            "displays relations from parsed source files to import dependencies (only static) if their type is displayed");
 
     /** The Set containing all displays options which are available. */
     public static final Set < Display > DISPLAY_OPTIONS = new TreeSet < Display >(asList(values()));

@@ -53,7 +53,7 @@ public class DisplayTest {
     @Test
     public void testGetAllDisplayOptionsDescriptionAsSeparataredCommaString() {
         assertEquals(
-                "\"abstract_classes\" : displays parsed source files which are abstract classes, \"annotations\" : displays parsed source files which are annotations and annotations (upon classes and methods) of all parsed source files, \"classes\" : displays parsed source files which are classes (not abstract) and also dependencies which are considered as classes (because they are imported or extended), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), \"implementations\" : displays dependencies which are implemented by parsed source files (i.e. interfaces), \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, \"native_methods\" : displays links to the native dependency, \"static_imports\" : displays static imports of all parsed source files",
+                "\"abstract_classes\" : displays parsed source files which are abstract classes and relations to abstract classes, \"annotations\" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, \"classes\" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, \"enums\" : displays parsed source files which are enums and relations to enums, \"extensions\" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, \"implementations\" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, \"imports\" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, \"interfaces\" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, \"native_methods\" : displays relations from parsed source files to the native dependency if they use native methods, \"static_imports\" : displays relations from parsed source files to import dependencies (only static) if their type is displayed",
                 getAllDisplayOptionsFullUsageDescriptions());
     }
 
@@ -64,7 +64,7 @@ public class DisplayTest {
      */
     @Test
     public void testGetFullUsageDescription() {
-        assertEquals("\"abstract_classes\" : displays parsed source files which are abstract classes",
+        assertEquals("\"abstract_classes\" : displays parsed source files which are abstract classes and relations to abstract classes",
                 ABSTRACT_CLASSES.getFullUsageDescription());
     }
 
@@ -76,7 +76,7 @@ public class DisplayTest {
     @Test
     public void testGetFullUsageDescriptionsDefaultSet() {
         assertEquals(
-                "\"abstract_classes\" : displays parsed source files which are abstract classes, \"annotations\" : displays parsed source files which are annotations and annotations (upon classes and methods) of all parsed source files, \"classes\" : displays parsed source files which are classes (not abstract) and also dependencies which are considered as classes (because they are imported or extended), \"enums\" : displays parsed source files which are enums, \"extensions\" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), \"implementations\" : displays dependencies which are implemented by parsed source files (i.e. interfaces), \"imports\" : displays import (not static) of all parsed source files, \"interfaces\" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, \"native_methods\" : displays links to the native dependency, \"static_imports\" : displays static imports of all parsed source files",
+                "\"abstract_classes\" : displays parsed source files which are abstract classes and relations to abstract classes, \"annotations\" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, \"classes\" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, \"enums\" : displays parsed source files which are enums and relations to enums, \"extensions\" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, \"implementations\" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, \"imports\" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, \"interfaces\" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, \"native_methods\" : displays relations from parsed source files to the native dependency if they use native methods, \"static_imports\" : displays relations from parsed source files to import dependencies (only static) if their type is displayed",
                 getFullUsageDescriptions(DEFAULT_DISPLAY_OPTIONS));
     }
 
@@ -97,6 +97,6 @@ public class DisplayTest {
      */
     @Test
     public void testGetUsageDescription() {
-        assertEquals("displays parsed source files which are abstract classes", ABSTRACT_CLASSES.getUsageDescription());
+        assertEquals("displays parsed source files which are abstract classes and relations to abstract classes", ABSTRACT_CLASSES.getUsageDescription());
     }
 }
