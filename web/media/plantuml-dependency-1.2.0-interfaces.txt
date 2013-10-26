@@ -1,0 +1,81 @@
+@startuml
+interface java.io.Serializable
+interface java.lang.Comparable
+interface net.sourceforge.mazix.cli.option.execution.ExecutableOption
+interface net.sourceforge.mazix.components.clone.DeepCloneable
+interface net.sourceforge.plantuml.dependency.generic.GenericDependency
+interface net.sourceforge.plantuml.dependency.generic.type.DependencyType
+interface net.sourceforge.plantuml.dependency.generic.type.Displayable
+interface net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+interface net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext
+interface net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram
+interface net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAbstractClassElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAnnotationElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramEnumElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramInterfaceElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramExtendRelation
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramImplementRelation
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramUseRelation
+net.sourceforge.plantuml.dependency.generic.GenericDependency --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.generic.GenericDependency --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.generic.GenericDependency --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.generic.GenericDependency ..> net.sourceforge.plantuml.dependency.generic.type.DependencyType
+net.sourceforge.plantuml.dependency.generic.type.DependencyType --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.generic.type.DependencyType --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.generic.type.DependencyType ..> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.generic.type.DependencyType ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.generic.type.DependencyType --|> net.sourceforge.plantuml.dependency.generic.type.Displayable
+net.sourceforge.plantuml.dependency.generic.type.DependencyType ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.generic.type.DependencyType ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram
+net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram --|> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram --|> net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAbstractClassElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAnnotationElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAnnotationElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement ..> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramEnumElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramEnumElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramInterfaceElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramInterfaceElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter ..> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype ..> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramExtendRelation --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramImplementRelation --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation ..> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramUseRelation --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+@enduml

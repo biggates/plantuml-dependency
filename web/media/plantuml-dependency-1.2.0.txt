@@ -1,0 +1,814 @@
+@startuml
+abstract class net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl
+abstract class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage
+abstract class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType
+abstract class net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext
+abstract class net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement
+abstract class net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation
+annotation java.lang.Override
+class java.io.File
+class java.io.IOException
+class java.lang.Class
+class java.lang.Exception
+class java.lang.System
+class java.net.MalformedURLException
+class java.net.URL
+class java.text.ParseException
+class java.util.ArrayList
+class java.util.Arrays
+class java.util.Collection
+class java.util.Collections
+class java.util.HashMap
+class java.util.Iterator
+class java.util.List
+class java.util.Map
+class java.util.Set
+class java.util.StringTokenizer
+class java.util.TreeMap
+class java.util.TreeSet
+class java.util.logging.Level
+class java.util.logging.Logger
+class java.util.regex.Matcher
+class java.util.regex.Pattern
+class net.sourceforge.mazix.cli.command.CommandLine
+class net.sourceforge.mazix.cli.command.impl.CommandLineImpl
+class net.sourceforge.mazix.cli.constants.log.ErrorConstants
+class net.sourceforge.mazix.cli.constants.log.FineConstants
+class net.sourceforge.mazix.cli.exception.CommandLineException
+class net.sourceforge.mazix.cli.exception.MissingPropertyException
+class net.sourceforge.mazix.cli.option.AbstractOptionWithArgument
+class net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument
+class net.sourceforge.mazix.cli.option.argument.impl.directory.ExistingDirectoryOptionArgumentImpl
+class net.sourceforge.mazix.cli.option.argument.impl.file.ExistingOrNotFileOptionArgumentImpl
+class net.sourceforge.mazix.cli.option.argument.impl.filepattern.ExcludeFilePatternOptionArgumentImpl
+class net.sourceforge.mazix.cli.option.argument.impl.filepattern.IncludeFilePatternOptionArgumentImpl
+class net.sourceforge.mazix.cli.option.execution.AbstractOptionExecution
+class net.sourceforge.mazix.cli.option.execution.OptionExecution
+class net.sourceforge.mazix.cli.option.impl.about.AboutOption
+class net.sourceforge.mazix.cli.option.impl.help.HelpOption
+class net.sourceforge.mazix.cli.option.impl.output.OutputOption
+class net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption
+class net.sourceforge.mazix.cli.option.impl.version.VersionOption
+class net.sourceforge.mazix.cli.option.status.OptionStatus
+class net.sourceforge.mazix.cli.program.JavaProgram
+class net.sourceforge.mazix.cli.program.execution.JavaProgramExecution
+class net.sourceforge.mazix.cli.program.impl.JavaProgramImpl
+class net.sourceforge.mazix.cli.program.version.ProgramVersion
+class net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils
+class net.sourceforge.mazix.components.color.HTMLColor
+class net.sourceforge.mazix.components.constants.CharacterConstants
+class net.sourceforge.mazix.components.constants.CommonConstants
+class net.sourceforge.mazix.components.constants.log.ErrorConstants
+class net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+class net.sourceforge.mazix.components.utils.collection.CollectionUtils
+class net.sourceforge.mazix.components.utils.comparable.ComparableResult
+class net.sourceforge.mazix.components.utils.exception.ExceptionUtils
+class net.sourceforge.mazix.components.utils.file.FileUtils
+class net.sourceforge.mazix.components.utils.log.LogUtils
+class net.sourceforge.mazix.components.utils.map.MapUtils
+class net.sourceforge.mazix.components.utils.string.StringUtils
+class net.sourceforge.plantuml.dependency.constants.PlantUMLConstants
+class net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants
+class net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants
+class net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+class net.sourceforge.plantuml.dependency.constants.log.FineConstants
+class net.sourceforge.plantuml.dependency.constants.log.InfoConstants
+class net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+class net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl
+class net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl
+class net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl
+class net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl
+class net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl
+class net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl
+class net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl
+class net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl
+class net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl
+class net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask
+class net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption
+class net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption
+class net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument
+class net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption
+class net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption
+class net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption
+class net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.CppProgrammingLanguageContext
+class net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext
+class net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImpl
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImpl
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramExtendRelationImpl
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl
+class net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl
+class org.apache.tools.ant.BuildException
+class org.apache.tools.ant.Task
+class org.apache.tools.ant.types.FileSet
+class org.apache.tools.ant.types.resources.FileResource
+enum net.sourceforge.plantuml.dependency.generic.type.ImportType
+enum net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+enum net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType
+enum net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag
+enum net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelationType
+interface java.io.Serializable
+interface java.lang.Comparable
+interface net.sourceforge.mazix.cli.option.execution.ExecutableOption
+interface net.sourceforge.mazix.components.clone.DeepCloneable
+interface net.sourceforge.plantuml.dependency.generic.GenericDependency
+interface net.sourceforge.plantuml.dependency.generic.type.DependencyType
+interface net.sourceforge.plantuml.dependency.generic.type.Displayable
+interface net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+interface net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext
+interface net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram
+interface net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAbstractClassElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAnnotationElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramEnumElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramInterfaceElement
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramExtendRelation
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramImplementRelation
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+interface net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramUseRelation
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.mazix.components.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.mazix.components.utils.comparable.ComparableResult
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.mazix.components.utils.string.StringUtils
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.plantuml.dependency.constants.log.FineConstants
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramExtendRelationImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.ImportType
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl --|> net.sourceforge.plantuml.dependency.generic.type.DependencyType
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> java.util.Collection
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> java.util.Collections
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> java.util.Map
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> java.util.TreeMap
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> net.sourceforge.mazix.components.utils.comparable.ComparableResult
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> net.sourceforge.plantuml.dependency.constants.log.FineConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> java.util.Collection
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> java.util.Collections
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> java.util.Map
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> java.util.StringTokenizer
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> java.util.TreeMap
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.mazix.components.constants.CommonConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.mazix.components.utils.comparable.ComparableResult
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.mazix.components.utils.string.StringUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.plantuml.dependency.constants.log.FineConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.plantuml.dependency.generic.type.DependencyType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> java.util.Collection
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> java.util.Map
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> java.util.TreeMap
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.mazix.components.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.mazix.components.utils.comparable.ComparableResult
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext --|> net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement ..> java.lang.Override
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement ..> net.sourceforge.mazix.components.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement ..> net.sourceforge.mazix.components.utils.comparable.ComparableResult
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation ..> java.lang.Override
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation ..> net.sourceforge.mazix.components.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation ..> net.sourceforge.mazix.components.utils.comparable.ComparableResult
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> java.util.Arrays
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> java.util.Set
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> net.sourceforge.mazix.components.color.HTMLColor
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> net.sourceforge.mazix.components.utils.string.StringUtils
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype
+net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants ..> java.util.regex.Pattern
+net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException --|> java.lang.Exception
+net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl ..> net.sourceforge.mazix.components.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl ..> net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl ..> net.sourceforge.mazix.components.utils.comparable.ComparableResult
+net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl ..> net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl
+net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl --|> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl ..> net.sourceforge.plantuml.dependency.generic.type.DependencyType
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> java.util.Iterator
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> java.util.Map
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> java.util.TreeMap
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> net.sourceforge.mazix.components.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> net.sourceforge.plantuml.dependency.constants.log.FineConstants
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> net.sourceforge.plantuml.dependency.generic.type.ImportType
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl --|> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl --|> net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl --|> net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl --|> net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl --|> net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl --|> net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl --|> net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants
+net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.impl.nativeimpl.NativeDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl --|> net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl
+net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.impl.stubimpl.StubDependencyTypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> java.util.ArrayList
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> java.util.HashMap
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> java.util.List
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> java.util.Map
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.mazix.cli.option.impl.output.OutputOption
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.mazix.components.utils.exception.ExceptionUtils
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.mazix.components.utils.map.MapUtils
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask ..> org.apache.tools.ant.BuildException
+net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask --|> org.apache.tools.ant.Task
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> java.io.File
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> java.util.Arrays
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> java.util.Collections
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> net.sourceforge.mazix.cli.command.CommandLine
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> net.sourceforge.mazix.cli.exception.CommandLineException
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption --|> net.sourceforge.mazix.cli.option.AbstractOptionWithArgument
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> net.sourceforge.mazix.cli.option.argument.impl.directory.ExistingDirectoryOptionArgumentImpl
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> net.sourceforge.mazix.cli.option.status.OptionStatus
+net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> java.util.Arrays
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> java.util.Collections
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> net.sourceforge.mazix.cli.command.CommandLine
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> net.sourceforge.mazix.cli.exception.CommandLineException
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption --|> net.sourceforge.mazix.cli.option.AbstractOptionWithArgument
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> net.sourceforge.mazix.cli.option.status.OptionStatus
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument
+net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> java.util.Arrays
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> java.util.StringTokenizer
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> net.sourceforge.mazix.cli.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> net.sourceforge.mazix.cli.exception.CommandLineException
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument --|> net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> net.sourceforge.mazix.components.utils.collection.CollectionUtils
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> net.sourceforge.mazix.components.utils.string.StringUtils
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> java.util.Arrays
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> java.util.Collections
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> net.sourceforge.mazix.cli.command.CommandLine
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> net.sourceforge.mazix.cli.exception.CommandLineException
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption --|> net.sourceforge.mazix.cli.option.AbstractOptionWithArgument
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> net.sourceforge.mazix.cli.option.argument.impl.filepattern.ExcludeFilePatternOptionArgumentImpl
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> net.sourceforge.mazix.cli.option.status.OptionStatus
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants
+net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption ..> org.apache.tools.ant.types.FileSet
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> java.util.Arrays
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> java.util.Collections
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> net.sourceforge.mazix.cli.command.CommandLine
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> net.sourceforge.mazix.cli.exception.CommandLineException
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption --|> net.sourceforge.mazix.cli.option.AbstractOptionWithArgument
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> net.sourceforge.mazix.cli.option.argument.impl.filepattern.IncludeFilePatternOptionArgumentImpl
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> net.sourceforge.mazix.cli.option.status.OptionStatus
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption
+net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption ..> org.apache.tools.ant.types.FileSet
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> java.io.File
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.cli.command.CommandLine
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.cli.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.cli.constants.log.FineConstants
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.cli.exception.CommandLineException
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.cli.option.argument.impl.file.ExistingOrNotFileOptionArgumentImpl
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.cli.option.execution.OptionExecution
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption --|> net.sourceforge.mazix.cli.option.impl.output.OutputOption
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.cli.option.status.OptionStatus
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> org.apache.tools.ant.types.FileSet
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption --|> net.sourceforge.mazix.cli.option.execution.ExecutableOption
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> java.io.File
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> java.util.Iterator
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.mazix.cli.exception.CommandLineException
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution --|> net.sourceforge.mazix.cli.option.execution.AbstractOptionExecution
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.mazix.cli.option.execution.OptionExecution
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.mazix.components.utils.file.FileUtils
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.plantuml.dependency.constants.log.InfoConstants
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> org.apache.tools.ant.types.FileSet
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> org.apache.tools.ant.types.resources.FileResource
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext
+net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution ..> net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption ..> java.util.Collections
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption ..> net.sourceforge.mazix.cli.command.CommandLine
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption ..> net.sourceforge.mazix.cli.exception.CommandLineException
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption --|> net.sourceforge.mazix.cli.option.AbstractOptionWithArgument
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption ..> net.sourceforge.mazix.cli.option.status.OptionStatus
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage --|> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.CppProgrammingLanguageContext
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage --|> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> java.lang.Class
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> java.util.regex.Matcher
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> java.util.regex.Pattern
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.mazix.components.constants.CommonConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.mazix.components.utils.string.StringUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.constants.log.FineConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.generic.type.impl.ImportDependenciesCollectionImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.generic.type.ImportType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.generic.type.DependencyType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.JavaProgrammingLanguage ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument ..> net.sourceforge.mazix.cli.exception.CommandLineException
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument --|> net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument ..> net.sourceforge.mazix.components.utils.string.StringUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency ..> net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency ..> net.sourceforge.mazix.components.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency ..> net.sourceforge.mazix.components.utils.comparable.ComparableResult
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType --|> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> net.sourceforge.mazix.components.utils.string.StringUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> net.sourceforge.plantuml.dependency.generic.type.DependencyType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.AnnotationJavaType ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType --|> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.mazix.components.utils.collection.CollectionUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.generic.type.impl.classimpl.ClassDependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.generic.type.DependencyType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.ClassJavaType ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType --|> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.mazix.components.utils.string.StringUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.plantuml.dependency.constants.RegularExpressionConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.plantuml.dependency.generic.type.impl.enumimpl.EnumDependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.plantuml.dependency.generic.type.DependencyType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.EnumJavaType ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType --|> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.mazix.components.utils.string.StringUtils
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.plantuml.dependency.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.plantuml.dependency.generic.type.DependencyType
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.InterfaceJavaType ..> net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.CppProgrammingLanguageContext --|> net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.CppProgrammingLanguageContext ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.CppProgrammingLanguageContext ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.CppProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.CppProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext --|> net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.AbstractProgrammingLanguageContext
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> java.io.IOException
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> java.lang.System
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> java.net.MalformedURLException
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> java.net.URL
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> java.text.ParseException
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> java.util.Arrays
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.command.impl.CommandLineImpl
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.exception.CommandLineException
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.exception.MissingPropertyException
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.option.impl.about.AboutOption
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.option.impl.help.HelpOption
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.option.impl.version.VersionOption
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.program.JavaProgram
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.program.execution.JavaProgramExecution
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram --|> net.sourceforge.mazix.cli.program.impl.JavaProgramImpl
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.program.version.ProgramVersion
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.mazix.components.utils.log.LogUtils
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.plantuml.dependency.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.plantuml.dependency.constants.log.InfoConstants
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.plantuml.dependency.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.plantuml.dependency.main.option.display.PlantUMLDependencyDisplayOption
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.plantuml.dependency.main.option.exclude.PlantUMLDependencyExcludeOption
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.plantuml.dependency.main.option.include.PlantUMLDependencyIncludeOption
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOption
+net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram ..> net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAbstractClassElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl ..> net.sourceforge.mazix.components.constants.CommonConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAnnotationElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl ..> net.sourceforge.mazix.components.constants.CommonConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl ..> net.sourceforge.mazix.components.constants.CommonConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramEnumElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImpl ..> net.sourceforge.mazix.components.constants.CommonConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramInterfaceElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl ..> net.sourceforge.mazix.components.color.HTMLColor
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl ..> net.sourceforge.mazix.components.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl ..> net.sourceforge.mazix.components.utils.comparable.ComparableResult
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl ..> net.sourceforge.mazix.components.constants.CommonConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl ..> net.sourceforge.mazix.components.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl ..> net.sourceforge.mazix.components.utils.comparable.ComparableResult
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl ..> net.sourceforge.mazix.components.utils.string.StringUtils
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl ..> net.sourceforge.plantuml.dependency.constants.PlantUMLConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> java.lang.Override
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> java.util.Set
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> java.util.logging.Level
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> java.util.logging.Logger
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> net.sourceforge.mazix.components.constants.CommonConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> net.sourceforge.mazix.components.constants.log.ErrorConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> net.sourceforge.plantuml.dependency.constants.PlantUMLConstants
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramExtendRelationImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramExtendRelationImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelationType
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramExtendRelationImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramExtendRelationImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramExtendRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelationType
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramImplementRelationImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramImplementRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.AbstractPlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelationType
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramUseRelation
+net.sourceforge.plantuml.dependency.generic.type.ImportType ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.type.ImportType ..> java.util.Arrays
+net.sourceforge.plantuml.dependency.generic.type.ImportType ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.ImportType ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.generic.type.ImportType ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.ImportType --|> net.sourceforge.plantuml.dependency.generic.type.Displayable
+net.sourceforge.plantuml.dependency.main.option.display.argument.Display ..> java.lang.Override
+net.sourceforge.plantuml.dependency.main.option.display.argument.Display ..> java.util.Arrays
+net.sourceforge.plantuml.dependency.main.option.display.argument.Display ..> java.util.Iterator
+net.sourceforge.plantuml.dependency.main.option.display.argument.Display ..> java.util.Set
+net.sourceforge.plantuml.dependency.main.option.display.argument.Display ..> java.util.TreeSet
+net.sourceforge.plantuml.dependency.main.option.display.argument.Display ..> net.sourceforge.mazix.components.constants.CharacterConstants
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaParentType ..> java.lang.Override
+net.sourceforge.plantuml.dependency.generic.GenericDependency --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.generic.GenericDependency --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.generic.GenericDependency --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.generic.GenericDependency ..> net.sourceforge.plantuml.dependency.generic.type.DependencyType
+net.sourceforge.plantuml.dependency.generic.type.DependencyType ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.DependencyType ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.DependencyType --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.generic.type.DependencyType --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.generic.type.DependencyType ..> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.generic.type.DependencyType ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.generic.type.DependencyType --|> net.sourceforge.plantuml.dependency.generic.type.Displayable
+net.sourceforge.plantuml.dependency.generic.type.DependencyType ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.generic.type.DependencyType ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.generic.type.Displayable ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.Displayable ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection ..> java.util.Set
+net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.generic.type.ImportDependenciesCollection ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext ..> java.util.Collection
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.main.option.display.argument.Display
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.generic.GenericDependency
+net.sourceforge.plantuml.dependency.main.option.programminglanguage.context.ProgrammingLanguageContext ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram
+net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram --|> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram ..> java.util.Set
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram --|> net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLDiagram
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.PlantUMLClassesDiagram ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAbstractClassElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAnnotationElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramAnnotationElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement ..> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramEnumElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramEnumElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramInterfaceElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramInterfaceElement --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.WithStereotype
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter ..> net.sourceforge.mazix.components.color.HTMLColor
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter ..> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.stereotype.PlantUMLStereotype ..> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramExtendRelation --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramImplementRelation --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation --|> java.io.Serializable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation --|> java.lang.Comparable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation --|> net.sourceforge.mazix.components.clone.DeepCloneable
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation ..> net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation ..> net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement
+net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramUseRelation --|> net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation
+@enduml
