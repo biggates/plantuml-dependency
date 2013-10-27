@@ -88,9 +88,6 @@ public final class PlantUMLDependencyConstants {
     public static final PlantUMLStereotype NATIVE_PLANTUML_STEREOTYPE = new PlantUMLStereotypeImpl(
             new PlantUMLSpottedCharacterImpl('N', YELLOW));
 
-    /** Version properties path. */
-    public static final String VERSION_PROPERTIES_PATH = "net/sourceforge/plantuml/dependency/version/version.properties";
-
     /**
      * Private constructor to prevent from instantiation.
      *

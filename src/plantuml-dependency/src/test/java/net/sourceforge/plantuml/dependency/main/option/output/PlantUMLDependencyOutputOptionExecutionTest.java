@@ -285,6 +285,8 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     @Test
     public void testExecuteWithNoPackageAndJavaLangAnnotation() throws CommandLineException {
         OUTPUT_OPTION_EXECUTION21.execute();
-        assertEquals("@startuml\r\nannotation java.lang.Override\r\nclass Clock2\r\nclass java.applet.Applet\r\nclass java.awt.Color\r\nclass java.awt.Font\r\nclass java.awt.Graphics\r\nclass java.text.SimpleDateFormat\r\nclass java.util.Date\r\nclass java.util.Locale\r\ninterface java.lang.Runnable\r\nClock2 ..> java.lang.Override\r\nClock2 --|> java.applet.Applet\r\nClock2 ..> java.awt.Color\r\nClock2 ..> java.awt.Font\r\nClock2 ..> java.awt.Graphics\r\nClock2 ..> java.text.SimpleDateFormat\r\nClock2 ..> java.util.Date\r\nClock2 ..> java.util.Locale\r\nClock2 --|> java.lang.Runnable\r\n@enduml", readFileIntoString(TEST_FILE1));
+        assertEquals(
+                "@startuml\r\nannotation java.lang.Override\r\nclass Clock2\r\nclass java.applet.Applet\r\nclass java.awt.Color\r\nclass java.awt.Font\r\nclass java.awt.Graphics\r\nclass java.text.SimpleDateFormat\r\nclass java.util.Date\r\nclass java.util.Locale\r\ninterface java.lang.Runnable\r\nClock2 ..> java.lang.Override\r\nClock2 --|> java.applet.Applet\r\nClock2 ..> java.awt.Color\r\nClock2 ..> java.awt.Font\r\nClock2 ..> java.awt.Graphics\r\nClock2 ..> java.text.SimpleDateFormat\r\nClock2 ..> java.util.Date\r\nClock2 ..> java.util.Locale\r\nClock2 --|> java.lang.Runnable\r\n@enduml",
+                readFileIntoString(TEST_FILE1));
     }
 }

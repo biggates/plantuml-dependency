@@ -60,6 +60,38 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
     private static final long serialVersionUID = -5520264467935038385L;
 
     /**
+     * Converts the import dependencies map {@link Map} as a String containing dependencies full
+     * names.
+     *
+     * @param dependenciesMap
+     *            the {@link Map} of all {@link GenericDependency} which are needed by the current
+     *            dependency type to work. It has {@link ImportType} as keys and the {@link Set} of
+     *            import dependencies as values.
+     * @return the String reprensenting the import dependencies {@link Map}.
+     * @since 1.1.1
+     */
+    private static String printDependencyMap(final Map < ImportType, Set < GenericDependency >> dependenciesMap) {
+        final Map < ImportType, Set < String > > printableMap = new TreeMap < ImportType, Set < String > >();
+
+        for (final Map.Entry < ImportType, Set < GenericDependency > > entry : dependenciesMap.entrySet()) {
+            final ImportType importType = entry.getKey();
+            final Set < GenericDependency > dependenciesSet = entry.getValue();
+
+            Set < String > importDependencies = printableMap.get(importType);
+            if (importDependencies == null) {
+                importDependencies = new TreeSet < String >();
+                printableMap.put(importType, importDependencies);
+            }
+
+            for (final GenericDependency dependency : dependenciesSet) {
+                importDependencies.add(dependency.getFullName());
+            }
+        }
+
+        return printableMap.toString();
+    }
+
+    /**
      * The {@link Map} of all {@link GenericDependency} which are needed by the current dependency
      * type to work. It has {@link ImportType} as keys and the {@link Set} of import dependencies as
      * values.
@@ -288,38 +320,6 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
         int result = 1;
         result = prime * result + ((importDependenciesMap == null) ? 0 : importDependenciesMap.hashCode());
         return result;
-    }
-
-    /**
-     * Converts the import dependencies map {@link Map} as a String containing dependencies full
-     * names.
-     *
-     * @param dependenciesMap
-     *            the {@link Map} of all {@link GenericDependency} which are needed by the current
-     *            dependency type to work. It has {@link ImportType} as keys and the {@link Set} of
-     *            import dependencies as values.
-     * @return the String reprensenting the import dependencies {@link Map}.
-     * @since 1.1.1
-     */
-    private static String printDependencyMap(final Map < ImportType, Set < GenericDependency >> dependenciesMap) {
-        final Map < ImportType, Set < String > > printableMap = new TreeMap < ImportType, Set < String > >();
-
-        for (final Map.Entry < ImportType, Set < GenericDependency > > entry : dependenciesMap.entrySet()) {
-            final ImportType importType = entry.getKey();
-            final Set < GenericDependency > dependenciesSet = entry.getValue();
-
-            Set < String > importDependencies = printableMap.get(importType);
-            if (importDependencies == null) {
-                importDependencies = new TreeSet < String >();
-                printableMap.put(importType, importDependencies);
-            }
-
-            for (final GenericDependency dependency : dependenciesSet) {
-                importDependencies.add(dependency.getFullName());
-            }
-        }
-
-        return printableMap.toString();
     }
 
     /**

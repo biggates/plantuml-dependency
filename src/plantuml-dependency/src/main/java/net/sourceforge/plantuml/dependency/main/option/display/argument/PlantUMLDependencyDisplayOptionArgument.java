@@ -63,7 +63,8 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
     /** The argument main usage description constant. */
     private static final String USAGE_DESCRIPTION = MAIN_USAGE
             + " specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : "
-            + collectionToStringWithoutBlanks(asList(values())) + ". " + getAllDisplayOptionsFullUsageDescriptions() + DOT_CHAR;
+            + collectionToStringWithoutBlanks(asList(values())) + ". " + getAllDisplayOptionsFullUsageDescriptions()
+            + DOT_CHAR;
 
     // FIXME uncomment if the PlantUMLDependencyProgrammingLanguageOption passes to ACTIVE (not
     // HIDDEN)

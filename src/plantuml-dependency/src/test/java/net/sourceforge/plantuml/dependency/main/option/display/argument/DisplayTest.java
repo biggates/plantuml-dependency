@@ -64,7 +64,8 @@ public class DisplayTest {
      */
     @Test
     public void testGetFullUsageDescription() {
-        assertEquals("\"abstract_classes\" : displays parsed source files which are abstract classes and relations to abstract classes",
+        assertEquals(
+                "\"abstract_classes\" : displays parsed source files which are abstract classes and relations to abstract classes",
                 ABSTRACT_CLASSES.getFullUsageDescription());
     }
 
@@ -97,6 +98,7 @@ public class DisplayTest {
      */
     @Test
     public void testGetUsageDescription() {
-        assertEquals("displays parsed source files which are abstract classes and relations to abstract classes", ABSTRACT_CLASSES.getUsageDescription());
+        assertEquals("displays parsed source files which are abstract classes and relations to abstract classes",
+                ABSTRACT_CLASSES.getUsageDescription());
     }
 }

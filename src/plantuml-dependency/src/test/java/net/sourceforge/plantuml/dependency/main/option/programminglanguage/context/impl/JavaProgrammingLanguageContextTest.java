@@ -232,7 +232,8 @@ public class JavaProgrammingLanguageContextTest extends
      */
     @Test
     public void testGetParsedOrSeenDependencyWithNotExistingDependency() {
-        assertNull(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2.getParsedOrSeenDependency("net.sourceforge.test.GenericDependency"));
+        assertNull(JAVA_PROGRAMMING_LANGUAGE_CONTEXT2
+                .getParsedOrSeenDependency("net.sourceforge.test.GenericDependency"));
     }
 
     /**

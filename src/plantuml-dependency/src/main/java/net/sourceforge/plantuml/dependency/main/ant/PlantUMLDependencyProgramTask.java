@@ -26,7 +26,7 @@ package net.sourceforge.plantuml.dependency.main.ant;
 
 import static net.sourceforge.mazix.components.utils.exception.ExceptionUtils.getStackTraceAsString;
 import static net.sourceforge.mazix.components.utils.map.MapUtils.putNonEmptyStringToMap;
-import static net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram.process;
+import static net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram.processProgramArguments;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -95,7 +95,7 @@ public class PlantUMLDependencyProgramTask extends Task {
     public void execute() {
         try {
             final String[] args = createArgs(getArgsMap());
-            process(args);
+            processProgramArguments(args);
         } catch (final PlantUMLDependencyException e) {
             log(getStackTraceAsString(e));
             throw new BuildException(e);

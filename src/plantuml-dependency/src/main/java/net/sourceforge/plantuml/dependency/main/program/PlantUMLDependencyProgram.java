@@ -29,16 +29,18 @@ import static java.util.Arrays.asList;
 import static java.util.logging.Level.INFO;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils.createProgramVersionFromPropertiesFileWithinClassClassloader;
+import static net.sourceforge.mazix.cli.constants.CommandLineConstants.PROTECTED_DOT_REGEXP;
+import static net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils.createProgramVersionFromString;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.readLoggerConfigurationFromResourceFromClassClassLoader;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
-import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.VERSION_PROPERTIES_PATH;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.PLANTUML_DEPENDENCY_ERROR;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.EXECUTION_TIME_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.PLANTUML_DEPENDENCY_ARGUMENTS_INFO;
 import static net.sourceforge.plantuml.dependency.constants.log.InfoConstants.STARTING_PLANTUML_DEPENDENCY_INFO;
+import static net.sourceforge.plantuml.dependency.main.program.generated.PlantUMLDependencyProgramVersionImpl.PROGRAM_BUILD_TIME;
+import static net.sourceforge.plantuml.dependency.main.program.generated.PlantUMLDependencyProgramVersionImpl.PROGRAM_VERSION;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -49,7 +51,6 @@ import java.util.logging.Logger;
 
 import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
 import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.exception.MissingPropertyException;
 import net.sourceforge.mazix.cli.option.impl.about.AboutOption;
 import net.sourceforge.mazix.cli.option.impl.help.HelpOption;
 import net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption;
@@ -82,11 +83,14 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
     /** Serial version UID. */
     private static final long serialVersionUID = 8055066636525797910L;
 
+    /** The Maven build timestamp pattern. */
+    private static final String MAVEN_BUILD_TIMESTAMP_PATTERN = "yyyyMMdd-HHmm";
+
     /**
      * The PlantUML Dependency program entry point. Note that this method take an internal logging
      * file and should be used only when the program is used as a stand alone application. If you
      * call PlantUML Dependency from an other Java program, you should use the
-     * {@link #process(String[])} method.
+     * {@link #processProgramArguments(String[])} method.
      *
      * @param args
      *            command line arguments.
@@ -98,7 +102,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         try {
             readLoggerConfigurationFromResourceFromClassClassLoader(LOGGING_PROPERTIES_PATH,
                     PlantUMLDependencyProgram.class);
-            process(args);
+            processProgramArguments(args);
         } catch (final PlantUMLDependencyException e) {
             LOGGER.log(SEVERE, e.getMessage(), e);
             throw e;
@@ -108,7 +112,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
     }
 
     /**
-     * The PlantUML Dependency program entry point.
+     * The PlantUML Dependency program entry point from command line arguments.
      *
      * @param args
      *            command line arguments.
@@ -116,15 +120,13 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      *             if any error occurs when running PlantUML Dependency.
      * @since 1.1.1
      */
-    public static void process(final String[] args) throws PlantUMLDependencyException {
+    public static void processProgramArguments(final String[] args) throws PlantUMLDependencyException {
         final long start = currentTimeMillis();
         LOGGER.log(INFO, STARTING_PLANTUML_DEPENDENCY_INFO);
         LOGGER.log(INFO, buildLogString(PLANTUML_DEPENDENCY_ARGUMENTS_INFO, Arrays.toString(args)));
 
         try {
-            final ProgramVersion programVersion = createProgramVersionFromPropertiesFileWithinClassClassloader(
-                    VERSION_PROPERTIES_PATH, PlantUMLDependencyProgram.class);
-            final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram(programVersion);
+            final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram();
             final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram
                     .parseCommandLine(new CommandLineImpl(args));
             plantumlDependencyProgramExecution.execute();
@@ -132,13 +134,27 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
             throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
         } catch (final ParseException e) {
             throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
-        } catch (final MissingPropertyException e) {
-            throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
         } catch (final IOException e) {
             throw new PlantUMLDependencyException(PLANTUML_DEPENDENCY_ERROR, e);
         }
 
         LOGGER.log(INFO, buildLogString(EXECUTION_TIME_INFO, currentTimeMillis() - start));
+    }
+
+    /**
+     * Default constructor.
+     *
+     * @throws MalformedURLException
+     *             if the program URL doesn't have a good format.
+     * @throws CommandLineException
+     *             if any exception occurs while creating the program.
+     * @throws ParseException
+     *             if the program versio and the program date can't be properly parsed.
+     * @since 1.2.0
+     */
+    public PlantUMLDependencyProgram() throws MalformedURLException, CommandLineException, ParseException {
+        this(createProgramVersionFromString(PROGRAM_VERSION, PROTECTED_DOT_REGEXP, PROGRAM_BUILD_TIME,
+                MAVEN_BUILD_TIMESTAMP_PATTERN));
     }
 
     /**
@@ -151,10 +167,9 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      *             if the program URL doesn't have a good format.
      * @throws CommandLineException
      *             if any exception occurs while creating the program.
-     *
      * @since 1.0
      */
-    public PlantUMLDependencyProgram(final ProgramVersion programVersion) throws MalformedURLException,
+    private PlantUMLDependencyProgram(final ProgramVersion programVersion) throws MalformedURLException,
             CommandLineException {
         super("PlantUML Dependency", new URL("http://plantuml-depend.sourceforge.net"), "plantuml-dependency-"
                 + programVersion.getFullVersionNumber() + ".jar", asList(new String[] {
@@ -201,7 +216,8 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
                 "\"C:\\Users\\PlantUML test\"", includeOption.getName(), "**/*Test.java"};
         final String[] example4 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
                 includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
-                displayOption.getName(), "implementations,interfaces,extensions,imports,static_imports", verboseLevelOption.getName()};
+                displayOption.getName(), "implementations,interfaces,extensions,imports,static_imports",
+                verboseLevelOption.getName()};
         addExampleCommandLine(new CommandLineImpl(example1));
         addExampleCommandLine(new CommandLineImpl(example2));
         addExampleCommandLine(new CommandLineImpl(example3));

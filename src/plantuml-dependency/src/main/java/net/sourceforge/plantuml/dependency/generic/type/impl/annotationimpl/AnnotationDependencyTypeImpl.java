@@ -83,9 +83,10 @@ public class AnnotationDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.2.0
      */
     public AnnotationDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
-            final ImportDependenciesCollection importDependencies, final Set < GenericDependency > annotationsDependenciesSet) {
-        super(dependencyName, dependencyPackageName, importDependencies, new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >(),
-                annotationsDependenciesSet);
+            final ImportDependenciesCollection importDependencies,
+            final Set < GenericDependency > annotationsDependenciesSet) {
+        super(dependencyName, dependencyPackageName, importDependencies, new TreeSet < GenericDependency >(),
+                new TreeSet < GenericDependency >(), annotationsDependenciesSet);
     }
 
     /**

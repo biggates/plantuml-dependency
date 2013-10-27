@@ -123,7 +123,8 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetParentExtensionsDependencies() {
-        final Set < GenericDependency > parentExtensionsDependencies = STUB_DEPENDENCY_TYPE1.getParentExtensionsDependencies();
+        final Set < GenericDependency > parentExtensionsDependencies = STUB_DEPENDENCY_TYPE1
+                .getParentExtensionsDependencies();
         assertEquals(0, parentExtensionsDependencies.size());
     }
 
@@ -134,7 +135,8 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
      */
     @Test
     public void testGetParentImplementationsDependencies() {
-        final Set < GenericDependency > parentImplementationsDependencies = STUB_DEPENDENCY_TYPE1.getParentImplementationsDependencies();
+        final Set < GenericDependency > parentImplementationsDependencies = STUB_DEPENDENCY_TYPE1
+                .getParentImplementationsDependencies();
         assertEquals(0, parentImplementationsDependencies.size());
     }
 

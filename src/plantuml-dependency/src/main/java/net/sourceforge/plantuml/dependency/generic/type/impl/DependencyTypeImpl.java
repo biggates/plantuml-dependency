@@ -605,8 +605,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
         } else {
             isToStringResursiveCall = true;
             result += ", importDependenciesCollection=" + importDependenciesCollection + ", name=" + name
-                    + ", packageName=" + packageName
-                    + ", parentExtensionsDependencies=" + parentExtensionsDependencies
+                    + ", packageName=" + packageName + ", parentExtensionsDependencies=" + parentExtensionsDependencies
                     + ", parentImplementationsDependencies=" + parentImplementationsDependencies + ", annotations="
                     + annotationsDependencies + ", plantUMLClassesDiagramElement=" + plantUMLClassesDiagramElement
                     + ", plantUMLClassesDiagramRelationSet=" + plantUMLClassesDiagramRelationSet + "]";

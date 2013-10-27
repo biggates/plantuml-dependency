@@ -6,9 +6,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.6</java.version>
-		<version>${project.version}</version>
-		<build.timestamp>${maven.build.timestamp}</build.timestamp>
-		<maven.build.timestamp.format>yyyyMMdd-HHmmss z</maven.build.timestamp.format>
 	</properties>
 	<!-- Project information -->
 	<groupId>net.sourceforge.plantuml.dependency</groupId>
@@ -57,22 +54,33 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<!-- Properties generation -->
+			<!-- Program version generation -->
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>properties-maven-plugin</artifactId>
-				<version>1.0-alpha-2</version>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.2</version>
 				<executions>
 					<execution>
-						<phase>generate-resources</phase>
+						<phase>process-sources</phase>
 						<goals>
-							<goal>write-project-properties</goal>
+							<goal>replace</goal>
 						</goals>
-						<configuration>
-							<outputFile>src/main/resources/net/sourceforge/plantuml/dependency/version/version.properties</outputFile>
-						</configuration>
 					</execution>
 				</executions>
+				<configuration>
+					<file>src/main/java-templates/net/sourceforge/plantuml/dependency/main/program/PlantUMLDependencyProgramVersionImpl.template</file>
+					<outputFile>src/main/java/net/sourceforge/plantuml/dependency/main/program/generated/PlantUMLDependencyProgramVersionImpl.java</outputFile>
+					<replacements>
+						<replacement>
+							<token>@buildversion@</token>
+							<value>${project.version}</value>
+						</replacement>
+						<replacement>
+							<token>@buildtime@</token>
+							<value>${build.timestamp}</value>
+						</replacement>
+					</replacements>
+				</configuration>
 			</plugin>
 			<!-- Cobertura generation -->
 			<plugin>
@@ -386,10 +394,10 @@
 			</plugin>
 			<!-- Project info reports plugin -->
 			<plugin>
-          		<groupId>org.apache.maven.plugins</groupId>
-          		<artifactId>maven-project-info-reports-plugin</artifactId>
-          		<version>2.7</version>
-        	</plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
 		</plugins>
 	</reporting>
 	<!-- Information about organization -->
@@ -416,12 +424,12 @@
 	</developers>
 	<!-- Information about distribution management -->
 	<distributionManagement>
-    	<site>
-      		<id>plantuml-dependency-website</id>
-      		<name>PlantUML Dependency Website</name>
-      		<url>http://plantuml-depend.sourceforge.net/maven-site/</url>
-    	</site>
-  	</distributionManagement>
+		<site>
+			<id>plantuml-dependency-website</id>
+			<name>PlantUML Dependency Website</name>
+			<url>http://plantuml-depend.sourceforge.net/maven-site/</url>
+		</site>
+	</distributionManagement>
 	<!-- Information about issue management -->
 	<issueManagement>
 		<system>Sourceforge Issue-Tracker</system>
