@@ -36,30 +36,49 @@
 			<font size="1">Last update : 30 Nov, 2013</font>
 		</div>
 		<div id="corps">
-			<h1>Running</h1>
-			<p>To launch class diagram text generation using the PlantUML format, you should have <a href="http://www.java.com/getjava/index.jsp">Java 1.6 or superior</a> installed on your machine.</p>
-			<p>You can then download it from the <a href="../download/download.html">download page</a> and save it on your local disk.</p>
-			<p>Here are the JVMs which have been successfully tested with the latest PlantUML Dependency version (1.2.0) :<br/><i>(This doesn't mean that other JVMs are not supported, but they haven't been tested)</i></p>
+			<h2>Calling PlantUML from Java</h2>
+			<p>You can easily integrate PlantUML Dependency with your own code by adding <i>plantuml-dependency.jar</i> in your classpath.</p>
+			<p>As the Maven integration is not done yet (opened feature <a href="http://sourceforge.net/p/plantuml-depend/feature-requests/14/"><b>14</b></a>), you have two choices to integrate PlantUML Dependency in your classpath :</p>
 			<ul>
-				<li>java version "1.6.0_45" Java(TM) SE Runtime Environment (build 1.6.0_45-b06) Java HotSpot(TM) Client VM (build 20.45-b01, mixed mode, sharing)</li>
-				<li>java version "1.7.0_45" Java(TM) SE Runtime Environment (build 1.7.0_45-b18) Java HotSpot(TM) Client VM (build 24.45-b08, mixed mode, sharing)</li>
+				<li>By adding <b>plantuml-dependency-1.1.0-jar-with-dependencies.jar</b> (download it <a style="text-decoration: none;"
+								href="http://sourceforge.net/projects/plantuml-depend/files/1.2.0/plantuml-dependency-1.2.0-archive-with-bundled-dependencies.tar.gz/download">here</a>) in your classpath</li>
+				<li>By adding <b>mazix-components-1.1.5.jar, mazix-cli-1.0.6.jar, ant-launcher-1.8.4.jar, ant-1.8.4.jar and plantuml-dependency-1.2.0.jar</b> (download them <a style="text-decoration: none;"
+								href="http://sourceforge.net/projects/plantuml-depend/files/1.2.0/plantuml-dependency-1.2.0-archive-with-external-dependencies.tar.gz/download">here</a>) in your classpath</li>
 			</ul>
-			<p>Here are the JVMs which can't run the latest PlantUML Dependency version (1.2.0) :</p>
-			<ul>
-				<li>java version "1.4.2_19" Java(TM) 2 Runtime Environment, Standard Edition (build 1.4.2_19-b04) Java HotSpot(TM) Client VM (build 1.4.2_19-b04, mixed mode)</li>
-				<li>java version "1.5.0_22" Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_22-b03) Java HotSpot(TM) Client VM (build 1.5.0_22-b03, mixed mode)</li>
-			</ul>
-			<p>You can run PlantUML Dependency using several ways :</p>
-			<div id="external">
-				<ul>
-					<li><a href="../ant_task/ant_task.html"><img border="0" src="../images/ant.png" alt="" /></a>&nbsp;&nbsp;<a
-						href="../ant_task/ant_task.html">Write an ANT task</a></li>
-					<li><a href="../command_line/command_line.html"><img border="0" src="../images/dos.png" alt="" /></a>&nbsp;&nbsp;<a
-						href="../command_line/command_line.html">Use a command line</a></li>
-					<li><a href="../java_api/java_api.html"><img border="0" src="../images/api.png" alt="" /></a>&nbsp;&nbsp;<a
-						href="../java_api/java_api.html">Call it from Java</a></li>
-				</ul>
+			<h3>The simplest way : using arguments such as the command line</h3>
+			<div class="scriptplantu">
+				<pre>
+	import java.net.MalformedURLException;
+	import java.text.ParseException;
+
+	import net.sourceforge.mazix.cli.command.CommandLine;
+	import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
+	import net.sourceforge.mazix.cli.exception.CommandLineException;
+	import net.sourceforge.mazix.cli.program.JavaProgram;
+	import net.sourceforge.mazix.cli.program.execution.JavaProgramExecution;
+	import net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram;
+
+	public class Main {
+
+	    public static void main(final String[] args) throws MalformedURLException, CommandLineException, ParseException {
+
+	        // Creates the PlantUML Dependency arguments as they would be written in the command line
+	        final CommandLine commandLineArguments = new CommandLineImpl(new String[] {"-o", "plantuml-jdk-1.7.0.45.txt", "-b", "C:\\jdk-1.7.0.45-src", "-e", "**/package-info.java"});
+
+	        // Creates the PlantUML Dependency program instance
+	        final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram();
+
+	        // Get the PlantUML Dependency program execution instance following the command line arguments, ready to be executed
+	        final JavaProgramExecution plantumlDependencyProgramExecution = plantumlDependencyProgram.parseCommandLine(commandLineArguments);
+
+	        // Executes the PlantUML Dependency program
+	        plantumlDependencyProgramExecution.execute();
+	    }
+	}
+				</pre>
 			</div>
+			<h3>Notes</h3>
+			<p>As you may see, it is not possible to get the <code>OuputStream</code> result once the program is executed yet, it can only write into an output file for the moment (opened feature <a href="http://sourceforge.net/p/plantuml-depend/feature-requests/28/"><b>28</b></a>).</p>
 		</div>
 		<div id="pied_de_page">
 			<table>
