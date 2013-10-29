@@ -228,7 +228,8 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         addKnownBugOrLimitation("- Generated annotations (if used) are only supported by PlantUML 7972 and above");
         addKnownBugOrLimitation("- Import instructions \"import package_name.*\" are ignored because the dependencies are not explicitly defined, use precise imports instead");
         addKnownBugOrLimitation("- Links between dependencies are found out by parsing \"import\" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code");
+        addKnownBugOrLimitation("- PlantUML Dependency can be run by JRE 1.6+");
         addKnownBugOrLimitation("- PlantUML Dependency is fully compliant up to Java 1.6 source files (and may work with Java 1.7 source files)");
-
+        addKnownBugOrLimitation("- The generated output file is better when PlantUML Dependency is launched with a JRE matching the parsed source files");
     }
 }

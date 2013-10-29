@@ -28,6 +28,7 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
 import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.mazix.components.utils.collection.CollectionUtils.collectionToStringWithoutBlanks;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
 
@@ -69,7 +70,8 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
     public PlantUMLDependencyDisplayOption() {
         super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayOptionArgument(true),
                 new StringBuilder("To specify class diagram objects to display. If not specified, the default is "
-                        + DEFAULT_DISPLAY_OPTIONS), SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
+                        + collectionToStringWithoutBlanks(DEFAULT_DISPLAY_OPTIONS)), SPACE_CHAR,
+                ACTIVE_OPTIONAL_OPTION_STATUS);
     }
 
     /**

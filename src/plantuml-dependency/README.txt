@@ -60,8 +60,8 @@ where optional options are:
 		DIR specifies a valid and existing directory path, not a single file. It can be absolute or relative.
 
 	-d, --display DISPLAY_OPTIONS
-		To specify class diagram objects to display. If not specified, the default is [abstract_classes, annotations, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]
-		DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes, annotations, classes, enums, extensions, implementations, imports, interfaces, native_methods, static_imports]. "abstract_classes" : displays parsed source files which are abstract classes, "annotations" : displays annotations (classes and methods) of all parsed source files, "classes" : displays parsed and seen source files (as import or as extension) which are classes (not abstract), "enums" : displays parsed source files which are enums, "extensions" : displays dependencies which are extended by parsed source files (i.e. classes or interfaces), "implementations" : displays dependencies which are implemented by parsed source files (i.e. interfaces), "imports" : displays import (not static) of all parsed source files, "interfaces" : displays parsed source and seen source files (as import, as extension or as implementation) files which are interfaces, "native_methods" : displays links to the native dependency, "static_imports" : displays static imports of all parsed source files.
+		To specify class diagram objects to display. If not specified, the default is [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]
+		DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]. "abstract_classes" : displays parsed source files which are abstract classes and relations to abstract classes, "annotations" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, "classes" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, "enums" : displays parsed source files which are enums and relations to enums, "extensions" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, "implementations" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, "imports" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, "interfaces" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, "native_methods" : displays relations from parsed source files to the native dependency if they use native methods, "static_imports" : displays relations from parsed source files to import dependencies (only static) if their type is displayed.
 
 	-e, --exclude FILE_PATTERN
 		To exclude files that match the provided pattern. If not specified, no file is excluded.
@@ -88,7 +88,7 @@ where optional options are:
 Examples:
 
 	java -jar plantuml-dependency-1.2.0.jar -h
-	java -jar plantuml-dependency-1.2.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d abstract_classes,interfaces -v
+	java -jar plantuml-dependency-1.2.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d implementations,interfaces,extensions,imports,static_imports -v
 	java -jar plantuml-dependency-1.2.0.jar -o plantuml.txt -b "C:\Users\PlantUML test" -i **/*Test.java
 	java -jar plantuml-dependency-1.2.0.jar -version -v
 
@@ -99,4 +99,6 @@ Known bugs or program limitations:
 	- Generated annotations (if used) are only supported by PlantUML 7972 and above
 	- Import instructions "import package_name.*" are ignored because the dependencies are not explicitly defined, use precise imports instead
 	- Links between dependencies are found out by parsing "import" instructions, so PlantUML Dependency won't display dependencies which are called using their full names in the source code
+	- PlantUML Dependency can be run by JRE 1.6+
 	- PlantUML Dependency is fully compliant up to Java 1.6 source files (and may work with Java 1.7 source files)
+	- The generated output file is better when PlantUML Dependency is launched with a JRE matching the parsed source files
