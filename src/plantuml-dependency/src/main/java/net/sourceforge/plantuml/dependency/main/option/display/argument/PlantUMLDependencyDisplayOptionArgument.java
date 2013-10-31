@@ -28,7 +28,7 @@ import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.EMPTY_OPTION_ARGUMENT_ERROR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.utils.collection.CollectionUtils.collectionToStringWithoutBlanks;
+import static net.sourceforge.mazix.components.utils.collection.CollectionUtils.collectionToString;
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.NOT_DISPLAY_ARGUMENT_ERROR;
@@ -63,7 +63,7 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
     /** The argument main usage description constant. */
     private static final String USAGE_DESCRIPTION = MAIN_USAGE
             + " specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : "
-            + collectionToStringWithoutBlanks(asList(values())) + ". " + getAllDisplayOptionsFullUsageDescriptions()
+            + collectionToString(asList(values()), COMMA_CHAR) + ". " + getAllDisplayOptionsFullUsageDescriptions()
             + DOT_CHAR;
 
     // FIXME uncomment if the PlantUMLDependencyProgrammingLanguageOption passes to ACTIVE (not

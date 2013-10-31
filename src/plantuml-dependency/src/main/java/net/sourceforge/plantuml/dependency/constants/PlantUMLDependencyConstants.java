@@ -27,7 +27,8 @@ package net.sourceforge.plantuml.dependency.constants;
 import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.components.color.HTMLColor.YELLOW;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.convertCollectionToSeparatedString;
+import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.mazix.components.utils.collection.CollectionUtils.collectionToString;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.ANNOTATIONS;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.CLASSES;
@@ -65,8 +66,8 @@ public final class PlantUMLDependencyConstants {
             IMPLEMENTATIONS, EXTENSIONS}));
 
     /** The default display options argument as a String to apply if not specified. */
-    public static final String DEFAULT_DISPLAY_OPTIONS_STRING = convertCollectionToSeparatedString(
-            DEFAULT_DISPLAY_OPTIONS, COMMA_CHAR);
+    public static final String DEFAULT_DISPLAY_OPTIONS_STRING = collectionToString(DEFAULT_DISPLAY_OPTIONS, COMMA_CHAR,
+            BLANK_STRING, BLANK_STRING);
 
     /** The default exclude options to apply if not specified. */
     public static final String DEFAULT_EXCLUDE_OPTIONS = "**/*~";
