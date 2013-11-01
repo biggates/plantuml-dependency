@@ -78,7 +78,10 @@
 				</pre>
 			</div>
 			<h3>Notes</h3>
-			<p>As you may see, it is not possible to get the <code>OuputStream</code> result once the program is executed yet, it can only write into an output file for the moment (opened feature <a href="http://sourceforge.net/p/plantuml-depend/feature-requests/28/"><b>28</b></a>).</p>
+			<ul>
+				<li>As you may see, it is not possible to get the <code>OuputStream</code> result once the program is executed yet, it can only write into an output file for the moment (opened feature <a href="http://sourceforge.net/p/plantuml-depend/feature-requests/28/"><b>28</b></a>).</li>
+				<li>It is not advised to use the verbose level option when calling PlantUML Dependency from Java as it will change the log level of all loggers, including yours (opened bug <a href="http://sourceforge.net/p/plantuml-depend/bugs/6/"><b>6</b></a>).</li>
+			</ul>
 		</div>
 		<div id="pied_de_page">
 			<table>
