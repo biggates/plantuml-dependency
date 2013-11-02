@@ -45,93 +45,50 @@
 		<font size="1">Last update : 30 Nov, 2013</font>
 	</div>
 	<div id="corps">
-		<h2>PlantUML Dependency performances</h2>
-		<p>
-			<b>PlantUML Dependency 1.1.0 and 1.2.0</b> have been tested on 3 open source projects, <a
-				href="http://tomcat.apache.org"><b>Apache tomcat 7.0.42</b></a>, <a href="http://www.eclipse.org/"><b>Eclipse
-					4.2.2</b></a> and <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html"><b>JDK 1.7.0.25</b></a> in
-			order to analyse its performances.
-		</p>
-		<p>Here are the results on the following configuration :</p>
-		<ul>
-			<li>Intel(R) Core(TM)2 CPU 6700 @2,66GHz 2,67GHz</li>
-			<li>4,00 Go Memory</li>
-			<li>Windows 7 32 bits</li>
-			<li>JDK JRE 1.7.0_40</li>
-		</ul>
+		<h2>On this page, you will able to compare differences between PlantUML Dependency versions on some project</h2>
 		<table border="1" cellspacing="0" cellpadding="4">
 			<tr>
-				<td><b>Project</b></td>
-				<td><b>Program options</b></td>
-				<td><b>Number of processed files</b></td>
-				<td><b>PlantUML Dependency 1.1.0 average time (s)</b></td>
-				<td><b>PlantUML Dependency 1.2.0 average time (s)</b></td>
-				<td><b>PlantUML Dependency 1.1.0 used memory (Mo)</b></td>
-				<td><b>PlantUML Dependency 1.2.0 used memory (Mo)</b></td>
+				<td><b>JRE version running <b>PlantUML Dependency</b></b></td>
+				<td><b>PlantUML Dependency version</b></td>
+				<td><b>Processed source code</b></td>
+				<td><b>Output result file</b></td>
+				<td><b>Number of lines in the result file</b></td>
+				<td><b>Number of processed dependencies</b></td>
 			</tr>
 			<tr>
-				<td><b>Apache tomcat 7.0.42</b></td>
-				<td>-e **/package-info.java -v</td>
-				<td>1257</td>
-				<td>15.98</td>
-				<td>19.30</td>
-				<td>4.32</td>
-				<td>7.02</td>
+				<td>1.7.0_45</td>
+				<td>1.0.0</td>
+				<td>JDK 1.7.0.25</td>
+				<td><a href="../media/plantuml-jdk-1.7.0.25-by1.0.0.txt" target="_blank">plantuml-jdk-1.7.0.25-by1.0.0.txt</a>
+					(3259 ko)</td>
+				<td>41767</td>
+				<td>8255</td>
 			</tr>
 			<tr>
-				<td><b>Eclipse 4.2.2</b></td>
-				<td>-e **/package-info.java -v</td>
-				<td>5583</td>
-				<td>215</td>
-				<td>243</td>
-				<td>49.19</td>
-				<td>59.08</td>
+				<td>1.7.0_45</td>
+				<td>1.1.0</td>
+				<td>JDK 1.7.0.25</td>
+				<td><a href="../media/plantuml-jdk-1.7.0.25-by1.1.0.txt" target="_blank">plantuml-jdk-1.7.0.25-by1.1.0.txt</a>
+					(3239 ko)</td>
+				<td>41538</td>
+				<td>8212</td>
 			</tr>
 			<tr>
-				<td><b>JDK 1.7.0.25</b></td>
-				<td>-e **/package-info.java -v</td>
-				<td>7406</td>
-				<td>80</td>
-				<td>103</td>
-				<td>11.54</td>
-				<td>19.46</td>
-			</tr>
-			<tr>
-				<td><b>Apache tomcat 7.0.42</b></td>
-				<td>-e **/package-info.java</td>
-				<td>1257</td>
-				<td>3</td>
-				<td>6</td>
-				<td>5.82</td>
-				<td>8.88</td>
-			</tr>
-			<tr>
-				<td><b>Eclipse 4.2.2</b></td>
-				<td>-e **/package-info.java</td>
-				<td>5583</td>
-				<td>43</td>
-				<td>51</td>
-				<td>33.04</td>
-				<td>38.76</td>
-			</tr>
-			<tr>
-				<td><b>JDK 1.7.0.25</b></td>
-				<td>-e **/package-info.java</td>
-				<td>7406</td>
-				<td>11</td>
-				<td>30</td>
-				<td>24.46</td>
-				<td>28.81</td>
+				<td>1.7.0_45</td>
+				<td>1.2.0</td>
+				<td>JDK 1.7.0.25</td>
+				<td><a href="../media/plantuml-jdk-1.7.0.25-by1.2.0.txt" target="_blank">plantuml-jdk-1.7.0.25-by1.2.0.txt</a>
+					(3384 ko)</td>
+				<td>43641</td>
+				<td>8230</td>
 			</tr>
 		</table>
-		<h5 style="color: red;">Note that memory usages are not reliable, it is just to give an idea.</h5>
+		<p>
+			You may also have a look about <b>PlantUML Dependency</b> performances <a href="../performances/performances.html"><b>here</b></a>
+		</p>
 		<p>
 			You may also have a look about output differences between used JRE for running <b>PlantUML Dependency</b> <a
 				href="../jre_comparison/jre_comparison.html"><b>here</b></a>
-		</p>
-		<p>
-			You may also have a look about output differences between all <b>PlantUML Dependency</b> versions <a
-				href="../result_comparison/result_comparison.html"><b>here</b></a>
 		</p>
 	</div>
 	<div id="pied_de_page">
