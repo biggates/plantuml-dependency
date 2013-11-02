@@ -1,45 +1,59 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	<head>
-		<meta name="verify-v1" content="2DjjlbOzO6kmuWSa0PHcysT1KR/zVGazrFgA4UX5UsE=" />
-		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-		<meta http-equiv="expires" content="0" />
-		<meta http-equiv="pragma" content="no-cache" />
-		<meta http-equiv="cache-control" content="no-cache, must-revalidate" />
-		<meta name="description" content="PlantUml Dependency allows to parse Java source files to generate a PlantUML description, allowing to draw the UML class diagram associated to the source code. " />
-		<title>PlantUML Dependency</title>
-		<link rel="shortcut icon" href="../images/favicon.ico" />
-		<link rel="stylesheet" media="screen" type="text/css" title="Design" href="../design.css" />
-	</head>
-	<body>
-		<div id="en_tete">
-			<h1>PlantUML Dependency</h1>
-			<p>Open-Source tool in Java to parse source code to automatically draw UML class Diagram using PlantUML</p>
+<head>
+<meta name="verify-v1" content="2DjjlbOzO6kmuWSa0PHcysT1KR/zVGazrFgA4UX5UsE=" />
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache, must-revalidate" />
+<meta name="description"
+	content="PlantUml Dependency allows to parse Java source files to generate a PlantUML description, allowing to draw the UML class diagram associated to the source code." />
+<title>PlantUML Dependency</title>
+<link rel="shortcut icon" href="../images/favicon.ico" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="../design.css" />
+</head>
+<body>
+	<div id="en_tete">
+		<h1>PlantUML Dependency</h1>
+		<p>Open-Source tool in Java to parse source code to automatically draw UML class Diagram using PlantUML</p>
+	</div>
+	<div id="menu">
+		<div align="center">
+			<h1>
+				<a href="../index.html">Home</a>
+			</h1>
 		</div>
-		<div id="menu">
-			<div align="center">
-				<h1><a href="../index.html">Home</a></h1>
-			</div>
-			<ul>
-				<li><a href="../screenshot/screenshot.html">Screenshots</a></li>
-				<li><a href="../download/download.html">Download</a></li>
-				<li><a href="../news/news.html">What's New ?</a></li>
-				<li><a href="../running/running.html">Running</a></li>
-				<li><a href="../site_map/site_map.html">Site map</a></li>
-				<li><a href="../maven-site/index.html">Maven site</a></li>
-				<li><a href="../faq/faq.html">F.A.Q.</a></li>
-				<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
-				<li><a href="../external_links/external_links.html">External Links</a></li>
-			</ul>
-			<p><a href="http://validator.w3.org/check?uri=referer"><img style="border:0" src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a></p>
-			<p><a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS !" height="31" width="88" /></a></p>
-			<font size="1">Last update : 30 Nov, 2013</font>
-		</div>
-		<div id="corps">
-			<h2>PlantUML Dependency <a href="http://ant.apache.org"><b>Ant</b></a> task</h2>
-			<p>You can run <b>PlantUML Dependency</b> using the following simplest <a href="http://ant.apache.org"><b>Ant</b></a> example :</p>
-			<div class="scriptplantu">
-				<pre>
+		<ul>
+			<li><a href="../screenshot/screenshot.html">Screenshots</a></li>
+			<li><a href="../download/download.html">Download</a></li>
+			<li><a href="../news/news.html">What's New ?</a></li>
+			<li><a href="../running/running.html">Running</a></li>
+			<li><a href="../site_map/site_map.html">Site map</a></li>
+			<li><a href="../maven-site/index.html">Maven site</a></li>
+			<li><a href="../faq/faq.html">F.A.Q.</a></li>
+			<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
+			<li><a href="../external_links/external_links.html">External Links</a></li>
+		</ul>
+		<p>
+			<a href="http://validator.w3.org/check?uri=referer"><img style="border: 0"
+				src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+		</p>
+		<p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border: 0"
+				src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS !" height="31" width="88" /></a>
+		</p>
+		<font size="1">Last update : 30 Nov, 2013</font>
+	</div>
+	<div id="corps">
+		<h2>
+			PlantUML Dependency <a href="http://ant.apache.org"><b>Ant</b></a> task
+		</h2>
+		<p>
+			You can run <b>PlantUML Dependency</b> using the following simplest <a href="http://ant.apache.org"><b>Ant</b></a>
+			example :
+		</p>
+		<div class="scriptplantu">
+			<pre>
 	&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
 		&lt;!-- task definition --&gt;
 		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-1.1.0-jar-with-dependencies.jar" /&gt;
@@ -50,12 +64,17 @@
 		&lt;/target&gt;
 	&lt;/project&gt;
 				</pre>
-			</div>
-			<p>This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> of the current directory and output a <b>plantuml.txt</b> text file.</p>
-			<h3>Input Directory</h3>
-			<p>You can also specify a input base directory to look for the <b>.java</b> files, using <code>baseDir</code> tag.</p>
-			<div class="scriptplantu">
-				<pre>
+		</div>
+		<p>
+			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> of the current directory and
+			output a <b>plantuml.txt</b> text file.
+		</p>
+		<h3>Input Directory</h3>
+		<p>
+			You can also specify a input base directory to look for the <b>.java</b> files, using <code>baseDir</code> tag.
+		</p>
+		<div class="scriptplantu">
+			<pre>
 	&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
 		&lt;!-- task definition --&gt;
 		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-1.1.0-jar-with-dependencies.jar" /&gt;
@@ -66,12 +85,18 @@
 		&lt;/target&gt;
 	&lt;/project&gt;
 				</pre>
-			</div>
-			<p>This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> of the <b>/home</b> directory and output a <b>plantuml.txt</b> text file.</p>
-			<h3>Includes and excludes files</h3>
-			<p>You can also specify a set of files to include or exclude when browsing the input base directory, using <code>includes</code> and <code>excludes</code> tags.</p>
-			<div class="scriptplantu">
-				<pre>
+		</div>
+		<p>
+			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> of the <b>/home</b> directory and
+			output a <b>plantuml.txt</b> text file.
+		</p>
+		<h3>Includes and excludes files</h3>
+		<p>
+			You can also specify a set of files to include or exclude when browsing the input base directory, using <code>includes</code>
+			and <code>excludes</code> tags.
+		</p>
+		<div class="scriptplantu">
+			<pre>
 	&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
 		&lt;!-- task definition --&gt;
 		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-1.1.0-jar-with-dependencies.jar" /&gt;
@@ -82,37 +107,62 @@
 		&lt;/target&gt;
 	&lt;/project&gt;
 				</pre>
-			</div>
-			<p>This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>*Test*.java</b> (except <b>PlantUMLDependencyProgram.java</b>) of the <b>/home</b> directory and output a <b>plantuml.txt</b> text file.</p>
-			<h3>Other parameters</h3>
-			<table border="1" cellspacing="0" cellpadding="4">
-				<tr>
-					<td><b>Parameter</b></td>
-					<td><b>Default</b></td>
-					<td><b>Description</b></td>
-				</tr>
-				<tr>
-					<td>verboseLevel</td>
-					<td>800</td>
-					<td>Specifies the verbose level. The argument may consist of either a level name or an integer value. Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300.</td>
-				</tr>
-				<tr>
-					<td>display</td>
-					<td>abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports</td>
-					<td>Specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]. "abstract_classes" : displays parsed source files which are abstract classes and relations to abstract classes, "annotations" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, "classes" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, "enums" : displays parsed source files which are enums and relations to enums, "extensions" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, "implementations" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, "imports" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, "interfaces" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, "native_methods" : displays relations from parsed source files to the native dependency if they use native methods, "static_imports" : displays relations from parsed source files to import dependencies (only static) if their type is displayed.</td>
-				</tr>
-			</table>
-			<h5 style="color:red;">Note that options are just ignored if they have empty values. For instance, the verboseLevel option doesn't behave the same as the command line.</h5>
 		</div>
-		<div id="pied_de_page">
-			<table>
-				<tr>
-					<td width="13%"><a href="#">Back to top</a></td>
-					<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img border="0" src="../images/mail.gif" alt="Contact" /></a></td>
-					<td width="13%"><a title="Your help is really appreciate" href="http://sourceforge.net/p/plantuml-depend/donate/?source=navbar"><img src="../images/paypal.gif" border="0" alt="Donate" /></a></td>
-					<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img src="../images/sourceforge-logo.png" alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
-				</tr>
-			</table>
-		</div>
-	</body>
+		<p>
+			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>*Test*.java</b> (except <b>PlantUMLDependencyProgram.java</b>)
+			of the <b>/home</b> directory and output a <b>plantuml.txt</b> text file.
+		</p>
+		<h3>Other parameters</h3>
+		<table border="1" cellspacing="0" cellpadding="4">
+			<tr>
+				<td><b>Parameter</b></td>
+				<td><b>Default</b></td>
+				<td><b>Description</b></td>
+			</tr>
+			<tr>
+				<td>verboseLevel</td>
+				<td>800</td>
+				<td>Specifies the verbose level. The argument may consist of either a level name or an integer value. Classical
+					values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300.</td>
+			</tr>
+			<tr>
+				<td>display</td>
+				<td>abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports</td>
+				<td>Specifies display options when generating the plantuml output file, it is a separated comma list with these
+					possible values :
+					[abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports].
+					"abstract_classes" : displays parsed source files which are abstract classes and relations to abstract classes,
+					"annotations" : displays parsed source files which are annotations, annotations (upon classes and methods) of all
+					parsed source files and relations to annotations, "classes" : displays parsed source files which are classes (not
+					abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and
+					relations to classes, "enums" : displays parsed source files which are enums and relations to enums, "extensions" :
+					displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if
+					their type is displayed, "implementations" : displays relations between dependencies which are implemented by
+					parsed source files (i.e. interfaces) if their type is displayed, "imports" : displays relations from parsed source
+					files to import dependencies (not static) if their type is displayed, "interfaces" : displays parsed source files
+					which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed)
+					and relations to interfaces, "native_methods" : displays relations from parsed source files to the native
+					dependency if they use native methods, "static_imports" : displays relations from parsed source files to import
+					dependencies (only static) if their type is displayed.</td>
+			</tr>
+		</table>
+		<h5 style="color: red;">Note that options are just ignored if they have empty values. For instance, the
+			verboseLevel option doesn't behave the same as the command line.</h5>
+	</div>
+	<div id="pied_de_page">
+		<table>
+			<tr>
+				<td width="13%"><a href="#">Back to top</a></td>
+				<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img
+						border="0" src="../images/mail.gif" alt="Contact" /></a></td>
+				<td width="13%"><a title="Your help is really appreciate"
+					href="http://sourceforge.net/p/plantuml-depend/donate/?source=navbar"><img src="../images/paypal.gif"
+						border="0" alt="Donate" /></a></td>
+				<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img
+						src="../images/sourceforge-logo.png"
+						alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
+			</tr>
+		</table>
+	</div>
+</body>
 </html>

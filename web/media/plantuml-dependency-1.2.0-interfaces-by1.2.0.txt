@@ -1,4 +1,4 @@
-@startuml
+﻿@startuml
 interface java.io.Serializable
 interface java.lang.Comparable
 interface net.sourceforge.mazix.cli.option.execution.ExecutableOption

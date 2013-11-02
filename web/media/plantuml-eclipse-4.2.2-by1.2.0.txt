@@ -1,4 +1,4 @@
-@startuml
+﻿@startuml
 abstract class com.ibm.icu.impl.CacheBase
 abstract class com.ibm.icu.impl.ICUNotifier
 abstract class com.ibm.icu.impl.SoftCache

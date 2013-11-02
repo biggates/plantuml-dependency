@@ -45,34 +45,43 @@
 		<font size="1">Last update : 30 Nov, 2013</font>
 	</div>
 	<div id="corps">
-		<h1>Current Issues</h1>
-		<div id="external">
-			<ul>
-				<li><b>1 Nov, 2013</b>: Log level of all loggers is changed when calling PlantUML Dependency from Java. (bug <a
-					href="http://sourceforge.net/p/plantuml-depend/bugs/6/"><b>6</b></a>)</li>
-				<li><s><b>30 Jun, 2013</b>: Error with dependency whic have the same name as a dependency in the java.lang
-						package. (bug <a href="http://sourceforge.net/p/plantuml-depend/bugs/5/"><b>5</b></a>)</s> <i>(Resolved since
-						1.2.0)</i></li>
-				<li><b>1 Jan, 2012</b>: Error when parsing package-info.java file. (bug <a
-					href="http://sourceforge.net/p/plantuml-depend/bugs/4/"><b>4</b></a>)</li>
-				<li><s><b>1 Jan, 2012</b>: Error when parsing files which use annotations. (bug <a
-						href="http://sourceforge.net/p/plantuml-depend/bugs/3/"><b>3</b></a>)</s> <i>(Resolved since 1.2.0)</i></li>
-				<li><s><b>25 Jul, 2011</b>: Error when parsing empty files. (bug <a
-						href="http://sourceforge.net/p/plantuml-depend/bugs/2/"><b>2</b></a>)</s> <i>(Resolved since 1.2.0)</i></li>
-				<li><s><b>25 May, 2011</b>: Error when generating description with classes which have static imports.</s> <i>(Resolved
-						since 1.0.1)</i></li>
-				<li><b>3 Dec, 2010</b>: Some program options which are hidden and inactive should not be taken into account
-					(bug <a href="http://sourceforge.net/p/plantuml-depend/bugs/1/"><b>1</b></a>)</li>
-				<li><s><b>5 Nov, 2010</b>: Error when generating description with classes which have a comment on the same
-						line as the class declaration.</s> <i>(Resolved since 1.0.0)</i></li>
-				<li><s><b>3 Nov, 2010</b>: Error when generating description with classes importing all classes of a
-						package, using the<b>*</b> character.</s> <i>(Resolved since 1.0.0)</i></li>
-				<li><s><b>1 Nov, 2010</b>: Error when generating description with inner classes, bad class order
-						declaration.</s> <i>(Resolved since 1.0.0)</i></li>
-				<li><s><b>15 Oct, 2010</b>: Error when generating description with generic classes.</s> <i>(Resolved since
-						1.0.0)</i></li>
-			</ul>
-		</div>
+		<h2>Why the result is different when using a different JRE with PlantUML Dependency ?</h2>
+		<p>
+			This is part of the <b>PlantUML Dependency</b> algorithm, which uses <code>java.lang.Class.forName</code> for some
+			particular cases.
+		</p>
+		<p>
+			Indeed, when an object is parsed it may have several extensions and / or implementations which are not declared in
+			the imports and will not be parsed by the program. This mean that either the object is provided by the <code>java.lang</code>
+			library or the object is in the same package. If the object is in the same package and is parsed afterwards, the
+			dependency is identified, no problem in this case. But if the object is not parsed, it means that <b>PlantUML
+				Dependency</b> has to know if the object comes from <code>java.lang</code> or from the same package, and it uses <code>java.lang.Class.forName</code>
+			for that.
+		</p>
+		<p>
+			A feature request has been opened to improve this behavior, allowing to choose the JRE <b>PlantUML Dependency</b> is
+			using for these cases. (opened feature <a href="http://sourceforge.net/p/plantuml-depend/feature-requests/33/"><b>33</b></a>)
+		</p>
+		<h3>Example : view the differences between JRE 6 and 7 on the JDK 1.7.0.25 source code</h3>
+		<table border="1" cellspacing="0" cellpadding="4">
+			<tr>
+				<td><b>JRE version running <b>PlantUML Dependency</b></b></td>
+				<td><b>Processed source code</b></td>
+				<td><b>Output result file</b></td>
+			</tr>
+			<tr>
+				<td>1.6.0_45</td>
+				<td>JDK 1.7.0.25</td>
+				<td><a href="../media/plantuml-jdk-1.7.0.25-by1.2.0-withJRE1.6.txt" target="_blank">plantuml-jdk-1.7.0.25-by1.2.0-withJRE1.6.txt</a>
+					(3385 ko)</td>
+			</tr>
+			<tr>
+				<td>1.7.0_45</td>
+				<td>JDK 1.7.0.25</td>
+				<td><a href="../media/plantuml-jdk-1.7.0.25-by1.2.0.txt" target="_blank">plantuml-jdk-1.7.0.25-by1.2.0.txt</a>
+					(3384 ko)</td>
+			</tr>
+		</table>
 	</div>
 	<div id="pied_de_page">
 		<table>

@@ -1,104 +1,135 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	<head>
-		<meta name="verify-v1" content="2DjjlbOzO6kmuWSa0PHcysT1KR/zVGazrFgA4UX5UsE=" />
-		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-		<meta http-equiv="expires" content="0" />
-		<meta http-equiv="pragma" content="no-cache" />
-		<meta http-equiv="cache-control" content="no-cache, must-revalidate" />
-		<meta name="description" content="PlantUml Dependency allows to parse Java source files to generate a PlantUML description, allowing to draw the UML class diagram associated to the source code. " />
-		<title>PlantUML Dependency</title>
-		<link rel="shortcut icon" href="../images/favicon.ico" />
-		<link rel="stylesheet" media="screen" type="text/css" title="Design" href="../design.css" />
-	</head>
-	<body>
-		<div id="en_tete">
-			<h1>PlantUML Dependency</h1>
-			<p>Open-Source tool in Java to parse source code to automatically draw UML class Diagram using PlantUML</p>
+<head>
+<meta name="verify-v1" content="2DjjlbOzO6kmuWSa0PHcysT1KR/zVGazrFgA4UX5UsE=" />
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache, must-revalidate" />
+<meta name="description"
+	content="PlantUml Dependency allows to parse Java source files to generate a PlantUML description, allowing to draw the UML class diagram associated to the source code." />
+<title>PlantUML Dependency</title>
+<link rel="shortcut icon" href="../images/favicon.ico" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="../design.css" />
+</head>
+<body>
+	<div id="en_tete">
+		<h1>PlantUML Dependency</h1>
+		<p>Open-Source tool in Java to parse source code to automatically draw UML class Diagram using PlantUML</p>
+	</div>
+	<div id="menu">
+		<div align="center">
+			<h1>
+				<a href="../index.html">Home</a>
+			</h1>
 		</div>
-		<div id="menu">
-			<div align="center">
-				<h1><a href="../index.html">Home</a></h1>
-			</div>
+		<ul>
+			<li><a href="../screenshot/screenshot.html">Screenshots</a></li>
+			<li><a href="../download/download.html">Download</a></li>
+			<li><a href="../news/news.html">What's New ?</a></li>
+			<li><a href="../running/running.html">Running</a></li>
+			<li><a href="../site_map/site_map.html">Site map</a></li>
+			<li><a href="../maven-site/index.html">Maven site</a></li>
+			<li><a href="../faq/faq.html">F.A.Q.</a></li>
+			<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
+			<li><a href="../external_links/external_links.html">External Links</a></li>
+		</ul>
+		<p>
+			<a href="http://validator.w3.org/check?uri=referer"><img style="border: 0"
+				src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+		</p>
+		<p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border: 0"
+				src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS !" height="31" width="88" /></a>
+		</p>
+		<font size="1">Last update : 30 Nov, 2013</font>
+	</div>
+	<div id="corps">
+		<h2>Understanding the PlantUML Dependency Display option</h2>
+		<h3>Usage</h3>
+		<h3>Description</h3>
+		<p>
+			You can run <b>PlantUML Dependency</b> using the <b>Display option</b> to :
+		</p>
+		<ul>
+			<li>Filter output <b>elements</b> following their <b>type</b> and the <b>way they are found</b> which may be :
+				<ul>
+					<li>parsed abstract class (<b>a</b>)
+					</li>
+					<li>parsed class (<b>c</b>)
+					</li>
+					<li>parsed enums (<b>e</b>)
+					</li>
+					<li>parsed interfaces (<b>i</b>)
+					</li>
+					<li>not parsed class (<b>n</b>)
+					</li>
+					<li>not parsed interfaces (<b>v</b>)
+					</li>
+					<li>all (<b>*</b>)
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			Note that <b>"parsed"</b> specifies an element found as a main object in a source file.
+		</p>
+		<p>
+			In a later release, the <b>Display option</b> will probably allow to :
+		</p>
+		<ul>
+			<li>Display elements by package only</li>
+			<li>Filter output relations</li>
+		</ul>
+		<h3>Default</h3>
+		<p>
+			The default <b>Display option</b> is :
+		</p>
+		<div class="scriptplantu">
 			<ul>
-				<li><a href="../screenshot/screenshot.html">Screenshots</a></li>
-				<li><a href="../download/download.html">Download</a></li>
-				<li><a href="../news/news.html">What's New ?</a></li>
-				<li><a href="../running/running.html">Running</a></li>
-				<li><a href="../site_map/site_map.html">Site map</a></li>
-				<li><a href="../maven-site/index.html">Maven site</a></li>
-				<li><a href="../faq/faq.html">F.A.Q.</a></li>
-				<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
-				<li><a href="../external_links/external_links.html">External Links</a></li>
+				<li>-d *</li>
 			</ul>
-			<p><a href="http://validator.w3.org/check?uri=referer"><img style="border:0" src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a></p>
-			<p><a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS !" height="31" width="88" /></a></p>
-			<font size="1">Last update : 30 Nov, 2013</font>
 		</div>
-		<div id="corps">
-			<h2>Understanding the PlantUML Dependency Display option</h2>
-			<h3>Usage</h3>
-			<h3>Description</h3>
-			<p>You can run <b>PlantUML Dependency</b> using the <b>Display option</b> to :</p>
+		<p>which is equivalent to :</p>
+		<div class="scriptplantu">
 			<ul>
-				<li>Filter output <b>elements</b> following their <b>type</b> and the <b>way they are found</b> which may be :
-					<ul>
-						<li>parsed abstract class (<b>a</b>)</li>
-						<li>parsed class (<b>c</b>)</li>
-						<li>parsed enums (<b>e</b>)</li>
-						<li>parsed interfaces (<b>i</b>)</li>
-						<li>not parsed class (<b>n</b>)</li>
-						<li>not parsed interfaces (<b>v</b>)</li>
-						<li>all (<b>*</b>)</li>
-					</ul>
-				</li>
+				<li>-d aceinv</li>
 			</ul>
-			<p>Note that <b>"parsed"</b> specifies an element found as a main object in a source file.</p>
-			<p>In a later release, the <b>Display option</b> will probably allow to :</p>
-			<ul>
-				<li>Display elements by package only</li>
-				<li>Filter output relations</li>
-			</ul>
-			<h3>Default</h3>
-			<p>The default <b>Display option</b> is :</p>
-			<div class="scriptplantu">
-				<ul>
-					<li>-d *</li>
-				</ul>
-			</div>
-			<p>which is equivalent to :</p>
-			<div class="scriptplantu">
-				<ul>
-					<li>-d aceinv</li>
-				</ul>
-			</div>
-			<h3>Notes</h3>
-			<ul>
-				<li><b>-d ac*</b> will behave the same as <b>-d *</b></li>
-				<li><b>-d aceinv*</b> will behave the same as <b>-d *</b></li>
-				<li><b>-d *e*</b> will behave the same as <b>-d *</b></li>
-				<li><b>-d aiaaiaaccc</b> will behave the same as <b>-d aci</b></li>
-				<li><b>-d axgh</b> will behave the same as <b>-d a</b></li>
-			</ul>
-			<h3>Examples</h3>
-			<p>I would like to see :</p>
-			<ul>
-				<li>All elements which are not part of the parsed source files (i.e. my project for instance) : <b>-d nv</b></li>
-				<li>All elements except the interfaces which are not part of the parsed source files (i.e. my project for instance) and are implemented by the parsed source files : <b>-d acein</b></li>
-			</ul>
-			<pre>
+		</div>
+		<h3>Notes</h3>
+		<ul>
+			<li><b>-d ac*</b> will behave the same as <b>-d *</b></li>
+			<li><b>-d aceinv*</b> will behave the same as <b>-d *</b></li>
+			<li><b>-d *e*</b> will behave the same as <b>-d *</b></li>
+			<li><b>-d aiaaiaaccc</b> will behave the same as <b>-d aci</b></li>
+			<li><b>-d axgh</b> will behave the same as <b>-d a</b></li>
+		</ul>
+		<h3>Examples</h3>
+		<p>I would like to see :</p>
+		<ul>
+			<li>All elements which are not part of the parsed source files (i.e. my project for instance) : <b>-d nv</b></li>
+			<li>All elements except the interfaces which are not part of the parsed source files (i.e. my project for
+				instance) and are implemented by the parsed source files : <b>-d acein</b>
+			</li>
+		</ul>
+		<pre>
 
 			</pre>
-		</div>
-		<div id="pied_de_page">
-			<table>
-				<tr>
-					<td width="13%"><a href="#">Back to top</a></td>
-					<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img border="0" src="../images/mail.gif" alt="Contact" /></a></td>
-					<td width="13%"><a title="Your help is really appreciate" href="http://sourceforge.net/p/plantuml-depend/donate/?source=navbar"><img src="../images/paypal.gif" border="0" alt="Donate" /></a></td>
-					<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img src="../images/sourceforge-logo.png" alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
-				</tr>
-			</table>
-		</div>
-	</body>
+	</div>
+	<div id="pied_de_page">
+		<table>
+			<tr>
+				<td width="13%"><a href="#">Back to top</a></td>
+				<td width="13%" title="Feedback appreciate"><a href="mailto:graffity2199@users.sourceforge.net"><img
+						border="0" src="../images/mail.gif" alt="Contact" /></a></td>
+				<td width="13%"><a title="Your help is really appreciate"
+					href="http://sourceforge.net/p/plantuml-depend/donate/?source=navbar"><img src="../images/paypal.gif"
+						border="0" alt="Donate" /></a></td>
+				<td width="13%"><a href="http://sourceforge.net/projects/plantuml-depend"><img
+						src="../images/sourceforge-logo.png"
+						alt="Get plantuml dependency at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td>
+			</tr>
+		</table>
+	</div>
+</body>
 </html>

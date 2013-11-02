@@ -910,6 +910,7 @@ annotation java.lang.annotation.Inherited
 annotation java.lang.annotation.Retention
 annotation java.lang.annotation.Target
 annotation java.lang.invoke.PolymorphicSignature
+annotation java.util.SafeVarargs
 annotation javax.annotation.Documented
 annotation javax.annotation.Generated
 annotation javax.annotation.PostConstruct
@@ -930,6 +931,7 @@ annotation javax.management.MXBean
 annotation javax.management.Retention
 annotation javax.management.Target
 annotation javax.swing.ConstructorProperties
+annotation javax.swing.SafeVarargs
 annotation javax.xml.bind.annotation.XmlAccessorOrder
 annotation javax.xml.bind.annotation.XmlAccessorType
 annotation javax.xml.bind.annotation.XmlAnyAttribute
@@ -3914,6 +3916,7 @@ class java.lang.reflect.Modifier
 class java.lang.reflect.Proxy
 class java.lang.reflect.ReflectAccess
 class java.lang.reflect.ReflectPermission
+class java.lang.reflect.ReflectiveOperationException
 class java.lang.reflect.UndeclaredThrowableException
 class java.math.BigDecimal
 class java.math.BigInteger
@@ -7114,6 +7117,7 @@ interface java.awt.print.Pageable
 interface java.awt.print.Printable
 interface java.awt.print.PrinterGraphics
 interface java.beans.AppletInitializer
+interface java.beans.AutoCloseable
 interface java.beans.BeanInfo
 interface java.beans.Customizer
 interface java.beans.DesignMode
@@ -7133,6 +7137,7 @@ interface java.beans.beancontext.BeanContextServiceProviderBeanInfo
 interface java.beans.beancontext.BeanContextServiceRevokedListener
 interface java.beans.beancontext.BeanContextServices
 interface java.beans.beancontext.BeanContextServicesListener
+interface java.io.AutoCloseable
 interface java.io.Closeable
 interface java.io.DataInput
 interface java.io.DataOutput
@@ -7194,6 +7199,7 @@ interface java.net.SocksConsts
 interface java.net.URLStreamHandlerFactory
 interface java.nio.channels.AsynchronousByteChannel
 interface java.nio.channels.AsynchronousChannel
+interface java.nio.channels.AutoCloseable
 interface java.nio.channels.ByteChannel
 interface java.nio.channels.Channel
 interface java.nio.channels.CompletionHandler
@@ -7293,6 +7299,7 @@ interface java.security.spec.AlgorithmParameterSpec
 interface java.security.spec.ECField
 interface java.security.spec.KeySpec
 interface java.sql.Array
+interface java.sql.AutoCloseable
 interface java.sql.Blob
 interface java.sql.CallableStatement
 interface java.sql.Clob
@@ -7559,6 +7566,7 @@ interface javax.security.sasl.SaslClient
 interface javax.security.sasl.SaslClientFactory
 interface javax.security.sasl.SaslServer
 interface javax.security.sasl.SaslServerFactory
+interface javax.sound.midi.AutoCloseable
 interface javax.sound.midi.ControllerEventListener
 interface javax.sound.midi.MetaEventListener
 interface javax.sound.midi.MidiChannel
@@ -7570,6 +7578,7 @@ interface javax.sound.midi.Sequencer
 interface javax.sound.midi.Soundbank
 interface javax.sound.midi.Synthesizer
 interface javax.sound.midi.Transmitter
+interface javax.sound.sampled.AutoCloseable
 interface javax.sound.sampled.Clip
 interface javax.sound.sampled.DataLine
 interface javax.sound.sampled.Line
@@ -10833,7 +10842,7 @@ java.nio.channels.FileChannel --|> java.nio.channels.SeekableByteChannel
 java.nio.channels.FileChannel ..> java.nio.file.attribute.FileAttribute
 java.nio.channels.FileChannel ..> java.util.Set
 java.nio.channels.FileLock ..> java.io.IOException
-java.nio.channels.FileLock --|> java.lang.AutoCloseable
+java.nio.channels.FileLock --|> java.nio.channels.AutoCloseable
 java.nio.channels.MembershipKey ..> java.io.IOException
 java.nio.channels.MembershipKey ..> java.net.InetAddress
 java.nio.channels.MembershipKey ..> java.net.NetworkInterface
@@ -11248,7 +11257,7 @@ java.util.Calendar --|> java.lang.Comparable
 java.util.Calendar ..> java.security.PrivilegedExceptionAction
 java.util.Calendar ..> java.util.concurrent.ConcurrentMap
 java.util.EnumSet --|> java.util.AbstractSet
-java.util.EnumSet ..> java.lang.SafeVarargs
+java.util.EnumSet ..> java.util.SafeVarargs
 java.util.EnumSet ..> sun.misc.SharedSecrets
 java.util.EnumSet --|> java.io.Serializable
 java.util.EnumSet --|> java.lang.Cloneable
@@ -11859,7 +11868,7 @@ javax.swing.RowFilter ..> java.util.List
 javax.swing.RowSorter ..> javax.swing.SortOrder
 javax.swing.Spring ..> java.awt.Component
 javax.swing.SwingWorker ..> java.lang.Override
-javax.swing.SwingWorker ..> java.lang.SafeVarargs
+javax.swing.SwingWorker ..> javax.swing.SafeVarargs
 javax.swing.SwingWorker ..> java.beans.PropertyChangeEvent
 javax.swing.SwingWorker ..> java.beans.PropertyChangeSupport
 javax.swing.SwingWorker ..> java.lang.ref.WeakReference
@@ -12467,6 +12476,9 @@ java.beans.Transient ..> java.lang.annotation.Retention
 java.beans.Transient ..> java.lang.annotation.Target
 java.beans.Transient ..> java.lang.annotation.ElementType
 java.beans.Transient ..> java.lang.annotation.RetentionPolicy
+java.lang.SafeVarargs ..> java.lang.Documented
+java.lang.SafeVarargs ..> java.lang.Retention
+java.lang.SafeVarargs ..> java.lang.Target
 java.lang.annotation.Documented ..> java.lang.annotation.Documented
 java.lang.annotation.Documented ..> java.lang.annotation.Retention
 java.lang.annotation.Documented ..> java.lang.annotation.Target
@@ -31751,15 +31763,15 @@ java.beans.XMLDecoder ..> java.security.AccessControlContext
 java.beans.XMLDecoder ..> java.security.AccessController
 java.beans.XMLDecoder ..> org.xml.sax.InputSource
 java.beans.XMLDecoder ..> org.xml.sax.helpers.DefaultHandler
+java.beans.XMLDecoder --|> java.beans.AutoCloseable
 java.beans.XMLDecoder ..> java.io.Closeable
-java.beans.XMLDecoder --|> java.lang.AutoCloseable
 java.beans.XMLDecoder ..> java.security.PrivilegedAction
 java.beans.XMLEncoder ..> java.nio.charset.Charset
 java.beans.XMLEncoder ..> java.nio.charset.CharsetEncoder
 java.beans.XMLEncoder --|> java.beans.Encoder
 java.beans.XMLEncoder ..> java.nio.charset.IllegalCharsetNameException
 java.beans.XMLEncoder ..> java.nio.charset.UnsupportedCharsetException
-java.beans.XMLEncoder --|> java.lang.AutoCloseable
+java.beans.XMLEncoder --|> java.beans.AutoCloseable
 java.beans.beancontext.BeanContextChildSupport ..> java.beans.PropertyChangeEvent
 java.beans.beancontext.BeanContextChildSupport ..> java.beans.PropertyChangeSupport
 java.beans.beancontext.BeanContextChildSupport ..> java.beans.PropertyVetoException
@@ -32222,6 +32234,7 @@ java.lang.ProcessImpl ..> java.util.regex.Matcher
 java.lang.ProcessImpl ..> java.util.regex.Pattern
 java.lang.ProcessImpl ..> javax.native.NativeCall
 java.lang.ProcessImpl ..> java.security.PrivilegedAction
+java.lang.ReflectiveOperationException --|> java.lang.Exception
 java.lang.Runtime ..> java.lang.Deprecated
 java.lang.Runtime ..> sun.reflect.CallerSensitive
 java.lang.Runtime ..> java.util.StringTokenizer
@@ -32510,7 +32523,7 @@ java.lang.reflect.Field ..> java.lang.annotation.Annotation
 java.lang.reflect.Field --|> java.lang.reflect.Member
 java.lang.reflect.Field ..> java.util.Map
 java.lang.reflect.GenericSignatureFormatError --|> java.lang.ClassFormatError
-java.lang.reflect.InvocationTargetException --|> java.lang.ReflectiveOperationException
+java.lang.reflect.InvocationTargetException --|> java.lang.reflect.ReflectiveOperationException
 java.lang.reflect.MalformedParameterizedTypeException --|> java.lang.RuntimeException
 java.lang.reflect.Method ..> java.nio.ByteBuffer
 java.lang.reflect.Method ..> sun.reflect.CallerSensitive
@@ -33807,14 +33820,14 @@ java.util.ArrayList --|> java.io.Serializable
 java.util.ArrayList --|> java.lang.Cloneable
 java.util.ArrayList --|> java.util.List
 java.util.ArrayList --|> java.util.RandomAccess
-java.util.Arrays ..> java.lang.SafeVarargs
+java.util.Arrays ..> java.util.SafeVarargs
 java.util.BitSet ..> java.nio.ByteBuffer
 java.util.BitSet ..> java.nio.LongBuffer
 java.util.BitSet ..> java.nio.ByteOrder
 java.util.BitSet --|> java.io.Serializable
 java.util.BitSet --|> java.lang.Cloneable
-java.util.Collections ..> java.lang.SafeVarargs
 java.util.Collections ..> java.lang.SuppressWarnings
+java.util.Collections ..> java.util.SafeVarargs
 java.util.Collections ..> java.io.IOException
 java.util.Collections ..> java.io.ObjectOutputStream
 java.util.Collections ..> java.lang.reflect.Array
@@ -42150,15 +42163,15 @@ java.beans.beancontext.BeanContextServicesListener ..> java.beans.beancontext.Be
 java.beans.beancontext.BeanContextServicesListener ..> java.beans.beancontext.BeanContextServiceRevokedEvent
 java.beans.beancontext.BeanContextServicesListener --|> java.beans.beancontext.BeanContextServiceRevokedListener
 java.io.Closeable ..> java.io.IOException
-java.io.Closeable --|> java.lang.AutoCloseable
+java.io.Closeable --|> java.io.AutoCloseable
 java.io.Externalizable ..> java.io.ObjectInput
 java.io.Externalizable ..> java.io.ObjectOutput
 java.io.Externalizable --|> java.io.Serializable
 java.io.Flushable ..> java.io.IOException
+java.io.ObjectInput --|> java.io.AutoCloseable
 java.io.ObjectInput --|> java.io.DataInput
-java.io.ObjectInput --|> java.lang.AutoCloseable
+java.io.ObjectOutput --|> java.io.AutoCloseable
 java.io.ObjectOutput --|> java.io.DataOutput
-java.io.ObjectOutput --|> java.lang.AutoCloseable
 java.lang.instrument.ClassFileTransformer ..> java.security.ProtectionDomain
 java.lang.instrument.Instrumentation ..> java.io.File
 java.lang.instrument.Instrumentation ..> java.io.IOException
@@ -42385,7 +42398,7 @@ java.sql.CallableStatement ..> java.math.BigDecimal
 java.sql.CallableStatement --|> java.sql.PreparedStatement
 java.sql.Clob ..> java.io.Reader
 java.sql.Connection ..> java.util.Properties
-java.sql.Connection --|> java.lang.AutoCloseable
+java.sql.Connection --|> java.sql.AutoCloseable
 java.sql.Connection --|> java.sql.Wrapper
 java.sql.Connection ..> java.util.concurrent.Executor
 java.sql.DatabaseMetaData --|> java.sql.Wrapper
@@ -42401,7 +42414,7 @@ java.sql.ResultSet ..> java.io.InputStream
 java.sql.ResultSet ..> java.io.Reader
 java.sql.ResultSet ..> java.util.Calendar
 java.sql.ResultSet ..> java.math.BigDecimal
-java.sql.ResultSet --|> java.lang.AutoCloseable
+java.sql.ResultSet --|> java.sql.AutoCloseable
 java.sql.ResultSet --|> java.sql.Wrapper
 java.sql.ResultSetMetaData --|> java.sql.Wrapper
 java.sql.SQLXML ..> java.io.InputStream
@@ -42410,7 +42423,7 @@ java.sql.SQLXML ..> java.io.Reader
 java.sql.SQLXML ..> java.io.Writer
 java.sql.SQLXML ..> javax.xml.transform.Result
 java.sql.SQLXML ..> javax.xml.transform.Source
-java.sql.Statement --|> java.lang.AutoCloseable
+java.sql.Statement --|> java.sql.AutoCloseable
 java.sql.Statement --|> java.sql.Wrapper
 java.text.AttributedCharacterIterator ..> java.io.InvalidObjectException
 java.text.AttributedCharacterIterator ..> java.util.HashMap
@@ -42841,23 +42854,23 @@ javax.security.sasl.SaslServerFactory ..> java.util.Map
 javax.security.sasl.SaslServerFactory ..> javax.security.auth.callback.CallbackHandler
 javax.sound.midi.ControllerEventListener --|> java.util.EventListener
 javax.sound.midi.MetaEventListener --|> java.util.EventListener
-javax.sound.midi.MidiDevice --|> java.lang.AutoCloseable
 javax.sound.midi.MidiDevice ..> java.util.List
+javax.sound.midi.MidiDevice --|> javax.sound.midi.AutoCloseable
 javax.sound.midi.MidiDeviceReceiver --|> javax.sound.midi.Receiver
 javax.sound.midi.MidiDeviceTransmitter --|> javax.sound.midi.Transmitter
-javax.sound.midi.Receiver --|> java.lang.AutoCloseable
+javax.sound.midi.Receiver --|> javax.sound.midi.AutoCloseable
 javax.sound.midi.Sequencer ..> java.io.InputStream
 javax.sound.midi.Sequencer ..> java.io.IOException
 javax.sound.midi.Sequencer --|> javax.sound.midi.MidiDevice
 javax.sound.midi.Soundbank ..> java.net.URL
 javax.sound.midi.Synthesizer ..> javax.sound.sampled.Control
 javax.sound.midi.Synthesizer --|> javax.sound.midi.MidiDevice
-javax.sound.midi.Transmitter --|> java.lang.AutoCloseable
+javax.sound.midi.Transmitter --|> javax.sound.midi.AutoCloseable
 javax.sound.sampled.Clip ..> java.io.InputStream
 javax.sound.sampled.Clip ..> java.io.IOException
 javax.sound.sampled.Clip --|> javax.sound.sampled.DataLine
 javax.sound.sampled.DataLine --|> javax.sound.sampled.Line
-javax.sound.sampled.Line --|> java.lang.AutoCloseable
+javax.sound.sampled.Line --|> javax.sound.sampled.AutoCloseable
 javax.sound.sampled.LineListener --|> java.util.EventListener
 javax.sound.sampled.Mixer --|> javax.sound.sampled.Line
 javax.sound.sampled.Port --|> javax.sound.sampled.Line

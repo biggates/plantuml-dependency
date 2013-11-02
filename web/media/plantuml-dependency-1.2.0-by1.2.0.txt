@@ -1,4 +1,4 @@
-@startuml
+﻿@startuml
 abstract class net.sourceforge.plantuml.dependency.generic.type.impl.DependencyTypeImpl
 abstract class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage
 abstract class net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.type.JavaType
