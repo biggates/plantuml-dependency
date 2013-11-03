@@ -112,23 +112,26 @@ public final class ErrorConstants {
     /** The not display argument error message. */
     public static final String NOT_DISPLAY_ARGUMENT_ERROR = "[error-plantuml-dependency-025] : Can't parse option argument \"{0}\", it isn't a valid display argument";
 
+    /** The several display arguments error message. */
+    public static final String SEVERAL_DISPLAY_ARGUMENTS_ERROR = "[error-plantuml-dependency-026] : The display argument \"{0}\" is defined several times";
+
     /** The plantUML dependency error message. */
-    public static final String PLANTUML_DEPENDENCY_ERROR = "[error-plantuml-dependency-026] : An error has occured while running PlantUML Dependency, please check the log for more information";
+    public static final String PLANTUML_DEPENDENCY_ERROR = "[error-plantuml-dependency-027] : An error has occured while running PlantUML Dependency, please check the log for more information";
 
     /** The programming language name null error message. */
-    public static final String PROGRAMMING_LANGUAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-027] : The programming language name is null";
+    public static final String PROGRAMMING_LANGUAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-028] : The programming language name is null";
 
     /** The programming language option null error message. */
-    public static final String PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR = "[error-plantuml-dependency-028] : The programming language option is null";
+    public static final String PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR = "[error-plantuml-dependency-029] : The programming language option is null";
 
     /** The reading source file error message. */
-    public static final String READING_SOURCE_FILE_ERROR = "[error-plantuml-dependency-029] : Severe parsing errors have occurred while reading the source file \"{0}\", the file will be ignored";
+    public static final String READING_SOURCE_FILE_ERROR = "[error-plantuml-dependency-030] : Severe parsing errors have occurred while reading the source file \"{0}\", the file will be ignored";
 
     /** The unknown programming language error message. */
-    public static final String UNKNOWN_JAVA_TYPE_ERROR = "[error-plantuml-dependency-030] : The java type \"{0}\" is unknown";
+    public static final String UNKNOWN_JAVA_TYPE_ERROR = "[error-plantuml-dependency-031] : The java type \"{0}\" is unknown";
 
     /** The unknown programming language error message. */
-    public static final String UNKNOWN_PROGRAMMING_LANGUAGE_ERROR = "[error-plantuml-dependency-031] : The programming language \"{0}\" is unknown";
+    public static final String UNKNOWN_PROGRAMMING_LANGUAGE_ERROR = "[error-plantuml-dependency-032] : The programming language \"{0}\" is unknown";
 
     /**
      * Private constructor to prevent from instantiation.

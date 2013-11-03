@@ -32,6 +32,7 @@ import static net.sourceforge.mazix.components.utils.collection.CollectionUtils.
 import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.NOT_DISPLAY_ARGUMENT_ERROR;
+import static net.sourceforge.plantuml.dependency.constants.log.ErrorConstants.SEVERAL_DISPLAY_ARGUMENTS_ERROR;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.getAllDisplayOptionsFullUsageDescriptions;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.valueOf;
 import static net.sourceforge.plantuml.dependency.main.option.display.argument.Display.values;
@@ -108,6 +109,10 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
                 final String token = tokenizer.nextToken();
 
                 try {
+                    Display displayArgument = valueOf(token.toUpperCase());
+                    if (displayArguments.contains(displayArgument)) {
+                        throw new CommandLineException(buildLogString(SEVERAL_DISPLAY_ARGUMENTS_ERROR, displayArgument));
+                    }
                     displayArguments.add(valueOf(token.toUpperCase()));
                 } catch (final IllegalArgumentException e) {
                     throw new CommandLineException(buildLogString(NOT_DISPLAY_ARGUMENT_ERROR, argument), e);

@@ -68,6 +68,18 @@ public class PlantUMLDependencyProgramTest {
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithABadDisplayOption() throws PlantUMLDependencyException {
+        main(new String[] {"-o", TEST_FILE.getName(), "-d", "test"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
     public void testMainWithoutExecutionOption() throws PlantUMLDependencyException {
         main(new String[] {"-l", DEFAULT_PROGRAMMING_LANGUAGE.getName(), "-i", "**/*.java"});
     }
@@ -300,6 +312,27 @@ public class PlantUMLDependencyProgramTest {
         main(new String[] {"-?"});
     }
 
-    // TODO finish with all options and compare generated files
-    // TODO test with several files and one is empty : shouldn't block the program
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithTwoOuputOption() throws PlantUMLDependencyException {
+        main(new String[] {"-o", TEST_FILE.getName(), "-v", "--output", "hello.txt"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithTwoSameDisplayOption() throws PlantUMLDependencyException {
+        main(new String[] {"-o", TEST_FILE.getName(), "-d", "extensions,static_imports,implementations,extensions"});
+    }
 }
