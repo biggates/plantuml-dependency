@@ -728,8 +728,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the dependency which has been found from the imports, mustn't be <code>null</code>
      *            .
      * @return the annotation {@link GenericDependency} instance.
-     * @throws if
-     *             any exception occurs while getting or creating the annotation
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the annotation
      *             {@link GenericDependency} instance.
      * @since 1.2.0
      */
@@ -957,8 +957,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the dependency which has been found from the imports, mustn't be <code>null</code>
      *            .
      * @return the parent {@link GenericDependency} instance.
-     * @throws if
-     *             any exception occurs while getting or creating the annotation
+     * @throws PlantUMLDependencyException
+     *             if any exception occurs while getting or creating the annotation
      *             {@link GenericDependency} instance.
      * @since 1.2.0
      */
