@@ -1,7 +1,7 @@
 PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net)
 =====================================================================================================================================
 
-?, Dec 2013 - 1.2.0
+3, Nov 2013 - 1.2.0
 ====================
 - Introducing a new and powerful feature : the Display option which allows to filter output elements and relations, such as classes, interfaces, enums, abstract classes, annotations and so on... Ant task and help messages have been updated. (feature 3)
 - Annotations java files are now fully supported (feature 22 and bug 22)
