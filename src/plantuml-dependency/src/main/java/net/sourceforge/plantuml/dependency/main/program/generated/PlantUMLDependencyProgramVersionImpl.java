@@ -34,7 +34,7 @@ package net.sourceforge.plantuml.dependency.main.program.generated;
  */
 public class PlantUMLDependencyProgramVersionImpl {
 
-    public static final String PROGRAM_VERSION = "1.2.0-SNAPSHOT";
+    public static final String PROGRAM_VERSION = "1.2.0";
 
-    public static final String PROGRAM_BUILD_TIME = "20131103-1506";
+    public static final String PROGRAM_BUILD_TIME = "20131103-1652";
 }
