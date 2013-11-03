@@ -195,7 +195,6 @@ public abstract class DependencyTypeImpl implements DependencyType {
         // TODO tests null
         // TODO tests that no space are present in the name
         setFullName(dependencyPackageName, dependencyName);
-        // TODO optimization
         importDependenciesCollection = importDependencies;
         parentExtensionsDependencies = parentExtensionsDependenciesSet;
         parentImplementationsDependencies = parentImplementationsDependenciesSet;

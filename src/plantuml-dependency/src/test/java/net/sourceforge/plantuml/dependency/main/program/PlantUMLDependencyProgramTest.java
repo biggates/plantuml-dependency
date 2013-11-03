@@ -24,10 +24,16 @@
 
 package net.sourceforge.plantuml.dependency.main.program;
 
+import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
 import static net.sourceforge.plantuml.dependency.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
 import static net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram.main;
+
+import java.io.File;
+
 import net.sourceforge.plantuml.dependency.exception.PlantUMLDependencyException;
 
+import org.junit.After;
 import org.junit.Test;
 
 /**
@@ -36,9 +42,23 @@ import org.junit.Test;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.0
- * @version 1.1.0
+ * @version 1.2.0
  */
 public class PlantUMLDependencyProgramTest {
+
+    /** Test file 1 instance. */
+    private static final File TEST_FILE = new File("plantuml.txt");
+
+    /**
+     * This method is called after all tests, it is used to remove the temporary file used for the
+     * tests.
+     *
+     * @since 1.0
+     */
+    @After
+    public void removeFile() {
+        TEST_FILE.delete();
+    }
 
     /**
      * Test method for
@@ -60,8 +80,92 @@ public class PlantUMLDependencyProgramTest {
      * @throws PlantUMLDependencyException
      */
     @Test
+    public void testMainWithPrimaryAboutOption() throws PlantUMLDependencyException {
+        main(new String[] {"-about"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithPrimaryBasedirOption() throws PlantUMLDependencyException {
+        main(new String[] {"-b", DOT_CHAR});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithPrimaryDisplayOption() throws PlantUMLDependencyException {
+        main(new String[] {"-d", DEFAULT_DISPLAY_OPTIONS_STRING});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithPrimaryExcludeOption() throws PlantUMLDependencyException {
+        main(new String[] {"-e", "**/package-info.java"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
     public void testMainWithPrimaryHelpOption() throws PlantUMLDependencyException {
         main(new String[] {"-h"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithPrimaryIncludeOption() throws PlantUMLDependencyException {
+        main(new String[] {"-i", "**/*.java"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testMainWithPrimaryOuputOption() throws PlantUMLDependencyException {
+        main(new String[] {"-o", TEST_FILE.getName()});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithPrimaryVerboseOption() throws PlantUMLDependencyException {
+        main(new String[] {"-v"});
     }
 
     /**
@@ -84,8 +188,116 @@ public class PlantUMLDependencyProgramTest {
      * @throws PlantUMLDependencyException
      */
     @Test
-    public void testMainWithSecondaryOption() throws PlantUMLDependencyException {
-        main(new String[] {"-h"});
+    public void testMainWithSecondaryAboutOption() throws PlantUMLDependencyException {
+        main(new String[] {"--author"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithSecondaryBasedirOption() throws PlantUMLDependencyException {
+        main(new String[] {"--basedir", DOT_CHAR});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithSecondaryDisplayOption() throws PlantUMLDependencyException {
+        main(new String[] {"--display", DEFAULT_DISPLAY_OPTIONS_STRING});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithSecondaryExcludeOption() throws PlantUMLDependencyException {
+        main(new String[] {"--exclude", "**/package-info.java"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testMainWithSecondaryHelpOption() throws PlantUMLDependencyException {
+        main(new String[] {"--help"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithSecondaryIncludeOption() throws PlantUMLDependencyException {
+        main(new String[] {"--include", "**/package-info.java"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testMainWithSecondaryOuputOption() throws PlantUMLDependencyException {
+        main(new String[] {"--output", TEST_FILE.getName()});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test(expected = PlantUMLDependencyException.class)
+    public void testMainWithSecondaryVerboseOption() throws PlantUMLDependencyException {
+        main(new String[] {"--verbose"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testMainWithTertiaryAboutOption() throws PlantUMLDependencyException {
+        main(new String[] {"--authors"});
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram#main(java.lang.String[])}
+     * .
+     *
+     * @throws PlantUMLDependencyException
+     */
+    @Test
+    public void testMainWithTertiaryHelpOption() throws PlantUMLDependencyException {
+        main(new String[] {"-?"});
     }
 
     // TODO finish with all options and compare generated files
