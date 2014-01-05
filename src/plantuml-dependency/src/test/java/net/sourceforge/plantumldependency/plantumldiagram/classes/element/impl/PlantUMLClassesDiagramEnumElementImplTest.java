@@ -45,22 +45,22 @@ public class PlantUMLClassesDiagramEnumElementImplTest extends
     /** PlantUML classes diagram enum element test 1 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramEnumElementImpl PLANTUML_ENUM_ELEMENT_TEST1 = new PlantUMLClassesDiagramEnumElementImpl(
-            "net.sourceforge.plantuml.dependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramUseRelation");
+            "net.sourceforge.plantumldependency.plantumldiagram.classes.relation.PlantUMLClassesDiagramUseRelation");
 
     /** PlantUML classes diagram enum element test 2 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramEnumElementImpl PLANTUML_ENUM_ELEMENT_TEST2 = new PlantUMLClassesDiagramEnumElementImpl(
-            "net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLClassesDiagram");
+            "net.sourceforge.plantumldependency.plantumldiagram.PlantUMLClassesDiagram");
 
     /** PlantUML classes diagram enum element test 3 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramEnumElementImpl PLANTUML_ENUM_ELEMENT_TEST3 = new PlantUMLClassesDiagramEnumElementImpl(
-            "net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLClassesDiagram");
+            "net.sourceforge.plantumldependency.plantumldiagram.PlantUMLClassesDiagram");
 
     /** PlantUML classes diagram enum element test 4 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramEnumElementImpl PLANTUML_ENUM_ELEMENT_TEST4 = new PlantUMLClassesDiagramEnumElementImpl(
-            "net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLClassesDiagram", PLANTUML_STEREOTYPE_TEST6);
+            "net.sourceforge.plantumldependency.plantumldiagram.PlantUMLClassesDiagram", PLANTUML_STEREOTYPE_TEST6);
 
     /** PlantUML classes diagram enum element test 5 instance. */
     @DataPoint
@@ -78,11 +78,11 @@ public class PlantUMLClassesDiagramEnumElementImplTest extends
 
     /** PlantUML classes diagram enum element test 8 instance. */
     public static final PlantUMLClassesDiagramEnumElementImpl PLANTUML_ENUM_ELEMENT_TEST8 = new PlantUMLClassesDiagramEnumElementImpl(
-            "net.sourceforge.plantuml.dependency.main.option.display.argument.Display");
+            "net.sourceforge.plantumldependency.main.option.display.argument.Display");
 
     /** PlantUML classes diagram enum element test 9 instance. */
     public static final PlantUMLClassesDiagramEnumElementImpl PLANTUML_ENUM_ELEMENT_TEST9 = new PlantUMLClassesDiagramEnumElementImpl(
-            "net.sourceforge.plantuml.dependency.generic.type.ImportType");
+            "net.sourceforge.plantumldependency.generic.type.ImportType");
 
     /**
      * Test method for
@@ -102,7 +102,7 @@ public class PlantUMLClassesDiagramEnumElementImplTest extends
     @Test
     public void testGetName() {
         assertEquals(PLANTUML_ENUM_ELEMENT_TEST3.getName(),
-                "net.sourceforge.plantuml.dependency.plantumldiagram.PlantUMLClassesDiagram");
+                "net.sourceforge.plantumldependency.plantumldiagram.PlantUMLClassesDiagram");
     }
 
     /**

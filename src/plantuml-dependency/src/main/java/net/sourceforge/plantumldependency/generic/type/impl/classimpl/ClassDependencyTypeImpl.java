@@ -39,7 +39,7 @@ import net.sourceforge.plantumldependency.plantumldiagram.classes.element.impl.P
 
 /**
  * The class implementation of the
- * {@link net.sourceforge.plantuml.dependency.generic.type.ClassDependencyType} interface.
+ * {@link net.sourceforge.plantumldependency.generic.type.ClassDependencyType} interface.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *

@@ -22,12 +22,12 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency.main.option.output;
+package net.sourceforge.plantumldependency.main.option.output;
 
 import java.lang.annotation.ElementType;
 import static java.util.Arrays.asList;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
-import net.sourceforge.plantuml.dependency.main.option.output.test.Class4;
+import net.sourceforge.plantumldependency.main.option.output.test.Class4;
 
 import java.util.Iterator;
 import java.util.Set;

@@ -551,7 +551,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithExtendsInImportWithStandardEmptyContextAndClassDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET4);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY43,
@@ -568,13 +568,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext
                 .getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY44.getFullName()));
         assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
@@ -604,13 +604,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays").getDependencyType().getClass());
@@ -618,7 +618,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -657,7 +657,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithExtendsInImportWithStandardEmptyContextAndExtensionsDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\npublic TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\npublic TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET30);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY45,
@@ -674,13 +674,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext
                 .getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY45.getFullName()));
         assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
@@ -710,13 +710,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays").getDependencyType().getClass());
@@ -724,7 +724,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -738,7 +738,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithExtendsInImportWithStandardEmptyContextAndImplementationsDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    \r\n\r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    \r\n\r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET31);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY45,
@@ -755,13 +755,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext
                 .getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY45.getFullName()));
         assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
@@ -791,13 +791,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays").getDependencyType().getClass());
@@ -805,7 +805,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -819,7 +819,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithExtendsInImportWithStandardEmptyContextAndImportsDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    \r\n\r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    \r\n\r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET32);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY45,
@@ -836,13 +836,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext
                 .getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY45.getFullName()));
         assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
@@ -872,13 +872,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays").getDependencyType().getClass());
@@ -886,7 +886,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -900,7 +900,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithExtendsInImportWithStandardEmptyContextAndImportsStaticDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    \r\n\r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    \r\n\r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET35);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY45,
@@ -917,13 +917,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext
                 .getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY45.getFullName()));
         assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
@@ -953,13 +953,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays").getDependencyType().getClass());
@@ -967,7 +967,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -981,7 +981,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithExtendsInImportWithStandardEmptyContextAndNativeDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    \r\n\r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.io.Serializable;\r\nimport java.math.BigInteger;\r\nimport java.util.Random;\r\n\r\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage;\r\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency;\r\nimport static java.util.Arrays.asList;\r\nimport static java.util.logging.Level.SEVERE;\r\n\r\npublic class TestDisplayOption extends BigInteger implements DeepCloneable < JavaRawDependency > {\r\n\r\n    /**\r\n     * \r\n     */\r\n    private static final long serialVersionUID = 8210152156402402701L;\r\n\r\n    public TestDisplayOption(byte[] arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n    \r\n    \r\n\r\n    public TestDisplayOption(int arg0, byte[] arg1) {\r\n        super(arg0, arg1);\r\n        File file = new File(\"toto\");\r\n        try {\r\n            InputStream inputStream = new FileInputStream(file);\r\n        } catch (FileNotFoundException e) {\r\n            // TODO Auto-generated catch block\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, int arg1, Random arg2) {\r\n        super(arg0, arg1, arg2);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(int arg0, Random arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0, int arg1) {\r\n        super(arg0, arg1);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    public TestDisplayOption(String arg0) {\r\n        super(arg0);\r\n        // TODO Auto-generated constructor stub\r\n    }\r\n\r\n    @Override\r\n    public JavaRawDependency deepClone() {\r\n        // TODO Auto-generated method stub\r\n        return null;\r\n    }\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DISPLAY_SET34);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY45,
@@ -998,13 +998,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext
                 .getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY45.getFullName()));
         assertEquals(StubDependencyTypeImpl.class, programmingLanguageContext.getParsedOrSeenDependency("java.io.File")
                 .getDependencyType().getClass());
@@ -1034,13 +1034,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguage")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguage")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java.JavaRawDependency")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java.JavaRawDependency")
                         .getDependencyType().getClass());
         assertEquals(StubDependencyTypeImpl.class,
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.Arrays").getDependencyType().getClass());
@@ -1048,7 +1048,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.logging.Level").getDependencyType()
                         .getClass());
         assertEquals(AnnotationDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.Override")
+                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.plantumldependency.Override")
                         .getDependencyType().getClass());
     }
 
@@ -1760,7 +1760,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileEnumWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nenum TestReadDependencyFromFileEnum {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\nenum TestReadDependencyFromFileEnum {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY47,
@@ -1840,7 +1840,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceGenericNotInImportWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceGenericNotInImport < PlantUMLDependencyBaseDirectoryOptionTest > {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceGenericNotInImport < PlantUMLDependencyBaseDirectoryOptionTest > {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY29,
@@ -1924,7 +1924,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithCommentsAsSeparatorAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\n//Hello interface ! my name is brian\r\npublic/*@bgen(jjtree)*/interface/*@bgen(jjtree)*/TestReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLang extends/**@bgen(jjtree)**/TestReadDependencyFromFileInterfaceWithoutPackage {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\n//Hello interface ! my name is brian\r\npublic/*@bgen(jjtree)*/interface/*@bgen(jjtree)*/TestReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLang extends/**@bgen(jjtree)**/TestReadDependencyFromFileInterfaceWithoutPackage {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY35,
@@ -1932,13 +1932,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY35.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage")
                         .getDependencyType().getClass());
     }
 
@@ -1952,7 +1952,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithExtendsGenericsInImportWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport extends DeepCloneable < CppProgrammingLanguageTest > {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport extends DeepCloneable < CppProgrammingLanguageTest > {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY30,
@@ -1962,7 +1962,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext
                 .getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY30.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
@@ -1973,7 +1973,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
                         .getDependencyType().getClass());
     }
 
@@ -1987,7 +1987,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithExtendsGenericsNotInImportWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsNotInImport extends DeepCloneable < Integer > {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsNotInImport extends DeepCloneable < Integer > {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY31,
@@ -2014,7 +2014,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithExtendsInImportFullPackageNameWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.plantuml.dependency.generic.GenericDependency;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsInImport extends net.sourceforge.plantuml.dependency.generic.GenericDependency {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\nimport net.sourceforge.plantumldependency.generic.GenericDependency;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsInImport extends net.sourceforge.plantumldependency.generic.GenericDependency {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY32,
@@ -2022,12 +2022,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.generic.GenericDependency"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY32.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.generic.GenericDependency")
                         .getDependencyType().getClass());
     }
 
@@ -2041,7 +2041,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithExtendsInImportWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.plantuml.dependency.generic.GenericDependency;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsInImport extends GenericDependency {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\nimport net.sourceforge.plantumldependency.generic.GenericDependency;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsInImport extends GenericDependency {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY32,
@@ -2049,12 +2049,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.generic.GenericDependency"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY32.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.generic.GenericDependency")
                         .getDependencyType().getClass());
     }
 
@@ -2068,7 +2068,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithExtendsNotInImportFullPackageNameWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportFullPackageName extends net.sourceforge.plantuml.dependency.generic.GenericDependency {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportFullPackageName extends net.sourceforge.plantumldependency.generic.GenericDependency {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY33,
@@ -2076,12 +2076,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.generic.GenericDependency"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY33.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.generic.GenericDependency")
                         .getDependencyType().getClass());
     }
 
@@ -2095,7 +2095,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithExtendsNotInImportJavaLangWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportJavaLang extends Comparable {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportJavaLang extends Comparable {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY34,
@@ -2103,13 +2103,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.Comparable"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY34.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.Comparable")
                         .getDependencyType().getClass());
     }
 
@@ -2123,7 +2123,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLangWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLang extends TestReadDependencyFromFileInterfaceWithoutPackage {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLang extends TestReadDependencyFromFileInterfaceWithoutPackage {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY35,
@@ -2131,13 +2131,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY35.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage")
                         .getDependencyType().getClass());
     }
 
@@ -2151,7 +2151,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithGenericDefinitionAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport < A extends CppProgrammingLanguageTest > extends DeepCloneable < CppProgrammingLanguageTest > {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport < A extends CppProgrammingLanguageTest > extends DeepCloneable < CppProgrammingLanguageTest > {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY30,
@@ -2161,7 +2161,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext
                 .getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY30.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
@@ -2172,7 +2172,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
                         .getDependencyType().getClass());
     }
 
@@ -2186,7 +2186,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithInnerClassAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\n\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest.InnerTest;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport extends DeepCloneable < CppProgrammingLanguageTest > {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\n\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest.InnerTest;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport extends DeepCloneable < CppProgrammingLanguageTest > {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY39,
@@ -2196,9 +2196,9 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext
                 .getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest.InnerTest"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest.InnerTest"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY30.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
@@ -2209,13 +2209,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest.InnerTest")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest.InnerTest")
                         .getDependencyType().getClass());
     }
 
@@ -2229,7 +2229,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithInterfaceWordInCommentsAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\n//Hello interface ! my name is brian\r\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLang extends TestReadDependencyFromFileInterfaceWithoutPackage {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\n//Hello interface ! my name is brian\r\npublic interface TestReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLang extends TestReadDependencyFromFileInterfaceWithoutPackage {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY35,
@@ -2237,13 +2237,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY35.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage")
                         .getDependencyType().getClass());
     }
 
@@ -2257,7 +2257,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithMultipleExtendsGenericsWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport java.util.Map;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\nimport net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguageTest;\n\npublic interface TestReadDependencyFromFileClassWithMultipleExtendsGenerics extends DeepCloneable < CppProgrammingLanguageTest >, Comparable < Integer>, Map < java.io.Serializable, ProgrammingLanguageTest >, Appendable {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\nimport java.util.Map;\n\nimport net.sourceforge.mazix.components.clone.DeepCloneable;\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest;\nimport net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguageTest;\n\npublic interface TestReadDependencyFromFileClassWithMultipleExtendsGenerics extends DeepCloneable < CppProgrammingLanguageTest >, Comparable < Integer>, Map < java.io.Serializable, ProgrammingLanguageTest >, Appendable {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY27,
@@ -2268,13 +2268,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertNotNull(programmingLanguageContext
                 .getParsedOrSeenDependency("net.sourceforge.mazix.components.clone.DeepCloneable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguageTest"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguageTest"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.Comparable"));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.main.option.programminglanguage.Appendable"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.main.option.programminglanguage.Appendable"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY27.getFullName()));
         assertEquals(InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext.getParsedOrSeenDependency("java.util.Map").getDependencyType().getClass());
@@ -2287,25 +2287,25 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")
                         .getDependencyType().getClass());
         assertEquals(
                 StubDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.ProgrammingLanguageTest")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.ProgrammingLanguageTest")
                         .getDependencyType().getClass());
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.Comparable")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.Comparable")
                         .getDependencyType().getClass());
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
                         .getParsedOrSeenDependency(
-                                "net.sourceforge.plantuml.dependency.main.option.programminglanguage.Appendable")
+                                "net.sourceforge.plantumldependency.main.option.programminglanguage.Appendable")
                         .getDependencyType().getClass());
     }
 
@@ -2379,7 +2379,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\ninterface TestReadDependencyFromFileInterface {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\ninterface TestReadDependencyFromFileInterface {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY28,
@@ -2419,7 +2419,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileInterfaceWithWildcardImportsAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\nimport net.sourceforge.plantuml.dependency.generic.GenericDependency;\n\nimport net.sourceforge.plantuml.dependency.generic.wildcard.*;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsInImport extends GenericDependency {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\nimport net.sourceforge.plantumldependency.generic.GenericDependency;\n\nimport net.sourceforge.plantumldependency.generic.wildcard.*;\n\npublic interface TestReadDependencyFromFileInterfaceWithExtendsInImport extends GenericDependency {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY32,
@@ -2427,12 +2427,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.generic.GenericDependency"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY32.getFullName()));
         assertEquals(
                 InterfaceDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getParsedOrSeenDependency("net.sourceforge.plantuml.dependency.generic.GenericDependency")
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.generic.GenericDependency")
                         .getDependencyType().getClass());
     }
 
@@ -2526,7 +2526,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFilePublicInterfaceWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package net.sourceforge.plantuml.dependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFilePublicInterface {\n\n}\n";
+        final String javaSourceFileContent = "package net.sourceforge.plantumldependency.main.option.programminglanguage;\n\npublic interface TestReadDependencyFromFilePublicInterface {\n\n}\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY37,
@@ -2580,7 +2580,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test(expected = PlantUMLDependencyException.class)
     public void testReadDependencyFromNonJavaFileWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<testsuite failures=\"0\" time=\"0.306\" errors=\"0\" skipped=\"0\" tests=\"22\" name=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\">\n  <properties>\n    <property name=\"java.runtime.name\" value=\"Java(TM) SE Runtime Environment\"/>\n    <property name=\"sun.boot.library.path\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386\"/>\n    <property name=\"java.vm.version\" value=\"20.1-b02\"/>\n    <property name=\"java.vm.vendor\" value=\"Sun Microsystems Inc.\"/>\n    <property name=\"java.vendor.url\" value=\"http://java.sun.com/\"/>\n    <property name=\"path.separator\" value=\":\"/>\n    <property name=\"java.vm.name\" value=\"Java HotSpot(TM) Server VM\"/>\n    <property name=\"file.encoding.pkg\" value=\"sun.io\"/>\n    <property name=\"user.country\" value=\"FR\"/>\n    <property name=\"sun.java.launcher\" value=\"SUN_STANDARD\"/>\n    <property name=\"sun.os.patch.level\" value=\"unknown\"/>\n    <property name=\"java.vm.specification.name\" value=\"Java Virtual Machine Specification\"/>\n    <property name=\"user.dir\" value=\"/home/graffity/workspace/plantuml-dependency\"/>\n    <property name=\"java.runtime.version\" value=\"1.6.0_26-b03\"/>\n    <property name=\"java.awt.graphicsenv\" value=\"sun.awt.X11GraphicsEnvironment\"/>\n    <property name=\"basedir\" value=\"/home/graffity/workspace/plantuml-dependency\"/>\n    <property name=\"java.endorsed.dirs\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/endorsed\"/>\n    <property name=\"os.arch\" value=\"i386\"/>\n    <property name=\"surefire.real.class.path\" value=\"/home/graffity/workspace/plantuml-dependency/target/surefire/surefirebooter4286092155706823282.jar\"/>\n    <property name=\"java.io.tmpdir\" value=\"/tmp\"/>\n    <property name=\"line.separator\" value=\"\n\"/>\n    <property name=\"java.vm.specification.vendor\" value=\"Sun Microsystems Inc.\"/>\n    <property name=\"os.name\" value=\"Linux\"/>\n    <property name=\"sun.jnu.encoding\" value=\"UTF-8\"/>\n    <property name=\"java.library.path\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/server:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib\"/>\n    <property name=\"surefire.test.class.path\" value=\"/home/graffity/workspace/plantuml-dependency/target/test-classes:/home/graffity/workspace/plantuml-dependency/target/classes:/home/graffity/.m2/repository/junit/junit/4.7/junit-4.7.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/cli/mazix-cli/1.0.2/mazix-cli-1.0.2.jar:/home/graffity/.m2/repository/org/apache/ant/ant/1.8.2/ant-1.8.2.jar:/home/graffity/.m2/repository/org/apache/ant/ant-launcher/1.8.2/ant-launcher-1.8.2.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/components/mazix-components/1.1.1/mazix-components-1.1.1.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/components/mazix-components/1.1.1/mazix-components-1.1.1-tests.jar:\"/>\n    <property name=\"java.specification.name\" value=\"Java Platform API Specification\"/>\n    <property name=\"java.class.version\" value=\"50.0\"/>\n    <property name=\"sun.management.compiler\" value=\"HotSpot Tiered Compilers\"/>\n    <property name=\"os.version\" value=\"2.6.32-33-generic-pae\"/>\n    <property name=\"user.home\" value=\"/home/graffity\"/>\n    <property name=\"user.timezone\" value=\"\"/>\n    <property name=\"java.awt.printerjob\" value=\"sun.print.PSPrinterJob\"/>\n    <property name=\"file.encoding\" value=\"UTF-8\"/>\n    <property name=\"java.specification.version\" value=\"1.6\"/>\n    <property name=\"user.name\" value=\"graffity\"/>\n    <property name=\"java.class.path\" value=\"/home/graffity/workspace/plantuml-dependency/target/test-classes:/home/graffity/workspace/plantuml-dependency/target/classes:/home/graffity/.m2/repository/junit/junit/4.7/junit-4.7.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/cli/mazix-cli/1.0.2/mazix-cli-1.0.2.jar:/home/graffity/.m2/repository/org/apache/ant/ant/1.8.2/ant-1.8.2.jar:/home/graffity/.m2/repository/org/apache/ant/ant-launcher/1.8.2/ant-launcher-1.8.2.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/components/mazix-components/1.1.1/mazix-components-1.1.1.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/components/mazix-components/1.1.1/mazix-components-1.1.1-tests.jar:\"/>\n    <property name=\"java.vm.specification.version\" value=\"1.0\"/>\n    <property name=\"sun.arch.data.model\" value=\"32\"/>\n    <property name=\"java.home\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre\"/>\n    <property name=\"sun.java.command\" value=\"/home/graffity/workspace/plantuml-dependency/target/surefire/surefirebooter4286092155706823282.jar /home/graffity/workspace/plantuml-dependency/target/surefire/surefire1347948533659098341tmp /home/graffity/workspace/plantuml-dependency/target/surefire/surefire6816175995908075715tmp\"/>\n    <property name=\"java.specification.vendor\" value=\"Sun Microsystems Inc.\"/>\n    <property name=\"user.language\" value=\"fr\"/>\n    <property name=\"java.vm.info\" value=\"mixed mode\"/>\n    <property name=\"java.version\" value=\"1.6.0_26\"/>\n    <property name=\"java.ext.dirs\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/ext:/usr/java/packages/lib/ext\"/>\n    <property name=\"sun.boot.class.path\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/resources.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/rt.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/jsse.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/jce.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/charsets.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/classes\"/>\n    <property name=\"java.vendor\" value=\"Sun Microsystems Inc.\"/>\n    <property name=\"localRepository\" value=\"/home/graffity/.m2/repository\"/>\n    <property name=\"file.separator\" value=\"/\"/>\n    <property name=\"java.vendor.url.bug\" value=\"http://java.sun.com/cgi-bin/bugreport.cgi\"/>\n    <property name=\"sun.cpu.endian\" value=\"little\"/>\n    <property name=\"sun.io.unicode.encoding\" value=\"UnicodeLittle\"/>\n    <property name=\"sun.desktop\" value=\"gnome\"/>\n    <property name=\"sun.cpu.isalist\" value=\"\"/>\n  </properties>\n  <testcase time=\"0.03\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"testGetDependencyType\"/>\n  <testcase time=\"0.011\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"testGetFullName\"/>\n  <testcase time=\"0.003\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"testGetName\"/>\n  <testcase time=\"0.015\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"testGetPackageName\"/>\n  <testcase time=\"0.009\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"testSetDependencyType\"/>\n  <testcase time=\"0.006\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"deepCloneClassAreEquals\"/>\n  <testcase time=\"0.011\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"deepCloneReferencesAreDifferent\"/>\n  <testcase time=\"0.01\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"deepClonesAreEquals\"/>\n  <testcase time=\"0.005\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"compareToIsConsistent\"/>\n  <testcase time=\"0.016\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"compareToIsConsistentWithEquals\"/>\n  <testcase time=\"0.004\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"compareToIsSymmetric\"/>\n  <testcase time=\"0.003\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"compareToIsTransitive\"/>\n  <testcase time=\"0.008\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"compareToWorks\"/>\n  <testcase time=\"0.003\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"equalsIsConsistent\"/>\n  <testcase time=\"0.002\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"equalsIsReflexive\"/>\n  <testcase time=\"0.002\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"equalsIsSymmetric\"/>\n  <testcase time=\"0.002\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"equalsIsTransitive\"/>\n  <testcase time=\"0.01\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"equalsReturnFalseOnNull\"/>\n  <testcase time=\"0.002\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"equalsWorks\"/>\n  <testcase time=\"0.008\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"hashCodeIsConsistentWithEquals\"/>\n  <testcase time=\"0.002\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"hashCodeIsSelfConsistent\"/>\n  <testcase time=\"0.012\" classname=\"net.sourceforge.plantuml.dependency.generic.impl.GenericDependencyImplTest\" name=\"toStringContainsClassName\"/>\n</testsuite>";
+        final String javaSourceFileContent = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<testsuite failures=\"0\" time=\"0.306\" errors=\"0\" skipped=\"0\" tests=\"22\" name=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\">\n  <properties>\n    <property name=\"java.runtime.name\" value=\"Java(TM) SE Runtime Environment\"/>\n    <property name=\"sun.boot.library.path\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386\"/>\n    <property name=\"java.vm.version\" value=\"20.1-b02\"/>\n    <property name=\"java.vm.vendor\" value=\"Sun Microsystems Inc.\"/>\n    <property name=\"java.vendor.url\" value=\"http://java.sun.com/\"/>\n    <property name=\"path.separator\" value=\":\"/>\n    <property name=\"java.vm.name\" value=\"Java HotSpot(TM) Server VM\"/>\n    <property name=\"file.encoding.pkg\" value=\"sun.io\"/>\n    <property name=\"user.country\" value=\"FR\"/>\n    <property name=\"sun.java.launcher\" value=\"SUN_STANDARD\"/>\n    <property name=\"sun.os.patch.level\" value=\"unknown\"/>\n    <property name=\"java.vm.specification.name\" value=\"Java Virtual Machine Specification\"/>\n    <property name=\"user.dir\" value=\"/home/graffity/workspace/plantuml-dependency\"/>\n    <property name=\"java.runtime.version\" value=\"1.6.0_26-b03\"/>\n    <property name=\"java.awt.graphicsenv\" value=\"sun.awt.X11GraphicsEnvironment\"/>\n    <property name=\"basedir\" value=\"/home/graffity/workspace/plantuml-dependency\"/>\n    <property name=\"java.endorsed.dirs\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/endorsed\"/>\n    <property name=\"os.arch\" value=\"i386\"/>\n    <property name=\"surefire.real.class.path\" value=\"/home/graffity/workspace/plantuml-dependency/target/surefire/surefirebooter4286092155706823282.jar\"/>\n    <property name=\"java.io.tmpdir\" value=\"/tmp\"/>\n    <property name=\"line.separator\" value=\"\n\"/>\n    <property name=\"java.vm.specification.vendor\" value=\"Sun Microsystems Inc.\"/>\n    <property name=\"os.name\" value=\"Linux\"/>\n    <property name=\"sun.jnu.encoding\" value=\"UTF-8\"/>\n    <property name=\"java.library.path\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/server:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib\"/>\n    <property name=\"surefire.test.class.path\" value=\"/home/graffity/workspace/plantuml-dependency/target/test-classes:/home/graffity/workspace/plantuml-dependency/target/classes:/home/graffity/.m2/repository/junit/junit/4.7/junit-4.7.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/cli/mazix-cli/1.0.2/mazix-cli-1.0.2.jar:/home/graffity/.m2/repository/org/apache/ant/ant/1.8.2/ant-1.8.2.jar:/home/graffity/.m2/repository/org/apache/ant/ant-launcher/1.8.2/ant-launcher-1.8.2.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/components/mazix-components/1.1.1/mazix-components-1.1.1.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/components/mazix-components/1.1.1/mazix-components-1.1.1-tests.jar:\"/>\n    <property name=\"java.specification.name\" value=\"Java Platform API Specification\"/>\n    <property name=\"java.class.version\" value=\"50.0\"/>\n    <property name=\"sun.management.compiler\" value=\"HotSpot Tiered Compilers\"/>\n    <property name=\"os.version\" value=\"2.6.32-33-generic-pae\"/>\n    <property name=\"user.home\" value=\"/home/graffity\"/>\n    <property name=\"user.timezone\" value=\"\"/>\n    <property name=\"java.awt.printerjob\" value=\"sun.print.PSPrinterJob\"/>\n    <property name=\"file.encoding\" value=\"UTF-8\"/>\n    <property name=\"java.specification.version\" value=\"1.6\"/>\n    <property name=\"user.name\" value=\"graffity\"/>\n    <property name=\"java.class.path\" value=\"/home/graffity/workspace/plantuml-dependency/target/test-classes:/home/graffity/workspace/plantuml-dependency/target/classes:/home/graffity/.m2/repository/junit/junit/4.7/junit-4.7.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/cli/mazix-cli/1.0.2/mazix-cli-1.0.2.jar:/home/graffity/.m2/repository/org/apache/ant/ant/1.8.2/ant-1.8.2.jar:/home/graffity/.m2/repository/org/apache/ant/ant-launcher/1.8.2/ant-launcher-1.8.2.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/components/mazix-components/1.1.1/mazix-components-1.1.1.jar:/home/graffity/.m2/repository/net/sourceforge/mazix/components/mazix-components/1.1.1/mazix-components-1.1.1-tests.jar:\"/>\n    <property name=\"java.vm.specification.version\" value=\"1.0\"/>\n    <property name=\"sun.arch.data.model\" value=\"32\"/>\n    <property name=\"java.home\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre\"/>\n    <property name=\"sun.java.command\" value=\"/home/graffity/workspace/plantuml-dependency/target/surefire/surefirebooter4286092155706823282.jar /home/graffity/workspace/plantuml-dependency/target/surefire/surefire1347948533659098341tmp /home/graffity/workspace/plantuml-dependency/target/surefire/surefire6816175995908075715tmp\"/>\n    <property name=\"java.specification.vendor\" value=\"Sun Microsystems Inc.\"/>\n    <property name=\"user.language\" value=\"fr\"/>\n    <property name=\"java.vm.info\" value=\"mixed mode\"/>\n    <property name=\"java.version\" value=\"1.6.0_26\"/>\n    <property name=\"java.ext.dirs\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/ext:/usr/java/packages/lib/ext\"/>\n    <property name=\"sun.boot.class.path\" value=\"/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/resources.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/rt.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/jsse.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/jce.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/charsets.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/classes\"/>\n    <property name=\"java.vendor\" value=\"Sun Microsystems Inc.\"/>\n    <property name=\"localRepository\" value=\"/home/graffity/.m2/repository\"/>\n    <property name=\"file.separator\" value=\"/\"/>\n    <property name=\"java.vendor.url.bug\" value=\"http://java.sun.com/cgi-bin/bugreport.cgi\"/>\n    <property name=\"sun.cpu.endian\" value=\"little\"/>\n    <property name=\"sun.io.unicode.encoding\" value=\"UnicodeLittle\"/>\n    <property name=\"sun.desktop\" value=\"gnome\"/>\n    <property name=\"sun.cpu.isalist\" value=\"\"/>\n  </properties>\n  <testcase time=\"0.03\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"testGetDependencyType\"/>\n  <testcase time=\"0.011\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"testGetFullName\"/>\n  <testcase time=\"0.003\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"testGetName\"/>\n  <testcase time=\"0.015\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"testGetPackageName\"/>\n  <testcase time=\"0.009\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"testSetDependencyType\"/>\n  <testcase time=\"0.006\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"deepCloneClassAreEquals\"/>\n  <testcase time=\"0.011\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"deepCloneReferencesAreDifferent\"/>\n  <testcase time=\"0.01\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"deepClonesAreEquals\"/>\n  <testcase time=\"0.005\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"compareToIsConsistent\"/>\n  <testcase time=\"0.016\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"compareToIsConsistentWithEquals\"/>\n  <testcase time=\"0.004\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"compareToIsSymmetric\"/>\n  <testcase time=\"0.003\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"compareToIsTransitive\"/>\n  <testcase time=\"0.008\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"compareToWorks\"/>\n  <testcase time=\"0.003\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"equalsIsConsistent\"/>\n  <testcase time=\"0.002\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"equalsIsReflexive\"/>\n  <testcase time=\"0.002\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"equalsIsSymmetric\"/>\n  <testcase time=\"0.002\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"equalsIsTransitive\"/>\n  <testcase time=\"0.01\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"equalsReturnFalseOnNull\"/>\n  <testcase time=\"0.002\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"equalsWorks\"/>\n  <testcase time=\"0.008\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"hashCodeIsConsistentWithEquals\"/>\n  <testcase time=\"0.002\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"hashCodeIsSelfConsistent\"/>\n  <testcase time=\"0.012\" classname=\"net.sourceforge.plantumldependency.generic.impl.GenericDependencyImplTest\" name=\"toStringContainsClassName\"/>\n</testsuite>";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         JAVA_PROGRAMMING_LANGUAGE1.readDependencyFromFile(javaSourceFileContent, programmingLanguageContext);

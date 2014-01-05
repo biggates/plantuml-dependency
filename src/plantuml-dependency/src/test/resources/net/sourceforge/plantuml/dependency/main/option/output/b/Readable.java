@@ -22,15 +22,15 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency.main.option.output;
+package net.sourceforge.plantumldependency.main.option.output;
 
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 
 import java.util.Set;
 
-import net.sourceforge.plantuml.dependency.generic.GenericDependency;
-import net.sourceforge.plantuml.dependency.generic.type.DependencyType;
+import net.sourceforge.plantumldependency.generic.GenericDependency;
+import net.sourceforge.plantumldependency.generic.type.DependencyType;
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)

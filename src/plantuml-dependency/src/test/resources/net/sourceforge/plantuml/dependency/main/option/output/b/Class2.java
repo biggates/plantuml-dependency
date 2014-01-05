@@ -22,7 +22,7 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency.main.option.output;
+package net.sourceforge.plantumldependency.main.option.output;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COLON_CHAR;
@@ -30,7 +30,7 @@ import static net.sourceforge.mazix.components.constants.CharacterConstants.COLO
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
-import net.sourceforge.plantuml.dependency.main.option.output.Class1;
+import net.sourceforge.plantumldependency.main.option.output.Class1;
 
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)

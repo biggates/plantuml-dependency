@@ -115,7 +115,7 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
                 TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET2, 1);
         outputOptionExecution.execute();
         assertEquals(
-                "@startuml\r\nannotation java.lang.Deprecated\r\nannotation java.lang.Override\r\nannotation java.lang.SuppressWarnings\r\nannotation javax.annotation.Generated\r\nannotation javax.xml.bind.annotation.XmlType\r\nannotation javax.xml.ws.soap.Addressing\r\nannotation net.sourceforge.plantuml.dependency.main.option.output.Annotationinterface\r\nannotation net.sourceforge.plantuml.dependency.main.option.output.AnotherAnnotation\r\nannotation net.sourceforge.plantuml.dependency.main.option.output.MappedSuperclass\r\nannotation net.sourceforge.plantuml.dependency.main.option.output.MyAnnotation\r\nannotation net.sourceforge.plantuml.dependency.main.option.output.Testabstract\r\n@enduml",
+                "@startuml\r\nannotation java.lang.Deprecated\r\nannotation java.lang.Override\r\nannotation java.lang.SuppressWarnings\r\nannotation javax.annotation.Generated\r\nannotation javax.xml.bind.annotation.XmlType\r\nannotation javax.xml.ws.soap.Addressing\r\nannotation net.sourceforge.plantumldependency.main.option.output.Annotationinterface\r\nannotation net.sourceforge.plantumldependency.main.option.output.AnotherAnnotation\r\nannotation net.sourceforge.plantumldependency.main.option.output.MappedSuperclass\r\nannotation net.sourceforge.plantumldependency.main.option.output.MyAnnotation\r\nannotation net.sourceforge.plantumldependency.main.option.output.Testabstract\r\n@enduml",
                 readFileIntoString(TEST_FILE1));
     }
 
@@ -132,7 +132,7 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
                 TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET3, 1);
         outputOptionExecution.execute();
         assertEquals(
-                "@startuml\r\nabstract class net.sourceforge.plantuml.dependency.main.option.output.AbstractClass1\r\nabstract class net.sourceforge.plantuml.dependency.main.option.output.AbstractClass2\r\nabstract class net.sourceforge.plantuml.dependency.main.option.output.AbstractClass5\r\nabstract class net.sourceforge.plantuml.dependency.main.option.output.AbstractClass6\r\nabstract class net.sourceforge.plantuml.dependency.main.option.output.test.AbstractClass3\r\nabstract class net.sourceforge.plantuml.dependency.main.option.output.test.AbstractClass4\r\n@enduml",
+                "@startuml\r\nabstract class net.sourceforge.plantumldependency.main.option.output.AbstractClass1\r\nabstract class net.sourceforge.plantumldependency.main.option.output.AbstractClass2\r\nabstract class net.sourceforge.plantumldependency.main.option.output.AbstractClass5\r\nabstract class net.sourceforge.plantumldependency.main.option.output.AbstractClass6\r\nabstract class net.sourceforge.plantumldependency.main.option.output.test.AbstractClass3\r\nabstract class net.sourceforge.plantumldependency.main.option.output.test.AbstractClass4\r\n@enduml",
                 readFileIntoString(TEST_FILE1));
     }
 
@@ -149,7 +149,7 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
                 TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET4, 1);
         outputOptionExecution.execute();
         assertEquals(
-                "@startuml\r\nclass java.lang.annotation.ElementType\r\nclass java.util.Arrays\r\nclass java.util.Iterator\r\nclass java.util.Set\r\nclass java.util.TreeSet\r\nclass java.util.logging.Level\r\nclass java.util.logging.Logger\r\nclass net.sourceforge.mazix.components.constants.CharacterConstants\r\nclass net.sourceforge.plantuml.dependency.generic.GenericDependency\r\nclass net.sourceforge.plantuml.dependency.generic.type.DependencyType\r\nclass net.sourceforge.plantuml.dependency.main.option.output.Class1\r\nclass net.sourceforge.plantuml.dependency.main.option.output.Class2\r\nclass net.sourceforge.plantuml.dependency.main.option.output.Class5\r\nclass net.sourceforge.plantuml.dependency.main.option.output.Class6\r\nclass net.sourceforge.plantuml.dependency.main.option.output.Class7\r\nclass net.sourceforge.plantuml.dependency.main.option.output.Class8\r\nclass net.sourceforge.plantuml.dependency.main.option.output.test.Class3\r\nclass net.sourceforge.plantuml.dependency.main.option.output.test.Class4\r\n@enduml",
+                "@startuml\r\nclass java.lang.annotation.ElementType\r\nclass java.util.Arrays\r\nclass java.util.Iterator\r\nclass java.util.Set\r\nclass java.util.TreeSet\r\nclass java.util.logging.Level\r\nclass java.util.logging.Logger\r\nclass net.sourceforge.mazix.components.constants.CharacterConstants\r\nclass net.sourceforge.plantumldependency.generic.GenericDependency\r\nclass net.sourceforge.plantumldependency.generic.type.DependencyType\r\nclass net.sourceforge.plantumldependency.main.option.output.Class1\r\nclass net.sourceforge.plantumldependency.main.option.output.Class2\r\nclass net.sourceforge.plantumldependency.main.option.output.Class5\r\nclass net.sourceforge.plantumldependency.main.option.output.Class6\r\nclass net.sourceforge.plantumldependency.main.option.output.Class7\r\nclass net.sourceforge.plantumldependency.main.option.output.Class8\r\nclass net.sourceforge.plantumldependency.main.option.output.test.Class3\r\nclass net.sourceforge.plantumldependency.main.option.output.test.Class4\r\n@enduml",
                 readFileIntoString(TEST_FILE1));
     }
 
@@ -166,7 +166,7 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
                 TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET5, 1);
         outputOptionExecution.execute();
         assertEquals(
-                "@startuml\r\nenum net.sourceforge.plantuml.dependency.main.option.output.Enum1\r\nenum net.sourceforge.plantuml.dependency.main.option.output.Enum6\r\n@enduml",
+                "@startuml\r\nenum net.sourceforge.plantumldependency.main.option.output.Enum1\r\nenum net.sourceforge.plantumldependency.main.option.output.Enum6\r\n@enduml",
                 readFileIntoString(TEST_FILE1));
     }
 
@@ -228,7 +228,7 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
                 TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET9, 1);
         outputOptionExecution.execute();
         assertEquals(
-                "@startuml\r\ninterface java.lang.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface1\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface2\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface5\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Interface6\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.Readable\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.TeaaTest\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface3\r\ninterface net.sourceforge.plantuml.dependency.main.option.output.test.Interface4\r\n@enduml",
+                "@startuml\r\ninterface java.lang.Readable\r\ninterface net.sourceforge.plantumldependency.main.option.output.Interface1\r\ninterface net.sourceforge.plantumldependency.main.option.output.Interface2\r\ninterface net.sourceforge.plantumldependency.main.option.output.Interface5\r\ninterface net.sourceforge.plantumldependency.main.option.output.Interface6\r\ninterface net.sourceforge.plantumldependency.main.option.output.Readable\r\ninterface net.sourceforge.plantumldependency.main.option.output.TeaaTest\r\ninterface net.sourceforge.plantumldependency.main.option.output.test.Interface3\r\ninterface net.sourceforge.plantumldependency.main.option.output.test.Interface4\r\n@enduml",
                 readFileIntoString(TEST_FILE1));
     }
 }

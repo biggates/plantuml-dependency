@@ -48,17 +48,17 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
     /** PlantUML classes diagram class element test 1 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST1 = new PlantUMLClassesDiagramClassElementImpl(
-            "net.sourceforge.plantuml.dependency.generic.GenericDependency");
+            "net.sourceforge.plantumldependency.generic.GenericDependency");
 
     /** PlantUML classes diagram class element test 2 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST2 = new PlantUMLClassesDiagramClassElementImpl(
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage");
+            "net.sourceforge.plantumldependency.main.option.programminglanguage.TestReadDependencyFromFileInterfaceWithoutPackage");
 
     /** PlantUML classes diagram class element test 3 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST3 = new PlantUMLClassesDiagramClassElementImpl(
-            "net.sourceforge.plantuml.dependency.generic.GenericDependency");
+            "net.sourceforge.plantumldependency.generic.GenericDependency");
 
     /** PlantUML classes diagram class element test 4 instance. */
     @DataPoint
@@ -66,7 +66,7 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
 
     /** PlantUML classes diagram class element test 5 instance. */
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST5 = new PlantUMLClassesDiagramClassElementImpl(
-            "net.sourceforge.plantuml.dependency.generic.GenericDependency", PLANTUML_STEREOTYPE_TEST6);
+            "net.sourceforge.plantumldependency.generic.GenericDependency", PLANTUML_STEREOTYPE_TEST6);
 
     /** PlantUML classes diagram class element test 6 instance. */
     public static final PlantUMLClassesDiagramClassElementImpl PLANTUML_CLASS_ELEMENT_TEST6 = new PlantUMLClassesDiagramClassElementImpl(
@@ -130,7 +130,7 @@ public class PlantUMLClassesDiagramClassElementImplTest extends
     @Test
     public void testGetName() {
         assertEquals(PLANTUML_CLASS_ELEMENT_TEST3.getName(),
-                "net.sourceforge.plantuml.dependency.generic.GenericDependency");
+                "net.sourceforge.plantumldependency.generic.GenericDependency");
     }
 
     /**

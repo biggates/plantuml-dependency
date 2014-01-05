@@ -22,7 +22,7 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantuml.dependency.main.option.output;
+package net.sourceforge.plantumldependency.main.option.output;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.mazix.components.constants.CharacterConstants.COLON_CHAR;

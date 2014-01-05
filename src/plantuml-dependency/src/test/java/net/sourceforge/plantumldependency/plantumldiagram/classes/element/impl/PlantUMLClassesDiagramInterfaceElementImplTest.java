@@ -45,22 +45,22 @@ public class PlantUMLClassesDiagramInterfaceElementImplTest extends
     /** PlantUML classes diagram interface element test 1 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST1 = new PlantUMLClassesDiagramInterfaceElementImpl(
-            "net.sourceforge.plantuml.dependency.plantumldiagram.WithDescription");
+            "net.sourceforge.plantumldependency.plantumldiagram.WithDescription");
 
     /** PlantUML classes diagram interface element test 2 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST2 = new PlantUMLClassesDiagramInterfaceElementImpl(
-            "net.sourceforge.plantuml.dependency.constants.PlantUMLConstants");
+            "net.sourceforge.plantumldependency.constants.PlantUMLConstants");
 
     /** PlantUML classes diagram interface element test 3 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST3 = new PlantUMLClassesDiagramInterfaceElementImpl(
-            "net.sourceforge.plantuml.dependency.constants.PlantUMLConstants");
+            "net.sourceforge.plantumldependency.constants.PlantUMLConstants");
 
     /** PlantUML classes diagram interface element test 4 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramInterfaceElementImpl PLANTUML_INTERFACE_ELEMENT_TEST4 = new PlantUMLClassesDiagramInterfaceElementImpl(
-            "net.sourceforge.plantuml.dependency.constants.PlantUMLConstants", PLANTUML_STEREOTYPE_TEST6);
+            "net.sourceforge.plantumldependency.constants.PlantUMLConstants", PLANTUML_STEREOTYPE_TEST6);
 
     /** PlantUML classes diagram interface element test 5 instance. */
     @DataPoint
@@ -114,7 +114,7 @@ public class PlantUMLClassesDiagramInterfaceElementImplTest extends
     @Test
     public void testGetName() {
         assertEquals(PLANTUML_INTERFACE_ELEMENT_TEST3.getName(),
-                "net.sourceforge.plantuml.dependency.constants.PlantUMLConstants");
+                "net.sourceforge.plantumldependency.constants.PlantUMLConstants");
     }
 
     /**

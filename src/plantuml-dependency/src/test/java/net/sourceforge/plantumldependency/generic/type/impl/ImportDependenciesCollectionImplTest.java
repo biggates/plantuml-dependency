@@ -194,9 +194,9 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                                             new GenericDependencyImpl("DeepCloneable",
                                                     "net.sourceforge.mazix.components.clone"),
                                             new GenericDependencyImpl("ProgrammingLanguage",
-                                                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                                                    "net.sourceforge.plantumldependency.main.option.programminglanguage.argument"),
                                             new GenericDependencyImpl("JavaRawDependency",
-                                                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java")})));
+                                                    "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java")})));
                     put(STATIC, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
                             new GenericDependencyImpl("Level", "java.util.logging"),
                             new GenericDependencyImpl("Arrays", "java.util")})));
@@ -222,9 +222,9 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                                             new GenericDependencyImpl("DeepCloneable",
                                                     "net.sourceforge.mazix.components.clone"),
                                             new GenericDependencyImpl("ProgrammingLanguage",
-                                                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                                                    "net.sourceforge.plantumldependency.main.option.programminglanguage.argument"),
                                             new GenericDependencyImpl("JavaRawDependency",
-                                                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.java")})));
+                                                    "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.java")})));
                     put(STATIC, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
                             new GenericDependencyImpl("Arrays", "java.util"),
                             new GenericDependencyImpl("Level", "java.util.logging")})));
@@ -237,9 +237,9 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
             STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
                     new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
                     new GenericDependencyImpl("CppProgrammingLanguageTest",
-                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                            "net.sourceforge.plantumldependency.main.option.programminglanguage.argument"),
                     new GenericDependencyImpl("ProgrammingLanguageTest",
-                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                            "net.sourceforge.plantumldependency.main.option.programminglanguage.argument"),
                     new GenericDependencyImpl("Map", "java.util")})));
 
     /** Display import dependencies collection test 19 instance. */
@@ -248,7 +248,7 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
             STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {
                     new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
                     new GenericDependencyImpl("CppProgrammingLanguageTest",
-                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument")})));
+                            "net.sourceforge.plantumldependency.main.option.programminglanguage.argument")})));
 
     /** Display import dependencies collection test 20 instance. */
     @DataPoint
@@ -260,7 +260,7 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
     @DataPoint
     public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST21 = new ImportDependenciesCollectionImpl(
             STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "GenericDependency", "net.sourceforge.plantuml.dependency.generic")})));
+                    "GenericDependency", "net.sourceforge.plantumldependency.generic")})));
 
     /** Display import dependencies collection test 22 instance. */
     @DataPoint
@@ -270,9 +270,9 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                     asList(new GenericDependency[] {
                             new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
                             new GenericDependencyImpl("CppProgrammingLanguageTest",
-                                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                                    "net.sourceforge.plantumldependency.main.option.programminglanguage.argument"),
                             new GenericDependencyImpl("InnerTest",
-                                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")})));
+                                    "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")})));
 
     /** Display import dependencies collection test 23 instance. */
     @DataPoint
@@ -306,7 +306,7 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                             new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl("InputStream", "java.io")),
                             new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl("File", "java.io")),
                             new GenericDependencyImpl(new EnumDependencyTypeImpl("Display",
-                                    "net.sourceforge.plantuml.dependency.main.option.display.argument")),
+                                    "net.sourceforge.plantumldependency.main.option.display.argument")),
                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Deprecated", "javax.lang"))})));
                     put(STATIC,
                             new TreeSet < GenericDependency >(
@@ -321,7 +321,7 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                                             new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl(
                                                     "AbstractOption", "net.sourceforge.mazix.cli.option")),
                                             new GenericDependencyImpl(new EnumDependencyTypeImpl("ImportType",
-                                                    "net.sourceforge.plantuml.dependency.generic.type")),
+                                                    "net.sourceforge.plantumldependency.generic.type")),
                                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Generated",
                                                     "javax.annotation")),
                                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Target",
@@ -376,9 +376,9 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                         asList(new GenericDependency[] {
                                 new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
                                 new GenericDependencyImpl("CppProgrammingLanguageTest",
-                                        "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                                        "net.sourceforge.plantumldependency.main.option.programminglanguage.argument"),
                                 new GenericDependencyImpl("InnerTest",
-                                        "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")})));
+                                        "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")})));
         importDependenciesCollectionImpl.addImportDependenciesSet(STATIC, GENERIC_DEPENDENCY_SET2);
         assertEquals(4, importDependenciesCollectionImpl.getAllImportDependencies().size());
         assertTrue(importDependenciesCollectionImpl.getAllImportDependencies().contains(GENERIC_DEPENDENCY1));
@@ -397,9 +397,9 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                         asList(new GenericDependency[] {
                                 new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
                                 new GenericDependencyImpl("CppProgrammingLanguageTest",
-                                        "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument"),
+                                        "net.sourceforge.plantumldependency.main.option.programminglanguage.argument"),
                                 new GenericDependencyImpl("InnerTest",
-                                        "net.sourceforge.plantuml.dependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")})));
+                                        "net.sourceforge.plantumldependency.main.option.programminglanguage.argument.CppProgrammingLanguageTest")})));
         importDependenciesCollectionImpl.addImportDependenciesSet(STANDARD, GENERIC_DEPENDENCY_SET2);
         assertEquals(4, importDependenciesCollectionImpl.getAllImportDependencies().size());
         assertTrue(importDependenciesCollectionImpl.getAllImportDependencies().contains(GENERIC_DEPENDENCY1));

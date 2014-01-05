@@ -138,7 +138,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
     /** Annotation dependency type test 3 instance. */
     @DataPoint
     public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE3 = new AnnotationDependencyTypeImpl(
-            "Override", "net.sourceforge.plantuml.dependency.generic.type.impl.annotationimpl",
+            "Override", "net.sourceforge.plantumldependency.generic.type.impl.annotationimpl",
             IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET6);
 
     /** Annotation dependency type test 4 instance. */

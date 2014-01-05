@@ -47,7 +47,7 @@ public class PlantUMLClassesDiagramAbstractClassElementImplTest extends
     /** PlantUML classes diagram abstract class element test 1 instance. */
     @DataPoint
     public static final PlantUMLClassesDiagramAbstractClassElementImpl PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST1 = new PlantUMLClassesDiagramAbstractClassElementImpl(
-            "net.sourceforge.plantuml.dependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement");
+            "net.sourceforge.plantumldependency.plantumldiagram.classes.element.PlantUMLClassesDiagramElement");
 
     /** PlantUML classes diagram abstract class element test 2 instance. */
     @DataPoint

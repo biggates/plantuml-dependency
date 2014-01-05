@@ -82,7 +82,7 @@ public class PlantUMLDependencyOutputOptionExecution0Test {
         final StringBuilder buffer = new StringBuilder();
 
         for (int i = startIndex; i < endIndex; i++) {
-            buffer.append("import static net.sourceforge.plantuml.dependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET");
+            buffer.append("import static net.sourceforge.plantumldependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET");
             buffer.append(i + 1);
             buffer.append(";\n\n");
         }
@@ -96,7 +96,7 @@ public class PlantUMLDependencyOutputOptionExecution0Test {
             plantumlDescriptionStr = plantumlDescriptionStr.replaceAll("\\n", "\\\\n");
             buffer.append("/**\n");
             buffer.append("* Test method for\n");
-            buffer.append("* {@link net.sourceforge.plantuml.dependency.main.option.output.PlantUMLDependencyOutputOptionExecution#execute()}\n");
+            buffer.append("* {@link net.sourceforge.plantumldependency.main.option.output.PlantUMLDependencyOutputOptionExecution#execute()}\n");
             buffer.append("* .\n");
             buffer.append("*\n");
             buffer.append("* @throws CommandLineException\n");

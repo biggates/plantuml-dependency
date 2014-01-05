@@ -357,26 +357,26 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Class dependency type test 27 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE27 = new ClassDependencyTypeImpl(
-            "TestDisplayOption", "net.sourceforge.plantuml.dependency", IMPORT_COLLECTION_TEST16,
+            "TestDisplayOption", "net.sourceforge.plantumldependency", IMPORT_COLLECTION_TEST16,
             new GenericDependencyImpl("BigInteger", "java.math"), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("DeepCloneable",
                             "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl(new AnnotationDependencyTypeImpl(
-                            "Override", "net.sourceforge.plantuml.dependency"))})));
+                            "Override", "net.sourceforge.plantumldependency"))})));
 
     /** Class dependency type test 28 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE28 = new ClassDependencyTypeImpl(
-            "TestDisplayOption", "net.sourceforge.plantuml.dependency", IMPORT_COLLECTION_TEST1, null,
+            "TestDisplayOption", "net.sourceforge.plantumldependency", IMPORT_COLLECTION_TEST1, null,
             new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
 
     /** Class dependency type test 29 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE29 = new ClassDependencyTypeImpl(
-            "TestDisplayOption", "net.sourceforge.plantuml.dependency", IMPORT_COLLECTION_TEST17,
+            "TestDisplayOption", "net.sourceforge.plantumldependency", IMPORT_COLLECTION_TEST17,
             new GenericDependencyImpl("BigInteger", "java.math"), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("DeepCloneable",
                             "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl(new AnnotationDependencyTypeImpl(
-                            "Override", "net.sourceforge.plantuml.dependency"))})));
+                            "Override", "net.sourceforge.plantumldependency"))})));
 
     /** Class dependency type test 30 instance. */
     public static final ClassAbstractDependencyTypeImpl CLASS_DEPENDENCY_TYPE30 = new ClassAbstractDependencyTypeImpl(
@@ -441,73 +441,73 @@ public final class PlantUMLDependencyTestConstants {
     /** Interface dependency type test 1 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE1 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileClassWithMultipleExtendsGenerics",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST18,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST18,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {
                     new GenericDependencyImpl("DeepCloneable", "net.sourceforge.mazix.components.clone"),
                     new GenericDependencyImpl("Comparable",
-                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage"),
+                            "net.sourceforge.plantumldependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("Map", "java.util"),
                     new GenericDependencyImpl("Appendable",
-                            "net.sourceforge.plantuml.dependency.main.option.programminglanguage")})),
+                            "net.sourceforge.plantumldependency.main.option.programminglanguage")})),
             new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 2 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE2 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterface",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
             new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 2 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE3 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterfaceGenericNotInImport",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
             new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 4 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE4 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST19,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST19,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 5 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE5 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterfaceWithExtendsGenericsNotInImport",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST20,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST20,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 6 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE6 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterfaceWithExtendsInImport",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST21,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST21,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
+                    "GenericDependency", "net.sourceforge.plantumldependency.generic")})),
             new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 7 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE7 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterfaceWithExtendsNotInImportFullPackageName",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "GenericDependency", "net.sourceforge.plantuml.dependency.generic")})),
+                    "GenericDependency", "net.sourceforge.plantumldependency.generic")})),
             new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 8 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE8 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterfaceWithExtendsNotInImportJavaLang",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl("Comparable",
-                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage")})),
+                    "net.sourceforge.plantumldependency.main.option.programminglanguage")})),
             new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 9 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE9 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterfaceWithExtendsNotInImportNotJavaLang",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "TestReadDependencyFromFileInterfaceWithoutPackage",
-                    "net.sourceforge.plantuml.dependency.main.option.programminglanguage")})),
+                    "net.sourceforge.plantumldependency.main.option.programminglanguage")})),
             new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 10 instance. */
@@ -518,13 +518,13 @@ public final class PlantUMLDependencyTestConstants {
     /** Interface dependency type test 10 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE11 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFilePublicInterface",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST1,
             new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
 
     /** Interface dependency type test 12 instance. */
     public static final InterfaceDependencyTypeImpl INTERFACE_DEPENDENCY_TYPE12 = new InterfaceDependencyTypeImpl(
             "TestReadDependencyFromFileInterfaceWithExtendsGenericsInImport",
-            "net.sourceforge.plantuml.dependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST22,
+            "net.sourceforge.plantumldependency.main.option.programminglanguage", IMPORT_COLLECTION_TEST22,
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "DeepCloneable", "net.sourceforge.mazix.components.clone")})), new TreeSet < GenericDependency >());
 
@@ -558,7 +558,7 @@ public final class PlantUMLDependencyTestConstants {
 
     /** Enum dependency type test 1 instance. */
     public static final EnumDependencyTypeImpl ENUM_DEPENDENCY_TYPE1 = new EnumDependencyTypeImpl(
-            "TestReadDependencyFromFileEnum", "net.sourceforge.plantuml.dependency.main.option.programminglanguage",
+            "TestReadDependencyFromFileEnum", "net.sourceforge.plantumldependency.main.option.programminglanguage",
             IMPORT_COLLECTION_TEST1, new TreeSet < GenericDependency >(), new TreeSet < GenericDependency >());
 
     /** Enum dependency type test 2 instance. */

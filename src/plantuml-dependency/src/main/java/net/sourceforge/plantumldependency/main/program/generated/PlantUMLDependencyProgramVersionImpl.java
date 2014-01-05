@@ -30,11 +30,11 @@ package net.sourceforge.plantumldependency.main.program.generated;
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
  * @since 1.2.0
- * @version 1.2.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyProgramVersionImpl {
 
     public static final String PROGRAM_VERSION = "1.3.0-SNAPSHOT";
 
-    public static final String PROGRAM_BUILD_TIME = "20140105-1114";
+    public static final String PROGRAM_BUILD_TIME = "20140105-1321";
 }
