@@ -2,21 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!-- Project properties -->
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.6</java.version>
-	</properties>
+	<!-- Parent project -->
+	<parent>
+		<groupId>net.sourceforge.plantumldependency</groupId>
+		<artifactId>plantuml-dependency</artifactId>
+		<version>1.3.0-SNAPSHOT</version>
+	</parent>
 	<!-- Project information -->
-	<groupId>net.sourceforge.plantumldependency</groupId>
-	<artifactId>plantuml-dependency</artifactId>
-	<version>1.3.0-SNAPSHOT</version>
+	<artifactId>plantuml-dependency-cli</artifactId>
 	<packaging>jar</packaging>
-	<name>plantuml-dependency</name>
-	<description>PlantUml Dependency allows to parse / reverse engineering
-		source files (only Java is supported by now) to generate a PlantUml description,
-		allowing to draw the UML class diagram associated to the source code</description>
-	<url>http://plantuml-depend.sourceforge.net/</url>
+	<name>Plantuml Dependency common line interface module</name>
 	<dependencies>
 		<!-- Junit used for unit tests -->
 		<dependency>
@@ -68,8 +63,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<file>src/main/java-templates/net/sourceforge/plantumldependency/main/program/PlantUMLDependencyProgramVersionImpl.template</file>
-					<outputFile>src/main/java/net/sourceforge/plantumldependency/main/program/generated/PlantUMLDependencyProgramVersionImpl.java</outputFile>
+					<file>plantuml-dependency-cli/src/main/java-templates/net/sourceforge/plantumldependency/main/program/PlantUMLDependencyProgramVersionImpl.template</file>
+					<outputFile>plantuml-dependency-cli/src/main/java/net/sourceforge/plantumldependency/main/program/generated/PlantUMLDependencyProgramVersionImpl.java</outputFile>
 					<replacements>
 						<replacement>
 							<token>@buildversion@</token>

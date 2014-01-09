@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!-- Project properties -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.6</java.version>
+	</properties>
+	<!-- Project information -->
+	<groupId>net.sourceforge.plantumldependency</groupId>
+	<artifactId>plantuml-dependency</artifactId>
+	<version>1.3.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Plantuml Dependency parent module</name>
+	<description>PlantUml Dependency allows to parse / reverse engineering
+		source files (only Java is supported by now) to generate a PlantUml description,
+		allowing to draw the UML class diagram associated to the source code</description>
+	<url>http://plantuml-depend.sourceforge.net/</url>
+	<dependencies>
+		<!-- Junit used for unit tests -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>plantuml-dependency-common</module>
+		<module>plantuml-dependency-common-cli</module>
+		<module>plantuml-dependency-cli</module>
+	</modules>
+	<!-- Information about organization -->
+	<organization>
+		<name>Sourceforge</name>
+		<url>http://sourceforge.net</url>
+	</organization>
+	<!-- Information about developers -->
+	<developers>
+		<developer>
+			<id>graffity2199</id>
+			<name>Benjamin CROIZET</name>
+			<email>graffity2199@users.sourceforge.net</email>
+			<url>http://plantumldependency.sourceforge.net</url>
+			<organization>Sourceforge</organization>
+			<organizationUrl>http://sourceforge.net</organizationUrl>
+			<roles>
+				<role>manager</role>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>0</timezone>
+		</developer>
+	</developers>
+	<!-- Information about distribution management -->
+	<distributionManagement>
+		<site>
+			<id>plantuml-dependency-website</id>
+			<name>PlantUML Dependency Website</name>
+			<url>http://plantuml-depend.sourceforge.net/maven-site/</url>
+		</site>
+	</distributionManagement>
+	<!-- Information about issue management -->
+	<issueManagement>
+		<system>Sourceforge Issue-Tracker</system>
+		<url>http://sourceforge.net/p/plantuml-depend/bugs</url>
+	</issueManagement>
+	<!-- Information about source control management -->
+	<scm>
+		<connection>scm:svn:http://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk</connection>
+		<developerConnection>scm:svn:https://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk/trunk</developerConnection>
+		<url>http://plantuml-depend.svn.sourceforge.net/viewvc/plantuml-depend/trunk/</url>
+	</scm>
+	<!-- Information about project licenses -->
+	<licenses>
+		<license>
+			<name>GNU General Public License Version 3 (GPL), 29 June 2007</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+			<distribution>repo</distribution>
+			<comments></comments>
+		</license>
+		<license>
+			<name>GNU Lesser General Public License Version 3 (LGPL), 29 June 2007</name>
+			<url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+			<distribution>repo</distribution>
+			<comments></comments>
+		</license>
+	</licenses>
+</project>
