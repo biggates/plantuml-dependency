@@ -2,16 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!-- Parent project -->
-	<parent>
-		<groupId>net.sourceforge.plantumldependency</groupId>
-		<artifactId>plantuml-dependency</artifactId>
-		<version>1.3.0-SNAPSHOT</version>
-	</parent>
+	<!-- Project properties -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.6</java.version>
+	</properties>
 	<!-- Project information -->
+	<groupId>net.sourceforge.plantumldependency</groupId>
 	<artifactId>plantuml-dependency-cli</artifactId>
+	<version>1.3.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Plantuml Dependency common line interface module</name>
+	<description>PlantUml Dependency allows to parse / reverse engineering
+	source files (only Java is supported by now) to generate a PlantUml description,
+	allowing to draw the UML class diagram associated to the source code</description>
+	<url>http://plantuml-depend.sourceforge.net/</url>
 	<dependencies>
 		<!-- Junit used for unit tests -->
 		<dependency>
@@ -49,34 +54,6 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<!-- Program version generation -->
-			<plugin>
-				<groupId>com.google.code.maven-replacer-plugin</groupId>
-				<artifactId>replacer</artifactId>
-				<version>1.5.2</version>
-				<executions>
-					<execution>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>replace</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<file>plantuml-dependency-cli/src/main/java-templates/net/sourceforge/plantumldependency/main/program/PlantUMLDependencyProgramVersionImpl.template</file>
-					<outputFile>plantuml-dependency-cli/src/main/java/net/sourceforge/plantumldependency/main/program/generated/PlantUMLDependencyProgramVersionImpl.java</outputFile>
-					<replacements>
-						<replacement>
-							<token>@buildversion@</token>
-							<value>${project.version}</value>
-						</replacement>
-						<replacement>
-							<token>@buildtime@</token>
-							<value>${build.timestamp}</value>
-						</replacement>
-					</replacements>
-				</configuration>
-			</plugin>
 			<!-- Cobertura generation -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -99,28 +76,6 @@
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 				</configuration>
-			</plugin>
-			<!-- Jar with incorporated tests classes -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<mainClass>net.sourceforge.plantumldependency.main.program.PlantUMLDependencyProgram</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>jar</goal>
-							<goal>test-jar</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<!-- Sources Jar generation -->
 			<plugin>
@@ -171,6 +126,56 @@
 					<execution>
 						<goals>
 							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Program version generation -->
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.2</version>
+				<executions>
+					<execution>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<file>src/main/java-templates/net/sourceforge/plantumldependency/main/program/PlantUMLDependencyProgramVersionImpl.template</file>
+					<outputFile>src/main/java/net/sourceforge/plantumldependency/main/program/generated/PlantUMLDependencyProgramVersionImpl.java</outputFile>
+					<replacements>
+						<replacement>
+							<token>@buildversion@</token>
+							<value>${project.version}</value>
+						</replacement>
+						<replacement>
+							<token>@buildtime@</token>
+							<value>${build.timestamp}</value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
+			<!-- Jar with incorporated tests classes -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>net.sourceforge.plantumldependency.main.program.PlantUMLDependencyProgram</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+							<goal>test-jar</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -430,16 +435,11 @@
 		<system>Sourceforge Issue-Tracker</system>
 		<url>http://sourceforge.net/p/plantuml-depend/bugs</url>
 	</issueManagement>
-	<!-- Information about mailing lists -->
-	<!-- >mailingLists> <mailingList> <name>mazix-devel List</name> <subscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</subscribe>
-		<unsubscribe>https://lists.sourceforge.net/lists/listinfo/mazix-devel</unsubscribe>
-		<post>mazix-devel@lists.sourceforge.net</post> <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=mazix-devel</archive>
-		</mailingList> </mailingLists -->
 	<!-- Information about source control management -->
 	<scm>
-		<connection>scm:svn:http://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk</connection>
-		<developerConnection>scm:svn:https://plantuml-depend.svn.sourceforge.net/svnroot/plantuml-depend/trunk/trunk</developerConnection>
-		<url>http://plantuml-depend.svn.sourceforge.net/viewvc/plantuml-depend/trunk/</url>
+		<connection>scm:svn:http://svn.code.sf.net/p/plantuml-depend/code/trunk</connection>
+		<developerConnection>scm:svn:https://svn.code.sf.net/p/plantuml-depend/code/trunk</developerConnection>
+		<url>http://sourceforge.net/p/plantuml-depend/code/HEAD/tree/</url>
 	</scm>
 	<!-- Information about project licenses -->
 	<licenses>
