@@ -1,4 +1,4 @@
-package net.sourceforge.plantumldependency;
+package net.sourceforge.plantumldependency.common;
 
 /**
  * Hello world!
