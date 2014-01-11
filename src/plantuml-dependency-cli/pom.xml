@@ -144,8 +144,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<file>src/main/java-templates/net/sourceforge/plantumldependency/main/program/PlantUMLDependencyProgramVersionImpl.template</file>
-					<outputFile>src/main/java/net/sourceforge/plantumldependency/main/program/generated/PlantUMLDependencyProgramVersionImpl.java</outputFile>
+					<file>src/main/java-templates/net/sourceforge/plantumldependency/cli/main/program/PlantUMLDependencyProgramVersionImpl.template</file>
+					<outputFile>src/main/java/net/sourceforge/plantumldependency/cli/main/program/generated/PlantUMLDependencyProgramVersionImpl.java</outputFile>
 					<replacements>
 						<replacement>
 							<token>@buildversion@</token>
@@ -167,7 +167,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>net.sourceforge.plantumldependency.main.program.PlantUMLDependencyProgram</mainClass>
+							<mainClass>net.sourceforge.plantumldependency.cli.main.program.PlantUMLDependencyProgram</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -198,7 +198,7 @@
 							</descriptorRefs>
 							<archive>
 								<manifest>
-									<mainClass>net.sourceforge.plantumldependency.main.program.PlantUMLDependencyProgram</mainClass>
+									<mainClass>net.sourceforge.plantumldependency.cli.main.program.PlantUMLDependencyProgram</mainClass>
 								</manifest>
 							</archive>
 						</configuration>
