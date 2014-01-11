@@ -155,30 +155,30 @@ public final class PlantUMLDependencyTestConstants {
 
     /** File set test 1 instance. */
     public static final FileSet FILE_SET1 = createFileSet(CURRENT_DIRECTORY,
-            "**/test/resources/net/sourceforge/plantumldependency/main/option/output/b/**/*.java");
+            "**/test/resources/net/sourceforge/plantumldependency/cli/main/option/output/b/**/*.java");
 
     /** File set test 2 instance. */
     public static final FileSet FILE_SET2 = createFileSet(CURRENT_DIRECTORY,
-            "**/test/resources/net/sourceforge/plantumldependency/main/option/output/a/**/*a*.java",
+            "**/test/resources/net/sourceforge/plantumldependency/cli/main/option/output/a/**/*a*.java",
             "**/Class2.java, **/Class5.java");
 
     /** File set test 3 instance. */
     public static final FileSet FILE_SET3 = createFileSet(CURRENT_DIRECTORY,
-            "**/test/resources/net/sourceforge/plantumldependency/main/option/output/a/Toto.java");
+            "**/test/resources/net/sourceforge/plantumldependency/cli/main/option/output/a/Toto.java");
 
     /** File set test 4 instance. */
     public static final FileSet FILE_SET4 = createFileSet(
             CURRENT_DIRECTORY,
-            "**/test/resources/net/sourceforge/plantumldependency/main/option/output/a/**/*a*.java, **/test/resources/net/sourceforge/plantumldependency/main/option/output/a/pom.xml",
+            "**/test/resources/net/sourceforge/plantumldependency/cli/main/option/output/a/**/*a*.java, **/test/resources/net/sourceforge/plantumldependency/cli/main/option/output/a/pom.xml",
             "**/Class2.java, **/Class5.java");
 
     /** File set test 5 instance. */
     public static final FileSet FILE_SET5 = createFileSet(CURRENT_DIRECTORY,
-            "**/test/resources/net/sourceforge/plantumldependency/main/option/output/c/**/*.java");
+            "**/test/resources/net/sourceforge/plantumldependency/cli/main/option/output/c/**/*.java");
 
     /** File set test 6 instance. */
     public static final FileSet FILE_SET6 = createFileSet(CURRENT_DIRECTORY,
-            "**/test/resources/net/sourceforge/plantumldependency/main/option/output/d/**/*.java");
+            "**/test/resources/net/sourceforge/plantumldependency/cli/main/option/output/d/**/*.java");
 
     /** Verbose option test 1 instance. */
     public static final VerboseOption VERBOSE_OPTION1 = new VerboseOption(new StringBuilder(

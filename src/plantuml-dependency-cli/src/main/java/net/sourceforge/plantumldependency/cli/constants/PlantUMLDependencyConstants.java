@@ -79,7 +79,7 @@ public final class PlantUMLDependencyConstants {
     public static final String JAVA_LANG_PACKAGE = "java.lang";
 
     /** Logging properties path. */
-    public static final String LOGGING_PROPERTIES_PATH = "net/sourceforge/plantumldependency/log/logging.properties";
+    public static final String LOGGING_PROPERTIES_PATH = "net/sourceforge/plantumldependency/cli/log/logging.properties";
 
     /** The custom dependency which is used to link with native code. */
     public static final GenericDependency NATIVE_DEPENDENCY = new GenericDependencyImpl(new NativeDependencyTypeImpl(
