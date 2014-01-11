@@ -12,7 +12,7 @@
 	<artifactId>plantuml-dependency-cli</artifactId>
 	<version>1.3.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>Plantuml Dependency common line interface module</name>
+	<name>PlantUML Dependency common line interface module</name>
 	<description>PlantUml Dependency allows to parse / reverse engineering
 	source files (only Java is supported by now) to generate a PlantUml description,
 	allowing to draw the UML class diagram associated to the source code</description>
@@ -277,7 +277,7 @@
 					<type>date</type>
 					<dates>
 						<date implementation="java.lang.String">2008-09-01</date>
-						<date implementation="java.lang.String">2013-11-03</date>
+						<date implementation="java.lang.String">2013-12-31</date>
 					</dates>
 					<dateFormat>yyyy-MM-dd</dateFormat>
 				</configuration>
@@ -425,9 +425,9 @@
 	<!-- Information about distribution management -->
 	<distributionManagement>
 		<site>
-			<id>plantuml-dependency-website</id>
-			<name>PlantUML Dependency Website</name>
-			<url>http://plantuml-depend.sourceforge.net/maven-site/</url>
+			<id>plantuml-dependency-cli-website</id>
+			<name>PlantUML Dependency common line interface module Website</name>
+			<url>http://plantuml-depend.sourceforge.net/maven-site/plantuml-dependency-cli</url>
 		</site>
 	</distributionManagement>
 	<!-- Information about issue management -->
@@ -437,8 +437,8 @@
 	</issueManagement>
 	<!-- Information about source control management -->
 	<scm>
-		<connection>scm:svn:http://svn.code.sf.net/p/plantuml-depend/code/trunk</connection>
-		<developerConnection>scm:svn:https://svn.code.sf.net/p/plantuml-depend/code/trunk</developerConnection>
+		<connection>scm:svn:http://svn.code.sf.net/p/plantuml-depend/code/trunk/plantuml-dependency-cli</connection>
+		<developerConnection>scm:svn:https://svn.code.sf.net/p/plantuml-depend/code/trunk/plantuml-dependency-cli</developerConnection>
 		<url>http://sourceforge.net/p/plantuml-depend/code/HEAD/tree/</url>
 	</scm>
 	<!-- Information about project licenses -->
