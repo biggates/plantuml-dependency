@@ -320,8 +320,8 @@
 	</issueManagement>
 	<!-- Information about source control management -->
 	<scm>
-		<connection>scm:svn:http://svn.code.sf.net/p/plantuml-depend/code/trunk/plantuml-dependency-common-cli</connection>
-		<developerConnection>scm:svn:https://svn.code.sf.net/p/plantuml-depend/code/trunk/plantuml-dependency-common-cli</developerConnection>
+		<connection>scm:svn:http://svn.code.sf.net/p/plantuml-depend/code</connection>
+		<developerConnection>scm:svn:https://svn.code.sf.net/p/plantuml-depend/code</developerConnection>
 		<url>http://sourceforge.net/p/plantuml-depend/code/HEAD/tree/</url>
 	</scm>
 	<!-- Information about project licenses -->
