@@ -29,7 +29,6 @@ package net.sourceforge.plantumldependency.common.utils.comparable;
  * {@link java.lang.Comparable#compareTo} method.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.3.0
  * @version 1.3.0
  */

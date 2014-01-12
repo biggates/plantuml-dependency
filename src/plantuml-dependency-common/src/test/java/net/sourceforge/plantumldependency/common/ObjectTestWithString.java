@@ -40,9 +40,8 @@ import org.junit.runner.RunWith;
  * Generic JUnit test classes for {@link Object}, allowing to test <code>equals()</code>,
  * <code>hashcode()</code> and <code>clone()</code> methods.
  *
- * Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @param <T>
+ * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
  * @version 1.3.0
  */

@@ -33,7 +33,6 @@ import java.util.Date;
  * An immutable version of the {@link Date} class.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.3.0
  * @version 1.3.0
  */

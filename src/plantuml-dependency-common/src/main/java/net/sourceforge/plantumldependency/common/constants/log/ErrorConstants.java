@@ -28,8 +28,7 @@ package net.sourceforge.plantumldependency.common.constants.log;
  * The class which defines all error messages constants which are only written in the log file. The
  * messages also contains the error code.
  *
- * Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
  * @version 1.3.0
  */

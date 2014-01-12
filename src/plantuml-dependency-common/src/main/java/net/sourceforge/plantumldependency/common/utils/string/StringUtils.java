@@ -31,7 +31,6 @@ import java.util.TreeSet;
  * The class utilities simplifying some {@link String} tasks.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.3.0
  * @version 1.3.0
  */

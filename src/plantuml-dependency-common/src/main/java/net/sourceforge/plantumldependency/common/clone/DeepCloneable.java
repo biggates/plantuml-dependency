@@ -27,10 +27,9 @@ package net.sourceforge.plantumldependency.common.clone;
 /**
  * Interface which defines object which are able to be deep cloned.
  *
- * Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @param <T>
  * @see java.lang.Cloneable
+ * @author  Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
  * @version 1.3.0
  */

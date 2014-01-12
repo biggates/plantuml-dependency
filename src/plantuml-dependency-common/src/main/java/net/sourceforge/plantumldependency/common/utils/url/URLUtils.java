@@ -37,7 +37,6 @@ import java.util.logging.Logger;
  * The utility class to manage URL without taking care of the {@link MalformedURLException}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.3.0
  * @version 1.3.0
  */

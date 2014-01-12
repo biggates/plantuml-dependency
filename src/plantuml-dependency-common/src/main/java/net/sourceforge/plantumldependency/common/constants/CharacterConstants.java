@@ -27,13 +27,12 @@ package net.sourceforge.plantumldependency.common.constants;
 /**
  * The class which stores all necessary char constants as Strings.
  *
- * Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
  * @version 1.3.0
  */
 public final class CharacterConstants {
-    
+
     /** The string representing the at character. */
     public static final String AT_CHAR = "@";
 

@@ -50,8 +50,7 @@ import java.util.logging.Logger;
 /**
  * The class utilities managing files.
  *
- * Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
  * @version 1.3.0
  */

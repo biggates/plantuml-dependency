@@ -40,8 +40,8 @@ import org.junit.runner.RunWith;
  * <code>deepClone()</code> method.<br>
  * This class may be used to test a class which only implements {@link DeepCloneable}.
  *
- * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @param <T>
+ * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
  * @version 1.3.0
  */

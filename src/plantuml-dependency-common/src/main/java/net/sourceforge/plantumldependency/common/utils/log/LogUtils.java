@@ -48,8 +48,7 @@ import java.util.logging.Logger;
  * it can be used with log message where arguments are needed by building the string to log
  * following passed arguments.
  *
- * Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
+ * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
  * @version 1.3.0
  */

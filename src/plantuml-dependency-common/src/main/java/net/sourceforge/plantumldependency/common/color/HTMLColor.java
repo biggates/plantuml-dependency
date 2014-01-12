@@ -32,7 +32,6 @@ import java.awt.Color;
  * The enumeration representing HTML colors.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.3.0
  * @version 1.3.0
  */
