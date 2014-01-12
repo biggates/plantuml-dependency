@@ -34,8 +34,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.JavaRawDependency;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -44,9 +43,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link JavaRawDependency}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class JavaRawDependencyTest extends ComparableAndDeepCloneableObjectTest < JavaRawDependency > {
 

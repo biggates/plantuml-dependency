@@ -27,11 +27,11 @@ package net.sourceforge.plantumldependency.cli.main.option.output;
 import static java.util.logging.Level.INFO;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
-import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.READING_SOURCE_FILE_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.InfoConstants.TREATED_DEPENDENCY_INFO;
+import static net.sourceforge.plantumldependency.common.utils.file.FileUtils.readFileIntoString;
+import static net.sourceforge.plantumldependency.common.utils.file.FileUtils.writeIntoFile;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
 
 import java.io.File;
 import java.util.Iterator;
@@ -39,15 +39,15 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.execution.AbstractOptionExecution;
-import net.sourceforge.mazix.cli.option.execution.OptionExecution;
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.ProgrammingLanguageContext;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.PlantUMLDiagram;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.execution.AbstractOptionExecution;
+import net.sourceforge.plantumldependency.commoncli.option.execution.OptionExecution;
 
 import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.ant.types.resources.FileResource;
@@ -57,9 +57,8 @@ import org.apache.tools.ant.types.resources.FileResource;
  * processing the input source files and generating the plantUML description.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.1.1
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecution {
 
@@ -85,7 +84,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *            <code>null</code>.
      * @return the {@link ProgrammingLanguageContext} instance containing all parsed
      *         {@link GenericDependency}.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static ProgrammingLanguageContext readDependenciesContextFromFiles(final ProgrammingLanguage language,
             final FileSet includeExcludeFiles, final Set < Display > displayOpt) {
@@ -124,7 +123,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *         <code>null</code> if the context display options doesn't manage the dependency type.
      * @throws PlantUMLDependencyException
      *             if any parsing exception occurs while reading the source file.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static GenericDependency readDependencyFromFile(final File file,
             final ProgrammingLanguageContext programmingLanguageContext, final ProgrammingLanguage language)
@@ -165,7 +164,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param optionPriority
      *            the option priority as an integer. <i>Note : the priority must be unique amongst
      *            all options</i>.
-     * @since 1.0
+     * @since 1.0.0
      */
     public PlantUMLDependencyOutputOptionExecution(final File file, final ProgrammingLanguage language,
             final FileSet includeExcludeFiles, final Set < Display > displayOpt, final int optionPriority) {
@@ -179,7 +178,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public OptionExecution deepClone() {
@@ -193,7 +192,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public void execute() throws CommandLineException {
@@ -210,7 +209,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *
      * @return the value of <code>displayOptions</code>.
      * @see #setDisplayOptions(Set)
-     * @since 1.0
+     * @since 1.0.0
      */
     private Set < Display > getDisplayOptions() {
         return displayOptions;
@@ -221,7 +220,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *
      * @return the value of <code>inputFileSet</code>.
      * @see #setInputFileSet(FileSet)
-     * @since 1.0
+     * @since 1.0.0
      */
     private FileSet getInputFileSet() {
         return inputFileSet;
@@ -232,7 +231,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *
      * @return the value of <code>outputFile</code>.
      * @see #setOutputFile(File)
-     * @since 1.0
+     * @since 1.0.0
      */
     private File getOutputFile() {
         return outputFile;
@@ -243,7 +242,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      *
      * @return the value of <code>programmingLanguage</code>.
      * @see #setProgrammingLanguage(ProgrammingLanguage)
-     * @since 1.0
+     * @since 1.0.0
      */
     private ProgrammingLanguage getProgrammingLanguage() {
         return programmingLanguage;
@@ -255,7 +254,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param value
      *            the <code>displayOptions</code> to set, can be <code>null</code>.
      * @see #getDisplayOptions()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setDisplayOptions(final Set < Display > value) {
         displayOptions = value;
@@ -267,7 +266,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param value
      *            the <code>inputFileSet</code> to set, can be <code>null</code>.
      * @see #getInputFileSet()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setInputFileSet(final FileSet value) {
         inputFileSet = value;
@@ -279,7 +278,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param value
      *            the <code>outputFile</code> to set, can be <code>null</code>.
      * @see #getOutputFile()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setOutputFile(final File value) {
         outputFile = value;
@@ -291,7 +290,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param value
      *            the <code>programmingLanguage</code> to set, can be <code>null</code>.
      * @see #getProgrammingLanguage()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setProgrammingLanguage(final ProgrammingLanguage value) {
         programmingLanguage = value;

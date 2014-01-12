@@ -42,9 +42,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.im
  * {@link net.sourceforge.plantumldependency.generic.type.ClassDependencyType} interface.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class ClassDependencyTypeImpl extends DependencyTypeImpl {
 
@@ -59,7 +58,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl {
      * @param dependencyPackageName
      *            The dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(), null,
@@ -86,7 +85,7 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl {
      * @param annotationsDependenciesSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     public ClassDependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final ImportDependenciesCollection importDependencies, final GenericDependency parentExtensionsDependency,
@@ -126,6 +125,8 @@ public class ClassDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
+     *
+     * @since 1.0.0
      */
     @Override
     public String toString() {

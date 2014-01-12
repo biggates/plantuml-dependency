@@ -56,8 +56,7 @@ import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.ele
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST9;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelationType.USE_RELATION_TYPE;
 import static org.junit.Assert.assertEquals;
-import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
-import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImpl;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -66,9 +65,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLClassesDiagramUseRelationImpl}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.2.0
+ * @version 1.3.0
  */
 public class PlantUMLClassesDiagramUseRelationImplTest extends
         ComparableAndDeepCloneableObjectTest < PlantUMLClassesDiagramUseRelationImpl > {

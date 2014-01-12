@@ -24,7 +24,6 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1;
@@ -83,18 +82,17 @@ import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependenc
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY9;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.CPP;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import net.sourceforge.mazix.components.ComparableObjectTest;
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.classimpl.ClassDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.stubimpl.StubDependencyTypeImpl;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.JavaProgrammingLanguage;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.ProgrammingLanguageContext;
+import net.sourceforge.plantumldependency.common.comparable.ComparableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -103,9 +101,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link JavaProgrammingLanguage}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProgrammingLanguage > {
 
@@ -395,7 +392,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithCarriageReturnsAsSeparatorAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.\ntest;\r\n\r\nimport net.sourceforge.mazix.\ncli.program.\nJavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class\nTestImplements implements\nnet.sourceforge.mazix.cli.program.\nJavaProgram {\r\nprivate static native void\nregisterNatives\n();\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.\ntest;\r\n\r\nimport net.sourceforge.mazix.\ncli.program.\nJavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class\nTestImplements implements\nnet.sourceforge.plantumldependency.commoncli.program.\nJavaProgram {\r\nprivate static native void\nregisterNatives\n();\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY40,
@@ -404,10 +401,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(NATIVE_DEPENDENCY.getFullName()));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY40.getFullName()));
-        assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+        assertEquals(
+                InterfaceDependencyTypeImpl.class,
+                programmingLanguageContext
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -524,7 +523,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithExtendsInImportFullPackageNameWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.impl.JavaProgramImpl;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends net.sourceforge.mazix.cli.program.impl.JavaProgramImpl {\r\n\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.plantumldependency.commoncli.program.impl.JavaProgramImpl;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends net.sourceforge.plantumldependency.commoncli.program.impl.JavaProgramImpl {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY23,
@@ -532,12 +531,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.impl.JavaProgramImpl"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY23.getFullName()));
         assertEquals(
                 ClassDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl")
+                        .getParsedOrSeenDependency(
+                                "net.sourceforge.plantumldependency.commoncli.program.impl.JavaProgramImpl")
                         .getDependencyType().getClass());
     }
 
@@ -1062,7 +1062,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithExtendsNotInImportFullPackageNameWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends net.sourceforge.mazix.cli.program.impl.JavaProgramImpl {\r\n\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n Test.java\r\n Creation date : 20 août 2010\r\n */\r\n\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n * \r\n * @since\r\n * @version\r\n */\r\npublic class Test extends net.sourceforge.plantumldependency.commoncli.program.impl.JavaProgramImpl {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY21,
@@ -1070,12 +1070,13 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.impl.JavaProgramImpl"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY21.getFullName()));
         assertEquals(
                 ClassDependencyTypeImpl.class,
                 programmingLanguageContext
-                        .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.impl.JavaProgramImpl")
+                        .getParsedOrSeenDependency(
+                                "net.sourceforge.plantumldependency.commoncli.program.impl.JavaProgramImpl")
                         .getDependencyType().getClass());
     }
 
@@ -1245,7 +1246,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithImplementsInImportWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.JavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.mazix.cli.program.JavaProgram {\r\n\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.plantumldependency.commoncli.program.JavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.plantumldependency.commoncli.program.JavaProgram {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY24,
@@ -1253,10 +1254,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY24.getFullName()));
-        assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+        assertEquals(
+                InterfaceDependencyTypeImpl.class,
+                programmingLanguageContext
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1270,7 +1273,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithImplementsNotInImportFullPackageNameWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.mazix.cli.program.JavaProgram {\r\n\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.plantumldependency.commoncli.program.JavaProgram {\r\n\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY22,
@@ -1278,10 +1281,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY22.getFullName()));
-        assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+        assertEquals(
+                InterfaceDependencyTypeImpl.class,
+                programmingLanguageContext
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1343,7 +1348,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithInferiorCharInCodeAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.JavaProgram;\r\n\r\npublic class TestImplements<E extends Enum<E>> implements JavaProgram {\r\n\r\n    public static final int ANNOTATION = 0 < 1 ? 12 : 13;\r\n\r\n\tprotected synchronized native int test();\r\n\r\n  static {if (c == '\\'' || c = '\\\\' || c == '\"' || c == \"\\\\\" || c == '\"') {int i = 0;}} \r\n\r\n /**\r\n   * ' {@inheritDoc}\r\n     * @since 1.0\r\n     * tests >\r\n     */\r\n    public int compareTo(JavaProgram o) {\r\n\t\treturn 0;\r\n    }\r\n}\r\n";
+        final String javaSourceFileContent = "package com.plantuml.test;\r\n\r\nimport net.sourceforge.plantumldependency.commoncli.program.JavaProgram;\r\n\r\npublic class TestImplements<E extends Enum<E>> implements JavaProgram {\r\n\r\n    public static final int ANNOTATION = 0 < 1 ? 12 : 13;\r\n\r\n\tprotected synchronized native int test();\r\n\r\n  static {if (c == '\\'' || c = '\\\\' || c == '\"' || c == \"\\\\\" || c == '\"') {int i = 0;}} \r\n\r\n /**\r\n   * ' {@inheritDoc}\r\n     * @since 1.3.0\r\n     * tests >\r\n     */\r\n    public int compareTo(JavaProgram o) {\r\n\t\treturn 0;\r\n    }\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY40,
@@ -1352,10 +1357,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(NATIVE_DEPENDENCY.getFullName()));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY40.getFullName()));
-        assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+        assertEquals(
+                InterfaceDependencyTypeImpl.class,
+                programmingLanguageContext
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1489,7 +1496,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithNativeMethodAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.mazix.cli.program.JavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.mazix.cli.program.JavaProgram {\r\nstatic native    String   testNative   (    )    ;\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport net.sourceforge.plantumldependency.commoncli.program.JavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements implements net.sourceforge.plantumldependency.commoncli.program.JavaProgram {\r\nstatic native    String   testNative   (    )    ;\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY40,
@@ -1498,10 +1505,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(NATIVE_DEPENDENCY.getFullName()));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY40.getFullName()));
-        assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+        assertEquals(
+                InterfaceDependencyTypeImpl.class,
+                programmingLanguageContext
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1580,7 +1589,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithStaticImportWithStandardEmptyContextAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport static net.sourceforge.mazix.cli.program.JavaProgram.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements {\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.test;\r\n\r\nimport static net.sourceforge.plantumldependency.commoncli.program.JavaProgram.test;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class TestImplements {\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY42,
@@ -1588,10 +1597,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(1, programmingLanguageContext.getParsedDependencies().size());
         assertEquals(2, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY42.getFullName()));
-        assertEquals(StubDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+        assertEquals(
+                StubDependencyTypeImpl.class,
+                programmingLanguageContext
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1624,7 +1635,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
     @Test
     public void testReadDependencyFromFileClassWithTabsAsSeparatorAndDefaultDisplaySet()
             throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.\ttest;\r\n\r\nimport net.sourceforge.mazix.\tcli.program.\tJavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class\tTestImplements implements\tnet.sourceforge.mazix.cli.program.\tJavaProgram {\r\nprotected synchronized native int\ttest\t();\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n TestImplements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.\ttest;\r\n\r\nimport net.sourceforge.mazix.\tcli.program.\tJavaProgram;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class\tTestImplements implements\tnet.sourceforge.plantumldependency.commoncli.program.\tJavaProgram {\r\nprotected synchronized native int\ttest\t();\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY40,
@@ -1633,10 +1644,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(NATIVE_DEPENDENCY.getFullName()));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY40.getFullName()));
-        assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.program.JavaProgram")
+        assertEquals(
+                InterfaceDependencyTypeImpl.class,
+                programmingLanguageContext
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.program.JavaProgram")
                         .getDependencyType().getClass());
     }
 
@@ -1649,7 +1662,7 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
      */
     @Test
     public void testReadDependencyFromFileClassWithUnderscoresAndDefaultDisplaySet() throws PlantUMLDependencyException {
-        final String javaSourceFileContent = "/*\r\n Test_Implements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.te_st;\r\n\r\nimport net.sourceforge.mazix.cli.pro_gram.Java_Program;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class Test_Implements implements net.sourceforge.mazix.cli.pro_gram.Java_Program {\r\nprivate static native void register_Natives();\r\n}\r\n";
+        final String javaSourceFileContent = "/*\r\n Test_Implements.java\r\n Creation date : 20 août 2010\r\n */\r\npackage com.plantuml.te_st;\r\n\r\nimport net.sourceforge.plantumldependency.commoncli.pro_gram.Java_Program;\r\n\r\n/**\r\n * @author Benjamin Croizet\r\n *\r\n * @since\r\n * @version\r\n */\r\npublic class Test_Implements implements net.sourceforge.plantumldependency.commoncli.pro_gram.Java_Program {\r\nprivate static native void register_Natives();\r\n}\r\n";
         final ProgrammingLanguageContext programmingLanguageContext = JAVA_PROGRAMMING_LANGUAGE1
                 .createNewContext(DEFAULT_DISPLAY_OPTIONS);
         assertGenericDependencyAreEquals(GENERIC_DEPENDENCY41,
@@ -1658,10 +1671,12 @@ public class JavaProgrammingLanguageTest extends ComparableObjectTest < JavaProg
         assertEquals(3, programmingLanguageContext.getParsedAndSeenDependencies().size());
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(NATIVE_DEPENDENCY.getFullName()));
         assertNotNull(programmingLanguageContext
-                .getParsedOrSeenDependency("net.sourceforge.mazix.cli.pro_gram.Java_Program"));
+                .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.pro_gram.Java_Program"));
         assertNotNull(programmingLanguageContext.getParsedOrSeenDependency(GENERIC_DEPENDENCY41.getFullName()));
-        assertEquals(InterfaceDependencyTypeImpl.class,
-                programmingLanguageContext.getParsedOrSeenDependency("net.sourceforge.mazix.cli.pro_gram.Java_Program")
+        assertEquals(
+                InterfaceDependencyTypeImpl.class,
+                programmingLanguageContext
+                        .getParsedOrSeenDependency("net.sourceforge.plantumldependency.commoncli.pro_gram.Java_Program")
                         .getDependencyType().getClass());
     }
 

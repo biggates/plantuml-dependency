@@ -26,13 +26,13 @@ package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.s
 
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
-import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
-import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLConstants.STEREOTYPE_LEFT_SEPARATOR;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLConstants.STEREOTYPE_RIGHT_SEPARATOR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.plantumldependency.common.constants.log.ErrorConstants.UNEXPECTED_ERROR;
+import static net.sourceforge.plantumldependency.common.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.plantumldependency.common.utils.string.StringUtils.isEmpty;
 
 import java.util.logging.Logger;
 
@@ -43,9 +43,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.st
  * The default {@link PlantUMLStereotype} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public class PlantUMLStereotypeImpl implements PlantUMLStereotype {
 

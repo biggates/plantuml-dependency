@@ -33,9 +33,8 @@ import net.sourceforge.plantumldependency.cli.main.option.display.argument.Displ
  * not in the generated plantUML description file.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public interface Displayable {
 

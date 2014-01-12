@@ -104,13 +104,12 @@ import static org.junit.Assert.assertTrue;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImpl;
-import net.sourceforge.plantumldependency.cli.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -119,9 +118,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link AnnotationDependencyTypeImpl}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.2.0
- * @version 1.2.0
+ * @version 1.3.0
  */
 public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < AnnotationDependencyTypeImpl > {
 
@@ -138,8 +136,8 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
     /** Annotation dependency type test 3 instance. */
     @DataPoint
     public static final AnnotationDependencyTypeImpl ANNOTATION_DEPENDENCY_TYPE3 = new AnnotationDependencyTypeImpl(
-            "Override", "net.sourceforge.plantumldependency.generic.type.impl.annotationimpl",
-            IMPORT_COLLECTION_TEST2, GENERIC_DEPENDENCY_SET6);
+            "Override", "net.sourceforge.plantumldependency.generic.type.impl.annotationimpl", IMPORT_COLLECTION_TEST2,
+            GENERIC_DEPENDENCY_SET6);
 
     /** Annotation dependency type test 4 instance. */
     @DataPoint
@@ -215,7 +213,8 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getName()}.
+     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getName()}
+     * .
      */
     @Test
     public void testGetName() {

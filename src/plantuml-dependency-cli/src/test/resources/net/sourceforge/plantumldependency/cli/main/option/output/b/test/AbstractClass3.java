@@ -36,7 +36,7 @@ import net.sourceforge.plantumldependency.main.option.output.Annotationinterface
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
- * @since 1.0
+ * @since 1.3.0
  * @version
  */
 @Annotationinterface

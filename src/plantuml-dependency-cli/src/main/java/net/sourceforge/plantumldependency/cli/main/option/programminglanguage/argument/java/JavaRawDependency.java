@@ -26,26 +26,25 @@ package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.a
 
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
-import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl.generateDependencyFullName;
+import static net.sourceforge.plantumldependency.common.constants.log.ErrorConstants.UNEXPECTED_ERROR;
+import static net.sourceforge.plantumldependency.common.utils.comparable.ComparableResult.EQUAL;
 
 import java.io.Serializable;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 
-import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaType;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
 
 /**
  * The Java raw dependency, extracted from a Java source file, without any business control nor
  * checking.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class JavaRawDependency implements Comparable < JavaRawDependency >, Serializable,
         DeepCloneable < JavaRawDependency > {
@@ -86,7 +85,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     /**
      * Empty constructor.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     public JavaRawDependency() {
         super();
@@ -111,7 +110,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      *            interfaces the dependency "implements".
      * @param nativeMth
      *            the boolean indicating if the dependency has native methods inside.
-     * @since 1.0
+     * @since 1.0.0
      */
     public JavaRawDependency(final boolean isAbs, final String dependencyPackageName, final JavaType javaType,
             final String dependencyName, final Set < String > extensions, final Set < String > implementations,
@@ -128,7 +127,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public int compareTo(final JavaRawDependency j) {
@@ -145,7 +144,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public JavaRawDependency deepClone() {
@@ -165,7 +164,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public boolean equals(final Object obj) {
@@ -200,7 +199,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * Gets the full name of the dependency, i.e. the package name + the class name.
      *
      * @return the the full name of the dependency.
-     * @since 1.0
+     * @since 1.0.0
      */
     public String getFullName() {
         return generateDependencyFullName(getPackageName(), getName());
@@ -211,7 +210,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      *
      * @return the value of <code>name</code>.
      * @see #setName(String)
-     * @since 1.0
+     * @since 1.0.0
      */
     public String getName() {
         return name;
@@ -222,7 +221,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      *
      * @return the value of <code>packageName</code>.
      * @see #setPackageName(String)
-     * @since 1.0
+     * @since 1.0.0
      */
     public String getPackageName() {
         return packageName;
@@ -233,7 +232,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      *
      * @return the value of <code>parentExtensions</code>.
      * @see #setParentExtensions(Set)
-     * @since 1.0
+     * @since 1.0.0
      */
     public Set < String > getParentExtensions() {
         return parentExtensions;
@@ -244,7 +243,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      *
      * @return the value of <code>parentImplementations</code>.
      * @see #setParentImplementations(Set)
-     * @since 1.0
+     * @since 1.0.0
      */
     public Set < String > getParentImplementations() {
         return parentImplementations;
@@ -255,7 +254,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      *
      * @return the value of <code>type</code>.
      * @see #setType(JavaType)
-     * @since 1.0
+     * @since 1.0.0
      */
     public JavaType getType() {
         return type;
@@ -264,7 +263,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public int hashCode() {
@@ -280,7 +279,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      *
      * @return the value of <code>nativeMethods</code>.
      * @see #setNativeMethods(boolean)
-     * @since 1.0
+     * @since 1.0.0
      */
     public boolean hasNativeMethods() {
         return nativeMethods;
@@ -291,7 +290,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      *
      * @return the value of <code>isAbstract</code>.
      * @see #setAbstract(boolean)
-     * @since 1.0
+     * @since 1.0.0
      */
     public boolean isAbstract() {
         return isAbstract;
@@ -303,7 +302,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @param value
      *            the <code>isAbstract</code> to set, can be <code>null</code>.
      * @see #isAbstract()
-     * @since 1.0
+     * @since 1.0.0
      */
     public void setAbstract(final boolean value) {
         isAbstract = value;
@@ -315,7 +314,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @param value
      *            the <code>name</code> to set, can be <code>null</code>.
      * @see #getName()
-     * @since 1.0
+     * @since 1.0.0
      */
     public void setName(final String value) {
         name = value;
@@ -327,7 +326,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @param value
      *            the <code>nativeMethods</code> to set, can be <code>null</code>.
      * @see #hasNativeMethods()
-     * @since 1.0
+     * @since 1.0.0
      */
     public void setNativeMethods(final boolean value) {
         nativeMethods = value;
@@ -339,7 +338,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @param value
      *            the <code>packageName</code> to set, can be <code>null</code>.
      * @see #getPackageName()
-     * @since 1.0
+     * @since 1.0.0
      */
     public void setPackageName(final String value) {
         packageName = value;
@@ -351,7 +350,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @param value
      *            the <code>parentExtensions</code> to set, can be <code>null</code>.
      * @see #getParentExtensions()
-     * @since 1.0
+     * @since 1.0.0
      */
     public void setParentExtensions(final Set < String > value) {
         parentExtensions = value;
@@ -363,7 +362,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @param value
      *            the <code>parentImplementations</code> to set, can be <code>null</code>.
      * @see #getParentImplementations()
-     * @since 1.0
+     * @since 1.0.0
      */
     public void setParentImplementations(final Set < String > value) {
         parentImplementations = value;
@@ -375,7 +374,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
      * @param value
      *            the <code>type</code> to set, can be <code>null</code>.
      * @see #getType()
-     * @since 1.0
+     * @since 1.0.0
      */
     public void setType(final JavaType value) {
         type = value;
@@ -384,7 +383,7 @@ public class JavaRawDependency implements Comparable < JavaRawDependency >, Seri
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String toString() {

@@ -29,8 +29,8 @@ package net.sourceforge.plantumldependency.cli.constants.log;
  * messages also contains the info code.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * @since 1.0
- * @version 1.1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public final class InfoConstants {
 
@@ -49,7 +49,7 @@ public final class InfoConstants {
     /**
      * Private constructor to prevent from instantiation.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     private InfoConstants() {
         super();

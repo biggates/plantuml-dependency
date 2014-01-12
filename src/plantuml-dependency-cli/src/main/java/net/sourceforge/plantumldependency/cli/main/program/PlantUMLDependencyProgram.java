@@ -29,11 +29,6 @@ import static java.util.Arrays.asList;
 import static java.util.logging.Level.INFO;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.cli.constants.CommandLineConstants.PROTECTED_DOT_REGEXP;
-import static net.sourceforge.mazix.cli.utils.version.ProgramVersionUtils.createProgramVersionFromString;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.readLoggerConfigurationFromResourceFromClassClassLoader;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.LOGGING_PROPERTIES_PATH;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.PLANTUML_DEPENDENCY_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.InfoConstants.EXECUTION_TIME_INFO;
@@ -41,6 +36,11 @@ import static net.sourceforge.plantumldependency.cli.constants.log.InfoConstants
 import static net.sourceforge.plantumldependency.cli.constants.log.InfoConstants.STARTING_PLANTUML_DEPENDENCY_INFO;
 import static net.sourceforge.plantumldependency.cli.main.program.generated.PlantUMLDependencyProgramVersionImpl.PROGRAM_BUILD_TIME;
 import static net.sourceforge.plantumldependency.cli.main.program.generated.PlantUMLDependencyProgramVersionImpl.PROGRAM_VERSION;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.readLoggerConfigurationFromResourceFromClassClassLoader;
+import static net.sourceforge.plantumldependency.commoncli.constants.CommandLineConstants.PROTECTED_DOT_REGEXP;
+import static net.sourceforge.plantumldependency.commoncli.utils.version.ProgramVersionUtils.createProgramVersionFromString;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -49,16 +49,6 @@ import java.text.ParseException;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
-import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.impl.about.AboutOption;
-import net.sourceforge.mazix.cli.option.impl.help.HelpOption;
-import net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption;
-import net.sourceforge.mazix.cli.option.impl.version.VersionOption;
-import net.sourceforge.mazix.cli.program.JavaProgram;
-import net.sourceforge.mazix.cli.program.execution.JavaProgramExecution;
-import net.sourceforge.mazix.cli.program.impl.JavaProgramImpl;
-import net.sourceforge.mazix.cli.program.version.ProgramVersion;
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
 import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayOption;
@@ -66,14 +56,23 @@ import net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDepend
 import net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.output.PlantUMLDependencyOutputOption;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption;
+import net.sourceforge.plantumldependency.commoncli.command.impl.CommandLineImpl;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.impl.about.AboutOption;
+import net.sourceforge.plantumldependency.commoncli.option.impl.help.HelpOption;
+import net.sourceforge.plantumldependency.commoncli.option.impl.verbose.VerboseLevelOption;
+import net.sourceforge.plantumldependency.commoncli.option.impl.version.VersionOption;
+import net.sourceforge.plantumldependency.commoncli.program.JavaProgram;
+import net.sourceforge.plantumldependency.commoncli.program.execution.JavaProgramExecution;
+import net.sourceforge.plantumldependency.commoncli.program.impl.JavaProgramImpl;
+import net.sourceforge.plantumldependency.commoncli.program.version.ProgramVersion;
 
 /**
  * The PlantUML dependency {@link JavaProgram} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.3.0
+ * @version 1.3.0
  */
 public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
@@ -96,7 +95,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      *            command line arguments.
      * @throws PlantUMLDependencyException
      *             if any error occurs when running PlantUML Dependency.
-     * @since 1.0
+     * @since 1.0.0
      */
     public static void main(final String[] args) throws PlantUMLDependencyException {
         try {
@@ -167,7 +166,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      *             if the program URL doesn't have a good format.
      * @throws CommandLineException
      *             if any exception occurs while creating the program.
-     * @since 1.0
+     * @since 1.0.0
      */
     private PlantUMLDependencyProgram(final ProgramVersion programVersion) throws MalformedURLException,
             CommandLineException {

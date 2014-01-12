@@ -25,33 +25,32 @@
 package net.sourceforge.plantumldependency.cli.main.option.display.argument;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.EMPTY_OPTION_ARGUMENT_ERROR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.utils.collection.CollectionUtils.collectionToString;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.NOT_DISPLAY_ARGUMENT_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.SEVERAL_DISPLAY_ARGUMENTS_ERROR;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.getAllDisplayOptionsFullUsageDescriptions;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.valueOf;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.values;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.plantumldependency.common.utils.collection.CollectionUtils.collectionToString;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
+import static net.sourceforge.plantumldependency.common.utils.string.StringUtils.isNotEmpty;
+import static net.sourceforge.plantumldependency.commoncli.constants.log.ErrorConstants.EMPTY_OPTION_ARGUMENT_ERROR;
 
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.argument.AbstractOptionArgument;
 
 /**
  * The display option argument, telling the program what to display in the generated file. <i>Note :
  * no option should have the same main or secondary names</i>.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.1.1
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgument < Set < Display > > {
 
@@ -77,7 +76,7 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
      *
      * @param optionArgumentIsMandatory
      *            <code>true</code> if the argument is mandatory, <code>false</code> otherwise.
-     * @since 1.0
+     * @since 1.0.0
      */
     public PlantUMLDependencyDisplayOptionArgument(final boolean optionArgumentIsMandatory) {
         super(optionArgumentIsMandatory, new StringBuilder(USAGE_DESCRIPTION));
@@ -86,7 +85,7 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     protected String getMainUsageDescription() {
@@ -96,7 +95,7 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public Set < Display > parseArgument(final String argument) throws CommandLineException {
@@ -109,7 +108,7 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
                 final String token = tokenizer.nextToken();
 
                 try {
-                    Display displayArgument = valueOf(token.toUpperCase());
+                    final Display displayArgument = valueOf(token.toUpperCase());
                     if (displayArguments.contains(displayArgument)) {
                         throw new CommandLineException(buildLogString(SEVERAL_DISPLAY_ARGUMENTS_ERROR, displayArgument));
                     }

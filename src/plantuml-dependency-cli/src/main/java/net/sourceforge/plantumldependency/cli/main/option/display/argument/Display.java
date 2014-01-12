@@ -25,10 +25,10 @@
 package net.sourceforge.plantumldependency.cli.main.option.display.argument;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.COLON_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.QUOTATION_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COLON_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.QUOTATION_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -38,9 +38,8 @@ import java.util.TreeSet;
  * The enumeration which specifies display options.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public enum Display {
     /** The display abstract classes argument. */
@@ -165,7 +164,7 @@ public enum Display {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String toString() {

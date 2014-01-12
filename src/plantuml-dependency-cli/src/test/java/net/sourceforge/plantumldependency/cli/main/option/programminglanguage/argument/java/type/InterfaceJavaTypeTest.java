@@ -24,23 +24,21 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantumldependency.cli.generic.type.impl.annotationimpl.AnnotationDependencyTypeImplTest.ANNOTATION_DEPENDENCY_TYPE2;
 import static net.sourceforge.plantumldependency.cli.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImplTest.INTERFACE_DEPENDENCY_TYPE1;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaType.INTERFACE;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.ComparableObjectTest;
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.InterfaceJavaType;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaType;
+import net.sourceforge.plantumldependency.common.comparable.ComparableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -49,9 +47,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link InterfaceJavaType}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class InterfaceJavaTypeTest extends ComparableObjectTest < InterfaceJavaType > {
 

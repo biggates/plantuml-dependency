@@ -37,9 +37,8 @@ import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.co
  * implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageContext {
 
@@ -49,7 +48,7 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
     /**
      * Default constructor.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     public CppProgrammingLanguageContext() {
         super();
@@ -61,7 +60,7 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param displayOpt
      *            the display options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     public CppProgrammingLanguageContext(final Set < Display > displayOpt) {
         super(displayOpt);
@@ -76,7 +75,7 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param displayOpt
      *            the display options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     public CppProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < Display > displayOpt) {
@@ -95,7 +94,7 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param displayOpt
      *            the display options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     public CppProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < GenericDependency > parsedDependencies, final Set < Display > displayOpt) {
@@ -117,7 +116,7 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param displayOpt
      *            the display options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     public CppProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < GenericDependency > parsedDependencies,

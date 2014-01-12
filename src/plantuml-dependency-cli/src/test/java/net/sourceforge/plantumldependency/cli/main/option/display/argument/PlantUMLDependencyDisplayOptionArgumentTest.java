@@ -24,18 +24,16 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.display.argument;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.CLASSES;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.argument.OptionArgument;
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.argument.OptionArgument;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -44,9 +42,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLDependencyDisplayOptionArgument}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyDisplayOptionArgumentTest extends
         DeepCloneableObjectTest < PlantUMLDependencyDisplayOptionArgument > {
@@ -72,7 +69,7 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument#getFullUsageDescription()}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.argument.AbstractOptionArgument#getFullUsageDescription()}
      * .
      */
     @Test
@@ -84,7 +81,8 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument#getMainUsage()}.
+     * {@link net.sourceforge.plantumldependency.commoncli.option.argument.AbstractOptionArgument#getMainUsage()}
+     * .
      */
     @Test
     public void testGetMainUsageWithMandatory() {
@@ -93,7 +91,8 @@ public class PlantUMLDependencyDisplayOptionArgumentTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument#getMainUsage()}.
+     * {@link net.sourceforge.plantumldependency.commoncli.option.argument.AbstractOptionArgument#getMainUsage()}
+     * .
      */
     @Test
     public void testGetMainUsageWithNoMandatory() {

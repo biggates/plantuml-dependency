@@ -27,10 +27,10 @@ package net.sourceforge.plantumldependency.cli.generic.type.impl;
 import static java.util.logging.Level.FINE;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.IMPORT_TYPE_NOT_FOUND;
 import static net.sourceforge.plantumldependency.cli.generic.type.ImportType.IMPORT_TYPES;
+import static net.sourceforge.plantumldependency.common.constants.log.ErrorConstants.UNEXPECTED_ERROR;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -47,9 +47,8 @@ import net.sourceforge.plantumldependency.cli.generic.type.ImportType;
  * The default implementation of the {@link ImportDependenciesCollection} interface.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public class ImportDependenciesCollectionImpl implements ImportDependenciesCollection {
 

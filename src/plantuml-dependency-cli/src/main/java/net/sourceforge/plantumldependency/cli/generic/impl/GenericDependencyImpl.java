@@ -26,11 +26,11 @@ package net.sourceforge.plantumldependency.cli.generic.impl;
 
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
-import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
-import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
-import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.DEPENDENCY_TYPE_NULL_ERROR;
+import static net.sourceforge.plantumldependency.common.constants.log.ErrorConstants.UNEXPECTED_ERROR;
+import static net.sourceforge.plantumldependency.common.utils.check.ParameterCheckerUtils.checkNull;
+import static net.sourceforge.plantumldependency.common.utils.comparable.ComparableResult.AFTER;
+import static net.sourceforge.plantumldependency.common.utils.comparable.ComparableResult.EQUAL;
 
 import java.util.logging.Logger;
 
@@ -43,9 +43,8 @@ import net.sourceforge.plantumldependency.cli.generic.type.impl.stubimpl.StubDep
  * {@link net.sourceforge.plantumldependency.cli.generic.GenericDependency} interface.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class GenericDependencyImpl implements GenericDependency {
 
@@ -65,7 +64,7 @@ public class GenericDependencyImpl implements GenericDependency {
      * @param type
      *            the underlying dependency type, which determines the real nature of the
      *            dependency, mustn't be <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     public GenericDependencyImpl(final DependencyType type) {
         checkNull(type, DEPENDENCY_TYPE_NULL_ERROR);
@@ -83,7 +82,7 @@ public class GenericDependencyImpl implements GenericDependency {
      *            empty.
      * @param dependencyPackageName
      *            the dependency package name, mustn't be <code>null</code> nor empty.
-     * @since 1.0
+     * @since 1.0.0
      */
     public GenericDependencyImpl(final String dependencyName, final String dependencyPackageName) {
         this(new StubDependencyTypeImpl(dependencyName, dependencyPackageName));
@@ -92,7 +91,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public int compareTo(final GenericDependency a) {
@@ -110,7 +109,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public GenericDependency deepClone() {
@@ -129,7 +128,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public boolean equals(final Object obj) {
@@ -156,7 +155,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public DependencyType getDependencyType() {
@@ -166,7 +165,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getFullName() {
@@ -176,7 +175,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getName() {
@@ -186,7 +185,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getPackageName() {
@@ -196,7 +195,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public int hashCode() {
@@ -209,7 +208,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public void setDependencyType(final DependencyType value) {
@@ -219,7 +218,7 @@ public class GenericDependencyImpl implements GenericDependency {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String toString() {

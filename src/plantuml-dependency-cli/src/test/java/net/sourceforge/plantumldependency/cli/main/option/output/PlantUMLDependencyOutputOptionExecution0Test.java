@@ -24,20 +24,17 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.output;
 
-import static java.util.logging.Level.OFF;
-import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
-import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.setLevelOfAllLoggersAndHandlers;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SETS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.FILE_SET1;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
+import static net.sourceforge.plantumldependency.common.utils.file.FileUtils.readFileIntoString;
+import static net.sourceforge.plantumldependency.common.utils.file.FileUtils.writeIntoFile;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.plantumldependency.cli.main.option.output.PlantUMLDependencyOutputOptionExecution;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 
 import org.junit.After;
 import org.junit.Test;
@@ -46,9 +43,8 @@ import org.junit.Test;
  * JUnit test classes for {@link PlantUMLDependencyOutputOptionExecution}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.2.0
- * @version 1.2.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyOutputOptionExecution0Test {
 
@@ -63,18 +59,22 @@ public class PlantUMLDependencyOutputOptionExecution0Test {
      * @since 1.2.0
      */
     public static void main(final String args[]) throws CommandLineException {
-        setLevelOfAllLoggersAndHandlers(OFF);
-        writeUnitTest(0, 1, "PlantUMLDependencyOutputOptionExecutionTest0.txt");
-        writeUnitTest(1, 11, "PlantUMLDependencyOutputOptionExecutionTest1.txt");
-        writeUnitTest(11, 56, "PlantUMLDependencyOutputOptionExecutionTest2.txt");
-        writeUnitTest(56, 176, "PlantUMLDependencyOutputOptionExecutionTest3.txt");
-        writeUnitTest(176, 386, "PlantUMLDependencyOutputOptionExecutionTest4.txt");
-        writeUnitTest(386, 639, "PlantUMLDependencyOutputOptionExecutionTest5.txt");
-        writeUnitTest(639, 848, "PlantUMLDependencyOutputOptionExecutionTest6.txt");
-        writeUnitTest(848, 968, "PlantUMLDependencyOutputOptionExecutionTest7.txt");
-        writeUnitTest(968, 1013, "PlantUMLDependencyOutputOptionExecutionTest8.txt");
-        writeUnitTest(1013, 1023, "PlantUMLDependencyOutputOptionExecutionTest9.txt");
-        writeUnitTest(1023, 1024, "PlantUMLDependencyOutputOptionExecutionTest10.txt");
+        for (int i = 300 ; i < 1000 ; i++) {
+            System.out.println("import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET" + i + ";");
+        }
+
+//        setLevelOfAllLoggersAndHandlers(OFF);
+//        writeUnitTest(0, 1, "PlantUMLDependencyOutputOptionExecutionTest0.txt");
+//        writeUnitTest(1, 11, "PlantUMLDependencyOutputOptionExecutionTest1.txt");
+//        writeUnitTest(11, 56, "PlantUMLDependencyOutputOptionExecutionTest2.txt");
+//        writeUnitTest(56, 176, "PlantUMLDependencyOutputOptionExecutionTest3.txt");
+//        writeUnitTest(176, 386, "PlantUMLDependencyOutputOptionExecutionTest4.txt");
+//        writeUnitTest(386, 639, "PlantUMLDependencyOutputOptionExecutionTest5.txt");
+//        writeUnitTest(639, 848, "PlantUMLDependencyOutputOptionExecutionTest6.txt");
+//        writeUnitTest(848, 968, "PlantUMLDependencyOutputOptionExecutionTest7.txt");
+//        writeUnitTest(968, 1013, "PlantUMLDependencyOutputOptionExecutionTest8.txt");
+//        writeUnitTest(1013, 1023, "PlantUMLDependencyOutputOptionExecutionTest9.txt");
+//        writeUnitTest(1023, 1024, "PlantUMLDependencyOutputOptionExecutionTest10.txt");
     }
 
     public static void writeUnitTest(final int startIndex, final int endIndex, final String filePath)

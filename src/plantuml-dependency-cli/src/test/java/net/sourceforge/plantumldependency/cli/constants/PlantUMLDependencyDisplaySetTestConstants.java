@@ -47,9 +47,8 @@ import net.sourceforge.plantumldependency.cli.main.option.display.argument.Displ
  * The class which stores all necessary display set constants used for Junit tests.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.2.0
- * @version 1.2.0
+ * @version 1.3.0
  */
 public final class PlantUMLDependencyDisplaySetTestConstants {
 

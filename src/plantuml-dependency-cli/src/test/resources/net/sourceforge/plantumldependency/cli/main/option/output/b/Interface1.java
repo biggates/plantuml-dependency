@@ -33,7 +33,7 @@ import java.util.TreeSet;
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
- * @since 1.0
+ * @since 1.3.0
  * @version
  */
 public interface Interface1 {

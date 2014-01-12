@@ -33,9 +33,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.P
  * The default {@link PlantUMLClassesDiagramImplementRelation} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public class PlantUMLClassesDiagramImplementRelationImpl extends AbstractPlantUMLClassesDiagramRelation implements
         PlantUMLClassesDiagramImplementRelation {

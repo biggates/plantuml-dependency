@@ -26,10 +26,10 @@ package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.impl;
 
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
-import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLConstants.END_PLANTUML;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLConstants.START_PLANTUML;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.LINE_SEPARATOR;
+import static net.sourceforge.plantumldependency.common.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -45,9 +45,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.P
  * The default {@link PlantUMLClassesDiagram} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public class PlantUMLClassesDiagramImpl implements PlantUMLClassesDiagram {
 

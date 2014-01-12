@@ -37,9 +37,8 @@ import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.co
  * The C++ {@link ProgrammingLanguage} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 class CppProgrammingLanguage extends ProgrammingLanguage {
 
@@ -52,7 +51,7 @@ class CppProgrammingLanguage extends ProgrammingLanguage {
      * @param programmingLanguageName
      *            the programming language name to get the instance from, mustn't be
      *            <code>null</code> nor empty.
-     * @since 1.0
+     * @since 1.0.0
      */
     protected CppProgrammingLanguage(final String programmingLanguageName) {
         super(programmingLanguageName);
@@ -61,7 +60,7 @@ class CppProgrammingLanguage extends ProgrammingLanguage {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public ProgrammingLanguageContext createNewContext(final Set < Display > displayOpt) {
@@ -71,7 +70,7 @@ class CppProgrammingLanguage extends ProgrammingLanguage {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public GenericDependency readDependencyFromFile(final String sourceFileContent,

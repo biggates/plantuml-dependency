@@ -26,9 +26,7 @@ package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.a
 
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.CPP;
 import static org.junit.Assert.assertTrue;
-import net.sourceforge.mazix.components.ObjectTestWithString;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.CppProgrammingLanguage;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
+import net.sourceforge.plantumldependency.common.ObjectTestWithString;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -37,9 +35,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link CppProgrammingLanguage}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class CppProgrammingLanguageTest extends ObjectTestWithString < CppProgrammingLanguage > {
 

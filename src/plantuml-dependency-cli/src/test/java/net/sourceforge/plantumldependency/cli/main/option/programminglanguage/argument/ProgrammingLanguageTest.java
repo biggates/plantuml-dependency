@@ -35,8 +35,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Collection;
 import java.util.Set;
 
-import net.sourceforge.mazix.components.ObjectTestWithString;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
+import net.sourceforge.plantumldependency.common.ObjectTestWithString;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -45,9 +44,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link ProgrammingLanguage}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class ProgrammingLanguageTest extends ObjectTestWithString < ProgrammingLanguage > {
 

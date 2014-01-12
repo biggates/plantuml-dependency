@@ -28,9 +28,8 @@ package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.a
  * This enumeration type lists java parent types, which can be an extension or an implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public enum JavaParentType {
     /** The "extension" java parent type. */
@@ -41,7 +40,7 @@ public enum JavaParentType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String toString() {

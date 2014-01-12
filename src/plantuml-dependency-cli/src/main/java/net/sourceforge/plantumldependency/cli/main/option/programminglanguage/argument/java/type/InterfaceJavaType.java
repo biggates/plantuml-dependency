@@ -24,9 +24,6 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type;
 
-import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.JAVA_ANNOTATION_TYPE_NAME_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.JAVA_ANNOTATION_TYPE_PACKAGE_NAME_NULL_ERROR;
@@ -43,6 +40,9 @@ import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstant
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.JAVA_TYPE_PACKAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
+import static net.sourceforge.plantumldependency.common.utils.check.ParameterCheckerUtils.checkNull;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
+import static net.sourceforge.plantumldependency.common.utils.string.StringUtils.isEmpty;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -58,9 +58,8 @@ import net.sourceforge.plantumldependency.cli.generic.type.impl.interfaceimpl.In
  * The interface {@link JavaType} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 class InterfaceJavaType extends JavaType {
 
@@ -72,7 +71,7 @@ class InterfaceJavaType extends JavaType {
      *
      * @param programmingLanguageKeyword
      *            The java type language keyword, mustn't be <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     protected InterfaceJavaType(final String programmingLanguageKeyword) {
         super(programmingLanguageKeyword);
@@ -94,7 +93,7 @@ class InterfaceJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public DependencyType createDependencyType(final String dependencyName, final String dependencyPackageName,
@@ -116,7 +115,7 @@ class InterfaceJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public DependencyType createParentDependencyType(final JavaParentType parentType, final String parentName,
@@ -142,7 +141,7 @@ class InterfaceJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public boolean extractNativeMethods(final String javaSourceFileContent) {
@@ -152,7 +151,7 @@ class InterfaceJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public Set < String > extractParentExtensions(final String extendsString) throws PlantUMLDependencyException {
@@ -162,7 +161,7 @@ class InterfaceJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public Set < String > extractParentImplementations(final String implementsString)

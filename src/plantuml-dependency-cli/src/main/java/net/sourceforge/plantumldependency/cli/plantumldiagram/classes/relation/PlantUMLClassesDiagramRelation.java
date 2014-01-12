@@ -26,9 +26,9 @@ package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation;
 
 import java.io.Serializable;
 
-import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.WithDescription;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
 
 /**
  * The mother interface of all plantUML classes diagram relations. The classic relations used are
@@ -37,9 +37,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.Pl
  * "First Element -> Second Element"
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public interface PlantUMLClassesDiagramRelation extends WithDescription,
         DeepCloneable < PlantUMLClassesDiagramRelation >, Serializable, Comparable < PlantUMLClassesDiagramRelation > {

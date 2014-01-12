@@ -29,8 +29,8 @@ package net.sourceforge.plantumldependency.cli.exception;
  * program.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyException extends Exception {
 
@@ -44,7 +44,7 @@ public class PlantUMLDependencyException extends Exception {
      * @param messageKey
      *            the detail message key, ready to be translated. The detail message key is saved
      *            for later retrieval by the {@link #getMessage()} method.
-     * @since 1.0
+     * @since 1.0.0
      */
     public PlantUMLDependencyException(final String messageKey) {
         super(messageKey);
@@ -63,7 +63,7 @@ public class PlantUMLDependencyException extends Exception {
      *            the cause (which is saved for later retrieval by the {@link #getCause()} method).
      *            (A <tt>null</tt> value is permitted, and indicates that the cause is nonexistent
      *            or unknown.)
-     * @since 1.0
+     * @since 1.0.0
      */
     public PlantUMLDependencyException(final String messageKey, final Throwable cause) {
         super(messageKey, cause);

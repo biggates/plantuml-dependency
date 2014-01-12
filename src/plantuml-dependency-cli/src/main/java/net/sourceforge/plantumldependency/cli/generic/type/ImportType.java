@@ -41,9 +41,8 @@ import net.sourceforge.plantumldependency.cli.main.option.display.argument.Displ
  * generated plantUML description file. This is be used to filter imports following their types.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public enum ImportType implements Displayable {
     /** The native import type. */

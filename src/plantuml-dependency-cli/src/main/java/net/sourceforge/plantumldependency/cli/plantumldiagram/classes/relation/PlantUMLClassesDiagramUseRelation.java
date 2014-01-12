@@ -28,9 +28,8 @@ package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation;
  * The interface representing the "uses" relation, following the plantUML classes diagram language.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public interface PlantUMLClassesDiagramUseRelation extends PlantUMLClassesDiagramRelation {
 

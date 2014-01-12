@@ -26,8 +26,8 @@ package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.s
 
 import java.io.Serializable;
 
-import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.WithDescription;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
 
 /**
  * Interface which represents a plantUML classes diagram stereotype. For instance, this class may be
@@ -43,9 +43,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.WithDescription;
  *      and stereotype page</a>
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public interface PlantUMLStereotype extends Comparable < PlantUMLStereotype >, WithDescription,
         DeepCloneable < PlantUMLStereotype >, Serializable {

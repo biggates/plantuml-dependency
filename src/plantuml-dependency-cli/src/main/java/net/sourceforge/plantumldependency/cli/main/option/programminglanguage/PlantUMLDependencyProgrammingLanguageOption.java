@@ -25,27 +25,26 @@
 package net.sourceforge.plantumldependency.cli.main.option.programminglanguage;
 
 import static java.util.Collections.unmodifiableSet;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.HIDDEN_OPTIONAL_OPTION_STATUS;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.commoncli.option.status.OptionStatus.HIDDEN_OPTIONAL_OPTION_STATUS;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.cli.command.CommandLine;
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.AbstractOptionWithArgument;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
+import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument;
 
 /**
  * The programming language option, allowing to specify the source file programming language to
  * analyze. <i>Note : no option should have the same main or secondary names</i>.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionWithArgument < ProgrammingLanguage > {
 
@@ -64,7 +63,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
     /**
      * Default constructor.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     public PlantUMLDependencyProgrammingLanguageOption() {
         super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyProgrammingLanguageOptionArgument(true),
@@ -77,7 +76,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
@@ -88,7 +87,7 @@ public class PlantUMLDependencyProgrammingLanguageOption extends AbstractOptionW
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)

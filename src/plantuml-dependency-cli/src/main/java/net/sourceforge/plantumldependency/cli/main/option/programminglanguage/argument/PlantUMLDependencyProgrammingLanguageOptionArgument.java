@@ -24,23 +24,22 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument;
 
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.getProgrammingLanguageNamesSet;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.valueOfIgnoringCase;
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.plantumldependency.common.utils.string.StringUtils.isNotEmpty;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.argument.AbstractOptionArgument;
 
 /**
  * The programming language implementation of the
- * {@link net.sourceforge.mazix.cli.option.argument.OptionArgument} interface, specifying a
- * {@link ProgrammingLanguage} argument.
+ * {@link net.sourceforge.plantumldependency.commoncli.option.argument.OptionArgument} interface,
+ * specifying a {@link ProgrammingLanguage} argument.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyProgrammingLanguageOptionArgument extends AbstractOptionArgument < ProgrammingLanguage > {
 
@@ -60,7 +59,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgument extends Abstrac
      *
      * @param optionArgumentIsMandatory
      *            <code>true</code> if the argument is mandatory, <code>false</code> otherwise.
-     * @since 1.0
+     * @since 1.0.0
      */
     public PlantUMLDependencyProgrammingLanguageOptionArgument(final boolean optionArgumentIsMandatory) {
         super(optionArgumentIsMandatory, new StringBuilder(USAGE_DESCRIPTION));
@@ -69,7 +68,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgument extends Abstrac
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     protected String getMainUsageDescription() {
@@ -79,7 +78,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgument extends Abstrac
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public ProgrammingLanguage parseArgument(final String argument) throws CommandLineException {

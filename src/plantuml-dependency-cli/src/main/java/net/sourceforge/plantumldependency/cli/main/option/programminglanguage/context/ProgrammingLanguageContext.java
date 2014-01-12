@@ -27,19 +27,18 @@ package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.c
 import java.io.Serializable;
 import java.util.Collection;
 
-import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.PlantUMLClassesDiagram;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
 
 /**
  * The interface which describes a context shared by all dependencies which are parsed. It is mainly
  * used to save all treated dependencies but also global states.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.1.1
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public interface ProgrammingLanguageContext extends Comparable < ProgrammingLanguageContext >, Serializable,
         DeepCloneable < ProgrammingLanguageContext > {
@@ -50,7 +49,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *
      * @param dependency
      *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     void addParsedAndSeenDependencies(GenericDependency dependency);
 
@@ -74,7 +73,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *
      * @param dependency
      *            the {@link GenericDependency} instance to add, mustn't be <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     void addSeenDependencies(GenericDependency dependency);
 
@@ -84,7 +83,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *
      * @return the {@link Collection} of all {@link GenericDependency} which have been seen (as
      *         import for instance) and parsed and associated with this context.
-     * @since 1.0
+     * @since 1.0.0
      */
     Collection < GenericDependency > getParsedAndSeenDependencies();
 
@@ -93,7 +92,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *
      * @return the {@link Collection} of all {@link GenericDependency} which have been parsed and
      *         associated with this context.
-     * @since 1.0
+     * @since 1.0.0
      */
     Collection < GenericDependency > getParsedDependencies();
 
@@ -115,7 +114,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *            the dependency full name to get, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance following its full name if found in the parsed
      *         and seen context, <code>null</code> otherwise.
-     * @since 1.0
+     * @since 1.0.0
      */
     GenericDependency getParsedOrSeenDependency(String fullName);
 
@@ -148,7 +147,7 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
      *            the {@link Display}, mustn't be <code>null</code>.
      * @return <code>true</code> if the {@link Display} is managed by the context,
      *         <code>false</code> otherwise.
-     * @since 1.0
+     * @since 1.0.0
      */
     boolean hasToDisplay(Display display);
 

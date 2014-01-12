@@ -24,16 +24,14 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.display.argument;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.getAllDisplayOptionsFullUsageDescriptions;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.getFullUsageDescriptions;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
 import static org.junit.Assert.assertEquals;
 
 import java.util.TreeSet;
-
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
 
 import org.junit.Test;
 
@@ -41,9 +39,8 @@ import org.junit.Test;
  * JUnit test classes for {@link Display}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.0
- * @version 1.2.0
+ * @version 1.3.0
  */
 public class DisplayTest {
 

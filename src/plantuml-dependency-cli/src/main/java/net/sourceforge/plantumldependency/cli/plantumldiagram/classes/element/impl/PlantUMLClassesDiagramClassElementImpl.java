@@ -24,8 +24,8 @@
 
 package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.CLASS_TAG;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.AbstractPlantUMLClassesDiagramElement;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramClassElement;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
@@ -36,9 +36,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.ta
  * The default {@link PlantUMLClassesDiagramClassElement} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.2.0
+ * @version 1.3.0
  */
 public class PlantUMLClassesDiagramClassElementImpl extends AbstractPlantUMLClassesDiagramElement implements
         PlantUMLClassesDiagramClassElement {

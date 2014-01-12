@@ -39,9 +39,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.im
  * {@link net.sourceforge.plantumldependency.cli.generic.type.DependencyType} interface.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.1.1
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class NativeDependencyTypeImpl extends DependencyTypeImpl {
 
@@ -56,7 +55,7 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
      * @param dependencyPackageName
      *            The dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     public NativeDependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         super(dependencyName, dependencyPackageName);
@@ -84,6 +83,8 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
 
     /**
      * {@inheritDoc}
+     *
+     * @since 1.0.0
      */
     @Override
     public String toString() {

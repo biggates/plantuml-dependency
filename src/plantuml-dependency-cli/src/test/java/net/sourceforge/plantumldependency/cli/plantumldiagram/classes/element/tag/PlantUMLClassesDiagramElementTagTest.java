@@ -29,8 +29,7 @@ import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.ele
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.ENUM_TAG;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.INTERFACE_TAG;
 import static org.junit.Assert.assertEquals;
-import net.sourceforge.mazix.components.ObjectTest;
-import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag;
+import net.sourceforge.plantumldependency.common.ObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -39,9 +38,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLClassesDiagramElementTag}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public class PlantUMLClassesDiagramElementTagTest extends ObjectTest < PlantUMLClassesDiagramElementTag > {
 

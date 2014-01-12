@@ -27,17 +27,17 @@ package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.a
 import static java.util.Collections.unmodifiableMap;
 import static java.util.logging.Level.FINE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
-import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNullOrEmpty;
-import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.UNKNOWN_JAVA_TYPE_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.JAVA_PARENT_TYPE_STRING_EMPTY_FINE;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.JAVA_TYPE_FOUND_FINE;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.plantumldependency.common.utils.check.ParameterCheckerUtils.checkNullOrEmpty;
+import static net.sourceforge.plantumldependency.common.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
+import static net.sourceforge.plantumldependency.common.utils.string.StringUtils.isEmpty;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -57,9 +57,9 @@ import net.sourceforge.plantumldependency.cli.generic.type.ImportDependenciesCol
  * The abstract class which describes all existing java types such as classes, interfaces,
  * enumerations and annotations.
  *
- * @author Benjamin Croizet (graffity2199@yahoo.fr)
- * @since 1.0
- * @version 1.2.0
+ * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public abstract class JavaType implements Comparable < JavaType >, Serializable {
 
@@ -92,7 +92,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      *
      * @return the {@link Map} of all {@link JavaType} as values, with their associated language
      *         keyword as keys.
-     * @since 1.0
+     * @since 1.3.0
      */
     private static Map < String, JavaType > createJavaTypeMap() {
         final Map < String, JavaType > javaTypeMap = new TreeMap < String, JavaType >();
@@ -109,7 +109,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      * Gets the {@link Collection} of all {@link JavaType}.
      *
      * @return the {@link Collection} of all {@link JavaType} available.
-     * @since 1.0
+     * @since 1.3.0
      */
     public static Collection < JavaType > getJavaTypeCollection() {
         return JAVA_TYPE_MAP.values();
@@ -124,7 +124,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      *            <code>null</code> nor empty.
      * @return the {@link JavaType} instance associated to the passed java type language keyword if
      *         available.
-     * @since 1.0
+     * @since 1.3.0
      */
     public static JavaType valueOfIgnoringCase(final String javaTypeKeyword) {
         checkNullOrEmpty(javaTypeKeyword, JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR);
@@ -147,7 +147,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      *
      * @param programmingLanguageKeyword
      *            The java type language keyword, mustn't be <code>null</code>.
-     * @since 1.0
+     * @since 1.3.0
      */
     protected JavaType(final String programmingLanguageKeyword) {
         setLanguageKeyword(programmingLanguageKeyword);
@@ -156,7 +156,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.3.0
      */
     @Override
     public int compareTo(final JavaType o) {
@@ -209,7 +209,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      *            mustn't be <code>null</code>.
      * @return the {@link DependencyType} instance, following the current java type and the passed
      *         parameters.
-     * @since 1.0
+     * @since 1.3.0
      */
     public abstract DependencyType createDependencyType(String dependencyName, String dependencyPackageName,
             boolean isAbstract, ImportDependenciesCollection importDependencies,
@@ -232,7 +232,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      *         following the java java type and the passed parameters.
      * @throws PlantUMLDependencyException
      *             if the requested java parent type is incompatible with the current java type.
-     * @since 1.0
+     * @since 1.3.0
      */
     public abstract DependencyType createParentDependencyType(JavaParentType parentType, String parentName,
             String parentPackageName) throws PlantUMLDependencyException;
@@ -240,7 +240,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.3.0
      */
     @Override
     public boolean equals(final Object obj) {
@@ -273,7 +273,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      *            <code>null</code>.
      * @return <code>true</code> if the dependency contains native methods, <code>false</code>
      *         otherwise.
-     * @since 1.0
+     * @since 1.3.0
      */
     public abstract boolean extractNativeMethods(String javaSourceFileContent);
 
@@ -293,7 +293,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      * @throws PlantUMLDependencyException
      *             if the requested parent dependency names are incompatible with the current java
      *             type.
-     * @since 1.0
+     * @since 1.3.0
      */
     public abstract Set < String > extractParentExtensions(String extendsString) throws PlantUMLDependencyException;
 
@@ -313,7 +313,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      * @throws PlantUMLDependencyException
      *             if the requested parent dependency names are incompatible with the current java
      *             type.
-     * @since 1.0
+     * @since 1.3.0
      */
     public abstract Set < String > extractParentImplementations(String implementsString)
             throws PlantUMLDependencyException;
@@ -331,7 +331,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      *            <i>Number</i><br>
      *            </p>
      * @return the {@link Set} of parent dependency names parsed from the {@link String}.
-     * @since 1.0
+     * @since 1.3.0
      */
     protected Set < String > extractParents(final String parentsString) {
         final Set < String > parents = new TreeSet < String >();
@@ -353,7 +353,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      * Gets the value of <code>languageKeyword</code>.
      *
      * @return the value of <code>languageKeyword</code>.
-     * @since 1.0
+     * @since 1.3.0
      */
     public String getLanguageKeyword() {
         return languageKeyword;
@@ -362,7 +362,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.3.0
      */
     @Override
     public int hashCode() {
@@ -378,7 +378,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
      * @param value
      *            the <code>languageKeyword</code> to set, can be <code>null</code>.
      * @see #getLanguageKeyword()
-     * @since 1.0
+     * @since 1.3.0
      */
     private void setLanguageKeyword(final String value) {
         checkNullOrEmpty(value, JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR);
@@ -389,7 +389,7 @@ public abstract class JavaType implements Comparable < JavaType >, Serializable 
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.3.0
      */
     @Override
     public String toString() {

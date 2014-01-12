@@ -37,10 +37,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImpl;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -49,9 +48,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link JavaProgrammingLanguageContext}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class JavaProgrammingLanguageContextTest extends
         ComparableAndDeepCloneableObjectTest < JavaProgrammingLanguageContextTest > {

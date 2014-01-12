@@ -31,9 +31,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.st
  * language.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.2.0
- * @version 1.2.0
+ * @version 1.3.0
  */
 public interface PlantUMLClassesDiagramAnnotationElement extends PlantUMLClassesDiagramElement, WithStereotype {
 

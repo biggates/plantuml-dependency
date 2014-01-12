@@ -25,10 +25,6 @@
 package net.sourceforge.plantumldependency.cli.constants;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.mazix.components.color.HTMLColor.YELLOW;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
-import static net.sourceforge.mazix.components.utils.collection.CollectionUtils.collectionToString;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.ABSTRACT_CLASSES;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.ANNOTATIONS;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.CLASSES;
@@ -39,6 +35,10 @@ import static net.sourceforge.plantumldependency.cli.main.option.display.argumen
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.INTERFACES;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.STATIC_IMPORTS;
+import static net.sourceforge.plantumldependency.common.color.HTMLColor.YELLOW;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.plantumldependency.common.utils.collection.CollectionUtils.collectionToString;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -54,9 +54,9 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.st
 /**
  * The class which stores all necessary plantUML dependency constants as Strings.
  *
- * @author Benjamin Croizet (graffity2199@yahoo.fr)
- * @since 1.0
- * @version 1.2.0
+ * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public final class PlantUMLDependencyConstants {
 
@@ -92,7 +92,7 @@ public final class PlantUMLDependencyConstants {
     /**
      * Private constructor to prevent from instantiation.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     private PlantUMLDependencyConstants() {
         super();

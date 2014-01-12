@@ -26,27 +26,26 @@ package net.sourceforge.plantumldependency.cli.main.option.basedirectory;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.commoncli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 
 import java.io.File;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.cli.command.CommandLine;
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.AbstractOptionWithArgument;
-import net.sourceforge.mazix.cli.option.argument.impl.directory.ExistingDirectoryOptionArgumentImpl;
+import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument;
+import net.sourceforge.plantumldependency.commoncli.option.argument.impl.directory.ExistingDirectoryOptionArgumentImpl;
 
 /**
  * The base directory option, telling the program where to look for source files. <i>Note : no
  * option should have the same main or secondary names</i>.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArgument < File > {
 
@@ -63,7 +62,7 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
     /**
      * Default constructor.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     public PlantUMLDependencyBaseDirectoryOption() {
         super(
@@ -78,7 +77,7 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
@@ -89,7 +88,7 @@ public class PlantUMLDependencyBaseDirectoryOption extends AbstractOptionWithArg
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)

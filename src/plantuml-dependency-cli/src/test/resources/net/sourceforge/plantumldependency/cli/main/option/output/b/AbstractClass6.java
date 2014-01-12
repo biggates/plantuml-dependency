@@ -36,7 +36,7 @@ import java.util.TreeSet;
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * 
- * @since 1.0
+ * @since 1.3.0
  * @version
  */
 public abstract class AbstractClass6 extends Class3 < String > implements Interface1, Interface3 < String > {

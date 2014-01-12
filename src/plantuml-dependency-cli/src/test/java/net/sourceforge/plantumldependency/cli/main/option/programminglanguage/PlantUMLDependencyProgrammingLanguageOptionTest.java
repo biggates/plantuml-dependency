@@ -24,7 +24,6 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.programminglanguage;
 
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE1;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE14;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE15;
@@ -32,11 +31,11 @@ import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependenc
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE3;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.CPP;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
 import static org.junit.Assert.assertEquals;
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.components.ObjectTest;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
+import net.sourceforge.plantumldependency.common.ObjectTest;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -45,9 +44,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLDependencyProgrammingLanguageOption}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyProgrammingLanguageOptionTest extends
         ObjectTest < PlantUMLDependencyProgrammingLanguageOption > {
@@ -66,7 +64,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -80,7 +78,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -93,7 +91,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -108,7 +106,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -120,7 +118,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -134,7 +132,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -147,7 +145,8 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
     }
 
     /**
-     * Test method for {@link net.sourceforge.mazix.cli.option.AbstractOption#getFullUsage()}.
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getFullUsage()}.
      */
     @Test
     public void testGetFullUsage() {
@@ -157,7 +156,8 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
     }
 
     /**
-     * Test method for {@link net.sourceforge.mazix.cli.option.AbstractOption#getMainUsage()}.
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getMainUsage()}.
      */
     @Test
     public void testGetMainUsage() {
@@ -166,7 +166,8 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getValueSeparator()}.
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#getValueSeparator()}
+     * .
      */
     @Test
     public void testGetValueSeparator() {

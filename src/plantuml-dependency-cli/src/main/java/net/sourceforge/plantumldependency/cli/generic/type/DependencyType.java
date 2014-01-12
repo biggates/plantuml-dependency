@@ -27,20 +27,19 @@ package net.sourceforge.plantumldependency.cli.generic.type;
 import java.io.Serializable;
 import java.util.Set;
 
-import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
 
 /**
  * The interface which describes a generic dependency type, no matter the programming language is. A
  * dependency type might be a class, an interface, an enumeration or an annotation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public interface DependencyType extends Comparable < DependencyType >, Serializable, DeepCloneable < DependencyType >,
         Displayable {
@@ -66,7 +65,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * </p>
      *
      * @return the dependency full name.
-     * @since 1.0
+     * @since 1.0.0
      */
     String getFullName();
 
@@ -79,7 +78,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      *
      * @return the {@link ImportDependenciesCollection} instance containing all
      *         {@link GenericDependency} which are needed by the current dependency type to work.
-     * @since 1.0
+     * @since 1.0.0
      */
     ImportDependenciesCollection getImportDependenciesCollection();
 
@@ -94,7 +93,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      *
      * @return the dependency name.
      * @see #setFullName(String, String)
-     * @since 1.0
+     * @since 1.0.0
      */
     String getName();
 
@@ -109,7 +108,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      *
      * @return the dependency package name.
      * @see #setFullName(String, String)
-     * @since 1.0
+     * @since 1.0.0
      */
     String getPackageName();
 
@@ -137,7 +136,7 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      *
      * @return the {@link Set} of all parent interfaces as {@link GenericDependency} which are used
      *         by the current dependency type.
-     * @since 1.0
+     * @since 1.0.0
      */
     Set < GenericDependency > getParentImplementationsDependencies();
 

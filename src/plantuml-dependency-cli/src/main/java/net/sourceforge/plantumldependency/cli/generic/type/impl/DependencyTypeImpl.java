@@ -27,12 +27,6 @@ package net.sourceforge.plantumldependency.cli.generic.type.impl;
 import static java.util.logging.Level.FINE;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
-import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.AFTER;
-import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isNotEmpty;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.DEPENDENCY_IS_NOT_DISPLAYABLE_FINE;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.IMPORT_IS_AN_EXTENSION_AN_IMPLEMENTATION_OR_AN_ANNOTATION_FINE;
@@ -41,6 +35,12 @@ import static net.sourceforge.plantumldependency.cli.main.option.display.argumen
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.DISPLAY_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.EXTENSIONS;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.IMPLEMENTATIONS;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.log.ErrorConstants.UNEXPECTED_ERROR;
+import static net.sourceforge.plantumldependency.common.utils.comparable.ComparableResult.AFTER;
+import static net.sourceforge.plantumldependency.common.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
+import static net.sourceforge.plantumldependency.common.utils.string.StringUtils.isNotEmpty;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -61,9 +61,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.i
  * The default implementation of the {@link DependencyType} interface.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public abstract class DependencyTypeImpl implements DependencyType {
 
@@ -83,7 +82,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      *            the dependency type name, such as "String", mustn't be <code>null</code> nor
      *            empty.
      * @return the full dependency name.
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String generateDependencyFullName(final String dependencyPackageName, final String dependencyName) {
         String fullName = null;
@@ -157,7 +156,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @param dependencyPackageName
      *            the dependency type package name, such as "java.lang", mustn't be
      *            <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName) {
         this(dependencyName, dependencyPackageName, new ImportDependenciesCollectionImpl(),
@@ -185,7 +184,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * @param annotationsDependenciesSet
      *            the {@link Set} of all annotations as {@link GenericDependency} which are used by
      *            the current dependency type, mustn't be <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     protected DependencyTypeImpl(final String dependencyName, final String dependencyPackageName,
             final ImportDependenciesCollection importDependencies,
@@ -204,7 +203,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public int compareTo(final DependencyType d) {
@@ -222,7 +221,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public DependencyType deepClone() {
@@ -246,7 +245,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public boolean equals(final Object obj) {
@@ -358,7 +357,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getFullName() {
@@ -368,7 +367,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public ImportDependenciesCollection getImportDependenciesCollection() {
@@ -417,7 +416,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getName() {
@@ -427,7 +426,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getPackageName() {
@@ -475,7 +474,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public Set < GenericDependency > getParentImplementationsDependencies() {
@@ -550,7 +549,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public int hashCode() {
@@ -569,7 +568,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
      *            dependencies collection, shouldn't be <code>null</code>.
      * @return <code>true</code> if the dependency is in the extensions, implementations or
      *         annotations dependencies collection, <code>false</code> otherwise.
-     * @since 1.0
+     * @since 1.0.0
      */
     private boolean isDependencyInExtensionsImplementationsOrAnnotationsDependencies(
             final GenericDependency genericDependency) {
@@ -593,7 +592,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String toString() {

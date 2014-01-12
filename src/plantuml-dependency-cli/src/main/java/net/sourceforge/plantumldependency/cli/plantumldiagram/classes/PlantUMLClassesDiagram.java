@@ -44,9 +44,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.P
  *
  * @see <a href="http://plantuml.sourceforge.net/classes.html">PlantUML classes diagram page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public interface PlantUMLClassesDiagram extends PlantUMLDiagram {
 

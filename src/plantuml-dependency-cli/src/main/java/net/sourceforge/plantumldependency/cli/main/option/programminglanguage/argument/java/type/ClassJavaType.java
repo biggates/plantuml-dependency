@@ -24,10 +24,6 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type;
 
-import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
-import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNumberOfElementsInCollection;
-import static net.sourceforge.mazix.components.utils.collection.CollectionUtils.getCollectionFirstElement;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.plantumldependency.cli.constants.RegularExpressionConstants.NATIVE_METHODS_REGEXP;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.JAVA_ANNOTATION_TYPE_NAME_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.JAVA_ANNOTATION_TYPE_PACKAGE_NAME_NULL_ERROR;
@@ -44,6 +40,10 @@ import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstant
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.JAVA_TYPE_PACKAGE_NAME_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
+import static net.sourceforge.plantumldependency.common.utils.check.ParameterCheckerUtils.checkNull;
+import static net.sourceforge.plantumldependency.common.utils.check.ParameterCheckerUtils.checkNumberOfElementsInCollection;
+import static net.sourceforge.plantumldependency.common.utils.collection.CollectionUtils.getCollectionFirstElement;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
 
 import java.util.Set;
 
@@ -60,9 +60,8 @@ import net.sourceforge.plantumldependency.cli.generic.type.impl.interfaceimpl.In
  * The class {@link JavaType} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 class ClassJavaType extends JavaType {
 
@@ -74,7 +73,7 @@ class ClassJavaType extends JavaType {
      *
      * @param programmingLanguageKeyword
      *            The java type language keyword, mustn't be <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     protected ClassJavaType(final String programmingLanguageKeyword) {
         super(programmingLanguageKeyword);
@@ -96,7 +95,7 @@ class ClassJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public DependencyType createDependencyType(final String dependencyName, final String dependencyPackageName,
@@ -130,7 +129,7 @@ class ClassJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public DependencyType createParentDependencyType(final JavaParentType parentType, final String parentName,
@@ -155,7 +154,7 @@ class ClassJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public boolean extractNativeMethods(final String javaSourceFileContent) {
@@ -165,7 +164,7 @@ class ClassJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public Set < String > extractParentExtensions(final String extendsString) throws PlantUMLDependencyException {
@@ -175,7 +174,7 @@ class ClassJavaType extends JavaType {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public Set < String > extractParentImplementations(final String implementsString)

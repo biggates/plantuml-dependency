@@ -30,11 +30,10 @@ import static org.junit.Assert.assertEquals;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.generic.type.impl.stubimpl.StubDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -43,9 +42,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link StubDependencyTypeImpl}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDependencyTypeImpl > {
 
@@ -100,7 +98,8 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getName()}.
+     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getName()}
+     * .
      */
     @Test
     public void testGetName() {

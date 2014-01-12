@@ -24,15 +24,13 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.CPP;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
 import static org.junit.Assert.assertEquals;
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.argument.OptionArgument;
-import net.sourceforge.mazix.components.ObjectTest;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.PlantUMLDependencyProgrammingLanguageOptionArgument;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
+import net.sourceforge.plantumldependency.common.ObjectTest;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.argument.OptionArgument;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -41,9 +39,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLDependencyProgrammingLanguageOptionArgument}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyProgrammingLanguageOptionArgumentTest extends
         ObjectTest < PlantUMLDependencyProgrammingLanguageOptionArgument > {
@@ -69,7 +66,7 @@ public class PlantUMLDependencyProgrammingLanguageOptionArgumentTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.argument.AbstractOptionArgument#getFullUsageDescription()}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.argument.AbstractOptionArgument#getFullUsageDescription()}
      * .
      */
     @Test

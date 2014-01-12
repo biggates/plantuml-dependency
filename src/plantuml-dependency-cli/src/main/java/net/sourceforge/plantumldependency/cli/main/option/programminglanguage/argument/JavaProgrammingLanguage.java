@@ -27,23 +27,6 @@ package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.a
 import static java.lang.Class.forName;
 import static java.util.logging.Level.FINE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.AT_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.BACK_SLASH_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.CARRIAGE_RETURN_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.INFERIOR_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.LINE_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.QUOTATION_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.QUOTE_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SLASH_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.STAR_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SUPERIOR_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.TAB_CHAR;
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
-import static net.sourceforge.mazix.components.constants.CommonConstants.MINUS_ONE_RETURN_CODE;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.string.StringUtils.isEmpty;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.JAVA_LANG_PACKAGE;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantumldependency.cli.constants.RegularExpressionConstants.ANNOTATIONS_REGEXP;
@@ -65,6 +48,23 @@ import static net.sourceforge.plantumldependency.cli.generic.type.ImportType.STA
 import static net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl.generateDependencyFullName;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaParentType.EXTENSION;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaParentType.IMPLEMENTATION;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.AT_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.BACK_SLASH_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.CARRIAGE_RETURN_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.INFERIOR_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.LINE_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.QUOTATION_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.QUOTE_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SLASH_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.STAR_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SUPERIOR_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.TAB_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.MINUS_ONE_RETURN_CODE;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
+import static net.sourceforge.plantumldependency.common.utils.string.StringUtils.isEmpty;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -89,9 +89,8 @@ import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.co
  * The Java {@link ProgrammingLanguage} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 class JavaProgrammingLanguage extends ProgrammingLanguage {
 
@@ -119,7 +118,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *         dependency.
      * @throws PlantUMLDependencyException
      *             if any exception occurs while reading or parsing the source file content.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static GenericDependency createDependencyFromRaw(final JavaRawDependency javaRawDependency,
             final String sourceFileContent, final ProgrammingLanguageContext programmingLanguageContext)
@@ -169,7 +168,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            previous treatment, and other information which can be shared when parsing several
      *            source files, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} created or updated.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static GenericDependency createOrUpdateAbstractDependency(final JavaRawDependency javaRawDependency,
             final DependencyType dependencyType, final ProgrammingLanguageContext programmingLanguageContext) {
@@ -202,7 +201,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the string defining an abstract class, can be <code>null</code>.
      * @return <code>true</code> if the {@link String} defines and abstract class,
      *         <code>false</code> otherwise.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static boolean extractAbstract(final String group) {
         return isEmpty(group) ? false : true;
@@ -275,7 +274,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            source files, mustn't be <code>null</code>.
      * @return the {@link ImportDependenciesCollection} of import dependencies found in the java
      *         source file content.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static ImportDependenciesCollection extractImportDependencies(final String javaSourceFileContent,
             final ProgrammingLanguageContext programmingLanguageContext) {
@@ -311,7 +310,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            source files, mustn't be <code>null</code>.
      * @return the {@link Set} of all import dependencies found in the java source file content.
      *         Returns an empty {@link Set} if no import has been found.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static Set < GenericDependency > extractImportDependenciesSet(final String javaSourceFileContent,
             final Pattern importRegExp, final ProgrammingLanguageContext programmingLanguageContext) {
@@ -346,7 +345,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @return the dependency raw name, without any generic definition.
      * @throws PlantUMLDependencyException
      *             if any exception occurs while extracting name.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static String extractName(final String group) throws PlantUMLDependencyException {
         if (isEmpty(group)) {
@@ -363,7 +362,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the java source file content to analyze as a {@link String}, mustn't be
      *            <code>null</code>.
      * @return the java package name if found, otherwise it returns a blank string.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static String extractPackageName(final String javaSourceFileContent) {
         String packageName = BLANK_STRING;
@@ -401,7 +400,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @throws PlantUMLDependencyException
      *             if any exception occurs while creating parent {@link GenericDependency}
      *             instances.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static Set < GenericDependency > extractParentDependencies(final JavaType type,
             final JavaParentType parentType, final Set < String > parents,
@@ -430,6 +429,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the string where to look for the end character.
      * @return the index of the character representing the end of a string content. If not found,
      *         <code>beginningIndex</code> is returned.
+     * @since 1.0.0
      */
     private static int getNextEndOfCharContent(final int beginningIndex, final String str) {
         int index = beginningIndex;
@@ -468,6 +468,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the string where to look for the end generic definition character.
      * @return the index of the character representing the end of a generic definition. If not
      *         found, <code>beginningIndex</code> is returned.
+     * @since 1.0.0
      */
     private static int getNextEndOfGenericIndex(final int beginningIndex, final String str) {
         int index = beginningIndex;
@@ -524,7 +525,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the string where to look for the end comment character.
      * @return the index of the character representing the end of a multi line java comment. If not
      *         found, <code>beginningIndex</code> is returned.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static int getNextEndOfMultiLineCommentIndex(final int beginningIndex, final String str) {
         int index = beginningIndex;
@@ -567,7 +568,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the string where to look for the end comment character.
      * @return the index of the character representing the end of a single line java comment. If not
      *         found (i.e. end of file) , <code>str.length() - 1</code> is returned.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static int getNextEndOfSimpleLineCommentIndex(final int beginningIndex, final String str) {
         int index = beginningIndex;
@@ -597,6 +598,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            the string where to look for the end string character.
      * @return the index of the character representing the end of a string content. If not found,
      *         <code>beginningIndex</code> is returned.
+     * @since 1.0.0
      */
     private static int getNextEndOfStringContent(final int beginningIndex, final String str) {
         int index = beginningIndex;
@@ -866,7 +868,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @throws PlantUMLDependencyException
      *             if any exception occurs while getting or creating the parent
      *             {@link GenericDependency} instance.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static GenericDependency getOrCreateParentDependency(final JavaType type, final JavaParentType parentType,
             final String parentNameOrFullName, final String currentPackageName,
@@ -911,7 +913,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @throws PlantUMLDependencyException
      *             if any exception occurs while getting or creating the parent
      *             {@link GenericDependency} instance.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static GenericDependency getOrCreateParentDependencyWithFullName(final JavaType type,
             final JavaParentType parentType, final String parentFullName,
@@ -1003,7 +1005,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @throws PlantUMLDependencyException
      *             if any exception occurs while getting or creating the parent
      *             {@link GenericDependency} instance.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static GenericDependency getOrCreateParentDependencyWithName(final JavaType type,
             final JavaParentType parentType, final String currentPackageName,
@@ -1052,7 +1054,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @throws PlantUMLDependencyException
      *             if any exception occurs while getting or creating the parent
      *             {@link GenericDependency} instance.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static GenericDependency getOrCreateParentDependencyWithNameFromJavaLangOrSamePackage(final JavaType type,
             final JavaParentType parentType, final String currentPackageName,
@@ -1090,7 +1092,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @throws PlantUMLDependencyException
      *             if any exception occurs while reading or creating the {@link GenericDependency}
      *             instance.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static GenericDependency readDependencyFromPreparedFile(final String javaSourceFileContent,
             final ProgrammingLanguageContext programmingLanguageContext) throws PlantUMLDependencyException {
@@ -1109,7 +1111,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @throws PlantUMLDependencyException
      *             if any exception occurs while reading or creating the {@link JavaRawDependency}
      *             instance.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static JavaRawDependency readJavaRawDependencyFromPreparedFile(final String javaSourceFileContent)
             throws PlantUMLDependencyException {
@@ -1154,7 +1156,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      *            <code>null</code>.
      * @return the new java source file content without all unnecessary strings which are not used
      *         in the analysis.
-     * @since 1.0
+     * @since 1.0.0
      */
     private static String removeSourceFileCommentsAndGenerics(final String javaSourceFileContent) {
         final StringBuilder buffer = new StringBuilder();
@@ -1222,7 +1224,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param programmingLanguageName
      *            the programming language name to get the instance from, mustn't be
      *            <code>null</code> nor empty.
-     * @since 1.0
+     * @since 1.0.0
      */
     protected JavaProgrammingLanguage(final String programmingLanguageName) {
         super(programmingLanguageName);
@@ -1231,7 +1233,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public ProgrammingLanguageContext createNewContext(final Set < Display > displayOpt) {

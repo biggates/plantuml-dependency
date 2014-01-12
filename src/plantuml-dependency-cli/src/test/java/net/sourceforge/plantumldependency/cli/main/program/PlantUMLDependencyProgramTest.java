@@ -24,15 +24,14 @@
 
 package net.sourceforge.plantumldependency.cli.main.program;
 
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
 import static net.sourceforge.plantumldependency.cli.main.program.PlantUMLDependencyProgram.main;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
 
 import java.io.File;
 
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
-import net.sourceforge.plantumldependency.cli.main.program.PlantUMLDependencyProgram;
 
 import org.junit.After;
 import org.junit.Test;
@@ -41,9 +40,8 @@ import org.junit.Test;
  * JUnit test classes for {@link PlantUMLDependencyProgram}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyProgramTest {
 
@@ -54,7 +52,7 @@ public class PlantUMLDependencyProgramTest {
      * This method is called after all tests, it is used to remove the temporary file used for the
      * tests.
      *
-     * @since 1.0
+     * @since 1.3.0
      */
     @After
     public void removeFile() {

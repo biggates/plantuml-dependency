@@ -26,30 +26,29 @@ package net.sourceforge.plantumldependency.cli.main.option.display;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
-import static net.sourceforge.mazix.components.utils.collection.CollectionUtils.collectionToString;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.common.utils.collection.CollectionUtils.collectionToString;
+import static net.sourceforge.plantumldependency.commoncli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.cli.command.CommandLine;
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.AbstractOptionWithArgument;
 import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
 import net.sourceforge.plantumldependency.cli.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument;
+import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument;
 
 /**
  * The display option, telling the program what to display in the generated file. <i>Note : no
  * option should have the same main or secondary names</i>.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument < Set < Display > > {
 
@@ -66,7 +65,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
     /**
      * Default constructor.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     public PlantUMLDependencyDisplayOption() {
         super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayOptionArgument(true),
@@ -78,7 +77,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
@@ -89,7 +88,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)

@@ -24,8 +24,6 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.display;
 
-import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE1;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE3;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE5;
@@ -41,15 +39,16 @@ import static net.sourceforge.plantumldependency.cli.main.option.display.argumen
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.INTERFACES;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.NATIVE_METHODS;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.STATIC_IMPORTS;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
-import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayOption;
 import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -58,9 +57,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLDependencyDisplayOption}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyDisplayOption > {
 
@@ -78,7 +76,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -94,7 +92,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -107,7 +105,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -131,7 +129,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -143,7 +141,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayOption#getDefaultArgumentAsStringIfOptionSpecified(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -158,7 +156,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.mazix.cli.command.CommandLine)}
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#getDefaultArgumentIfOptionSpecified(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *
      * @throws CommandLineException
@@ -180,7 +178,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     }
 
     /**
-     * Test method for {@link net.sourceforge.mazix.cli.option.AbstractOption#getFullUsage()}.
+     * Test method for {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getFullUsage()}.
      */
     @Test
     public void testGetFullUsage() {
@@ -190,7 +188,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     }
 
     /**
-     * Test method for {@link net.sourceforge.mazix.cli.option.AbstractOption#getMainUsage()}.
+     * Test method for {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getMainUsage()}.
      */
     @Test
     public void testGetMainUsage() {
@@ -199,7 +197,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.mazix.cli.option.AbstractOptionWithArgument#getValueSeparator()}.
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#getValueSeparator()}.
      */
     @Test
     public void testGetValueSeparator() {

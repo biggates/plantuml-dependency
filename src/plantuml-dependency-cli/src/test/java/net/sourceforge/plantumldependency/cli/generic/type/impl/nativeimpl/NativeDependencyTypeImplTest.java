@@ -26,9 +26,8 @@ package net.sourceforge.plantumldependency.cli.generic.type.impl.nativeimpl;
 
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.NATIVE_PLANTUML_STEREOTYPE;
 import static org.junit.Assert.assertEquals;
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
-import net.sourceforge.plantumldependency.cli.generic.type.impl.nativeimpl.NativeDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -37,9 +36,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link NativeDependencyTypeImpl}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class NativeDependencyTypeImplTest extends DeepCloneableObjectTest < NativeDependencyTypeImplTest > {
 
@@ -79,7 +77,8 @@ public class NativeDependencyTypeImplTest extends DeepCloneableObjectTest < Nati
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getName()}.
+     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getName()}
+     * .
      */
     @Test
     public void testGetName() {

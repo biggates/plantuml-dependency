@@ -26,7 +26,7 @@ package net.sourceforge.plantumldependency.cli.plantumldiagram;
 
 import java.io.Serializable;
 
-import net.sourceforge.mazix.components.clone.DeepCloneable;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
 
 /**
  * The mother interface which represents a plantUML diagram. Several types of UML diagram can be
@@ -43,9 +43,8 @@ import net.sourceforge.mazix.components.clone.DeepCloneable;
  *
  * @see <a href="http://plantuml.sourceforge.net/index.html">PlantUML home page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public interface PlantUMLDiagram extends WithDescription, DeepCloneable < PlantUMLDiagram >, Serializable {
 

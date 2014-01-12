@@ -26,31 +26,24 @@ package net.sourceforge.plantumldependency.cli.main.option.output;
 
 import static java.util.logging.Level.FINE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.cli.constants.log.ErrorConstants.VERBOSE_OPTION_NULL_ERROR;
-import static net.sourceforge.mazix.cli.constants.log.FineConstants.OPTION_NOT_SPECIFIED_FINE;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
-import static net.sourceforge.mazix.components.utils.check.ParameterCheckerUtils.checkNull;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.buildLogString;
-import static net.sourceforge.mazix.components.utils.log.LogUtils.setLevelOfAllLoggersAndHandlers;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.BASE_DIRECTORY_OPTION_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.DISPLAY_OPTION_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.EXCLUDE_OPTION_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.INCLUDE_OPTION_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.common.utils.check.ParameterCheckerUtils.checkNull;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.setLevelOfAllLoggersAndHandlers;
+import static net.sourceforge.plantumldependency.commoncli.constants.log.ErrorConstants.VERBOSE_OPTION_NULL_ERROR;
+import static net.sourceforge.plantumldependency.commoncli.constants.log.FineConstants.OPTION_NOT_SPECIFIED_FINE;
+import static net.sourceforge.plantumldependency.commoncli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 
 import java.io.File;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sourceforge.mazix.cli.command.CommandLine;
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.argument.impl.file.ExistingOrNotFileOptionArgumentImpl;
-import net.sourceforge.mazix.cli.option.execution.ExecutableOption;
-import net.sourceforge.mazix.cli.option.execution.OptionExecution;
-import net.sourceforge.mazix.cli.option.impl.output.OutputOption;
-import net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption;
 import net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
 import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayOption;
 import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
@@ -58,6 +51,13 @@ import net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDepend
 import net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
+import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.argument.impl.file.ExistingOrNotFileOptionArgumentImpl;
+import net.sourceforge.plantumldependency.commoncli.option.execution.ExecutableOption;
+import net.sourceforge.plantumldependency.commoncli.option.execution.OptionExecution;
+import net.sourceforge.plantumldependency.commoncli.option.impl.output.OutputOption;
+import net.sourceforge.plantumldependency.commoncli.option.impl.verbose.VerboseLevelOption;
 
 import org.apache.tools.ant.types.FileSet;
 
@@ -67,9 +67,8 @@ import org.apache.tools.ant.types.FileSet;
  * names</i>.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyOutputOption extends OutputOption implements ExecutableOption {
 
@@ -124,7 +123,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      * @param optionPriority
      *            the option priority as an integer. <i>Note : the priority must be unique amongst
      *            all options</i>.
-     * @since 1.0
+     * @since 1.0.0
      */
     public PlantUMLDependencyOutputOption(final VerboseLevelOption verboseLvlOpt,
             final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOpt,
@@ -148,7 +147,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      *
      * @return the value of <code>baseDirOption</code>.
      * @see #setBaseDirOption(PlantUMLDependencyBaseDirectoryOption)
-     * @since 1.0
+     * @since 1.0.0
      */
     private PlantUMLDependencyBaseDirectoryOption getBaseDirOption() {
         return baseDirOption;
@@ -159,7 +158,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      *
      * @return the value of <code>displayOption</code>.
      * @see #setDisplayOption(PlantUMLDependencyDisplayOption)
-     * @since 1.0
+     * @since 1.0.0
      */
     private PlantUMLDependencyDisplayOption getDisplayOption() {
         return displayOption;
@@ -170,7 +169,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      *
      * @return the value of <code>excludeOption</code>.
      * @see #setExcludeOption(PlantUMLDependencyExcludeOption)
-     * @since 1.0
+     * @since 1.0.0
      */
     private PlantUMLDependencyExcludeOption getExcludeOption() {
         return excludeOption;
@@ -181,7 +180,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      *
      * @return the value of <code>includeOption</code>.
      * @see #setIncludeOption(PlantUMLDependencyIncludeOption)
-     * @since 1.0
+     * @since 1.0.0
      */
     private PlantUMLDependencyIncludeOption getIncludeOption() {
         return includeOption;
@@ -190,7 +189,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public int getPriority() {
@@ -202,7 +201,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      *
      * @return the value of <code>programmingLanguageOption</code>.
      * @see #setProgrammingLanguageOption(PlantUMLDependencyProgrammingLanguageOption)
-     * @since 1.0
+     * @since 1.0.0
      */
     private PlantUMLDependencyProgrammingLanguageOption getProgrammingLanguageOption() {
         return programmingLanguageOption;
@@ -213,7 +212,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      *
      * @return the value of <code>verboseLevelOption</code>.
      * @see #setVerboseLevelOption(VerboseLevelOption)
-     * @since 1.0
+     * @since 1.0.0
      */
     private VerboseLevelOption getVerboseLevelOption() {
         return verboseLevelOption;
@@ -222,7 +221,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public OptionExecution parseCommandLine(final CommandLine commandLine) throws CommandLineException {
@@ -257,7 +256,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      * @param value
      *            the <code>baseDirOption</code> to set, can be <code>null</code>.
      * @see #getBaseDirOption()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setBaseDirOption(final PlantUMLDependencyBaseDirectoryOption value) {
         checkNull(value, BASE_DIRECTORY_OPTION_NULL_ERROR);
@@ -271,7 +270,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      * @param value
      *            the <code>displayOption</code> to set, can be <code>null</code>.
      * @see #getDisplayOption()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setDisplayOption(final PlantUMLDependencyDisplayOption value) {
         checkNull(value, DISPLAY_OPTION_NULL_ERROR);
@@ -285,7 +284,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      * @param value
      *            the <code>excludeOption</code> to set, can be <code>null</code>.
      * @see #getExcludeOption()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setExcludeOption(final PlantUMLDependencyExcludeOption value) {
         checkNull(value, EXCLUDE_OPTION_NULL_ERROR);
@@ -299,7 +298,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      * @param value
      *            the <code>includeOption</code> to set, can be <code>null</code>.
      * @see #getIncludeOption()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setIncludeOption(final PlantUMLDependencyIncludeOption value) {
         checkNull(value, INCLUDE_OPTION_NULL_ERROR);
@@ -313,7 +312,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      * @param value
      *            the <code>priority</code> to set.
      * @see #getPriority()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setPriority(final int value) {
         priority = value;
@@ -325,7 +324,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      * @param value
      *            the <code>programmingLanguageOption</code> to set, can be <code>null</code>.
      * @see #getProgrammingLanguageOption()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setProgrammingLanguageOption(final PlantUMLDependencyProgrammingLanguageOption value) {
         checkNull(value, PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR);
@@ -339,7 +338,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      * @param value
      *            the <code>verboseLevelOption</code> to set, can be <code>null</code>.
      * @see #getVerboseLevelOption()
-     * @since 1.0
+     * @since 1.0.0
      */
     private void setVerboseLevelOption(final VerboseLevelOption value) {
         checkNull(value, VERBOSE_OPTION_NULL_ERROR);

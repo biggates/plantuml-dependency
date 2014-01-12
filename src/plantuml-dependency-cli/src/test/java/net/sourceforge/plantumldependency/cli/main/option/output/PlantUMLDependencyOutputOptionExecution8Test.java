@@ -24,7 +24,7 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.output;
 
-import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
+import static net.sourceforge.plantumldependency.common.utils.file.FileUtils.readFileIntoString;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1000;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1001;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1002;
@@ -76,7 +76,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
-import net.sourceforge.mazix.cli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 import net.sourceforge.plantumldependency.cli.main.option.output.PlantUMLDependencyOutputOptionExecution;
 
 import org.junit.After;
@@ -86,9 +86,8 @@ import org.junit.Test;
  * JUnit test classes for {@link PlantUMLDependencyOutputOptionExecution}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.2.0
- * @version 1.2.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyOutputOptionExecution8Test {
 

@@ -35,9 +35,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
 
-import net.sourceforge.mazix.components.ComparableObjectTest;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
-import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaType;
+import net.sourceforge.plantumldependency.common.comparable.ComparableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -46,9 +45,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link JavaType}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class JavaTypeTest extends ComparableObjectTest < ProgrammingLanguage > {
 

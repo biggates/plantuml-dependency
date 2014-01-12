@@ -30,9 +30,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.st
  * The interface representing the "enum" element, following the plantUML classes diagram language.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public interface PlantUMLClassesDiagramEnumElement extends PlantUMLClassesDiagramElement, WithStereotype {
 

@@ -24,13 +24,12 @@
 
 package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.impl;
 
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImplTest.PLANTUML_SPOTTED_CHAR_TEST1;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImplTest.PLANTUML_SPOTTED_CHAR_TEST3;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImplTest.PLANTUML_SPOTTED_CHAR_TEST4;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
 import static org.junit.Assert.assertEquals;
-import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
-import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -39,9 +38,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLStereotypeImpl}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public class PlantUMLStereotypeImplTest extends ComparableAndDeepCloneableObjectTest < PlantUMLStereotypeImpl > {
 

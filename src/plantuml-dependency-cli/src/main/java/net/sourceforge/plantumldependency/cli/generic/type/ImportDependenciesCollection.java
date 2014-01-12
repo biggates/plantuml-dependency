@@ -27,17 +27,16 @@ package net.sourceforge.plantumldependency.cli.generic.type;
 import java.io.Serializable;
 import java.util.Set;
 
-import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
 
 /**
  * The interface which describes a collection of import dependencies needed by a
  * {@link GenericDependency}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public interface ImportDependenciesCollection extends Serializable, DeepCloneable < ImportDependenciesCollection > {
 

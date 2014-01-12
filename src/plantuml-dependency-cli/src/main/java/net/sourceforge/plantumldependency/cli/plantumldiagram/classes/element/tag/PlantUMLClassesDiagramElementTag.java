@@ -31,9 +31,8 @@ package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.t
  * @see <a href="http://plantuml.sourceforge.net/classes.html#Abstract">PlantUML classes diagram
  *      page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.2.0
+ * @version 1.3.0
  */
 public enum PlantUMLClassesDiagramElementTag {
 

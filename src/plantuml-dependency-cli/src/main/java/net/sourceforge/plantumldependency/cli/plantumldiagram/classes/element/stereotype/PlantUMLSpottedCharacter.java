@@ -26,9 +26,9 @@ package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.s
 
 import java.io.Serializable;
 
-import net.sourceforge.mazix.components.clone.DeepCloneable;
-import net.sourceforge.mazix.components.color.HTMLColor;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.WithDescription;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
+import net.sourceforge.plantumldependency.common.color.HTMLColor;
 
 /**
  * Interface which represents a plantUML classes diagram spotted character. <code>
@@ -50,9 +50,8 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.WithDescription;
  * @see <a href="http://plantuml.sourceforge.net/classes.html#Specific">PlantUML classes diagram
  *      Specific Spot page</a>
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public interface PlantUMLSpottedCharacter extends Comparable < PlantUMLSpottedCharacter >, WithDescription,
         DeepCloneable < PlantUMLSpottedCharacter >, Serializable {

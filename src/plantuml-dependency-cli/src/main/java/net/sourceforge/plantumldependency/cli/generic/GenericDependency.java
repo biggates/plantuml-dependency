@@ -26,8 +26,8 @@ package net.sourceforge.plantumldependency.cli.generic;
 
 import java.io.Serializable;
 
-import net.sourceforge.mazix.components.clone.DeepCloneable;
 import net.sourceforge.plantumldependency.cli.generic.type.DependencyType;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
 
 /**
  * The interface which describes a generic abstract dependency, no matter the programming language.
@@ -39,9 +39,8 @@ import net.sourceforge.plantumldependency.cli.generic.type.DependencyType;
  * it is a concrete instance.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public interface GenericDependency extends Comparable < GenericDependency >, Serializable,
         DeepCloneable < GenericDependency > {
@@ -50,7 +49,7 @@ public interface GenericDependency extends Comparable < GenericDependency >, Ser
      * Gets the underlying dependency type, which determines the real nature of the dependency.
      *
      * @return the {@link DependencyType} instance of the current abstract dependency.
-     * @since 1.0
+     * @since 1.0.0
      */
     DependencyType getDependencyType();
 
@@ -64,7 +63,7 @@ public interface GenericDependency extends Comparable < GenericDependency >, Ser
      * </p>
      *
      * @return the dependency full name.
-     * @since 1.0
+     * @since 1.0.0
      */
     String getFullName();
 
@@ -78,7 +77,7 @@ public interface GenericDependency extends Comparable < GenericDependency >, Ser
      * </p>
      *
      * @return the dependency name.
-     * @since 1.0
+     * @since 1.0.0
      */
     String getName();
 
@@ -92,7 +91,7 @@ public interface GenericDependency extends Comparable < GenericDependency >, Ser
      * </p>
      *
      * @return the dependency package name.
-     * @since 1.0
+     * @since 1.0.0
      */
     String getPackageName();
 
@@ -102,7 +101,7 @@ public interface GenericDependency extends Comparable < GenericDependency >, Ser
      * @param value
      *            the {@link DependencyType} instance of the current abstract dependency, mustn't be
      *            <code>null</code>.
-     * @since 1.0
+     * @since 1.0.0
      */
     void setDependencyType(DependencyType value);
 }

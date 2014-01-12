@@ -26,24 +26,23 @@ package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.s
 
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.COMMA_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.LEFT_PARENTHESIS_CHAR;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.RIGHT_PARENTHESIS_CHAR;
-import static net.sourceforge.mazix.components.constants.log.ErrorConstants.UNEXPECTED_ERROR;
-import static net.sourceforge.mazix.components.utils.comparable.ComparableResult.EQUAL;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.LEFT_PARENTHESIS_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.RIGHT_PARENTHESIS_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.log.ErrorConstants.UNEXPECTED_ERROR;
+import static net.sourceforge.plantumldependency.common.utils.comparable.ComparableResult.EQUAL;
 
 import java.util.logging.Logger;
 
-import net.sourceforge.mazix.components.color.HTMLColor;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.PlantUMLSpottedCharacter;
+import net.sourceforge.plantumldependency.common.color.HTMLColor;
 
 /**
  * The default {@link PlantUMLSpottedCharacter} implementation.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public class PlantUMLSpottedCharacterImpl implements PlantUMLSpottedCharacter {
 

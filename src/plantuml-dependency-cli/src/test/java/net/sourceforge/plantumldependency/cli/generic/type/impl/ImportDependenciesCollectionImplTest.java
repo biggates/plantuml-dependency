@@ -25,7 +25,6 @@
 package net.sourceforge.plantumldependency.cli.generic.type.impl;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.GENERIC_DEPENDENCY_SET2;
 import static net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
@@ -33,6 +32,7 @@ import static net.sourceforge.plantumldependency.cli.generic.type.ImportType.IMP
 import static net.sourceforge.plantumldependency.cli.generic.type.ImportType.NATIVE;
 import static net.sourceforge.plantumldependency.cli.generic.type.ImportType.STANDARD;
 import static net.sourceforge.plantumldependency.cli.generic.type.ImportType.STATIC;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -41,17 +41,16 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantumldependency.cli.generic.type.ImportType;
-import net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.classimpl.ClassAbstractDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.classimpl.ClassDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.enumimpl.EnumDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -60,9 +59,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link ImportDependenciesCollectionImpl}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.0
- * @version 1.2.0
+ * @version 1.3.0
  */
 public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTest < ImportDependenciesCollectionImpl > {
 
@@ -114,13 +112,13 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
     @DataPoint
     public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST8 = new ImportDependenciesCollectionImpl(
             STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "JavaProgramImpl", "net.sourceforge.mazix.cli.program.impl")})));
+                    "JavaProgramImpl", "net.sourceforge.plantumldependency.commoncli.program.impl")})));
 
     /** Display import dependencies collection test 9 instance. */
     @DataPoint
     public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST9 = new ImportDependenciesCollectionImpl(
             STANDARD, new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "JavaProgram", "net.sourceforge.mazix.cli.program")})));
+                    "JavaProgram", "net.sourceforge.plantumldependency.commoncli.program")})));
 
     /** Display import dependencies collection test 10 instance. */
     @DataPoint
@@ -151,7 +149,7 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                 {
                     put(STANDARD, new TreeSet < GenericDependency >(
                             asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
-                                    "net.sourceforge.mazix.cli.program")})));
+                                    "net.sourceforge.plantumldependency.commoncli.program")})));
                     put(NATIVE, new TreeSet < GenericDependency >(asList(new GenericDependency[] {NATIVE_DEPENDENCY})));
                 }
             });
@@ -164,7 +162,7 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                 {
                     put(STANDARD, new TreeSet < GenericDependency >(
                             asList(new GenericDependency[] {new GenericDependencyImpl("Java_Program",
-                                    "net.sourceforge.mazix.cli.pro_gram")})));
+                                    "net.sourceforge.plantumldependency.commoncli.pro_gram")})));
                     put(NATIVE, new TreeSet < GenericDependency >(asList(new GenericDependency[] {NATIVE_DEPENDENCY})));
                 }
             });
@@ -173,7 +171,7 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
     @DataPoint
     public static final ImportDependenciesCollectionImpl IMPORT_COLLECTION_TEST15 = new ImportDependenciesCollectionImpl(
             STATIC, new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "JavaProgram", "net.sourceforge.mazix.cli.program")})));
+                    "JavaProgram", "net.sourceforge.plantumldependency.commoncli.program")})));
 
     /** Display import dependencies collection test 16 instance. */
     @DataPoint
@@ -319,7 +317,8 @@ public class ImportDependenciesCollectionImplTest extends DeepCloneableObjectTes
                                             new GenericDependencyImpl(
                                                     new ClassDependencyTypeImpl("Number", "java.lang")),
                                             new GenericDependencyImpl(new ClassAbstractDependencyTypeImpl(
-                                                    "AbstractOption", "net.sourceforge.mazix.cli.option")),
+                                                    "AbstractOption",
+                                                    "net.sourceforge.plantumldependency.commoncli.option")),
                                             new GenericDependencyImpl(new EnumDependencyTypeImpl("ImportType",
                                                     "net.sourceforge.plantumldependency.generic.type")),
                                             new GenericDependencyImpl(new AnnotationDependencyTypeImpl("Generated",

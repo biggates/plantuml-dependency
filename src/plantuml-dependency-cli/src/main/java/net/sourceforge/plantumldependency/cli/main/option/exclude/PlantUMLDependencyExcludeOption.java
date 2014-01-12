@@ -26,17 +26,17 @@ package net.sourceforge.plantumldependency.cli.main.option.exclude;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_EXCLUDE_OPTIONS;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.commoncli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.cli.command.CommandLine;
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.cli.option.AbstractOptionWithArgument;
-import net.sourceforge.mazix.cli.option.argument.impl.filepattern.ExcludeFilePatternOptionArgumentImpl;
+import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument;
+import net.sourceforge.plantumldependency.commoncli.option.argument.impl.filepattern.ExcludeFilePatternOptionArgumentImpl;
 
 import org.apache.tools.ant.types.FileSet;
 
@@ -45,9 +45,8 @@ import org.apache.tools.ant.types.FileSet;
  * should have the same main or secondary names</i>.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.1.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument < FileSet > {
 
@@ -64,7 +63,7 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
     /**
      * Default constructor.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     public PlantUMLDependencyExcludeOption() {
         super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new ExcludeFilePatternOptionArgumentImpl(true), new StringBuilder(
@@ -75,7 +74,7 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
@@ -86,7 +85,7 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
     /**
      * {@inheritDoc}
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)

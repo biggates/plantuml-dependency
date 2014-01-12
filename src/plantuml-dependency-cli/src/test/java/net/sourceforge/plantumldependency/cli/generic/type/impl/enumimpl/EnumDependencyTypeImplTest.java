@@ -110,13 +110,12 @@ import static org.junit.Assert.assertTrue;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImpl;
-import net.sourceforge.plantumldependency.cli.generic.type.impl.enumimpl.EnumDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImpl;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -125,9 +124,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link EnumDependencyTypeImpl}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDependencyTypeImpl > {
 
@@ -217,7 +215,8 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getName()}.
+     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getName()}
+     * .
      */
     @Test
     public void testGetName() {

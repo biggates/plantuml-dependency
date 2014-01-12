@@ -24,12 +24,11 @@
 
 package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.impl;
 
-import static net.sourceforge.mazix.components.color.HTMLColor.ALICE_BLUE;
-import static net.sourceforge.mazix.components.color.HTMLColor.ANTIQUE_WHITE;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.UPPER_ALPHABET_CHAR;
+import static net.sourceforge.plantumldependency.common.color.HTMLColor.ALICE_BLUE;
+import static net.sourceforge.plantumldependency.common.color.HTMLColor.ANTIQUE_WHITE;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.UPPER_ALPHABET_CHAR;
 import static org.junit.Assert.assertEquals;
-import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
-import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -38,9 +37,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLSpottedCharacterImpl}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public class PlantUMLSpottedCharacterImplTest extends
         ComparableAndDeepCloneableObjectTest < PlantUMLSpottedCharacterImpl > {

@@ -25,11 +25,6 @@
 package net.sourceforge.plantumldependency.cli.constants;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_MANDATORY_OPTION_STATUS;
-import static net.sourceforge.mazix.cli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
-import static net.sourceforge.mazix.cli.utils.fileset.FileSetUtils.createFileSet;
-import static net.sourceforge.mazix.components.constants.CommonConstants.BLANK_STRING;
-import static net.sourceforge.mazix.components.constants.CommonConstants.CURRENT_DIRECTORY;
 import static net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImplTest.GENERIC_DEPENDENCY1;
 import static net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST1;
 import static net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST10;
@@ -53,14 +48,15 @@ import static net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDep
 import static net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST7;
 import static net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST8;
 import static net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImplTest.IMPORT_COLLECTION_TEST9;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.CURRENT_DIRECTORY;
+import static net.sourceforge.plantumldependency.commoncli.option.status.OptionStatus.ACTIVE_MANDATORY_OPTION_STATUS;
+import static net.sourceforge.plantumldependency.commoncli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
+import static net.sourceforge.plantumldependency.commoncli.utils.fileset.FileSetUtils.createFileSet;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.cli.command.CommandLine;
-import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
-import net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption;
-import net.sourceforge.mazix.cli.option.impl.verbose.VerboseOption;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.annotationimpl.AnnotationDependencyTypeImpl;
@@ -68,15 +64,19 @@ import net.sourceforge.plantumldependency.cli.generic.type.impl.classimpl.ClassA
 import net.sourceforge.plantumldependency.cli.generic.type.impl.classimpl.ClassDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.enumimpl.EnumDependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.interfaceimpl.InterfaceDependencyTypeImpl;
+import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
+import net.sourceforge.plantumldependency.commoncli.command.impl.CommandLineImpl;
+import net.sourceforge.plantumldependency.commoncli.option.impl.verbose.VerboseLevelOption;
+import net.sourceforge.plantumldependency.commoncli.option.impl.verbose.VerboseOption;
 
 import org.apache.tools.ant.types.FileSet;
 
 /**
  * The class which stores all necessary plantUML dependency constants used for Junit tests.
  *
- * @author Benjamin Croizet (graffity2199@yahoo.fr)
- * @since 1.0
- * @version 1.2.0
+ * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public final class PlantUMLDependencyTestConstants {
 
@@ -299,26 +299,28 @@ public final class PlantUMLDependencyTestConstants {
     /** Class dependency type test 17 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE17 = new ClassDependencyTypeImpl("Test",
             "com.plantuml.test", IMPORT_COLLECTION_TEST1, new GenericDependencyImpl("JavaProgramImpl",
-                    "net.sourceforge.mazix.cli.program.impl"), new TreeSet < GenericDependency >(),
+                    "net.sourceforge.plantumldependency.commoncli.program.impl"), new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >());
 
     /** Class dependency type test 18 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE18 = new ClassDependencyTypeImpl("TestImplements",
             "com.plantuml.test", IMPORT_COLLECTION_TEST1, null, new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
-                            "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >());
+                            "net.sourceforge.plantumldependency.commoncli.program")})),
+            new TreeSet < GenericDependency >());
 
     /** Class dependency type test 19 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE19 = new ClassDependencyTypeImpl("Test",
             "com.plantuml.test", IMPORT_COLLECTION_TEST8, new GenericDependencyImpl("JavaProgramImpl",
-                    "net.sourceforge.mazix.cli.program.impl"), new TreeSet < GenericDependency >(),
+                    "net.sourceforge.plantumldependency.commoncli.program.impl"), new TreeSet < GenericDependency >(),
             new TreeSet < GenericDependency >());
 
     /** Class dependency type test 20 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE20 = new ClassDependencyTypeImpl("TestImplements",
             "com.plantuml.test", IMPORT_COLLECTION_TEST9, null, new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
-                            "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >());
+                            "net.sourceforge.plantumldependency.commoncli.program")})),
+            new TreeSet < GenericDependency >());
 
     /** Class dependency type test 21 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE21 = new ClassDependencyTypeImpl(
@@ -342,13 +344,15 @@ public final class PlantUMLDependencyTestConstants {
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE24 = new ClassDependencyTypeImpl("TestImplements",
             "com.plantuml.test", IMPORT_COLLECTION_TEST13, null, new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("JavaProgram",
-                            "net.sourceforge.mazix.cli.program")})), new TreeSet < GenericDependency >());
+                            "net.sourceforge.plantumldependency.commoncli.program")})),
+            new TreeSet < GenericDependency >());
 
     /** Class dependency type test 25 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE25 = new ClassDependencyTypeImpl(
             "Test_Implements", "com.plantuml.te_st", IMPORT_COLLECTION_TEST14, null, new TreeSet < GenericDependency >(
                     asList(new GenericDependency[] {new GenericDependencyImpl("Java_Program",
-                            "net.sourceforge.mazix.cli.pro_gram")})), new TreeSet < GenericDependency >());
+                            "net.sourceforge.plantumldependency.commoncli.pro_gram")})),
+            new TreeSet < GenericDependency >());
 
     /** Class dependency type test 26 instance. */
     public static final ClassDependencyTypeImpl CLASS_DEPENDENCY_TYPE26 = new ClassDependencyTypeImpl("TestImplements",

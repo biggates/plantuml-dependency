@@ -24,8 +24,8 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.output;
 
-import static net.sourceforge.mazix.components.utils.file.FileUtils.readFileIntoString;
-import static net.sourceforge.mazix.components.utils.file.FileUtils.writeIntoFile;
+import static net.sourceforge.plantumldependency.common.utils.file.FileUtils.readFileIntoString;
+import static net.sourceforge.plantumldependency.common.utils.file.FileUtils.writeIntoFile;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET10;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET11;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET2;
@@ -49,8 +49,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
-import net.sourceforge.mazix.cli.exception.CommandLineException;
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
+import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.cli.main.option.output.PlantUMLDependencyOutputOptionExecution;
 
 import org.junit.After;
@@ -62,9 +62,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLDependencyOutputOptionExecution}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
- * @since 1.0
- * @version 1.2.0
+ * @since 1.0.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyOutputOptionExecutionTest extends
         DeepCloneableObjectTest < PlantUMLDependencyOutputOptionExecution > {
@@ -169,7 +168,7 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
     /**
      * This method is called before each test to reset the create a test file.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @Before
     public void initializeFiles() {
@@ -180,7 +179,7 @@ public class PlantUMLDependencyOutputOptionExecutionTest extends
      * This method is called after all tests, it is used to remove the temporary file used for the
      * tests.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @After
     public void removeFile() {

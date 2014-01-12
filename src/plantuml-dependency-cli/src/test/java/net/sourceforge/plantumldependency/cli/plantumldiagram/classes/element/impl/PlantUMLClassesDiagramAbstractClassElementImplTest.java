@@ -27,8 +27,7 @@ package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.i
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImplTest.PLANTUML_STEREOTYPE_TEST6;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.tag.PlantUMLClassesDiagramElementTag.ABSTRACT_CLASS_TAG;
 import static org.junit.Assert.assertEquals;
-import net.sourceforge.mazix.components.ComparableAndDeepCloneableObjectTest;
-import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImpl;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -37,9 +36,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLClassesDiagramAbstractClassElementImpl}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.1.1
+ * @version 1.3.0
  */
 public class PlantUMLClassesDiagramAbstractClassElementImplTest extends
         ComparableAndDeepCloneableObjectTest < PlantUMLClassesDiagramAbstractClassElementImpl > {
@@ -88,7 +86,7 @@ public class PlantUMLClassesDiagramAbstractClassElementImplTest extends
 
     /** PlantUML classes diagram abstract class element test 10 instance. */
     public static final PlantUMLClassesDiagramAbstractClassElementImpl PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST10 = new PlantUMLClassesDiagramAbstractClassElementImpl(
-            "net.sourceforge.mazix.cli.option.AbstractOption");
+            "net.sourceforge.plantumldependency.commoncli.option.AbstractOption");
 
     /**
      * Test method for

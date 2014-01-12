@@ -24,23 +24,23 @@
 
 package net.sourceforge.plantumldependency.cli.main.ant;
 
-import static net.sourceforge.mazix.components.utils.exception.ExceptionUtils.getStackTraceAsString;
-import static net.sourceforge.mazix.components.utils.map.MapUtils.putNonEmptyStringToMap;
 import static net.sourceforge.plantumldependency.cli.main.program.PlantUMLDependencyProgram.processProgramArguments;
+import static net.sourceforge.plantumldependency.common.utils.exception.ExceptionUtils.getStackTraceAsString;
+import static net.sourceforge.plantumldependency.common.utils.map.MapUtils.putNonEmptyStringToMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sourceforge.mazix.cli.option.impl.output.OutputOption;
-import net.sourceforge.mazix.cli.option.impl.verbose.VerboseLevelOption;
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
 import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayOption;
 import net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDependencyExcludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption;
+import net.sourceforge.plantumldependency.commoncli.option.impl.output.OutputOption;
+import net.sourceforge.plantumldependency.commoncli.option.impl.verbose.VerboseLevelOption;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
@@ -49,9 +49,8 @@ import org.apache.tools.ant.Task;
  * The PlantUML dependency <a href="http://ant.apache.org"><b>Ant</b></a> {@link Task}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.0
- * @version 1.1.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyProgramTask extends Task {
 

@@ -27,7 +27,7 @@ package net.sourceforge.plantumldependency.main.option.output;
 /**
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  *
- * @since 1.0
+ * @since 1.3.0
  * @version
  */
 public interface Readable {

@@ -25,7 +25,6 @@
 package net.sourceforge.plantumldependency.cli.plantumldiagram.classes.impl;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.mazix.components.constants.CommonConstants.LINE_SEPARATOR;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLConstants.END_PLANTUML;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLConstants.START_PLANTUML;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAbstractClassElementImplTest.PLANTUML_ABSTRACT_CLASS_ELEMENT_TEST3;
@@ -34,15 +33,15 @@ import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.ele
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramEnumElementImplTest.PLANTUML_ENUM_ELEMENT_TEST3;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramInterfaceElementImplTest.PLANTUML_INTERFACE_ELEMENT_TEST3;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramUseRelationImplTest.PLANTUML_USE_RELATION_TEST1;
+import static net.sourceforge.plantumldependency.common.constants.CommonConstants.LINE_SEPARATOR;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.TreeSet;
 
-import net.sourceforge.mazix.components.DeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
-import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
+import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -51,9 +50,8 @@ import org.junit.experimental.theories.DataPoint;
  * JUnit test classes for {@link PlantUMLClassesDiagramImpl}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.1
- * @version 1.2.0
+ * @version 1.3.0
  */
 public class PlantUMLClassesDiagramImplTest extends DeepCloneableObjectTest < PlantUMLClassesDiagramImpl > {
 

@@ -25,15 +25,13 @@
 package net.sourceforge.plantumldependency.cli.main.ant;
 
 import static java.util.logging.Level.INFO;
-import static net.sourceforge.mazix.components.constants.CharacterConstants.DOT_CHAR;
-import static net.sourceforge.mazix.components.constants.CommonFileConstants.TXT_EXTENSION;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_EXCLUDE_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_INCLUDE_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CommonFileConstants.TXT_EXTENSION;
 import static org.junit.Assert.assertEquals;
-
-import net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask;
 
 import org.junit.Test;
 
@@ -41,9 +39,8 @@ import org.junit.Test;
  * JUnit test classes for {@link PlantUMLDependencyProgramTask}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- *
  * @since 1.1.0
- * @version 1.2.0
+ * @version 1.3.0
  */
 public class PlantUMLDependencyProgramTaskTest {
 
@@ -73,7 +70,8 @@ public class PlantUMLDependencyProgramTaskTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask#execute()}.
+     * {@link net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask#execute()}
+     * .
      */
     @Test
     public void testExecute() {
