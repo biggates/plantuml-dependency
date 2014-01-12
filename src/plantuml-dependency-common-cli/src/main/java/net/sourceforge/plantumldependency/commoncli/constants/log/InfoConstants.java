@@ -27,7 +27,7 @@ package net.sourceforge.plantumldependency.commoncli.constants.log;
 /**
  * The class which defines all info messages constants which are written in the log file. The
  * messages also contains the info code.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
  * @version 1.3.0
@@ -35,14 +35,14 @@ package net.sourceforge.plantumldependency.commoncli.constants.log;
 public final class InfoConstants {
 
     /** The argument not specified info message. */
-    public static final String ARGUMENT_NOT_SPECIFIED_INFO = "[info-mazix-cli-000] : Argument of the option \"{0}\" not specified";
+    public static final String ARGUMENT_NOT_SPECIFIED_INFO = "[info-plantuml-dependency-commoncli-000] : Argument of the option \"{0}\" not specified";
 
     /** The option specified info message. */
-    public static final String OPTION_SPECIFIED_INFO = "[info-mazix-cli-001] : Option \"{0}\" has been specified";
+    public static final String OPTION_SPECIFIED_INFO = "[info-plantuml-dependency-commoncli-001] : Option \"{0}\" has been specified";
 
     /**
      * Private constructor to prevent from instantiation.
-     * 
+     *
      * @since 1.3.0
      */
     private InfoConstants() {
