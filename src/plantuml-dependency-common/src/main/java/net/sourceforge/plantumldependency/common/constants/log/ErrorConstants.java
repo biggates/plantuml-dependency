@@ -35,28 +35,28 @@ package net.sourceforge.plantumldependency.common.constants.log;
 public final class ErrorConstants {
 
     /** The close file error message. */
-    public static final String CLOSE_FILE_ERROR = "[error-mazix-components-007] : An error has occurred while closing file ({0})";
+    public static final String CLOSE_FILE_ERROR = "[error-plantuml-dependency-common-000] : An error has occurred while closing file ({0})";
 
     /** The close stream error message. */
-    public static final String CLOSE_STREAM_ERROR = "[error-mazix-components-008] : An error has occurred while closing a stream";
+    public static final String CLOSE_STREAM_ERROR = "[error-plantuml-dependency-common-001] : An error has occurred while closing a stream";
 
     /** The immutable date error message. */
-    public static final String IMMUTABLE_DATE_ERROR = "[error-mazix-components-012] : The date instance {0} is immutable, can't update it";
+    public static final String IMMUTABLE_DATE_ERROR = "[error-plantuml-dependency-common-002] : The date instance {0} is immutable, can't update it";
 
     /** The malformed error message. */
-    public static final String MALFORMED_URL_ERROR = "[error-mazix-components-019] : The URL {0} is malformed, can't parse it as a valid URL";
+    public static final String MALFORMED_URL_ERROR = "[error-plantuml-dependency-common-003] : The URL {0} is malformed, can't parse it as a valid URL";
 
     /** The missing logging file error message. */
-    public static final String MISSING_LOGGING_FILE_ERROR = "[error-mazix-components-020] : The logging file \"{0}\" can't be found";
+    public static final String MISSING_LOGGING_FILE_ERROR = "[error-plantuml-dependency-common-004] : The logging file \"{0}\" can't be found";
 
     /** The read file error message. */
-    public static final String READ_FILE_ERROR = "[error-mazix-components-027] : An error has occurred while reading file ({0})";
+    public static final String READ_FILE_ERROR = "[error-plantuml-dependency-common-005] : An error has occurred while reading file ({0})";
 
     /** The unexpected exception error message. */
-    public static final String UNEXPECTED_ERROR = "[error-mazix-components-030] : A severe and unexpected error has occurred";
+    public static final String UNEXPECTED_ERROR = "[error-plantuml-dependency-common-006] : A severe and unexpected error has occurred";
 
     /** The write file error message. */
-    public static final String WRITE_FILE_ERROR = "[error-mazix-components-032] : An error has occurred while writing file ({0})";
+    public static final String WRITE_FILE_ERROR = "[error-plantuml-dependency-common-007] : An error has occurred while writing file ({0})";
 
     /**
      * Private constructor to prevent from instantiation.

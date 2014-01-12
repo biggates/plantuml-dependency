@@ -35,10 +35,10 @@ package net.sourceforge.plantumldependency.common.constants.log;
 public final class InfoConstants {
 
     /** The read file info message. */
-    public static final String READ_FILE_INFO = "[info-mazix-components-005] : Reading file content {0}...";
+    public static final String READ_FILE_INFO = "[info-plantuml-dependency-common-000] : Reading file content {0}...";
 
     /** The write file info message. */
-    public static final String WRITE_FILE_INFO = "[info-mazix-components-008] : Writing content into file {0}...";
+    public static final String WRITE_FILE_INFO = "[info-plantuml-dependency-common-002] : Writing content into file {0}...";
 
     /**
      * Private constructor to prevent from instantiation.

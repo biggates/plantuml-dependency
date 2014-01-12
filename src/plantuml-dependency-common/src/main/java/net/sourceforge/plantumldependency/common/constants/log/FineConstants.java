@@ -35,13 +35,13 @@ package net.sourceforge.plantumldependency.common.constants.log;
 public final class FineConstants {
 
     /** The ignoring map key fine message. */
-    public static final String IGNORING_MAP_KEY_FINE = "[fine-mazix-components-001] : Ignoring the key to put in the map because it is null...";
+    public static final String IGNORING_MAP_KEY_FINE = "[fine-plantuml-dependency-common-000] : Ignoring the key to put in the map because it is null...";
 
     /** The ignoring map value fine message. */
-    public static final String IGNORING_MAP_VALUE_FINE = "[fine-mazix-components-002] : Ignoring the value to put in the map because it is null...";
+    public static final String IGNORING_MAP_VALUE_FINE = "[fine-plantuml-dependency-common-001] : Ignoring the value to put in the map because it is null...";
 
     /** The system property not to display fine message. */
-    public static final String SYSTEM_PROPERTY_NOT_TO_DISPLAY_FINE = "[fine-mazix-components-007] : The system property \"{0}\" doesn't have to be displayed, ignoring it";
+    public static final String SYSTEM_PROPERTY_NOT_TO_DISPLAY_FINE = "[fine-plantuml-dependency-commons-002] : The system property \"{0}\" doesn't have to be displayed, ignoring it";
 
     /**
      * Private constructor to prevent from instantiation.
