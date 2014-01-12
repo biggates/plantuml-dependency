@@ -35,103 +35,103 @@ package net.sourceforge.plantumldependency.cli.constants.log;
 public final class ErrorConstants {
 
     /** The base directory option null error message. */
-    public static final String BASE_DIRECTORY_OPTION_NULL_ERROR = "[error-plantuml-dependency-000] : The base directory option is null";
+    public static final String BASE_DIRECTORY_OPTION_NULL_ERROR = "[error-plantuml-dependency-cli-000] : The base directory option is null";
 
     /** The C++ not implemented yet error message. */
-    public static final String CPP_NOT_IMPLEMENTED_YET_ERROR = "[error-plantuml-dependency-001] : CPP isn't implemented yet, should come in a next release ;-)";
+    public static final String CPP_NOT_IMPLEMENTED_YET_ERROR = "[error-plantuml-dependency-cli-001] : CPP isn't implemented yet, should come in a next release ;-)";
 
     /** The dependency name null error message. */
-    public static final String DEPENDENCY_NAME_NULL_ERROR = "[error-plantuml-dependency-002] : The dependency name is null";
+    public static final String DEPENDENCY_NAME_NULL_ERROR = "[error-plantuml-dependency-cli-002] : The dependency name is null";
 
     /** The dependency null error message. */
-    public static final String DEPENDENCY_NULL_ERROR = "[error-plantuml-dependency-003] : The dependency is null";
+    public static final String DEPENDENCY_NULL_ERROR = "[error-plantuml-dependency-cli-003] : The dependency is null";
 
     /** The dependency type null error message. */
-    public static final String DEPENDENCY_TYPE_NULL_ERROR = "[error-plantuml-dependency-004] : The dependency type is null";
+    public static final String DEPENDENCY_TYPE_NULL_ERROR = "[error-plantuml-dependency-cli-004] : The dependency type is null";
 
     /** The display option null error message. */
-    public static final String DISPLAY_OPTION_NULL_ERROR = "[error-plantuml-dependency-005] : The display option is null";
+    public static final String DISPLAY_OPTION_NULL_ERROR = "[error-plantuml-dependency-cli-005] : The display option is null";
 
     /** The exclude option null error message. */
-    public static final String EXCLUDE_OPTION_NULL_ERROR = "[error-plantuml-dependency-006] : The exclude option is null";
+    public static final String EXCLUDE_OPTION_NULL_ERROR = "[error-plantuml-dependency-cli-006] : The exclude option is null";
 
     /** The impossible java parent type null error message. */
-    public static final String IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR = "[error-plantuml-dependency-007] : The java parent type \"{0}\" is not available for this java type \"{1}\"";
+    public static final String IMPOSSIBLE_JAVA_PARENT_TYPE_NULL_ERROR = "[error-plantuml-dependency-cli-007] : The java parent type \"{0}\" is not available for this java type \"{1}\"";
 
     /** The include option null error message. */
-    public static final String INCLUDE_OPTION_NULL_ERROR = "[error-plantuml-dependency-008] : The include option is null";
+    public static final String INCLUDE_OPTION_NULL_ERROR = "[error-plantuml-dependency-cli-008] : The include option is null";
 
     /** The java annotation type name null error message. */
-    public static final String JAVA_ANNOTATION_TYPE_NAME_NULL_ERROR = "[error-plantuml-dependency-009] : The java annotation type name is null";
+    public static final String JAVA_ANNOTATION_TYPE_NAME_NULL_ERROR = "[error-plantuml-dependency-cli-009] : The java annotation type name is null";
 
     /** The java annotation type null error message. */
-    public static final String JAVA_ANNOTATION_TYPE_PACKAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-010] :  The java annotation type package name is null";
+    public static final String JAVA_ANNOTATION_TYPE_PACKAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-cli-010] :  The java annotation type package name is null";
 
     /** The java parent type name null error message. */
-    public static final String JAVA_PARENT_TYPE_NAME_NULL_ERROR = "[error-plantuml-dependency-011] : The java parent type name is null";
+    public static final String JAVA_PARENT_TYPE_NAME_NULL_ERROR = "[error-plantuml-dependency-cli-011] : The java parent type name is null";
 
     /** The java parent type null error message. */
-    public static final String JAVA_PARENT_TYPE_NULL_ERROR = "[error-plantuml-dependency-012] : The java parent type is null";
+    public static final String JAVA_PARENT_TYPE_NULL_ERROR = "[error-plantuml-dependency-cli-012] : The java parent type is null";
 
     /** The java parent type package name null error message. */
-    public static final String JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-013] : The java parent type package name is null";
+    public static final String JAVA_PARENT_TYPE_PACKAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-cli-013] : The java parent type package name is null";
 
     /** The parent type string not empty error message. */
-    public static final String JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR = "[error-plantuml-dependency-014] : The java parent type string \"{0}\" should be null for this java type \"{1}\"";
+    public static final String JAVA_PARENT_TYPE_STRING_NOT_EMPTY_NULL_ERROR = "[error-plantuml-dependency-cli-014] : The java parent type string \"{0}\" should be null for this java type \"{1}\"";
 
     /** The unknown java parent type error message. */
-    public static final String JAVA_PARENT_TYPE_UNKNOWN_ERROR = "[error-plantuml-dependency-015] : The java parent type \"{0}\" is unknown";
+    public static final String JAVA_PARENT_TYPE_UNKNOWN_ERROR = "[error-plantuml-dependency-cli-015] : The java parent type \"{0}\" is unknown";
 
     /** The java type annotations dependencies null error message. */
-    public static final String JAVA_TYPE_ANNOTATIONS_NULL_ERROR = "[error-plantuml-dependency-016] : The java type annotations dependencies is null";
+    public static final String JAVA_TYPE_ANNOTATIONS_NULL_ERROR = "[error-plantuml-dependency-cli-016] : The java type annotations dependencies is null";
 
     /** The java type can't be extracted error message. */
-    public static final String JAVA_TYPE_CANT_BE_EXTRACTED_ERROR = "[error-plantuml-dependency-017] : The java type can't be extracted from the content \"{0}\"";
+    public static final String JAVA_TYPE_CANT_BE_EXTRACTED_ERROR = "[error-plantuml-dependency-cli-017] : The java type can't be extracted from the content \"{0}\"";
 
     /** The java type extensions dependencies null error message. */
-    public static final String JAVA_TYPE_EXTENTIONS_NULL_ERROR = "[error-plantuml-dependency-018] : The java type extensions dependencies is null";
+    public static final String JAVA_TYPE_EXTENTIONS_NULL_ERROR = "[error-plantuml-dependency-cli-018] : The java type extensions dependencies is null";
 
     /** The java type extensions too many elements error message. */
-    public static final String JAVA_TYPE_EXTENTIONS_TOO_MANY_ELEMENTS_ERROR = "[error-plantuml-dependency-019] : The java type extensions dependencies has too many elements";
+    public static final String JAVA_TYPE_EXTENTIONS_TOO_MANY_ELEMENTS_ERROR = "[error-plantuml-dependency-cli-019] : The java type extensions dependencies has too many elements";
 
     /** The java type implementations dependencies null error message. */
-    public static final String JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR = "[error-plantuml-dependency-020] : The java type implementations dependencies is null";
+    public static final String JAVA_TYPE_IMPLEMENTATIONS_NULL_ERROR = "[error-plantuml-dependency-cli-020] : The java type implementations dependencies is null";
 
     /** The java type import dependencies null error message. */
-    public static final String JAVA_TYPE_IMPORTS_NULL_ERROR = "[error-plantuml-dependency-021] : The java type import dependencies is null";
+    public static final String JAVA_TYPE_IMPORTS_NULL_ERROR = "[error-plantuml-dependency-cli-021] : The java type import dependencies is null";
 
     /** The java type language keyword null error message. */
-    public static final String JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR = "[error-plantuml-dependency-022] : The java type language keyword is null";
+    public static final String JAVA_TYPE_LANGUAGE_KEYWORD_NULL_ERROR = "[error-plantuml-dependency-cli-022] : The java type language keyword is null";
 
     /** The java type name null error message. */
-    public static final String JAVA_TYPE_NAME_NULL_ERROR = "[error-plantuml-dependency-023] : The java type name is null";
+    public static final String JAVA_TYPE_NAME_NULL_ERROR = "[error-plantuml-dependency-cli-023] : The java type name is null";
 
     /** The java type package name null error message. */
-    public static final String JAVA_TYPE_PACKAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-024] : The java type package name is null";
+    public static final String JAVA_TYPE_PACKAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-cli-024] : The java type package name is null";
 
     /** The not display argument error message. */
-    public static final String NOT_DISPLAY_ARGUMENT_ERROR = "[error-plantuml-dependency-025] : Can't parse option argument \"{0}\", it isn't a valid display argument";
+    public static final String NOT_DISPLAY_ARGUMENT_ERROR = "[error-plantuml-dependency-cli-025] : Can't parse option argument \"{0}\", it isn't a valid display argument";
 
     /** The several display arguments error message. */
-    public static final String SEVERAL_DISPLAY_ARGUMENTS_ERROR = "[error-plantuml-dependency-026] : The display argument \"{0}\" is defined several times";
+    public static final String SEVERAL_DISPLAY_ARGUMENTS_ERROR = "[error-plantuml-dependency-cli-026] : The display argument \"{0}\" is defined several times";
 
     /** The plantUML dependency error message. */
-    public static final String PLANTUML_DEPENDENCY_ERROR = "[error-plantuml-dependency-027] : An error has occured while running PlantUML Dependency, please check the log for more information";
+    public static final String PLANTUML_DEPENDENCY_ERROR = "[error-plantuml-dependency-cli-027] : An error has occured while running PlantUML Dependency, please check the log for more information";
 
     /** The programming language name null error message. */
-    public static final String PROGRAMMING_LANGUAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-028] : The programming language name is null";
+    public static final String PROGRAMMING_LANGUAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-cli-028] : The programming language name is null";
 
     /** The programming language option null error message. */
-    public static final String PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR = "[error-plantuml-dependency-029] : The programming language option is null";
+    public static final String PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR = "[error-plantuml-dependency-cli-029] : The programming language option is null";
 
     /** The reading source file error message. */
-    public static final String READING_SOURCE_FILE_ERROR = "[error-plantuml-dependency-030] : Severe parsing errors have occurred while reading the source file \"{0}\", the file will be ignored";
+    public static final String READING_SOURCE_FILE_ERROR = "[error-plantuml-dependency-cli-030] : Severe parsing errors have occurred while reading the source file \"{0}\", the file will be ignored";
 
     /** The unknown programming language error message. */
-    public static final String UNKNOWN_JAVA_TYPE_ERROR = "[error-plantuml-dependency-031] : The java type \"{0}\" is unknown";
+    public static final String UNKNOWN_JAVA_TYPE_ERROR = "[error-plantuml-dependency-cli-031] : The java type \"{0}\" is unknown";
 
     /** The unknown programming language error message. */
-    public static final String UNKNOWN_PROGRAMMING_LANGUAGE_ERROR = "[error-plantuml-dependency-032] : The programming language \"{0}\" is unknown";
+    public static final String UNKNOWN_PROGRAMMING_LANGUAGE_ERROR = "[error-plantuml-dependency-cli-032] : The programming language \"{0}\" is unknown";
 
     /**
      * Private constructor to prevent from instantiation.

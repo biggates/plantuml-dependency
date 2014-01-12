@@ -35,16 +35,16 @@ package net.sourceforge.plantumldependency.cli.constants.log;
 public final class InfoConstants {
 
     /** The execution time info message. */
-    public static final String EXECUTION_TIME_INFO = "[info-plantuml-dependency-000] : Executed in \"{0}\" ms";
+    public static final String EXECUTION_TIME_INFO = "[info-plantuml-dependency-cli-000] : Executed in \"{0}\" ms";
 
     /** The PlantUML dependency arguments info message. */
-    public static final String PLANTUML_DEPENDENCY_ARGUMENTS_INFO = "[info-plantuml-dependency-001] : PlantUML Dependency arguments : \"{0}\"";
+    public static final String PLANTUML_DEPENDENCY_ARGUMENTS_INFO = "[info-plantuml-dependency-cli-001] : PlantUML Dependency arguments : \"{0}\"";
 
     /** The starting PlantUML dependency info message. */
-    public static final String STARTING_PLANTUML_DEPENDENCY_INFO = "[info-plantuml-dependency-002] : Starting PlantUML Dependency";
+    public static final String STARTING_PLANTUML_DEPENDENCY_INFO = "[info-plantuml-dependency-cli-002] : Starting PlantUML Dependency";
 
     /** The treated dependencies info message. */
-    public static final String TREATED_DEPENDENCY_INFO = "[info-plantuml-dependency-003] : Number of processed dependencies : \"{0}\"";
+    public static final String TREATED_DEPENDENCY_INFO = "[info-plantuml-dependency-cli-003] : Number of processed dependencies : \"{0}\"";
 
     /**
      * Private constructor to prevent from instantiation.
