@@ -8,7 +8,7 @@
 		<java.version>1.6</java.version>
 	</properties>
 	<!-- Project information -->
-	<groupId>net.sourceforge.plantumldependency</groupId>
+	<groupId>net.sourceforge.plantuml-depend</groupId>
 	<artifactId>plantuml-dependency-common</artifactId>
 	<version>1.3.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
