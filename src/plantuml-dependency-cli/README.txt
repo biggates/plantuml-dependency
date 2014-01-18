@@ -1,6 +1,11 @@
 PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net)
 =====================================================================================================================================
 
+19, Jan 2014 - 1.3.0
+====================
+- Maven module refactoring, by creating plantuml-dependency-common and plantuml-dependency-commoncli artifacts, in order to publish the whole PlantUML Dependency source code to the Maven Central Repository (feature 14)
+- Testing and making compliance with Maven 3.1.1 / JDK 7u51 (feature 34)
+
 3, Nov 2013 - 1.2.0
 ====================
 - Introducing a new and powerful feature : the Display option which allows to filter output elements and relations, such as classes, interfaces, enums, abstract classes, annotations and so on... Ant task and help messages have been updated. (feature 3)
@@ -47,7 +52,7 @@ Command line Usage
 ====================
 
 Usage:
-	java -jar plantuml-dependency-1.2.0.jar [OPTIONS]
+	java -jar plantuml-dependency-cli-1.3.0.jar [OPTIONS]
 
 
 where optional options are:
@@ -87,10 +92,10 @@ where optional options are:
 
 Examples:
 
-	java -jar plantuml-dependency-1.2.0.jar -h
-	java -jar plantuml-dependency-1.2.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d implementations,interfaces,extensions,imports,static_imports -v
-	java -jar plantuml-dependency-1.2.0.jar -o plantuml.txt -b "C:\Users\PlantUML test" -i **/*Test.java
-	java -jar plantuml-dependency-1.2.0.jar -version -v
+	java -jar plantuml-dependency-cli-1.3.0.jar -h
+	java -jar plantuml-dependency-cli-1.3.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d implementations,interfaces,extensions,imports,static_imports -v
+	java -jar plantuml-dependency-cli-1.3.0.jar -o plantuml.txt -b "C:\Users\PlantUML test" -i **/*Test.java
+	java -jar plantuml-dependency-cli-1.3.0.jar -version -v
 
 Known bugs or program limitations:
 

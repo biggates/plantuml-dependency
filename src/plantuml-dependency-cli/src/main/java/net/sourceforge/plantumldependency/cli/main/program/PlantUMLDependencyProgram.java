@@ -170,7 +170,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
      */
     private PlantUMLDependencyProgram(final ProgramVersion programVersion) throws MalformedURLException,
             CommandLineException {
-        super("PlantUML Dependency", new URL("http://plantuml-depend.sourceforge.net"), "plantuml-dependency-"
+        super("PlantUML Dependency", new URL("http://plantuml-depend.sourceforge.net"), "plantuml-dependency-cli-"
                 + programVersion.getFullVersionNumber() + ".jar", asList(new String[] {
                 "GPL v3, 29 June 2007 (http://www.gnu.org/licenses/gpl-3.0.txt)",
                 "LGPL v3, 29 June 2007 (http://www.gnu.org/licenses/lgpl-3.0.txt)"}),
