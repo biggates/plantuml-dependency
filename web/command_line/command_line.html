@@ -29,7 +29,7 @@
 			<li><a href="../news/news.html">What's New ?</a></li>
 			<li><a href="../running/running.html">Running</a></li>
 			<li><a href="../site_map/site_map.html">Site map</a></li>
-			<li><a href="../maven-site/index.html">Maven site</a></li>
+			<li><a href="../maven-site/maven-site.html">Maven site</a></li>
 			<li><a href="../faq/faq.html">F.A.Q.</a></li>
 			<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
 			<li><a href="../external_links/external_links.html">External Links</a></li>
@@ -42,7 +42,7 @@
 			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border: 0"
 				src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS !" height="31" width="88" /></a>
 		</p>
-		<font size="1">Last update : 3 Nov, 2013</font>
+		<font size="1">Last update : 19 Jan, 2014</font>
 	</div>
 	<div id="corps">
 		<h2>Command line</h2>
@@ -51,7 +51,7 @@
 		</p>
 		<div class="scriptplantu">
 			<ul>
-				<li>java -jar plantuml-dependency-1.2.0.jar -o plantuml.txt</li>
+				<li>java -jar plantuml-dependency-cli-1.3.0.jar -o plantuml.txt</li>
 			</ul>
 		</div>
 		<p>
@@ -61,7 +61,7 @@
 		<p>For processing an other directory, you can use :</p>
 		<div class="scriptplantu">
 			<ul>
-				<li>java -jar plantuml-dependency-1.2.0.jar -b "c:/directory1"</li>
+				<li>java -jar plantuml-dependency-cli-1.3.0.jar -b "c:/directory1"</li>
 			</ul>
 		</div>
 		<p>
@@ -70,13 +70,13 @@
 		</p>
 		<div class="scriptplantu">
 			<ul>
-				<li>java -jar plantuml-dependency-1.2.0.jar -i **/*Test*.java -e **/*Generated*.java</li>
+				<li>java -jar plantuml-dependency-cli-1.3.0.jar -i **/*Test*.java -e **/*Generated*.java</li>
 			</ul>
 		</div>
 		<p>To change the output file path, you can use :</p>
 		<div class="scriptplantu">
 			<ul>
-				<li>java -jar plantuml-dependency-1.2.0.jar -o "c:/directory1/test-plantuml.txt"</li>
+				<li>java -jar plantuml-dependency-cli-1.3.0.jar -o "c:/directory1/test-plantuml.txt"</li>
 			</ul>
 		</div>
 		<p>
@@ -85,21 +85,21 @@
 		</p>
 		<div class="scriptplantu">
 			<ul>
-				<li>java -jar plantuml-dependency-1.2.0.jar -d interfaces,implementations,extensions,imports,static_imports</li>
+				<li>java -jar plantuml-dependency-cli-1.3.0.jar -d interfaces,implementations,extensions,imports,static_imports</li>
 			</ul>
 		</div>
 		<h3>Version</h3>
 		<p>To output the program version, you can use :</p>
 		<div class="scriptplantu">
 			<ul>
-				<li>java -jar plantuml-dependency-1.2.0.jar -version</li>
+				<li>java -jar plantuml-dependency-cli-1.3.0.jar -version</li>
 			</ul>
 		</div>
 		<h3>Help</h3>
 		<p>You can have an help message by launching :</p>
 		<div class="scriptplantu">
 			<ul>
-				<li>java -jar plantuml-dependency-1.2.0.jar --help</li>
+				<li>java -jar plantuml-dependency-cli-1.3.0.jar --help</li>
 			</ul>
 		</div>
 		<p>This will output :</p>
@@ -108,7 +108,7 @@
 PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net)
 
 Usage:
-	java -jar plantuml-dependency-1.2.0.jar [OPTIONS]
+	java -jar plantuml-dependency-cli-1.3.0.jar [OPTIONS]
 
 
 where optional options are:
@@ -148,10 +148,10 @@ where optional options are:
 
 Examples:
 
-	java -jar plantuml-dependency-1.2.0.jar -h
-	java -jar plantuml-dependency-1.2.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d implementations,interfaces,extensions,imports,static_imports -v
-	java -jar plantuml-dependency-1.2.0.jar -o plantuml.txt -b "C:\Users\PlantUML test" -i **/*Test.java
-	java -jar plantuml-dependency-1.2.0.jar -version -v
+	java -jar plantuml-dependency-cli-1.3.0.jar -h
+	java -jar plantuml-dependency-cli-1.3.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d implementations,interfaces,extensions,imports,static_imports -v
+	java -jar plantuml-dependency-cli-1.3.0.jar -o plantuml.txt -b "C:\Users\PlantUML test" -i **/*Test.java
+	java -jar plantuml-dependency-cli-1.3.0.jar -version -v
 
 Known bugs or program limitations:
 

@@ -29,7 +29,7 @@
 			<li><a href="../news/news.html">What's New ?</a></li>
 			<li><a href="../running/running.html">Running</a></li>
 			<li><a href="../site_map/site_map.html">Site map</a></li>
-			<li><a href="../maven-site/index.html">Maven site</a></li>
+			<li><a href="../maven-site/maven-site.html">Maven site</a></li>
 			<li><a href="../faq/faq.html">F.A.Q.</a></li>
 			<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
 			<li><a href="../external_links/external_links.html">External Links</a></li>
@@ -42,11 +42,137 @@
 			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border: 0"
 				src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS !" height="31" width="88" /></a>
 		</p>
-		<font size="1">Last update : 3 Nov, 2013</font>
+		<font size="1">Last update : 19 Jan, 2014</font>
 	</div>
 	<div id="corps">
 		<h2>Understanding the PlantUML Dependency Display option</h2>
-		<h3>Under construction...</h3>
+		<h3>Definition</h3>
+		<p>This option is used to filter objects which will appear in the result PlantUML file. It is different from <i>exclude</i> and <i>include</i> options which filter parsed files.</p>
+		<p>Here is the current list of all supported display options (others may be added in future versions) :</p>
+		<ul>
+			<li><b><i>abstract_classes</i></b> : displays parsed source files which are abstract classes and relations to abstract classes</li>
+			<li><b><i>annotations</i></b> : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations</li>
+			<li><b><i>classes</i></b> : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes</li>
+			<li><b><i>enums</i></b> : displays parsed source files which are enums and relations to enums</li>
+			<li><b><i>extensions</i></b> : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed</li>
+			<li><b><i>implementations</i></b> : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed</li>
+			<li><b><i>imports</i></b> : displays relations from parsed source files to import dependencies (not static) if their type is displayed</li>
+			<li><b><i>interfaces</i></b> : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces</li>
+			<li><b><i>native_methods</i></b> : displays relations from parsed source files to the native dependency if they use native methods</li>
+			<li><b><i>static_imports</i></b> : displays relations from parsed source files to import dependencies (only static) if their type is displayed</li>
+		</ul>
+		<h3>Simple example</h3>
+		<p>Considering this simple Java file :</p>
+		<div class="scriptplantu">
+			<pre>
+package output;
+
+import output.test.Enum1;
+import output.test.Class2;
+import output.test.Class3;
+import output.test.Interface1;
+import output.test.Interface3;
+import static output.test.Class4.MAX_LENGTH;
+
+@Deprecated
+public class Class1 extends Class3 < String > implements Interface1 {
+
+    public static native void register_Natives();
+
+    @Override
+    public int count() {
+        return 0;
+    }
+}
+				</pre>
+		</div>
+		<p>Considering that all objects are known, here is the list of all dependencies of this class :</p>
+		<ul>
+			<li><b><i>output.Class1</i></b> : the current parsed object, which is a <i>class</i></li>
+			<li><b><i>output.test.Enum1</i></b> : an <i>enum</i> dependency, linked to the current parsed object by an <i>use relation</i> (because it is only declared through imports)</li>
+			<li><b><i>output.test.Class2</i></b> : a <i>class</i> dependency, linked to the current parsed object by an <i>use relation</i> (because it is only declared through imports)</li>
+			<li><b><i>output.test.Class3</i></b> : a <i>class</i> dependency, linked to the current parsed object by an <i>extension relation</i> (because it is declared through the <i>extend</i> key word). Even if it is also declared through imports, it is only considered as an <i>extension relation</i></li>
+			<li><b><i>output.test.Interface1</i></b> : an <i>interface</i> dependency, linked to the current parsed object by an <i>implementation relation</i> (because it is declared through the <i>implement</i> key word). Even if it is also declared through imports, it is only considered as an <i>implementation relation</i></li>
+			<li><b><i>output.test.Interface3</i></b> : an <i>interface</i> dependency, linked to the current parsed object by an <i>use relation</i>  (because it is only declared through imports)</li>
+			<li><b><i>output.test.Class4</i></b> : a <i>class</i> dependency, linked to the current parsed object by an <i>use relation</i> (because it is only declared through static imports)</li>
+			<li><b><i>java.lang.Deprecated</i></b> : an <i>annotation</i> dependency, linked to the current parsed object by an <i>use relation</i></li>
+			<li><b><i>java.lang.Override</i></b> : an <i>annotation</i> dependency, linked to the current parsed object by an <i>use relation</i></li>
+		</ul>
+		<h3>Tests</h3>
+		<p>Now, let's play with different options to see the result :</p>
+		<p>The default option <b>-d abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports</b> will display all objects and all relations, in our case this will only generate :</p>
+		<div class="scriptplantu">
+			<pre>
+@startuml
+annotation java.lang.Deprecated
+annotation java.lang.Override
+class javax.native.NativeCall << (N,#ffff00) >>
+class output.Class1
+class output.test.Class2
+class output.test.Class3
+class output.test.Class4
+enum output.test.Enum1
+interface output.test.Interface3
+interface output.test.Interface1
+output.Class1 ..> java.lang.Deprecated
+output.Class1 ..> java.lang.Override
+output.Class1 ..> javax.native.NativeCall
+output.Class1 ..> output.test.Class2
+output.Class1 --|> output.test.Class3
+output.Class1 ..> output.test.Class4
+output.Class1 ..> output.test.Enum1
+output.Class1 ..> output.test.Interface3
+output.Class1 --|> output.test.Interface1
+@enduml
+			</pre>
+		</div>
+		<p>The option <b>-d interfaces,implementations,extensions,imports,static_imports</b> will display all interfaces with relations to interfaces, in our case this will only generate :</p>
+		<div class="scriptplantu">
+			<pre>
+@startuml
+interface output.test.Interface1
+interface output.test.Interface3
+@enduml
+			</pre>
+		</div>
+		<p>The option <b>-d classes,interfaces,implementations,extensions,imports,static_imports</b> will display all classes and interfaces with relations to classes and interfaces, in our case this will only generate :</p>
+		<div class="scriptplantu">
+			<pre>
+@startuml
+class output.Class1
+class output.test.Class2
+class output.test.Class3
+class output.test.Class4
+interface output.test.Interface1
+interface output.test.Interface3
+output.Class1 ..> output.test.Class2
+output.Class1 ..> output.test.Class4
+output.Class1 ..> output.test.Interface3
+output.Class1 --|> output.test.Interface1
+@enduml
+			</pre>
+		</div>
+		<p>The option <b>-d native_methods</b> will display the native object if one of the parsed object uses it, in our case this will only generate :</p>
+		<div class="scriptplantu">
+			<pre>
+@startuml
+class javax.native.NativeCall << (N,#ffff00) >>
+@enduml
+			</pre>
+		</div>
+		<p>The option <b>-d native_methods,classes</b> will display all classes, the native object if one of the parsed object uses it and all relations between classes and the native object, in our case this will only generate :</p>
+		<div class="scriptplantu">
+			<pre>
+@startuml
+class javax.native.NativeCall << (N,#ffff00) >>
+class output.Class1
+class output.test.Class2
+class output.test.Class3
+class output.test.Class4
+output.Class1 ..> javax.native.NativeCall
+@enduml
+			</pre>
+		</div>
 	</div>
 	<div id="pied_de_page">
 		<table>

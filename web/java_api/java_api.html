@@ -29,7 +29,7 @@
 			<li><a href="../news/news.html">What's New ?</a></li>
 			<li><a href="../running/running.html">Running</a></li>
 			<li><a href="../site_map/site_map.html">Site map</a></li>
-			<li><a href="../maven-site/index.html">Maven site</a></li>
+			<li><a href="../maven-site/maven-site.html">Maven site</a></li>
 			<li><a href="../faq/faq.html">F.A.Q.</a></li>
 			<li><a href="../current_issues/current_issues.html">Current Issues</a></li>
 			<li><a href="../external_links/external_links.html">External Links</a></li>
@@ -42,29 +42,38 @@
 			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border: 0"
 				src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS !" height="31" width="88" /></a>
 		</p>
-		<font size="1">Last update : 3 Nov, 2013</font>
+		<font size="1">Last update : 19 Jan, 2014</font>
 	</div>
 	<div id="corps">
 		<h2>Calling PlantUML from Java</h2>
 		<p>
-			You can easily integrate PlantUML Dependency with your own code by adding <i>plantuml-dependency.jar</i> in your
+			You can easily integrate PlantUML Dependency with your own code by adding PlantUML Dependency Jars in your
 			classpath.
 		</p>
 		<p>
-			As the Maven integration is not done yet (opened feature <a
-				href="http://sourceforge.net/p/plantuml-depend/feature-requests/14/"><b>14</b></a>), you have two choices to
-			integrate PlantUML Dependency in your classpath :
+			You have several choices to integrate PlantUML Dependency in your classpath :
 		</p>
 		<ul>
-			<li>By adding <b>plantuml-dependency-1.1.0-jar-with-dependencies.jar</b> (download it <a
+			<li>By adding <b>plantuml-dependency-1.3.0-jar-with-dependencies.jar</b> (download it <a
 				style="text-decoration: none;"
-				href="http://sourceforge.net/projects/plantuml-depend/files/1.2.0/plantuml-dependency-1.2.0-archive-with-bundled-dependencies.tar.gz/download">here</a>)
-				in your classpath
+				href="http://sourceforge.net/projects/plantuml-depend/files/1.3.0/plantuml-dependency-1.3.0-archive-with-bundled-dependencies.tar.gz/download">here</a>)
+				in your classpath if you don't use Maven and you want all dependencies in a single Jar
 			</li>
-			<li>By adding <b>mazix-components-1.1.5.jar, mazix-cli-1.0.6.jar, ant-launcher-1.8.4.jar, ant-1.8.4.jar and
-					plantuml-dependency-1.2.0.jar</b> (download them <a style="text-decoration: none;"
-				href="http://sourceforge.net/projects/plantuml-depend/files/1.2.0/plantuml-dependency-1.2.0-archive-with-external-dependencies.tar.gz/download">here</a>)
-				in your classpath
+			<li>By adding <b>ant-launcher-1.8.4.jar, ant-1.8.4.jar, plantuml-dependency-cli-1.3.0.jar, plantuml-dependency-common-cli-1.3.0.jar and
+					plantuml-dependency-common-1.3.0.jar</b> (download them <a style="text-decoration: none;"
+				href="http://sourceforge.net/projects/plantuml-depend/files/1.3.0/plantuml-dependency-1.3.0-archive-with-external-dependencies.tar.gz/download">here</a>)
+				in your classpath if you don't use Maven and you want all dependencies in several Jars
+			</li>
+			<li>By using the following Maven dependency
+				<pre>
+&lt;dependencies&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;net.sourceforge.plantuml-depend&lt;/groupId&gt;
+		&lt;artifactId&gt;plantuml-dependency-cli&lt;/artifactId&gt;
+		&lt;version&gt;1.3.0&lt;/version&gt;
+	&lt;/dependency&gt;
+&lt;/dependencies&gt;
+				</pre>
 			</li>
 		</ul>
 		<h3>The simplest way : using arguments such as the command line</h3>
@@ -73,19 +82,19 @@
 	import java.net.MalformedURLException;
 	import java.text.ParseException;
 
-	import net.sourceforge.mazix.cli.command.CommandLine;
-	import net.sourceforge.mazix.cli.command.impl.CommandLineImpl;
-	import net.sourceforge.mazix.cli.exception.CommandLineException;
-	import net.sourceforge.mazix.cli.program.JavaProgram;
-	import net.sourceforge.mazix.cli.program.execution.JavaProgramExecution;
-	import net.sourceforge.plantuml.dependency.main.program.PlantUMLDependencyProgram;
+	import net.sourceforge.plantumldependency.cli.main.program.PlantUMLDependencyProgram;
+	import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
+	import net.sourceforge.plantumldependency.commoncli.command.impl.CommandLineImpl;
+	import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
+	import net.sourceforge.plantumldependency.commoncli.program.JavaProgram;
+	import net.sourceforge.plantumldependency.commoncli.program.execution.JavaProgramExecution;
 
 	public class Main {
 
 	    public static void main(final String[] args) throws MalformedURLException, CommandLineException, ParseException {
 
 	        // Creates the PlantUML Dependency arguments as they would be written in the command line
-	        final CommandLine commandLineArguments = new CommandLineImpl(new String[] {"-o", "plantuml-jdk-1.7.0.45.txt", "-b", "C:\\jdk-1.7.0.45-src", "-e", "**/package-info.java"});
+	        final CommandLine commandLineArguments = new CommandLineImpl(new String[] {"-o", "plantuml-jdk-1.7.0.51.txt", "-b", "C:\\jdk-1.7.0.51-src", "-e", "**/package-info.java"});
 
 	        // Creates the PlantUML Dependency program instance
 	        final JavaProgram plantumlDependencyProgram = new PlantUMLDependencyProgram();
