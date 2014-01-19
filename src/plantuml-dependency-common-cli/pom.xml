@@ -10,7 +10,7 @@
 	<!-- Project information -->
 	<groupId>net.sourceforge.plantuml-depend</groupId>
 	<artifactId>plantuml-dependency-common-cli</artifactId>
-	<version>1.3.0-SNAPSHOT</version>
+	<version>1.3.0</version>
 	<packaging>jar</packaging>
 	<name>PlantUML Dependency common command line interface module</name>
 	<description>PlantUml Dependency allows to parse / reverse engineering
@@ -35,13 +35,13 @@
 		<dependency>
 			<groupId>net.sourceforge.plantuml-depend</groupId>
 			<artifactId>plantuml-dependency-common</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.3.0</version>
 		</dependency>
 		<!-- PlantUML Dependency common test module -->
 		<dependency>
 			<groupId>net.sourceforge.plantuml-depend</groupId>
 			<artifactId>plantuml-dependency-common</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.3.0</version>
 			<scope>test</scope>
 			<classifier>tests</classifier>
 		</dependency>
