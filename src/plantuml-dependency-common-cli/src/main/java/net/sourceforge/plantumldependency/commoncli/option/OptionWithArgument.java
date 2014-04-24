@@ -35,7 +35,7 @@ import net.sourceforge.plantumldependency.commoncli.option.argument.OptionArgume
  *            the argument type to parse.
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public interface OptionWithArgument < A > extends Option {
 
@@ -54,6 +54,23 @@ public interface OptionWithArgument < A > extends Option {
      * @since 1.3.0
      */
     A findAndParseArgumentOrGetDefaultArgument(CommandLine commandLine) throws CommandLineException;
+
+    /**
+     * Parses the input {@link CommandLine} and try to find the argument which has been set. If the
+     * argument isn't specified or if the option hasn't been specified, it return the default
+     * argument as a {@link String}, returned by the
+     * {@link #getDefaultArgumentAsStringIfOptionSpecified(CommandLine)} or
+     * {@link #getDefaultArgumentAsStringIfOptionNotSpecified(CommandLine)} methods.
+     *
+     * @param commandLine
+     *            the {@link CommandLine} to parse, mustn't be <code>null</code>.
+     * @return the parsed option argument or the default one as a {@link String} if not found.
+     * @throws CommandLineException
+     *             if any error occurs when reading or parsing the command line. It can also be
+     *             thrown if the option or the argument are not found but mandatory.
+     * @since 1.4.0
+     */
+    String findAndParseArgumentAsStringOrGetDefaultArgument(CommandLine commandLine) throws CommandLineException;
 
     /**
      * Gets the default argument as a {@link String} (like in the command line) associated to the

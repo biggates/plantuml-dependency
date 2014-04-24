@@ -68,7 +68,7 @@ import org.apache.tools.ant.types.FileSet;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyOutputOption extends OutputOption implements ExecutableOption {
 
@@ -232,7 +232,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
 
         if (commandLine.isOptionSpecified(this)) {
             final File outputFile = findAndParseArgumentOrGetDefaultArgument(commandLine);
-            final String excludes = commandLine.findOptionArgument(getExcludeOption());
+            final String excludes = getExcludeOption().findAndParseArgumentAsStringOrGetDefaultArgument(commandLine);
             final FileSet includesExcludes = getIncludeOption().findAndParseArgumentOrGetDefaultArgument(commandLine);
             includesExcludes.setExcludes(excludes);
             final File baseDirectory = getBaseDirOption().findAndParseArgumentOrGetDefaultArgument(commandLine);

@@ -52,7 +52,7 @@ Command line Usage
 ====================
 
 Usage:
-	java -jar plantuml-dependency-cli-1.3.0.jar [OPTIONS]
+	java -jar plantuml-dependency-cli-1.4.0.jar [OPTIONS]
 
 
 where optional options are:
@@ -69,7 +69,7 @@ where optional options are:
 		DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]. "abstract_classes" : displays parsed source files which are abstract classes and relations to abstract classes, "annotations" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, "classes" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, "enums" : displays parsed source files which are enums and relations to enums, "extensions" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, "implementations" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, "imports" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, "interfaces" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, "native_methods" : displays relations from parsed source files to the native dependency if they use native methods, "static_imports" : displays relations from parsed source files to import dependencies (only static) if their type is displayed.
 
 	-e, --exclude FILE_PATTERN
-		To exclude files that match the provided pattern. If not specified, no file is excluded.
+		To exclude files that match the provided pattern. If not specified, the default pattern is "**/package-info.java".
 		FILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that "**", "*" or "?" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.
 
 	-h, --help, -?
@@ -92,10 +92,10 @@ where optional options are:
 
 Examples:
 
-	java -jar plantuml-dependency-cli-1.3.0.jar -h
-	java -jar plantuml-dependency-cli-1.3.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d implementations,interfaces,extensions,imports,static_imports -v
-	java -jar plantuml-dependency-cli-1.3.0.jar -o plantuml.txt -b "C:\Users\PlantUML test" -i **/*Test.java
-	java -jar plantuml-dependency-cli-1.3.0.jar -version -v
+	java -jar plantuml-dependency-cli-1.4.0.jar -h
+	java -jar plantuml-dependency-cli-1.4.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d implementations,interfaces,extensions,imports,static_imports -v
+	java -jar plantuml-dependency-cli-1.4.0.jar -o plantuml.txt -b "C:\Users\PlantUML test" -i **/*Test.java
+	java -jar plantuml-dependency-cli-1.4.0.jar -version -v
 
 Known bugs or program limitations:
 

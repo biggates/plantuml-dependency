@@ -24,8 +24,6 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.output;
 
-import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
-import static net.sourceforge.plantumldependency.common.constants.CommonFileConstants.TXT_EXTENSION;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE1;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE17;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE18;
@@ -36,6 +34,8 @@ import static net.sourceforge.plantumldependency.cli.main.option.display.PlantUM
 import static net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDependencyExcludeOptionTest.EXCLUDE_OPTION1;
 import static net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOptionTest.INCLUDE_OPTION1;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOptionTest.PROGRAMMING_LANGUAGE_OPTION1;
+import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
+import static net.sourceforge.plantumldependency.common.constants.CommonFileConstants.TXT_EXTENSION;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -43,10 +43,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
+import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 import net.sourceforge.plantumldependency.commoncli.option.execution.OptionExecution;
-import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
-import net.sourceforge.plantumldependency.cli.main.option.output.PlantUMLDependencyOutputOption;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -56,7 +55,7 @@ import org.junit.experimental.theories.DataPoint;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyOutputOption > {
 
@@ -99,6 +98,58 @@ public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest 
     /** Output option test 7 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOption OUTPUT_OPTION7 = null;
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
+        final String argument = OUTPUT_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE1);
+        assertEquals("plantuml.txt", argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
+            throws CommandLineException {
+        OUTPUT_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE17);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
+            throws CommandLineException {
+        final String argument = OUTPUT_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE18);
+        assertTrue(argument.contains(TXT_EXTENSION));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithTwoExistingOption() throws CommandLineException {
+        OUTPUT_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE19);
+    }
 
     /**
      * Test method for
@@ -179,7 +230,8 @@ public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest 
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getFullUsage()}.
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getFullUsage()}.
      */
     @Test
     public void testGetFullUsage() {
@@ -189,7 +241,8 @@ public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest 
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getMainUsage()}.
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getMainUsage()}.
      */
     @Test
     public void testGetMainUsage() {
@@ -198,7 +251,8 @@ public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest 
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#getValueSeparator()}.
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#getValueSeparator()}
+     * .
      */
     @Test
     public void testGetValueSeparator() {

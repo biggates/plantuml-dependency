@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.exclude;
 
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_EXCLUDE_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE1;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE10;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE12;
@@ -45,7 +46,7 @@ import org.junit.experimental.theories.DataPoint;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyExcludeOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyExcludeOption > {
 
@@ -60,6 +61,58 @@ public class PlantUMLDependencyExcludeOptionTest extends DeepCloneableObjectTest
     /** Exclude option test 3 instance. */
     @DataPoint
     public static final PlantUMLDependencyExcludeOption EXCLUDE_OPTION3 = null;
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
+        final String argument = EXCLUDE_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE12);
+        assertNotNull(argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
+            throws CommandLineException {
+        EXCLUDE_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE10);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
+            throws CommandLineException {
+        final String argument = EXCLUDE_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE3);
+        assertNotNull(argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithTwoExistingOption() throws CommandLineException {
+        EXCLUDE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE8);
+    }
 
     /**
      * Test method for
@@ -123,7 +176,7 @@ public class PlantUMLDependencyExcludeOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetDefaultArgumentAsStringIfOptionSpecified() throws CommandLineException {
         final String defaultArgument = EXCLUDE_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
-        assertEquals("**/*~", defaultArgument);
+        assertEquals(DEFAULT_EXCLUDE_OPTIONS, defaultArgument);
     }
 
     /**
@@ -146,7 +199,7 @@ public class PlantUMLDependencyExcludeOptionTest extends DeepCloneableObjectTest
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-e, --exclude FILE_PATTERN\n\t\tTo exclude files that match the provided pattern. If not specified, no file is excluded.\n\t\tFILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that \"**\", \"*\" or \"?\" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.",
+                "-e, --exclude FILE_PATTERN\n\t\tTo exclude files that match the provided pattern. If not specified, the default pattern is \"**/package-info.java\".\n\t\tFILE_PATTERN specifies a file pattern, with the same syntax as ANT patterns. It means that \"**\", \"*\" or \"?\" special characters can be used. For more information, please consult http://ant.apache.org/manual/dirtasks.html.",
                 EXCLUDE_OPTION1.getFullUsage().toString());
     }
 

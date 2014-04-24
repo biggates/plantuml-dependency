@@ -113,6 +113,85 @@ public class OutputOptionTest extends ComparableAndDeepCloneableObjectTest < Out
 
     /**
      * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
+        final String argument = OUTPUT_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE3);
+        assertEquals("./log.txt", argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
+            throws CommandLineException {
+        OUTPUT_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE6);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOptionWithNotExistingNotMandatoryArgument()
+            throws CommandLineException {
+        final String argument = OUTPUT_OPTION3.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE6);
+        assertTrue(argument.contains(TXT_EXTENSION));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithNotExistingMandatoryOption()
+            throws CommandLineException {
+        OUTPUT_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE2);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
+            throws CommandLineException {
+        final String argument = OUTPUT_OPTION2.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE4);
+        assertTrue(argument.contains(TXT_EXTENSION));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithTwoExistingOption() throws CommandLineException {
+        OUTPUT_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE5);
+    }
+
+    /**
+     * Test method for
      * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *

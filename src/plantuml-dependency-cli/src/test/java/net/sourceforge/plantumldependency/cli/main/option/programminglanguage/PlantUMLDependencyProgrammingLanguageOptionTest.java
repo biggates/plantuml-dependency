@@ -45,7 +45,7 @@ import org.junit.experimental.theories.DataPoint;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyProgrammingLanguageOptionTest extends
         ObjectTest < PlantUMLDependencyProgrammingLanguageOption > {
@@ -61,6 +61,60 @@ public class PlantUMLDependencyProgrammingLanguageOptionTest extends
     /** Programming language option test 3 instance. */
     @DataPoint
     public static final PlantUMLDependencyProgrammingLanguageOption PROGRAMMING_LANGUAGE_OPTION3 = null;
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
+        final String argument = PROGRAMMING_LANGUAGE_OPTION1
+                .findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE14);
+        assertEquals(CPP.getName(), argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
+            throws CommandLineException {
+        PROGRAMMING_LANGUAGE_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE15);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
+            throws CommandLineException {
+        final String argument = PROGRAMMING_LANGUAGE_OPTION1
+                .findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE3);
+        assertEquals(DEFAULT_PROGRAMMING_LANGUAGE.getName(), argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithTwoExistingOption() throws CommandLineException {
+        PROGRAMMING_LANGUAGE_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE16);
+    }
 
     /**
      * Test method for

@@ -119,6 +119,85 @@ public class VerboseLevelOptionTest extends ComparableAndDeepCloneableObjectTest
 
     /**
      * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
+        final String argument = VERBOSE_LEVEL_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE12);
+        assertEquals(FINE.getName().toString(), argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
+            throws CommandLineException {
+        VERBOSE_LEVEL_OPTION2.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE6);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOptionWithNotExistingNotMandatoryArgument()
+            throws CommandLineException {
+        final String argument = VERBOSE_LEVEL_OPTION3.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE6);
+        assertEquals(INFO.getName().toString(), argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithNotExistingMandatoryOption()
+            throws CommandLineException {
+        VERBOSE_LEVEL_OPTION3.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE2);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
+            throws CommandLineException {
+        final String argument = VERBOSE_LEVEL_OPTION2.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE3);
+        assertEquals(WARNING.getName().toString(), argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithTwoExistingOption() throws CommandLineException {
+        VERBOSE_LEVEL_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE5);
+    }
+
+    /**
+     * Test method for
      * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
      * .
      *

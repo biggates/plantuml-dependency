@@ -40,7 +40,7 @@ import org.junit.Test;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.1.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyProgramTaskTest {
 
@@ -241,7 +241,7 @@ public class PlantUMLDependencyProgramTaskTest {
     @Test
     public void testToString() {
         assertEquals(
-                "PlantUMLDependencyProgramTask [output=plantuml.txt, verboseLevel=INFO, programmingLanguage=java, includes=**/*.java, excludes=**/*~, display=abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports, baseDir=.]",
+                "PlantUMLDependencyProgramTask [output=plantuml.txt, verboseLevel=INFO, programmingLanguage=java, includes=**/*.java, excludes=**/package-info.java, display=abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports, baseDir=.]",
                 PLANTUML_DEPENDENCY_TASK2.toString());
     }
 }

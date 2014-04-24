@@ -24,13 +24,18 @@
 
 package net.sourceforge.plantumldependency.commoncli.option;
 
+import static java.util.logging.Level.FINE;
+import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.LINE_CHAR;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.TAB_CHAR;
 import static net.sourceforge.plantumldependency.common.utils.check.ParameterCheckerUtils.checkNull;
+import static net.sourceforge.plantumldependency.common.utils.log.LogUtils.buildLogString;
 import static net.sourceforge.plantumldependency.commoncli.constants.log.ErrorConstants.COMMAND_LINE_NULL_ERROR;
 import static net.sourceforge.plantumldependency.commoncli.constants.log.ErrorConstants.OPTION_ARGUMENT_NULL_ERROR;
+import static net.sourceforge.plantumldependency.commoncli.constants.log.FineConstants.ARGUMENT_AS_STRING_ALREADY_FOUND_FINE;
 
 import java.util.Set;
+import java.util.logging.Logger;
 
 import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
@@ -45,12 +50,15 @@ import net.sourceforge.plantumldependency.commoncli.option.status.OptionStatus;
  *            the argument type to parse.
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public abstract class AbstractOptionWithArgument < A > extends AbstractOption implements OptionWithArgument < A > {
 
     /** Serial version UID. */
     private static final long serialVersionUID = 6525955986370555309L;
+
+    /** The class logger. */
+    private static final transient Logger LOGGER = getLogger(AbstractOptionWithArgument.class.getName());
 
     /** The option argument. */
     private OptionArgument < A > optionArgument;
@@ -100,6 +108,29 @@ public abstract class AbstractOptionWithArgument < A > extends AbstractOption im
         final AbstractOptionWithArgument < A > a = (AbstractOptionWithArgument < A >) super.deepClone();
         a.optionArgument = getOptionArgument().deepClone();
         return a;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 1.4.0
+     */
+    @Override
+    public String findAndParseArgumentAsStringOrGetDefaultArgument(final CommandLine commandLine)
+            throws CommandLineException {
+        checkNull(commandLine, COMMAND_LINE_NULL_ERROR);
+
+        String argumentString = commandLine.findOptionArgument(this);
+
+        if (argumentString == null) {
+            argumentString = getDefaultArgumentAsStringIfOptionNotSpecified(commandLine);
+        } else if (argumentString.length() == 0) {
+            argumentString = getDefaultArgumentAsStringIfOptionSpecified(commandLine);
+        } else {
+            LOGGER.log(FINE, buildLogString(ARGUMENT_AS_STRING_ALREADY_FOUND_FINE, argumentString));
+        }
+
+        return argumentString;
     }
 
     /**

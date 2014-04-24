@@ -45,7 +45,7 @@ import org.junit.experimental.theories.DataPoint;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyBaseDirectoryOptionTest extends
         DeepCloneableObjectTest < PlantUMLDependencyBaseDirectoryOption > {
@@ -61,6 +61,58 @@ public class PlantUMLDependencyBaseDirectoryOptionTest extends
     /** Base directory option test 3 instance. */
     @DataPoint
     public static final PlantUMLDependencyBaseDirectoryOption BASE_DIRECTORY_OPTION3 = null;
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
+        final String argument = BASE_DIRECTORY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE1);
+        assertEquals(DOT_CHAR, argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
+            throws CommandLineException {
+        BASE_DIRECTORY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE2);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
+            throws CommandLineException {
+        final String argument = BASE_DIRECTORY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE3);
+        assertEquals(DOT_CHAR, argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithTwoExistingOption() throws CommandLineException {
+        BASE_DIRECTORY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE4);
+    }
 
     /**
      * Test method for

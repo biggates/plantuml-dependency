@@ -56,7 +56,7 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.st
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public final class PlantUMLDependencyConstants {
 
@@ -70,7 +70,7 @@ public final class PlantUMLDependencyConstants {
             BLANK_STRING, BLANK_STRING);
 
     /** The default exclude options to apply if not specified. */
-    public static final String DEFAULT_EXCLUDE_OPTIONS = "**/*~";
+    public static final String DEFAULT_EXCLUDE_OPTIONS = "**/package-info.java";
 
     /** The default include options to apply if not specified. */
     public static final String DEFAULT_INCLUDE_OPTIONS = "**/*.";

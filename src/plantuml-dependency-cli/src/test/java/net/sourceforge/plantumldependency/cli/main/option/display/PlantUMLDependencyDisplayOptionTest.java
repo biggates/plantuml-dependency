@@ -24,6 +24,7 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.display;
 
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE1;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE3;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE5;
@@ -58,7 +59,7 @@ import org.junit.experimental.theories.DataPoint;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyDisplayOption > {
 
@@ -73,6 +74,58 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     /** Display directory option test 3 instance. */
     @DataPoint
     public static final PlantUMLDependencyDisplayOption DISPLAY_OPTION3 = null;
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
+        final String argument = DISPLAY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE7);
+        assertEquals("classes,static_imports,enums", argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
+            throws CommandLineException {
+        DISPLAY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE6);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
+            throws CommandLineException {
+        final String argument = DISPLAY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE3);
+        assertEquals(DEFAULT_DISPLAY_OPTIONS_STRING, argument);
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#findAndParseArgumentAsStringOrGetDefaultArgument(net.sourceforge.plantumldependency.commoncli.command.CommandLine)}
+     * .
+     *
+     * @throws CommandLineException
+     */
+    @Test(expected = CommandLineException.class)
+    public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithTwoExistingOption() throws CommandLineException {
+        DISPLAY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE5);
+    }
 
     /**
      * Test method for
@@ -178,7 +231,8 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getFullUsage()}.
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getFullUsage()}.
      */
     @Test
     public void testGetFullUsage() {
@@ -188,7 +242,8 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     }
 
     /**
-     * Test method for {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getMainUsage()}.
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOption#getMainUsage()}.
      */
     @Test
     public void testGetMainUsage() {
@@ -197,7 +252,8 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#getValueSeparator()}.
+     * {@link net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument#getValueSeparator()}
+     * .
      */
     @Test
     public void testGetValueSeparator() {

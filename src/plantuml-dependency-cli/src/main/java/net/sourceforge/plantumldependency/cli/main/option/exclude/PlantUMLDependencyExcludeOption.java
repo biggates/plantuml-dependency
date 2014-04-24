@@ -46,7 +46,7 @@ import org.apache.tools.ant.types.FileSet;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument < FileSet > {
 
@@ -67,8 +67,8 @@ public class PlantUMLDependencyExcludeOption extends AbstractOptionWithArgument 
      */
     public PlantUMLDependencyExcludeOption() {
         super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new ExcludeFilePatternOptionArgumentImpl(true), new StringBuilder(
-                "To exclude files that match the provided pattern. If not specified, no file is excluded."),
-                SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
+                "To exclude files that match the provided pattern. If not specified, the default pattern is \""
+                        + DEFAULT_EXCLUDE_OPTIONS + "\"."), SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
     }
 
     /**
