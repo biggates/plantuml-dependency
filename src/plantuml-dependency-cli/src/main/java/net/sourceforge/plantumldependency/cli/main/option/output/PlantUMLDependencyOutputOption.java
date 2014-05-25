@@ -27,7 +27,7 @@ package net.sourceforge.plantumldependency.cli.main.option.output;
 import static java.util.logging.Level.FINE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.BASE_DIRECTORY_OPTION_NULL_ERROR;
-import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.DISPLAY_OPTION_NULL_ERROR;
+import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.DISPLAY_TYPE_OPTION_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.EXCLUDE_OPTION_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.INCLUDE_OPTION_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.PROGRAMMING_LANGUAGE_OPTION_NULL_ERROR;
@@ -45,8 +45,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
-import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayOption;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayTypeOption;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDependencyExcludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption;
@@ -90,8 +90,8 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     /** The exclude option. */
     private PlantUMLDependencyExcludeOption excludeOption;
 
-    /** The display option. */
-    private PlantUMLDependencyDisplayOption displayOption;
+    /** The display type option. */
+    private PlantUMLDependencyDisplayTypeOption displayTypeOption;
 
     /** The base directory option. */
     private PlantUMLDependencyBaseDirectoryOption baseDirOption;
@@ -114,8 +114,8 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      * @param excludeOpt
      *            the {@link PlantUMLDependencyExcludeOption} instance, to know exclude files which
      *            mustn't be parsed, mustn't be <code>null</code>.
-     * @param displayOpt
-     *            the {@link PlantUMLDependencyDisplayOption} instance, to know which information to
+     * @param displayTypeOpt
+     *            the {@link PlantUMLDependencyDisplayTypeOption} instance, to know which types to
      *            display in the plantUML generated file, mustn't be <code>null</code>.
      * @param baseDirOpt
      *            the {@link PlantUMLDependencyBaseDirectoryOption} instance, to know the base
@@ -128,7 +128,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     public PlantUMLDependencyOutputOption(final VerboseLevelOption verboseLvlOpt,
             final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOpt,
             final PlantUMLDependencyIncludeOption includeOpt, final PlantUMLDependencyExcludeOption excludeOpt,
-            final PlantUMLDependencyDisplayOption displayOpt, final PlantUMLDependencyBaseDirectoryOption baseDirOpt,
+            final PlantUMLDependencyDisplayTypeOption displayTypeOpt, final PlantUMLDependencyBaseDirectoryOption baseDirOpt,
             final int optionPriority) {
         super(new ExistingOrNotFileOptionArgumentImpl(true), new StringBuilder(
                 "To specify the output file path where to generate the PlantUML description."), SPACE_CHAR,
@@ -137,7 +137,7 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
         setProgrammingLanguageOption(programmingLanguageOpt);
         setIncludeOption(includeOpt);
         setExcludeOption(excludeOpt);
-        setDisplayOption(displayOpt);
+        setDisplayTypeOption(displayTypeOpt);
         setBaseDirOption(baseDirOpt);
         setPriority(optionPriority);
     }
@@ -154,14 +154,14 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     }
 
     /**
-     * Gets the value of <code>displayOption</code>.
+     * Gets the value of <code>displayTypeOption</code>.
      *
-     * @return the value of <code>displayOption</code>.
-     * @see #setDisplayOption(PlantUMLDependencyDisplayOption)
+     * @return the value of <code>displayTypeOption</code>.
+     * @see #setDisplayTypeOption(PlantUMLDependencyDisplayTypeOption)
      * @since 1.0.0
      */
-    private PlantUMLDependencyDisplayOption getDisplayOption() {
-        return displayOption;
+    private PlantUMLDependencyDisplayTypeOption getDisplayTypeOption() {
+        return displayTypeOption;
     }
 
     /**
@@ -237,12 +237,12 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
             includesExcludes.setExcludes(excludes);
             final File baseDirectory = getBaseDirOption().findAndParseArgumentOrGetDefaultArgument(commandLine);
             includesExcludes.setDir(baseDirectory);
-            final Set < Display > displayOptions = getDisplayOption().findAndParseArgumentOrGetDefaultArgument(
+            final Set < DisplayType > displayTypesOptions = getDisplayTypeOption().findAndParseArgumentOrGetDefaultArgument(
                     commandLine);
             final ProgrammingLanguage programmingLanguage = getProgrammingLanguageOption()
                     .findAndParseArgumentOrGetDefaultArgument(commandLine);
             optionExecution = new PlantUMLDependencyOutputOptionExecution(outputFile, programmingLanguage,
-                    includesExcludes, displayOptions, getPriority());
+                    includesExcludes, displayTypesOptions, getPriority());
         } else {
             LOGGER.log(FINE, buildLogString(OPTION_NOT_SPECIFIED_FINE, getAllNames()));
         }
@@ -265,17 +265,17 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     }
 
     /**
-     * Sets the value of <code>displayOption</code>.
+     * Sets the value of <code>displayTypeOption</code>.
      *
      * @param value
-     *            the <code>displayOption</code> to set, can be <code>null</code>.
-     * @see #getDisplayOption()
+     *            the <code>displayTypeOption</code> to set, can be <code>null</code>.
+     * @see #getDisplayTypeOption()
      * @since 1.0.0
      */
-    private void setDisplayOption(final PlantUMLDependencyDisplayOption value) {
-        checkNull(value, DISPLAY_OPTION_NULL_ERROR);
+    private void setDisplayTypeOption(final PlantUMLDependencyDisplayTypeOption value) {
+        checkNull(value, DISPLAY_TYPE_OPTION_NULL_ERROR);
 
-        displayOption = value;
+        displayTypeOption = value;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- PlantUMLDependencyDisplayOptionArgument.java
+ PlantUMLDependencyDisplayTypeOptionArgument.java
  Creation date : 18/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
@@ -25,11 +25,11 @@
 package net.sourceforge.plantumldependency.cli.main.option.display.argument;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.NOT_DISPLAY_ARGUMENT_ERROR;
-import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.SEVERAL_DISPLAY_ARGUMENTS_ERROR;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.getAllDisplayOptionsFullUsageDescriptions;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.valueOf;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.values;
+import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.NOT_DISPLAY_TYPE_ARGUMENT_ERROR;
+import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.SEVERAL_DISPLAY_TYPE_ARGUMENTS_ERROR;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.getAllDisplayTypesOptionsFullUsageDescriptions;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.valueOf;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.values;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.plantumldependency.common.utils.collection.CollectionUtils.collectionToString;
@@ -45,25 +45,25 @@ import net.sourceforge.plantumldependency.commoncli.exception.CommandLineExcepti
 import net.sourceforge.plantumldependency.commoncli.option.argument.AbstractOptionArgument;
 
 /**
- * The display option argument, telling the program what to display in the generated file. <i>Note :
+ * The display type option argument, telling the program what to display in the generated file. <i>Note :
  * no option should have the same main or secondary names</i>.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
-public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgument < Set < Display > > {
+public class PlantUMLDependencyDisplayTypeOptionArgument extends AbstractOptionArgument < Set < DisplayType > > {
 
     /** Serial version UID. */
     private static final long serialVersionUID = 4078671176887334895L;
 
     /** The argument main usage constant. */
-    private static final String MAIN_USAGE = "DISPLAY_OPTIONS";
+    private static final String MAIN_USAGE = "DISPLAY_TYPES_OPTIONS";
 
     /** The argument main usage description constant. */
     private static final String USAGE_DESCRIPTION = MAIN_USAGE
-            + " specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : "
-            + collectionToString(asList(values()), COMMA_CHAR) + ". " + getAllDisplayOptionsFullUsageDescriptions()
+            + " specifies display types options when generating the plantUML output file, it is a separated comma list with these possible values : "
+            + collectionToString(asList(values()), COMMA_CHAR) + ". " + getAllDisplayTypesOptionsFullUsageDescriptions()
             + DOT_CHAR;
 
     // FIXME uncomment if the PlantUMLDependencyProgrammingLanguageOption passes to ACTIVE (not
@@ -78,7 +78,7 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
      *            <code>true</code> if the argument is mandatory, <code>false</code> otherwise.
      * @since 1.0.0
      */
-    public PlantUMLDependencyDisplayOptionArgument(final boolean optionArgumentIsMandatory) {
+    public PlantUMLDependencyDisplayTypeOptionArgument(final boolean optionArgumentIsMandatory) {
         super(optionArgumentIsMandatory, new StringBuilder(USAGE_DESCRIPTION));
     }
 
@@ -98,29 +98,29 @@ public class PlantUMLDependencyDisplayOptionArgument extends AbstractOptionArgum
      * @since 1.0.0
      */
     @Override
-    public Set < Display > parseArgument(final String argument) throws CommandLineException {
-        Set < Display > displayArguments = null;
+    public Set < DisplayType > parseArgument(final String argument) throws CommandLineException {
+        Set < DisplayType > displayTypesArguments = null;
 
         if (isNotEmpty(argument)) {
-            displayArguments = new TreeSet < Display >();
+            displayTypesArguments = new TreeSet < DisplayType >();
             final StringTokenizer tokenizer = new StringTokenizer(argument, COMMA_CHAR);
             while (tokenizer.hasMoreTokens()) {
                 final String token = tokenizer.nextToken();
 
                 try {
-                    final Display displayArgument = valueOf(token.toUpperCase());
-                    if (displayArguments.contains(displayArgument)) {
-                        throw new CommandLineException(buildLogString(SEVERAL_DISPLAY_ARGUMENTS_ERROR, displayArgument));
+                    final DisplayType displayTypeArgument = valueOf(token.toUpperCase());
+                    if (displayTypesArguments.contains(displayTypeArgument)) {
+                        throw new CommandLineException(buildLogString(SEVERAL_DISPLAY_TYPE_ARGUMENTS_ERROR, displayTypeArgument));
                     }
-                    displayArguments.add(valueOf(token.toUpperCase()));
+                    displayTypesArguments.add(valueOf(token.toUpperCase()));
                 } catch (final IllegalArgumentException e) {
-                    throw new CommandLineException(buildLogString(NOT_DISPLAY_ARGUMENT_ERROR, argument), e);
+                    throw new CommandLineException(buildLogString(NOT_DISPLAY_TYPE_ARGUMENT_ERROR, argument), e);
                 }
             }
         } else {
             throw new CommandLineException(EMPTY_OPTION_ARGUMENT_ERROR);
         }
 
-        return displayArguments;
+        return displayTypesArguments;
     }
 }

@@ -78,7 +78,7 @@ import net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImpl
 import net.sourceforge.plantumldependency.cli.generic.type.DependencyType;
 import net.sourceforge.plantumldependency.cli.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImpl;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.JavaRawDependency;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaParentType;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaType;
@@ -90,7 +90,7 @@ import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.co
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 class JavaProgrammingLanguage extends ProgrammingLanguage {
 
@@ -113,7 +113,7 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @param programmingLanguageContext
      *            the context instance containing all dependencies which have already been seen in
      *            previous treatment, and other information which can be shared when parsing several
-     *            source files, such as the display options, mustn't be <code>null</code>.
+     *            source files, such as the display types options, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance read from the source file and from the raw
      *         dependency.
      * @throws PlantUMLDependencyException
@@ -1236,8 +1236,8 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0.0
      */
     @Override
-    public ProgrammingLanguageContext createNewContext(final Set < Display > displayOpt) {
-        return new JavaProgrammingLanguageContext(displayOpt);
+    public ProgrammingLanguageContext createNewContext(final Set < DisplayType > displayTypesOpt) {
+        return new JavaProgrammingLanguageContext(displayTypesOpt);
     }
 
     /**

@@ -25,7 +25,7 @@
 package net.sourceforge.plantumldependency.cli.generic.type.impl.annotationimpl;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1023;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1024;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET12;
@@ -119,7 +119,7 @@ import org.junit.experimental.theories.DataPoint;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.2.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < AnnotationDependencyTypeImpl > {
 
@@ -813,7 +813,7 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST17, PLANTUML_USE_RELATION_TEST18, PLANTUML_USE_RELATION_TEST19,
                 PLANTUML_USE_RELATION_TEST20, PLANTUML_USE_RELATION_TEST22})),
-                ANNOTATION_DEPENDENCY_TYPE8.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                ANNOTATION_DEPENDENCY_TYPE8.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS));
     }
 
     /**
@@ -848,6 +848,6 @@ public class AnnotationDependencyTypeImplTest extends DeepCloneableObjectTest < 
     @Test
     public void testGetPlantUMLClassesDiagramRelationsWithoutImportDependenciesAndWithoutAnnotations() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                ANNOTATION_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                ANNOTATION_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS));
     }
 }

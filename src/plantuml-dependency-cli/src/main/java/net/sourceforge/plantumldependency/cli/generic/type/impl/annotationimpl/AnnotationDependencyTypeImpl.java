@@ -24,7 +24,7 @@
 
 package net.sourceforge.plantumldependency.cli.generic.type.impl.annotationimpl;
 
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.ANNOTATIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ANNOTATIONS;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -33,7 +33,7 @@ import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImpl;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl;
 
@@ -43,7 +43,7 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.im
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.2.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class AnnotationDependencyTypeImpl extends DependencyTypeImpl {
 
@@ -104,8 +104,8 @@ public class AnnotationDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.2.0
      */
     @Override
-    public boolean isDisplayable(final Set < Display > displayOptions) {
-        return displayOptions.contains(ANNOTATIONS);
+    public boolean isDisplayable(final Set < DisplayType > displayTypesOptions) {
+        return displayTypesOptions.contains(ANNOTATIONS);
     }
 
     /**

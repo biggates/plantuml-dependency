@@ -25,7 +25,7 @@
 package net.sourceforge.plantumldependency.cli.generic.type.impl.enumimpl;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1024;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET12;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET13;
@@ -125,7 +125,7 @@ import org.junit.experimental.theories.DataPoint;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDependencyTypeImpl > {
 
@@ -820,7 +820,7 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST8, PLANTUML_USE_RELATION_TEST9, PLANTUML_IMPLEMENT_RELATION_TEST11,
                 PLANTUML_USE_RELATION_TEST29})),
-                ENUM_DEPENDENCY_TYPE9.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                ENUM_DEPENDENCY_TYPE9.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS));
     }
 
     /**
@@ -833,6 +833,6 @@ public class EnumDependencyTypeImplTest extends DeepCloneableObjectTest < EnumDe
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST8, PLANTUML_USE_RELATION_TEST9, PLANTUML_USE_RELATION_TEST10,
                 PLANTUML_IMPLEMENT_RELATION_TEST9, PLANTUML_IMPLEMENT_RELATION_TEST10, PLANTUML_USE_RELATION_TEST29})),
-                ENUM_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                ENUM_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS));
     }
 }

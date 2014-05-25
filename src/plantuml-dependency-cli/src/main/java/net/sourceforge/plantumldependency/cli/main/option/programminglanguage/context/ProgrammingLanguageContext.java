@@ -28,7 +28,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.PlantUMLClassesDiagram;
 import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
 
@@ -38,7 +38,7 @@ import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public interface ProgrammingLanguageContext extends Comparable < ProgrammingLanguageContext >, Serializable,
         DeepCloneable < ProgrammingLanguageContext > {
@@ -119,10 +119,10 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     GenericDependency getParsedOrSeenDependency(String fullName);
 
     /**
-     * Gets the {@link PlantUMLClassesDiagram} instance representing the context, following display
+     * Gets the {@link PlantUMLClassesDiagram} instance representing the context, following display types
      * options.
      *
-     * @return the plantUML diagram instance representing the context, following display options.
+     * @return the plantUML diagram instance representing the context, following display types options.
      * @since 1.1.1
      */
     PlantUMLClassesDiagram getPlantUMLClassesDiagram();
@@ -141,15 +141,15 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     Collection < GenericDependency > getPotentialJavaLangSeenDependencies();
 
     /**
-     * Tells if the following {@link Display} is managed or not by this context.
+     * Tells if the following {@link DisplayType} is managed or not by this context.
      *
-     * @param display
-     *            the {@link Display}, mustn't be <code>null</code>.
-     * @return <code>true</code> if the {@link Display} is managed by the context,
+     * @param displayType
+     *            the {@link DisplayType}, mustn't be <code>null</code>.
+     * @return <code>true</code> if the {@link DisplayType} is managed by the context,
      *         <code>false</code> otherwise.
      * @since 1.0.0
      */
-    boolean hasToDisplay(Display display);
+    boolean hasToDisplay(DisplayType displayType);
 
     /**
      * Removes all the marked as potential "java.lang" dependencies from the context and change

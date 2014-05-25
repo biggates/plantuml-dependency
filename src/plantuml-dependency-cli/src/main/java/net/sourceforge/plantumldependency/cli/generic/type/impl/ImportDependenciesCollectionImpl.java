@@ -176,7 +176,7 @@ public class ImportDependenciesCollectionImpl implements ImportDependenciesColle
 
         try {
             i = (ImportDependenciesCollectionImpl) super.clone();
-            // TODO deepClone don't manage cycles and copy all map
+            // TODO deepClone doesn't manage cycles and copy all map
             i.importDependenciesMap = new TreeMap < ImportType, Set < GenericDependency > >(getImportDependenciesMap());
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);

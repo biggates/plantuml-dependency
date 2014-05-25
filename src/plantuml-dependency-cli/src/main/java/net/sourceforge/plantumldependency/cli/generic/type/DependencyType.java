@@ -28,7 +28,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
@@ -39,7 +39,7 @@ import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public interface DependencyType extends Comparable < DependencyType >, Serializable, DeepCloneable < DependencyType >,
         Displayable {
@@ -168,15 +168,15 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
      * Gets the PlantUML classes diagram relations, following the imports and the dependency type
      * parents.
      *
-     * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML classes diagram
+     * @param displayTypesOptions
+     *            the {@link Set} of all display types options to display the PlantUML classes diagram
      *            relations, mustn't be <code>null</code>.
      * @return the set of all PlantUML classes diagram relations as a {@link Set} of
      *         {@link PlantUMLClassesDiagramRelation} instances describing relations to imports and
      *         the dependency type parents.
      * @since 1.1.1
      */
-    Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations(Set < Display > displayOptions);
+    Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations(Set < DisplayType > displayTypesOptions);
 
     /**
      * Sets the dependency full name, i.e. the package name and the class name.

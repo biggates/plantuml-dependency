@@ -33,7 +33,6 @@ import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependenc
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayOption;
 import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 
@@ -42,7 +41,7 @@ import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 
 /**
- * JUnit test classes for {@link PlantUMLDependencyDisplayOption}.
+ * JUnit test classes for {@link PlantUMLDependencyExcludeOption}.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0

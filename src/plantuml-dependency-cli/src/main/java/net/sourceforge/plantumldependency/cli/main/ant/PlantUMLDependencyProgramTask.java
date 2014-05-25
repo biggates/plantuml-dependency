@@ -35,7 +35,7 @@ import java.util.Map;
 
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
-import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayOption;
+import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayTypeOption;
 import net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDependencyExcludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption;
@@ -50,7 +50,7 @@ import org.apache.tools.ant.Task;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.1.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyProgramTask extends Task {
 
@@ -131,7 +131,7 @@ public class PlantUMLDependencyProgramTask extends Task {
      * @since 1.1.0
      */
     public String getDisplay() {
-        return getArgsMap().get(PlantUMLDependencyDisplayOption.OPTION_MAIN_SYNOPSIS);
+        return getArgsMap().get(PlantUMLDependencyDisplayTypeOption.OPTION_MAIN_SYNOPSIS);
     }
 
     /**
@@ -210,7 +210,7 @@ public class PlantUMLDependencyProgramTask extends Task {
      * @since 1.1.0
      */
     public void setDisplay(final String value) {
-        putNonEmptyStringToMap(getArgsMap(), PlantUMLDependencyDisplayOption.OPTION_MAIN_SYNOPSIS, value);
+        putNonEmptyStringToMap(getArgsMap(), PlantUMLDependencyDisplayTypeOption.OPTION_MAIN_SYNOPSIS, value);
     }
 
     /**

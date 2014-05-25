@@ -25,14 +25,14 @@
 package net.sourceforge.plantumldependency.cli.generic.type;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.IMPORTS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.NATIVE_METHODS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.STATIC_IMPORTS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.IMPORTS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.NATIVE_METHODS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.STATIC_IMPORTS;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 
 /**
  * This enumerations represents all kind of import types which can be used following the programming
@@ -42,7 +42,7 @@ import net.sourceforge.plantumldependency.cli.main.option.display.argument.Displ
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.1.1
- * @version 1.3.0
+ * @version 1.4.0
  */
 public enum ImportType implements Displayable {
     /** The native import type. */
@@ -56,31 +56,31 @@ public enum ImportType implements Displayable {
     public static final Set < ImportType > IMPORT_TYPES = new TreeSet < ImportType >(asList(values()));
 
     /**
-     * The display options which filter the import type to be generated in the plantUML description
+     * The display type which filter the import type to be generated in the plantUML description
      * file.
      */
-    private Display displayOption;
+    private DisplayType displayType;
 
     /**
      * Full constructor.
      *
-     * @param displayOpt
-     *            the display options which filter the import type to be generated in the plantUML
+     * @param importDisplayType
+     *            the display type which filter the import type to be generated in the plantUML
      *            description file, mustn't be <code>null</code>.
      * @since 1.1.1
      */
-    private ImportType(final Display displayOpt) {
-        setDisplayOption(displayOpt);
+    private ImportType(final DisplayType importDisplayType) {
+        setDisplayType(importDisplayType);
     }
 
     /**
-     * Gets the value of <code>displayOption</code>.
+     * Gets the value of <code>displayType</code>.
      *
-     * @return the value of <code>displayOption</code>.
+     * @return the value of <code>displayType</code>.
      * @since 1.1.1
      */
-    public Display getDisplayOption() {
-        return displayOption;
+    public DisplayType getDisplayType() {
+        return displayType;
     }
 
     /**
@@ -89,18 +89,18 @@ public enum ImportType implements Displayable {
      * @since 1.1.1
      */
     @Override
-    public boolean isDisplayable(final Set < Display > displayOptions) {
-        return displayOptions.contains(getDisplayOption());
+    public boolean isDisplayable(final Set < DisplayType > displayTypesOptions) {
+        return displayTypesOptions.contains(getDisplayType());
     }
 
     /**
-     * Sets the value of <code>displayOption</code>.
+     * Sets the value of <code>displayType</code>.
      *
      * @param value
-     *            the <code>displayOption</code> to set, can be <code>null</code>.
+     *            the <code>displayType</code> to set, can be <code>null</code>.
      * @since 1.1.1
      */
-    private void setDisplayOption(final Display value) {
-        displayOption = value;
+    private void setDisplayType(final DisplayType value) {
+        displayType = value;
     }
 }

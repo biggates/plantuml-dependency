@@ -28,7 +28,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.AbstractProgrammingLanguageContext;
 
 /**
@@ -38,7 +38,7 @@ import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.co
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageContext {
 
@@ -57,13 +57,13 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
     /**
      * Medium constructor.
      *
-     * @param displayOpt
-     *            the display options which have to appear in the plantUML description, mustn't be
-     *            <code>null</code>.
+     * @param displayTypesOpt
+     *            the display types options which have to appear in the plantUML description,
+     *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
-    public CppProgrammingLanguageContext(final Set < Display > displayOpt) {
-        super(displayOpt);
+    public CppProgrammingLanguageContext(final Set < DisplayType > displayTypesOpt) {
+        super(displayTypesOpt);
     }
 
     /**
@@ -72,14 +72,14 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param parsedAndSeenDependencies
      *            the original {@link Set} of {@link GenericDependency} to put in the context,
      *            mustn't be <code>null</code>.
-     * @param displayOpt
-     *            the display options which have to appear in the plantUML description, mustn't be
-     *            <code>null</code>.
+     * @param displayTypesOpt
+     *            the display types options which have to appear in the plantUML description,
+     *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
     public CppProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
-            final Set < Display > displayOpt) {
-        super(parsedAndSeenDependencies, displayOpt);
+            final Set < DisplayType > displayTypesOpt) {
+        super(parsedAndSeenDependencies, displayTypesOpt);
     }
 
     /**
@@ -91,14 +91,14 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param parsedDependencies
      *            the original {@link Set} of {@link GenericDependency} to put in the context,
      *            mustn't be <code>null</code>.
-     * @param displayOpt
-     *            the display options which have to appear in the plantUML description, mustn't be
-     *            <code>null</code>.
+     * @param displayTypesOpt
+     *            the display types options which have to appear in the plantUML description,
+     *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
     public CppProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
-            final Set < GenericDependency > parsedDependencies, final Set < Display > displayOpt) {
-        super(parsedAndSeenDependencies, parsedDependencies, new TreeSet < GenericDependency >(), displayOpt);
+            final Set < GenericDependency > parsedDependencies, final Set < DisplayType > displayTypesOpt) {
+        super(parsedAndSeenDependencies, parsedDependencies, new TreeSet < GenericDependency >(), displayTypesOpt);
     }
 
     /**
@@ -113,14 +113,14 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param potentialJavaLangSeenDependencies
      *            the original potential "java.lang" seen dependencies {@link Set} of
      *            {@link GenericDependency} to put in the context, mustn't be <code>null</code>.
-     * @param displayOpt
-     *            the display options which have to appear in the plantUML description, mustn't be
-     *            <code>null</code>.
+     * @param displayTypesOpt
+     *            the display types options which have to appear in the plantUML description,
+     *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
     public CppProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < GenericDependency > parsedDependencies,
-            final Set < GenericDependency > potentialJavaLangSeenDependencies, final Set < Display > displayOpt) {
-        super(parsedAndSeenDependencies, parsedDependencies, potentialJavaLangSeenDependencies, displayOpt);
+            final Set < GenericDependency > potentialJavaLangSeenDependencies, final Set < DisplayType > displayTypesOpt) {
+        super(parsedAndSeenDependencies, parsedDependencies, potentialJavaLangSeenDependencies, displayTypesOpt);
     }
 }

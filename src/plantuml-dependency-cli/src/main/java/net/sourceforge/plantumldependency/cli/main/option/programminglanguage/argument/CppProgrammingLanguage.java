@@ -29,7 +29,7 @@ import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstant
 import java.util.Set;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.ProgrammingLanguageContext;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.impl.CppProgrammingLanguageContext;
 
@@ -38,7 +38,7 @@ import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.co
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 class CppProgrammingLanguage extends ProgrammingLanguage {
 
@@ -63,8 +63,8 @@ class CppProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0.0
      */
     @Override
-    public ProgrammingLanguageContext createNewContext(final Set < Display > displayOpt) {
-        return new CppProgrammingLanguageContext(displayOpt);
+    public ProgrammingLanguageContext createNewContext(final Set < DisplayType > displayTypesOpt) {
+        return new CppProgrammingLanguageContext(displayTypesOpt);
     }
 
     /**

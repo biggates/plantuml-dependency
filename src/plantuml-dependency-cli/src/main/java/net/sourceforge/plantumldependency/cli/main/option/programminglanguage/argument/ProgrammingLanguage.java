@@ -44,7 +44,7 @@ import java.util.logging.Logger;
 
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.ProgrammingLanguageContext;
 
 /**
@@ -53,7 +53,7 @@ import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.co
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public abstract class ProgrammingLanguage implements Comparable < ProgrammingLanguage >, Serializable {
 
@@ -172,13 +172,13 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
     /**
      * Create a new {@link ProgrammingLanguageContext} following the language.
      *
-     * @param displayOpt
-     *            the display option which have to appear in the plantUML description, mustn't be
+     * @param displayTypesOpt
+     *            the display types options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
      * @return a new empty {@link ProgrammingLanguageContext} instance.
      * @since 1.0.0
      */
-    public abstract ProgrammingLanguageContext createNewContext(final Set < Display > displayOpt);
+    public abstract ProgrammingLanguageContext createNewContext(final Set < DisplayType > displayTypesOpt);
 
     /**
      * {@inheritDoc}
@@ -245,7 +245,7 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
      *            source files, mustn't be <code>null</code>.
      * @return the {@link GenericDependency} instance if it has been found and correctly parsed,
      *         <code>null</code> otherwise. May also be <code>null</code> if the context display
-     *         options doesn't manage the dependency type.
+     *         types options doesn't manage the dependency type.
      * @throws PlantUMLDependencyException
      *             if any parsing exception occurs while reading the source file.
      * @since 1.0.0

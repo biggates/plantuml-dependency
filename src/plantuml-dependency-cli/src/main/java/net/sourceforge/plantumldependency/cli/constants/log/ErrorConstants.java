@@ -30,7 +30,7 @@ package net.sourceforge.plantumldependency.cli.constants.log;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public final class ErrorConstants {
 
@@ -49,8 +49,8 @@ public final class ErrorConstants {
     /** The dependency type null error message. */
     public static final String DEPENDENCY_TYPE_NULL_ERROR = "[error-plantuml-dependency-cli-004] : The dependency type is null";
 
-    /** The display option null error message. */
-    public static final String DISPLAY_OPTION_NULL_ERROR = "[error-plantuml-dependency-cli-005] : The display option is null";
+    /** The display type option null error message. */
+    public static final String DISPLAY_TYPE_OPTION_NULL_ERROR = "[error-plantuml-dependency-cli-005] : The display type option is null";
 
     /** The exclude option null error message. */
     public static final String EXCLUDE_OPTION_NULL_ERROR = "[error-plantuml-dependency-cli-006] : The exclude option is null";
@@ -109,11 +109,11 @@ public final class ErrorConstants {
     /** The java type package name null error message. */
     public static final String JAVA_TYPE_PACKAGE_NAME_NULL_ERROR = "[error-plantuml-dependency-cli-024] : The java type package name is null";
 
-    /** The not display argument error message. */
-    public static final String NOT_DISPLAY_ARGUMENT_ERROR = "[error-plantuml-dependency-cli-025] : Can't parse option argument \"{0}\", it isn't a valid display argument";
+    /** The not display type argument error message. */
+    public static final String NOT_DISPLAY_TYPE_ARGUMENT_ERROR = "[error-plantuml-dependency-cli-025] : Can't parse option argument \"{0}\", it isn't a valid display type argument";
 
-    /** The several display arguments error message. */
-    public static final String SEVERAL_DISPLAY_ARGUMENTS_ERROR = "[error-plantuml-dependency-cli-026] : The display argument \"{0}\" is defined several times";
+    /** The several display type arguments error message. */
+    public static final String SEVERAL_DISPLAY_TYPE_ARGUMENTS_ERROR = "[error-plantuml-dependency-cli-026] : The display type argument \"{0}\" is defined several times";
 
     /** The plantUML dependency error message. */
     public static final String PLANTUML_DEPENDENCY_ERROR = "[error-plantuml-dependency-cli-027] : An error has occured while running PlantUML Dependency, please check the log for more information";

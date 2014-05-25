@@ -25,7 +25,7 @@
 package net.sourceforge.plantumldependency.cli.main.ant;
 
 import static java.util.logging.Level.INFO;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS_STRING;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_EXCLUDE_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_INCLUDE_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
@@ -59,7 +59,7 @@ public class PlantUMLDependencyProgramTaskTest {
     private static PlantUMLDependencyProgramTask createPlantUMLDependencyTask1() {
         final PlantUMLDependencyProgramTask task = new PlantUMLDependencyProgramTask();
         task.setBaseDir(DOT_CHAR);
-        task.setDisplay(DEFAULT_DISPLAY_OPTIONS_STRING);
+        task.setDisplay(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING);
         task.setExcludes(DEFAULT_EXCLUDE_OPTIONS);
         task.setIncludes(DEFAULT_INCLUDE_OPTIONS + DEFAULT_PROGRAMMING_LANGUAGE.getName());
         task.setOutput("plantuml" + TXT_EXTENSION);
@@ -95,7 +95,7 @@ public class PlantUMLDependencyProgramTaskTest {
      */
     @Test
     public void testGetDisplay() {
-        assertEquals(DEFAULT_DISPLAY_OPTIONS_STRING, PLANTUML_DEPENDENCY_TASK2.getDisplay());
+        assertEquals(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING, PLANTUML_DEPENDENCY_TASK2.getDisplay());
     }
 
     /**
@@ -169,8 +169,8 @@ public class PlantUMLDependencyProgramTaskTest {
     @Test
     public void testSetDisplay() {
         final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
-        testTask.setDisplay(DEFAULT_DISPLAY_OPTIONS_STRING);
-        assertEquals(DEFAULT_DISPLAY_OPTIONS_STRING, testTask.getDisplay());
+        testTask.setDisplay(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING);
+        assertEquals(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING, testTask.getDisplay());
     }
 
     /**

@@ -26,7 +26,7 @@ package net.sourceforge.plantumldependency.cli.generic.type;
 
 import java.util.Set;
 
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 
 /**
  * The interface which describes a displayable element, i.e. an element which can be displayed or
@@ -34,19 +34,19 @@ import net.sourceforge.plantumldependency.cli.main.option.display.argument.Displ
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.1.1
- * @version 1.3.0
+ * @version 1.4.0
  */
 public interface Displayable {
 
     /**
-     * Tells if the dependency has to be displayed following the passed display options.
+     * Tells if the dependency has to be displayed following the passed display types options.
      *
-     * @param displayOptions
-     *            the {@link Set} of display options, mustn't be <code>null</code>, if empty, this
-     *            method always returns <code>false</code>.
+     * @param displayTypesOptions
+     *            the {@link Set} of display types options, mustn't be <code>null</code>, if empty,
+     *            this method always returns <code>false</code>.
      * @return <code>true</code> if the dependency has to be displayed, <code>false</code>
      *         otherwise.
      * @since 1.1.1
      */
-    boolean isDisplayable(Set < Display > displayOptions);
+    boolean isDisplayable(Set < DisplayType > displayTypesOptions);
 }

@@ -41,7 +41,7 @@ import java.util.logging.Logger;
 
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.ProgrammingLanguageContext;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.PlantUMLDiagram;
@@ -58,7 +58,7 @@ import org.apache.tools.ant.types.resources.FileResource;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecution {
 
@@ -79,16 +79,16 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param includeExcludeFiles
      *            the {@link FileSet} describing all files to include or exclude and also the base
      *            directory where to look for, mustn't be <code>null</code>.
-     * @param displayOpt
-     *            the display option which have to appear in the plantUML description, mustn't be
+     * @param displayTypesOpt
+     *            the display types options which have to appear in the plantUML description, mustn't be
      *            <code>null</code>.
      * @return the {@link ProgrammingLanguageContext} instance containing all parsed
      *         {@link GenericDependency}.
      * @since 1.0.0
      */
     private static ProgrammingLanguageContext readDependenciesContextFromFiles(final ProgrammingLanguage language,
-            final FileSet includeExcludeFiles, final Set < Display > displayOpt) {
-        final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext(displayOpt);
+            final FileSet includeExcludeFiles, final Set < DisplayType > displayTypesOpt) {
+        final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext(displayTypesOpt);
 
         final Iterator < FileResource > iter = includeExcludeFiles.iterator();
         while (iter.hasNext()) {
@@ -145,8 +145,8 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     /** The programming language to parse. */
     private ProgrammingLanguage programmingLanguage;
 
-    /** The display option which have to appear in the plantUML description. */
-    private Set < Display > displayOptions;
+    /** The display types options which have to appear in the plantUML description. */
+    private Set < DisplayType > displayTypesOptions;
 
     /**
      * Default constructor.
@@ -159,20 +159,20 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param includeExcludeFiles
      *            the {@link FileSet} describing all files to include or exclude and also the base
      *            directory where to look for, mustn't be <code>null</code>.
-     * @param displayOpt
-     *            the display option which have to appear in the plantUML description.
+     * @param displayTypesOpt
+     *            the display types options which have to appear in the plantUML description.
      * @param optionPriority
      *            the option priority as an integer. <i>Note : the priority must be unique amongst
      *            all options</i>.
      * @since 1.0.0
      */
     public PlantUMLDependencyOutputOptionExecution(final File file, final ProgrammingLanguage language,
-            final FileSet includeExcludeFiles, final Set < Display > displayOpt, final int optionPriority) {
+            final FileSet includeExcludeFiles, final Set < DisplayType > displayTypesOpt, final int optionPriority) {
         super(optionPriority);
         setOutputFile(file);
         setInputFileSet(includeExcludeFiles);
         setProgrammingLanguage(language);
-        setDisplayOptions(displayOpt);
+        setDisplayTypesOptions(displayTypesOpt);
     }
 
     /**
@@ -185,7 +185,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
         final PlantUMLDependencyOutputOptionExecution p = (PlantUMLDependencyOutputOptionExecution) super.deepClone();
         p.outputFile = new File(outputFile.getAbsolutePath());
         p.inputFileSet = (FileSet) inputFileSet.clone();
-        p.displayOptions = new TreeSet < Display >(displayOptions);
+        p.displayTypesOptions = new TreeSet < DisplayType >(displayTypesOptions);
         return p;
     }
 
@@ -197,7 +197,7 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     @Override
     public void execute() throws CommandLineException {
         final ProgrammingLanguageContext programmingLanguageContext = readDependenciesContextFromFiles(
-                getProgrammingLanguage(), getInputFileSet(), getDisplayOptions());
+                getProgrammingLanguage(), getInputFileSet(), getDisplayTypesOptions());
         final PlantUMLDiagram plantUMLDiagram = programmingLanguageContext.getPlantUMLClassesDiagram();
         writeIntoFile(plantUMLDiagram.getPlantUMLTextDescription(), getOutputFile());
         LOGGER.log(INFO,
@@ -205,14 +205,14 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     }
 
     /**
-     * Gets the value of <code>displayOptions</code>.
+     * Gets the value of <code>displayTypesOptions</code>.
      *
-     * @return the value of <code>displayOptions</code>.
-     * @see #setDisplayOptions(Set)
+     * @return the value of <code>displayTypesOptions</code>.
+     * @see #setDisplayTypesOptions(Set)
      * @since 1.0.0
      */
-    private Set < Display > getDisplayOptions() {
-        return displayOptions;
+    private Set < DisplayType > getDisplayTypesOptions() {
+        return displayTypesOptions;
     }
 
     /**
@@ -249,15 +249,15 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     }
 
     /**
-     * Sets the value of <code>displayOptions</code>.
+     * Sets the value of <code>displayTypesOptions</code>.
      *
      * @param value
-     *            the <code>displayOptions</code> to set, can be <code>null</code>.
-     * @see #getDisplayOptions()
+     *            the <code>displayTypesOptions</code> to set, can be <code>null</code>.
+     * @see #getDisplayTypesOptions()
      * @since 1.0.0
      */
-    private void setDisplayOptions(final Set < Display > value) {
-        displayOptions = value;
+    private void setDisplayTypesOptions(final Set < DisplayType > value) {
+        displayTypesOptions = value;
     }
 
     /**

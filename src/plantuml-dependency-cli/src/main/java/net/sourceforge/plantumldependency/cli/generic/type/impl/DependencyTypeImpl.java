@@ -28,13 +28,13 @@ import static java.util.logging.Level.FINE;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.DEPENDENCY_IS_NOT_DISPLAYABLE_FINE;
-import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE;
+import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.DISPLAY_TYPE_OPTION_NOT_MANAGED_FINE;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.IMPORT_IS_AN_EXTENSION_AN_IMPLEMENTATION_OR_AN_ANNOTATION_FINE;
 import static net.sourceforge.plantumldependency.cli.generic.type.ImportType.IMPORT_TYPES;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.ANNOTATIONS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.DISPLAY_OPTIONS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.EXTENSIONS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.IMPLEMENTATIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ANNOTATIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.DISPLAY_TYPES_OPTIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.EXTENSIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.IMPLEMENTATIONS;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.plantumldependency.common.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.plantumldependency.common.utils.comparable.ComparableResult.AFTER;
@@ -50,7 +50,7 @@ import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.type.DependencyType;
 import net.sourceforge.plantumldependency.cli.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantumldependency.cli.generic.type.ImportType;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.impl.PlantUMLClassesDiagramExtendRelationImpl;
@@ -62,7 +62,7 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.i
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public abstract class DependencyTypeImpl implements DependencyType {
 
@@ -229,7 +229,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
 
         try {
             d = (DependencyTypeImpl) super.clone();
-            // TODO deepClone don't manage cycles
+            // TODO deepClone doesn't manage cycles
             d.importDependenciesCollection = getImportDependenciesCollection().deepClone();
             d.parentExtensionsDependencies = new TreeSet < GenericDependency >(getParentExtensionsDependencies());
             d.parentImplementationsDependencies = new TreeSet < GenericDependency >(
@@ -281,34 +281,34 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * Generates the plantUML classes diagram relations.
      *
-     * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML links description,
-     *            mustn't be <code>null</code>.
+     * @param displayTypesOptions
+     *            the {@link Set} of all display types options to display the PlantUML links
+     *            description, mustn't be <code>null</code>.
      * @return the set of all PlantUML classes diagram relations as a {@link Set} of
      *         {@link PlantUMLClassesDiagramRelation} instances describing relations to imports and
      *         the dependency type parents.
      * @since 1.1.1
      */
     private Set < PlantUMLClassesDiagramRelation > generatePlantUMLClassesDiagramRelations(
-            final Set < Display > displayOptions) {
+            final Set < DisplayType > displayTypesOptions) {
         final Set < PlantUMLClassesDiagramRelation > linkSet = new TreeSet < PlantUMLClassesDiagramRelation >();
 
-        for (final GenericDependency importDependency : getImportDependenciesToGeneratePlantUML(displayOptions)) {
+        for (final GenericDependency importDependency : getImportDependenciesToGeneratePlantUML(displayTypesOptions)) {
             linkSet.add(new PlantUMLClassesDiagramUseRelationImpl(getPlantUMLClassesDiagramElement(), importDependency
                     .getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
-        for (final GenericDependency parentImplementationsDependency : getParentImplementationsToGeneratePlantUML(displayOptions)) {
+        for (final GenericDependency parentImplementationsDependency : getParentImplementationsToGeneratePlantUML(displayTypesOptions)) {
             linkSet.add(new PlantUMLClassesDiagramImplementRelationImpl(getPlantUMLClassesDiagramElement(),
                     parentImplementationsDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
-        for (final GenericDependency parentExtensionsDependency : getParentExtensionsToGeneratePlantUML(displayOptions)) {
+        for (final GenericDependency parentExtensionsDependency : getParentExtensionsToGeneratePlantUML(displayTypesOptions)) {
             linkSet.add(new PlantUMLClassesDiagramExtendRelationImpl(getPlantUMLClassesDiagramElement(),
                     parentExtensionsDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
-        for (final GenericDependency annotationDependency : getAnnotationsToGeneratePlantUML(displayOptions)) {
+        for (final GenericDependency annotationDependency : getAnnotationsToGeneratePlantUML(displayTypesOptions)) {
             linkSet.add(new PlantUMLClassesDiagramUseRelationImpl(getPlantUMLClassesDiagramElement(),
                     annotationDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
@@ -329,26 +329,26 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * Gets the annotations which have to be generated in the plantUML description file.
      *
-     * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML links description,
-     *            mustn't be <code>null</code>.
+     * @param displayTypesOptions
+     *            the {@link Set} of all display types options to display the PlantUML links
+     *            description, mustn't be <code>null</code>.
      * @return the {@link Set} of annotation {@link GenericDependency} which have to be generated in
      *         the plantUML file.
      * @since 1.2.0
      */
-    private Set < GenericDependency > getAnnotationsToGeneratePlantUML(final Set < Display > displayOptions) {
+    private Set < GenericDependency > getAnnotationsToGeneratePlantUML(final Set < DisplayType > displayTypesOptions) {
         final Set < GenericDependency > annotationsDependenciesDisplayable = new TreeSet < GenericDependency >();
 
-        if (displayOptions.contains(ANNOTATIONS)) {
+        if (displayTypesOptions.contains(ANNOTATIONS)) {
             for (final GenericDependency genericDependency : getAnnotationsDependencies()) {
-                if (genericDependency.getDependencyType().isDisplayable(displayOptions)) {
+                if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions)) {
                     annotationsDependenciesDisplayable.add(genericDependency);
                 } else {
                     LOGGER.log(FINE, buildLogString(DEPENDENCY_IS_NOT_DISPLAYABLE_FINE, genericDependency));
                 }
             }
         } else {
-            LOGGER.log(FINE, buildLogString(DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE, ANNOTATIONS));
+            LOGGER.log(FINE, buildLogString(DISPLAY_TYPE_OPTION_NOT_MANAGED_FINE, ANNOTATIONS));
         }
 
         return annotationsDependenciesDisplayable;
@@ -377,22 +377,23 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * Gets the import dependencies which have to be generated in the plantUML description file.
      *
-     * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML links description,
-     *            mustn't be <code>null</code>.
+     * @param displayTypesOptions
+     *            the {@link Set} of all display types options to display the PlantUML links
+     *            description, mustn't be <code>null</code>.
      * @return the {@link Set} of import {@link GenericDependency} which have to be generated in the
      *         plantUML file.
      * @since 1.1.1
      */
-    private Set < GenericDependency > getImportDependenciesToGeneratePlantUML(final Set < Display > displayOptions) {
+    private Set < GenericDependency > getImportDependenciesToGeneratePlantUML(
+            final Set < DisplayType > displayTypesOptions) {
         final Set < GenericDependency > importDependenciesNotImplementedNorExtendedNorAnnonatedAndDisplayable = new TreeSet < GenericDependency >();
 
         for (final ImportType importType : IMPORT_TYPES) {
-            if (displayOptions.contains(importType.getDisplayOption())) {
+            if (displayTypesOptions.contains(importType.getDisplayType())) {
                 for (final GenericDependency genericDependency : getImportDependenciesCollection()
                         .getImportDependenciesWithType(importType)) {
                     if (!isDependencyInExtensionsImplementationsOrAnnotationsDependencies(genericDependency)) {
-                        if (genericDependency.getDependencyType().isDisplayable(displayOptions)) {
+                        if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions)) {
                             importDependenciesNotImplementedNorExtendedNorAnnonatedAndDisplayable
                                     .add(genericDependency);
                         } else {
@@ -406,7 +407,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
                     }
                 }
             } else {
-                LOGGER.log(FINE, buildLogString(DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE, importType.getDisplayOption()));
+                LOGGER.log(FINE, buildLogString(DISPLAY_TYPE_OPTION_NOT_MANAGED_FINE, importType.getDisplayType()));
             }
         }
 
@@ -446,26 +447,27 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * Gets the parent extensions which have to be generated in the plantUML description file.
      *
-     * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML links description,
-     *            mustn't be <code>null</code>.
+     * @param displayTypesOptions
+     *            the {@link Set} of all display types options to display the PlantUML links
+     *            description, mustn't be <code>null</code>.
      * @return the {@link Set} of parent extensions as {@link GenericDependency} which have to be
      *         generated in the plantUML file.
      * @since 1.2.0
      */
-    private Set < GenericDependency > getParentExtensionsToGeneratePlantUML(final Set < Display > displayOptions) {
+    private Set < GenericDependency > getParentExtensionsToGeneratePlantUML(
+            final Set < DisplayType > displayTypesOptions) {
         final Set < GenericDependency > extensionsDependenciesDisplayable = new TreeSet < GenericDependency >();
 
-        if (displayOptions.contains(EXTENSIONS)) {
+        if (displayTypesOptions.contains(EXTENSIONS)) {
             for (final GenericDependency genericDependency : getParentExtensionsDependencies()) {
-                if (genericDependency.getDependencyType().isDisplayable(displayOptions)) {
+                if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions)) {
                     extensionsDependenciesDisplayable.add(genericDependency);
                 } else {
                     LOGGER.log(FINE, buildLogString(DEPENDENCY_IS_NOT_DISPLAYABLE_FINE, genericDependency));
                 }
             }
         } else {
-            LOGGER.log(FINE, buildLogString(DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE, EXTENSIONS));
+            LOGGER.log(FINE, buildLogString(DISPLAY_TYPE_OPTION_NOT_MANAGED_FINE, EXTENSIONS));
         }
 
         return extensionsDependenciesDisplayable;
@@ -484,26 +486,27 @@ public abstract class DependencyTypeImpl implements DependencyType {
     /**
      * Gets the parent implementations which have to be generated in the plantUML description file.
      *
-     * @param displayOptions
-     *            the {@link Set} of all displays options to display the PlantUML links description,
-     *            mustn't be <code>null</code>.
+     * @param displayTypesOptions
+     *            the {@link Set} of all display types options to display the PlantUML links
+     *            description, mustn't be <code>null</code>.
      * @return the {@link Set} of parent implementations as {@link GenericDependency} which have to
      *         be generated in the plantUML file.
      * @since 1.1.1
      */
-    private Set < GenericDependency > getParentImplementationsToGeneratePlantUML(final Set < Display > displayOptions) {
+    private Set < GenericDependency > getParentImplementationsToGeneratePlantUML(
+            final Set < DisplayType > displayTypesOptions) {
         final Set < GenericDependency > implementationsDependenciesDisplayable = new TreeSet < GenericDependency >();
 
-        if (displayOptions.contains(IMPLEMENTATIONS)) {
+        if (displayTypesOptions.contains(IMPLEMENTATIONS)) {
             for (final GenericDependency genericDependency : getParentImplementationsDependencies()) {
-                if (genericDependency.getDependencyType().isDisplayable(displayOptions)) {
+                if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions)) {
                     implementationsDependenciesDisplayable.add(genericDependency);
                 } else {
                     LOGGER.log(FINE, buildLogString(DEPENDENCY_IS_NOT_DISPLAYABLE_FINE, genericDependency));
                 }
             }
         } else {
-            LOGGER.log(FINE, buildLogString(DISPLAY_OPTION_NOT_MANAGED_TYPE_FINE, IMPLEMENTATIONS));
+            LOGGER.log(FINE, buildLogString(DISPLAY_TYPE_OPTION_NOT_MANAGED_FINE, IMPLEMENTATIONS));
         }
 
         return implementationsDependenciesDisplayable;
@@ -530,7 +533,7 @@ public abstract class DependencyTypeImpl implements DependencyType {
     @Override
     public Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations() {
         if (plantUMLClassesDiagramRelationSet == null) {
-            plantUMLClassesDiagramRelationSet = getPlantUMLClassesDiagramRelations(DISPLAY_OPTIONS);
+            plantUMLClassesDiagramRelationSet = getPlantUMLClassesDiagramRelations(DISPLAY_TYPES_OPTIONS);
         }
         return plantUMLClassesDiagramRelationSet;
     }
@@ -542,8 +545,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
      */
     @Override
     public Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations(
-            final Set < Display > displayOptions) {
-        return generatePlantUMLClassesDiagramRelations(displayOptions);
+            final Set < DisplayType > displayTypesOptions) {
+        return generatePlantUMLClassesDiagramRelations(displayTypesOptions);
     }
 
     /**

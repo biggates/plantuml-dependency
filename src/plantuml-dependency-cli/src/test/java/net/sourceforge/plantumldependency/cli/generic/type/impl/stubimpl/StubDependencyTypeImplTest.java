@@ -24,7 +24,7 @@
 
 package net.sourceforge.plantumldependency.cli.generic.type.impl.stubimpl;
 
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Set;
@@ -43,7 +43,7 @@ import org.junit.experimental.theories.DataPoint;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDependencyTypeImpl > {
 
@@ -159,6 +159,6 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                STUB_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_OPTIONS));
+                STUB_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS));
     }
 }

@@ -24,7 +24,7 @@
 
 package net.sourceforge.plantumldependency.cli.main.program;
 
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS_STRING;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOption.DEFAULT_PROGRAMMING_LANGUAGE;
 import static net.sourceforge.plantumldependency.cli.main.program.PlantUMLDependencyProgram.main;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
@@ -41,7 +41,7 @@ import org.junit.Test;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyProgramTest {
 
@@ -116,7 +116,7 @@ public class PlantUMLDependencyProgramTest {
      */
     @Test(expected = PlantUMLDependencyException.class)
     public void testMainWithPrimaryDisplayOption() throws PlantUMLDependencyException {
-        main(new String[] {"-d", DEFAULT_DISPLAY_OPTIONS_STRING});
+        main(new String[] {"-d", DEFAULT_DISPLAY_TYPES_OPTIONS_STRING});
     }
 
     /**
@@ -224,7 +224,7 @@ public class PlantUMLDependencyProgramTest {
      */
     @Test(expected = PlantUMLDependencyException.class)
     public void testMainWithSecondaryDisplayOption() throws PlantUMLDependencyException {
-        main(new String[] {"--display", DEFAULT_DISPLAY_OPTIONS_STRING});
+        main(new String[] {"--display", DEFAULT_DISPLAY_TYPES_OPTIONS_STRING});
     }
 
     /**

@@ -43,7 +43,7 @@ import java.util.TreeSet;
 import java.util.logging.Logger;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.PlantUMLClassesDiagram;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.impl.PlantUMLClassesDiagramImpl;
@@ -55,7 +55,7 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.P
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public abstract class AbstractProgrammingLanguageContext implements ProgrammingLanguageContext {
 
@@ -66,10 +66,10 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     private static final long serialVersionUID = -2181655116426569842L;
 
     /**
-     * The display options which have to appear in the plantUML description, mustn't be
+     * The display types options which have to appear in the plantUML description, mustn't be
      * <code>null</code>.
      */
-    private Set < Display > displayOptions;
+    private Set < DisplayType > displayTypesOptions;
 
     /**
      * The {@link Map} containing all dependencies which have already been treated or seen, it
@@ -99,19 +99,19 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @since 1.0.0
      */
     protected AbstractProgrammingLanguageContext() {
-        this(new TreeSet < GenericDependency >(), new TreeSet < Display >());
+        this(new TreeSet < GenericDependency >(), new TreeSet < DisplayType >());
     }
 
     /**
      * Medium constructor.
      *
-     * @param displayOpt
-     *            the display options which have to appear in the plantUML description, mustn't be
-     *            <code>null</code>.
+     * @param displayTypesOpt
+     *            the display types options which have to appear in the plantUML description,
+     *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
-    protected AbstractProgrammingLanguageContext(final Set < Display > displayOpt) {
-        this(new TreeSet < GenericDependency >(), displayOpt);
+    protected AbstractProgrammingLanguageContext(final Set < DisplayType > displayTypesOpt) {
+        this(new TreeSet < GenericDependency >(), displayTypesOpt);
     }
 
     /**
@@ -120,14 +120,14 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @param parsedAndSeenDependencies
      *            the original parsed and seen dependencies {@link Set} of {@link GenericDependency}
      *            to put in the context, mustn't be <code>null</code>.
-     * @param displayOpt
-     *            the display options which have to appear in the plantUML description, mustn't be
-     *            <code>null</code>.
+     * @param displayTypesOpt
+     *            the display types options which have to appear in the plantUML description,
+     *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
     protected AbstractProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
-            final Set < Display > displayOpt) {
-        this(parsedAndSeenDependencies, parsedAndSeenDependencies, new TreeSet < GenericDependency >(), displayOpt);
+            final Set < DisplayType > displayTypesOpt) {
+        this(parsedAndSeenDependencies, parsedAndSeenDependencies, new TreeSet < GenericDependency >(), displayTypesOpt);
     }
 
     /**
@@ -142,14 +142,14 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @param potentialJavaLangSeenDependencies
      *            the original potential "java.lang" seen dependencies {@link Set} of
      *            {@link GenericDependency} to put in the context, mustn't be <code>null</code>.
-     * @param displayOpt
-     *            the display options which have to appear in the plantUML description, mustn't be
-     *            <code>null</code>.
+     * @param displayTypesOpt
+     *            the display types options which have to appear in the plantUML description,
+     *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
     protected AbstractProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < GenericDependency > parsedDependencies,
-            final Set < GenericDependency > potentialJavaLangSeenDependencies, final Set < Display > displayOpt) {
+            final Set < GenericDependency > potentialJavaLangSeenDependencies, final Set < DisplayType > displayTypesOpt) {
         // TODO test null
         final Map < String, GenericDependency > firstDependenciesMap = new TreeMap < String, GenericDependency >();
         for (final GenericDependency genericDependency : parsedAndSeenDependencies) {
@@ -173,7 +173,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         }
         setPotentialJavaLangSeenDependenciesMap(thirdDependenciesMap);
 
-        setDisplayOptions(new TreeSet < Display >(displayOpt));
+        setDisplayTypesOptions(new TreeSet < DisplayType >(displayTypesOpt));
     }
 
     /**
@@ -242,7 +242,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
             a.potentialJavaLangSeenDependenciesMap = new TreeMap < String, GenericDependency >(
                     a.potentialJavaLangSeenDependenciesMap);
             a.parsedDependenciesMap = new TreeMap < String, GenericDependency >(a.parsedDependenciesMap);
-            a.displayOptions = new TreeSet < Display >(getDisplayOptions());
+            a.displayTypesOptions = new TreeSet < DisplayType >(getDisplayTypesOptions());
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
         }
@@ -267,11 +267,11 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
             return false;
         }
         final AbstractProgrammingLanguageContext other = (AbstractProgrammingLanguageContext) obj;
-        if (displayOptions == null) {
-            if (other.displayOptions != null) {
+        if (displayTypesOptions == null) {
+            if (other.displayTypesOptions != null) {
                 return false;
             }
-        } else if (!displayOptions.equals(other.displayOptions)) {
+        } else if (!displayTypesOptions.equals(other.displayTypesOptions)) {
             return false;
         }
         if (parsedAndSeenDependenciesMap == null) {
@@ -300,19 +300,20 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
 
     /**
      * Gets all dependencies which have been seen (as import for instance) and parsed within the
-     * context and which have to be displayed following display options.
+     * context and which have to be displayed following display types options.
      *
-     * @param displayOpts
-     *            the {@link Set} of display options, mustn't be <code>null</code>.
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options, mustn't be <code>null</code>.
      * @return the {@link Collection} of all {@link GenericDependency} which have been seen (as
      *         import for instance) and parsed and associated with this context and which have to be
-     *         displayed following display options.
+     *         displayed following display types options.
      * @since 1.1.1
      */
-    private Collection < GenericDependency > getDisplayableParsedAndSeenDependencies(final Set < Display > displayOpts) {
+    private Collection < GenericDependency > getDisplayableParsedAndSeenDependencies(
+            final Set < DisplayType > displayTypesOpts) {
         final Set < GenericDependency > displayableParsedAndSeenDependencies = new TreeSet < GenericDependency >();
         for (final GenericDependency dependency : getParsedAndSeenDependencies()) {
-            if (dependency.getDependencyType().isDisplayable(displayOpts)) {
+            if (dependency.getDependencyType().isDisplayable(displayTypesOpts)) {
                 displayableParsedAndSeenDependencies.add(dependency);
             }
         }
@@ -321,14 +322,14 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     }
 
     /**
-     * Gets the value of <code>displayOptions</code>.
+     * Gets the value of <code>displayTypesOptions</code>.
      *
-     * @return the value of <code>displayOptions</code>.
-     * @see #setDisplayOptions(Set)
+     * @return the value of <code>displayTypesOptions</code>.
+     * @see #setDisplayTypesOptions(Set)
      * @since 1.0.0
      */
-    private Set < Display > getDisplayOptions() {
-        return displayOptions;
+    private Set < DisplayType > getDisplayTypesOptions() {
+        return displayTypesOptions;
     }
 
     /**
@@ -405,11 +406,11 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         final Set < PlantUMLClassesDiagramElement > plantUMLClassesDiagramElements = new TreeSet < PlantUMLClassesDiagramElement >();
         final Set < PlantUMLClassesDiagramRelation > plantUMLClassesDiagramRelations = new TreeSet < PlantUMLClassesDiagramRelation >();
 
-        for (final GenericDependency genericDependency : getDisplayableParsedAndSeenDependencies(getDisplayOptions())) {
+        for (final GenericDependency genericDependency : getDisplayableParsedAndSeenDependencies(getDisplayTypesOptions())) {
             plantUMLClassesDiagramElements
                     .add(genericDependency.getDependencyType().getPlantUMLClassesDiagramElement());
             plantUMLClassesDiagramRelations.addAll(genericDependency.getDependencyType()
-                    .getPlantUMLClassesDiagramRelations(getDisplayOptions()));
+                    .getPlantUMLClassesDiagramRelations(getDisplayTypesOptions()));
         }
 
         return new PlantUMLClassesDiagramImpl(plantUMLClassesDiagramElements, plantUMLClassesDiagramRelations);
@@ -445,7 +446,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((displayOptions == null) ? 0 : displayOptions.hashCode());
+        result = prime * result + ((displayTypesOptions == null) ? 0 : displayTypesOptions.hashCode());
         result = prime * result
                 + ((parsedAndSeenDependenciesMap == null) ? 0 : parsedAndSeenDependenciesMap.hashCode());
         result = prime * result + ((parsedDependenciesMap == null) ? 0 : parsedDependenciesMap.hashCode());
@@ -461,8 +462,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @since 1.0.0
      */
     @Override
-    public boolean hasToDisplay(final Display display) {
-        return getDisplayOptions().contains(display);
+    public boolean hasToDisplay(final DisplayType displayType) {
+        return getDisplayTypesOptions().contains(displayType);
     }
 
     /**
@@ -493,15 +494,15 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     }
 
     /**
-     * Sets the value of <code>displayOptions</code>.
+     * Sets the value of <code>displayTypesOptions</code>.
      *
      * @param value
-     *            the <code>displayOptions</code> to set, can be <code>null</code>.
-     * @see #getDisplayOptions()
+     *            the <code>displayTypesOptions</code> to set, can be <code>null</code>.
+     * @see #getDisplayTypesOptions()
      * @since 1.0.0
      */
-    private void setDisplayOptions(final Set < Display > value) {
-        displayOptions = value;
+    private void setDisplayTypesOptions(final Set < DisplayType > value) {
+        displayTypesOptions = value;
     }
 
     /**
@@ -548,8 +549,9 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      */
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [displayOptions=" + displayOptions + ", parsedAndSeenDependenciesMap="
-                + parsedAndSeenDependenciesMap + ", potentialJavaLangSeenDependenciesMap="
-                + potentialJavaLangSeenDependenciesMap + ", parsedDependenciesMap=" + parsedDependenciesMap + "]";
+        return getClass().getSimpleName() + " [displayTypesOptions=" + displayTypesOptions
+                + ", parsedAndSeenDependenciesMap=" + parsedAndSeenDependenciesMap
+                + ", potentialJavaLangSeenDependenciesMap=" + potentialJavaLangSeenDependenciesMap
+                + ", parsedDependenciesMap=" + parsedDependenciesMap + "]";
     }
 }

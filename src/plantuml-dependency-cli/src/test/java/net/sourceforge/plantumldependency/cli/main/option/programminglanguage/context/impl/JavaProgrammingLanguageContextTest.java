@@ -25,10 +25,10 @@
 package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.impl;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET3;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.ABSTRACT_CLASSES;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.DISPLAY_OPTIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ABSTRACT_CLASSES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.DISPLAY_TYPES_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.impl.PlantUMLClassesDiagramImplTest.PLANTUML_CLASSES_DIAGRAM_TEST2;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -49,7 +49,7 @@ import org.junit.experimental.theories.DataPoint;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class JavaProgrammingLanguageContextTest extends
         ComparableAndDeepCloneableObjectTest < JavaProgrammingLanguageContextTest > {
@@ -65,7 +65,7 @@ public class JavaProgrammingLanguageContextTest extends
                     new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                             "net.sourceforge.plantumldependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantumldependency.generic")})),
-            DEFAULT_DISPLAY_OPTIONS);
+            DEFAULT_DISPLAY_TYPES_OPTIONS);
 
     /** Java programming language test 3 instance. */
     @DataPoint
@@ -87,7 +87,7 @@ public class JavaProgrammingLanguageContextTest extends
                     "GenericDependency", "net.sourceforge.plantumldependency.generic")})),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                     "TestReadDependencyFromFileInterfaceWithoutPackage",
-                    "net.sourceforge.plantumldependency.main.option.programminglanguage")})), DISPLAY_OPTIONS);
+                    "net.sourceforge.plantumldependency.main.option.programminglanguage")})), DISPLAY_TYPES_OPTIONS);
 
     /** Java programming language test 5 instance. */
     @DataPoint
@@ -97,7 +97,7 @@ public class JavaProgrammingLanguageContextTest extends
                             "net.sourceforge.plantumldependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantumldependency.generic")})),
             new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
-                    "GenericDependency", "net.sourceforge.plantumldependency.generic")})), DISPLAY_OPTIONS);
+                    "GenericDependency", "net.sourceforge.plantumldependency.generic")})), DISPLAY_TYPES_OPTIONS);
 
     /** Java programming language test 6 instance. */
     @DataPoint
@@ -257,7 +257,7 @@ public class JavaProgrammingLanguageContextTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#hasToDisplay(net.sourceforge.plantumldependency.cli.main.option.display.argument.Display)}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.impl.JavaProgrammingLanguageContext#hasToDisplay(net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType)}
      * .
      */
     @Test
@@ -280,7 +280,7 @@ public class JavaProgrammingLanguageContextTest extends
                         new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantumldependency.generic")})),
                 new TreeSet < GenericDependency >(asList(new GenericDependency[] {new GenericDependencyImpl(
                         "GenericDependency", "net.sourceforge.plantumldependency.generic")})),
-                new TreeSet < GenericDependency >(asList(new GenericDependency[] {dependency})), DISPLAY_OPTIONS);
+                new TreeSet < GenericDependency >(asList(new GenericDependency[] {dependency})), DISPLAY_TYPES_OPTIONS);
         javaProgrammingLanguageContext.removeAllPotentialJavaLangSeenDependencyAndChangePackageToJavaLang();
         assertEquals(2, javaProgrammingLanguageContext.getParsedAndSeenDependencies().size());
         assertEquals(1, javaProgrammingLanguageContext.getParsedDependencies().size());

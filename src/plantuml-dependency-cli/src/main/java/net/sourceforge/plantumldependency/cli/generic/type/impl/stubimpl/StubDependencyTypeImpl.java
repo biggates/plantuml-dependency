@@ -24,12 +24,12 @@
 
 package net.sourceforge.plantumldependency.cli.generic.type.impl.stubimpl;
 
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.CLASSES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.CLASSES;
 
 import java.util.Set;
 
 import net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
 
@@ -39,7 +39,7 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.im
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class StubDependencyTypeImpl extends DependencyTypeImpl {
 
@@ -76,8 +76,8 @@ public class StubDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.1.1
      */
     @Override
-    public boolean isDisplayable(final Set < Display > displayOptions) {
-        return displayOptions.contains(CLASSES);
+    public boolean isDisplayable(final Set < DisplayType > displayTypesOptions) {
+        return displayTypesOptions.contains(CLASSES);
     }
 
     /**

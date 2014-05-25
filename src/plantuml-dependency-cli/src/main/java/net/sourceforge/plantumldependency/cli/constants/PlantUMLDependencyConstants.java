@@ -25,16 +25,16 @@
 package net.sourceforge.plantumldependency.cli.constants;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.ABSTRACT_CLASSES;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.ANNOTATIONS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.CLASSES;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.ENUMS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.EXTENSIONS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.IMPLEMENTATIONS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.IMPORTS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.INTERFACES;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.NATIVE_METHODS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.Display.STATIC_IMPORTS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ABSTRACT_CLASSES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ANNOTATIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.CLASSES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ENUMS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.EXTENSIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.IMPLEMENTATIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.IMPORTS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.INTERFACES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.NATIVE_METHODS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.STATIC_IMPORTS;
 import static net.sourceforge.plantumldependency.common.color.HTMLColor.YELLOW;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
@@ -46,7 +46,7 @@ import java.util.TreeSet;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.nativeimpl.NativeDependencyTypeImpl;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.PlantUMLStereotype;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.impl.PlantUMLSpottedCharacterImpl;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.stereotype.impl.PlantUMLStereotypeImpl;
@@ -60,13 +60,13 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.st
  */
 public final class PlantUMLDependencyConstants {
 
-    /** The default display options to apply if not specified. */
-    public static final Set < Display > DEFAULT_DISPLAY_OPTIONS = new TreeSet < Display >(asList(new Display[] {
+    /** The default display types options to apply if not specified. */
+    public static final Set < DisplayType > DEFAULT_DISPLAY_TYPES_OPTIONS = new TreeSet < DisplayType >(asList(new DisplayType[] {
             ABSTRACT_CLASSES, ANNOTATIONS, CLASSES, ENUMS, IMPORTS, INTERFACES, STATIC_IMPORTS, NATIVE_METHODS,
             IMPLEMENTATIONS, EXTENSIONS}));
 
-    /** The default display options argument as a String to apply if not specified. */
-    public static final String DEFAULT_DISPLAY_OPTIONS_STRING = collectionToString(DEFAULT_DISPLAY_OPTIONS, COMMA_CHAR,
+    /** The default display types options argument as a String to apply if not specified. */
+    public static final String DEFAULT_DISPLAY_TYPES_OPTIONS_STRING = collectionToString(DEFAULT_DISPLAY_TYPES_OPTIONS, COMMA_CHAR,
             BLANK_STRING, BLANK_STRING);
 
     /** The default exclude options to apply if not specified. */

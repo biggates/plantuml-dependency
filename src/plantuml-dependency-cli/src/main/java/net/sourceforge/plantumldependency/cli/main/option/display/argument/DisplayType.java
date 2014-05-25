@@ -1,5 +1,5 @@
 /*
- Display.java
+ DisplayType.java
  Creation date : 18/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
@@ -39,9 +39,9 @@ import java.util.TreeSet;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
-public enum Display {
+public enum DisplayType {
     /** The display abstract classes argument. */
     ABSTRACT_CLASSES("displays parsed source files which are abstract classes and relations to abstract classes"),
     /** The display annotations argument. */
@@ -70,34 +70,34 @@ public enum Display {
     STATIC_IMPORTS(
             "displays relations from parsed source files to import dependencies (only static) if their type is displayed");
 
-    /** The Set containing all displays options which are available. */
-    public static final Set < Display > DISPLAY_OPTIONS = new TreeSet < Display >(asList(values()));
+    /** The Set containing all display types options which are available. */
+    public static final Set < DisplayType > DISPLAY_TYPES_OPTIONS = new TreeSet < DisplayType >(asList(values()));
 
     /**
-     * Prints the all display options as a comma separated String of their full descriptions.
+     * Prints the all display types options as a comma separated String of their full descriptions.
      *
-     * @return the comma separated String of all display options descriptions.
+     * @return the comma separated String of all display types options descriptions.
      * @since 1.1.1
      */
-    public static String getAllDisplayOptionsFullUsageDescriptions() {
-        return getFullUsageDescriptions(DISPLAY_OPTIONS);
+    public static String getAllDisplayTypesOptionsFullUsageDescriptions() {
+        return getFullUsageDescriptions(DISPLAY_TYPES_OPTIONS);
     }
 
     /**
      * Build the string which contains the usage descriptions of all displays options which are
      * available.
      *
-     * @param displayOptions
-     *            the Set of all displays options to get the full usage description from.
-     * @return the full usage description of all displays options.
+     * @param displayTypesOptions
+     *            the Set of all display types options to get the full usage description from.
+     * @return the full usage description of all display types options.
      * @since 1.1.1
      */
-    public static String getFullUsageDescriptions(final Set < Display > displayOptions) {
+    public static String getFullUsageDescriptions(final Set < DisplayType > displayTypesOptions) {
         final StringBuilder buffer = new StringBuilder();
-        final Iterator < Display > iterator = displayOptions.iterator();
+        final Iterator < DisplayType > iterator = displayTypesOptions.iterator();
         while (iterator.hasNext()) {
-            final Display display = iterator.next();
-            buffer.append(display.getFullUsageDescription());
+            final DisplayType displayType = iterator.next();
+            buffer.append(displayType.getFullUsageDescription());
             if (iterator.hasNext()) {
                 buffer.append(COMMA_CHAR);
                 buffer.append(SPACE_CHAR);
@@ -107,7 +107,7 @@ public enum Display {
         return buffer.toString();
     }
 
-    /** The string containing the display usage description. */
+    /** The string containing the display type usage description. */
     private String usageDescription;
 
     /**
@@ -117,7 +117,7 @@ public enum Display {
      *            the display usage description.
      * @since 1.1.1
      */
-    private Display(final String usageDesc) {
+    private DisplayType(final String usageDesc) {
         setUsageDescription(usageDesc);
     }
 

@@ -1,5 +1,5 @@
 /*
- PlantUMLDependencyDisplayOption.java
+ PlantUMLDependencyDisplayTypeOption.java
  Creation date : 2/06/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
@@ -26,8 +26,8 @@ package net.sourceforge.plantumldependency.cli.main.option.display;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_OPTIONS_STRING;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS_STRING;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantumldependency.common.utils.collection.CollectionUtils.collectionToString;
@@ -36,21 +36,21 @@ import static net.sourceforge.plantumldependency.commoncli.option.status.OptionS
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.Display;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.PlantUMLDependencyDisplayOptionArgument;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.argument.PlantUMLDependencyDisplayTypeOptionArgument;
 import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 import net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument;
 
 /**
- * The display option, telling the program what to display in the generated file. <i>Note : no
+ * The display type option, telling the program what to display in the generated file. <i>Note : no
  * option should have the same main or secondary names</i>.
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
-public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument < Set < Display > > {
+public class PlantUMLDependencyDisplayTypeOption extends AbstractOptionWithArgument < Set < DisplayType > > {
 
     /** Serial version UID. */
     private static final long serialVersionUID = -3061227816589361105L;
@@ -67,10 +67,10 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
      *
      * @since 1.0.0
      */
-    public PlantUMLDependencyDisplayOption() {
-        super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayOptionArgument(true),
+    public PlantUMLDependencyDisplayTypeOption() {
+        super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayTypeOptionArgument(true),
                 new StringBuilder("To specify class diagram objects to display. If not specified, the default is "
-                        + collectionToString(DEFAULT_DISPLAY_OPTIONS, COMMA_CHAR)), SPACE_CHAR,
+                        + collectionToString(DEFAULT_DISPLAY_TYPES_OPTIONS, COMMA_CHAR)), SPACE_CHAR,
                 ACTIVE_OPTIONAL_OPTION_STATUS);
     }
 
@@ -82,7 +82,7 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
     @Override
     public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return DEFAULT_DISPLAY_OPTIONS_STRING;
+        return DEFAULT_DISPLAY_TYPES_OPTIONS_STRING;
     }
 
     /**
@@ -93,6 +93,6 @@ public class PlantUMLDependencyDisplayOption extends AbstractOptionWithArgument 
     @Override
     public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return DEFAULT_DISPLAY_OPTIONS_STRING;
+        return DEFAULT_DISPLAY_TYPES_OPTIONS_STRING;
     }
 }

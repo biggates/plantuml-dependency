@@ -51,7 +51,7 @@ import java.util.logging.Logger;
 
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
-import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayOption;
+import net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayTypeOption;
 import net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDependencyExcludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.output.PlantUMLDependencyOutputOption;
@@ -72,7 +72,7 @@ import net.sourceforge.plantumldependency.commoncli.program.version.ProgramVersi
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.3.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
@@ -189,8 +189,8 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         final VersionOption versionOption = new VersionOption(this, 3);
         addOption(versionOption);
 
-        final PlantUMLDependencyDisplayOption displayOption = new PlantUMLDependencyDisplayOption();
-        addOption(displayOption);
+        final PlantUMLDependencyDisplayTypeOption displayTypeOption = new PlantUMLDependencyDisplayTypeOption();
+        addOption(displayTypeOption);
 
         final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOption = new PlantUMLDependencyProgrammingLanguageOption();
         addOption(programmingLanguageOption);
@@ -206,7 +206,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         addOption(baseDirectoryOption);
 
         final PlantUMLDependencyOutputOption outputOption = new PlantUMLDependencyOutputOption(verboseLevelOption,
-                programmingLanguageOption, includeOption, excludeOption, displayOption, baseDirectoryOption, 4);
+                programmingLanguageOption, includeOption, excludeOption, displayTypeOption, baseDirectoryOption, 4);
         addOption(outputOption);
 
         final String[] example1 = new String[] {helpOption.getName()};
@@ -215,7 +215,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
                 "\"C:\\Users\\PlantUML test\"", includeOption.getName(), "**/*Test.java"};
         final String[] example4 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
                 includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
-                displayOption.getName(), "implementations,interfaces,extensions,imports,static_imports",
+                displayTypeOption.getName(), "implementations,interfaces,extensions,imports,static_imports",
                 verboseLevelOption.getName()};
         addExampleCommandLine(new CommandLineImpl(example1));
         addExampleCommandLine(new CommandLineImpl(example2));
