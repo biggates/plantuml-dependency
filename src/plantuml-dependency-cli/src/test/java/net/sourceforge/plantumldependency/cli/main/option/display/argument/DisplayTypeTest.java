@@ -1,5 +1,5 @@
 /*
- DisplayTest.java
+ DisplayTypeTest.java
  Creation date : 16/01/2012
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
@@ -42,7 +42,7 @@ import org.junit.Test;
  * @since 1.1.0
  * @version 1.4.0
  */
-public class DisplayTest {
+public class DisplayTypeTest {
 
     /**
      * Test method for

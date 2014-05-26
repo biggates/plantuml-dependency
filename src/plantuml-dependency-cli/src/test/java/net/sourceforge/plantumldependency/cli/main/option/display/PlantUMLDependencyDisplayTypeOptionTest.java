@@ -1,5 +1,5 @@
 /*
- PlantUMLDependencyDisplayOptionTest.java
+ PlantUMLDependencyDisplayTypeOptionTest.java
  Creation date : 10/07/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
@@ -61,19 +61,19 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0.0
  * @version 1.4.0
  */
-public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyDisplayTypeOption > {
+public class PlantUMLDependencyDisplayTypeOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyDisplayTypeOption > {
 
     /** Display directory option test 1 instance. */
     @DataPoint
-    public static final PlantUMLDependencyDisplayTypeOption DISPLAY_OPTION1 = new PlantUMLDependencyDisplayTypeOption();
+    public static final PlantUMLDependencyDisplayTypeOption DISPLAY_TYPE_OPTION1 = new PlantUMLDependencyDisplayTypeOption();
 
     /** Display directory option test 2 instance. */
     @DataPoint
-    public static final PlantUMLDependencyDisplayTypeOption DISPLAY_OPTION2 = new PlantUMLDependencyDisplayTypeOption();
+    public static final PlantUMLDependencyDisplayTypeOption DISPLAY_TYPE_OPTION2 = new PlantUMLDependencyDisplayTypeOption();
 
     /** Display directory option test 3 instance. */
     @DataPoint
-    public static final PlantUMLDependencyDisplayTypeOption DISPLAY_OPTION3 = null;
+    public static final PlantUMLDependencyDisplayTypeOption DISPLAY_TYPE_OPTION3 = null;
 
     /**
      * Test method for
@@ -84,7 +84,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      */
     @Test
     public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
-        final String argument = DISPLAY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE7);
+        final String argument = DISPLAY_TYPE_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE7);
         assertEquals("classes,static_imports,enums", argument);
     }
 
@@ -98,7 +98,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test(expected = CommandLineException.class)
     public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
             throws CommandLineException {
-        DISPLAY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE6);
+        DISPLAY_TYPE_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE6);
     }
 
     /**
@@ -111,7 +111,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test
     public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
             throws CommandLineException {
-        final String argument = DISPLAY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE3);
+        final String argument = DISPLAY_TYPE_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE3);
         assertEquals(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING, argument);
     }
 
@@ -124,7 +124,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      */
     @Test(expected = CommandLineException.class)
     public void testFindAndParseArgumentAsStringOrGetDefaultArgumentWithTwoExistingOption() throws CommandLineException {
-        DISPLAY_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE5);
+        DISPLAY_TYPE_OPTION1.findAndParseArgumentAsStringOrGetDefaultArgument(COMMAND_LINE5);
     }
 
     /**
@@ -136,7 +136,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      */
     @Test
     public void testFindAndParseArgumentOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
-        final Set < DisplayType > argument = DISPLAY_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE7);
+        final Set < DisplayType > argument = DISPLAY_TYPE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE7);
         assertEquals(3, argument.size());
         assertTrue(argument.contains(ENUMS));
         assertTrue(argument.contains(CLASSES));
@@ -153,7 +153,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test(expected = CommandLineException.class)
     public void testFindAndParseArgumentOrGetDefaultArgumentWithExistingOptionWithNotExistingMandatoryArgument()
             throws CommandLineException {
-        DISPLAY_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE6);
+        DISPLAY_TYPE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE6);
     }
 
     /**
@@ -166,7 +166,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     @Test
     public void testFindAndParseArgumentOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
             throws CommandLineException {
-        final Set < DisplayType > argument = DISPLAY_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE3);
+        final Set < DisplayType > argument = DISPLAY_TYPE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE3);
         assertEquals(10, argument.size());
         assertTrue(argument.contains(ABSTRACT_CLASSES));
         assertTrue(argument.contains(ANNOTATIONS));
@@ -189,7 +189,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      */
     @Test(expected = CommandLineException.class)
     public void testFindAndParseArgumentOrGetDefaultArgumentWithTwoExistingOption() throws CommandLineException {
-        DISPLAY_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE5);
+        DISPLAY_TYPE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE5);
     }
 
     /**
@@ -201,7 +201,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      */
     @Test
     public void testGetDefaultArgumentAsStringIfOptionSpecified() throws CommandLineException {
-        final String defaultArgument = DISPLAY_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
+        final String defaultArgument = DISPLAY_TYPE_OPTION1.getDefaultArgumentAsStringIfOptionSpecified(COMMAND_LINE1);
         assertEquals(ABSTRACT_CLASSES + COMMA_CHAR + ANNOTATIONS + COMMA_CHAR + CLASSES + COMMA_CHAR + ENUMS
                 + COMMA_CHAR + EXTENSIONS + COMMA_CHAR + IMPLEMENTATIONS + COMMA_CHAR + IMPORTS + COMMA_CHAR
                 + INTERFACES + COMMA_CHAR + NATIVE_METHODS + COMMA_CHAR + STATIC_IMPORTS, defaultArgument);
@@ -216,7 +216,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      */
     @Test
     public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
-        final Set < DisplayType > defaultArgument = DISPLAY_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
+        final Set < DisplayType > defaultArgument = DISPLAY_TYPE_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
         assertEquals(10, defaultArgument.size());
         assertTrue(defaultArgument.contains(ABSTRACT_CLASSES));
         assertTrue(defaultArgument.contains(ANNOTATIONS));
@@ -238,7 +238,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
     public void testGetFullUsage() {
         assertEquals(
                 "-d, --display DISPLAY_TYPES_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]\n\t\tDISPLAY_TYPES_OPTIONS specifies display types options when generating the plantUML output file, it is a separated comma list with these possible values : [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes and relations to abstract classes, \"annotations\" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, \"classes\" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, \"enums\" : displays parsed source files which are enums and relations to enums, \"extensions\" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, \"implementations\" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, \"imports\" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, \"interfaces\" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, \"native_methods\" : displays relations from parsed source files to the native dependency if they use native methods, \"static_imports\" : displays relations from parsed source files to import dependencies (only static) if their type is displayed.",
-                DISPLAY_OPTION1.getFullUsage().toString());
+                DISPLAY_TYPE_OPTION1.getFullUsage().toString());
     }
 
     /**
@@ -247,7 +247,7 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      */
     @Test
     public void testGetMainUsage() {
-        assertEquals("-d DISPLAY_TYPES_OPTIONS", DISPLAY_OPTION1.getMainUsage().toString());
+        assertEquals("-d DISPLAY_TYPES_OPTIONS", DISPLAY_TYPE_OPTION1.getMainUsage().toString());
     }
 
     /**
@@ -257,6 +257,6 @@ public class PlantUMLDependencyDisplayOptionTest extends DeepCloneableObjectTest
      */
     @Test
     public void testGetValueSeparator() {
-        assertEquals(SPACE_CHAR, DISPLAY_OPTION1.getValueSeparator());
+        assertEquals(SPACE_CHAR, DISPLAY_TYPE_OPTION1.getValueSeparator());
     }
 }

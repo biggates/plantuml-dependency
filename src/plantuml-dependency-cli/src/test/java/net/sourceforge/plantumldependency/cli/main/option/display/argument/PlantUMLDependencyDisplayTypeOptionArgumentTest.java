@@ -1,5 +1,5 @@
 /*
- PlantUMLDependencyDisplayOptionArgumentTest.java
+ PlantUMLDependencyDisplayTypeOptionArgumentTest.java
  Creation date : 6/07/2010
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
@@ -45,7 +45,7 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0.0
  * @version 1.4.0
  */
-public class PlantUMLDependencyDisplayOptionArgumentTest extends
+public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
         DeepCloneableObjectTest < PlantUMLDependencyDisplayTypeOptionArgument > {
 
     /** Display option argument test 1 instance. */
