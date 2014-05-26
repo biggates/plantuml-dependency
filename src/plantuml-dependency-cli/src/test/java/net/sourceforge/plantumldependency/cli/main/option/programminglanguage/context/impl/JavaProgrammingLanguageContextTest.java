@@ -26,7 +26,7 @@ package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.c
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET3;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET3;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ABSTRACT_CLASSES;
 import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.DISPLAY_TYPES_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.plantumldiagram.classes.impl.PlantUMLClassesDiagramImplTest.PLANTUML_CLASSES_DIAGRAM_TEST2;
@@ -74,7 +74,7 @@ public class JavaProgrammingLanguageContextTest extends
                     new GenericDependencyImpl("TestReadDependencyFromFileInterfaceWithoutPackage",
                             "net.sourceforge.plantumldependency.main.option.programminglanguage"),
                     new GenericDependencyImpl("GenericDependency", "net.sourceforge.plantumldependency.generic")})),
-            DISPLAY_SET3);
+            DISPLAY_TYPE_SET3);
 
     /** Java programming language test 4 instance. */
     @DataPoint

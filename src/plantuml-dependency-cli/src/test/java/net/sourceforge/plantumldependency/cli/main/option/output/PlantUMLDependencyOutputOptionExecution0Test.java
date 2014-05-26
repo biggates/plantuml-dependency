@@ -24,8 +24,8 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.output;
 
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET1;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SETS;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET1;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SETS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.FILE_SET1;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
 import static net.sourceforge.plantumldependency.common.utils.file.FileUtils.readFileIntoString;
@@ -60,7 +60,7 @@ public class PlantUMLDependencyOutputOptionExecution0Test {
      */
     public static void main(final String args[]) throws CommandLineException {
         for (int i = 300 ; i < 1000 ; i++) {
-            System.out.println("import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET" + i + ";");
+            System.out.println("import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET" + i + ";");
         }
 
 //        setLevelOfAllLoggersAndHandlers(OFF);
@@ -82,14 +82,14 @@ public class PlantUMLDependencyOutputOptionExecution0Test {
         final StringBuilder buffer = new StringBuilder();
 
         for (int i = startIndex; i < endIndex; i++) {
-            buffer.append("import static net.sourceforge.plantumldependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_SET");
+            buffer.append("import static net.sourceforge.plantumldependency.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET");
             buffer.append(i + 1);
             buffer.append(";\n\n");
         }
 
         for (int i = startIndex; i < endIndex; i++) {
             final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                    TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SETS.get(i), 1);
+                    TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SETS.get(i), 1);
             outputOptionExecution.execute();
             String plantumlDescriptionStr = readFileIntoString(TEST_FILE1);
             plantumlDescriptionStr = plantumlDescriptionStr.replaceAll("\\r", "\\\\r");
@@ -105,7 +105,7 @@ public class PlantUMLDependencyOutputOptionExecution0Test {
             buffer.append("public void testExecute");
             buffer.append(i + 1);
             buffer.append("() throws CommandLineException {\n");
-            buffer.append("final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET");
+            buffer.append("final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET");
             buffer.append(i + 1);
             buffer.append(", 1);\n");
             buffer.append("outputOptionExecution.execute();\n");
@@ -139,7 +139,7 @@ public class PlantUMLDependencyOutputOptionExecution0Test {
     @Test
     public void testExecute1() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_SET1, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET1, 1);
         outputOptionExecution.execute();
         assertEquals("@startuml\r\n@enduml", readFileIntoString(TEST_FILE1));
     }
