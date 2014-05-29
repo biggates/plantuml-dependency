@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="PlantUMLDependencyAntTaskSample1" default="main" basedir=".">
+	<!-- task definition -->
+	<taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="../../../../../../../../../target/plantuml-dependency-cli-1.4.0-SNAPSHOT-jar-with-dependencies.jar" />
+
+	<!-- process all java files within the current directory to output "plantuml1.txt" file -->
+	<target name="main">
+		<plantuml-dependency output="plantuml1.txt" />
+	</target>
+</project>

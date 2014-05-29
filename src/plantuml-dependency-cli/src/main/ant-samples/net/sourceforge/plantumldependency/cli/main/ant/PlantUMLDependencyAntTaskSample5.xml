@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="PlantUMLDependencyAntTaskSample5" default="main" basedir=".">
+	<!-- task definition -->
+	<taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="../../../../../../../../../target/plantuml-dependency-cli-1.4.0-SNAPSHOT-jar-with-dependencies.jar" />
+
+	<!-- process all java files within the "../../../../../../../.." directory to output "plantuml5.txt" file but displaying only interfaces with their relations -->
+	<target name="main">
+		<plantuml-dependency output="plantuml5.txt" baseDir="../../../../../../../.." displayType="implementations,interfaces,extensions,imports,static_imports" />
+	</target>
+</project>

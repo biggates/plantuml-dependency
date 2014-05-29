@@ -59,7 +59,7 @@ public class PlantUMLDependencyProgramTaskTest {
     private static PlantUMLDependencyProgramTask createPlantUMLDependencyTask1() {
         final PlantUMLDependencyProgramTask task = new PlantUMLDependencyProgramTask();
         task.setBaseDir(DOT_CHAR);
-        task.setDisplay(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING);
+        task.setDisplayType(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING);
         task.setExcludes(DEFAULT_EXCLUDE_OPTIONS);
         task.setIncludes(DEFAULT_INCLUDE_OPTIONS + DEFAULT_PROGRAMMING_LANGUAGE.getName());
         task.setOutput("plantuml" + TXT_EXTENSION);
@@ -90,12 +90,12 @@ public class PlantUMLDependencyProgramTaskTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask#getDisplay()}
+     * {@link net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask#getDisplayType()}
      * .
      */
     @Test
-    public void testGetDisplay() {
-        assertEquals(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING, PLANTUML_DEPENDENCY_TASK2.getDisplay());
+    public void testGetDisplayType() {
+        assertEquals(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING, PLANTUML_DEPENDENCY_TASK2.getDisplayType());
     }
 
     /**
@@ -163,14 +163,14 @@ public class PlantUMLDependencyProgramTaskTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask#setDisplay(java.lang.String)}
+     * {@link net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask#setDisplayType(java.lang.String)}
      * .
      */
     @Test
-    public void testSetDisplay() {
+    public void testSetDisplayType() {
         final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
-        testTask.setDisplay(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING);
-        assertEquals(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING, testTask.getDisplay());
+        testTask.setDisplayType(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING);
+        assertEquals(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING, testTask.getDisplayType());
     }
 
     /**

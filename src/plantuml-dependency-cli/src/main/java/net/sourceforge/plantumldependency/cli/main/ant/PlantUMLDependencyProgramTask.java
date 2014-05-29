@@ -127,10 +127,10 @@ public class PlantUMLDependencyProgramTask extends Task {
      * Gets the value of <code>display</code>.
      *
      * @return the value of <code>display</code>.
-     * @see #setDisplay(String)
+     * @see #setDisplayType(String)
      * @since 1.1.0
      */
-    public String getDisplay() {
+    public String getDisplayType() {
         return getArgsMap().get(PlantUMLDependencyDisplayTypeOption.OPTION_MAIN_SYNOPSIS);
     }
 
@@ -206,10 +206,10 @@ public class PlantUMLDependencyProgramTask extends Task {
      *
      * @param value
      *            the <code>display</code> to set, can be <code>null</code>.
-     * @see #getDisplay()
+     * @see #getDisplayType()
      * @since 1.1.0
      */
-    public void setDisplay(final String value) {
+    public void setDisplayType(final String value) {
         putNonEmptyStringToMap(getArgsMap(), PlantUMLDependencyDisplayTypeOption.OPTION_MAIN_SYNOPSIS, value);
     }
 
@@ -282,6 +282,6 @@ public class PlantUMLDependencyProgramTask extends Task {
     public String toString() {
         return getClass().getSimpleName() + " [output=" + getOutput() + ", verboseLevel=" + getVerboseLevel()
                 + ", programmingLanguage=" + getProgrammingLanguage() + ", includes=" + getIncludes() + ", excludes="
-                + getExcludes() + ", display=" + getDisplay() + ", baseDir=" + getBaseDir() + "]";
+                + getExcludes() + ", display=" + getDisplayType() + ", baseDir=" + getBaseDir() + "]";
     }
 }

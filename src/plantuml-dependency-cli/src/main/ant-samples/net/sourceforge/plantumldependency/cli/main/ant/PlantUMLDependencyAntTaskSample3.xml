@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="PlantUMLDependencyAntTaskSample3" default="main" basedir=".">
+	<!-- task definition -->
+	<taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="../../../../../../../../../target/plantuml-dependency-cli-1.4.0-SNAPSHOT-jar-with-dependencies.jar" />
+
+	<!-- process all java files with the "Test" string in their names except those which have the "PlantUML" string in their names within the "../../../../../../../.." directory to output "plantuml3.txt" file -->
+	<target name="main">
+		<plantuml-dependency output="plantuml3.txt" baseDir="../../../../../../../.." includes="**/*Test*.java" excludes="**/PlantUML*.java" />
+	</target>
+</project>
