@@ -54,20 +54,21 @@
 		</p>
 		<div class="scriptplantu">
 			<pre>
-	&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
-		&lt;!-- task definition --&gt;
-		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project name="PlantUMLDependencyAntTaskSample1" default="main" basedir="."&gt;
+	&lt;!-- task definition --&gt;
+	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
 
-		&lt;!-- process all java files within the current directory to output "/home/plantuml.txt" file --&gt;
-		&lt;target name="main"&gt;
-			&lt;plantuml-dependency output="/home/plantuml.txt" /&gt;
-		&lt;/target&gt;
-	&lt;/project&gt;
-				</pre>
+	&lt;!-- process all java files within the current directory to output "plantuml1.txt" file --&gt;
+	&lt;target name="main"&gt;
+		&lt;plantuml-dependency output="plantuml1.txt" /&gt;
+	&lt;/target&gt;
+&lt;/project&gt;
+			</pre>
 		</div>
 		<p>
-			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> of the current directory and
-			output a <b>plantuml.txt</b> text file.
+			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> files of the current directory
+			and output a <b>plantuml1.txt</b> text file.
 		</p>
 		<h3>Input Directory</h3>
 		<p>
@@ -75,20 +76,21 @@
 		</p>
 		<div class="scriptplantu">
 			<pre>
-	&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
-		&lt;!-- task definition --&gt;
-		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project name="PlantUMLDependencyAntTaskSample2" default="main" basedir="."&gt;
+	&lt;!-- task definition --&gt;
+	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
 
-		&lt;!-- process "/home" directory to output "/home/plantuml.txt" file --&gt;
-		&lt;target name="main"&gt;
-			&lt;plantuml-dependency output="/home/plantuml.txt" baseDir="/home" /&gt;
-		&lt;/target&gt;
-	&lt;/project&gt;
-				</pre>
+	&lt;!-- process all java files within the "/home/test" directory to output "plantuml2.txt" file --&gt;
+	&lt;target name="main"&gt;
+		&lt;plantuml-dependency output="plantuml2.txt" baseDir="/home/test" /&gt;
+	&lt;/target&gt;
+&lt;/project&gt;
+			</pre>
 		</div>
 		<p>
-			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> of the <b>/home</b> directory and
-			output a <b>plantuml.txt</b> text file.
+			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> files of the <b>/home/test</b>
+			directory and output a <b>plantuml2.txt</b> text file.
 		</p>
 		<h3>Includes and excludes files</h3>
 		<p>
@@ -97,55 +99,79 @@
 		</p>
 		<div class="scriptplantu">
 			<pre>
-	&lt;project name="OwnTaskExample" default="main" basedir="."&gt;
-		&lt;!-- task definition --&gt;
-		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantuml.dependency.main.ant.PlantUMLDependencyProgramTask" classpath="/home/graffity/workspace/plantuml-dependency/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project name="PlantUMLDependencyAntTaskSample3" default="main" basedir="."&gt;
+	&lt;!-- task definition --&gt;
+	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
 
-		&lt;!-- process "/home" to output "/home/plantuml.txt" file --&gt;
-		&lt;target name="main"&gt;
-			&lt;plantuml-dependency output="/home/plantuml.txt" includes="**/*Test*.java" excludes="**/PlantUMLDependencyProgram.java" baseDir="/home" /&gt;
-		&lt;/target&gt;
-	&lt;/project&gt;
-				</pre>
+	&lt;!-- process all java files with the "Test" string in their names except those which have the "PlantUML" string in their names within the "/home/test" directory to output "plantuml3.txt" file --&gt;
+	&lt;target name="main"&gt;
+		&lt;plantuml-dependency output="plantuml3.txt" baseDir="/home/test" includes="**/*Test*.java" excludes="**/PlantUML*.java" /&gt;
+	&lt;/target&gt;
+&lt;/project&gt;
+			</pre>
 		</div>
 		<p>
-			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>*Test*.java</b> (except <b>PlantUMLDependencyProgram.java</b>)
-			of the <b>/home</b> directory and output a <b>plantuml.txt</b> text file.
+			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>*Test*.java</b> files (except those which
+			have <b>PlantUML</b> in their name) of the <b>/home/test</b> directory and output a <b>plantuml3.txt</b> text file.
 		</p>
-		<h3>Other parameters</h3>
-		<table border="1" cellspacing="0" cellpadding="4">
-			<tr>
-				<td><b>Parameter</b></td>
-				<td><b>Default</b></td>
-				<td><b>Description</b></td>
-			</tr>
-			<tr>
-				<td>verboseLevel</td>
-				<td>800</td>
-				<td>Specifies the verbose level. The argument may consist of either a level name or an integer value. Classical
-					values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300.</td>
-			</tr>
-			<tr>
-				<td>display</td>
-				<td>abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports</td>
-				<td>Specifies display options when generating the plantuml output file, it is a separated comma list with these
-					possible values :
-					[abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports].
-					"abstract_classes" : displays parsed source files which are abstract classes and relations to abstract classes,
-					"annotations" : displays parsed source files which are annotations, annotations (upon classes and methods) of all
-					parsed source files and relations to annotations, "classes" : displays parsed source files which are classes (not
-					abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and
-					relations to classes, "enums" : displays parsed source files which are enums and relations to enums, "extensions" :
-					displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if
-					their type is displayed, "implementations" : displays relations between dependencies which are implemented by
-					parsed source files (i.e. interfaces) if their type is displayed, "imports" : displays relations from parsed source
-					files to import dependencies (not static) if their type is displayed, "interfaces" : displays parsed source files
-					which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed)
-					and relations to interfaces, "native_methods" : displays relations from parsed source files to the native
-					dependency if they use native methods, "static_imports" : displays relations from parsed source files to import
-					dependencies (only static) if their type is displayed.</td>
-			</tr>
-		</table>
+		<h3>Verbose level</h3>
+		<p>You can also specify the verbose level. The argument may consist of either a level name or an integer value.
+			Classical values are : "SEVERE":1000, "WARNING":900, "INFO":800, "CONFIG":700, "FINE":500, "FINER":400, "FINEST":300.
+		</p>
+		<div class="scriptplantu">
+			<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project name="PlantUMLDependencyAntTaskSample4" default="main" basedir="."&gt;
+	&lt;!-- task definition --&gt;
+	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+
+	&lt;!-- process all java files within the "/home/test" directory to output "plantuml4.txt" file using verbose mode --&gt;
+	&lt;target name="main"&gt;
+		&lt;plantuml-dependency output="plantuml4.txt" baseDir="/home/test" verboseLevel="FINEST" /&gt;
+	&lt;/target&gt;
+&lt;/project&gt;
+			</pre>
+		</div>
+		<p>
+			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> files of the <b>/home/test</b>
+			directory and output a <b>plantuml4.txt</b> text file using the finest verbose level.
+		</p>
+		<h3>Display types</h3>
+		<p>You can also specify the display type to specify class diagram objects to display. It is a separated comma list
+			with these possible values :
+			[abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports].
+			"abstract_classes" : displays parsed source files which are abstract classes and relations to abstract classes,
+			"annotations" : displays parsed source files which are annotations, annotations (upon classes and methods) of all
+			parsed source files and relations to annotations, "classes" : displays parsed source files which are classes (not
+			abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and
+			relations to classes, "enums" : displays parsed source files which are enums and relations to enums, "extensions" :
+			displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if
+			their type is displayed, "implementations" : displays relations between dependencies which are implemented by parsed
+			source files (i.e. interfaces) if their type is displayed, "imports" : displays relations from parsed source files to
+			import dependencies (not static) if their type is displayed, "interfaces" : displays parsed source files which are
+			interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and
+			relations to interfaces, "native_methods" : displays relations from parsed source files to the native dependency if
+			they use native methods, "static_imports" : displays relations from parsed source files to import dependencies (only
+			static) if their type is displayed.</p>
+		<div class="scriptplantu">
+			<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project name="PlantUMLDependencyAntTaskSample5" default="main" basedir="."&gt;
+	&lt;!-- task definition --&gt;
+	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="../../../../../../../../../target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+
+	&lt;!-- process all java files within the "/home/test" directory to output "plantuml5.txt" file but displaying only interfaces with their relations --&gt;
+	&lt;target name="main"&gt;
+		&lt;plantuml-dependency output="plantuml5.txt" baseDir="/home/test" displayType="implementations,interfaces,extensions,imports,static_imports" /&gt;
+	&lt;/target&gt;
+&lt;/project&gt;
+			</pre>
+		</div>
+		<p>
+			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> files of the <b>/home/test</b>
+			directory and output a <b>plantuml4.txt</b> text file which contains only interfaces with their relations.
+		</p>
 		<h5 style="color: red;">Note that options are just ignored if they have empty values. For instance, the
 			verboseLevel option doesn't behave the same as the command line.</h5>
 	</div>
