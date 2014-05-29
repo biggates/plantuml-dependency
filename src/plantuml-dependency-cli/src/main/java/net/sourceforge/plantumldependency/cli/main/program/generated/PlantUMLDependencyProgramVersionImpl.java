@@ -36,5 +36,5 @@ public class PlantUMLDependencyProgramVersionImpl {
 
     public static final String PROGRAM_VERSION = "1.4.0-SNAPSHOT";
 
-    public static final String PROGRAM_BUILD_TIME = "20140526-2128";
+    public static final String PROGRAM_BUILD_TIME = "20140529-1938";
 }

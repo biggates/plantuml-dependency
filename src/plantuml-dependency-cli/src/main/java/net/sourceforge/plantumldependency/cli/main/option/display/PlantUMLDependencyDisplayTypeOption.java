@@ -56,11 +56,11 @@ public class PlantUMLDependencyDisplayTypeOption extends AbstractOptionWithArgum
     private static final long serialVersionUID = -3061227816589361105L;
 
     /** Option main synopsis. */
-    public static final String OPTION_MAIN_SYNOPSIS = "-d";
+    public static final String OPTION_MAIN_SYNOPSIS = "-dti";
 
     /** Option synopsis alias. */
     public static final Set < String > OPTION_SYNOPSIS = unmodifiableSet(new TreeSet < String >(
-            asList(new String[] {"--display"})));
+            asList(new String[] {"--display-type-include"})));
 
     /**
      * Default constructor.

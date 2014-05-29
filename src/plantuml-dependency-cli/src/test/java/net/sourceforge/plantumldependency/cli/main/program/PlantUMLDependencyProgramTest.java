@@ -67,8 +67,8 @@ public class PlantUMLDependencyProgramTest {
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
-    public void testMainWithABadDisplayOption() throws PlantUMLDependencyException {
-        main(new String[] {"-o", TEST_FILE.getName(), "-d", "test"});
+    public void testMainWithABadDisplayTypeOption() throws PlantUMLDependencyException {
+        main(new String[] {"-o", TEST_FILE.getName(), "-dti", "test"});
     }
 
     /**
@@ -115,8 +115,8 @@ public class PlantUMLDependencyProgramTest {
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
-    public void testMainWithPrimaryDisplayOption() throws PlantUMLDependencyException {
-        main(new String[] {"-d", DEFAULT_DISPLAY_TYPES_OPTIONS_STRING});
+    public void testMainWithPrimaryDisplayTypeOption() throws PlantUMLDependencyException {
+        main(new String[] {"-dti", DEFAULT_DISPLAY_TYPES_OPTIONS_STRING});
     }
 
     /**
@@ -223,8 +223,8 @@ public class PlantUMLDependencyProgramTest {
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
-    public void testMainWithSecondaryDisplayOption() throws PlantUMLDependencyException {
-        main(new String[] {"--display", DEFAULT_DISPLAY_TYPES_OPTIONS_STRING});
+    public void testMainWithSecondaryDisplayTypeOption() throws PlantUMLDependencyException {
+        main(new String[] {"--display-type-include", DEFAULT_DISPLAY_TYPES_OPTIONS_STRING});
     }
 
     /**
@@ -331,7 +331,7 @@ public class PlantUMLDependencyProgramTest {
      * @throws PlantUMLDependencyException
      */
     @Test(expected = PlantUMLDependencyException.class)
-    public void testMainWithTwoSameDisplayOption() throws PlantUMLDependencyException {
-        main(new String[] {"-o", TEST_FILE.getName(), "-d", "extensions,static_imports,implementations,extensions"});
+    public void testMainWithTwoSameDisplayTypeOption() throws PlantUMLDependencyException {
+        main(new String[] {"-o", TEST_FILE.getName(), "-dti", "extensions,static_imports,implementations,extensions"});
     }
 }
