@@ -69,7 +69,7 @@ public class PlantUMLDependencyDisplayTypeOption extends AbstractOptionWithArgum
      */
     public PlantUMLDependencyDisplayTypeOption() {
         super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayTypeOptionArgument(),
-                new StringBuilder("To specify class diagram objects to display. If not specified, the default is "
+                new StringBuilder("To specify class diagram objects to display following their type. If not specified, the default is "
                         + collectionToString(DEFAULT_DISPLAY_TYPES_OPTIONS, COMMA_CHAR)), SPACE_CHAR,
                 ACTIVE_OPTIONAL_OPTION_STATUS);
     }

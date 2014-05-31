@@ -51,6 +51,8 @@ import java.util.logging.Logger;
 
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
+import net.sourceforge.plantumldependency.cli.main.option.display.name.PlantUMLDependencyDisplayNameOption;
+import net.sourceforge.plantumldependency.cli.main.option.display.packagename.PlantUMLDependencyDisplayPackageNameOption;
 import net.sourceforge.plantumldependency.cli.main.option.display.type.PlantUMLDependencyDisplayTypeOption;
 import net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDependencyExcludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOption;
@@ -192,6 +194,12 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         final PlantUMLDependencyDisplayTypeOption displayTypeOption = new PlantUMLDependencyDisplayTypeOption();
         addOption(displayTypeOption);
 
+        final PlantUMLDependencyDisplayNameOption displayNameOption = new PlantUMLDependencyDisplayNameOption();
+        addOption(displayNameOption);
+
+        final PlantUMLDependencyDisplayPackageNameOption displayPackageNameOption = new PlantUMLDependencyDisplayPackageNameOption();
+        addOption(displayPackageNameOption);
+
         final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOption = new PlantUMLDependencyProgrammingLanguageOption();
         addOption(programmingLanguageOption);
 
@@ -211,16 +219,23 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
 
         final String[] example1 = new String[] {helpOption.getName()};
         final String[] example2 = new String[] {versionOption.getName(), verboseLevelOption.getName()};
-        final String[] example3 = new String[] {outputOption.getName(), "plantuml.txt", baseDirectoryOption.getName(),
+        final String[] example3 = new String[] {outputOption.getName(), "myoutput.txt", baseDirectoryOption.getName(),
                 "\"C:\\Users\\PlantUML test\"", includeOption.getName(), "**/*Test.java"};
         final String[] example4 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
                 includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
-                displayTypeOption.getName(), "implementations,interfaces,extensions,imports,static_imports",
-                verboseLevelOption.getName()};
+                displayTypeOption.getName(), "implementations,interfaces,extensions,imports,static_imports"};
+        final String[] example5 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
+                includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
+                displayNameOption.getName(), "Test", verboseLevelOption.getName()};
+        final String[] example6 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
+                displayPackageNameOption.getName(), "net.sourceforge.plantumldependency.cli.main.*",
+                verboseLevelOption.getName(), verboseLevelOption.getName()};
         addExampleCommandLine(new CommandLineImpl(example1));
         addExampleCommandLine(new CommandLineImpl(example2));
         addExampleCommandLine(new CommandLineImpl(example3));
         addExampleCommandLine(new CommandLineImpl(example4));
+        addExampleCommandLine(new CommandLineImpl(example5));
+        addExampleCommandLine(new CommandLineImpl(example6));
 
         addKnownBugOrLimitation("- As PlantUML Dependency reads source files imports, it will generate object - imports relation even if the imports are not used within the object (usually, this raises a warning within the IDE)");
         addKnownBugOrLimitation("- Be careful, in order to correctly parse source files, it is better to have source code which compiles without any errors");

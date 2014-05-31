@@ -27,10 +27,7 @@ package net.sourceforge.plantumldependency.cli.main.option.display.packagename;
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
-import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
-import static net.sourceforge.plantumldependency.common.utils.collection.CollectionUtils.collectionToString;
 import static net.sourceforge.plantumldependency.commoncli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 
 import java.util.Set;
@@ -45,7 +42,7 @@ import net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArg
 /**
  * The display package name option, telling the program what to display in the generated file.
  * <i>Note : no option should have the same main or secondary names</i>.
- * 
+ *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.4.0
  * @version 1.4.0
@@ -64,19 +61,19 @@ public class PlantUMLDependencyDisplayPackageNameOption extends AbstractOptionWi
 
     /**
      * Default constructor.
-     * 
+     *
      * @since 1.4.0
      */
     public PlantUMLDependencyDisplayPackageNameOption() {
         super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayPackageNameOptionArgument(),
-                new StringBuilder("To specify class diagram objects to display. If not specified, the default is "
-                        + collectionToString(DEFAULT_DISPLAY_TYPES_OPTIONS, COMMA_CHAR)), SPACE_CHAR,
+                new StringBuilder("To specify class diagram objects to display following their package name. If not specified, the default is \""
+                        + DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS + "\""), SPACE_CHAR,
                 ACTIVE_OPTIONAL_OPTION_STATUS);
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.4.0
      */
     @Override
@@ -87,7 +84,7 @@ public class PlantUMLDependencyDisplayPackageNameOption extends AbstractOptionWi
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @since 1.4.0
      */
     @Override

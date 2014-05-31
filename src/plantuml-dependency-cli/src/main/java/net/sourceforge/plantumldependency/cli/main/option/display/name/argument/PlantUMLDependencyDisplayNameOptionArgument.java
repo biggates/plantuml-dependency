@@ -51,7 +51,7 @@ public class PlantUMLDependencyDisplayNameOptionArgument extends AbstractOptionA
 
     /** The argument main usage description constant. */
     private static final String USAGE_DESCRIPTION = MAIN_USAGE
-            + " specifies display name pattern when generating the plantUML output file, it is regular expression following the Java pattern (see http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html for description).";
+            + " specifies display name pattern when generating the plantUML output file, it is a regular expression following the Java pattern (see http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html for description).";
 
     /** Serial version UID. */
     private static final long serialVersionUID = -8804026254773622257L;
