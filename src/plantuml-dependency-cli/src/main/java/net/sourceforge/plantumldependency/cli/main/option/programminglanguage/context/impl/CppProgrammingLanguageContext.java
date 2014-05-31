@@ -28,7 +28,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.AbstractProgrammingLanguageContext;
 
 /**

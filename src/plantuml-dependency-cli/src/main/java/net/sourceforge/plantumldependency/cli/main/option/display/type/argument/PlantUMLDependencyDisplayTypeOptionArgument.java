@@ -22,14 +22,14 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantumldependency.cli.main.option.display.argument;
+package net.sourceforge.plantumldependency.cli.main.option.display.type.argument;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.NOT_DISPLAY_TYPE_ARGUMENT_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.SEVERAL_DISPLAY_TYPE_ARGUMENTS_ERROR;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.getAllDisplayTypesOptionsFullUsageDescriptions;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.valueOf;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.values;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.getAllDisplayTypesOptionsFullUsageDescriptions;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.valueOf;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.values;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.DOT_CHAR;
 import static net.sourceforge.plantumldependency.common.utils.collection.CollectionUtils.collectionToString;

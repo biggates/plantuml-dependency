@@ -22,15 +22,17 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantumldependency.cli.main.option.display.argument;
+package net.sourceforge.plantumldependency.cli.main.option.display.type.argument;
 
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.CLASSES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.CLASSES;
 import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.PlantUMLDependencyDisplayTypeOptionArgument;
 import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 import net.sourceforge.plantumldependency.commoncli.option.argument.OptionArgument;
@@ -101,7 +103,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.argument.PlantUMLDependencyDisplayTypeOptionArgument#parseArgument(java.lang.String)}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.type.argument.PlantUMLDependencyDisplayTypeOptionArgument#parseArgument(java.lang.String)}
      * .
      *
      * @throws CommandLineException
@@ -115,7 +117,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.argument.PlantUMLDependencyDisplayTypeOptionArgument#parseArgument(java.lang.String)}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.type.argument.PlantUMLDependencyDisplayTypeOptionArgument#parseArgument(java.lang.String)}
      * .
      *
      * @throws CommandLineException
@@ -127,7 +129,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.argument.PlantUMLDependencyDisplayTypeOptionArgument#parseArgument(java.lang.String)}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.type.argument.PlantUMLDependencyDisplayTypeOptionArgument#parseArgument(java.lang.String)}
      * .
      *
      * @throws CommandLineException
@@ -141,7 +143,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.argument.PlantUMLDependencyDisplayTypeOptionArgument#parseArgument(java.lang.String)}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.type.argument.PlantUMLDependencyDisplayTypeOptionArgument#parseArgument(java.lang.String)}
      * .
      *
      * @throws CommandLineException
@@ -153,7 +155,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.argument.PlantUMLDependencyDisplayTypeOptionArgument#parseArgument(java.lang.String)}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.type.argument.PlantUMLDependencyDisplayTypeOptionArgument#parseArgument(java.lang.String)}
      * .
      *
      * @throws CommandLineException

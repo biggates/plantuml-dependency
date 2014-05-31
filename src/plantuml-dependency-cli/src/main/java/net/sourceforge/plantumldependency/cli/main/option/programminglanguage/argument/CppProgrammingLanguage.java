@@ -29,7 +29,7 @@ import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstant
 import java.util.Set;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.ProgrammingLanguageContext;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.context.impl.CppProgrammingLanguageContext;
 

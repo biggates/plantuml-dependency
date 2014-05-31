@@ -26,7 +26,7 @@ package net.sourceforge.plantumldependency.cli.generic.type;
 
 import java.util.Set;
 
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 
 /**
  * The interface which describes a displayable element, i.e. an element which can be displayed or

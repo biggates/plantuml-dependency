@@ -22,16 +22,18 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantumldependency.cli.main.option.display.argument;
+package net.sourceforge.plantumldependency.cli.main.option.display.type.argument;
 
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ABSTRACT_CLASSES;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.getAllDisplayTypesOptionsFullUsageDescriptions;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.getFullUsageDescriptions;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.ABSTRACT_CLASSES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.getAllDisplayTypesOptionsFullUsageDescriptions;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.getFullUsageDescriptions;
 import static net.sourceforge.plantumldependency.common.constants.CommonConstants.BLANK_STRING;
 import static org.junit.Assert.assertEquals;
 
 import java.util.TreeSet;
+
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 
 import org.junit.Test;
 
@@ -46,7 +48,7 @@ public class DisplayTypeTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType#getAllDisplayTypesOptionsFullUsageDescriptions()}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType#getAllDisplayTypesOptionsFullUsageDescriptions()}
      * .
      */
     @Test
@@ -58,7 +60,7 @@ public class DisplayTypeTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType#getFullUsageDescription()}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType#getFullUsageDescription()}
      * .
      */
     @Test
@@ -70,7 +72,7 @@ public class DisplayTypeTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType#getFullUsageDescriptions(java.util.Set)}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType#getFullUsageDescriptions(java.util.Set)}
      * .
      */
     @Test
@@ -82,7 +84,7 @@ public class DisplayTypeTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType#getFullUsageDescriptions(java.util.Set)}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType#getFullUsageDescriptions(java.util.Set)}
      * .
      */
     @Test
@@ -92,7 +94,7 @@ public class DisplayTypeTest {
 
     /**
      * Test method for
-     * {@link net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType#getUsageDescription()}
+     * {@link net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType#getUsageDescription()}
      * .
      */
     @Test

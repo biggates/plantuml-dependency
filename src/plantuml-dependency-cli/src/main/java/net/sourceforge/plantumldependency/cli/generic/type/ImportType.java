@@ -25,14 +25,14 @@
 package net.sourceforge.plantumldependency.cli.generic.type;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.IMPORTS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.NATIVE_METHODS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.STATIC_IMPORTS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.IMPORTS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.NATIVE_METHODS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.STATIC_IMPORTS;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 
 /**
  * This enumerations represents all kind of import types which can be used following the programming

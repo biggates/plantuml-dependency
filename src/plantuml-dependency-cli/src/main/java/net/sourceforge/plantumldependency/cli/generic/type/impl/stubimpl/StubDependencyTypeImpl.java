@@ -24,12 +24,12 @@
 
 package net.sourceforge.plantumldependency.cli.generic.type.impl.stubimpl;
 
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.CLASSES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.CLASSES;
 
 import java.util.Set;
 
 import net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
 

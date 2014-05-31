@@ -22,7 +22,7 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantumldependency.cli.main.option.display.argument;
+package net.sourceforge.plantumldependency.cli.main.option.display.type.argument;
 
 import static java.util.Arrays.asList;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COLON_CHAR;

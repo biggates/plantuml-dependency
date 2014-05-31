@@ -28,7 +28,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.PlantUMLClassesDiagram;
 import net.sourceforge.plantumldependency.common.clone.DeepCloneable;
 

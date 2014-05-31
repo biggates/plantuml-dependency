@@ -25,23 +25,23 @@
 package net.sourceforge.plantumldependency.cli.constants;
 
 import static java.util.Arrays.asList;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ABSTRACT_CLASSES;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ANNOTATIONS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.CLASSES;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ENUMS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.EXTENSIONS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.IMPLEMENTATIONS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.IMPORTS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.INTERFACES;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.NATIVE_METHODS;
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.STATIC_IMPORTS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.ABSTRACT_CLASSES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.ANNOTATIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.CLASSES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.ENUMS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.EXTENSIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.IMPLEMENTATIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.IMPORTS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.INTERFACES;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.NATIVE_METHODS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.STATIC_IMPORTS;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 
 /**
  * The class which stores all necessary display set constants used for Junit tests.

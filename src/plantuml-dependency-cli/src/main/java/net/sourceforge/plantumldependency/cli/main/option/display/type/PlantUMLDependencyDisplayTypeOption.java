@@ -22,7 +22,7 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantumldependency.cli.main.option.display;
+package net.sourceforge.plantumldependency.cli.main.option.display.type;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
@@ -36,8 +36,8 @@ import static net.sourceforge.plantumldependency.commoncli.option.status.OptionS
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.PlantUMLDependencyDisplayTypeOptionArgument;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.PlantUMLDependencyDisplayTypeOptionArgument;
 import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 import net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument;

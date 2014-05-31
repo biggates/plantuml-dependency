@@ -30,7 +30,7 @@ import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependenc
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE19;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.VERBOSE_LEVEL_OPTION1;
 import static net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOptionTest.BASE_DIRECTORY_OPTION1;
-import static net.sourceforge.plantumldependency.cli.main.option.display.PlantUMLDependencyDisplayTypeOptionTest.DISPLAY_TYPE_OPTION1;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.PlantUMLDependencyDisplayTypeOptionTest.DISPLAY_TYPE_OPTION1;
 import static net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDependencyExcludeOptionTest.EXCLUDE_OPTION1;
 import static net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOptionTest.INCLUDE_OPTION1;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.PlantUMLDependencyProgrammingLanguageOptionTest.PROGRAMMING_LANGUAGE_OPTION1;

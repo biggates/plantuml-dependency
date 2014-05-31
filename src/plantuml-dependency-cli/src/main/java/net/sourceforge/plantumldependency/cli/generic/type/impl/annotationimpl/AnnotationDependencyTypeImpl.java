@@ -24,7 +24,7 @@
 
 package net.sourceforge.plantumldependency.cli.generic.type.impl.annotationimpl;
 
-import static net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType.ANNOTATIONS;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.ANNOTATIONS;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -33,7 +33,7 @@ import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImpl;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.PlantUMLClassesDiagramElement;
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramAnnotationElementImpl;
 

@@ -78,7 +78,7 @@ import net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImpl
 import net.sourceforge.plantumldependency.cli.generic.type.DependencyType;
 import net.sourceforge.plantumldependency.cli.generic.type.ImportDependenciesCollection;
 import net.sourceforge.plantumldependency.cli.generic.type.impl.ImportDependenciesCollectionImpl;
-import net.sourceforge.plantumldependency.cli.main.option.display.argument.DisplayType;
+import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.JavaRawDependency;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaParentType;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.java.type.JavaType;
