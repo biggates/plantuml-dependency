@@ -1,6 +1,6 @@
 /*
- PlantUMLDependencyDisplayTypeOption.java
- Creation date : 2/06/2010
+ PlantUMLDependencyDisplayPackageNameOption.java
+ Creation date : 31/05/2014
  Copyright © Benjamin Croizet (graffity2199@yahoo.fr)
 
  This program is free software; you can redistribute it and/or
@@ -22,12 +22,12 @@
  http://www.gnu.org/licenses/lgpl.html
  */
 
-package net.sourceforge.plantumldependency.cli.main.option.display.type;
+package net.sourceforge.plantumldependency.cli.main.option.display.packagename;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS_STRING;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.COMMA_CHAR;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantumldependency.common.utils.collection.CollectionUtils.collectionToString;
@@ -35,40 +35,40 @@ import static net.sourceforge.plantumldependency.commoncli.option.status.OptionS
 
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Pattern;
 
-import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
-import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.PlantUMLDependencyDisplayTypeOptionArgument;
+import net.sourceforge.plantumldependency.cli.main.option.display.packagename.argument.PlantUMLDependencyDisplayPackageNameOptionArgument;
 import net.sourceforge.plantumldependency.commoncli.command.CommandLine;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 import net.sourceforge.plantumldependency.commoncli.option.AbstractOptionWithArgument;
 
 /**
- * The display type option, telling the program what to display in the generated file. <i>Note : no
- * option should have the same main or secondary names</i>.
- *
+ * The display package name option, telling the program what to display in the generated file.
+ * <i>Note : no option should have the same main or secondary names</i>.
+ * 
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
- * @since 1.0.0
+ * @since 1.4.0
  * @version 1.4.0
  */
-public class PlantUMLDependencyDisplayTypeOption extends AbstractOptionWithArgument < Set < DisplayType > > {
+public class PlantUMLDependencyDisplayPackageNameOption extends AbstractOptionWithArgument < Pattern > {
 
     /** Serial version UID. */
-    private static final long serialVersionUID = -3061227816589361105L;
+    private static final long serialVersionUID = 6636249105521044787L;
 
     /** Option main synopsis. */
-    public static final String OPTION_MAIN_SYNOPSIS = "-dt";
+    public static final String OPTION_MAIN_SYNOPSIS = "-dp";
 
     /** Option synopsis alias. */
     public static final Set < String > OPTION_SYNOPSIS = unmodifiableSet(new TreeSet < String >(
-            asList(new String[] {"--display-type"})));
+            asList(new String[] {"--display-package-name"})));
 
     /**
      * Default constructor.
-     *
-     * @since 1.0.0
+     * 
+     * @since 1.4.0
      */
-    public PlantUMLDependencyDisplayTypeOption() {
-        super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayTypeOptionArgument(),
+    public PlantUMLDependencyDisplayPackageNameOption() {
+        super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayPackageNameOptionArgument(),
                 new StringBuilder("To specify class diagram objects to display. If not specified, the default is "
                         + collectionToString(DEFAULT_DISPLAY_TYPES_OPTIONS, COMMA_CHAR)), SPACE_CHAR,
                 ACTIVE_OPTIONAL_OPTION_STATUS);
@@ -76,23 +76,23 @@ public class PlantUMLDependencyDisplayTypeOption extends AbstractOptionWithArgum
 
     /**
      * {@inheritDoc}
-     *
-     * @since 1.0.0
+     * 
+     * @since 1.4.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return DEFAULT_DISPLAY_TYPES_OPTIONS_STRING;
+        return DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS;
     }
 
     /**
      * {@inheritDoc}
-     *
-     * @since 1.0.0
+     * 
+     * @since 1.4.0
      */
     @Override
     public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return DEFAULT_DISPLAY_TYPES_OPTIONS_STRING;
+        return DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS;
     }
 }

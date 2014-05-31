@@ -68,7 +68,7 @@ public class PlantUMLDependencyProgramTest {
      */
     @Test(expected = PlantUMLDependencyException.class)
     public void testMainWithABadDisplayTypeOption() throws PlantUMLDependencyException {
-        main(new String[] {"-o", TEST_FILE.getName(), "-dti", "test"});
+        main(new String[] {"-o", TEST_FILE.getName(), "-dt", "test"});
     }
 
     /**
@@ -116,7 +116,7 @@ public class PlantUMLDependencyProgramTest {
      */
     @Test(expected = PlantUMLDependencyException.class)
     public void testMainWithPrimaryDisplayTypeOption() throws PlantUMLDependencyException {
-        main(new String[] {"-dti", DEFAULT_DISPLAY_TYPES_OPTIONS_STRING});
+        main(new String[] {"-dt", DEFAULT_DISPLAY_TYPES_OPTIONS_STRING});
     }
 
     /**
@@ -224,7 +224,7 @@ public class PlantUMLDependencyProgramTest {
      */
     @Test(expected = PlantUMLDependencyException.class)
     public void testMainWithSecondaryDisplayTypeOption() throws PlantUMLDependencyException {
-        main(new String[] {"--display-type-include", DEFAULT_DISPLAY_TYPES_OPTIONS_STRING});
+        main(new String[] {"--display-type", DEFAULT_DISPLAY_TYPES_OPTIONS_STRING});
     }
 
     /**
@@ -332,6 +332,6 @@ public class PlantUMLDependencyProgramTest {
      */
     @Test(expected = PlantUMLDependencyException.class)
     public void testMainWithTwoSameDisplayTypeOption() throws PlantUMLDependencyException {
-        main(new String[] {"-o", TEST_FILE.getName(), "-dti", "extensions,static_imports,implementations,extensions"});
+        main(new String[] {"-o", TEST_FILE.getName(), "-dt", "extensions,static_imports,implementations,extensions"});
     }
 }

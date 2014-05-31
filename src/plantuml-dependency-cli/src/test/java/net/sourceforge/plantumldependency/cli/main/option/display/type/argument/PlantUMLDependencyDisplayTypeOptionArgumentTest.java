@@ -31,8 +31,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
-import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
-import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.PlantUMLDependencyDisplayTypeOptionArgument;
 import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 import net.sourceforge.plantumldependency.commoncli.option.argument.OptionArgument;
@@ -52,18 +50,11 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
 
     /** Display option argument test 1 instance. */
     @DataPoint
-    public static final OptionArgument < Set < DisplayType > > DISPLAY_OPTION_ARGUMENT1 = new PlantUMLDependencyDisplayTypeOptionArgument(
-            true);
+    public static final OptionArgument < Set < DisplayType > > DISPLAY_OPTION_ARGUMENT1 = new PlantUMLDependencyDisplayTypeOptionArgument();
 
     /** Display option argument test 2 instance. */
     @DataPoint
-    public static final OptionArgument < Set < DisplayType > > DISPLAY_OPTION_ARGUMENT2 = new PlantUMLDependencyDisplayTypeOptionArgument(
-            false);
-
-    /** Display option argument test 3 instance. */
-    @DataPoint
-    public static final OptionArgument < Set < DisplayType > > DISPLAY_OPTION_ARGUMENT3 = new PlantUMLDependencyDisplayTypeOptionArgument(
-            true);
+    public static final OptionArgument < Set < DisplayType > > DISPLAY_OPTION_ARGUMENT2 = new PlantUMLDependencyDisplayTypeOptionArgument();
 
     /** Display option argument test 4 instance. */
     @DataPoint
@@ -87,18 +78,8 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
      * .
      */
     @Test
-    public void testGetMainUsageWithMandatory() {
+    public void testGetMainUsage() {
         assertEquals("DISPLAY_TYPES_OPTIONS", DISPLAY_OPTION_ARGUMENT1.getMainUsage().toString());
-    }
-
-    /**
-     * Test method for
-     * {@link net.sourceforge.plantumldependency.commoncli.option.argument.AbstractOptionArgument#getMainUsage()}
-     * .
-     */
-    @Test
-    public void testGetMainUsageWithNoMandatory() {
-        assertEquals("[DISPLAY_TYPES_OPTIONS]", DISPLAY_OPTION_ARGUMENT2.getMainUsage().toString());
     }
 
     /**

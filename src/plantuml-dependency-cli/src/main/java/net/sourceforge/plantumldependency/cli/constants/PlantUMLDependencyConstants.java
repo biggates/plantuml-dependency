@@ -60,6 +60,12 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.st
  */
 public final class PlantUMLDependencyConstants {
 
+    /** The default display name options to apply if not specified. */
+    public static final String DEFAULT_DISPLAY_NAME_OPTIONS = ".*";
+
+    /** The default display package name options to apply if not specified. */
+    public static final String DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS = ".*";
+
     /** The default display types options to apply if not specified. */
     public static final Set < DisplayType > DEFAULT_DISPLAY_TYPES_OPTIONS = new TreeSet < DisplayType >(asList(new DisplayType[] {
             ABSTRACT_CLASSES, ANNOTATIONS, CLASSES, ENUMS, IMPORTS, INTERFACES, STATIC_IMPORTS, NATIVE_METHODS,

@@ -74,12 +74,10 @@ public class PlantUMLDependencyDisplayTypeOptionArgument extends AbstractOptionA
     /**
      * Default constructor.
      *
-     * @param optionArgumentIsMandatory
-     *            <code>true</code> if the argument is mandatory, <code>false</code> otherwise.
      * @since 1.0.0
      */
-    public PlantUMLDependencyDisplayTypeOptionArgument(final boolean optionArgumentIsMandatory) {
-        super(optionArgumentIsMandatory, new StringBuilder(USAGE_DESCRIPTION));
+    public PlantUMLDependencyDisplayTypeOptionArgument() {
+        super(true, new StringBuilder(USAGE_DESCRIPTION));
     }
 
     /**

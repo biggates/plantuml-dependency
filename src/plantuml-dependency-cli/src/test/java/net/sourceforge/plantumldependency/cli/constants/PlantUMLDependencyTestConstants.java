@@ -94,16 +94,16 @@ public final class PlantUMLDependencyTestConstants {
             "-b", "/"});
 
     /** Command line test 5 instance. */
-    public static final CommandLine COMMAND_LINE5 = new CommandLineImpl(new String[] {"-o", "./log.txt", "-dti",
-            "classes,enums,imports,interfaces,only_packages,static_imports,native_methods", "-v", "-version", "-dti",
+    public static final CommandLine COMMAND_LINE5 = new CommandLineImpl(new String[] {"-o", "./log.txt", "-dt",
+            "classes,enums,imports,interfaces,only_packages,static_imports,native_methods", "-v", "-version", "-dt",
             "classes"});
 
     /** Command line test 6 instance. */
-    public static final CommandLine COMMAND_LINE6 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-dti", "-v",
+    public static final CommandLine COMMAND_LINE6 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-dt", "-v",
             "-version"});
 
     /** Command line test 7 instance. */
-    public static final CommandLine COMMAND_LINE7 = new CommandLineImpl(new String[] {"-v", "-dti",
+    public static final CommandLine COMMAND_LINE7 = new CommandLineImpl(new String[] {"-v", "-dt",
             "classes,static_imports,enums", "-o", "plantuml.txt"});
 
     /** Command line test 8 instance. */
