@@ -311,7 +311,7 @@ public class VerboseLevelOptionTest extends ComparableAndDeepCloneableObjectTest
      */
     @Test
     public void testGetDefaultArgumentIfOptionNotSpecified() throws CommandLineException {
-        final Level defaultArgument = VERBOSE_LEVEL_OPTION1.getDefaultArgumentIfOptionNotSpecified(COMMAND_LINE1);
+        final Level defaultArgument = VERBOSE_LEVEL_OPTION1.getDefaultArgumentIfOptionNotSpecified(COMMAND_LINE2);
         assertEquals(WARNING, defaultArgument);
     }
 
