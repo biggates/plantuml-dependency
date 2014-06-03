@@ -229,8 +229,8 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
                 includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
                 displayNameOption.getName(), ".*Test.*", verboseLevelOption.getName()};
         final String[] example6 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
-                displayPackageNameOption.getName(), "net.sourceforge.plantumldependency.cli.main.*",
-                verboseLevelOption.getName(), verboseLevelOption.getName()};
+                displayPackageNameOption.getName(), "^(?!net.sourceforge.plantumldependency)(.+)$",
+                verboseLevelOption.getName()};
         addExampleCommandLine(new CommandLineImpl(example1));
         addExampleCommandLine(new CommandLineImpl(example2));
         addExampleCommandLine(new CommandLineImpl(example3));
