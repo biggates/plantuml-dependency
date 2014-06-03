@@ -26,7 +26,8 @@ package net.sourceforge.plantumldependency.cli.main.option.display.packagename;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
-import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_STRING;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY_PACKAGE_NAME;
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
 import static net.sourceforge.plantumldependency.commoncli.option.status.OptionStatus.ACTIVE_OPTIONAL_OPTION_STATUS;
 
@@ -65,10 +66,17 @@ public class PlantUMLDependencyDisplayPackageNameOption extends AbstractOptionWi
      * @since 1.4.0
      */
     public PlantUMLDependencyDisplayPackageNameOption() {
-        super(OPTION_MAIN_SYNOPSIS, OPTION_SYNOPSIS, new PlantUMLDependencyDisplayPackageNameOptionArgument(),
-                new StringBuilder("To specify class diagram objects to display following their package name. If not specified, the default is \""
-                        + DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS + "\""), SPACE_CHAR,
-                ACTIVE_OPTIONAL_OPTION_STATUS);
+        super(
+                OPTION_MAIN_SYNOPSIS,
+                OPTION_SYNOPSIS,
+                new PlantUMLDependencyDisplayPackageNameOptionArgument(),
+                new StringBuilder(
+                        "To specify class diagram objects to display following their package name. If not specified, the default is \""
+                                + DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_STRING
+                                + "\". Note : native calls which are represented by the \""
+                                + NATIVE_DEPENDENCY_PACKAGE_NAME
+                                + "\" package name can also be matched by this regular expression even if it is a fictive dependency."),
+                SPACE_CHAR, ACTIVE_OPTIONAL_OPTION_STATUS);
     }
 
     /**
@@ -79,7 +87,7 @@ public class PlantUMLDependencyDisplayPackageNameOption extends AbstractOptionWi
     @Override
     public String getDefaultArgumentAsStringIfOptionNotSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS;
+        return DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_STRING;
     }
 
     /**
@@ -90,6 +98,6 @@ public class PlantUMLDependencyDisplayPackageNameOption extends AbstractOptionWi
     @Override
     public String getDefaultArgumentAsStringIfOptionSpecified(final CommandLine commandLine)
             throws CommandLineException {
-        return DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS;
+        return DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_STRING;
     }
 }

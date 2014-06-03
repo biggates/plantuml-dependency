@@ -26,6 +26,7 @@ package net.sourceforge.plantumldependency.cli.generic.type;
 
 import java.io.Serializable;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
@@ -165,18 +166,26 @@ public interface DependencyType extends Comparable < DependencyType >, Serializa
     Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations();
 
     /**
-     * Gets the PlantUML classes diagram relations, following the imports and the dependency type
-     * parents.
+     * Gets the PlantUML classes diagram relations, following the imports, the dependency type
+     * parents and the passed display options (type, name and package name).
      *
      * @param displayTypesOptions
-     *            the {@link Set} of all display types options to display the PlantUML classes diagram
-     *            relations, mustn't be <code>null</code>.
+     *            the {@link Set} of display types options which filter relations type, mustn't be
+     *            <code>null</code>, if empty, this method always returns <code>false</code>,
+     *            mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter relations package name, if empty, this method
+     *            always returns <code>false</code>, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter relations name, if empty, this method always
+     *            returns <code>false</code>, mustn't be <code>null</code>.
      * @return the set of all PlantUML classes diagram relations as a {@link Set} of
      *         {@link PlantUMLClassesDiagramRelation} instances describing relations to imports and
      *         the dependency type parents.
      * @since 1.1.1
      */
-    Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations(Set < DisplayType > displayTypesOptions);
+    Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations(Set < DisplayType > displayTypesOptions,
+            Pattern displayPackageNamePattern, Pattern displayNamePattern);
 
     /**
      * Sets the dependency full name, i.e. the package name and the class name.

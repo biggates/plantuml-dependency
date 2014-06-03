@@ -25,7 +25,12 @@
 package net.sourceforge.plantumldependency.cli.generic.type.impl.interfaceimpl;
 
 import static java.util.Arrays.asList;
+import static java.util.regex.Pattern.compile;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY_NAME;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.NATIVE_DEPENDENCY_PACKAGE_NAME;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET1024;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET12;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET13;
@@ -288,7 +293,61 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
                 PLANTUML_USE_RELATION_TEST73, PLANTUML_USE_RELATION_TEST74, PLANTUML_USE_RELATION_TEST75,
                 PLANTUML_USE_RELATION_TEST76, PLANTUML_USE_RELATION_TEST77, PLANTUML_USE_RELATION_TEST78,
                 PLANTUML_EXTEND_RELATION_TEST13, PLANTUML_EXTEND_RELATION_TEST14})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET1024));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET1024,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations1024WithAllPackageNamePatternAndLimitedNamePattern() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST11, PLANTUML_USE_RELATION_TEST73, PLANTUML_USE_RELATION_TEST76,
+                PLANTUML_EXTEND_RELATION_TEST14})), INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(
+                DISPLAY_TYPE_SET1024, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, compile(".*able.*")));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations1024WithLimitedPackageNamePatternAndAllNamePattern() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST13, PLANTUML_USE_RELATION_TEST66, PLANTUML_USE_RELATION_TEST68,
+                PLANTUML_USE_RELATION_TEST73, PLANTUML_USE_RELATION_TEST76, PLANTUML_USE_RELATION_TEST77,
+                PLANTUML_EXTEND_RELATION_TEST13})), INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(
+                DISPLAY_TYPE_SET1024, compile(".*lang.*"), DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations1024WithLimitedPackageNamePatternAndLimitedNamePattern() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
+                PLANTUML_USE_RELATION_TEST73, PLANTUML_USE_RELATION_TEST76})),
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET1024,
+                        compile(".*lang.*"), compile(".*able.*")));
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations1024WithNativePackageNamePatternAndNativeNamePattern() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
+                asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST69})),
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET1024,
+                        compile(NATIVE_DEPENDENCY_PACKAGE_NAME), compile(NATIVE_DEPENDENCY_NAME)));
     }
 
     /**
@@ -300,7 +359,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations12() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST66, PLANTUML_USE_RELATION_TEST67})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET12));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET12,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -312,7 +372,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations13() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST66, PLANTUML_USE_RELATION_TEST67})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET13));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET13,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -324,7 +385,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations14() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST66, PLANTUML_USE_RELATION_TEST67})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET14));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET14,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -336,7 +398,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations15() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST66, PLANTUML_USE_RELATION_TEST67})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET15));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET15,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -348,7 +411,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations16() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST66, PLANTUML_USE_RELATION_TEST67})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET16));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET16,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -360,7 +424,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations17() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST66, PLANTUML_USE_RELATION_TEST67})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET17));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET17,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -372,7 +437,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations18() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST66, PLANTUML_USE_RELATION_TEST67})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET18));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET18,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -384,7 +450,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations19() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST66, PLANTUML_USE_RELATION_TEST67, PLANTUML_USE_RELATION_TEST69})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET19));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET19,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -396,7 +463,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations20() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST66, PLANTUML_USE_RELATION_TEST67, PLANTUML_USE_RELATION_TEST68})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET20));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET20,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -407,7 +475,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations21() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET21));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET21,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -418,7 +487,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations22() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET22));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET22,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -429,7 +499,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations23() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET23));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET23,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -440,7 +511,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations24() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET24));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET24,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -452,7 +524,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations25() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST70, PLANTUML_USE_RELATION_TEST71})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET25));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET25,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -463,7 +536,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations26() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET26));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET26,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -475,7 +549,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations27() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST69})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET27));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET27,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -487,7 +562,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations28() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST78})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET28));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET28,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -498,7 +574,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations29() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET29));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET29,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -509,7 +586,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations30() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET30));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET30,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -520,7 +598,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations31() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET31));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET31,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -532,7 +611,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations32() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST11, PLANTUML_USE_RELATION_TEST13})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET32));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET32,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -543,7 +623,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations33() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET33));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET33,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -555,7 +636,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations34() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST69})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET34));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET34,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -567,7 +649,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations35() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST72, PLANTUML_USE_RELATION_TEST73, PLANTUML_USE_RELATION_TEST13})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET35));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET35,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -578,7 +661,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations36() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET36));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET36,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -589,7 +673,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations37() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET37));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET37,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -601,7 +686,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations38() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST74})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET38));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET38,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -612,7 +698,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations39() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET39));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET39,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -624,7 +711,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations40() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST69})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET40));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET40,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -636,7 +724,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations41() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST75})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET41));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET41,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -647,7 +736,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations42() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET42));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET42,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -658,7 +748,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations43() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET43));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET43,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -670,7 +761,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations44() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_EXTEND_RELATION_TEST13, PLANTUML_EXTEND_RELATION_TEST14})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET44));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET44,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -682,7 +774,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations45() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST69})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET45));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET45,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -693,7 +786,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations46() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET46));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET46,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -704,7 +798,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations47() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET47));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET47,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -715,7 +810,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations48() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET48));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET48,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -727,7 +823,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations49() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST69})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET49));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET49,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -738,7 +835,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations50() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET50));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET50,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -750,7 +848,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations51() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST76})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET51));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET51,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -762,7 +861,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations52() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST69})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET52));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET52,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -773,7 +873,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     @Test
     public void testGetPlantUMLClassesDiagramRelations53() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET53));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET53,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -785,7 +886,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations54() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST69})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET54));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET54,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -797,7 +899,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations55() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST77})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET55));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET55,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -809,7 +912,8 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelations56() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(
                 asList(new PlantUMLClassesDiagramRelation[] {PLANTUML_USE_RELATION_TEST69})),
-                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET56));
+                INTERFACE_DEPENDENCY_TYPE10.getPlantUMLClassesDiagramRelations(DISPLAY_TYPE_SET56,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -821,8 +925,9 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
     public void testGetPlantUMLClassesDiagramRelationsWithInterfaceAndImportDependencies() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST11, PLANTUML_USE_RELATION_TEST12, PLANTUML_IMPLEMENT_RELATION_TEST12,
-                PLANTUML_USE_RELATION_TEST26})),
-                INTERFACE_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS));
+                PLANTUML_USE_RELATION_TEST26})), INTERFACE_DEPENDENCY_TYPE7.getPlantUMLClassesDiagramRelations(
+                DEFAULT_DISPLAY_TYPES_OPTIONS, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 
     /**
@@ -835,6 +940,7 @@ public class InterfaceDependencyTypeImplTest extends DeepCloneableObjectTest < I
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(asList(new PlantUMLClassesDiagramRelation[] {
                 PLANTUML_USE_RELATION_TEST11, PLANTUML_USE_RELATION_TEST12, PLANTUML_USE_RELATION_TEST13,
                 PLANTUML_EXTEND_RELATION_TEST15, PLANTUML_EXTEND_RELATION_TEST16, PLANTUML_USE_RELATION_TEST26})),
-                INTERFACE_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS));
+                INTERFACE_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 }

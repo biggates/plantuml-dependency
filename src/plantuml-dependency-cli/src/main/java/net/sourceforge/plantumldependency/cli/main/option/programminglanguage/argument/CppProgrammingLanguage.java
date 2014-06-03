@@ -27,6 +27,7 @@ package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.a
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.CPP_NOT_IMPLEMENTED_YET_ERROR;
 
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
@@ -63,8 +64,9 @@ class CppProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0.0
      */
     @Override
-    public ProgrammingLanguageContext createNewContext(final Set < DisplayType > displayTypesOpt) {
-        return new CppProgrammingLanguageContext(displayTypesOpt);
+    public ProgrammingLanguageContext createNewContext(final Set < DisplayType > displayTypesOpts,
+            final Pattern displayPackageNamePattern, final Pattern displayNamePattern) {
+        return new CppProgrammingLanguageContext(displayTypesOpts, displayPackageNamePattern, displayNamePattern);
     }
 
     /**

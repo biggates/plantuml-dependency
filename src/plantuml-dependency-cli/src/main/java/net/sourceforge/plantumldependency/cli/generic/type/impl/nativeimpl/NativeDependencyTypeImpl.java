@@ -28,6 +28,7 @@ import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependenc
 import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.NATIVE_METHODS;
 
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl;
 import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
@@ -77,8 +78,11 @@ public class NativeDependencyTypeImpl extends DependencyTypeImpl {
      * @since 1.1.1
      */
     @Override
-    public boolean isDisplayable(final Set < DisplayType > displayTypesOptions) {
-        return displayTypesOptions.contains(NATIVE_METHODS);
+    public boolean isDisplayable(final Set < DisplayType > displayTypesOptions,
+            final Pattern displayPackageNamePattern, final Pattern displayNamePattern) {
+        return displayTypesOptions.contains(NATIVE_METHODS)
+                && displayPackageNamePattern.matcher(getPackageName()).matches()
+                && displayNamePattern.matcher(getName()).matches();
     }
 
     /**

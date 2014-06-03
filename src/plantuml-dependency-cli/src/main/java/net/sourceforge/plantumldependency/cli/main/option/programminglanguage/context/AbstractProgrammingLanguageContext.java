@@ -26,9 +26,12 @@ package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.c
 
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.JAVA_LANG_PACKAGE;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.DEPENDENCY_NAME_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.DEPENDENCY_NULL_ERROR;
+import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.DISPLAY_TYPES_OPTIONS;
 import static net.sourceforge.plantumldependency.common.constants.log.ErrorConstants.UNEXPECTED_ERROR;
 import static net.sourceforge.plantumldependency.common.utils.check.ParameterCheckerUtils.checkNull;
 import static net.sourceforge.plantumldependency.common.utils.comparable.ComparableResult.AFTER;
@@ -41,6 +44,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
@@ -72,6 +76,18 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     private Set < DisplayType > displayTypesOptions;
 
     /**
+     * The display package name pattern which have to appear in the plantUML description, mustn't be
+     * <code>null</code>.
+     */
+    private Pattern displayPackageNamePattern;
+
+    /**
+     * The display name pattern which have to appear in the plantUML description, mustn't be
+     * <code>null</code>.
+     */
+    private Pattern displayNamePattern;
+
+    /**
      * The {@link Map} containing all dependencies which have already been treated or seen, it
      * contains dependencies full names (package + name) as keys and their associated
      * {@link GenericDependency} as values.
@@ -99,19 +115,27 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @since 1.0.0
      */
     protected AbstractProgrammingLanguageContext() {
-        this(new TreeSet < GenericDependency >(), new TreeSet < DisplayType >());
+        this(new TreeSet < GenericDependency >(), DISPLAY_TYPES_OPTIONS, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN);
     }
 
     /**
      * Medium constructor.
      *
-     * @param displayTypesOpt
-     *            the display types options which have to appear in the plantUML description,
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options which filter type to appear in the
+     *            plantUML description, mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter package name to appear in the plantUML
+     *            description, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
-    protected AbstractProgrammingLanguageContext(final Set < DisplayType > displayTypesOpt) {
-        this(new TreeSet < GenericDependency >(), displayTypesOpt);
+    protected AbstractProgrammingLanguageContext(final Set < DisplayType > displayTypesOpts,
+            final Pattern displayPackageNamePatternOpt, final Pattern displayNamePatternOpt) {
+        this(new TreeSet < GenericDependency >(), displayTypesOpts, displayPackageNamePatternOpt, displayNamePatternOpt);
     }
 
     /**
@@ -120,14 +144,22 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @param parsedAndSeenDependencies
      *            the original parsed and seen dependencies {@link Set} of {@link GenericDependency}
      *            to put in the context, mustn't be <code>null</code>.
-     * @param displayTypesOpt
-     *            the display types options which have to appear in the plantUML description,
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options which filter type to appear in the
+     *            plantUML description, mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter package name to appear in the plantUML
+     *            description, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
     protected AbstractProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
-            final Set < DisplayType > displayTypesOpt) {
-        this(parsedAndSeenDependencies, parsedAndSeenDependencies, new TreeSet < GenericDependency >(), displayTypesOpt);
+            final Set < DisplayType > displayTypesOpts, final Pattern displayPackageNamePatternOpt,
+            final Pattern displayNamePatternOpt) {
+        this(parsedAndSeenDependencies, parsedAndSeenDependencies, new TreeSet < GenericDependency >(),
+                displayTypesOpts, displayPackageNamePatternOpt, displayNamePatternOpt);
     }
 
     /**
@@ -142,14 +174,22 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * @param potentialJavaLangSeenDependencies
      *            the original potential "java.lang" seen dependencies {@link Set} of
      *            {@link GenericDependency} to put in the context, mustn't be <code>null</code>.
-     * @param displayTypesOpt
-     *            the display types options which have to appear in the plantUML description,
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options which filter type to appear in the
+     *            plantUML description, mustn't be <code>null</code>.
+     * @param displayPackageNamePatternOpt
+     *            the {@link Pattern} which filter package name to appear in the plantUML
+     *            description, mustn't be <code>null</code>.
+     * @param displayNamePatternOpt
+     *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
     protected AbstractProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < GenericDependency > parsedDependencies,
-            final Set < GenericDependency > potentialJavaLangSeenDependencies, final Set < DisplayType > displayTypesOpt) {
+            final Set < GenericDependency > potentialJavaLangSeenDependencies,
+            final Set < DisplayType > displayTypesOpts, final Pattern displayPackageNamePatternOpt,
+            final Pattern displayNamePatternOpt) {
         // TODO test null
         final Map < String, GenericDependency > firstDependenciesMap = new TreeMap < String, GenericDependency >();
         for (final GenericDependency genericDependency : parsedAndSeenDependencies) {
@@ -173,7 +213,9 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         }
         setPotentialJavaLangSeenDependenciesMap(thirdDependenciesMap);
 
-        setDisplayTypesOptions(new TreeSet < DisplayType >(displayTypesOpt));
+        setDisplayTypesOptions(new TreeSet < DisplayType >(displayTypesOpts));
+        setDisplayPackageNamePattern(displayPackageNamePatternOpt);
+        setDisplayNamePattern(displayNamePatternOpt);
     }
 
     /**
@@ -243,6 +285,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
                     a.potentialJavaLangSeenDependenciesMap);
             a.parsedDependenciesMap = new TreeMap < String, GenericDependency >(a.parsedDependenciesMap);
             a.displayTypesOptions = new TreeSet < DisplayType >(getDisplayTypesOptions());
+            a.displayPackageNamePattern = displayPackageNamePattern;
+            a.displayNamePattern = displayNamePattern;
         } catch (final CloneNotSupportedException cnse) {
             LOGGER.log(SEVERE, UNEXPECTED_ERROR, cnse);
         }
@@ -253,7 +297,7 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     /**
      * {@inheritDoc}
      *
-     * @since 1.0.0
+     * @since 1.0
      */
     @Override
     public boolean equals(final Object obj) {
@@ -267,6 +311,20 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
             return false;
         }
         final AbstractProgrammingLanguageContext other = (AbstractProgrammingLanguageContext) obj;
+        if (displayNamePattern == null) {
+            if (other.displayNamePattern != null) {
+                return false;
+            }
+        } else if (!displayNamePattern.equals(other.displayNamePattern)) {
+            return false;
+        }
+        if (displayPackageNamePattern == null) {
+            if (other.displayPackageNamePattern != null) {
+                return false;
+            }
+        } else if (!displayPackageNamePattern.equals(other.displayPackageNamePattern)) {
+            return false;
+        }
         if (displayTypesOptions == null) {
             if (other.displayTypesOptions != null) {
                 return false;
@@ -303,22 +361,53 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
      * context and which have to be displayed following display types options.
      *
      * @param displayTypesOpts
-     *            the {@link Set} of display types options, mustn't be <code>null</code>.
+     *            the {@link Set} of display types options which filter type, if empty, this method
+     *            returns and empty {@link Collection}, mustn't be <code>null</code>.
+     * @param displayPackageNamePatternOpt
+     *            the {@link Pattern} which filter package name, if empty, this method returns and
+     *            empty {@link Collection}, mustn't be <code>null</code>.
+     * @param displayNamePatternOpt
+     *            the {@link Pattern} which filter name, if empty, this method returns and empty
+     *            {@link Collection}, mustn't be <code>null</code>.
      * @return the {@link Collection} of all {@link GenericDependency} which have been seen (as
      *         import for instance) and parsed and associated with this context and which have to be
      *         displayed following display types options.
      * @since 1.1.1
      */
     private Collection < GenericDependency > getDisplayableParsedAndSeenDependencies(
-            final Set < DisplayType > displayTypesOpts) {
+            final Set < DisplayType > displayTypesOpts, final Pattern displayPackageNamePatternOpt,
+            final Pattern displayNamePatternOpt) {
         final Set < GenericDependency > displayableParsedAndSeenDependencies = new TreeSet < GenericDependency >();
         for (final GenericDependency dependency : getParsedAndSeenDependencies()) {
-            if (dependency.getDependencyType().isDisplayable(displayTypesOpts)) {
+            if (dependency.getDependencyType().isDisplayable(displayTypesOpts, displayPackageNamePatternOpt,
+                    displayNamePatternOpt)) {
                 displayableParsedAndSeenDependencies.add(dependency);
             }
         }
 
         return displayableParsedAndSeenDependencies;
+    }
+
+    /**
+     * Gets the value of <code>displayNamePattern</code>.
+     *
+     * @return the value of <code>displayNamePattern</code>.
+     * @see #setDisplayNamePattern(Pattern)
+     * @since 1.4.0
+     */
+    private Pattern getDisplayNamePattern() {
+        return displayNamePattern;
+    }
+
+    /**
+     * Gets the value of <code>displayPackageNamePattern</code>.
+     *
+     * @return the value of <code>displayPackageNamePattern</code>.
+     * @see #setDisplayPackageNamePattern(Pattern)
+     * @since 1.4.0
+     */
+    private Pattern getDisplayPackageNamePattern() {
+        return displayPackageNamePattern;
     }
 
     /**
@@ -406,11 +495,13 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
         final Set < PlantUMLClassesDiagramElement > plantUMLClassesDiagramElements = new TreeSet < PlantUMLClassesDiagramElement >();
         final Set < PlantUMLClassesDiagramRelation > plantUMLClassesDiagramRelations = new TreeSet < PlantUMLClassesDiagramRelation >();
 
-        for (final GenericDependency genericDependency : getDisplayableParsedAndSeenDependencies(getDisplayTypesOptions())) {
+        for (final GenericDependency genericDependency : getDisplayableParsedAndSeenDependencies(
+                getDisplayTypesOptions(), getDisplayPackageNamePattern(), getDisplayNamePattern())) {
             plantUMLClassesDiagramElements
                     .add(genericDependency.getDependencyType().getPlantUMLClassesDiagramElement());
             plantUMLClassesDiagramRelations.addAll(genericDependency.getDependencyType()
-                    .getPlantUMLClassesDiagramRelations(getDisplayTypesOptions()));
+                    .getPlantUMLClassesDiagramRelations(getDisplayTypesOptions(), getDisplayPackageNamePattern(),
+                            getDisplayNamePattern()));
         }
 
         return new PlantUMLClassesDiagramImpl(plantUMLClassesDiagramElements, plantUMLClassesDiagramRelations);
@@ -446,6 +537,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result + ((displayNamePattern == null) ? 0 : displayNamePattern.hashCode());
+        result = prime * result + ((displayPackageNamePattern == null) ? 0 : displayPackageNamePattern.hashCode());
         result = prime * result + ((displayTypesOptions == null) ? 0 : displayTypesOptions.hashCode());
         result = prime * result
                 + ((parsedAndSeenDependenciesMap == null) ? 0 : parsedAndSeenDependenciesMap.hashCode());
@@ -491,6 +584,30 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     public void removePotentialJavaLangSeenDependency(final String fullName) {
         checkNull(fullName, DEPENDENCY_NAME_NULL_ERROR);
         getPotentialJavaLangSeenDependenciesMap().remove(fullName);
+    }
+
+    /**
+     * Sets the value of <code>displayNamePattern</code>.
+     *
+     * @param value
+     *            the <code>displayNamePattern</code> to set, can be <code>null</code>.
+     * @see #getDisplayNamePattern()
+     * @since 1.4.0
+     */
+    private void setDisplayNamePattern(final Pattern value) {
+        displayNamePattern = value;
+    }
+
+    /**
+     * Sets the value of <code>displayPackageNamePattern</code>.
+     *
+     * @param value
+     *            the <code>displayPackageNamePattern</code> to set, can be <code>null</code>.
+     * @see #getDisplayPackageNamePattern()
+     * @since 1.4.0
+     */
+    private void setDisplayPackageNamePattern(final Pattern value) {
+        displayPackageNamePattern = value;
     }
 
     /**
@@ -550,7 +667,8 @@ public abstract class AbstractProgrammingLanguageContext implements ProgrammingL
     @Override
     public String toString() {
         return getClass().getSimpleName() + " [displayTypesOptions=" + displayTypesOptions
-                + ", parsedAndSeenDependenciesMap=" + parsedAndSeenDependenciesMap
+                + ", displayPackageNamePattern=" + displayPackageNamePattern + ", displayNamePattern="
+                + displayNamePattern + ", parsedAndSeenDependenciesMap=" + parsedAndSeenDependenciesMap
                 + ", potentialJavaLangSeenDependenciesMap=" + potentialJavaLangSeenDependenciesMap
                 + ", parsedDependenciesMap=" + parsedDependenciesMap + "]";
     }

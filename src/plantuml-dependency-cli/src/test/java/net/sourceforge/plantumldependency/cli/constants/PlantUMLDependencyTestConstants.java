@@ -153,6 +153,30 @@ public final class PlantUMLDependencyTestConstants {
     /** Command line test 20 instance. */
     public static final CommandLine COMMAND_LINE20 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-i"});
 
+    /** Command line test 21 instance. */
+    public static final CommandLine COMMAND_LINE21 = new CommandLineImpl(new String[] {"-v", "-dn",
+            ".*able.*", "-o", "plantuml.txt"});
+
+    /** Command line test 22 instance. */
+    public static final CommandLine COMMAND_LINE22 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-dn"});
+
+    /** Command line test 23 instance. */
+    public static final CommandLine COMMAND_LINE23 = new CommandLineImpl(new String[] {"-o", "./log.txt", "-dn",
+            ".*able.*", "-v", "-version", "-dn",
+            ".*"});
+
+    /** Command line test 24 instance. */
+    public static final CommandLine COMMAND_LINE24 = new CommandLineImpl(new String[] {"-v", "-dp",
+            ".*able.*", "-o", "plantuml.txt"});
+
+    /** Command line test 25 instance. */
+    public static final CommandLine COMMAND_LINE25 = new CommandLineImpl(new String[] {"-o", "plantuml.txt", "-dp"});
+
+    /** Command line test 26 instance. */
+    public static final CommandLine COMMAND_LINE26 = new CommandLineImpl(new String[] {"-o", "./log.txt", "-dp",
+            ".*able.*", "-v", "-version", "-dp",
+            ".*"});
+
     /** File set test 1 instance. */
     public static final FileSet FILE_SET1 = createFileSet(CURRENT_DIRECTORY,
             "**/test/resources/net/sourceforge/plantumldependency/cli/main/option/output/b/**/*.java");

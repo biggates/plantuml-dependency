@@ -24,9 +24,17 @@
 
 package net.sourceforge.plantumldependency.cli.generic.type.impl.nativeimpl;
 
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.NATIVE_PLANTUML_STEREOTYPE;
 import static org.junit.Assert.assertEquals;
+
+import java.util.Set;
+import java.util.TreeSet;
+
 import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.impl.PlantUMLClassesDiagramClassElementImpl;
+import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.relation.PlantUMLClassesDiagramRelation;
 import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
 
 import org.junit.Test;
@@ -37,7 +45,7 @@ import org.junit.experimental.theories.DataPoint;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class NativeDependencyTypeImplTest extends DeepCloneableObjectTest < NativeDependencyTypeImplTest > {
 
@@ -104,5 +112,17 @@ public class NativeDependencyTypeImplTest extends DeepCloneableObjectTest < Nati
     public void testGetPlantUMLClassesDiagramElement() {
         assertEquals(new PlantUMLClassesDiagramClassElementImpl("java.lang.Integer", NATIVE_PLANTUML_STEREOTYPE),
                 NATIVE_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramElement());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.cli.generic.type.impl.DependencyTypeImpl#getPlantUMLClassesDiagramRelations(Set)}
+     * .
+     */
+    @Test
+    public void testGetPlantUMLClassesDiagramRelations() {
+        assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
+                NATIVE_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 }

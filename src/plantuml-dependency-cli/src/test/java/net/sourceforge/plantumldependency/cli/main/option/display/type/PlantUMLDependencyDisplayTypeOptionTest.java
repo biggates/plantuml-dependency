@@ -48,7 +48,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Set;
 
 import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
-import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 
 import org.junit.Test;
@@ -61,17 +61,18 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0.0
  * @version 1.4.0
  */
-public class PlantUMLDependencyDisplayTypeOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyDisplayTypeOption > {
+public class PlantUMLDependencyDisplayTypeOptionTest extends
+        ComparableAndDeepCloneableObjectTest < PlantUMLDependencyDisplayTypeOption > {
 
-    /** Display directory option test 1 instance. */
+    /** Display type option test 1 instance. */
     @DataPoint
     public static final PlantUMLDependencyDisplayTypeOption DISPLAY_TYPE_OPTION1 = new PlantUMLDependencyDisplayTypeOption();
 
-    /** Display directory option test 2 instance. */
+    /** Display type option test 2 instance. */
     @DataPoint
     public static final PlantUMLDependencyDisplayTypeOption DISPLAY_TYPE_OPTION2 = new PlantUMLDependencyDisplayTypeOption();
 
-    /** Display directory option test 3 instance. */
+    /** Display type option test 3 instance. */
     @DataPoint
     public static final PlantUMLDependencyDisplayTypeOption DISPLAY_TYPE_OPTION3 = null;
 
@@ -136,7 +137,8 @@ public class PlantUMLDependencyDisplayTypeOptionTest extends DeepCloneableObject
      */
     @Test
     public void testFindAndParseArgumentOrGetDefaultArgumentWithExistingOption() throws CommandLineException {
-        final Set < DisplayType > argument = DISPLAY_TYPE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE7);
+        final Set < DisplayType > argument = DISPLAY_TYPE_OPTION1
+                .findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE7);
         assertEquals(3, argument.size());
         assertTrue(argument.contains(ENUMS));
         assertTrue(argument.contains(CLASSES));
@@ -166,7 +168,8 @@ public class PlantUMLDependencyDisplayTypeOptionTest extends DeepCloneableObject
     @Test
     public void testFindAndParseArgumentOrGetDefaultArgumentWithNotExistingNotMandatoryOption()
             throws CommandLineException {
-        final Set < DisplayType > argument = DISPLAY_TYPE_OPTION1.findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE3);
+        final Set < DisplayType > argument = DISPLAY_TYPE_OPTION1
+                .findAndParseArgumentOrGetDefaultArgument(COMMAND_LINE3);
         assertEquals(10, argument.size());
         assertTrue(argument.contains(ABSTRACT_CLASSES));
         assertTrue(argument.contains(ANNOTATIONS));
@@ -216,7 +219,8 @@ public class PlantUMLDependencyDisplayTypeOptionTest extends DeepCloneableObject
      */
     @Test
     public void testGetDefaultArgumentIfOptionSpecified() throws CommandLineException {
-        final Set < DisplayType > defaultArgument = DISPLAY_TYPE_OPTION1.getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
+        final Set < DisplayType > defaultArgument = DISPLAY_TYPE_OPTION1
+                .getDefaultArgumentIfOptionSpecified(COMMAND_LINE1);
         assertEquals(10, defaultArgument.size());
         assertTrue(defaultArgument.contains(ABSTRACT_CLASSES));
         assertTrue(defaultArgument.contains(ANNOTATIONS));
@@ -237,7 +241,7 @@ public class PlantUMLDependencyDisplayTypeOptionTest extends DeepCloneableObject
     @Test
     public void testGetFullUsage() {
         assertEquals(
-                "-dt, --display-type DISPLAY_TYPES_OPTIONS\n\t\tTo specify class diagram objects to display. If not specified, the default is [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]\n\t\tDISPLAY_TYPES_OPTIONS specifies display types options when generating the plantUML output file, it is a separated comma list with these possible values : [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes and relations to abstract classes, \"annotations\" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, \"classes\" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, \"enums\" : displays parsed source files which are enums and relations to enums, \"extensions\" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, \"implementations\" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, \"imports\" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, \"interfaces\" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, \"native_methods\" : displays relations from parsed source files to the native dependency if they use native methods, \"static_imports\" : displays relations from parsed source files to import dependencies (only static) if their type is displayed.",
+                "-dt, --display-type DISPLAY_TYPES_OPTIONS\n\t\tTo specify class diagram objects to display following their type. If not specified, the default is [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]\n\t\tDISPLAY_TYPES_OPTIONS specifies display types options when generating the plantUML output file, it is a separated comma list with these possible values : [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes and relations to abstract classes, \"annotations\" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, \"classes\" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, \"enums\" : displays parsed source files which are enums and relations to enums, \"extensions\" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, \"implementations\" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, \"imports\" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, \"interfaces\" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, \"native_methods\" : displays relations from parsed source files to the native dependency if they use native methods, \"static_imports\" : displays relations from parsed source files to import dependencies (only static) if their type is displayed.",
                 DISPLAY_TYPE_OPTION1.getFullUsage().toString());
     }
 

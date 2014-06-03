@@ -25,6 +25,7 @@
 package net.sourceforge.plantumldependency.cli.generic.type;
 
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 
@@ -39,14 +40,21 @@ import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.
 public interface Displayable {
 
     /**
-     * Tells if the dependency has to be displayed following the passed display types options.
+     * Tells if the dependency has to be displayed following the passed display options (type, name
+     * and package name).
      *
      * @param displayTypesOptions
-     *            the {@link Set} of display types options, mustn't be <code>null</code>, if empty,
-     *            this method always returns <code>false</code>.
+     *            the {@link Set} of display types options which filter type, mustn't be
+     *            <code>null</code>, if empty, this method always returns <code>false</code>,
+     *            mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter package name, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter name, mustn't be <code>null</code>.
      * @return <code>true</code> if the dependency has to be displayed, <code>false</code>
      *         otherwise.
      * @since 1.1.1
      */
-    boolean isDisplayable(Set < DisplayType > displayTypesOptions);
+    boolean isDisplayable(Set < DisplayType > displayTypesOptions, Pattern displayPackageNamePattern,
+            Pattern displayNamePattern);
 }

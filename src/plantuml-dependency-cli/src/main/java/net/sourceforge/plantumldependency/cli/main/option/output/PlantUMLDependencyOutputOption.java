@@ -27,6 +27,8 @@ package net.sourceforge.plantumldependency.cli.main.option.output;
 import static java.util.logging.Level.FINE;
 import static java.util.logging.Logger.getLogger;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.BASE_DIRECTORY_OPTION_NULL_ERROR;
+import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.DISPLAY_NAME_OPTION_NULL_ERROR;
+import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.DISPLAY_PACKAGE_NAME_OPTION_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.DISPLAY_TYPE_OPTION_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.EXCLUDE_OPTION_NULL_ERROR;
 import static net.sourceforge.plantumldependency.cli.constants.log.ErrorConstants.INCLUDE_OPTION_NULL_ERROR;
@@ -43,8 +45,11 @@ import java.io.File;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
+import net.sourceforge.plantumldependency.cli.main.option.display.name.PlantUMLDependencyDisplayNameOption;
+import net.sourceforge.plantumldependency.cli.main.option.display.packagename.PlantUMLDependencyDisplayPackageNameOption;
 import net.sourceforge.plantumldependency.cli.main.option.display.type.PlantUMLDependencyDisplayTypeOption;
 import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
 import net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDependencyExcludeOption;
@@ -93,6 +98,12 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     /** The display type option. */
     private PlantUMLDependencyDisplayTypeOption displayTypeOption;
 
+    /** The display package name option. */
+    private PlantUMLDependencyDisplayPackageNameOption displayPackageNameOption;
+
+    /** The display name option. */
+    private PlantUMLDependencyDisplayNameOption displayNameOption;
+
     /** The base directory option. */
     private PlantUMLDependencyBaseDirectoryOption baseDirOption;
 
@@ -117,6 +128,12 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      * @param displayTypeOpt
      *            the {@link PlantUMLDependencyDisplayTypeOption} instance, to know which types to
      *            display in the plantUML generated file, mustn't be <code>null</code>.
+     * @param displayPackageNameOpt
+     *            the {@link PlantUMLDependencyDisplayTypeOption} instance, to know which package
+     *            name to display in the plantUML generated file, mustn't be <code>null</code>.
+     * @param displayNameOpt
+     *            the {@link PlantUMLDependencyDisplayTypeOption} instance, to know which package
+     *            name to display in the plantUML generated file, mustn't be <code>null</code>.
      * @param baseDirOpt
      *            the {@link PlantUMLDependencyBaseDirectoryOption} instance, to know the base
      *            directory where to look for source files, mustn't be <code>null</code>.
@@ -128,8 +145,10 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
     public PlantUMLDependencyOutputOption(final VerboseLevelOption verboseLvlOpt,
             final PlantUMLDependencyProgrammingLanguageOption programmingLanguageOpt,
             final PlantUMLDependencyIncludeOption includeOpt, final PlantUMLDependencyExcludeOption excludeOpt,
-            final PlantUMLDependencyDisplayTypeOption displayTypeOpt, final PlantUMLDependencyBaseDirectoryOption baseDirOpt,
-            final int optionPriority) {
+            final PlantUMLDependencyDisplayTypeOption displayTypeOpt,
+            final PlantUMLDependencyDisplayPackageNameOption displayPackageNameOpt,
+            final PlantUMLDependencyDisplayNameOption displayNameOpt,
+            final PlantUMLDependencyBaseDirectoryOption baseDirOpt, final int optionPriority) {
         super(new ExistingOrNotFileOptionArgumentImpl(true), new StringBuilder(
                 "To specify the output file path where to generate the PlantUML description."), SPACE_CHAR,
                 ACTIVE_OPTIONAL_OPTION_STATUS);
@@ -138,6 +157,8 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
         setIncludeOption(includeOpt);
         setExcludeOption(excludeOpt);
         setDisplayTypeOption(displayTypeOpt);
+        setDisplayPackageNameOption(displayPackageNameOpt);
+        setDisplayNameOption(displayNameOpt);
         setBaseDirOption(baseDirOpt);
         setPriority(optionPriority);
     }
@@ -151,6 +172,28 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
      */
     private PlantUMLDependencyBaseDirectoryOption getBaseDirOption() {
         return baseDirOption;
+    }
+
+    /**
+     * Gets the value of <code>displayNameOption</code>.
+     *
+     * @return the value of <code>displayNameOption</code>.
+     * @see #setDisplayNameOption(PlantUMLDependencyDisplayNameOption)
+     * @since 1.4.0
+     */
+    private PlantUMLDependencyDisplayNameOption getDisplayNameOption() {
+        return displayNameOption;
+    }
+
+    /**
+     * Gets the value of <code>displayPackageNameOption</code>.
+     *
+     * @return the value of <code>displayPackageNameOption</code>.
+     * @see #setDisplayPackageNameOption(PlantUMLDependencyDisplayPackageNameOption)
+     * @since 1.4.0
+     */
+    private PlantUMLDependencyDisplayPackageNameOption getDisplayPackageNameOption() {
+        return displayPackageNameOption;
     }
 
     /**
@@ -237,12 +280,17 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
             includesExcludes.setExcludes(excludes);
             final File baseDirectory = getBaseDirOption().findAndParseArgumentOrGetDefaultArgument(commandLine);
             includesExcludes.setDir(baseDirectory);
-            final Set < DisplayType > displayTypesOptions = getDisplayTypeOption().findAndParseArgumentOrGetDefaultArgument(
+            final Set < DisplayType > displayTypesOptions = getDisplayTypeOption()
+                    .findAndParseArgumentOrGetDefaultArgument(commandLine);
+            final Pattern displayPackageNamePatternOpt = getDisplayPackageNameOption()
+                    .findAndParseArgumentOrGetDefaultArgument(commandLine);
+            final Pattern displayNamePatternOpt = getDisplayNameOption().findAndParseArgumentOrGetDefaultArgument(
                     commandLine);
             final ProgrammingLanguage programmingLanguage = getProgrammingLanguageOption()
                     .findAndParseArgumentOrGetDefaultArgument(commandLine);
             optionExecution = new PlantUMLDependencyOutputOptionExecution(outputFile, programmingLanguage,
-                    includesExcludes, displayTypesOptions, getPriority());
+                    includesExcludes, displayTypesOptions, displayPackageNamePatternOpt, displayNamePatternOpt,
+                    getPriority());
         } else {
             LOGGER.log(FINE, buildLogString(OPTION_NOT_SPECIFIED_FINE, getAllNames()));
         }
@@ -262,6 +310,34 @@ public class PlantUMLDependencyOutputOption extends OutputOption implements Exec
         checkNull(value, BASE_DIRECTORY_OPTION_NULL_ERROR);
 
         baseDirOption = value;
+    }
+
+    /**
+     * Sets the value of <code>displayNameOption</code>.
+     *
+     * @param value
+     *            the <code>displayNameOption</code> to set, can be <code>null</code>.
+     * @see #getDisplayNameOption()
+     * @since 1.4.0
+     */
+    private void setDisplayNameOption(final PlantUMLDependencyDisplayNameOption value) {
+        checkNull(value, DISPLAY_NAME_OPTION_NULL_ERROR);
+
+        displayNameOption = value;
+    }
+
+    /**
+     * Sets the value of <code>displayPackageNameOption</code>.
+     *
+     * @param value
+     *            the <code>displayPackageNameOption</code> to set, can be <code>null</code>.
+     * @see #getDisplayPackageNameOption()
+     * @since 1.4.0
+     */
+    private void setDisplayPackageNameOption(final PlantUMLDependencyDisplayPackageNameOption value) {
+        checkNull(value, DISPLAY_PACKAGE_NAME_OPTION_NULL_ERROR);
+
+        displayPackageNameOption = value;
     }
 
     /**

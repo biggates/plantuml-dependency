@@ -119,10 +119,11 @@ public interface ProgrammingLanguageContext extends Comparable < ProgrammingLang
     GenericDependency getParsedOrSeenDependency(String fullName);
 
     /**
-     * Gets the {@link PlantUMLClassesDiagram} instance representing the context, following display types
-     * options.
+     * Gets the {@link PlantUMLClassesDiagram} instance representing the context, following display
+     * options (type, name and package name).
      *
-     * @return the plantUML diagram instance representing the context, following display types options.
+     * @return the plantUML diagram instance representing the context, following display types
+     *         options.
      * @since 1.1.1
      */
     PlantUMLClassesDiagram getPlantUMLClassesDiagram();

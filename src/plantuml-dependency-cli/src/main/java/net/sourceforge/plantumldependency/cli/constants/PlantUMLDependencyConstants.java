@@ -25,6 +25,7 @@
 package net.sourceforge.plantumldependency.cli.constants;
 
 import static java.util.Arrays.asList;
+import static java.util.regex.Pattern.compile;
 import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.ABSTRACT_CLASSES;
 import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.ANNOTATIONS;
 import static net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType.CLASSES;
@@ -42,6 +43,7 @@ import static net.sourceforge.plantumldependency.common.utils.collection.Collect
 
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.impl.GenericDependencyImpl;
@@ -60,20 +62,26 @@ import net.sourceforge.plantumldependency.cli.plantumldiagram.classes.element.st
  */
 public final class PlantUMLDependencyConstants {
 
-    /** The default display name options to apply if not specified. */
-    public static final String DEFAULT_DISPLAY_NAME_OPTIONS = ".*";
+    /** The default display name options as String to apply if not specified. */
+    public static final String DEFAULT_DISPLAY_NAME_OPTIONS_STRING = ".*";
 
-    /** The default display package name options to apply if not specified. */
-    public static final String DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS = ".*";
+    /** The default display package name options as Pattern to apply if not specified. */
+    public static final Pattern DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN = compile(DEFAULT_DISPLAY_NAME_OPTIONS_STRING);
+
+    /** The default display package name options as String to apply if not specified. */
+    public static final String DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_STRING = ".*";
+
+    /** The default display package name options as Pattern to apply if not specified. */
+    public static final Pattern DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN = compile(DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_STRING);
 
     /** The default display types options to apply if not specified. */
-    public static final Set < DisplayType > DEFAULT_DISPLAY_TYPES_OPTIONS = new TreeSet < DisplayType >(asList(new DisplayType[] {
-            ABSTRACT_CLASSES, ANNOTATIONS, CLASSES, ENUMS, IMPORTS, INTERFACES, STATIC_IMPORTS, NATIVE_METHODS,
-            IMPLEMENTATIONS, EXTENSIONS}));
+    public static final Set < DisplayType > DEFAULT_DISPLAY_TYPES_OPTIONS = new TreeSet < DisplayType >(
+            asList(new DisplayType[] {ABSTRACT_CLASSES, ANNOTATIONS, CLASSES, ENUMS, IMPORTS, INTERFACES,
+                    STATIC_IMPORTS, NATIVE_METHODS, IMPLEMENTATIONS, EXTENSIONS}));
 
     /** The default display types options argument as a String to apply if not specified. */
-    public static final String DEFAULT_DISPLAY_TYPES_OPTIONS_STRING = collectionToString(DEFAULT_DISPLAY_TYPES_OPTIONS, COMMA_CHAR,
-            BLANK_STRING, BLANK_STRING);
+    public static final String DEFAULT_DISPLAY_TYPES_OPTIONS_STRING = collectionToString(DEFAULT_DISPLAY_TYPES_OPTIONS,
+            COMMA_CHAR, BLANK_STRING, BLANK_STRING);
 
     /** The default exclude options to apply if not specified. */
     public static final String DEFAULT_EXCLUDE_OPTIONS = "**/package-info.java";
@@ -87,9 +95,15 @@ public final class PlantUMLDependencyConstants {
     /** Logging properties path. */
     public static final String LOGGING_PROPERTIES_PATH = "net/sourceforge/plantumldependency/cli/log/logging.properties";
 
+    /** The native dependency package name. */
+    public static final String NATIVE_DEPENDENCY_NAME = "NativeCall";
+
+    /** The native dependency package name. */
+    public static final String NATIVE_DEPENDENCY_PACKAGE_NAME = "javax.native";
+
     /** The custom dependency which is used to link with native code. */
     public static final GenericDependency NATIVE_DEPENDENCY = new GenericDependencyImpl(new NativeDependencyTypeImpl(
-            "NativeCall", "javax.native"));
+            NATIVE_DEPENDENCY_NAME, NATIVE_DEPENDENCY_PACKAGE_NAME));
 
     /** The custom native plantUML stereotype. */
     public static final PlantUMLStereotype NATIVE_PLANTUML_STEREOTYPE = new PlantUMLStereotypeImpl(

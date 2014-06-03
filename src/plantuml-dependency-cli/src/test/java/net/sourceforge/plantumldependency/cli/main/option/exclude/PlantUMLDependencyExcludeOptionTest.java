@@ -33,7 +33,7 @@ import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependenc
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 
 import org.apache.tools.ant.types.FileSet;
@@ -47,7 +47,7 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0.0
  * @version 1.4.0
  */
-public class PlantUMLDependencyExcludeOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyExcludeOption > {
+public class PlantUMLDependencyExcludeOptionTest extends ComparableAndDeepCloneableObjectTest < PlantUMLDependencyExcludeOption > {
 
     /** Exclude option test 1 instance. */
     @DataPoint

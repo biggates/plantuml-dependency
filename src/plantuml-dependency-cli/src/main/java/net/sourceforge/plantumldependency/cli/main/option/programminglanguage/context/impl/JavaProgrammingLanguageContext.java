@@ -26,6 +26,7 @@ package net.sourceforge.plantumldependency.cli.main.option.programminglanguage.c
 
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.main.option.display.type.argument.DisplayType;
@@ -57,13 +58,20 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
     /**
      * Medium constructor.
      *
-     * @param displayTypesOpt
-     *            the display types options which have to appear in the plantUML description,
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options which filter type to appear in the
+     *            plantUML description, mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter package name to appear in the plantUML
+     *            description, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
-    public JavaProgrammingLanguageContext(final Set < DisplayType > displayTypesOpt) {
-        super(displayTypesOpt);
+    public JavaProgrammingLanguageContext(final Set < DisplayType > displayTypesOpts,
+            final Pattern displayPackageNamePatternOpt, final Pattern displayNamePatternOpt) {
+        super(displayTypesOpts, displayPackageNamePatternOpt, displayNamePatternOpt);
     }
 
     /**
@@ -73,14 +81,21 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
      *            the original {@link Set} of {@link GenericDependency} which have been seen (as
      *            import for instance) and parsed to put in the context, mustn't be
      *            <code>null</code>.
-     * @param displayTypesOpt
-     *            the display types options which have to appear in the plantUML description,
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options which filter type to appear in the
+     *            plantUML description, mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter package name to appear in the plantUML
+     *            description, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
     public JavaProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
-            final Set < DisplayType > displayTypesOpt) {
-        super(parsedAndSeenDependencies, displayTypesOpt);
+            final Set < DisplayType > displayTypesOpts, final Pattern displayPackageNamePatternOpt,
+            final Pattern displayNamePatternOpt) {
+        super(parsedAndSeenDependencies, displayTypesOpts, displayPackageNamePatternOpt, displayNamePatternOpt);
     }
 
     /**
@@ -93,14 +108,22 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
      * @param parsedDependencies
      *            the original {@link Set} of {@link GenericDependency} which have been parsed to
      *            put in the context, mustn't be <code>null</code>.
-     * @param displayTypesOpt
-     *            the display types options which have to appear in the plantUML description,
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options which filter type to appear in the
+     *            plantUML description, mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter package name to appear in the plantUML
+     *            description, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
     public JavaProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
-            final Set < GenericDependency > parsedDependencies, final Set < DisplayType > displayTypesOpt) {
-        super(parsedAndSeenDependencies, parsedDependencies, new TreeSet < GenericDependency >(), displayTypesOpt);
+            final Set < GenericDependency > parsedDependencies, final Set < DisplayType > displayTypesOpts,
+            final Pattern displayPackageNamePatternOpt, final Pattern displayNamePatternOpt) {
+        super(parsedAndSeenDependencies, parsedDependencies, new TreeSet < GenericDependency >(), displayTypesOpts,
+                displayPackageNamePatternOpt, displayNamePatternOpt);
     }
 
     /**
@@ -115,14 +138,23 @@ public class JavaProgrammingLanguageContext extends AbstractProgrammingLanguageC
      * @param potentialJavaLangSeenDependencies
      *            the original potential "java.lang" seen dependencies {@link Set} of
      *            {@link GenericDependency} to put in the context, mustn't be <code>null</code>.
-     * @param displayTypesOpt
-     *            the display types options which have to appear in the plantUML description,
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options which filter type to appear in the
+     *            plantUML description, mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter package name to appear in the plantUML
+     *            description, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
      */
     public JavaProgrammingLanguageContext(final Set < GenericDependency > parsedAndSeenDependencies,
             final Set < GenericDependency > parsedDependencies,
-            final Set < GenericDependency > potentialJavaLangSeenDependencies, final Set < DisplayType > displayTypesOpt) {
-        super(parsedAndSeenDependencies, parsedDependencies, potentialJavaLangSeenDependencies, displayTypesOpt);
+            final Set < GenericDependency > potentialJavaLangSeenDependencies,
+            final Set < DisplayType > displayTypesOpts, final Pattern displayPackageNamePatternOpt,
+            final Pattern displayNamePatternOpt) {
+        super(parsedAndSeenDependencies, parsedDependencies, potentialJavaLangSeenDependencies, displayTypesOpts,
+                displayPackageNamePatternOpt, displayNamePatternOpt);
     }
 }

@@ -27,6 +27,8 @@ package net.sourceforge.plantumldependency.cli.generic.type.impl;
 import static java.util.logging.Level.FINE;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.DEPENDENCY_IS_NOT_DISPLAYABLE_FINE;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.DISPLAY_TYPE_OPTION_NOT_MANAGED_FINE;
 import static net.sourceforge.plantumldependency.cli.constants.log.FineConstants.IMPORT_IS_AN_EXTENSION_AN_IMPLEMENTATION_OR_AN_ANNOTATION_FINE;
@@ -45,6 +47,7 @@ import static net.sourceforge.plantumldependency.common.utils.string.StringUtils
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
 import net.sourceforge.plantumldependency.cli.generic.type.DependencyType;
@@ -282,33 +285,45 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * Generates the plantUML classes diagram relations.
      *
      * @param displayTypesOptions
-     *            the {@link Set} of all display types options to display the PlantUML links
-     *            description, mustn't be <code>null</code>.
+     *            the {@link Set} of display types options which filter relations type, mustn't be
+     *            <code>null</code>, if empty, this method always returns <code>false</code>,
+     *            mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter relations package name, if empty, this method
+     *            always returns <code>false</code>, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter relations name, if empty, this method always
+     *            returns <code>false</code>, mustn't be <code>null</code>.
      * @return the set of all PlantUML classes diagram relations as a {@link Set} of
      *         {@link PlantUMLClassesDiagramRelation} instances describing relations to imports and
      *         the dependency type parents.
      * @since 1.1.1
      */
     private Set < PlantUMLClassesDiagramRelation > generatePlantUMLClassesDiagramRelations(
-            final Set < DisplayType > displayTypesOptions) {
+            final Set < DisplayType > displayTypesOptions, final Pattern displayPackageNamePattern,
+            final Pattern displayNamePattern) {
         final Set < PlantUMLClassesDiagramRelation > linkSet = new TreeSet < PlantUMLClassesDiagramRelation >();
 
-        for (final GenericDependency importDependency : getImportDependenciesToGeneratePlantUML(displayTypesOptions)) {
+        for (final GenericDependency importDependency : getImportDependenciesToGeneratePlantUML(displayTypesOptions,
+                displayPackageNamePattern, displayNamePattern)) {
             linkSet.add(new PlantUMLClassesDiagramUseRelationImpl(getPlantUMLClassesDiagramElement(), importDependency
                     .getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
-        for (final GenericDependency parentImplementationsDependency : getParentImplementationsToGeneratePlantUML(displayTypesOptions)) {
+        for (final GenericDependency parentImplementationsDependency : getParentImplementationsToGeneratePlantUML(
+                displayTypesOptions, displayPackageNamePattern, displayNamePattern)) {
             linkSet.add(new PlantUMLClassesDiagramImplementRelationImpl(getPlantUMLClassesDiagramElement(),
                     parentImplementationsDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
-        for (final GenericDependency parentExtensionsDependency : getParentExtensionsToGeneratePlantUML(displayTypesOptions)) {
+        for (final GenericDependency parentExtensionsDependency : getParentExtensionsToGeneratePlantUML(
+                displayTypesOptions, displayPackageNamePattern, displayNamePattern)) {
             linkSet.add(new PlantUMLClassesDiagramExtendRelationImpl(getPlantUMLClassesDiagramElement(),
                     parentExtensionsDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
 
-        for (final GenericDependency annotationDependency : getAnnotationsToGeneratePlantUML(displayTypesOptions)) {
+        for (final GenericDependency annotationDependency : getAnnotationsToGeneratePlantUML(displayTypesOptions,
+                displayPackageNamePattern, displayNamePattern)) {
             linkSet.add(new PlantUMLClassesDiagramUseRelationImpl(getPlantUMLClassesDiagramElement(),
                     annotationDependency.getDependencyType().getPlantUMLClassesDiagramElement()));
         }
@@ -330,18 +345,27 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * Gets the annotations which have to be generated in the plantUML description file.
      *
      * @param displayTypesOptions
-     *            the {@link Set} of all display types options to display the PlantUML links
-     *            description, mustn't be <code>null</code>.
+     *            the {@link Set} of display types options which filter relations type, mustn't be
+     *            <code>null</code>, if empty, this method always returns <code>false</code>,
+     *            mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter relations package name, if empty, this method
+     *            always returns <code>false</code>, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter relations name, if empty, this method always
+     *            returns <code>false</code>, mustn't be <code>null</code>.
      * @return the {@link Set} of annotation {@link GenericDependency} which have to be generated in
      *         the plantUML file.
      * @since 1.2.0
      */
-    private Set < GenericDependency > getAnnotationsToGeneratePlantUML(final Set < DisplayType > displayTypesOptions) {
+    private Set < GenericDependency > getAnnotationsToGeneratePlantUML(final Set < DisplayType > displayTypesOptions,
+            final Pattern displayPackageNamePattern, final Pattern displayNamePattern) {
         final Set < GenericDependency > annotationsDependenciesDisplayable = new TreeSet < GenericDependency >();
 
         if (displayTypesOptions.contains(ANNOTATIONS)) {
             for (final GenericDependency genericDependency : getAnnotationsDependencies()) {
-                if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions)) {
+                if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions, displayPackageNamePattern,
+                        displayNamePattern)) {
                     annotationsDependenciesDisplayable.add(genericDependency);
                 } else {
                     LOGGER.log(FINE, buildLogString(DEPENDENCY_IS_NOT_DISPLAYABLE_FINE, genericDependency));
@@ -378,14 +402,22 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * Gets the import dependencies which have to be generated in the plantUML description file.
      *
      * @param displayTypesOptions
-     *            the {@link Set} of all display types options to display the PlantUML links
-     *            description, mustn't be <code>null</code>.
+     *            the {@link Set} of display types options which filter relations type, mustn't be
+     *            <code>null</code>, if empty, this method always returns <code>false</code>,
+     *            mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter relations package name, if empty, this method
+     *            always returns <code>false</code>, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter relations name, if empty, this method always
+     *            returns <code>false</code>, mustn't be <code>null</code>.
      * @return the {@link Set} of import {@link GenericDependency} which have to be generated in the
      *         plantUML file.
      * @since 1.1.1
      */
     private Set < GenericDependency > getImportDependenciesToGeneratePlantUML(
-            final Set < DisplayType > displayTypesOptions) {
+            final Set < DisplayType > displayTypesOptions, final Pattern displayPackageNamePattern,
+            final Pattern displayNamePattern) {
         final Set < GenericDependency > importDependenciesNotImplementedNorExtendedNorAnnonatedAndDisplayable = new TreeSet < GenericDependency >();
 
         for (final ImportType importType : IMPORT_TYPES) {
@@ -393,7 +425,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
                 for (final GenericDependency genericDependency : getImportDependenciesCollection()
                         .getImportDependenciesWithType(importType)) {
                     if (!isDependencyInExtensionsImplementationsOrAnnotationsDependencies(genericDependency)) {
-                        if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions)) {
+                        if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions,
+                                displayPackageNamePattern, displayNamePattern)) {
                             importDependenciesNotImplementedNorExtendedNorAnnonatedAndDisplayable
                                     .add(genericDependency);
                         } else {
@@ -448,19 +481,28 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * Gets the parent extensions which have to be generated in the plantUML description file.
      *
      * @param displayTypesOptions
-     *            the {@link Set} of all display types options to display the PlantUML links
-     *            description, mustn't be <code>null</code>.
+     *            the {@link Set} of display types options which filter relations type, mustn't be
+     *            <code>null</code>, if empty, this method always returns <code>false</code>,
+     *            mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter relations package name, if empty, this method
+     *            always returns <code>false</code>, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter relations name, if empty, this method always
+     *            returns <code>false</code>, mustn't be <code>null</code>.
      * @return the {@link Set} of parent extensions as {@link GenericDependency} which have to be
      *         generated in the plantUML file.
      * @since 1.2.0
      */
     private Set < GenericDependency > getParentExtensionsToGeneratePlantUML(
-            final Set < DisplayType > displayTypesOptions) {
+            final Set < DisplayType > displayTypesOptions, final Pattern displayPackageNamePattern,
+            final Pattern displayNamePattern) {
         final Set < GenericDependency > extensionsDependenciesDisplayable = new TreeSet < GenericDependency >();
 
         if (displayTypesOptions.contains(EXTENSIONS)) {
             for (final GenericDependency genericDependency : getParentExtensionsDependencies()) {
-                if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions)) {
+                if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions, displayPackageNamePattern,
+                        displayNamePattern)) {
                     extensionsDependenciesDisplayable.add(genericDependency);
                 } else {
                     LOGGER.log(FINE, buildLogString(DEPENDENCY_IS_NOT_DISPLAYABLE_FINE, genericDependency));
@@ -487,19 +529,28 @@ public abstract class DependencyTypeImpl implements DependencyType {
      * Gets the parent implementations which have to be generated in the plantUML description file.
      *
      * @param displayTypesOptions
-     *            the {@link Set} of all display types options to display the PlantUML links
-     *            description, mustn't be <code>null</code>.
+     *            the {@link Set} of display types options which filter relations type, mustn't be
+     *            <code>null</code>, if empty, this method always returns <code>false</code>,
+     *            mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter relations package name, if empty, this method
+     *            always returns <code>false</code>, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter relations name, if empty, this method always
+     *            returns <code>false</code>, mustn't be <code>null</code>.
      * @return the {@link Set} of parent implementations as {@link GenericDependency} which have to
      *         be generated in the plantUML file.
      * @since 1.1.1
      */
     private Set < GenericDependency > getParentImplementationsToGeneratePlantUML(
-            final Set < DisplayType > displayTypesOptions) {
+            final Set < DisplayType > displayTypesOptions, final Pattern displayPackageNamePattern,
+            final Pattern displayNamePattern) {
         final Set < GenericDependency > implementationsDependenciesDisplayable = new TreeSet < GenericDependency >();
 
         if (displayTypesOptions.contains(IMPLEMENTATIONS)) {
             for (final GenericDependency genericDependency : getParentImplementationsDependencies()) {
-                if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions)) {
+                if (genericDependency.getDependencyType().isDisplayable(displayTypesOptions, displayPackageNamePattern,
+                        displayNamePattern)) {
                     implementationsDependenciesDisplayable.add(genericDependency);
                 } else {
                     LOGGER.log(FINE, buildLogString(DEPENDENCY_IS_NOT_DISPLAYABLE_FINE, genericDependency));
@@ -533,7 +584,8 @@ public abstract class DependencyTypeImpl implements DependencyType {
     @Override
     public Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations() {
         if (plantUMLClassesDiagramRelationSet == null) {
-            plantUMLClassesDiagramRelationSet = getPlantUMLClassesDiagramRelations(DISPLAY_TYPES_OPTIONS);
+            plantUMLClassesDiagramRelationSet = getPlantUMLClassesDiagramRelations(DISPLAY_TYPES_OPTIONS,
+                    DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN);
         }
         return plantUMLClassesDiagramRelationSet;
     }
@@ -545,8 +597,10 @@ public abstract class DependencyTypeImpl implements DependencyType {
      */
     @Override
     public Set < PlantUMLClassesDiagramRelation > getPlantUMLClassesDiagramRelations(
-            final Set < DisplayType > displayTypesOptions) {
-        return generatePlantUMLClassesDiagramRelations(displayTypesOptions);
+            final Set < DisplayType > displayTypesOptions, final Pattern displayPackageNamePattern,
+            final Pattern displayNamePattern) {
+        return generatePlantUMLClassesDiagramRelations(displayTypesOptions, displayPackageNamePattern,
+                displayNamePattern);
     }
 
     /**

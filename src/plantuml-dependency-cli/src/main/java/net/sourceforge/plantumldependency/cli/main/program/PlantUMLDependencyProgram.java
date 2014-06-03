@@ -214,7 +214,8 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
         addOption(baseDirectoryOption);
 
         final PlantUMLDependencyOutputOption outputOption = new PlantUMLDependencyOutputOption(verboseLevelOption,
-                programmingLanguageOption, includeOption, excludeOption, displayTypeOption, baseDirectoryOption, 4);
+                programmingLanguageOption, includeOption, excludeOption, displayTypeOption, displayPackageNameOption,
+                displayNameOption, baseDirectoryOption, 4);
         addOption(outputOption);
 
         final String[] example1 = new String[] {helpOption.getName()};
@@ -226,7 +227,7 @@ public final class PlantUMLDependencyProgram extends JavaProgramImpl {
                 displayTypeOption.getName(), "implementations,interfaces,extensions,imports,static_imports"};
         final String[] example5 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
                 includeOption.getName(), "**/*.java", excludeOption.getName(), "**/*Test*.java",
-                displayNameOption.getName(), "Test", verboseLevelOption.getName()};
+                displayNameOption.getName(), ".*Test.*", verboseLevelOption.getName()};
         final String[] example6 = new String[] {outputOption.getName(), "/home/test/plantuml.txt", "-b", DOT_CHAR,
                 displayPackageNameOption.getName(), "net.sourceforge.plantumldependency.cli.main.*",
                 verboseLevelOption.getName(), verboseLevelOption.getName()};

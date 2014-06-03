@@ -24,6 +24,8 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.output;
 
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET1;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SETS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.FILE_SET1;
@@ -44,7 +46,7 @@ import org.junit.Test;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.2.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyOutputOptionExecution0Test {
 
@@ -59,22 +61,24 @@ public class PlantUMLDependencyOutputOptionExecution0Test {
      * @since 1.2.0
      */
     public static void main(final String args[]) throws CommandLineException {
-        for (int i = 300 ; i < 1000 ; i++) {
-            System.out.println("import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET" + i + ";");
+        for (int i = 300; i < 1000; i++) {
+            System.out
+                    .println("import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET"
+                            + i + ";");
         }
 
-//        setLevelOfAllLoggersAndHandlers(OFF);
-//        writeUnitTest(0, 1, "PlantUMLDependencyOutputOptionExecutionTest0.txt");
-//        writeUnitTest(1, 11, "PlantUMLDependencyOutputOptionExecutionTest1.txt");
-//        writeUnitTest(11, 56, "PlantUMLDependencyOutputOptionExecutionTest2.txt");
-//        writeUnitTest(56, 176, "PlantUMLDependencyOutputOptionExecutionTest3.txt");
-//        writeUnitTest(176, 386, "PlantUMLDependencyOutputOptionExecutionTest4.txt");
-//        writeUnitTest(386, 639, "PlantUMLDependencyOutputOptionExecutionTest5.txt");
-//        writeUnitTest(639, 848, "PlantUMLDependencyOutputOptionExecutionTest6.txt");
-//        writeUnitTest(848, 968, "PlantUMLDependencyOutputOptionExecutionTest7.txt");
-//        writeUnitTest(968, 1013, "PlantUMLDependencyOutputOptionExecutionTest8.txt");
-//        writeUnitTest(1013, 1023, "PlantUMLDependencyOutputOptionExecutionTest9.txt");
-//        writeUnitTest(1023, 1024, "PlantUMLDependencyOutputOptionExecutionTest10.txt");
+        // setLevelOfAllLoggersAndHandlers(OFF);
+        // writeUnitTest(0, 1, "PlantUMLDependencyOutputOptionExecutionTest0.txt");
+        // writeUnitTest(1, 11, "PlantUMLDependencyOutputOptionExecutionTest1.txt");
+        // writeUnitTest(11, 56, "PlantUMLDependencyOutputOptionExecutionTest2.txt");
+        // writeUnitTest(56, 176, "PlantUMLDependencyOutputOptionExecutionTest3.txt");
+        // writeUnitTest(176, 386, "PlantUMLDependencyOutputOptionExecutionTest4.txt");
+        // writeUnitTest(386, 639, "PlantUMLDependencyOutputOptionExecutionTest5.txt");
+        // writeUnitTest(639, 848, "PlantUMLDependencyOutputOptionExecutionTest6.txt");
+        // writeUnitTest(848, 968, "PlantUMLDependencyOutputOptionExecutionTest7.txt");
+        // writeUnitTest(968, 1013, "PlantUMLDependencyOutputOptionExecutionTest8.txt");
+        // writeUnitTest(1013, 1023, "PlantUMLDependencyOutputOptionExecutionTest9.txt");
+        // writeUnitTest(1023, 1024, "PlantUMLDependencyOutputOptionExecutionTest10.txt");
     }
 
     public static void writeUnitTest(final int startIndex, final int endIndex, final String filePath)
@@ -89,7 +93,8 @@ public class PlantUMLDependencyOutputOptionExecution0Test {
 
         for (int i = startIndex; i < endIndex; i++) {
             final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                    TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SETS.get(i), 1);
+                    TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SETS.get(i),
+                    DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
             outputOptionExecution.execute();
             String plantumlDescriptionStr = readFileIntoString(TEST_FILE1);
             plantumlDescriptionStr = plantumlDescriptionStr.replaceAll("\\r", "\\\\r");
@@ -139,7 +144,8 @@ public class PlantUMLDependencyOutputOptionExecution0Test {
     @Test
     public void testExecute1() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET1, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET1, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals("@startuml\r\n@enduml", readFileIntoString(TEST_FILE1));
     }

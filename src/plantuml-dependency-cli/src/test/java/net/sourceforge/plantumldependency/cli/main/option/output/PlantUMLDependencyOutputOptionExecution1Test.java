@@ -24,7 +24,8 @@
 
 package net.sourceforge.plantumldependency.cli.main.option.output;
 
-import static net.sourceforge.plantumldependency.common.utils.file.FileUtils.readFileIntoString;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET10;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET11;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET2;
@@ -37,12 +38,12 @@ import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependenc
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyDisplaySetTestConstants.DISPLAY_TYPE_SET9;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.FILE_SET1;
 import static net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage.JAVA;
+import static net.sourceforge.plantumldependency.common.utils.file.FileUtils.readFileIntoString;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
-import net.sourceforge.plantumldependency.cli.main.option.output.PlantUMLDependencyOutputOptionExecution;
 
 import org.junit.After;
 import org.junit.Test;
@@ -52,7 +53,7 @@ import org.junit.Test;
  *
  * @author Benjamin Croizet (<a href="mailto:graffity2199@yahoo.fr>graffity2199@yahoo.fr</a>)
  * @since 1.2.0
- * @version 1.3.0
+ * @version 1.4.0
  */
 public class PlantUMLDependencyOutputOptionExecution1Test {
 
@@ -80,7 +81,8 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
     @Test
     public void testExecute10() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET10, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET10, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals("@startuml\r\nclass javax.native.NativeCall << (N,#ffff00) >>\r\n@enduml",
                 readFileIntoString(TEST_FILE1));
@@ -96,7 +98,8 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
     @Test
     public void testExecute11() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET11, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET11, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals("@startuml\r\n@enduml", readFileIntoString(TEST_FILE1));
     }
@@ -111,7 +114,8 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
     @Test
     public void testExecute2() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET2, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET2, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals(
                 "@startuml\r\nannotation java.lang.Deprecated\r\nannotation java.lang.Override\r\nannotation java.lang.SuppressWarnings\r\nannotation javax.annotation.Generated\r\nannotation javax.xml.bind.annotation.XmlType\r\nannotation javax.xml.ws.soap.Addressing\r\nannotation net.sourceforge.plantumldependency.main.option.output.Annotationinterface\r\nannotation net.sourceforge.plantumldependency.main.option.output.AnotherAnnotation\r\nannotation net.sourceforge.plantumldependency.main.option.output.MappedSuperclass\r\nannotation net.sourceforge.plantumldependency.main.option.output.MyAnnotation\r\nannotation net.sourceforge.plantumldependency.main.option.output.Testabstract\r\n@enduml",
@@ -128,7 +132,8 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
     @Test
     public void testExecute3() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET3, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET3, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals(
                 "@startuml\r\nabstract class net.sourceforge.plantumldependency.main.option.output.AbstractClass1\r\nabstract class net.sourceforge.plantumldependency.main.option.output.AbstractClass2\r\nabstract class net.sourceforge.plantumldependency.main.option.output.AbstractClass5\r\nabstract class net.sourceforge.plantumldependency.main.option.output.AbstractClass6\r\nabstract class net.sourceforge.plantumldependency.main.option.output.test.AbstractClass3\r\nabstract class net.sourceforge.plantumldependency.main.option.output.test.AbstractClass4\r\n@enduml",
@@ -145,7 +150,8 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
     @Test
     public void testExecute4() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET4, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET4, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals(
                 "@startuml\r\nclass java.lang.annotation.ElementType\r\nclass java.util.Arrays\r\nclass java.util.Iterator\r\nclass java.util.Set\r\nclass java.util.TreeSet\r\nclass java.util.logging.Level\r\nclass java.util.logging.Logger\r\nclass net.sourceforge.mazix.components.constants.CharacterConstants\r\nclass net.sourceforge.plantumldependency.generic.GenericDependency\r\nclass net.sourceforge.plantumldependency.generic.type.DependencyType\r\nclass net.sourceforge.plantumldependency.main.option.output.Class1\r\nclass net.sourceforge.plantumldependency.main.option.output.Class2\r\nclass net.sourceforge.plantumldependency.main.option.output.Class5\r\nclass net.sourceforge.plantumldependency.main.option.output.Class6\r\nclass net.sourceforge.plantumldependency.main.option.output.Class7\r\nclass net.sourceforge.plantumldependency.main.option.output.Class8\r\nclass net.sourceforge.plantumldependency.main.option.output.test.Class3\r\nclass net.sourceforge.plantumldependency.main.option.output.test.Class4\r\n@enduml",
@@ -162,7 +168,8 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
     @Test
     public void testExecute5() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET5, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET5, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals(
                 "@startuml\r\nenum net.sourceforge.plantumldependency.main.option.output.Enum1\r\nenum net.sourceforge.plantumldependency.main.option.output.Enum6\r\n@enduml",
@@ -179,7 +186,8 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
     @Test
     public void testExecute6() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET6, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET6, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals("@startuml\r\n@enduml", readFileIntoString(TEST_FILE1));
     }
@@ -194,7 +202,8 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
     @Test
     public void testExecute7() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET7, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET7, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals("@startuml\r\n@enduml", readFileIntoString(TEST_FILE1));
     }
@@ -209,7 +218,8 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
     @Test
     public void testExecute8() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET8, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET8, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals("@startuml\r\n@enduml", readFileIntoString(TEST_FILE1));
     }
@@ -224,7 +234,8 @@ public class PlantUMLDependencyOutputOptionExecution1Test {
     @Test
     public void testExecute9() throws CommandLineException {
         final PlantUMLDependencyOutputOptionExecution outputOptionExecution = new PlantUMLDependencyOutputOptionExecution(
-                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET9, 1);
+                TEST_FILE1, JAVA, FILE_SET1, DISPLAY_TYPE_SET9, DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN,
+                DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN, 1);
         outputOptionExecution.execute();
         assertEquals(
                 "@startuml\r\ninterface java.lang.Readable\r\ninterface net.sourceforge.plantumldependency.main.option.output.Interface1\r\ninterface net.sourceforge.plantumldependency.main.option.output.Interface2\r\ninterface net.sourceforge.plantumldependency.main.option.output.Interface5\r\ninterface net.sourceforge.plantumldependency.main.option.output.Interface6\r\ninterface net.sourceforge.plantumldependency.main.option.output.Readable\r\ninterface net.sourceforge.plantumldependency.main.option.output.TeaaTest\r\ninterface net.sourceforge.plantumldependency.main.option.output.test.Interface3\r\ninterface net.sourceforge.plantumldependency.main.option.output.test.Interface4\r\n@enduml",

@@ -31,7 +31,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
-import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 import net.sourceforge.plantumldependency.commoncli.option.argument.OptionArgument;
 
@@ -46,19 +46,19 @@ import org.junit.experimental.theories.DataPoint;
  * @version 1.4.0
  */
 public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
-        DeepCloneableObjectTest < PlantUMLDependencyDisplayTypeOptionArgument > {
+        ComparableAndDeepCloneableObjectTest < PlantUMLDependencyDisplayTypeOptionArgument > {
 
-    /** Display option argument test 1 instance. */
+    /** Display type option argument test 1 instance. */
     @DataPoint
-    public static final OptionArgument < Set < DisplayType > > DISPLAY_OPTION_ARGUMENT1 = new PlantUMLDependencyDisplayTypeOptionArgument();
+    public static final OptionArgument < Set < DisplayType > > DISPLAY_TYPE_OPTION_ARGUMENT1 = new PlantUMLDependencyDisplayTypeOptionArgument();
 
-    /** Display option argument test 2 instance. */
+    /** Display type option argument test 2 instance. */
     @DataPoint
-    public static final OptionArgument < Set < DisplayType > > DISPLAY_OPTION_ARGUMENT2 = new PlantUMLDependencyDisplayTypeOptionArgument();
+    public static final OptionArgument < Set < DisplayType > > DISPLAY_TYPE_OPTION_ARGUMENT2 = new PlantUMLDependencyDisplayTypeOptionArgument();
 
-    /** Display option argument test 4 instance. */
+    /** Display type option argument test 3 instance. */
     @DataPoint
-    public static final OptionArgument < Set < DisplayType > > DISPLAY_OPTION_ARGUMENT4 = null;
+    public static final OptionArgument < Set < DisplayType > > DISPLAY_TYPE_OPTION_ARGUMENT4 = null;
 
     /**
      * Test method for
@@ -69,7 +69,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
     public void testGetFullUsageDescription() {
         assertEquals(
                 "DISPLAY_TYPES_OPTIONS specifies display types options when generating the plantUML output file, it is a separated comma list with these possible values : [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]. \"abstract_classes\" : displays parsed source files which are abstract classes and relations to abstract classes, \"annotations\" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, \"classes\" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, \"enums\" : displays parsed source files which are enums and relations to enums, \"extensions\" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, \"implementations\" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, \"imports\" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, \"interfaces\" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, \"native_methods\" : displays relations from parsed source files to the native dependency if they use native methods, \"static_imports\" : displays relations from parsed source files to import dependencies (only static) if their type is displayed.",
-                DISPLAY_OPTION_ARGUMENT1.getFullUsageDescription().toString());
+                DISPLAY_TYPE_OPTION_ARGUMENT1.getFullUsageDescription().toString());
     }
 
     /**
@@ -79,7 +79,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
      */
     @Test
     public void testGetMainUsage() {
-        assertEquals("DISPLAY_TYPES_OPTIONS", DISPLAY_OPTION_ARGUMENT1.getMainUsage().toString());
+        assertEquals("DISPLAY_TYPES_OPTIONS", DISPLAY_TYPE_OPTION_ARGUMENT1.getMainUsage().toString());
     }
 
     /**
@@ -91,7 +91,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
      */
     @Test
     public void testParseArgumentLowerCase() throws CommandLineException {
-        final Set < DisplayType > argument = DISPLAY_OPTION_ARGUMENT1.parseArgument("classes");
+        final Set < DisplayType > argument = DISPLAY_TYPE_OPTION_ARGUMENT1.parseArgument("classes");
         assertEquals(1, argument.size());
         assertTrue(argument.contains(CLASSES));
     }
@@ -105,7 +105,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
      */
     @Test(expected = CommandLineException.class)
     public void testParseArgumentNull() throws CommandLineException {
-        DISPLAY_OPTION_ARGUMENT1.parseArgument(null);
+        DISPLAY_TYPE_OPTION_ARGUMENT1.parseArgument(null);
     }
 
     /**
@@ -117,7 +117,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
      */
     @Test
     public void testParseArgumentUpperCase() throws CommandLineException {
-        final Set < DisplayType > argument = DISPLAY_OPTION_ARGUMENT1.parseArgument("cLassES");
+        final Set < DisplayType > argument = DISPLAY_TYPE_OPTION_ARGUMENT1.parseArgument("cLassES");
         assertEquals(1, argument.size());
         assertTrue(argument.contains(CLASSES));
     }
@@ -131,7 +131,7 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
      */
     @Test(expected = CommandLineException.class)
     public void testParseArgumentWithBadString() throws CommandLineException {
-        DISPLAY_OPTION_ARGUMENT1.parseArgument("hello,packages");
+        DISPLAY_TYPE_OPTION_ARGUMENT1.parseArgument("hello,packages");
     }
 
     /**
@@ -143,6 +143,6 @@ public class PlantUMLDependencyDisplayTypeOptionArgumentTest extends
      */
     @Test(expected = CommandLineException.class)
     public void testParseArgumentWithEmptyString() throws CommandLineException {
-        DISPLAY_OPTION_ARGUMENT1.parseArgument(BLANK_STRING);
+        DISPLAY_TYPE_OPTION_ARGUMENT1.parseArgument(BLANK_STRING);
     }
 }

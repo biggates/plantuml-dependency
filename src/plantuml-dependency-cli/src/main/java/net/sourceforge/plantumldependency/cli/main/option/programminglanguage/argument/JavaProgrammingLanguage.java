@@ -1236,8 +1236,9 @@ class JavaProgrammingLanguage extends ProgrammingLanguage {
      * @since 1.0.0
      */
     @Override
-    public ProgrammingLanguageContext createNewContext(final Set < DisplayType > displayTypesOpt) {
-        return new JavaProgrammingLanguageContext(displayTypesOpt);
+    public ProgrammingLanguageContext createNewContext(final Set < DisplayType > displayTypesOpts,
+            final Pattern displayPackageNamePattern, final Pattern displayNamePattern) {
+        return new JavaProgrammingLanguageContext(displayTypesOpts, displayPackageNamePattern, displayNamePattern);
     }
 
     /**

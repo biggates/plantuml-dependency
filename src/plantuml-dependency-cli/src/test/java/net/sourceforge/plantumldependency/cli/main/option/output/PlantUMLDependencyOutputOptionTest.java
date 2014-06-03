@@ -30,6 +30,8 @@ import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependenc
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.COMMAND_LINE19;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyTestConstants.VERBOSE_LEVEL_OPTION1;
 import static net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOptionTest.BASE_DIRECTORY_OPTION1;
+import static net.sourceforge.plantumldependency.cli.main.option.display.name.PlantUMLDependencyDisplayNameOptionTest.DISPLAY_NAME_OPTION1;
+import static net.sourceforge.plantumldependency.cli.main.option.display.packagename.PlantUMLDependencyDisplayPackageNameOptionTest.DISPLAY_PACKAGE_NAME_OPTION1;
 import static net.sourceforge.plantumldependency.cli.main.option.display.type.PlantUMLDependencyDisplayTypeOptionTest.DISPLAY_TYPE_OPTION1;
 import static net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDependencyExcludeOptionTest.EXCLUDE_OPTION1;
 import static net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOptionTest.INCLUDE_OPTION1;
@@ -43,7 +45,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
-import net.sourceforge.plantumldependency.common.clone.DeepCloneableObjectTest;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 import net.sourceforge.plantumldependency.commoncli.option.execution.OptionExecution;
 
@@ -57,47 +59,23 @@ import org.junit.experimental.theories.DataPoint;
  * @since 1.0.0
  * @version 1.4.0
  */
-public class PlantUMLDependencyOutputOptionTest extends DeepCloneableObjectTest < PlantUMLDependencyOutputOption > {
+public class PlantUMLDependencyOutputOptionTest extends ComparableAndDeepCloneableObjectTest < PlantUMLDependencyOutputOption > {
 
     /** Output option test 1 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOption OUTPUT_OPTION1 = new PlantUMLDependencyOutputOption(
-            VERBOSE_LEVEL_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_TYPE_OPTION1,
+            VERBOSE_LEVEL_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_TYPE_OPTION1, DISPLAY_PACKAGE_NAME_OPTION1, DISPLAY_NAME_OPTION1,
             BASE_DIRECTORY_OPTION1, 1);
 
     /** Output option test 2 instance. */
     @DataPoint
     public static final PlantUMLDependencyOutputOption OUTPUT_OPTION2 = new PlantUMLDependencyOutputOption(
-            VERBOSE_LEVEL_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_TYPE_OPTION1,
+            VERBOSE_LEVEL_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_TYPE_OPTION1, DISPLAY_PACKAGE_NAME_OPTION1, DISPLAY_NAME_OPTION1,
             BASE_DIRECTORY_OPTION1, 1);
 
     /** Output option test 3 instance. */
     @DataPoint
-    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION3 = new PlantUMLDependencyOutputOption(
-            VERBOSE_LEVEL_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_TYPE_OPTION1,
-            BASE_DIRECTORY_OPTION1, 1);
-
-    /** Output option test 4 instance. */
-    @DataPoint
-    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION4 = new PlantUMLDependencyOutputOption(
-            VERBOSE_LEVEL_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_TYPE_OPTION1,
-            BASE_DIRECTORY_OPTION1, 1);
-
-    /** Output option test 5 instance. */
-    @DataPoint
-    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION5 = new PlantUMLDependencyOutputOption(
-            VERBOSE_LEVEL_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_TYPE_OPTION1,
-            BASE_DIRECTORY_OPTION1, 1);
-
-    /** Output option test 6 instance. */
-    @DataPoint
-    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION6 = new PlantUMLDependencyOutputOption(
-            VERBOSE_LEVEL_OPTION1, PROGRAMMING_LANGUAGE_OPTION1, INCLUDE_OPTION1, EXCLUDE_OPTION1, DISPLAY_TYPE_OPTION1,
-            BASE_DIRECTORY_OPTION1, 1);
-
-    /** Output option test 7 instance. */
-    @DataPoint
-    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION7 = null;
+    public static final PlantUMLDependencyOutputOption OUTPUT_OPTION3 = null;
 
     /**
      * Test method for

@@ -24,6 +24,8 @@
 
 package net.sourceforge.plantumldependency.cli.generic.type.impl.stubimpl;
 
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS;
 import static org.junit.Assert.assertEquals;
 
@@ -159,6 +161,7 @@ public class StubDependencyTypeImplTest extends DeepCloneableObjectTest < StubDe
     @Test
     public void testGetPlantUMLClassesDiagramRelations() {
         assertEquals(new TreeSet < PlantUMLClassesDiagramRelation >(),
-                STUB_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS));
+                STUB_DEPENDENCY_TYPE1.getPlantUMLClassesDiagramRelations(DEFAULT_DISPLAY_TYPES_OPTIONS,
+                        DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_PATTERN, DEFAULT_DISPLAY_NAME_OPTIONS_PATTERN));
     }
 }

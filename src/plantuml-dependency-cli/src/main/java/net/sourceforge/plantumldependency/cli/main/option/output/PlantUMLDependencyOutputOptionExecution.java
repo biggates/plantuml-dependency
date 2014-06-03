@@ -38,6 +38,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
@@ -79,16 +80,24 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param includeExcludeFiles
      *            the {@link FileSet} describing all files to include or exclude and also the base
      *            directory where to look for, mustn't be <code>null</code>.
-     * @param displayTypesOpt
-     *            the display types options which have to appear in the plantUML description, mustn't be
-     *            <code>null</code>.
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options which filter type to appear in the
+     *            plantUML description, mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter package name to appear in the plantUML
+     *            description, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter name to appear in the plantUML description,
+     *            mustn't be <code>null</code>.
      * @return the {@link ProgrammingLanguageContext} instance containing all parsed
      *         {@link GenericDependency}.
      * @since 1.0.0
      */
     private static ProgrammingLanguageContext readDependenciesContextFromFiles(final ProgrammingLanguage language,
-            final FileSet includeExcludeFiles, final Set < DisplayType > displayTypesOpt) {
-        final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext(displayTypesOpt);
+            final FileSet includeExcludeFiles, final Set < DisplayType > displayTypesOpts,
+            final Pattern displayPackageNamePattern, final Pattern displayNamePattern) {
+        final ProgrammingLanguageContext programmingLanguageContext = language.createNewContext(displayTypesOpts,
+                displayPackageNamePattern, displayNamePattern);
 
         final Iterator < FileResource > iter = includeExcludeFiles.iterator();
         while (iter.hasNext()) {
@@ -149,6 +158,18 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     private Set < DisplayType > displayTypesOptions;
 
     /**
+     * The display package name pattern which have to appear in the plantUML description, mustn't be
+     * <code>null</code>.
+     */
+    private Pattern displayPackageNamePattern;
+
+    /**
+     * The display name pattern which have to appear in the plantUML description, mustn't be
+     * <code>null</code>.
+     */
+    private Pattern displayNamePattern;
+
+    /**
      * Default constructor.
      *
      * @param file
@@ -159,20 +180,30 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      * @param includeExcludeFiles
      *            the {@link FileSet} describing all files to include or exclude and also the base
      *            directory where to look for, mustn't be <code>null</code>.
-     * @param displayTypesOpt
-     *            the display types options which have to appear in the plantUML description.
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options which filter type to appear in the
+     *            plantUML description, mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter package name to appear in the plantUML
+     *            description, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter name to appear in the plantUML description,
+     *            mustn't be <code>null</code>.
      * @param optionPriority
      *            the option priority as an integer. <i>Note : the priority must be unique amongst
      *            all options</i>.
      * @since 1.0.0
      */
     public PlantUMLDependencyOutputOptionExecution(final File file, final ProgrammingLanguage language,
-            final FileSet includeExcludeFiles, final Set < DisplayType > displayTypesOpt, final int optionPriority) {
+            final FileSet includeExcludeFiles, final Set < DisplayType > displayTypesOpts,
+            final Pattern displayPackageNamePatternOpt, final Pattern displayNamePatternOpt, final int optionPriority) {
         super(optionPriority);
         setOutputFile(file);
         setInputFileSet(includeExcludeFiles);
         setProgrammingLanguage(language);
-        setDisplayTypesOptions(displayTypesOpt);
+        setDisplayTypesOptions(displayTypesOpts);
+        setDisplayPackageNamePattern(displayPackageNamePatternOpt);
+        setDisplayNamePattern(displayNamePatternOpt);
     }
 
     /**
@@ -186,6 +217,8 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
         p.outputFile = new File(outputFile.getAbsolutePath());
         p.inputFileSet = (FileSet) inputFileSet.clone();
         p.displayTypesOptions = new TreeSet < DisplayType >(displayTypesOptions);
+        p.displayPackageNamePattern = displayPackageNamePattern;
+        p.displayNamePattern = displayNamePattern;
         return p;
     }
 
@@ -197,11 +230,34 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
     @Override
     public void execute() throws CommandLineException {
         final ProgrammingLanguageContext programmingLanguageContext = readDependenciesContextFromFiles(
-                getProgrammingLanguage(), getInputFileSet(), getDisplayTypesOptions());
+                getProgrammingLanguage(), getInputFileSet(), getDisplayTypesOptions(), getDisplayPackageNamePattern(),
+                getDisplayNamePattern());
         final PlantUMLDiagram plantUMLDiagram = programmingLanguageContext.getPlantUMLClassesDiagram();
         writeIntoFile(plantUMLDiagram.getPlantUMLTextDescription(), getOutputFile());
         LOGGER.log(INFO,
                 buildLogString(TREATED_DEPENDENCY_INFO, programmingLanguageContext.getParsedDependencies().size()));
+    }
+
+    /**
+     * Gets the value of <code>displayNamePattern</code>.
+     *
+     * @return the value of <code>displayNamePattern</code>.
+     * @see #setDisplayNamePattern(Pattern)
+     * @since 1.4.0
+     */
+    private Pattern getDisplayNamePattern() {
+        return displayNamePattern;
+    }
+
+    /**
+     * Gets the value of <code>displayPackageNamePattern</code>.
+     *
+     * @return the value of <code>displayPackageNamePattern</code>.
+     * @see #setDisplayPackageNamePattern(Pattern)
+     * @since 1.4.0
+     */
+    private Pattern getDisplayPackageNamePattern() {
+        return displayPackageNamePattern;
     }
 
     /**
@@ -246,6 +302,30 @@ public class PlantUMLDependencyOutputOptionExecution extends AbstractOptionExecu
      */
     private ProgrammingLanguage getProgrammingLanguage() {
         return programmingLanguage;
+    }
+
+    /**
+     * Sets the value of <code>displayNamePattern</code>.
+     *
+     * @param value
+     *            the <code>displayNamePattern</code> to set, can be <code>null</code>.
+     * @see #getDisplayNamePattern()
+     * @since 1.4.0
+     */
+    private void setDisplayNamePattern(final Pattern value) {
+        displayNamePattern = value;
+    }
+
+    /**
+     * Sets the value of <code>displayPackageNamePattern</code>.
+     *
+     * @param value
+     *            the <code>displayPackageNamePattern</code> to set, can be <code>null</code>.
+     * @see #getDisplayPackageNamePattern()
+     * @since 1.4.0
+     */
+    private void setDisplayPackageNamePattern(final Pattern value) {
+        displayPackageNamePattern = value;
     }
 
     /**

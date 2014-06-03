@@ -41,6 +41,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.generic.GenericDependency;
@@ -172,13 +173,20 @@ public abstract class ProgrammingLanguage implements Comparable < ProgrammingLan
     /**
      * Create a new {@link ProgrammingLanguageContext} following the language.
      *
-     * @param displayTypesOpt
-     *            the display types options which have to appear in the plantUML description, mustn't be
-     *            <code>null</code>.
+     * @param displayTypesOpts
+     *            the {@link Set} of display types options which filter type to appear in the
+     *            plantUML description, mustn't be <code>null</code>.
+     * @param displayPackageNamePattern
+     *            the {@link Pattern} which filter package name to appear in the plantUML
+     *            description, mustn't be <code>null</code>.
+     * @param displayNamePattern
+     *            the {@link Pattern} which filter name to appear in the plantUML description,
+     *            mustn't be <code>null</code>.
      * @return a new empty {@link ProgrammingLanguageContext} instance.
      * @since 1.0.0
      */
-    public abstract ProgrammingLanguageContext createNewContext(final Set < DisplayType > displayTypesOpt);
+    public abstract ProgrammingLanguageContext createNewContext(final Set < DisplayType > displayTypesOpts,
+            final Pattern displayPackageNamePattern, final Pattern displayNamePattern);
 
     /**
      * {@inheritDoc}

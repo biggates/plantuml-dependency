@@ -34,7 +34,7 @@ import static net.sourceforge.plantumldependency.cli.main.option.programminglang
 import static net.sourceforge.plantumldependency.common.constants.CharacterConstants.SPACE_CHAR;
 import static org.junit.Assert.assertEquals;
 import net.sourceforge.plantumldependency.cli.main.option.programminglanguage.argument.ProgrammingLanguage;
-import net.sourceforge.plantumldependency.common.ObjectTest;
+import net.sourceforge.plantumldependency.common.ComparableAndDeepCloneableObjectTest;
 import net.sourceforge.plantumldependency.commoncli.exception.CommandLineException;
 
 import org.junit.Test;
@@ -48,7 +48,7 @@ import org.junit.experimental.theories.DataPoint;
  * @version 1.4.0
  */
 public class PlantUMLDependencyProgrammingLanguageOptionTest extends
-        ObjectTest < PlantUMLDependencyProgrammingLanguageOption > {
+        ComparableAndDeepCloneableObjectTest < PlantUMLDependencyProgrammingLanguageOption > {
 
     /** Programming language option test 1 instance. */
     @DataPoint
