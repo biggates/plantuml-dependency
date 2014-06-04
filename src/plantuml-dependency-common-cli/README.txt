@@ -1,6 +1,11 @@
 PlantUML Dependency - reverse engineering java source files to generate PlantUML description (http://plantuml-depend.sourceforge.net)
 =====================================================================================================================================
 
+8, Jun 2014 - 1.4.0
+====================
+- Introduced a new and powerful feature : the Display name and package name options which allows to filter output elements by regular expressions on their name or package name. Ant task and help messages have been updated. (feature 26)
+- Fixed a bug when parsing package-info.java file, by default PlantUML Dependency doesn't parse them anymore (bug 4)
+
 19, Jan 2014 - 1.3.0
 ====================
 - Maven module refactoring, by creating plantuml-dependency-common and plantuml-dependency-commoncli artifacts, in order to publish the whole PlantUML Dependency source code to the Maven Central Repository (feature 14)
@@ -8,7 +13,7 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 
 3, Nov 2013 - 1.2.0
 ====================
-- Introducing a new and powerful feature : the Display option which allows to filter output elements and relations, such as classes, interfaces, enums, abstract classes, annotations and so on... Ant task and help messages have been updated. (feature 3)
+- Introduced a new and powerful feature : the Display type option which allows to filter output elements and relations, such as classes, interfaces, enums, abstract classes, annotations and so on... Ant task and help messages have been updated. (feature 3)
 - Annotations java files are now fully supported (feature 22 and bug 22)
 - Elements (classes, enums, interfaces abstract classes and annotations) are now better sorted in the generated output file
 - Fixed a bug with dependencies which have a similar name to a java.lang class or interface (bug 5)
@@ -64,9 +69,17 @@ where optional options are:
 		The base directory where to look for source files. If not specified, the default pattern is "." i.e. the directory where the program is launched from.
 		DIR specifies a valid and existing directory path, not a single file. It can be absolute or relative.
 
-	-d, --display DISPLAY_OPTIONS
-		To specify class diagram objects to display. If not specified, the default is [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]
-		DISPLAY_OPTIONS specifies display options when generating the plantuml output file, it is a separated comma list with these possible values : [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]. "abstract_classes" : displays parsed source files which are abstract classes and relations to abstract classes, "annotations" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, "classes" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, "enums" : displays parsed source files which are enums and relations to enums, "extensions" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, "implementations" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, "imports" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, "interfaces" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, "native_methods" : displays relations from parsed source files to the native dependency if they use native methods, "static_imports" : displays relations from parsed source files to import dependencies (only static) if their type is displayed.
+	-dn, --display-name DISPLAY_NAME_PATTERN
+		To specify class diagram objects to display following their name. If not specified, the default is ".*". Note : native calls which are represented by the "NativeCall" name can also be matched by this regular expression even if it is a fictive dependency.
+		DISPLAY_NAME_PATTERN specifies display name pattern when generating the plantUML output file, it is a regular expression following the Java pattern (see http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html for description).
+
+	-dp, --display-package-name DISPLAY_PACKAGE_NAME_PATTERN
+		To specify class diagram objects to display following their package name. If not specified, the default is ".*". Note : native calls which are represented by the "javax.native" package name can also be matched by this regular expression even if it is a fictive dependency.
+		DISPLAY_PACKAGE_NAME_PATTERN specifies display package name pattern when generating the plantUML output file, it is a regular expression following the Java pattern (see http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html for description).
+
+	-dt, --display-type DISPLAY_TYPES_OPTIONS
+		To specify class diagram objects to display following their type. If not specified, the default is [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]
+		DISPLAY_TYPES_OPTIONS specifies display types options when generating the plantUML output file, it is a separated comma list with these possible values : [abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports]. "abstract_classes" : displays parsed source files which are abstract classes and relations to abstract classes, "annotations" : displays parsed source files which are annotations, annotations (upon classes and methods) of all parsed source files and relations to annotations, "classes" : displays parsed source files which are classes (not abstract), dependencies which are considered as classes (because they are imported or extended but not parsed) and relations to classes, "enums" : displays parsed source files which are enums and relations to enums, "extensions" : displays relations between dependencies which are extended by parsed source files (i.e. classes or interfaces) if their type is displayed, "implementations" : displays relations between dependencies which are implemented by parsed source files (i.e. interfaces) if their type is displayed, "imports" : displays relations from parsed source files to import dependencies (not static) if their type is displayed, "interfaces" : displays parsed source files which are interfaces, dependencies which are considered as interfaces (because they are implemented but not parsed) and relations to interfaces, "native_methods" : displays relations from parsed source files to the native dependency if they use native methods, "static_imports" : displays relations from parsed source files to import dependencies (only static) if their type is displayed.
 
 	-e, --exclude FILE_PATTERN
 		To exclude files that match the provided pattern. If not specified, the default pattern is "**/package-info.java".
@@ -93,8 +106,10 @@ where optional options are:
 Examples:
 
 	java -jar plantuml-dependency-cli-1.4.0.jar -h
-	java -jar plantuml-dependency-cli-1.4.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -d implementations,interfaces,extensions,imports,static_imports -v
-	java -jar plantuml-dependency-cli-1.4.0.jar -o plantuml.txt -b "C:\Users\PlantUML test" -i **/*Test.java
+	java -jar plantuml-dependency-cli-1.4.0.jar -o /home/test/plantuml.txt -b . -dp ^(?!net.sourceforge.plantumldependency)(.+)$ -v
+	java -jar plantuml-dependency-cli-1.4.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -dn .*Test.* -v
+	java -jar plantuml-dependency-cli-1.4.0.jar -o /home/test/plantuml.txt -b . -i **/*.java -e **/*Test*.java -dt implementations,interfaces,extensions,imports,static_imports
+	java -jar plantuml-dependency-cli-1.4.0.jar -o myoutput.txt -b "C:\Users\PlantUML test" -i **/*Test.java
 	java -jar plantuml-dependency-cli-1.4.0.jar -version -v
 
 Known bugs or program limitations:
