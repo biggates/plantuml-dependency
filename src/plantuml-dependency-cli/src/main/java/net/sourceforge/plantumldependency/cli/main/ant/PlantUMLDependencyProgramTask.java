@@ -35,6 +35,8 @@ import java.util.Map;
 
 import net.sourceforge.plantumldependency.cli.exception.PlantUMLDependencyException;
 import net.sourceforge.plantumldependency.cli.main.option.basedirectory.PlantUMLDependencyBaseDirectoryOption;
+import net.sourceforge.plantumldependency.cli.main.option.display.name.PlantUMLDependencyDisplayNameOption;
+import net.sourceforge.plantumldependency.cli.main.option.display.packagename.PlantUMLDependencyDisplayPackageNameOption;
 import net.sourceforge.plantumldependency.cli.main.option.display.type.PlantUMLDependencyDisplayTypeOption;
 import net.sourceforge.plantumldependency.cli.main.option.exclude.PlantUMLDependencyExcludeOption;
 import net.sourceforge.plantumldependency.cli.main.option.include.PlantUMLDependencyIncludeOption;
@@ -124,9 +126,31 @@ public class PlantUMLDependencyProgramTask extends Task {
     }
 
     /**
-     * Gets the value of <code>display</code>.
+     * Gets the value of <code>displayName</code>.
      *
-     * @return the value of <code>display</code>.
+     * @return the value of <code>displayName</code>.
+     * @see #setDisplayName(String)
+     * @since 1.4.0
+     */
+    public String getDisplayName() {
+        return getArgsMap().get(PlantUMLDependencyDisplayNameOption.OPTION_MAIN_SYNOPSIS);
+    }
+
+    /**
+     * Gets the value of <code>displayPackageName</code>.
+     *
+     * @return the value of <code>displayPackageName</code>.
+     * @see #setDisplayPackageName(String)
+     * @since 1.4.0
+     */
+    public String getDisplayPackageName() {
+        return getArgsMap().get(PlantUMLDependencyDisplayPackageNameOption.OPTION_MAIN_SYNOPSIS);
+    }
+
+    /**
+     * Gets the value of <code>displayType</code>.
+     *
+     * @return the value of <code>displayType</code>.
      * @see #setDisplayType(String)
      * @since 1.1.0
      */
@@ -202,10 +226,34 @@ public class PlantUMLDependencyProgramTask extends Task {
     }
 
     /**
-     * Sets the value of <code>display</code>.
+     * Sets the value of <code>displayName</code>.
      *
      * @param value
-     *            the <code>display</code> to set, can be <code>null</code>.
+     *            the <code>displayName</code> to set, can be <code>null</code>.
+     * @see #getDisplayName()
+     * @since 1.4.0
+     */
+    public void setDisplayName(final String value) {
+        putNonEmptyStringToMap(getArgsMap(), PlantUMLDependencyDisplayNameOption.OPTION_MAIN_SYNOPSIS, value);
+    }
+
+    /**
+     * Sets the value of <code>displayPackageName</code>.
+     *
+     * @param value
+     *            the <code>displayPackageName</code> to set, can be <code>null</code>.
+     * @see #getDisplayPackageName()
+     * @since 1.4.0
+     */
+    public void setDisplayPackageName(final String value) {
+        putNonEmptyStringToMap(getArgsMap(), PlantUMLDependencyDisplayPackageNameOption.OPTION_MAIN_SYNOPSIS, value);
+    }
+
+    /**
+     * Sets the value of <code>displayType</code>.
+     *
+     * @param value
+     *            the <code>displayType</code> to set, can be <code>null</code>.
      * @see #getDisplayType()
      * @since 1.1.0
      */
@@ -282,6 +330,7 @@ public class PlantUMLDependencyProgramTask extends Task {
     public String toString() {
         return getClass().getSimpleName() + " [output=" + getOutput() + ", verboseLevel=" + getVerboseLevel()
                 + ", programmingLanguage=" + getProgrammingLanguage() + ", includes=" + getIncludes() + ", excludes="
-                + getExcludes() + ", display=" + getDisplayType() + ", baseDir=" + getBaseDir() + "]";
+                + getExcludes() + ", displayType=" + getDisplayType() + ", baseDir=" + getBaseDir() + ", displayName="
+                + getDisplayName() + ", displayPackageName=" + getDisplayPackageName() + "]";
     }
 }

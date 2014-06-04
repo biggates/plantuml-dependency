@@ -25,6 +25,8 @@
 package net.sourceforge.plantumldependency.cli.main.ant;
 
 import static java.util.logging.Level.INFO;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_NAME_OPTIONS_STRING;
+import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_STRING;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_DISPLAY_TYPES_OPTIONS_STRING;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_EXCLUDE_OPTIONS;
 import static net.sourceforge.plantumldependency.cli.constants.PlantUMLDependencyConstants.DEFAULT_INCLUDE_OPTIONS;
@@ -60,6 +62,8 @@ public class PlantUMLDependencyProgramTaskTest {
         final PlantUMLDependencyProgramTask task = new PlantUMLDependencyProgramTask();
         task.setBaseDir(DOT_CHAR);
         task.setDisplayType(DEFAULT_DISPLAY_TYPES_OPTIONS_STRING);
+        task.setDisplayName(DEFAULT_DISPLAY_NAME_OPTIONS_STRING);
+        task.setDisplayPackageName(DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_STRING);
         task.setExcludes(DEFAULT_EXCLUDE_OPTIONS);
         task.setIncludes(DEFAULT_INCLUDE_OPTIONS + DEFAULT_PROGRAMMING_LANGUAGE.getName());
         task.setOutput("plantuml" + TXT_EXTENSION);
@@ -86,6 +90,26 @@ public class PlantUMLDependencyProgramTaskTest {
     @Test
     public void testGetBaseDir() {
         assertEquals(DOT_CHAR, PLANTUML_DEPENDENCY_TASK2.getBaseDir());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask#getDisplayName()}
+     * .
+     */
+    @Test
+    public void testGetDisplayName() {
+        assertEquals(".*", PLANTUML_DEPENDENCY_TASK2.getDisplayName());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask#getDisplayPackageName()}
+     * .
+     */
+    @Test
+    public void testGetDisplayPackageName() {
+        assertEquals(".*", PLANTUML_DEPENDENCY_TASK2.getDisplayPackageName());
     }
 
     /**
@@ -159,6 +183,30 @@ public class PlantUMLDependencyProgramTaskTest {
         final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
         testTask.setBaseDir(DOT_CHAR);
         assertEquals(DOT_CHAR, testTask.getBaseDir());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask#setDisplayName(java.lang.String)}
+     * .
+     */
+    @Test
+    public void testSetDisplayName() {
+        final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
+        testTask.setDisplayName(DEFAULT_DISPLAY_NAME_OPTIONS_STRING);
+        assertEquals(DEFAULT_DISPLAY_NAME_OPTIONS_STRING, testTask.getDisplayName());
+    }
+
+    /**
+     * Test method for
+     * {@link net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask#setDisplayPackageName(java.lang.String)}
+     * .
+     */
+    @Test
+    public void testSetDisplayPackageName() {
+        final PlantUMLDependencyProgramTask testTask = new PlantUMLDependencyProgramTask();
+        testTask.setDisplayPackageName(DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_STRING);
+        assertEquals(DEFAULT_DISPLAY_PACKAGE_NAME_OPTIONS_STRING, testTask.getDisplayPackageName());
     }
 
     /**
@@ -241,7 +289,7 @@ public class PlantUMLDependencyProgramTaskTest {
     @Test
     public void testToString() {
         assertEquals(
-                "PlantUMLDependencyProgramTask [output=plantuml.txt, verboseLevel=INFO, programmingLanguage=java, includes=**/*.java, excludes=**/package-info.java, display=abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports, baseDir=.]",
+                "PlantUMLDependencyProgramTask [output=plantuml.txt, verboseLevel=INFO, programmingLanguage=java, includes=**/*.java, excludes=**/package-info.java, displayType=abstract_classes,annotations,classes,enums,extensions,implementations,imports,interfaces,native_methods,static_imports, baseDir=., displayName=.*, displayPackageName=.*]",
                 PLANTUML_DEPENDENCY_TASK2.toString());
     }
 }
