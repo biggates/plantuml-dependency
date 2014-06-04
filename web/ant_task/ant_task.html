@@ -42,7 +42,7 @@
 			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border: 0"
 				src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS !" height="31" width="88" /></a>
 		</p>
-		<font size="1">Last update : 19 Jan, 2014</font>
+		<font size="1">Last update : 8 Jun, 2014</font>
 	</div>
 	<div id="corps">
 		<h2>
@@ -54,16 +54,16 @@
 		</p>
 		<div class="scriptplantu">
 			<pre>
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;project name="PlantUMLDependencyAntTaskSample1" default="main" basedir="."&gt;
-	&lt;!-- task definition --&gt;
-	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	&lt;project name="PlantUMLDependencyAntTaskSample1" default="main" basedir="."&gt;
+		&lt;!-- task definition --&gt;
+		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
 
-	&lt;!-- process all java files within the current directory to output "plantuml1.txt" file --&gt;
-	&lt;target name="main"&gt;
-		&lt;plantuml-dependency output="plantuml1.txt" /&gt;
-	&lt;/target&gt;
-&lt;/project&gt;
+		&lt;!-- process all java files within the current directory to output "plantuml1.txt" file --&gt;
+		&lt;target name="main"&gt;
+			&lt;plantuml-dependency output="plantuml1.txt" /&gt;
+		&lt;/target&gt;
+	&lt;/project&gt;
 			</pre>
 		</div>
 		<p>
@@ -76,16 +76,16 @@
 		</p>
 		<div class="scriptplantu">
 			<pre>
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;project name="PlantUMLDependencyAntTaskSample2" default="main" basedir="."&gt;
-	&lt;!-- task definition --&gt;
-	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	&lt;project name="PlantUMLDependencyAntTaskSample2" default="main" basedir="."&gt;
+		&lt;!-- task definition --&gt;
+		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
 
-	&lt;!-- process all java files within the "/home/test" directory to output "plantuml2.txt" file --&gt;
-	&lt;target name="main"&gt;
-		&lt;plantuml-dependency output="plantuml2.txt" baseDir="/home/test" /&gt;
-	&lt;/target&gt;
-&lt;/project&gt;
+		&lt;!-- process all java files within the "/home/test" directory to output "plantuml2.txt" file --&gt;
+		&lt;target name="main"&gt;
+			&lt;plantuml-dependency output="plantuml2.txt" baseDir="/home/test" /&gt;
+		&lt;/target&gt;
+	&lt;/project&gt;
 			</pre>
 		</div>
 		<p>
@@ -99,16 +99,16 @@
 		</p>
 		<div class="scriptplantu">
 			<pre>
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;project name="PlantUMLDependencyAntTaskSample3" default="main" basedir="."&gt;
-	&lt;!-- task definition --&gt;
-	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	&lt;project name="PlantUMLDependencyAntTaskSample3" default="main" basedir="."&gt;
+		&lt;!-- task definition --&gt;
+		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
 
-	&lt;!-- process all java files with the "Test" string in their names except those which have the "PlantUML" string in their names within the "/home/test" directory to output "plantuml3.txt" file --&gt;
-	&lt;target name="main"&gt;
-		&lt;plantuml-dependency output="plantuml3.txt" baseDir="/home/test" includes="**/*Test*.java" excludes="**/PlantUML*.java" /&gt;
-	&lt;/target&gt;
-&lt;/project&gt;
+		&lt;!-- process all java files with the "Test" string in their names except those which have the "PlantUML" string in their names within the "/home/test" directory to output "plantuml3.txt" file --&gt;
+		&lt;target name="main"&gt;
+			&lt;plantuml-dependency output="plantuml3.txt" baseDir="/home/test" includes="**/*Test*.java" excludes="**/PlantUML*.java" /&gt;
+		&lt;/target&gt;
+	&lt;/project&gt;
 			</pre>
 		</div>
 		<p>
@@ -121,16 +121,16 @@
 		</p>
 		<div class="scriptplantu">
 			<pre>
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;project name="PlantUMLDependencyAntTaskSample4" default="main" basedir="."&gt;
-	&lt;!-- task definition --&gt;
-	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	&lt;project name="PlantUMLDependencyAntTaskSample4" default="main" basedir="."&gt;
+		&lt;!-- task definition --&gt;
+		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
 
-	&lt;!-- process all java files within the "/home/test" directory to output "plantuml4.txt" file using verbose mode --&gt;
-	&lt;target name="main"&gt;
-		&lt;plantuml-dependency output="plantuml4.txt" baseDir="/home/test" verboseLevel="FINEST" /&gt;
-	&lt;/target&gt;
-&lt;/project&gt;
+		&lt;!-- process all java files within the "/home/test" directory to output "plantuml4.txt" file using verbose mode --&gt;
+		&lt;target name="main"&gt;
+			&lt;plantuml-dependency output="plantuml4.txt" baseDir="/home/test" verboseLevel="FINEST" /&gt;
+		&lt;/target&gt;
+	&lt;/project&gt;
 			</pre>
 		</div>
 		<p>
@@ -156,21 +156,71 @@
 			static) if their type is displayed.</p>
 		<div class="scriptplantu">
 			<pre>
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;project name="PlantUMLDependencyAntTaskSample5" default="main" basedir="."&gt;
-	&lt;!-- task definition --&gt;
-	&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="../../../../../../../../../target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	&lt;project name="PlantUMLDependencyAntTaskSample5" default="main" basedir="."&gt;
+		&lt;!-- task definition --&gt;
+		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
 
-	&lt;!-- process all java files within the "/home/test" directory to output "plantuml5.txt" file but displaying only interfaces with their relations --&gt;
-	&lt;target name="main"&gt;
-		&lt;plantuml-dependency output="plantuml5.txt" baseDir="/home/test" displayType="implementations,interfaces,extensions,imports,static_imports" /&gt;
-	&lt;/target&gt;
-&lt;/project&gt;
+		&lt;!-- process all java files within the "/home/test" directory to output "plantuml5.txt" file but displaying only interfaces with their relations --&gt;
+		&lt;target name="main"&gt;
+			&lt;plantuml-dependency output="plantuml5.txt" baseDir="/home/test" displayType="implementations,interfaces,extensions,imports,static_imports" /&gt;
+		&lt;/target&gt;
+	&lt;/project&gt;
 			</pre>
 		</div>
 		<p>
 			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> files of the <b>/home/test</b>
-			directory and output a <b>plantuml4.txt</b> text file which contains only interfaces with their relations.
+			directory and output a <b>plantuml5.txt</b> text file which contains only interfaces with their relations.
+		</p>
+		<h3>Display name</h3>
+		<p>
+			You can also specify class diagram objects to display following their name. It is a regular expression following the
+			Java pattern (see <a href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html"><b>this
+					page</b></a> for description). If not specified, the default is ".*". Note : native calls which are represented by the
+			"NativeCall" name can also be matched by this regular expression even if it is a fictive dependency.
+		</p>
+		<div class="scriptplantu">
+			<pre>
+	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	&lt;project name="PlantUMLDependencyAntTaskSample6" default="main" basedir="."&gt;
+		&lt;!-- task definition --&gt;
+		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+
+		&lt;!-- process all java files within the "/home/test" directory to output "plantuml6.txt" file but displaying only objects matching the .*net.* package name --&gt;
+		&lt;target name="main"&gt;
+			&lt;plantuml-dependency output="plantuml6.txt" baseDir="/home/test" displayPackageName=".*net.*" /&gt;
+		&lt;/target&gt;
+	&lt;/project&gt;
+			</pre>
+		</div>
+		<p>
+			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> files of the <b>/home/test</b>
+			directory and output a <b>plantuml6.txt</b> text file which contains only objects matching the <b>.*net.*</b> package name.
+		</p>
+		<h3>Display package name</h3>
+		<p>
+			You can also specify class diagram objects to display following their package name. It is a regular expression
+			following the Java pattern (see <a href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html"><b>this
+					page</b></a> for description). If not specified, the default is ".*". Note : native calls which are represented by the
+			"NativeCall" name can also be matched by this regular expression even if it is a fictive dependency.
+		</p>
+		<div class="scriptplantu">
+			<pre>
+	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	&lt;project name="PlantUMLDependencyAntTaskSample7" default="main" basedir="."&gt;
+		&lt;!-- task definition --&gt;
+		&lt;taskdef name="plantuml-dependency" classname="net.sourceforge.plantumldependency.cli.main.ant.PlantUMLDependencyProgramTask" classpath="/home/target/plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar" /&gt;
+
+		&lt;!-- process all java files within the "/home/test" directory to output "plantuml7.txt" file but displaying only objects matching the .*a.* name --&gt;
+		&lt;target name="main"&gt;
+			&lt;plantuml-dependency output="plantuml6.txt" baseDir="/home/test" displayName=".*a.*" /&gt;
+		&lt;/target&gt;
+	&lt;/project&gt;
+			</pre>
+		</div>
+		<p>
+			This <a href="http://ant.apache.org"><b>Ant</b></a> task processes all <b>.java</b> files of the <b>/home/test</b>
+			directory and output a <b>plantuml4.txt</b> text file which contains only only objects matching the <b>.*a.*</b> name.
 		</p>
 		<h5 style="color: red;">Note that options are just ignored if they have empty values. For instance, the
 			verboseLevel option doesn't behave the same as the command line.</h5>
