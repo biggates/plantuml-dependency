@@ -10,7 +10,7 @@
 	<!-- Project information -->
 	<groupId>net.sourceforge.plantuml-depend</groupId>
 	<artifactId>plantuml-dependency-common</artifactId>
-	<version>1.4.0-SNAPSHOT</version>
+	<version>1.4.0</version>
 	<packaging>jar</packaging>
 	<name>PlantUML Dependency common module</name>
 	<description>PlantUml Dependency allows to parse / reverse engineering
