@@ -61,10 +61,10 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param displayTypesOpts
      *            the {@link Set} of display types options which filter type to appear in the
      *            plantUML description, mustn't be <code>null</code>.
-     * @param displayPackageNamePattern
+     * @param displayPackageNamePatternOpt
      *            the {@link Pattern} which filter package name to appear in the plantUML
      *            description, mustn't be <code>null</code>.
-     * @param displayNamePattern
+     * @param displayNamePatternOpt
      *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
@@ -83,10 +83,10 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param displayTypesOpts
      *            the {@link Set} of display types options which filter type to appear in the
      *            plantUML description, mustn't be <code>null</code>.
-     * @param displayPackageNamePattern
+     * @param displayPackageNamePatternOpt
      *            the {@link Pattern} which filter package name to appear in the plantUML
      *            description, mustn't be <code>null</code>.
-     * @param displayNamePattern
+     * @param displayNamePatternOpt
      *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
@@ -109,10 +109,10 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param displayTypesOpts
      *            the {@link Set} of display types options which filter type to appear in the
      *            plantUML description, mustn't be <code>null</code>.
-     * @param displayPackageNamePattern
+     * @param displayPackageNamePatternOpt
      *            the {@link Pattern} which filter package name to appear in the plantUML
      *            description, mustn't be <code>null</code>.
-     * @param displayNamePattern
+     * @param displayNamePatternOpt
      *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
@@ -139,10 +139,10 @@ public class CppProgrammingLanguageContext extends AbstractProgrammingLanguageCo
      * @param displayTypesOpts
      *            the {@link Set} of display types options which filter type to appear in the
      *            plantUML description, mustn't be <code>null</code>.
-     * @param displayPackageNamePattern
+     * @param displayPackageNamePatternOpt
      *            the {@link Pattern} which filter package name to appear in the plantUML
      *            description, mustn't be <code>null</code>.
-     * @param displayNamePattern
+     * @param displayNamePatternOpt
      *            the {@link Pattern} which filter name to appear in the plantUML description,
      *            mustn't be <code>null</code>.
      * @since 1.0.0
