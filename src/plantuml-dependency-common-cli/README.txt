@@ -4,6 +4,7 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 8, Jun 2014 - 1.4.0
 ====================
 - Introduced a new and powerful feature : the Display name and package name options which allows to filter output elements by regular expressions on their name or package name. Ant task and help messages have been updated. (feature 26)
+- Changing the "-d / --display" option by "-dt / --display-type"
 - Fixed a bug when parsing package-info.java file, by default PlantUML Dependency doesn't parse them anymore (bug 4)
 
 19, Jan 2014 - 1.3.0

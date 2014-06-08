@@ -4,6 +4,7 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 8, Jun 2014 - 1.4.0
 ====================
 - Introduced a new and powerful feature : the Display name and package name options which allows to filter output elements by regular expressions on their name or package name. Ant task and help messages have been updated. (feature 26)
+- Changing the "-d / --display" option by "-dt / --display-type"
 - Fixed a bug when parsing package-info.java file, by default PlantUML Dependency doesn't parse them anymore (bug 4)
 
 19, Jan 2014 - 1.3.0
@@ -13,7 +14,7 @@ PlantUML Dependency - reverse engineering java source files to generate PlantUML
 
 3, Nov 2013 - 1.2.0
 ====================
-- Introducing a new and powerful feature : the Display option which allows to filter output elements and relations, such as classes, interfaces, enums, abstract classes, annotations and so on... Ant task and help messages have been updated. (feature 3)
+- Introduced a new and powerful feature : the Display type option which allows to filter output elements and relations, such as classes, interfaces, enums, abstract classes, annotations and so on... Ant task and help messages have been updated. (feature 3)
 - Annotations java files are now fully supported (feature 22 and bug 22)
 - Elements (classes, enums, interfaces abstract classes and annotations) are now better sorted in the generated output file
 - Fixed a bug with dependencies which have a similar name to a java.lang class or interface (bug 5)
